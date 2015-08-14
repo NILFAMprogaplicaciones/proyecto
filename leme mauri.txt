@@ -1,3 +1,5 @@
 metele un boton a algun frame, ponele tu nombre. 
 
 a ver como sincroniza todo esto, toy jugando 
+
+
