@@ -2,6 +2,7 @@
 package Logica;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import javax.swing.*;
 
@@ -24,6 +25,15 @@ public class ControladorUsuario implements IControladorUsuario  {
         return instancia;
     }
     
+    public boolean verificarnickcname(String nickname){
+        return ColeccionUsuario.containsKey(nickname);
+    }
+    public boolean verificarcorreo(String correo){
+        Iterator it = ColeccionUsuario.keySet().iterator();
+        //for(t.hasNext()){
+        return true;    
+        
+    }
     public void Caso_Registro_Cliente(String nombre, String nickname, String correo,  String direccion, String apellido, Fecha fecha){
         
         Cliente c=new Cliente(nombre, nickname,correo,direccion,apellido,fecha);
