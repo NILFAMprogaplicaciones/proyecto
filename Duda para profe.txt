@@ -1,0 +1,2 @@
+1- Para que verificar si existe otro correo?
+(a la hora de crearlo no se encarga la misma empresa?, ej:Gmail)

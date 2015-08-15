@@ -25,20 +25,25 @@ public class ControladorUsuario implements IControladorUsuario  {
         return instancia;
     }
     
-    public boolean verificarnickcname(String nickname){
+    public boolean verificarnickname(String nickname){
         return ColeccionUsuario.containsKey(nickname);
     }
     public boolean verificarcorreo(String correo){
-        Iterator it = ColeccionUsuario.keySet().iterator();
-        //for(t.hasNext()){
-        return true;    
-        
+        Iterator<Usuario> it = ColeccionUsuario.values().iterator();
+        Usuario objeto=null;
+        while(it.hasNext()){
+            objeto=it.next();
+            if(objeto.getcorreo()==correo)
+                return true;
+        }
+        return false;
     }
     public void Caso_Registro_Cliente(String nombre, String nickname, String correo,  String direccion, String apellido, Fecha fecha){
         
         Cliente c=new Cliente(nombre, nickname,correo,direccion,apellido,fecha);
         addUsuario(nickname,c);
-        JOptionPane.showMessageDialog(null,"Cliente Registrado","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null,"Cliente Registrado","REGISTRO",JOptionPane.INFORMATION_MESSAGE);            
+    
     }
     
     public void Caso_Registro_Restaurante(String nickname, String correo, String nombre, String direccion, Categoria categoria){

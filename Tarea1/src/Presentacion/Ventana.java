@@ -1,5 +1,6 @@
 package Presentacion;
 
+import Logica.ControladorUsuario;
 import Logica.Fabrica;
 import Logica.Fecha;
 import Logica.IControladorUsuario;
@@ -536,7 +537,7 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCorreoElectronicoActionPerformed
 
     private void txtNicknameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNicknameActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_txtNicknameActionPerformed
 
     private void txtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoActionPerformed
@@ -571,18 +572,56 @@ public class Ventana extends javax.swing.JFrame {
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
         
-        Fecha fecha=new Fecha(D,M,A);
+        if(ICU.verificarnickname(txtNickname.getText())==true){
+               
+            JOptionPane.showMessageDialog(this,"Nickname ya tomado","REGISTRO",JOptionPane.ERROR_MESSAGE);
+            txtNickname.requestFocus();
+        }
+        else if(ICU.verificarnickname(txtCorreoElectronico.getText())==true){
+            JOptionPane.showMessageDialog(this,"Correo electronico ya tomado","REGISTRO",JOptionPane.ERROR_MESSAGE);
+            txtCorreoElectronico.requestFocus();   
+        }
+        else{
+            if(this.txtNickname.getText().equals("")){
+                JOptionPane.showMessageDialog(this,"Ingrese un nickname","REGISTRO",JOptionPane.WARNING_MESSAGE);
+                txtNickname.requestFocus();
+            }
+            else if(this.txtCorreoElectronico.getText().equals("")){
+                JOptionPane.showMessageDialog(this,"Ingrese su Correo Electronico","REGISTRO",JOptionPane.WARNING_MESSAGE);
+                txtCorreoElectronico.requestFocus(); 
+            }
+            else if(this.txtNombre.getText().equals("")){
+                JOptionPane.showMessageDialog(this,"Ingrese su Nombre","REGISTRO",JOptionPane.WARNING_MESSAGE);
+                txtNombre.requestFocus(); 
+            }
+            else if(this.txtApellido.getText().equals("")){
+                JOptionPane.showMessageDialog(this,"Ingrese su Apelldio","REGISTRO",JOptionPane.WARNING_MESSAGE);
+                txtApellido.requestFocus(); 
+            }
+            else if(this.txtDireccion.getText().equals("")){
+                JOptionPane.showMessageDialog(this,"Ingrese su Direccion","REGISTRO",JOptionPane.WARNING_MESSAGE);
+                txtDireccion.requestFocus(); 
+            }
+            else{
+                //D,M,A estan parseados
+            Fecha fecha=new Fecha(D,M,A);
         
-        ICU.Caso_Registro_Cliente(this.txtNombre.getText(), this.txtNickname.getText(), 
+            ICU.Caso_Registro_Cliente(this.txtNombre.getText(), this.txtNickname.getText(), 
                 this.txtCorreoElectronico.getText(), this.txtDireccion.getText(), 
                 this.txtApellido.getText(), fecha);
+            
+            this.txtApellido.setText("");
+            this.txtCorreoElectronico.setText("");
+            this.txtDireccion.setText("");
+            this.txtNickname.setText("");
+            this.txtNombre.setText("");
+            this.VentRegCli.setVisible(false);
+                
+            }
+                
+            
+        }
         
-        this.txtApellido.setText("");
-        this.txtCorreoElectronico.setText("");
-        this.txtDireccion.setText("");
-        this.txtNickname.setText("");
-        this.txtNombre.setText("");
-        this.VentRegCli.setVisible(false);
     }//GEN-LAST:event_RegistrarActionPerformed
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
