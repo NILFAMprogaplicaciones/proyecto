@@ -1,6 +1,7 @@
 package Presentacion;
 
 import Logica.Fabrica;
+import Logica.Fecha;
 import Logica.IControladorUsuario;
 import Logica.IControladorProducto;
 import Logica.IControladorPedido;
@@ -14,6 +15,8 @@ public class Ventana extends javax.swing.JFrame {
     private IControladorProducto ICP;
     private IControladorPedido ICPE;
     private IControladorCategoria ICC;
+    private String d,m,a;
+    private int D,M,A;
     /**
      * Creates new form Ventana
      */
@@ -29,6 +32,7 @@ public class Ventana extends javax.swing.JFrame {
         ICP = fabrica.getIControladorProducto();
         ICPE = fabrica.getIControladorPedido();
         ICC = fabrica.getIControladorCategoria();
+        
     }
 
     /**
@@ -87,8 +91,6 @@ public class Ventana extends javax.swing.JFrame {
         setTitle("Pedidos YA!");
         setBackground(new java.awt.Color(51, 255, 204));
         setLocation(new java.awt.Point(500, 200));
-        setMaximumSize(new java.awt.Dimension(1000, 1000));
-        setPreferredSize(new java.awt.Dimension(1000, 627));
         setSize(new java.awt.Dimension(1000, 1000));
 
         VentRegCli.setMaximizable(true);
@@ -129,11 +131,26 @@ public class Ventana extends javax.swing.JFrame {
         });
 
         dia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", " " }));
+        dia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                diaActionPerformed(evt);
+            }
+        });
 
         mes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        mes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mesActionPerformed(evt);
+            }
+        });
 
         anio.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000" }));
         anio.setAutoscrolls(true);
+        anio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                anioActionPerformed(evt);
+            }
+        });
 
         SeleccionarImagen.setText("Seleccionar Imagen");
         SeleccionarImagen.addActionListener(new java.awt.event.ActionListener() {
@@ -238,7 +255,7 @@ public class Ventana extends javax.swing.JFrame {
                 .addGroup(VentRegCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Cancelar)
                     .addComponent(Registrar))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         VentanaInformacion.setClosable(true);
@@ -301,7 +318,7 @@ public class Ventana extends javax.swing.JFrame {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(MostrarInfo)
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
 
         InfoRestaurante.setClosable(true);
@@ -364,7 +381,7 @@ public class Ventana extends javax.swing.JFrame {
                         .addComponent(lblSeleccionarRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(149, Short.MAX_VALUE))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -553,12 +570,18 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_MostrarInfoActionPerformed
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
+        
+        Fecha fecha=new Fecha(D,M,A);
+        
+        ICU.Caso_Registro_Cliente(this.txtNombre.getText(), this.txtNickname.getText(), 
+                this.txtCorreoElectronico.getText(), this.txtDireccion.getText(), 
+                this.txtApellido.getText(), fecha);
+        
         this.txtApellido.setText("");
         this.txtCorreoElectronico.setText("");
         this.txtDireccion.setText("");
         this.txtNickname.setText("");
         this.txtNombre.setText("");
-        JOptionPane.showMessageDialog(this, "El Usuario se ha creado con éxito", "Registro Usuario", JOptionPane.INFORMATION_MESSAGE);
         this.VentRegCli.setVisible(false);
     }//GEN-LAST:event_RegistrarActionPerformed
 
@@ -595,6 +618,18 @@ public class Ventana extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         ICU.Caso_Ver_Cliente("leo", "bueno");
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void diaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_diaActionPerformed
+         D=Integer.parseInt((String)dia.getSelectedItem());
+    }//GEN-LAST:event_diaActionPerformed
+
+    private void anioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anioActionPerformed
+        A=Integer.parseInt((String)anio.getSelectedItem());
+    }//GEN-LAST:event_anioActionPerformed
+
+    private void mesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mesActionPerformed
+        M=Integer.parseInt((String)mes.getSelectedItem());
+    }//GEN-LAST:event_mesActionPerformed
 
     /**
      * @param args the command line arguments
