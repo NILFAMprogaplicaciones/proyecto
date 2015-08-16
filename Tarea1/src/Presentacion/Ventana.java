@@ -618,7 +618,7 @@ public class Ventana extends javax.swing.JFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_CancelarActionPerformed
-
+ 
     File fichero;
     private void SeleccionarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarImagenActionPerformed
         // TODO add your handling code here:
