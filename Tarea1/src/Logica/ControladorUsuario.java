@@ -4,21 +4,23 @@ package Logica;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Vector;
 import javax.swing.*;
 
 public class ControladorUsuario implements IControladorUsuario  {
     
     private static ControladorUsuario instancia=null;
     private Map<String,Usuario> ColeccionUsuario = new HashMap<String,Usuario>();
-    private Vector<Usuario> Coleccion;    
+    //private Vector<Usuario> Coleccion;    
       
     //Funciones para el manejo de la ColeccionUsuario
     public void addUsuario(String nickname, Usuario usuario){
         ColeccionUsuario.put(nickname, usuario);
     }
-    public Usuario findUsuario(String nickname){
-        return ((Usuario)ColeccionUsuario.get(nickname));
+    public Cliente findCliente(String nickname){
+        return ((Cliente)ColeccionUsuario.get(nickname));
+    }
+    public Restaurante findRestaurante(String nickname){
+        return ((Restaurante)ColeccionUsuario.get(nickname));
     }
     public static ControladorUsuario getinstance(){
         if (instancia==null)
@@ -51,9 +53,10 @@ public class ControladorUsuario implements IControladorUsuario  {
         
         JOptionPane.showMessageDialog(null,"Funcion Registro Restaurante");
     }
-    public void Caso_Ver_Cliente(String nickname, String correo){
-       
-        JOptionPane.showMessageDialog(null,"Funcion Ver Cliente"); 
+    public DataUsuario Caso_Ver_Cliente(String nickname, String correo){
+        Cliente c= findCliente(nickname);
+        DataUsuario du=new DataUsuario(c.getnombre(),c.getnickname(),c.getcorreo(),c.getdireccion(),c.getapellido(),c.getfecha());
+        return du;
     }
     public void Caso_Ver_Restaurante(String nickname, String correo){
        
