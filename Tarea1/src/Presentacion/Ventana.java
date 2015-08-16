@@ -1,5 +1,6 @@
 package Presentacion;
 
+import Logica.DataUsuario;
 import Logica.ControladorUsuario;
 import Logica.Fabrica;
 import Logica.Fecha;
@@ -66,8 +67,13 @@ public class Ventana extends javax.swing.JFrame {
         Registrar = new javax.swing.JButton();
         VentanaInformacion = new javax.swing.JInternalFrame();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        listadeclientes = new javax.swing.JTable();
         MostrarInfo = new javax.swing.JButton();
+        ingresonick = new javax.swing.JTextField();
+        nick = new javax.swing.JTextField();
+        nombre = new javax.swing.JTextField();
+        apellido = new javax.swing.JTextField();
+        jButton5 = new javax.swing.JButton();
         InfoRestaurante = new javax.swing.JInternalFrame();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
@@ -256,7 +262,7 @@ public class Ventana extends javax.swing.JFrame {
                 .addGroup(VentRegCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Cancelar)
                     .addComponent(Registrar))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         VentanaInformacion.setClosable(true);
@@ -265,11 +271,13 @@ public class Ventana extends javax.swing.JFrame {
         VentanaInformacion.setTitle("\tInformacion de clientes");
         VentanaInformacion.setVisible(true);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        listadeclientes.setAutoCreateRowSorter(true);
+        listadeclientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"nacho", "sdfsdfsd"},
                 {"leo", "sdfsdfs"},
                 {"nati", "fsdfsdf"},
+                {null, null},
                 {null, null}
             },
             new String [] {
@@ -291,13 +299,27 @@ public class Ventana extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-        jScrollPane3.setViewportView(jTable1);
+        listadeclientes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        listadeclientes.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        jScrollPane3.setViewportView(listadeclientes);
 
         MostrarInfo.setText("Mostrar Informacion");
         MostrarInfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MostrarInfoActionPerformed(evt);
+            }
+        });
+
+        nick.setText("jTextField2");
+
+        nombre.setText("jTextField3");
+
+        apellido.setText("jTextField4");
+
+        jButton5.setText("jButton5");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
             }
         });
 
@@ -307,19 +329,42 @@ public class Ventana extends javax.swing.JFrame {
             VentanaInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(VentanaInformacionLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(VentanaInformacionLayout.createSequentialGroup()
-                .addGap(148, 148, 148)
-                .addComponent(MostrarInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(VentanaInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(VentanaInformacionLayout.createSequentialGroup()
+                        .addGroup(VentanaInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(VentanaInformacionLayout.createSequentialGroup()
+                                .addGap(136, 136, 136)
+                                .addComponent(MostrarInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(VentanaInformacionLayout.createSequentialGroup()
+                                .addGap(37, 37, 37)
+                                .addComponent(ingresonick, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(41, 41, 41)
+                                .addComponent(jButton5)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(VentanaInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(nombre)
+                            .addComponent(apellido)
+                            .addComponent(nick))
+                        .addContainerGap())))
         );
         VentanaInformacionLayout.setVerticalGroup(
             VentanaInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(VentanaInformacionLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(MostrarInfo)
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(VentanaInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(MostrarInfo)
+                    .addComponent(nick, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(VentanaInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ingresonick, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton5))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         InfoRestaurante.setClosable(true);
@@ -382,7 +427,7 @@ public class Ventana extends javax.swing.JFrame {
                         .addComponent(lblSeleccionarRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -501,7 +546,7 @@ public class Ventana extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(VentRegCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -509,7 +554,7 @@ public class Ventana extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(VentanaInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -554,20 +599,33 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_restauranteActionPerformed
 
     private void clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteActionPerformed
+        //this.listadeclientes.addColumnSelectionInterval(5, 0);
+        //this.listadeclientes.add;
+        this.listadeclientes.setValueAt("papa", 0, 0);
+        this.listadeclientes.setValueAt("mama", 1, 0);
+        this.listadeclientes.setValueAt("damian", 2, 0);
+        this.listadeclientes.setValueAt("leo", 3, 0);
+        this.listadeclientes.setValueAt("nacho", 4, 0);
+        //this.listadeclientes.setValueAt("mauri", 5, 0);
+        
         this.VentanaInformacion.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_clienteActionPerformed
 
     private void MostrarInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarInfoActionPerformed
-        this.VentRegCli.setVisible(true);
+        DataUsuario du=ICU.Caso_Ver_Cliente(this.ingresonick.getText(), "");
+        this.nick.setText(du.getnickname());
+        this.nombre.setText(du.getnombre());
+        this.apellido.setText(du.getapellido());
+        /*this.VentRegCli.setVisible(true);
         this.SeleccionarImagen.setVisible(false);
         this.Registrar.setVisible(false);
         this.txtApellido.setEditable(false);
         this.txtCorreoElectronico.setEditable(false);
         this.txtDireccion.setEditable(false);
         this.txtNickname.setEditable(false);
-        this.txtNombre.setEditable(false);
-        // TODO add your handling code here:
+        this.txtNombre.setEditable(false);*/
+        
     }//GEN-LAST:event_MostrarInfoActionPerformed
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
@@ -670,6 +728,15 @@ public class Ventana extends javax.swing.JFrame {
         M=Integer.parseInt((String)mes.getSelectedItem());
     }//GEN-LAST:event_mesActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        this.listadeclientes.setValueAt("aaaa", 0, 0);
+        
+        int fila = this.listadeclientes.getSelectedRow();
+        int columna = this.listadeclientes.getSelectedColumn();
+        String nickname=(String)this.listadeclientes.getValueAt(fila, columna);
+        this.ingresonick.setText(nickname);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -727,19 +794,24 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JInternalFrame VentRegCli;
     private javax.swing.JInternalFrame VentanaInformacion;
     private javax.swing.JComboBox anio;
+    private javax.swing.JTextField apellido;
     private javax.swing.JMenuItem cliente;
     private javax.swing.JComboBox dia;
+    private javax.swing.JTextField ingresonick;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTree jTree1;
     private javax.swing.JLabel lblSeleccionarRestaurante;
+    private javax.swing.JTable listadeclientes;
     private javax.swing.JComboBox mes;
+    private javax.swing.JTextField nick;
+    private javax.swing.JTextField nombre;
     private javax.swing.JButton ok;
     private javax.swing.JMenuItem producto;
     private javax.swing.JMenuItem restaurante;
