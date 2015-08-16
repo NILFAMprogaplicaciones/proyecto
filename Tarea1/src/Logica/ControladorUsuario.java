@@ -10,7 +10,7 @@ public class ControladorUsuario implements IControladorUsuario  {
     
     private static ControladorUsuario instancia=null;
     private Map<String,Usuario> ColeccionUsuario = new HashMap<String,Usuario>();
-    //private Vector<Usuario> Cole;    
+    private Vector<Usuario> Cole;    
       
     //Funciones para el manejo de la ColeccionUsuario
     public void addUsuario(String nickname, Usuario usuario){
