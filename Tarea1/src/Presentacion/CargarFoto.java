@@ -7,7 +7,7 @@ package Presentacion;
 
 /**
  *
- * @author natalia
+ * @author natalia  pruebA
  */
 public class CargarFoto extends javax.swing.JFrame {
 
