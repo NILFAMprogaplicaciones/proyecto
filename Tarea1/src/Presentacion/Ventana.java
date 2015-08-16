@@ -8,7 +8,14 @@ import Logica.IControladorUsuario;
 import Logica.IControladorProducto;
 import Logica.IControladorPedido;
 import Logica.IControladorCategoria;
+import Presentacion.CargarFoto;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.io.File;
+import javax.swing.JFileChooser;
+import javax.swing.ImageIcon;
+import javax.swing.Icon;
+import java.awt.Image;
 
 
 public class Ventana extends javax.swing.JFrame {
@@ -65,6 +72,7 @@ public class Ventana extends javax.swing.JFrame {
         SeleccionarImagen = new javax.swing.JButton();
         Cancelar = new javax.swing.JButton();
         Registrar = new javax.swing.JButton();
+        LabelImagen = new javax.swing.JLabel();
         VentanaInformacion = new javax.swing.JInternalFrame();
         jScrollPane3 = new javax.swing.JScrollPane();
         listadeclientes = new javax.swing.JTable();
@@ -97,8 +105,6 @@ public class Ventana extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Pedidos YA!");
         setBackground(new java.awt.Color(51, 255, 204));
-        setLocation(new java.awt.Point(500, 200));
-        setSize(new java.awt.Dimension(1000, 1000));
 
         VentRegCli.setMaximizable(true);
         VentRegCli.setResizable(true);
@@ -180,19 +186,16 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
 
+        LabelImagen.setText("Imagen");
+
         javax.swing.GroupLayout VentRegCliLayout = new javax.swing.GroupLayout(VentRegCli.getContentPane());
         VentRegCli.getContentPane().setLayout(VentRegCliLayout);
         VentRegCliLayout.setHorizontalGroup(
             VentRegCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(VentRegCliLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(VentRegCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(SeleccionarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(VentRegCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(VentRegCliLayout.createSequentialGroup()
-                            .addComponent(Cancelar)
-                            .addGap(277, 277, 277)
-                            .addComponent(Registrar))
+                .addGroup(VentRegCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(VentRegCliLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(VentRegCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txtCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(VentRegCliLayout.createSequentialGroup()
@@ -201,7 +204,7 @@ public class Ventana extends javax.swing.JFrame {
                                     .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(Direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(CorreoElectronico, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE))
+                                    .addComponent(CorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 115, Short.MAX_VALUE))
                                 .addGroup(VentRegCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(VentRegCliLayout.createSequentialGroup()
                                         .addGap(32, 32, 32)
@@ -210,11 +213,17 @@ public class Ventana extends javax.swing.JFrame {
                                         .addGap(105, 105, 105)
                                         .addComponent(txtNickname, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VentRegCliLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGap(27, 27, 27)
                                         .addGroup(VentRegCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtApellido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtDireccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addComponent(txtDireccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VentRegCliLayout.createSequentialGroup()
+                                                .addGroup(VentRegCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                    .addComponent(LabelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(SeleccionarImagen, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+                                                .addGap(79, 79, 79)
+                                                .addComponent(Registrar))))))
                             .addGroup(VentRegCliLayout.createSequentialGroup()
                                 .addComponent(FechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(7, 7, 7)
@@ -223,11 +232,20 @@ public class Ventana extends javax.swing.JFrame {
                                 .addComponent(mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(anio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(21, 21, 21)))))
+                                .addGap(21, 21, 21))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, VentRegCliLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(Cancelar)))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
         VentRegCliLayout.setVerticalGroup(
             VentRegCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(VentRegCliLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(VentRegCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Cancelar)
+                    .addComponent(Registrar))
+                .addContainerGap())
             .addGroup(VentRegCliLayout.createSequentialGroup()
                 .addComponent(IngreseDatosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
@@ -256,13 +274,11 @@ public class Ventana extends javax.swing.JFrame {
                     .addComponent(dia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(anio, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(LabelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(SeleccionarImagen)
-                .addGap(30, 30, 30)
-                .addGroup(VentRegCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Cancelar)
-                    .addComponent(Registrar))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addGap(31, 31, 31))
         );
 
         VentanaInformacion.setClosable(true);
@@ -538,7 +554,7 @@ public class Ventana extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 360, Short.MAX_VALUE)
                             .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(110, 110, 110))))
         );
@@ -589,8 +605,45 @@ public class Ventana extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtApellidoActionPerformed
 
+    File fichero;
     private void SeleccionarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarImagenActionPerformed
         // TODO add your handling code here:
+        int resultado;
+
+
+CargarFoto ventana = new CargarFoto();
+
+FileNameExtensionFilter filtro = new FileNameExtensionFilter("JPG y PNG","jpg","png");
+
+ventana.FileChooser.setFileFilter(filtro);
+
+resultado= ventana.FileChooser.showOpenDialog(null);
+
+
+if (JFileChooser.APPROVE_OPTION == resultado){
+
+
+        fichero = ventana.FileChooser.getSelectedFile();
+
+        try{
+
+               ImageIcon icon = new ImageIcon(fichero.toString());
+
+Icon icono = new ImageIcon(icon.getImage().getScaledInstance(LabelImagen.getWidth(), LabelImagen.getHeight(), Image.SCALE_DEFAULT));
+
+LabelImagen.setText(null);
+               
+               LabelImagen.setIcon( icono );
+
+
+        }catch(Exception ex){
+
+           
+JOptionPane.showMessageDialog(null, "Error abriendo la imagen "+ ex);
+                 
+        }
+    
+ }
     }//GEN-LAST:event_SeleccionarImagenActionPerformed
 
     private void restauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restauranteActionPerformed
@@ -782,6 +835,7 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JMenu Informacion;
     private javax.swing.JLabel IngreseDatosCliente;
     private javax.swing.JMenu Inicio;
+    private javax.swing.JLabel LabelImagen;
     private javax.swing.JButton MostrarInfo;
     private javax.swing.JLabel Nickname;
     private javax.swing.JLabel Nombre;
