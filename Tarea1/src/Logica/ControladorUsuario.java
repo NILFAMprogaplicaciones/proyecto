@@ -5,13 +5,21 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 public class ControladorUsuario implements IControladorUsuario  {
     
     private static ControladorUsuario instancia=null;
-    private Map<String,Usuario> ColeccionUsuario = new HashMap<String,Usuario>();
+    public Map<String,Usuario> ColeccionUsuario = new HashMap<String,Usuario>();
     //private Vector<Usuario> Coleccion;    
-      
+    
+    //SINGLENTON
+    public static ControladorUsuario getinstance(){
+        if (instancia==null)
+            instancia = new ControladorUsuario();
+        return instancia;
+    }
+    
     //Funciones para el manejo de la ColeccionUsuario
     public void addUsuario(String nickname, Usuario usuario){
         ColeccionUsuario.put(nickname, usuario);
@@ -22,12 +30,9 @@ public class ControladorUsuario implements IControladorUsuario  {
     public Restaurante findRestaurante(String nickname){
         return ((Restaurante)ColeccionUsuario.get(nickname));
     }
-    public static ControladorUsuario getinstance(){
-        if (instancia==null)
-            instancia = new ControladorUsuario();
-        return instancia;
+    public int cantidadeelementoscoleccion(){
+        return this.ColeccionUsuario.size();
     }
-    
     public boolean verificarnickname(String nickname){
         return ColeccionUsuario.containsKey(nickname);
     }
@@ -41,6 +46,8 @@ public class ControladorUsuario implements IControladorUsuario  {
         }
         return false;
     }
+    
+    //CASOS DE USOS
     public void Caso_Registro_Cliente(String nombre, String nickname, String correo,  String direccion, String apellido, Fecha fecha){
         
         Cliente c=new Cliente(nombre, nickname,correo,direccion,apellido,fecha);
@@ -50,16 +57,21 @@ public class ControladorUsuario implements IControladorUsuario  {
     }
     
     public void Caso_Registro_Restaurante(String nickname, String correo, String nombre, String direccion, Categoria categoria){
-        
-        JOptionPane.showMessageDialog(null,"Funcion Registro Restaurante");
+       
+    
+        JOptionPane.showMessageDialog(null,"Prueba");
     }
     public DataUsuario Caso_Ver_Cliente(String nickname, String correo){
+        
+        
         Cliente c= findCliente(nickname);
         DataUsuario du=new DataUsuario(c.getnombre(),c.getnickname(),c.getcorreo(),c.getdireccion(),c.getapellido(),c.getfecha());
         return du;
     }
     public void Caso_Ver_Restaurante(String nickname, String correo){
-       
+        int a=cantidadeelementoscoleccion();
+    
+        JOptionPane.showMessageDialog(null,a);
         JOptionPane.showMessageDialog(null,"Funcion Ver Restaurante"); 
     }
 }

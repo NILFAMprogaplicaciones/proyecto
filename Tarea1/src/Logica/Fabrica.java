@@ -34,4 +34,5 @@ public class Fabrica {
         IControladorCategoria ICC = new ControladorCategoria();
         return ICC;
     }
+    
 }

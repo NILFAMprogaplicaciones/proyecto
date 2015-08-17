@@ -9,6 +9,8 @@ import Logica.IControladorProducto;
 import Logica.IControladorPedido;
 import Logica.IControladorCategoria;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 
 public class Ventana extends javax.swing.JFrame {
@@ -17,6 +19,7 @@ public class Ventana extends javax.swing.JFrame {
     private IControladorProducto ICP;
     private IControladorPedido ICPE;
     private IControladorCategoria ICC;
+    
     private String d,m,a;
     private int D,M,A;
     /**
@@ -262,7 +265,7 @@ public class Ventana extends javax.swing.JFrame {
                 .addGroup(VentRegCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Cancelar)
                     .addComponent(Registrar))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         VentanaInformacion.setClosable(true);
@@ -274,11 +277,7 @@ public class Ventana extends javax.swing.JFrame {
         listadeclientes.setAutoCreateRowSorter(true);
         listadeclientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"nacho", "sdfsdfsd"},
-                {"leo", "sdfsdfs"},
-                {"nati", "fsdfsdf"},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "nickname", "email"
@@ -364,7 +363,7 @@ public class Ventana extends javax.swing.JFrame {
                     .addComponent(apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ingresonick, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         InfoRestaurante.setClosable(true);
@@ -427,7 +426,7 @@ public class Ventana extends javax.swing.JFrame {
                         .addComponent(lblSeleccionarRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -599,14 +598,19 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_restauranteActionPerformed
 
     private void clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteActionPerformed
-        //this.listadeclientes.addColumnSelectionInterval(5, 0);
-        //this.listadeclientes.add;
-        this.listadeclientes.setValueAt("papa", 0, 0);
-        this.listadeclientes.setValueAt("mama", 1, 0);
-        this.listadeclientes.setValueAt("damian", 2, 0);
-        this.listadeclientes.setValueAt("leo", 3, 0);
-        this.listadeclientes.setValueAt("nacho", 4, 0);
-        //this.listadeclientes.setValueAt("mauri", 5, 0);
+        //agrego filas en tiempo de ejecucion
+        
+        
+       
+        
+        /*while(a!=conteo){
+                DefaultTableModel modelo = (DefaultTableModel) listadeclientes.getModel();
+                int columna = modelo.getColumnCount();
+                modelo.addRow(new Object[columna]);
+                listadeclientes.setModel(modelo);
+                a++;
+        }*/
+        
         
         this.VentanaInformacion.setVisible(true);
         // TODO add your handling code here:
