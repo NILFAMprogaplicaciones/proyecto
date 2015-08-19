@@ -1,22 +1,18 @@
-
 package Logica;
 
-import javax.swing.JOptionPane;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.*;
+
 
 
 public class ControladorCategoria implements IControladorCategoria {
-    
-    private static ControladorCategoria instancia=null;
-    
-    public static ControladorCategoria getinstance(){
-        if (instancia==null)
-            instancia = new ControladorCategoria();
-        return instancia;
-    }
-    
-    public void prueba(){
-        
-        JOptionPane.showMessageDialog(null,"Interactuo con funcion de la interfaz", "PRUEBA",JOptionPane.INFORMATION_MESSAGE);
-    }
-            
+
+    public void AltaCategoria(String nombre) {
+        ManejadorColecciones mc=ManejadorColecciones.getinstance();
+        Categoria cat = new Categoria(nombre);
+        mc.addCategoria(nombre, cat);
+        }
 }
+
+
