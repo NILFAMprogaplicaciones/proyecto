@@ -9,6 +9,8 @@ import Logica.IControladorProducto;
 import Logica.IControladorPedido;
 import Logica.IControladorCategoria;
 import Presentacion.CargarFoto;
+import Presentacion.RegistrarCliente;
+import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
@@ -16,7 +18,6 @@ import javax.swing.JFileChooser;
 import javax.swing.ImageIcon;
 import javax.swing.Icon;
 import java.awt.Image;
-
 
 public class Ventana extends javax.swing.JFrame {
     
@@ -26,15 +27,18 @@ public class Ventana extends javax.swing.JFrame {
     private IControladorCategoria ICC;
     private String d,m,a;
     private int D,M,A;
+    RegistrarCliente registrar = new RegistrarCliente();
+    RegistrarProducto registrarProducto = new RegistrarProducto();
+    RegistrarRestaurante registrarRestaurante = new RegistrarRestaurante();
+    InfoCliente info = new InfoCliente();
+
+
+    
     /**
      * Creates new form Ventana
      */
     public Ventana() {
         initComponents();
-        
-        this.VentRegCli.setVisible(false);
-        this.VentanaInformacion.setVisible(false);
-        this.InfoRestaurante.setVisible(false);
         
         Fabrica fabrica = Fabrica.getInstance();
         ICU = fabrica.getIControladorUsuario();
@@ -53,44 +57,7 @@ public class Ventana extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        VentRegCli = new javax.swing.JInternalFrame();
-        Nickname = new javax.swing.JLabel();
-        CorreoElectronico = new javax.swing.JLabel();
-        Nombre = new javax.swing.JLabel();
-        Apellido = new javax.swing.JLabel();
-        Direccion = new javax.swing.JLabel();
-        FechaNacimiento = new javax.swing.JLabel();
-        IngreseDatosCliente = new javax.swing.JLabel();
-        txtNickname = new javax.swing.JTextField();
-        txtCorreoElectronico = new javax.swing.JTextField();
-        txtNombre = new javax.swing.JTextField();
-        txtApellido = new javax.swing.JTextField();
-        txtDireccion = new javax.swing.JTextField();
-        dia = new javax.swing.JComboBox();
-        mes = new javax.swing.JComboBox();
-        anio = new javax.swing.JComboBox();
-        SeleccionarImagen = new javax.swing.JButton();
-        Cancelar = new javax.swing.JButton();
-        Registrar = new javax.swing.JButton();
-        LabelImagen = new javax.swing.JLabel();
-        VentanaInformacion = new javax.swing.JInternalFrame();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        listadeclientes = new javax.swing.JTable();
-        MostrarInfo = new javax.swing.JButton();
-        ingresonick = new javax.swing.JTextField();
-        nick = new javax.swing.JTextField();
-        nombre = new javax.swing.JTextField();
-        apellido = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
-        InfoRestaurante = new javax.swing.JInternalFrame();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
-        lblSeleccionarRestaurante = new javax.swing.JLabel();
-        ok = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar2 = new javax.swing.JMenuBar();
         Inicio = new javax.swing.JMenu();
         Registros = new javax.swing.JMenu();
@@ -105,384 +72,6 @@ public class Ventana extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Pedidos YA!");
         setBackground(new java.awt.Color(51, 255, 204));
-
-        VentRegCli.setMaximizable(true);
-        VentRegCli.setResizable(true);
-        VentRegCli.setTitle("Registrar Cliente");
-        VentRegCli.setVisible(true);
-
-        Nickname.setText("Nickname:");
-
-        CorreoElectronico.setText("Correo Electronico:");
-
-        Nombre.setText("Nombre:");
-
-        Apellido.setText("Apellido:");
-
-        Direccion.setText("Direccion:");
-
-        FechaNacimiento.setText("Fecha de Nacimiento:");
-
-        IngreseDatosCliente.setText("Ingrese los siguientes datos:");
-
-        txtNickname.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNicknameActionPerformed(evt);
-            }
-        });
-
-        txtCorreoElectronico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCorreoElectronicoActionPerformed(evt);
-            }
-        });
-
-        txtApellido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtApellidoActionPerformed(evt);
-            }
-        });
-
-        dia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", " " }));
-        dia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                diaActionPerformed(evt);
-            }
-        });
-
-        mes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
-        mes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mesActionPerformed(evt);
-            }
-        });
-
-        anio.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000" }));
-        anio.setAutoscrolls(true);
-        anio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                anioActionPerformed(evt);
-            }
-        });
-
-        SeleccionarImagen.setText("Seleccionar Imagen");
-        SeleccionarImagen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SeleccionarImagenActionPerformed(evt);
-            }
-        });
-
-        Cancelar.setText("Cancelar");
-        Cancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CancelarActionPerformed(evt);
-            }
-        });
-
-        Registrar.setText("Registrar");
-        Registrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegistrarActionPerformed(evt);
-            }
-        });
-
-        LabelImagen.setText("Imagen");
-
-        javax.swing.GroupLayout VentRegCliLayout = new javax.swing.GroupLayout(VentRegCli.getContentPane());
-        VentRegCli.getContentPane().setLayout(VentRegCliLayout);
-        VentRegCliLayout.setHorizontalGroup(
-            VentRegCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(VentRegCliLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(VentRegCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(txtCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(VentRegCliLayout.createSequentialGroup()
-                        .addGroup(VentRegCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CorreoElectronico, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
-                            .addGroup(VentRegCliLayout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(Cancelar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(VentRegCliLayout.createSequentialGroup()
-                                .addGroup(VentRegCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Nickname, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGroup(VentRegCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(VentRegCliLayout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addComponent(IngreseDatosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(VentRegCliLayout.createSequentialGroup()
-                                .addGap(105, 105, 105)
-                                .addComponent(txtNickname, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VentRegCliLayout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addGroup(VentRegCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtApellido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDireccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VentRegCliLayout.createSequentialGroup()
-                                        .addGroup(VentRegCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(LabelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(SeleccionarImagen, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
-                                        .addGap(79, 79, 79)
-                                        .addComponent(Registrar))))))
-                    .addGroup(VentRegCliLayout.createSequentialGroup()
-                        .addComponent(FechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(7, 7, 7)
-                        .addComponent(dia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(anio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21)))
-                .addContainerGap(34, Short.MAX_VALUE))
-        );
-        VentRegCliLayout.setVerticalGroup(
-            VentRegCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(VentRegCliLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(Registrar)
-                .addContainerGap())
-            .addGroup(VentRegCliLayout.createSequentialGroup()
-                .addComponent(IngreseDatosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addGroup(VentRegCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Nickname, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNickname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(VentRegCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(VentRegCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(VentRegCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(VentRegCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(VentRegCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(FechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(anio, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(LabelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(VentRegCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SeleccionarImagen)
-                    .addComponent(Cancelar))
-                .addGap(31, 31, 31))
-        );
-
-        VentanaInformacion.setClosable(true);
-        VentanaInformacion.setMaximizable(true);
-        VentanaInformacion.setResizable(true);
-        VentanaInformacion.setTitle("\tInformacion de clientes");
-        VentanaInformacion.setVisible(true);
-
-        listadeclientes.setAutoCreateRowSorter(true);
-        listadeclientes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"nacho", "sdfsdfsd"},
-                {"leo", "sdfsdfs"},
-                {"nati", "fsdfsdf"},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "nickname", "email"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        listadeclientes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        listadeclientes.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-        jScrollPane3.setViewportView(listadeclientes);
-
-        MostrarInfo.setText("Mostrar Informacion");
-        MostrarInfo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MostrarInfoActionPerformed(evt);
-            }
-        });
-
-        nick.setText("jTextField2");
-
-        nombre.setText("jTextField3");
-
-        apellido.setText("jTextField4");
-
-        jButton5.setText("jButton5");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout VentanaInformacionLayout = new javax.swing.GroupLayout(VentanaInformacion.getContentPane());
-        VentanaInformacion.getContentPane().setLayout(VentanaInformacionLayout);
-        VentanaInformacionLayout.setHorizontalGroup(
-            VentanaInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(VentanaInformacionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(VentanaInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(VentanaInformacionLayout.createSequentialGroup()
-                        .addGroup(VentanaInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(VentanaInformacionLayout.createSequentialGroup()
-                                .addGap(136, 136, 136)
-                                .addComponent(MostrarInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(VentanaInformacionLayout.createSequentialGroup()
-                                .addGap(37, 37, 37)
-                                .addComponent(ingresonick, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(41, 41, 41)
-                                .addComponent(jButton5)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(VentanaInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(nombre)
-                            .addComponent(apellido)
-                            .addComponent(nick))
-                        .addContainerGap())))
-        );
-        VentanaInformacionLayout.setVerticalGroup(
-            VentanaInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(VentanaInformacionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(VentanaInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(MostrarInfo)
-                    .addComponent(nick, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(VentanaInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ingresonick, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5))
-                .addContainerGap(51, Short.MAX_VALUE))
-        );
-
-        InfoRestaurante.setClosable(true);
-        InfoRestaurante.setIconifiable(true);
-        InfoRestaurante.setMaximizable(true);
-        InfoRestaurante.setResizable(true);
-        InfoRestaurante.setTitle("Informacion de Restaurantes");
-        InfoRestaurante.setVisible(true);
-
-        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Categorias");
-        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Pizzeria");
-        javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Cervantes");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Venecia");
-        treeNode2.add(treeNode3);
-        treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Chivito");
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("milanga");
-        treeNode2.add(treeNode3);
-        treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Pasta");
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Zoubar");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Nueva Aurora");
-        treeNode2.add(treeNode3);
-        treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Minutas");
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("El hornito prado");
-        treeNode2.add(treeNode3);
-        treeNode1.add(treeNode2);
-        jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
-        jScrollPane1.setViewportView(jTree1);
-
-        lblSeleccionarRestaurante.setText("Seleccione un restaurante:");
-
-        ok.setText("OK");
-
-        javax.swing.GroupLayout InfoRestauranteLayout = new javax.swing.GroupLayout(InfoRestaurante.getContentPane());
-        InfoRestaurante.getContentPane().setLayout(InfoRestauranteLayout);
-        InfoRestauranteLayout.setHorizontalGroup(
-            InfoRestauranteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(InfoRestauranteLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(InfoRestauranteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblSeleccionarRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(InfoRestauranteLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(ok)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        InfoRestauranteLayout.setVerticalGroup(
-            InfoRestauranteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(InfoRestauranteLayout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addGroup(InfoRestauranteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(ok)
-                    .addGroup(InfoRestauranteLayout.createSequentialGroup()
-                        .addComponent(lblSeleccionarRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(68, Short.MAX_VALUE))
-        );
-
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 51, 51));
-        jButton1.setText("Funcion de Interfaz Producto");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 51, 51));
-        jButton2.setText("Funcion de Interfaz Pedido");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 51, 51));
-        jButton3.setText("Funcion de Interfaz Categoria");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 51, 51));
-        jButton4.setText("Funcion de Interfaz Usuario");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
 
         Inicio.setText("Inicio");
         jMenuBar2.add(Inicio);
@@ -507,6 +96,11 @@ public class Ventana extends javax.swing.JFrame {
         Registros.add(RegRestaurante);
 
         RegPedido.setText("Registrar Pedido");
+        RegPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegPedidoActionPerformed(evt);
+            }
+        });
         Registros.add(RegPedido);
 
         jMenuBar2.add(Registros);
@@ -541,256 +135,62 @@ public class Ventana extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(VentRegCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addComponent(InfoRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(VentanaInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(46, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(110, 110, 110))))
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1034, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 12, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(VentRegCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(InfoRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(VentanaInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(66, 66, 66))))
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 924, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void RegRestauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegRestauranteActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here: 
+       this.jDesktopPane1.add(registrarRestaurante);
+       registrarRestaurante.show();
     }//GEN-LAST:event_RegRestauranteActionPerformed
 
     private void RegClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegClienteActionPerformed
-        this.VentRegCli.setVisible(true);
-// TODO add your handling code here:
+//       RegistrarCliente registrar = new RegistrarCliente();
+       this.jDesktopPane1.add(registrar);
+       registrar.show();
+        // TODO add your handling code here:
     }//GEN-LAST:event_RegClienteActionPerformed
 
-    private void txtCorreoElectronicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoElectronicoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCorreoElectronicoActionPerformed
-
-    private void txtNicknameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNicknameActionPerformed
-       
-    }//GEN-LAST:event_txtNicknameActionPerformed
-
-    private void txtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtApellidoActionPerformed
-
-    File fichero;
-    private void SeleccionarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarImagenActionPerformed
-        // TODO add your handling code here:
-        int resultado;
-
-
-CargarFoto ventana = new CargarFoto();
-
-FileNameExtensionFilter filtro = new FileNameExtensionFilter("JPG y PNG","jpg","png");
-
-ventana.FileChooser.setFileFilter(filtro);
-
-resultado= ventana.FileChooser.showOpenDialog(null);
-
-
-if (JFileChooser.APPROVE_OPTION == resultado){
-
-
-        fichero = ventana.FileChooser.getSelectedFile();
-
-        try{
-
-               ImageIcon icon = new ImageIcon(fichero.toString());
-
-Icon icono = new ImageIcon(icon.getImage().getScaledInstance(LabelImagen.getWidth(), LabelImagen.getHeight(), Image.SCALE_DEFAULT));
-
-LabelImagen.setText(null);
-               
-               LabelImagen.setIcon( icono );
-
-
-        }catch(Exception ex){
-
-           
-JOptionPane.showMessageDialog(null, "Error abriendo la imagen "+ ex);
-                 
-        }
-    
- }
-    }//GEN-LAST:event_SeleccionarImagenActionPerformed
-
     private void restauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restauranteActionPerformed
-        this.InfoRestaurante.setVisible(true);
-        // TODO add your handling code here:
+       InfoRestaurante infoRest = new InfoRestaurante();
+       this.jDesktopPane1.add(infoRest);
+       infoRest.show();
+       // TODO add your handling code here:
     }//GEN-LAST:event_restauranteActionPerformed
 
     private void clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteActionPerformed
         //this.listadeclientes.addColumnSelectionInterval(5, 0);
         //this.listadeclientes.add;
-        this.listadeclientes.setValueAt("papa", 0, 0);
-        this.listadeclientes.setValueAt("mama", 1, 0);
-        this.listadeclientes.setValueAt("damian", 2, 0);
-        this.listadeclientes.setValueAt("leo", 3, 0);
-        this.listadeclientes.setValueAt("nacho", 4, 0);
-        //this.listadeclientes.setValueAt("mauri", 5, 0);
+        this.jDesktopPane1.add(info);
+        info.show();
         
-        this.VentanaInformacion.setVisible(true);
+        InfoCliente.listadeclientes.setValueAt("papa", 0, 0);
+        InfoCliente.listadeclientes.setValueAt("mama", 1, 0);
+        InfoCliente.listadeclientes.setValueAt("damian", 2, 0);
+        InfoCliente.listadeclientes.setValueAt("leo", 3, 0);
+        InfoCliente.listadeclientes.setValueAt("nacho", 4, 0);
+        //this.listadeclientes.setValueAt("mauri", 5, 0);
+
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_clienteActionPerformed
 
-    private void MostrarInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarInfoActionPerformed
-        DataUsuario du=ICU.Caso_Ver_Cliente(this.ingresonick.getText(), "");
-        this.nick.setText(du.getnickname());
-        this.nombre.setText(du.getnombre());
-        this.apellido.setText(du.getapellido());
-        /*this.VentRegCli.setVisible(true);
-        this.SeleccionarImagen.setVisible(false);
-        this.Registrar.setVisible(false);
-        this.txtApellido.setEditable(false);
-        this.txtCorreoElectronico.setEditable(false);
-        this.txtDireccion.setEditable(false);
-        this.txtNickname.setEditable(false);
-        this.txtNombre.setEditable(false);*/
-        
-    }//GEN-LAST:event_MostrarInfoActionPerformed
-
-    private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
-        
-        if(ICU.verificarnickname(txtNickname.getText())==true){
-               
-            JOptionPane.showMessageDialog(this,"Nickname ya tomado","REGISTRO",JOptionPane.ERROR_MESSAGE);
-            txtNickname.requestFocus();
-        }
-        else if(ICU.verificarnickname(txtCorreoElectronico.getText())==true){
-            JOptionPane.showMessageDialog(this,"Correo electronico ya tomado","REGISTRO",JOptionPane.ERROR_MESSAGE);
-            txtCorreoElectronico.requestFocus();   
-        }
-        else{
-            if(this.txtNickname.getText().equals("")){
-                JOptionPane.showMessageDialog(this,"Ingrese un nickname","REGISTRO",JOptionPane.WARNING_MESSAGE);
-                txtNickname.requestFocus();
-            }
-            else if(this.txtCorreoElectronico.getText().equals("")){
-                JOptionPane.showMessageDialog(this,"Ingrese su Correo Electronico","REGISTRO",JOptionPane.WARNING_MESSAGE);
-                txtCorreoElectronico.requestFocus(); 
-            }
-            else if(this.txtNombre.getText().equals("")){
-                JOptionPane.showMessageDialog(this,"Ingrese su Nombre","REGISTRO",JOptionPane.WARNING_MESSAGE);
-                txtNombre.requestFocus(); 
-            }
-            else if(this.txtApellido.getText().equals("")){
-                JOptionPane.showMessageDialog(this,"Ingrese su Apelldio","REGISTRO",JOptionPane.WARNING_MESSAGE);
-                txtApellido.requestFocus(); 
-            }
-            else if(this.txtDireccion.getText().equals("")){
-                JOptionPane.showMessageDialog(this,"Ingrese su Direccion","REGISTRO",JOptionPane.WARNING_MESSAGE);
-                txtDireccion.requestFocus(); 
-            }
-            else{
-                //D,M,A estan parseados
-            Fecha fecha=new Fecha(D,M,A);
-        
-            ICU.Caso_Registro_Cliente(this.txtNombre.getText(), this.txtNickname.getText(), 
-                this.txtCorreoElectronico.getText(), this.txtDireccion.getText(), 
-                this.txtApellido.getText(), fecha);
-            
-            this.txtApellido.setText("");
-            this.txtCorreoElectronico.setText("");
-            this.txtDireccion.setText("");
-            this.txtNickname.setText("");
-            this.txtNombre.setText("");
-            this.VentRegCli.setVisible(false);
-                
-            }
-                
-            
-        }
-        
-    }//GEN-LAST:event_RegistrarActionPerformed
-
-    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
-        this.VentRegCli.setVisible(false);
-        this.txtApellido.setText("");
-        this.txtCorreoElectronico.setText("");
-        this.txtDireccion.setText("");
-        this.txtNickname.setText("");
-        this.txtNombre.setText("");
-        this.SeleccionarImagen.setVisible(true);
-        this.Registrar.setVisible(true);
-        this.txtApellido.setEditable(true);
-        this.txtCorreoElectronico.setEditable(true);
-        this.txtDireccion.setEditable(true);
-        this.txtNickname.setEditable(true);
-        this.txtNombre.setEditable(true);
-        
-// TODO add your handling code here:
-    }//GEN-LAST:event_CancelarActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       ICP.prueba();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        ICPE.prueba();
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        ICC.prueba();
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        ICU.Caso_Ver_Cliente("leo", "bueno");
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void diaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_diaActionPerformed
-         D=Integer.parseInt((String)dia.getSelectedItem());
-    }//GEN-LAST:event_diaActionPerformed
-
-    private void anioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anioActionPerformed
-        A=Integer.parseInt((String)anio.getSelectedItem());
-    }//GEN-LAST:event_anioActionPerformed
-
-    private void mesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mesActionPerformed
-        M=Integer.parseInt((String)mes.getSelectedItem());
-    }//GEN-LAST:event_mesActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        this.listadeclientes.setValueAt("aaaa", 0, 0);
-        
-        int fila = this.listadeclientes.getSelectedRow();
-        int columna = this.listadeclientes.getSelectedColumn();
-        String nickname=(String)this.listadeclientes.getValueAt(fila, columna);
-        this.ingresonick.setText(nickname);
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void RegPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegPedidoActionPerformed
+//        RegistrarProducto registrarProducto = new RegistrarProducto();
+        this.jDesktopPane1.add(registrarProducto);
+        registrarProducto.show();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RegPedidoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -828,53 +228,16 @@ JOptionPane.showMessageDialog(null, "Error abriendo la imagen "+ ex);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Apellido;
-    private javax.swing.JButton Cancelar;
-    private javax.swing.JLabel CorreoElectronico;
-    private javax.swing.JLabel Direccion;
-    private javax.swing.JLabel FechaNacimiento;
-    private javax.swing.JInternalFrame InfoRestaurante;
     private javax.swing.JMenu Informacion;
-    private javax.swing.JLabel IngreseDatosCliente;
     private javax.swing.JMenu Inicio;
-    private javax.swing.JLabel LabelImagen;
-    private javax.swing.JButton MostrarInfo;
-    private javax.swing.JLabel Nickname;
-    private javax.swing.JLabel Nombre;
     private javax.swing.JMenuItem RegCliente;
     private javax.swing.JMenuItem RegPedido;
     private javax.swing.JMenuItem RegRestaurante;
-    private javax.swing.JButton Registrar;
     private javax.swing.JMenu Registros;
-    private javax.swing.JButton SeleccionarImagen;
-    private javax.swing.JInternalFrame VentRegCli;
-    private javax.swing.JInternalFrame VentanaInformacion;
-    private javax.swing.JComboBox anio;
-    private javax.swing.JTextField apellido;
     private javax.swing.JMenuItem cliente;
-    private javax.swing.JComboBox dia;
-    private javax.swing.JTextField ingresonick;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTree jTree1;
-    private javax.swing.JLabel lblSeleccionarRestaurante;
-    private javax.swing.JTable listadeclientes;
-    private javax.swing.JComboBox mes;
-    private javax.swing.JTextField nick;
-    private javax.swing.JTextField nombre;
-    private javax.swing.JButton ok;
     private javax.swing.JMenuItem producto;
     private javax.swing.JMenuItem restaurante;
-    private javax.swing.JTextField txtApellido;
-    private javax.swing.JTextField txtCorreoElectronico;
-    private javax.swing.JTextField txtDireccion;
-    private javax.swing.JTextField txtNickname;
-    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }
