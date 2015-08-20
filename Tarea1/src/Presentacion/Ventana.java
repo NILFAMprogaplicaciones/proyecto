@@ -30,6 +30,7 @@ public class Ventana extends javax.swing.JFrame {
     RegistrarCliente registrar = new RegistrarCliente();
     RegistrarProducto registrarProducto = new RegistrarProducto();
     RegistrarRestaurante registrarRestaurante = new RegistrarRestaurante();
+    RegistrarCategoria registrarCategoria = new RegistrarCategoria();
     InfoCliente info = new InfoCliente();
 
 
@@ -64,6 +65,7 @@ public class Ventana extends javax.swing.JFrame {
         RegCliente = new javax.swing.JMenuItem();
         RegRestaurante = new javax.swing.JMenuItem();
         RegPedido = new javax.swing.JMenuItem();
+        RegCategoria = new javax.swing.JMenuItem();
         Informacion = new javax.swing.JMenu();
         cliente = new javax.swing.JMenuItem();
         restaurante = new javax.swing.JMenuItem();
@@ -102,6 +104,14 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
         Registros.add(RegPedido);
+
+        RegCategoria.setText("Registrar Categoria");
+        RegCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegCategoriaActionPerformed(evt);
+            }
+        });
+        Registros.add(RegCategoria);
 
         jMenuBar2.add(Registros);
 
@@ -192,6 +202,11 @@ public class Ventana extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_RegPedidoActionPerformed
 
+    private void RegCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegCategoriaActionPerformed
+        this.jDesktopPane1.add(registrarCategoria);
+        registrarCategoria.show();
+    }//GEN-LAST:event_RegCategoriaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -230,6 +245,7 @@ public class Ventana extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Informacion;
     private javax.swing.JMenu Inicio;
+    private javax.swing.JMenuItem RegCategoria;
     private javax.swing.JMenuItem RegCliente;
     private javax.swing.JMenuItem RegPedido;
     private javax.swing.JMenuItem RegRestaurante;
