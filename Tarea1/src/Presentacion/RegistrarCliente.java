@@ -11,6 +11,7 @@ import Logica.IControladorCategoria;
 import Logica.IControladorPedido;
 import Logica.IControladorProducto;
 import Logica.IControladorUsuario;
+import Logica.ManejadorColecciones;
 import java.awt.Image;
 import java.io.File;
 import javax.swing.Icon;
@@ -316,12 +317,12 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_SeleccionarImagenActionPerformed
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
-
-        if(ICU.verificarnickname(txtNickname.getText())==true){
+ManejadorColecciones MC = ManejadorColecciones.getinstance();
+        if(MC.verificarnickname(txtNickname.getText())==true){
             JOptionPane.showMessageDialog(this,"Nickname ya tomado","REGISTRO",JOptionPane.ERROR_MESSAGE);
             txtNickname.requestFocus();
         }
-        else if(ICU.verificarnickname(txtCorreoElectronico.getText())==true){
+        else if(MC.verificarnickname(txtCorreoElectronico.getText())==true){
             JOptionPane.showMessageDialog(this,"Correo electronico ya tomado","REGISTRO",JOptionPane.ERROR_MESSAGE);
             txtCorreoElectronico.requestFocus();
         }
