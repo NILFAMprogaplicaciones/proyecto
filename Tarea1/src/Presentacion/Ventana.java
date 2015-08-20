@@ -86,7 +86,7 @@ public class Ventana extends javax.swing.JFrame {
         });
         Registros.add(RegRestaurante);
 
-        RegPedido.setText("Registrar Pedido");
+        RegPedido.setText("Registrar Producto");
         RegPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RegPedidoActionPerformed(evt);

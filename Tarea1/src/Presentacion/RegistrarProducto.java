@@ -61,10 +61,10 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
         Promocion = new javax.swing.JRadioButton();
         Productos = new javax.swing.JComboBox();
         SeleccioneProducto = new javax.swing.JLabel();
-        Cantidad = new javax.swing.JTextField();
         Cant = new javax.swing.JLabel();
         Agregar = new javax.swing.JButton();
         ScrollProducto = new javax.swing.JScrollPane();
+        Cantidad = new javax.swing.JSpinner();
 
         setClosable(true);
         setIconifiable(true);
@@ -120,6 +120,11 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
 
         Botonoes.add(Individual);
         Individual.setText("Individual");
+        Individual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IndividualActionPerformed(evt);
+            }
+        });
 
         Botonoes.add(Promocion);
         Promocion.setText("Promocion");
@@ -132,12 +137,6 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
         });
 
         SeleccioneProducto.setText("Producto");
-
-        Cantidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CantidadActionPerformed(evt);
-            }
-        });
 
         Cant.setText("Cant:");
 
@@ -163,16 +162,13 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(Promocion)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(12, 12, 12)
-                                            .addComponent(Cant)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(Cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(Agregar)
-                                        .addGap(71, 71, 71)))
+                                    .addComponent(Promocion, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGap(12, 12, 12)
+                                        .addComponent(Cant)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(Agregar, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(SeleccionarImagen))
                             .addGroup(layout.createSequentialGroup()
@@ -237,9 +233,9 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Productos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SeleccioneProducto)
-                    .addComponent(Cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Cant)
-                    .addComponent(SeleccionarImagen))
+                    .addComponent(SeleccionarImagen)
+                    .addComponent(Cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Agregar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -304,9 +300,11 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ProductosActionPerformed
 
-    private void CantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CantidadActionPerformed
+    private void IndividualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IndividualActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CantidadActionPerformed
+        this.SeleccioneProducto.setVisible(false);
+        this.Productos.setVisible(false);
+    }//GEN-LAST:event_IndividualActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -315,7 +313,7 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
     private javax.swing.ButtonGroup Botonoes;
     private javax.swing.JButton Cancelar;
     private javax.swing.JLabel Cant;
-    private javax.swing.JTextField Cantidad;
+    private javax.swing.JSpinner Cantidad;
     private javax.swing.JLabel CorreoElectronico;
     private javax.swing.JRadioButton Individual;
     private javax.swing.JLabel IngreseDatosCliente;
