@@ -55,6 +55,11 @@ public class ManejadorColecciones {
         return false;
     }
     
+    public int CantUsuarios(){
+        int size;
+        return size=ColeccionUsuarios.size();
+    }
+    
     //FUNCIONES COLECCION PRODUCTOS
     //FUNCIONES COLECCION PEDIDOS
 }

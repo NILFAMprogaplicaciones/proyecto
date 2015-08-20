@@ -21,12 +21,7 @@ import java.awt.Image;
 
 public class Ventana extends javax.swing.JFrame {
     
-    private IControladorUsuario ICU;
-    private IControladorProducto ICP;
-    private IControladorPedido ICPE;
-    private IControladorCategoria ICC;
-    private String d,m,a;
-    private int D,M,A;
+    
     RegistrarCliente registrar = new RegistrarCliente();
     RegistrarProducto registrarProducto = new RegistrarProducto();
     RegistrarRestaurante registrarRestaurante = new RegistrarRestaurante();
@@ -40,12 +35,6 @@ public class Ventana extends javax.swing.JFrame {
      */
     public Ventana() {
         initComponents();
-        
-        Fabrica fabrica = Fabrica.getInstance();
-        ICU = fabrica.getIControladorUsuario();
-        ICP = fabrica.getIControladorProducto();
-        ICPE = fabrica.getIControladorPedido();
-        ICC = fabrica.getIControladorCategoria();
         
     }
 
@@ -179,20 +168,10 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_restauranteActionPerformed
 
     private void clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteActionPerformed
-        //this.listadeclientes.addColumnSelectionInterval(5, 0);
-        //this.listadeclientes.add;
+        
         this.jDesktopPane1.add(info);
         info.show();
-        
-        InfoCliente.listadeclientes.setValueAt("papa", 0, 0);
-        InfoCliente.listadeclientes.setValueAt("mama", 1, 0);
-        InfoCliente.listadeclientes.setValueAt("damian", 2, 0);
-        InfoCliente.listadeclientes.setValueAt("leo", 3, 0);
-        InfoCliente.listadeclientes.setValueAt("nacho", 4, 0);
-        //this.listadeclientes.setValueAt("mauri", 5, 0);
-
-        
-        // TODO add your handling code here:
+  
     }//GEN-LAST:event_clienteActionPerformed
 
     private void RegPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegPedidoActionPerformed
