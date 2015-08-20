@@ -22,7 +22,8 @@ import javax.swing.table.DefaultTableModel;
 public class InfoCliente extends javax.swing.JInternalFrame {
     private IControladorUsuario ICU;
     ManejadorColecciones MC = ManejadorColecciones.getinstance();
-    int filas=MC.CantUsuarios();
+    
+    Object[]fila= new Object[1];
     
         
 
@@ -34,15 +35,19 @@ public class InfoCliente extends javax.swing.JInternalFrame {
         Fabrica fabrica = Fabrica.getInstance();
         ICU = fabrica.getIControladorUsuario();
         DefaultTableModel modelo =(DefaultTableModel) this.listadeclientes.getModel();
-        modelo.addRow(new Object[filas]);
+        modelo.addRow(fila);
+        this.listadeclientes.setModel(modelo);
+        
+        
     }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jScrollPane3 = new javax.swing.JScrollPane();
-        listadeclientes = new javax.swing.JTable(2,2);
+        listadeclientes = new javax.swing.JTable();
         MostrarInfo = new javax.swing.JButton();
 
         setClosable(true);
@@ -118,6 +123,6 @@ public class InfoCliente extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton MostrarInfo;
     private javax.swing.JScrollPane jScrollPane3;
-    public javax.swing.JTable listadeclientes;
+    public static javax.swing.JTable listadeclientes;
     // End of variables declaration//GEN-END:variables
 }
