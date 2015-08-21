@@ -7,8 +7,10 @@ package Presentacion;
 
 import Logica.Categoria;
 import Logica.Fabrica;
-import Logica.IControladorCategoria;
-import Logica.ManejadorColecciones;
+import Logica.IControladorUsuario;
+import Logica.ManejadorCategoria;
+
+import Logica.ManejadorUsuario;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,14 +19,14 @@ import javax.swing.JOptionPane;
  */
 public class RegistrarCategoria extends javax.swing.JInternalFrame {
 
-private IControladorCategoria ICC;   
+private IControladorUsuario ICU;   
 /**
      * Creates new form RegistarCategorai
      */
     public RegistrarCategoria() {
         initComponents();
         Fabrica fabrica = Fabrica.getInstance();
-        ICC = fabrica.getIControladorCategoria();
+        ICU = fabrica.getIControladorUsuario();
     }
 
     /**
@@ -115,7 +117,7 @@ private IControladorCategoria ICC;
     }//GEN-LAST:event_txtCategoriaActionPerformed
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
-        ManejadorColecciones MC = ManejadorColecciones.getinstance();
+        ManejadorCategoria MC = ManejadorCategoria.getinstance();
         if(MC.verificoCat(txtCategoria.getText())==true){
             JOptionPane.showMessageDialog(this,"Categoria ya Ingresada","REGISTRO",JOptionPane.ERROR_MESSAGE);
             txtCategoria.requestFocus();
@@ -124,7 +126,7 @@ private IControladorCategoria ICC;
                 JOptionPane.showMessageDialog(this,"Ingrese Categoria","REGISTRO",JOptionPane.WARNING_MESSAGE);
                 txtCategoria.requestFocus();
             } else{
-                ICC.AltaCategoria(txtCategoria.getText());
+                ICU.AltaCategoria(txtCategoria.getText());
                 JOptionPane.showMessageDialog(this,"Categoria Ingresada con Exito");
                 txtCategoria.setText("");
                 dispose();

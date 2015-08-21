@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import Logica.IControladorUsuario;
 import Logica.Fecha;
-import Logica.ManejadorColecciones;
+import Logica.ManejadorUsuario;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -251,7 +251,7 @@ File fichero;
     }//GEN-LAST:event_SeleccionarImagenActionPerformed
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
-        ManejadorColecciones MC = ManejadorColecciones.getinstance();
+        ManejadorUsuario MC = ManejadorUsuario.getinstance();
         if(MC.verificarnickname(txtNickname.getText())==true){
             JOptionPane.showMessageDialog(this,"Nickname ya tomado","REGISTRO",JOptionPane.ERROR_MESSAGE);
             txtNickname.requestFocus();

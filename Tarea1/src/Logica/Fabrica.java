@@ -30,8 +30,5 @@ public class Fabrica {
         return ICPE;
     }
     
-    public IControladorCategoria getIControladorCategoria() {
-        IControladorCategoria ICC = new ControladorCategoria();
-        return ICC;
-    }
+    
 }

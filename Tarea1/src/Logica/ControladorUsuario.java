@@ -8,7 +8,7 @@ import javax.swing.*;
 
 public class ControladorUsuario implements IControladorUsuario  {
     
-    ManejadorColecciones mc=ManejadorColecciones.getinstance();
+    ManejadorUsuario mc=ManejadorUsuario.getinstance();
     
     public void Caso_Registro_Cliente(String nombre, String nickname, String correo,  String direccion, String apellido, Fecha fecha){
         
@@ -34,6 +34,12 @@ public class ControladorUsuario implements IControladorUsuario  {
     public void Caso_Ver_Restaurante(String nickname, String correo){
        
         JOptionPane.showMessageDialog(null,"Funcion Ver Restaurante"); 
+    }
+    
+    public void AltaCategoria(String nombre) {
+        ManejadorCategoria mc=ManejadorCategoria.getinstance();
+        Categoria cat = new Categoria(nombre);
+        mc.addCategoria(nombre, cat);
     }
     
 }

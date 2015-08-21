@@ -8,11 +8,10 @@ package Presentacion;
 
 import Logica.Fabrica;
 import Logica.Fecha;
-import Logica.IControladorCategoria;
 import Logica.IControladorPedido;
 import Logica.IControladorProducto;
 import Logica.IControladorUsuario;
-import Logica.ManejadorColecciones;
+import Logica.ManejadorUsuario;
 import java.awt.Image;
 import java.io.File;
 import javax.swing.Icon;
@@ -21,10 +20,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-/**
- *
- * @author natalia
- */
 public class RegistrarCliente extends javax.swing.JInternalFrame {
     
     private IControladorUsuario ICU;
@@ -318,7 +313,7 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_SeleccionarImagenActionPerformed
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
-ManejadorColecciones MC = ManejadorColecciones.getinstance();
+ManejadorUsuario MC = ManejadorUsuario.getinstance();
         if(MC.verificarnickname(txtNickname.getText())==true){
             JOptionPane.showMessageDialog(this,"Nickname ya tomado","REGISTRO",JOptionPane.ERROR_MESSAGE);
             txtNickname.requestFocus();

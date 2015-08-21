@@ -12,5 +12,6 @@ public interface IControladorUsuario {
             String direccion, Map categoria);
     public abstract DataUsuario Caso_Ver_Cliente(String nickname, String correo);
     public abstract void Caso_Ver_Restaurante(String nickname, String correo);
+    public abstract void AltaCategoria(String nombre);
     
 }
