@@ -36,5 +36,12 @@ public class DataUsuario {
     public Fecha getfecha(){
         return fecha_nacimiento;
     }
+    public String getfechastring(){
+        int dia=this.fecha_nacimiento.getdia();
+        int mes=this.fecha_nacimiento.getmes();
+        int año=this.fecha_nacimiento.getaño();
+        String fecha=Integer.toString(dia)+"/"+Integer.toString(mes)+"/"+Integer.toString(año);
+        return fecha;   
+    }
     
 }

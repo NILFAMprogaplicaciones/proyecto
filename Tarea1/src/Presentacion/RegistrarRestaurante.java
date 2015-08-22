@@ -5,6 +5,7 @@
  */
 package Presentacion;
 
+import Logica.Categoria;
 import Logica.Fabrica;
 import java.awt.Image;
 import java.io.File;
@@ -15,27 +16,26 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import Logica.IControladorUsuario;
 import Logica.Fecha;
+import Logica.ManejadorCategoria;
+import Logica.ManejadorUsuario;
+import java.awt.Component;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import javax.swing.DefaultListModel;
 
 
 
-/**
- *
- * @author natalia
- */
 public class RegistrarRestaurante extends javax.swing.JInternalFrame {
 
         private IControladorUsuario ICU;
-        private String d,m,a;
-    private int D,M,A;
-    /**
-
-    /**
-     * Creates new form RegistrarRestaurante
-     */
+        
+    
     public RegistrarRestaurante() {
         initComponents();
         Fabrica fabrica = Fabrica.getInstance();
         ICU = fabrica.getIControladorUsuario();
+        this.txtNickname.requestFocus();
     }
 
     /**
@@ -60,6 +60,14 @@ public class RegistrarRestaurante extends javax.swing.JInternalFrame {
         SeleccionarImagen = new javax.swing.JButton();
         Registrar = new javax.swing.JButton();
         Cancelar = new javax.swing.JButton();
+        combocoleccion = new javax.swing.JComboBox();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listacoleccion = new javax.swing.JList();
+        refrescarcoleccion = new javax.swing.JButton();
+
+        setClosable(true);
+        setIconifiable(true);
+        setTitle("Registrar Restaurante");
 
         IngreseDatosCliente.setText("Ingrese los siguientes datos:");
 
@@ -95,7 +103,7 @@ public class RegistrarRestaurante extends javax.swing.JInternalFrame {
             }
         });
 
-        LabelImagen.setText("Imagen");
+        LabelImagen.setText("IMAGEN");
 
         SeleccionarImagen.setText("Seleccionar Imagen");
         SeleccionarImagen.addActionListener(new java.awt.event.ActionListener() {
@@ -118,6 +126,21 @@ public class RegistrarRestaurante extends javax.swing.JInternalFrame {
             }
         });
 
+        combocoleccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combocoleccionActionPerformed(evt);
+            }
+        });
+
+        jScrollPane1.setViewportView(listacoleccion);
+
+        refrescarcoleccion.setText("Ver/Agregar Coleciones");
+        refrescarcoleccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refrescarcoleccionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -127,40 +150,32 @@ public class RegistrarRestaurante extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(107, 107, 107)
                         .addComponent(IngreseDatosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Nickname, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(CorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Nickname, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(60, 60, 60)
-                                .addComponent(txtNickname))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(60, 60, 60)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(21, 21, 21))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(Registrar)
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(SeleccionarImagen)
+                            .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(46, 46, 46)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(LabelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
+                            .addComponent(txtNickname, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtDireccion)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtCorreoElectronico)
+                            .addComponent(Registrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(197, 197, 197)
-                        .addComponent(Cancelar))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(LabelImagen, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(SeleccionarImagen, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(163, 163, 163)
+                        .addComponent(refrescarcoleccion))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45)
+                        .addComponent(combocoleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,27 +186,33 @@ public class RegistrarRestaurante extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNickname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Nickname))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CorreoElectronico))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Nombre)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Nombre))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Direccion))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LabelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SeleccionarImagen))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(combocoleccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(refrescarcoleccion)
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Direccion)
-                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(LabelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
-                .addGap(12, 12, 12)
-                .addComponent(SeleccionarImagen)
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Registrar)
-                    .addComponent(Cancelar))
-                .addContainerGap())
+                    .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18))
         );
 
         pack();
@@ -237,14 +258,89 @@ File fichero;
     }//GEN-LAST:event_SeleccionarImagenActionPerformed
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
-
+        ManejadorUsuario MC = ManejadorUsuario.getinstance();
+        if(MC.verificarnickname(txtNickname.getText())==true){
+            JOptionPane.showMessageDialog(this,"Nickname ya tomado","REGISTRO",JOptionPane.ERROR_MESSAGE);
+            txtNickname.requestFocus();
+        }
+        else if(MC.verificarnickname(txtCorreoElectronico.getText())==true){
+            JOptionPane.showMessageDialog(this,"Correo electronico ya tomado","REGISTRO",JOptionPane.ERROR_MESSAGE);
+            txtCorreoElectronico.requestFocus();
+        }
+        else{
+            if(this.txtNickname.getText().equals("")){
+                JOptionPane.showMessageDialog(this,"Ingrese un nickname","REGISTRO",JOptionPane.WARNING_MESSAGE);
+                txtNickname.requestFocus();
+            }
+            else if(this.txtCorreoElectronico.getText().equals("")){
+                JOptionPane.showMessageDialog(this,"Ingrese su Correo Electronico","REGISTRO",JOptionPane.WARNING_MESSAGE);
+                txtCorreoElectronico.requestFocus();
+            }
+            else if(this.txtNombre.getText().equals("")){
+                JOptionPane.showMessageDialog(this,"Ingrese su Nombre","REGISTRO",JOptionPane.WARNING_MESSAGE);
+                txtNombre.requestFocus();
+            }
+            
+            else if(this.txtDireccion.getText().equals("")){
+                JOptionPane.showMessageDialog(this,"Ingrese su Direccion","REGISTRO",JOptionPane.WARNING_MESSAGE);
+                txtDireccion.requestFocus();
+            }
+            else if(coleccion.isEmpty()){
+                JOptionPane.showMessageDialog(this,"Ingrese al menos 1 Categoria","REGISTRO",JOptionPane.WARNING_MESSAGE);
+                this.refrescarcoleccion.requestFocus();
+            }
+            else{
+                ICU.Caso_Registro_Restaurante(this.txtNickname.getText(),this.txtCorreoElectronico.getText(), 
+                        this.txtNombre.getText(),this.txtDireccion.getText(),coleccion);
+                //NO LIMPIO NADA YA QUE CADA VES QUE LLAMO EL INTERNAL REALIZO UN NEW
+                this.dispose(); 
+            }
+        }
     }//GEN-LAST:event_RegistrarActionPerformed
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
-        //RegistrarCliente registrar = new RegistrarCliente();
+        
+        //NO LIMPIO NADA YA QUE CADA VES QUE LLAMO EL INTERNAL REALIZO UN NEW
         this.dispose();
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_CancelarActionPerformed
+
+    private void combocoleccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combocoleccionActionPerformed
+               
+    }//GEN-LAST:event_combocoleccionActionPerformed
+    //VARIABLES DEFINIDAS PARA AGREGAR EN LA LISTA
+    DefaultListModel<String> modelo=new DefaultListModel<>();
+    int posision=0;
+    Map<String,Categoria> coleccion=new HashMap<String,Categoria>();
+    private void refrescarcoleccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refrescarcoleccionActionPerformed
+        //AGREGO LOS ELEMENTOS DE LA COLECCION CATEGORIA AL COMBOBOX
+        ManejadorCategoria mc=ManejadorCategoria.getinstance();
+        int cantidad=mc.cantidad();
+        if(cantidad==0){
+            JOptionPane.showMessageDialog(this,"No hay Categorias en el sistema","REGISTRO",JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            Map cole=mc.coleccion();
+            final Iterator<Categoria> it = cole.values().iterator();
+            Categoria cat=null;
+            String a=(String) this.combocoleccion.getItemAt(0);
+            if(a==null){
+                while (it.hasNext()) {
+                    cat=it.next();//en cat tenemos el valor
+                    this.combocoleccion.addItem(cat.getnombre());
+                }
+            }
+            else{
+                String seleccion=(String) this.combocoleccion.getSelectedItem();
+                modelo.add(posision,seleccion);
+                listacoleccion.setModel(modelo);
+                Categoria c=new Categoria(seleccion);
+                coleccion.put(seleccion, c);
+                posision++;  
+
+            }
+        }
+    }//GEN-LAST:event_refrescarcoleccionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -257,6 +353,10 @@ File fichero;
     public javax.swing.JLabel Nombre;
     private javax.swing.JButton Registrar;
     public javax.swing.JButton SeleccionarImagen;
+    private javax.swing.JComboBox combocoleccion;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList listacoleccion;
+    private javax.swing.JButton refrescarcoleccion;
     private javax.swing.JTextField txtCorreoElectronico;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtNickname;

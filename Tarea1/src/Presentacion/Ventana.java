@@ -7,7 +7,6 @@ import Logica.Fecha;
 import Logica.IControladorUsuario;
 import Logica.IControladorProducto;
 import Logica.IControladorPedido;
-import Logica.IControladorCategoria;
 import Presentacion.CargarFoto;
 import Presentacion.RegistrarCliente;
 import java.awt.Component;
@@ -21,30 +20,8 @@ import java.awt.Image;
 
 public class Ventana extends javax.swing.JFrame {
     
-    private IControladorUsuario ICU;
-    private IControladorProducto ICP;
-    private IControladorPedido ICPE;
-    private IControladorCategoria ICC;
-    private String d,m,a;
-    private int D,M,A;
-    RegistrarCliente registrar = new RegistrarCliente();
-    RegistrarProducto registrarProducto = new RegistrarProducto();
-    RegistrarRestaurante registrarRestaurante = new RegistrarRestaurante();
-    InfoCliente info = new InfoCliente();
-
-
-    
-    /**
-     * Creates new form Ventana
-     */
     public Ventana() {
         initComponents();
-        
-        Fabrica fabrica = Fabrica.getInstance();
-        ICU = fabrica.getIControladorUsuario();
-        ICP = fabrica.getIControladorProducto();
-        ICPE = fabrica.getIControladorPedido();
-        ICC = fabrica.getIControladorCategoria();
         
     }
 
@@ -64,14 +41,16 @@ public class Ventana extends javax.swing.JFrame {
         RegCliente = new javax.swing.JMenuItem();
         RegRestaurante = new javax.swing.JMenuItem();
         RegPedido = new javax.swing.JMenuItem();
+        RegCategoria = new javax.swing.JMenuItem();
         Informacion = new javax.swing.JMenu();
         cliente = new javax.swing.JMenuItem();
         restaurante = new javax.swing.JMenuItem();
         producto = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Pedidos YA!");
+        setTitle("Quick Order");
         setBackground(new java.awt.Color(51, 255, 204));
+        setLocation(new java.awt.Point(500, 200));
 
         Inicio.setText("Inicio");
         jMenuBar2.add(Inicio);
@@ -102,6 +81,14 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
         Registros.add(RegPedido);
+
+        RegCategoria.setText("Registrar Categoria");
+        RegCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegCategoriaActionPerformed(evt);
+            }
+        });
+        Registros.add(RegCategoria);
 
         jMenuBar2.add(Registros);
 
@@ -134,63 +121,53 @@ public class Ventana extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1034, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 12, Short.MAX_VALUE))
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 924, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 735, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void RegRestauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegRestauranteActionPerformed
-        // TODO add your handling code here: 
+       RegistrarRestaurante registrarRestaurante = new RegistrarRestaurante();
        this.jDesktopPane1.add(registrarRestaurante);
        registrarRestaurante.show();
     }//GEN-LAST:event_RegRestauranteActionPerformed
 
     private void RegClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegClienteActionPerformed
-//       RegistrarCliente registrar = new RegistrarCliente();
+       RegistrarCliente registrar = new RegistrarCliente();
        this.jDesktopPane1.add(registrar);
        registrar.show();
-        // TODO add your handling code here:
     }//GEN-LAST:event_RegClienteActionPerformed
 
     private void restauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restauranteActionPerformed
        InfoRestaurante infoRest = new InfoRestaurante();
        this.jDesktopPane1.add(infoRest);
        infoRest.show();
-       // TODO add your handling code here:
     }//GEN-LAST:event_restauranteActionPerformed
 
     private void clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteActionPerformed
-        //this.listadeclientes.addColumnSelectionInterval(5, 0);
-        //this.listadeclientes.add;
+        InfoCliente info = new InfoCliente();
         this.jDesktopPane1.add(info);
         info.show();
-        
-        InfoCliente.listadeclientes.setValueAt("papa", 0, 0);
-        InfoCliente.listadeclientes.setValueAt("mama", 1, 0);
-        InfoCliente.listadeclientes.setValueAt("damian", 2, 0);
-        InfoCliente.listadeclientes.setValueAt("leo", 3, 0);
-        InfoCliente.listadeclientes.setValueAt("nacho", 4, 0);
-        //this.listadeclientes.setValueAt("mauri", 5, 0);
-
-        
-        // TODO add your handling code here:
     }//GEN-LAST:event_clienteActionPerformed
 
     private void RegPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegPedidoActionPerformed
-//        RegistrarProducto registrarProducto = new RegistrarProducto();
+        RegistrarProducto registrarProducto = new RegistrarProducto();          
         this.jDesktopPane1.add(registrarProducto);
         registrarProducto.show();
-        // TODO add your handling code here:
     }//GEN-LAST:event_RegPedidoActionPerformed
+
+    private void RegCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegCategoriaActionPerformed
+        RegistrarCategoria registrarCategoria = new RegistrarCategoria();
+        this.jDesktopPane1.add(registrarCategoria);
+        registrarCategoria.show();
+    }//GEN-LAST:event_RegCategoriaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -230,6 +207,7 @@ public class Ventana extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Informacion;
     private javax.swing.JMenu Inicio;
+    private javax.swing.JMenuItem RegCategoria;
     private javax.swing.JMenuItem RegCliente;
     private javax.swing.JMenuItem RegPedido;
     private javax.swing.JMenuItem RegRestaurante;

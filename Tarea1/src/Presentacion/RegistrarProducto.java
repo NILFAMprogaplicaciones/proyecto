@@ -6,7 +6,6 @@
 package Presentacion;
 
 import Logica.Fabrica;
-import Logica.IControladorCategoria;
 import Logica.IControladorPedido;
 import Logica.IControladorProducto;
 import Logica.IControladorUsuario;
@@ -18,10 +17,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-/**
- *
- * @author natalia
- */
 public class RegistrarProducto extends javax.swing.JInternalFrame {
    
     private IControladorProducto ICP;
