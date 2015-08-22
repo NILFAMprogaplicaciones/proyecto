@@ -47,6 +47,10 @@ public class ManejadorUsuario {
         return size=ColeccionUsuarios.size();
     }
     
+   public Map obtenercoleccion(){
+       Map cu;
+       return cu=this.ColeccionUsuarios;   
+   }
     
     
 }

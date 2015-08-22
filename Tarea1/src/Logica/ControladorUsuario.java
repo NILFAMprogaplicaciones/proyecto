@@ -17,7 +17,7 @@ public class ControladorUsuario implements IControladorUsuario  {
         JOptionPane.showMessageDialog(null,"Cliente Registrado","REGISTRO",JOptionPane.INFORMATION_MESSAGE);            
     
     }
-    public DataUsuario Caso_Ver_Cliente(String nickname, String correo){
+    public DataUsuario Caso_Ver_Cliente(String nickname){
         
         Cliente c= mc.findCliente(nickname);
         DataUsuario du=new DataUsuario(c.getnombre(),c.getnickname(),c.getcorreo(),c.getdireccion(),c.getapellido(),c.getfecha());

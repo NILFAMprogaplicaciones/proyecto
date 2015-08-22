@@ -24,5 +24,8 @@ public class ManejadorCategoria {
     public boolean verificoCat(String nombre) {
         return ColeccionCategoria.containsKey(nombre);
     }
+    public Map coleccion(){
+        return ColeccionCategoria;
+    }
     
 }

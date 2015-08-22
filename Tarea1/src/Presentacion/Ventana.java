@@ -21,7 +21,7 @@ import java.awt.Image;
 public class Ventana extends javax.swing.JFrame {
     
     
-    RegistrarCliente registrar = new RegistrarCliente();
+    
     RegistrarProducto registrarProducto = new RegistrarProducto();
     RegistrarRestaurante registrarRestaurante = new RegistrarRestaurante();
     RegistrarCategoria registrarCategoria = new RegistrarCategoria();
@@ -60,8 +60,9 @@ public class Ventana extends javax.swing.JFrame {
         producto = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Pedidos YA!");
+        setTitle("Quick Order");
         setBackground(new java.awt.Color(51, 255, 204));
+        setLocation(new java.awt.Point(500, 200));
 
         Inicio.setText("Inicio");
         jMenuBar2.add(Inicio);
@@ -132,15 +133,13 @@ public class Ventana extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 608, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 366, Short.MAX_VALUE))
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 195, Short.MAX_VALUE))
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 735, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -153,7 +152,7 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_RegRestauranteActionPerformed
 
     private void RegClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegClienteActionPerformed
-//       RegistrarCliente registrar = new RegistrarCliente();
+       RegistrarCliente registrar = new RegistrarCliente();
        this.jDesktopPane1.add(registrar);
        registrar.show();
         // TODO add your handling code here:
