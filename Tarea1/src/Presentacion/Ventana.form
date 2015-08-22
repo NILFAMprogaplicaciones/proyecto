@@ -33,10 +33,18 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="RegPedido">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Registrar Pedido"/>
+                <Property name="text" type="java.lang.String" value="Registrar Producto"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RegPedidoActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="RegCategoria">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Registrar Categoria"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RegCategoriaActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
