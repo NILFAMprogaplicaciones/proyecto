@@ -32,6 +32,7 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
         initComponents();
         Fabrica fabrica = Fabrica.getInstance();
         ICU = fabrica.getIControladorUsuario();
+        this.txtNickname.requestFocus();
     }
 
     /**
@@ -274,21 +275,14 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_diaActionPerformed
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
-        this.txtApellido.setText("");
-        this.txtCorreoElectronico.setText("");
-        this.txtDireccion.setText("");
-        this.txtNickname.setText("");
-        this.txtNombre.setText("");
-        this.dia.setSelectedIndex(0);
-        this.mes.setSelectedIndex(0);
-        this.anio.setSelectedIndex(0);
+        //NO LIMPIO NADA YA QUE CADA VES QUE LLAMO EL INTERNAL REALIZO UN NEW
         this.dispose();
         
     }//GEN-LAST:event_CancelarActionPerformed
 
     File fichero;
     private void SeleccionarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarImagenActionPerformed
-        // TODO add your handling code here:
+        
         int resultado;
 
         CargarFoto ventana = new CargarFoto();
@@ -362,14 +356,9 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
                     this.txtCorreoElectronico.getText(), this.txtDireccion.getText(),
                     this.txtApellido.getText(), fecha);
 
-                this.txtApellido.setText("");
-                this.txtCorreoElectronico.setText("");
-                this.txtDireccion.setText("");
-                this.txtNickname.setText("");
-                this.txtNombre.setText("");
-               
+                //NO LIMPIO NADA YA QUE CADA VES QUE LLAMO EL INTERNAL REALIZO UN NEW    
                 this.dispose();
-                //this.setVisible(false);
+                
             }
 
         }

@@ -27,5 +27,8 @@ public class ManejadorCategoria {
     public Map coleccion(){
         return ColeccionCategoria;
     }
-    
+    public int cantidad(){
+        int a;
+        return a=ColeccionCategoria.size();
+    }
 }

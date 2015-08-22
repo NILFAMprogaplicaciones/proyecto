@@ -14,7 +14,7 @@ public class Restaurante extends Usuario {
     private File imagen;
     public Restaurante(String nickname, String correo, String nombre, String direccion, Map categoria){
         super(nickname, correo, nombre, direccion);
-        this.ColeccionCategoria=categoria;
+        this.ColeccionCategoria.putAll(categoria);
     }
     
 }

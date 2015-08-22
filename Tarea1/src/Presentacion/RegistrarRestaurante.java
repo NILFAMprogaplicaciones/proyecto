@@ -18,9 +18,11 @@ import Logica.IControladorUsuario;
 import Logica.Fecha;
 import Logica.ManejadorCategoria;
 import Logica.ManejadorUsuario;
+import java.awt.Component;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import javax.swing.DefaultListModel;
 
 
 
@@ -33,6 +35,7 @@ public class RegistrarRestaurante extends javax.swing.JInternalFrame {
         initComponents();
         Fabrica fabrica = Fabrica.getInstance();
         ICU = fabrica.getIControladorUsuario();
+        this.txtNickname.requestFocus();
     }
 
     /**
@@ -59,8 +62,12 @@ public class RegistrarRestaurante extends javax.swing.JInternalFrame {
         Cancelar = new javax.swing.JButton();
         combocoleccion = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        listacoleccion = new javax.swing.JList();
         refrescarcoleccion = new javax.swing.JButton();
+
+        setClosable(true);
+        setIconifiable(true);
+        setTitle("Registrar Restaurante");
 
         IngreseDatosCliente.setText("Ingrese los siguientes datos:");
 
@@ -125,7 +132,7 @@ public class RegistrarRestaurante extends javax.swing.JInternalFrame {
             }
         });
 
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(listacoleccion);
 
         refrescarcoleccion.setText("Ver/Agregar Coleciones");
         refrescarcoleccion.addActionListener(new java.awt.event.ActionListener() {
@@ -141,11 +148,6 @@ public class RegistrarRestaurante extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(Registrar)
-                        .addGap(216, 216, 216)
-                        .addComponent(Cancelar))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(107, 107, 107)
                         .addComponent(IngreseDatosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -156,24 +158,24 @@ public class RegistrarRestaurante extends javax.swing.JInternalFrame {
                             .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(SeleccionarImagen)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(46, 46, 46)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(55, 55, 55)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(LabelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
-                                    .addComponent(txtNickname, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtDireccion)
-                                    .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtCorreoElectronico)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
-                                .addComponent(combocoleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(98, 98, 98))))
+                            .addComponent(LabelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
+                            .addComponent(txtNickname, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtDireccion)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtCorreoElectronico)
+                            .addComponent(Registrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(236, 236, 236)
-                        .addComponent(refrescarcoleccion)))
-                .addGap(549, 583, Short.MAX_VALUE))
+                        .addGap(163, 163, 163)
+                        .addComponent(refrescarcoleccion))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45)
+                        .addComponent(combocoleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,15 +204,15 @@ public class RegistrarRestaurante extends javax.swing.JInternalFrame {
                     .addComponent(SeleccionarImagen))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(combocoleccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(refrescarcoleccion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Registrar)
-                    .addComponent(Cancelar))
-                .addContainerGap())
+                    .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18))
         );
 
         pack();
@@ -283,55 +285,59 @@ File fichero;
                 JOptionPane.showMessageDialog(this,"Ingrese su Direccion","REGISTRO",JOptionPane.WARNING_MESSAGE);
                 txtDireccion.requestFocus();
             }
-            else{
-                Map<String,Categoria> cole=new HashMap<String,Categoria>();
-               // Categoria a=new Categoria(leo.getText());
-                //cole.put(leo.getText(), a);
-                
-                ICU.Caso_Registro_Restaurante(this.txtNickname.getText(),this.txtCorreoElectronico.getText(), this.txtNombre.getText(),this.txtDireccion.getText(),cole);
-
-                
-                this.txtCorreoElectronico.setText("");
-                this.txtDireccion.setText("");
-                this.txtNickname.setText("");
-                this.txtNombre.setText("");
-                cole.clear();
-                
-               
-                this.dispose();
-                //this.setVisible(false);
+            else if(coleccion.isEmpty()){
+                JOptionPane.showMessageDialog(this,"Ingrese al menos 1 Categoria","REGISTRO",JOptionPane.WARNING_MESSAGE);
+                this.refrescarcoleccion.requestFocus();
             }
-
+            else{
+                ICU.Caso_Registro_Restaurante(this.txtNickname.getText(),this.txtCorreoElectronico.getText(), 
+                        this.txtNombre.getText(),this.txtDireccion.getText(),coleccion);
+                //NO LIMPIO NADA YA QUE CADA VES QUE LLAMO EL INTERNAL REALIZO UN NEW
+                this.dispose(); 
+            }
         }
     }//GEN-LAST:event_RegistrarActionPerformed
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
-        //RegistrarCliente registrar = new RegistrarCliente();
-        this.Nickname.setText("");
-        this.CorreoElectronico.setText("");
-        this.txtNombre.setText("");
-        this.txtDireccion.setText("");
+        
+        //NO LIMPIO NADA YA QUE CADA VES QUE LLAMO EL INTERNAL REALIZO UN NEW
         this.dispose();
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_CancelarActionPerformed
 
     private void combocoleccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combocoleccionActionPerformed
                
     }//GEN-LAST:event_combocoleccionActionPerformed
-
+    //VARIABLES DEFINIDAS PARA AGREGAR EN LA LISTA
+    DefaultListModel<String> modelo=new DefaultListModel<>();
+    int posision=0;
+    Map<String,Categoria> coleccion=new HashMap<String,Categoria>();
     private void refrescarcoleccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refrescarcoleccionActionPerformed
+        //AGREGO LOS ELEMENTOS DE LA COLECCION CATEGORIA AL COMBOBOX
         ManejadorCategoria mc=ManejadorCategoria.getinstance();
-        Map coleccion=mc.coleccion();
-        
-        final Iterator<Categoria> it = coleccion.values().iterator();
-        Categoria cat=null;
-        String a=(String) this.combocoleccion.getItemAt(0);
-        JOptionPane.showMessageDialog(this,a); 
-        if(a.equals("")){
-           JOptionPane.showMessageDialog(this,"entro"); 
-            while (it.hasNext()) {
-                cat=it.next();//en cat tenemos el valor
-                this.combocoleccion.addItem(cat.getnombre());
+        int cantidad=mc.cantidad();
+        if(cantidad==0){
+            JOptionPane.showMessageDialog(this,"No hay Categorias en el sistema","REGISTRO",JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            Map cole=mc.coleccion();
+            final Iterator<Categoria> it = cole.values().iterator();
+            Categoria cat=null;
+            String a=(String) this.combocoleccion.getItemAt(0);
+            if(a==null){
+                while (it.hasNext()) {
+                    cat=it.next();//en cat tenemos el valor
+                    this.combocoleccion.addItem(cat.getnombre());
+                }
+            }
+            else{
+                String seleccion=(String) this.combocoleccion.getSelectedItem();
+                modelo.add(posision,seleccion);
+                listacoleccion.setModel(modelo);
+                Categoria c=new Categoria(seleccion);
+                coleccion.put(seleccion, c);
+                posision++;  
+
             }
         }
     }//GEN-LAST:event_refrescarcoleccionActionPerformed
@@ -348,8 +354,8 @@ File fichero;
     private javax.swing.JButton Registrar;
     public javax.swing.JButton SeleccionarImagen;
     private javax.swing.JComboBox combocoleccion;
-    private javax.swing.JList jList1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList listacoleccion;
     private javax.swing.JButton refrescarcoleccion;
     private javax.swing.JTextField txtCorreoElectronico;
     private javax.swing.JTextField txtDireccion;

@@ -29,15 +29,8 @@ public class InfoCliente extends javax.swing.JInternalFrame {
     public InfoCliente() {
         initComponents();
         Fabrica fabrica = Fabrica.getInstance();
-        ICU = fabrica.getIControladorUsuario();
-        
-        
-        
-        }
-          
-    
-    
-
+        ICU = fabrica.getIControladorUsuario();   
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -164,7 +157,6 @@ public class InfoCliente extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(listo)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(MostrarInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(215, 215, 215)
@@ -183,7 +175,8 @@ public class InfoCliente extends javax.swing.JInternalFrame {
                                     .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(Direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(FechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(FechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(listo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(112, 112, 112)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtNickname)
@@ -229,9 +222,9 @@ public class InfoCliente extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(FechaNacimiento)
                     .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
-                .addComponent(listo)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addComponent(listo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -242,42 +235,34 @@ public class InfoCliente extends javax.swing.JInternalFrame {
         ManejadorUsuario MU = ManejadorUsuario.getinstance();        
         //AGREGO LAS FILAS NECESARIAS EN MI JTABLE
         int cantidadusuarios=MU.CantUsuarios();
-        int a=0;
-        while (a!=cantidadusuarios){
-            DefaultTableModel modelo= (DefaultTableModel) listadeclientes.getModel();
-            int columna = modelo.getColumnCount();
-            modelo.addRow(new Object[columna]);
-            listadeclientes.setModel(modelo);
-            a++;
+        if(cantidadusuarios==0){
+            JOptionPane.showMessageDialog(this,"No hay clientes en el sistema","INFORMACION CLIENTE",JOptionPane.WARNING_MESSAGE );
         }
-        //AREGO VALORES A  LAS FILAS
-        Map coleccion=MU.obtenercoleccion();
-        final Iterator<Usuario> it = coleccion.values().iterator();
-        Usuario usu=null;
-        int fila=0;
-        while (it.hasNext()) {
-            usu=it.next();//en usu tenemos el valor
-            this.listadeclientes.setValueAt(usu.getnickname(), fila, 0);
-            this.listadeclientes.setValueAt(usu.getcorreo(), fila, 1);
-            fila++;
+        else{
+            int a=0;
+            while (a!=cantidadusuarios){
+                DefaultTableModel modelo= (DefaultTableModel) listadeclientes.getModel();
+                int columna = modelo.getColumnCount();
+                modelo.addRow(new Object[columna]);
+                listadeclientes.setModel(modelo);
+                a++;
+            }
+            //AREGO VALORES A  LAS FILAS
+            Map coleccion=MU.obtenercoleccion();
+            final Iterator<Usuario> it = coleccion.values().iterator();
+            Usuario usu=null;
+            int fila=0;
+            while (it.hasNext()) {
+                usu=it.next();//en usu tenemos el valor
+                this.listadeclientes.setValueAt(usu.getnickname(), fila, 0);
+                this.listadeclientes.setValueAt(usu.getcorreo(), fila, 1);
+                fila++;
+            }
         }
-        
     }//GEN-LAST:event_MostrarInfoActionPerformed
 
     private void listoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listoActionPerformed
-        //LIMPIO LA TABLA
-        DefaultTableModel modelo= (DefaultTableModel) listadeclientes.getModel();  
-         for (int i = 0; i < listadeclientes.getRowCount(); i++) {
-           modelo.removeRow(i);
-           i-=1;
-        }
-         //LIMPIO LOS TXT
-        this.txtApellido.setText("");
-        this.txtCorreoElectronico.setText("");
-        this.txtDireccion.setText("");
-        this.txtNickname.setText("");
-        this.txtNombre.setText("");
-        this.txtFecha.setText("");
+       //NO LIMPIO NADA YA QUE CADA VES QUE LLAMO EL INTERNAL REALIZO UN NEW
         dispose();
     }//GEN-LAST:event_listoActionPerformed
 
@@ -304,16 +289,22 @@ public class InfoCliente extends javax.swing.JInternalFrame {
     private void verActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verActionPerformed
         //TOMO LA FILA DE LA QUE SELECCIONO EL VALOR
         int fila = this.listadeclientes.getSelectedRow();
+        
         //COLOCO LA FILA, EL 0 ES PARA SELECCIONAR EL VALOR DE LA PRIMERA COLUMNA
-        String nickname=(String)this.listadeclientes.getValueAt(fila, 0);
-        //MUESTRO EL CLIENTE
-        DataUsuario du=ICU.Caso_Ver_Cliente(nickname);
-        this.txtNickname.setText(du.getnickname());
-        this.txtCorreoElectronico.setText(du.getcorreo());
-        this.txtNombre.setText(du.getnombre());
-        this.txtApellido.setText(du.getapellido());
-        this.txtDireccion.setText(du.getdireccion());
-        this.txtFecha.setText(du.getfechastring());
+        if(fila==-1){
+            JOptionPane.showMessageDialog(this,"Por favor, seleccione un Cliente","INFORMACION CLIENTE",JOptionPane.WARNING_MESSAGE );
+        }
+        else{
+            String nickname=(String)this.listadeclientes.getValueAt(fila, 0);
+            //MUESTRO EL CLIENTE
+            DataUsuario du=ICU.Caso_Ver_Cliente(nickname);
+            this.txtNickname.setText(du.getnickname());
+            this.txtCorreoElectronico.setText(du.getcorreo());
+            this.txtNombre.setText(du.getnombre());
+            this.txtApellido.setText(du.getapellido());
+            this.txtDireccion.setText(du.getdireccion());
+            this.txtFecha.setText(du.getfechastring());
+        }
     }//GEN-LAST:event_verActionPerformed
 
 

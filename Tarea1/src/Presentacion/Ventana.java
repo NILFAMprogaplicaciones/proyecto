@@ -20,18 +20,6 @@ import java.awt.Image;
 
 public class Ventana extends javax.swing.JFrame {
     
-    
-    
-    RegistrarProducto registrarProducto = new RegistrarProducto();
-    RegistrarRestaurante registrarRestaurante = new RegistrarRestaurante();
-    RegistrarCategoria registrarCategoria = new RegistrarCategoria();
-    InfoCliente info = new InfoCliente();
-
-
-    
-    /**
-     * Creates new form Ventana
-     */
     public Ventana() {
         initComponents();
         
@@ -146,7 +134,7 @@ public class Ventana extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void RegRestauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegRestauranteActionPerformed
-        // TODO add your handling code here: 
+       RegistrarRestaurante registrarRestaurante = new RegistrarRestaurante();
        this.jDesktopPane1.add(registrarRestaurante);
        registrarRestaurante.show();
     }//GEN-LAST:event_RegRestauranteActionPerformed
@@ -155,31 +143,28 @@ public class Ventana extends javax.swing.JFrame {
        RegistrarCliente registrar = new RegistrarCliente();
        this.jDesktopPane1.add(registrar);
        registrar.show();
-        // TODO add your handling code here:
     }//GEN-LAST:event_RegClienteActionPerformed
 
     private void restauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restauranteActionPerformed
        InfoRestaurante infoRest = new InfoRestaurante();
        this.jDesktopPane1.add(infoRest);
        infoRest.show();
-       // TODO add your handling code here:
     }//GEN-LAST:event_restauranteActionPerformed
 
     private void clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteActionPerformed
-        
+        InfoCliente info = new InfoCliente();
         this.jDesktopPane1.add(info);
         info.show();
-  
     }//GEN-LAST:event_clienteActionPerformed
 
     private void RegPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegPedidoActionPerformed
-//        RegistrarProducto registrarProducto = new RegistrarProducto();
+        RegistrarProducto registrarProducto = new RegistrarProducto();          
         this.jDesktopPane1.add(registrarProducto);
         registrarProducto.show();
-        // TODO add your handling code here:
     }//GEN-LAST:event_RegPedidoActionPerformed
 
     private void RegCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegCategoriaActionPerformed
+        RegistrarCategoria registrarCategoria = new RegistrarCategoria();
         this.jDesktopPane1.add(registrarCategoria);
         registrarCategoria.show();
     }//GEN-LAST:event_RegCategoriaActionPerformed
