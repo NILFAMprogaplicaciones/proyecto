@@ -40,8 +40,9 @@ public class Ventana extends javax.swing.JFrame {
         Registros = new javax.swing.JMenu();
         RegCliente = new javax.swing.JMenuItem();
         RegRestaurante = new javax.swing.JMenuItem();
-        RegPedido = new javax.swing.JMenuItem();
+        GenerarPedido = new javax.swing.JMenuItem();
         RegCategoria = new javax.swing.JMenuItem();
+        GenPedido = new javax.swing.JMenuItem();
         Informacion = new javax.swing.JMenu();
         cliente = new javax.swing.JMenuItem();
         restaurante = new javax.swing.JMenuItem();
@@ -50,6 +51,7 @@ public class Ventana extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Quick Order");
         setBackground(new java.awt.Color(51, 255, 204));
+        setIconImages(null);
         setLocation(new java.awt.Point(500, 200));
 
         Inicio.setText("Inicio");
@@ -74,13 +76,13 @@ public class Ventana extends javax.swing.JFrame {
         });
         Registros.add(RegRestaurante);
 
-        RegPedido.setText("Registrar Producto");
-        RegPedido.addActionListener(new java.awt.event.ActionListener() {
+        GenerarPedido.setText("Registrar Producto");
+        GenerarPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegPedidoActionPerformed(evt);
+                GenerarPedidoActionPerformed(evt);
             }
         });
-        Registros.add(RegPedido);
+        Registros.add(GenerarPedido);
 
         RegCategoria.setText("Registrar Categoria");
         RegCategoria.addActionListener(new java.awt.event.ActionListener() {
@@ -89,6 +91,14 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
         Registros.add(RegCategoria);
+
+        GenPedido.setText("Generar Pedido");
+        GenPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GenPedidoActionPerformed(evt);
+            }
+        });
+        Registros.add(GenPedido);
 
         jMenuBar2.add(Registros);
 
@@ -121,7 +131,7 @@ public class Ventana extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,17 +167,23 @@ public class Ventana extends javax.swing.JFrame {
         info.show();
     }//GEN-LAST:event_clienteActionPerformed
 
-    private void RegPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegPedidoActionPerformed
+    private void GenerarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerarPedidoActionPerformed
         RegistrarProducto registrarProducto = new RegistrarProducto();          
         this.jDesktopPane1.add(registrarProducto);
         registrarProducto.show();
-    }//GEN-LAST:event_RegPedidoActionPerformed
+    }//GEN-LAST:event_GenerarPedidoActionPerformed
 
     private void RegCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegCategoriaActionPerformed
         RegistrarCategoria registrarCategoria = new RegistrarCategoria();
         this.jDesktopPane1.add(registrarCategoria);
         registrarCategoria.show();
     }//GEN-LAST:event_RegCategoriaActionPerformed
+
+    private void GenPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenPedidoActionPerformed
+       GenerarPedido generarpedido = new GenerarPedido();
+       this.jDesktopPane1.add(generarpedido);
+       generarpedido.show();
+    }//GEN-LAST:event_GenPedidoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -205,11 +221,12 @@ public class Ventana extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem GenPedido;
+    private javax.swing.JMenuItem GenerarPedido;
     private javax.swing.JMenu Informacion;
     private javax.swing.JMenu Inicio;
     private javax.swing.JMenuItem RegCategoria;
     private javax.swing.JMenuItem RegCliente;
-    private javax.swing.JMenuItem RegPedido;
     private javax.swing.JMenuItem RegRestaurante;
     private javax.swing.JMenu Registros;
     private javax.swing.JMenuItem cliente;
