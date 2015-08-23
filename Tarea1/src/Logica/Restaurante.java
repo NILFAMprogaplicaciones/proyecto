@@ -16,5 +16,4 @@ public class Restaurante extends Usuario {
         super(nickname, correo, nombre, direccion);
         this.ColeccionCategoria.putAll(categoria);
     }
-    
 }

@@ -4,6 +4,8 @@ package Logica;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 public class ManejadorUsuario {
     
@@ -47,10 +49,21 @@ public class ManejadorUsuario {
         return size=ColeccionUsuarios.size();
     }
     
+    
    public Map obtenercoleccion(){
        Map cu;
        return cu=this.ColeccionUsuarios;   
    }
-    
-    
+   
+   public SortedSet getColeccionRestaurante() {
+        SortedSet<Usuario> cr = new TreeSet();
+        Iterator<Usuario> it = ColeccionUsuarios.values().iterator();
+        Usuario objeto=null;
+        while(it.hasNext()){
+            objeto=it.next();
+            if((objeto.getClass().getSimpleName())== "Restaurante")
+                cr.add(objeto);
+        }
+        return cr;
+   }
 }
