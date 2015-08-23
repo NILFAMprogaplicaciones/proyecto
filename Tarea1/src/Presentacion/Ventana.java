@@ -19,8 +19,10 @@ import javax.swing.JFileChooser;
 import javax.swing.ImageIcon;
 import javax.swing.Icon;
 import java.awt.Image;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.SortedSet;
 
 public class Ventana extends javax.swing.JFrame {
     
@@ -179,14 +181,14 @@ public class Ventana extends javax.swing.JFrame {
         //int cantidadusuarios= MU.CantUsuarios();
         //int a=0;
         
-        Map cole= MU.obtenercoleccion();
-        final Iterator<Usuario> it = cole.values().iterator();
-            Usuario usu=null;
+        Map ColRest= MU.getColeccionRestaurante();
+        final Iterator<Usuario> it = ColRest.values().iterator();
+            Usuario Rest=null;
             String a=(String) registrarProducto.SelectRestaurante.getItemAt(0);
             if(a==null){
                 while (it.hasNext()) {
-                    usu=it.next();//en cat tenemos el valor
-                    registrarProducto.SelectRestaurante.addItem(usu.getnickname());
+                    Rest=it.next();//en cat tenemos el valor
+                    registrarProducto.SelectRestaurante.addItem(Rest.getnickname());
                 }
             } 
         registrarProducto.show();

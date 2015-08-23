@@ -2,6 +2,7 @@
 package Logica;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.SortedSet;
@@ -55,15 +56,18 @@ public class ManejadorUsuario {
        return cu=this.ColeccionUsuarios;   
    }
    
-   public SortedSet getColeccionRestaurante() {
-        SortedSet<Usuario> cr = new TreeSet();
+   public Map getColeccionRestaurante() {
+       new String("Restaurante"); 
+       Integer indice=0;
+        Map<Integer,Usuario> ColeccionRest = new HashMap<Integer,Usuario>();
         Iterator<Usuario> it = ColeccionUsuarios.values().iterator();
         Usuario objeto=null;
         while(it.hasNext()){
             objeto=it.next();
-           // if((objeto.getClass().getSimpleName())== "Restaurante")
-                cr.add(objeto);
+            if(objeto.getClass().getSimpleName().equals("Restaurante"))
+                ColeccionRest.put(indice,objeto);
+            indice++;
         }
-        return cr;
+        return ColeccionRest;
    }
 }

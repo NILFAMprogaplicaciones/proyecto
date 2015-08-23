@@ -372,20 +372,6 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
 
     private void SelectRestauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectRestauranteActionPerformed
         // TODO add your handling code here:
-        /* ManejadorUsuario MU = ManejadorUsuario.getinstance();    
-        //int cantidadusuarios= MU.CantUsuarios();
-        //int a=0;
-        
-        Map cole= MU.obtenercoleccion();
-        final Iterator<Usuario> it = cole.values().iterator();
-            Usuario usu=null;
-            String a=(String) this.SelectRestaurante.getItemAt(0);
-            if(a==null){
-                while (it.hasNext()) {
-                    usu=it.next();//en cat tenemos el valor
-                    this.SelectRestaurante.addItem(usu.getnickname());
-                }
-            }        */
     }//GEN-LAST:event_SelectRestauranteActionPerformed
 
 
