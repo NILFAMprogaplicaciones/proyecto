@@ -5,17 +5,18 @@
  */
 package Presentacion;
 
+import Logica.Categoria;
+import Logica.ManejadorCategoria;
 import Logica.ManejadorUsuario;
+import Logica.Restaurante;
 import Logica.Usuario;
 import java.util.Iterator;
 import java.util.Map;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author LEO
- */
+
 public class GenerarPedido extends javax.swing.JInternalFrame {
 
     /**
@@ -37,6 +38,14 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         listadeclientes = new javax.swing.JTable();
         MostrarInfo = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        listares = new javax.swing.JList();
+        Mostrarcategorias = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        listacategorias = new javax.swing.JList();
+        Mostrarrestaurantes = new javax.swing.JButton();
+        listacategoria = new javax.swing.JLabel();
+        listarestaurantes = new javax.swing.JLabel();
 
         listadeclientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -70,16 +79,55 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
             }
         });
 
+        jScrollPane2.setViewportView(listares);
+
+        Mostrarcategorias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/refresh.png"))); // NOI18N
+        Mostrarcategorias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MostrarcategoriasActionPerformed(evt);
+            }
+        });
+
+        jScrollPane3.setViewportView(listacategorias);
+
+        Mostrarrestaurantes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/refresh.png"))); // NOI18N
+        Mostrarrestaurantes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MostrarrestaurantesActionPerformed(evt);
+            }
+        });
+
+        listacategoria.setText("Lista de Categorias");
+
+        listarestaurantes.setText("Lista de Restaurantes");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(MostrarInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(390, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1)
+                            .addComponent(MostrarInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(listacategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(82, 82, 82)
+                                .addComponent(listarestaurantes, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Mostrarcategorias, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(56, 56, 56)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Mostrarrestaurantes, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,8 +135,20 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(MostrarInfo)
-                .addContainerGap(351, Short.MAX_VALUE))
+                .addComponent(MostrarInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(listacategoria, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(listarestaurantes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Mostrarcategorias, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Mostrarrestaurantes, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34))
         );
 
         pack();
@@ -98,9 +158,9 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
         //INSTANCEO EL MANEJADOR DE USUARIO
         ManejadorUsuario MU = ManejadorUsuario.getinstance();
         //AGREGO LAS FILAS NECESARIAS EN MI JTABLE
-        int cantidadusuarios=MU.CantUsuarios();
+        int cantidadusuarios=MU.CantClientes();
         if(cantidadusuarios==0){
-            JOptionPane.showMessageDialog(this,"No hay clientes en el sistema","INFORMACION CLIENTE",JOptionPane.WARNING_MESSAGE );
+            JOptionPane.showMessageDialog(this,"No hay clientes en el sistema","INFORMACION CLIENTE",JOptionPane.ERROR_MESSAGE);
         }
         else{
             int a=0;
@@ -118,17 +178,78 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
             int fila=0;
             while (it.hasNext()) {
                 usu=it.next();//en usu tenemos el valor
-                this.listadeclientes.setValueAt(usu.getnickname(), fila, 0);
-                this.listadeclientes.setValueAt(usu.getcorreo(), fila, 1);
-                fila++;
+                String objeto= usu.getClass().getSimpleName();
+                if(objeto.equals("Cliente")){
+                    this.listadeclientes.setValueAt(usu.getnickname(), fila, 0);
+                    this.listadeclientes.setValueAt(usu.getcorreo(), fila, 1);
+                    fila++;
+                }
             }
         }
     }//GEN-LAST:event_MostrarInfoActionPerformed
 
+    private void MostrarcategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarcategoriasActionPerformed
+       //AGREGO LOS ELEMENTOS DE LA COLECCION CATEGORIA A LA LISTA
+        DefaultListModel<String> modelo=new DefaultListModel<>();
+        ManejadorCategoria mc=ManejadorCategoria.getinstance();
+        int cantidad=mc.cantidad(),posision=0;
+        if(cantidad==0){
+            JOptionPane.showMessageDialog(this,"No hay Categorias en el sistema","GENERAR PEDIDO",JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            Map cole=mc.coleccion();
+            Iterator<Categoria> it = cole.values().iterator();
+            Categoria cat=null;
+            while (it.hasNext()) {
+                cat=it.next();//en cat tenemos el valor
+                modelo.add(posision,cat.getnombre());
+                this.listacategorias.setModel(modelo);
+                posision++;      
+                }
+            }  
+    }//GEN-LAST:event_MostrarcategoriasActionPerformed
+
+    private void MostrarrestaurantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarrestaurantesActionPerformed
+        //AGREGO LOS ELEMENTOS DE LA COLECCION CATEGORIA A LA LISTA
+        DefaultListModel<String> modelo=new DefaultListModel<>();
+        ManejadorCategoria mc=ManejadorCategoria.getinstance();
+        String seleccion = (String) listacategorias.getSelectedValue(); 
+        int posision=0;
+        
+        Map cole=mc.coleccion();
+        Iterator<Categoria> it = cole.values().iterator();
+        Categoria cat=null;
+        while (it.hasNext()) {
+            cat=it.next();//en cat tenemos el valor
+            if(seleccion==cat.getnombre()){
+                
+                
+                Map coleres=cat.getcoleccionrestaurante();
+                Iterator<Restaurante> ite = coleres.values().iterator();
+                Restaurante res=null;
+                while(ite.hasNext()){
+                    res=ite.next();
+                    modelo.add(posision,res.getnickname());
+                    this.listares.setModel(modelo);
+                    posision++; 
+                }
+                     
+            }
+        }     
+    }//GEN-LAST:event_MostrarrestaurantesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton MostrarInfo;
+    private javax.swing.JButton Mostrarcategorias;
+    private javax.swing.JButton Mostrarrestaurantes;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel listacategoria;
+    private javax.swing.JList listacategorias;
     private javax.swing.JTable listadeclientes;
+    private javax.swing.JList listares;
+    private javax.swing.JLabel listarestaurantes;
     // End of variables declaration//GEN-END:variables
 }

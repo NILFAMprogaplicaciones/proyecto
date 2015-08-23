@@ -244,7 +244,7 @@ public class InfoCliente extends javax.swing.JInternalFrame {
         //INSTANCEO EL MANEJADOR DE USUARIO
         ManejadorUsuario MU = ManejadorUsuario.getinstance();        
         //AGREGO LAS FILAS NECESARIAS EN MI JTABLE
-        int cantidadusuarios=MU.CantUsuarios();
+        int cantidadusuarios=MU.CantClientes();
         if(cantidadusuarios==0){
             JOptionPane.showMessageDialog(this,"No hay clientes en el sistema","INFORMACION CLIENTE",JOptionPane.WARNING_MESSAGE );
         }
@@ -264,9 +264,12 @@ public class InfoCliente extends javax.swing.JInternalFrame {
             int fila=0;
             while (it.hasNext()) {
                 usu=it.next();//en usu tenemos el valor
-                this.listadeclientes.setValueAt(usu.getnickname(), fila, 0);
-                this.listadeclientes.setValueAt(usu.getcorreo(), fila, 1);
-                fila++;
+                String objeto= usu.getClass().getSimpleName();
+                if(objeto.equals("Cliente")){
+                    this.listadeclientes.setValueAt(usu.getnickname(), fila, 0);
+                    this.listadeclientes.setValueAt(usu.getcorreo(), fila, 1);
+                    fila++;
+                }
             }
         }
     }//GEN-LAST:event_MostrarInfoActionPerformed

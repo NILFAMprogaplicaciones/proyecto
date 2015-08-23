@@ -10,7 +10,7 @@ public class Usuario {
     private String correo;
     private String direccion;
     
-    public Usuario(String nombre, String nickname, String correo, String direccion){
+    public Usuario(String nickname, String correo,String nombre,String direccion){
         this.nombre=nombre;
         this.nickname=nickname;
         this.correo=correo;
