@@ -346,7 +346,6 @@ File fichero;
                 Categoria c=new Categoria(seleccion);
                 coleccion.put(seleccion, c);
                 posision++;  
-
             }
         }
     }//GEN-LAST:event_refrescarcoleccionActionPerformed

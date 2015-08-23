@@ -7,6 +7,8 @@ import Logica.Fecha;
 import Logica.IControladorUsuario;
 import Logica.IControladorProducto;
 import Logica.IControladorPedido;
+import Logica.ManejadorUsuario;
+import Logica.Usuario;
 import Presentacion.CargarFoto;
 import Presentacion.RegistrarCliente;
 import java.awt.Component;
@@ -17,6 +19,8 @@ import javax.swing.JFileChooser;
 import javax.swing.ImageIcon;
 import javax.swing.Icon;
 import java.awt.Image;
+import java.util.Iterator;
+import java.util.Map;
 
 public class Ventana extends javax.swing.JFrame {
     
@@ -170,6 +174,21 @@ public class Ventana extends javax.swing.JFrame {
     private void GenerarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerarPedidoActionPerformed
         RegistrarProducto registrarProducto = new RegistrarProducto();          
         this.jDesktopPane1.add(registrarProducto);
+        
+        ManejadorUsuario MU = ManejadorUsuario.getinstance();    
+        //int cantidadusuarios= MU.CantUsuarios();
+        //int a=0;
+        
+        Map cole= MU.obtenercoleccion();
+        final Iterator<Usuario> it = cole.values().iterator();
+            Usuario usu=null;
+            String a=(String) registrarProducto.SelectRestaurante.getItemAt(0);
+            if(a==null){
+                while (it.hasNext()) {
+                    usu=it.next();//en cat tenemos el valor
+                    registrarProducto.SelectRestaurante.addItem(usu.getnickname());
+                }
+            } 
         registrarProducto.show();
     }//GEN-LAST:event_GenerarPedidoActionPerformed
 

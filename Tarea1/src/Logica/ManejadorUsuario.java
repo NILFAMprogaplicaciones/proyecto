@@ -61,7 +61,7 @@ public class ManejadorUsuario {
         Usuario objeto=null;
         while(it.hasNext()){
             objeto=it.next();
-            if((objeto.getClass().getSimpleName())== "Restaurante")
+           // if((objeto.getClass().getSimpleName())== "Restaurante")
                 cr.add(objeto);
         }
         return cr;

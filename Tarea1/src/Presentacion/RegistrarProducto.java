@@ -5,6 +5,7 @@
  */
 package Presentacion;
 
+import Logica.Categoria;
 import Logica.Fabrica;
 import Logica.IControladorPedido;
 import Logica.IControladorProducto;
@@ -15,11 +16,15 @@ import Logica.Usuario;
 import java.awt.Image;
 import java.io.File;
 import java.util.Iterator;
+import java.util.Map;
+import java.util.SortedSet;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 
 public class RegistrarProducto extends javax.swing.JInternalFrame {
    
@@ -153,7 +158,6 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
 
         Restaurante.setText("Restaurante:");
 
-        SelectRestaurante.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         SelectRestaurante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SelectRestauranteActionPerformed(evt);
@@ -181,13 +185,15 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
                                         .addComponent(Restaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(53, 53, 53)))
                                 .addGap(31, 31, 31)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(Promocion)
-                                    .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                    .addComponent(txtDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                    .addComponent(txtPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                    .addComponent(LabelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                    .addComponent(SelectRestaurante, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                        .addComponent(txtDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                        .addComponent(txtPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                        .addComponent(LabelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                        .addComponent(SelectRestaurante, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(Promocion))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(Cant, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(SeleccionarImagen))))
@@ -206,7 +212,7 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
                                 .addComponent(Productos, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(76, 76, 76)
                         .addComponent(Cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(53, 53, 53))
+                .addGap(27, 27, 27))
             .addGroup(layout.createSequentialGroup()
                 .addGap(150, 150, 150)
                 .addComponent(IngreseDatosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -366,6 +372,20 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
 
     private void SelectRestauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectRestauranteActionPerformed
         // TODO add your handling code here:
+        /* ManejadorUsuario MU = ManejadorUsuario.getinstance();    
+        //int cantidadusuarios= MU.CantUsuarios();
+        //int a=0;
+        
+        Map cole= MU.obtenercoleccion();
+        final Iterator<Usuario> it = cole.values().iterator();
+            Usuario usu=null;
+            String a=(String) this.SelectRestaurante.getItemAt(0);
+            if(a==null){
+                while (it.hasNext()) {
+                    usu=it.next();//en cat tenemos el valor
+                    this.SelectRestaurante.addItem(usu.getnickname());
+                }
+            }        */
     }//GEN-LAST:event_SelectRestauranteActionPerformed
 
 
@@ -388,7 +408,7 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane ScrollProducto;
     private javax.swing.JButton SeleccionarImagen;
     private javax.swing.JLabel SeleccioneProducto;
-    private javax.swing.JComboBox SelectRestaurante;
+    public javax.swing.JComboBox SelectRestaurante;
     private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPrecio;
