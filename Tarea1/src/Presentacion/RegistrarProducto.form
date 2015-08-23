@@ -102,7 +102,7 @@
                   <Component id="Nombre" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtNombre" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="CorreoElectronico" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtDescripcion" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -116,7 +116,7 @@
               <Component id="LabelImagen" min="-2" pref="108" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="SeleccionarImagen" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="32" max="32767" attributes="0"/>
+              <EmptySpace pref="48" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="Cant" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Cantidad" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -264,6 +264,9 @@
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
     </Container>
     <Component class="javax.swing.JSpinner" name="Cantidad">
+      <Properties>
+        <Property name="autoscrolls" type="boolean" value="true"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

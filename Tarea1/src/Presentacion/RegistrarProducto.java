@@ -143,6 +143,8 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
 
         Agregar.setText("Agregar");
 
+        Cantidad.setAutoscrolls(true);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -204,7 +206,7 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Nombre)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CorreoElectronico)
                     .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -216,7 +218,7 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
                 .addComponent(LabelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(SeleccionarImagen)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Cant)
                     .addComponent(Cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -263,18 +265,15 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_CancelarActionPerformed
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
-        if(!this.Individual.isSelected()){
+        if(!this.Individual.isSelected() && (!this.Promocion.isSelected())){
             JOptionPane.showMessageDialog(this,"Seleccione si el producto es individual o promocion","REGISTRO",JOptionPane.WARNING_MESSAGE);
             Individual.requestFocus();
-        } 
-        if(!this.Promocion.isSelected()){
-            JOptionPane.showMessageDialog(this,"Seleccione si el producto es individual o promocion","REGISTRO",JOptionPane.WARNING_MESSAGE);
-            Promocion.requestFocus();
-        }else if(this.Promocion.isSelected()){
-           /* if(!this.Productos.getSelectedItem()){
-            JOptionPane.showMessageDialog(this,"Ingrese el nombre","REGISTRO",JOptionPane.WARNING_MESSAGE);
-            txtNombre.requestFocus();
-        }*/
+        }
+        if(this.Promocion.isSelected()){
+            if(this.Productos.getSelectedIndex() == -1){
+                JOptionPane.showMessageDialog(this,"Ingrese el nombre","REGISTRO",JOptionPane.WARNING_MESSAGE);
+                txtNombre.requestFocus();
+            }
         } 
         
         if(this.txtNombre.getText().equals("")){
