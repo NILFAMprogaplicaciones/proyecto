@@ -6,7 +6,7 @@ import java.util.Map;
 
 
 public class ManejadorProducto {
-    private Map<String, Producto> ColeccionProducto = new HashMap<String, Producto>();
+    private Map<String, Producto> ColeccionProducto = new HashMap<String,Producto>();
     
     //SINGLENTON
     private static ManejadorProducto instancia = null;
@@ -18,5 +18,14 @@ public class ManejadorProducto {
         return instancia;
     }
     //FUNCIONES COLECCION PRODUCTOS
+    /*public Map getColeccionProductos(String nickname){
+       ManejadorUsuario MU = ManejadorUsuario.getinstance();
+       return ((Map)MU.findRestaurante(nickname).getProductos());
+    }*/
     
+    public void addProducto(String nombre, Producto prod) {
+        ColeccionProducto.put(nombre,prod);
+    }
+    
+
 }

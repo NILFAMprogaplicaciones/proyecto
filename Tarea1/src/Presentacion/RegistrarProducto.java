@@ -308,14 +308,19 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
         if(this.txtNombre.getText().equals("")){
             JOptionPane.showMessageDialog(this,"Ingrese el nombre","REGISTRO",JOptionPane.WARNING_MESSAGE);
             txtNombre.requestFocus();
-        }
-        else if(this.txtDescripcion.getText().equals("")){
+        }else if(this.txtDescripcion.getText().equals("")){
             JOptionPane.showMessageDialog(this,"Ingrese descripcion","REGISTRO",JOptionPane.WARNING_MESSAGE);
             txtDescripcion.requestFocus();
-        }
-        else if(this.txtPrecio.getText().equals("")){
+        }else if(this.txtPrecio.getText().equals("")){
             JOptionPane.showMessageDialog(this,"Ingrese el precio","REGISTRO",JOptionPane.WARNING_MESSAGE);
             txtPrecio.requestFocus();
+        }else {
+            Object res = SelectRestaurante.getSelectedItem();
+            String Restaurante = String.valueOf(res);
+            ICP.AltaProducto(Restaurante,txtNombre.getText(),txtDescripcion.getText(),txtPrecio.getText());
+            JOptionPane.showMessageDialog(this,"Producto ingresado con Exito");
+            txtNombre.setText("");
+            dispose();
         }
     }//GEN-LAST:event_RegistrarActionPerformed
 

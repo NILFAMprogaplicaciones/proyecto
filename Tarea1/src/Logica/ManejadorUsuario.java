@@ -70,4 +70,9 @@ public class ManejadorUsuario {
         }
         return ColeccionRest;
    }
+   
+   public void addProducto(String Restaurante,Producto prod){
+       this.findRestaurante(Restaurante).addProducto(prod);
+   }
+   
 }

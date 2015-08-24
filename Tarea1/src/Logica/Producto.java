@@ -5,10 +5,10 @@ package Logica;
 public class Producto {
     private String nombre;
     private String descripcion;
-    private double precio;
+    private String precio;
    
     //imagen
-    public Producto(String nombre, String descripcion, double precio){
+    public Producto(String nombre, String descripcion, String precio){
         this.nombre=nombre;
         this.descripcion=descripcion;
         this.precio=precio;
@@ -20,7 +20,7 @@ public class Producto {
     public String getdescripcion(){
         return descripcion;
     }
-    public double getprecio(){
+    public String getprecio(){
         return precio;
     }
     
@@ -30,7 +30,7 @@ public class Producto {
     public void setdescripcion(String descripcion){
         this.descripcion=descripcion;
     }
-    public void setprecio(double precio){
+    public void setprecio(String precio){
         this.precio=precio;
     }
 }

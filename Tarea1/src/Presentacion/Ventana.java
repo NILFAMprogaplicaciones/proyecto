@@ -7,7 +7,9 @@ import Logica.Fecha;
 import Logica.IControladorUsuario;
 import Logica.IControladorProducto;
 import Logica.IControladorPedido;
+import Logica.ManejadorProducto;
 import Logica.ManejadorUsuario;
+import Logica.Producto;
 import Logica.Usuario;
 import Presentacion.CargarFoto;
 import Presentacion.RegistrarCliente;
@@ -27,8 +29,7 @@ import java.util.SortedSet;
 public class Ventana extends javax.swing.JFrame {
     
     public Ventana() {
-        initComponents();
-        
+        initComponents();      
     }
 
     /**
@@ -188,7 +189,22 @@ public class Ventana extends javax.swing.JFrame {
                     registrarProducto.SelectRestaurante.addItem(Rest.getnickname());
                 }
             } 
-        
+                
+        //PARA CARGAR COMBOBOX DE PRDUCTOS
+        /*Object n = registrarProducto.SelectRestaurante.getSelectedItem();
+        String nickname = String.valueOf(n);
+        ManejadorProducto MP = ManejadorProducto.getinstance();  
+        Map ColeccionProducto = MP.getColeccionProductos(nickname);
+        final Iterator<Producto> itProducto = ColeccionProducto.values().iterator();
+            Producto prod=null;
+            String b=(String) registrarProducto.Productos.getItemAt(0);
+            if(b==null){
+                while (it.hasNext()) {
+                    prod=itProducto.next(); //en cat tenemos el valor
+                    registrarProducto.Productos.addItem(prod.getnombre());  
+                }
+            } 
+            */
         registrarProducto.show();
     }//GEN-LAST:event_RegistrarProductoActionPerformed
 
