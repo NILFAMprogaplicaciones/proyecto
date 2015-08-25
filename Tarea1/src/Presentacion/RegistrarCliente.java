@@ -355,19 +355,32 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this,"Ingrese su AÑO de nacimiento","REGISTRO",JOptionPane.WARNING_MESSAGE);
                 anio.requestFocus();
             }
-            else{
-                //D,M,A estan parseados
-                Fecha fecha=new Fecha(D,M,A);
-
-                ICU.Caso_Registro_Cliente(this.txtNombre.getText(), this.txtNickname.getText(),
-                    this.txtCorreoElectronico.getText(), this.txtDireccion.getText(),
-                    this.txtApellido.getText(), fecha);
-
-                //NO LIMPIO NADA YA QUE CADA VES QUE LLAMO EL INTERNAL REALIZO UN NEW    
-                this.dispose();
+            else if(!this.txtCorreoElectronico.getText().equals("")){
                 
-            }
+                boolean arroba=false;    
+                for (int x=0;x<txtCorreoElectronico.getText().length();x++){
+                    char caracter=this.txtCorreoElectronico.getText().charAt(x);
+                    if(caracter=='@')
+                        arroba=true;
+                }
+                if(arroba==false){        
+                    JOptionPane.showMessageDialog(this,"Verifique el dominio de su correo","REGISTRO",JOptionPane.WARNING_MESSAGE);
+                    txtCorreoElectronico.requestFocus();
+                }
+                else{
+                    //D,M,A estan parseados
+                    Fecha fecha=new Fecha(D,M,A);
 
+                    ICU.Caso_Registro_Cliente(this.txtNombre.getText(), this.txtNickname.getText(),
+                        this.txtCorreoElectronico.getText(), this.txtDireccion.getText(),
+                        this.txtApellido.getText(), fecha);
+
+                    //NO LIMPIO NADA YA QUE CADA VES QUE LLAMO EL INTERNAL REALIZO UN NEW    
+                    this.dispose();
+
+                }
+            }
+            
         }
     }//GEN-LAST:event_RegistrarActionPerformed
 

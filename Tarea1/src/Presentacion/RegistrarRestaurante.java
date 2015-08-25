@@ -213,14 +213,17 @@ public class RegistrarRestaurante extends javax.swing.JInternalFrame {
                         .addComponent(SeleccionarImagen)
                         .addGap(67, 67, 67)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(combocoleccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(refrescarcoleccion)
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(combocoleccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                        .addComponent(refrescarcoleccion)
+                        .addGap(40, 40, 40)
+                        .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Registrar)))
                 .addGap(18, 18, 18))
         );
 
@@ -267,12 +270,13 @@ File fichero;
     }//GEN-LAST:event_SeleccionarImagenActionPerformed
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
-        ManejadorUsuario MC = ManejadorUsuario.getinstance();
-        if(MC.verificarnickname(txtNickname.getText())==true){
+        ManejadorUsuario MU = ManejadorUsuario.getinstance();
+        ManejadorCategoria MC = ManejadorCategoria.getinstance();
+        if(MU.verificarnickname(txtNickname.getText())==true){
             JOptionPane.showMessageDialog(this,"Nickname ya tomado","REGISTRO",JOptionPane.ERROR_MESSAGE);
             txtNickname.requestFocus();
         }
-        else if(MC.verificarnickname(txtCorreoElectronico.getText())==true){
+        else if(MU.verificarnickname(txtCorreoElectronico.getText())==true){
             JOptionPane.showMessageDialog(this,"Correo electronico ya tomado","REGISTRO",JOptionPane.ERROR_MESSAGE);
             txtCorreoElectronico.requestFocus();
         }
@@ -301,6 +305,7 @@ File fichero;
             else{
                 ICU.Caso_Registro_Restaurante(this.txtNickname.getText(),this.txtCorreoElectronico.getText(), 
                         this.txtNombre.getText(),this.txtDireccion.getText(),coleccion);
+                
                 //NO LIMPIO NADA YA QUE CADA VES QUE LLAMO EL INTERNAL REALIZO UN NEW
                 this.dispose();                
             }
@@ -321,6 +326,7 @@ File fichero;
     DefaultListModel<String> modelo=new DefaultListModel<>();
     int posision=0;
     Map<String,Categoria> coleccion=new HashMap<String,Categoria>();
+    
     private void refrescarcoleccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refrescarcoleccionActionPerformed
         //AGREGO LOS ELEMENTOS DE LA COLECCION CATEGORIA AL COMBOBOX
         ManejadorCategoria mc=ManejadorCategoria.getinstance();
@@ -330,7 +336,7 @@ File fichero;
         }
         else{
             Map cole=mc.coleccion();
-            final Iterator<Categoria> it = cole.values().iterator();
+            Iterator<Categoria> it = cole.values().iterator();
             Categoria cat=null;
             String a=(String) this.combocoleccion.getItemAt(0);
             if(a==null){
@@ -340,7 +346,7 @@ File fichero;
                 }
             }
             else{
-                String seleccion=(String) this.combocoleccion.getSelectedItem();
+                String seleccion=(String) this.combocoleccion.getSelectedItem(); 
                 modelo.add(posision,seleccion);
                 listacoleccion.setModel(modelo);
                 Categoria c=new Categoria(seleccion);

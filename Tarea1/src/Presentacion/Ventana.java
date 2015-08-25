@@ -1,5 +1,6 @@
 package Presentacion;
 
+import Logica.Categoria;
 import Logica.DataUsuario;
 import Logica.ControladorUsuario;
 import Logica.Fabrica;
@@ -7,10 +8,8 @@ import Logica.Fecha;
 import Logica.IControladorUsuario;
 import Logica.IControladorProducto;
 import Logica.IControladorPedido;
-import Logica.ManejadorProducto;
-import Logica.ManejadorUsuario;
-import Logica.Producto;
-import Logica.Usuario;
+import Logica.ManejadorCategoria;
+import Logica.Restaurante;
 import Presentacion.CargarFoto;
 import Presentacion.RegistrarCliente;
 import java.awt.Component;
@@ -137,7 +136,7 @@ public class Ventana extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 632, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
