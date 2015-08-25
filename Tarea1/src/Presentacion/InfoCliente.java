@@ -17,25 +17,48 @@ import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author natalia
- */
+
 public class InfoCliente extends javax.swing.JInternalFrame {
     private IControladorUsuario ICU;
-    /**
-     * Creates new form InfoCliente
-     */
+    
+    public void tablacliente(){
+        ManejadorUsuario MU = ManejadorUsuario.getinstance();        
+        //AGREGO LAS FILAS NECESARIAS EN MI JTABLE
+        int cantidadusuarios=MU.CantClientes();
+        int a=0;
+        while (a!=cantidadusuarios){
+            DefaultTableModel modelo= (DefaultTableModel) listadeclientes.getModel();
+            int columna = modelo.getColumnCount();
+            modelo.addRow(new Object[columna]);
+            listadeclientes.setModel(modelo);
+            a++;
+        }
+        //AGREGO VALORES A  LAS FILAS
+        Map coleccion=MU.obtenercoleccion();
+        final Iterator<Usuario> it = coleccion.values().iterator();
+        Usuario usu=null;
+        int fila=0;
+        while (it.hasNext()) {
+            usu=it.next();//en usu tenemos el valor
+            String objeto= usu.getClass().getSimpleName();
+            if(objeto.equals("Cliente")){
+                this.listadeclientes.setValueAt(usu.getnickname(), fila, 0);
+                this.listadeclientes.setValueAt(usu.getcorreo(), fila, 1);
+                fila++;
+            }
+        }
+        
+    }
     public InfoCliente() {
         initComponents();
         Fabrica fabrica = Fabrica.getInstance();
-        ICU = fabrica.getIControladorUsuario();   
+        ICU = fabrica.getIControladorUsuario();
+        tablacliente();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        MostrarInfo = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         listadeclientes = new javax.swing.JTable();
         listo = new javax.swing.JButton();
@@ -57,13 +80,6 @@ public class InfoCliente extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-
-        MostrarInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/refresh.png"))); // NOI18N
-        MostrarInfo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MostrarInfoActionPerformed(evt);
-            }
-        });
 
         listadeclientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -188,9 +204,7 @@ public class InfoCliente extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(MostrarInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
+                                .addGap(79, 79, 79)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(28, Short.MAX_VALUE))))
         );
@@ -200,14 +214,11 @@ public class InfoCliente extends javax.swing.JInternalFrame {
                 .addGap(23, 23, 23)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ver, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(IngreseDatosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(MostrarInfo))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ver, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(IngreseDatosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNickname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -239,40 +250,6 @@ public class InfoCliente extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void MostrarInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarInfoActionPerformed
-        //INSTANCEO EL MANEJADOR DE USUARIO
-        ManejadorUsuario MU = ManejadorUsuario.getinstance();        
-        //AGREGO LAS FILAS NECESARIAS EN MI JTABLE
-        int cantidadusuarios=MU.CantClientes();
-        if(cantidadusuarios==0){
-            JOptionPane.showMessageDialog(this,"No hay clientes en el sistema","INFORMACION CLIENTE",JOptionPane.WARNING_MESSAGE );
-        }
-        else{
-            int a=0;
-            while (a!=cantidadusuarios){
-                DefaultTableModel modelo= (DefaultTableModel) listadeclientes.getModel();
-                int columna = modelo.getColumnCount();
-                modelo.addRow(new Object[columna]);
-                listadeclientes.setModel(modelo);
-                a++;
-            }
-            //AGREGO VALORES A  LAS FILAS
-            Map coleccion=MU.obtenercoleccion();
-            final Iterator<Usuario> it = coleccion.values().iterator();
-            Usuario usu=null;
-            int fila=0;
-            while (it.hasNext()) {
-                usu=it.next();//en usu tenemos el valor
-                String objeto= usu.getClass().getSimpleName();
-                if(objeto.equals("Cliente")){
-                    this.listadeclientes.setValueAt(usu.getnickname(), fila, 0);
-                    this.listadeclientes.setValueAt(usu.getcorreo(), fila, 1);
-                    fila++;
-                }
-            }
-        }
-    }//GEN-LAST:event_MostrarInfoActionPerformed
 
     private void listoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listoActionPerformed
        //NO LIMPIO NADA YA QUE CADA VES QUE LLAMO EL INTERNAL REALIZO UN NEW
@@ -327,7 +304,6 @@ public class InfoCliente extends javax.swing.JInternalFrame {
     public javax.swing.JLabel Direccion;
     public javax.swing.JLabel FechaNacimiento;
     public javax.swing.JLabel IngreseDatosCliente;
-    private javax.swing.JButton MostrarInfo;
     private javax.swing.JLabel Nickname;
     public javax.swing.JLabel Nombre;
     private javax.swing.JLabel jLabel1;

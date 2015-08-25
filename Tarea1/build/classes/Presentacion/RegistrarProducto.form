@@ -28,42 +28,8 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="60" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="Nombre" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
-                              <Component id="Individual" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="CorreoElectronico" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
-                              <Component id="Apellido" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="Restaurante" min="-2" pref="101" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtNombre" alignment="0" pref="150" max="32767" attributes="0"/>
-                              <Component id="txtDescripcion" pref="150" max="32767" attributes="0"/>
-                              <Component id="txtPrecio" alignment="0" pref="150" max="32767" attributes="0"/>
-                              <Component id="LabelImagen" alignment="0" pref="150" max="32767" attributes="0"/>
-                              <Component id="SelectRestaurante" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="Promocion" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="SeleccionarImagen" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
-                      <Component id="Registrar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                      <Component id="Cancelar" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="ScrollProducto" min="-2" pref="411" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="Agregar" min="-2" max="-2" attributes="0"/>
@@ -73,17 +39,62 @@
                               <Component id="Productos" min="-2" pref="137" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                       <Component id="Cant" min="-2" pref="73" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                       <Component id="Cantidad" min="-2" pref="62" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="Cancelar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="267" max="-2" attributes="0"/>
+                              <Component id="Registrar" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="Nombre" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
+                                      <Component id="Individual" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="Descripcion" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
+                                      <Component id="Precio" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="Restaurante" min="-2" pref="101" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="txtNombre" alignment="0" pref="150" max="32767" attributes="0"/>
+                                      <Component id="txtDescripcion" pref="150" max="32767" attributes="0"/>
+                                      <Component id="txtPrecio" alignment="0" pref="150" max="32767" attributes="0"/>
+                                      <Component id="LabelImagen" alignment="0" pref="150" max="32767" attributes="0"/>
+                                      <Component id="SelectRestaurante" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="Promocion" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="SeleccionarImagen" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="53" max="32767" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
-              <Component id="IngreseDatosCliente" min="-2" pref="216" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
+                      <Component id="IngreseDatosCliente" min="-2" pref="216" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -110,19 +121,19 @@
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="CorreoElectronico" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Descripcion" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtDescripcion" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txtPrecio" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Apellido" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                  <Component id="Precio" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="LabelImagen" min="-2" pref="108" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="SeleccionarImagen" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="12" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="Cant" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Cantidad" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -131,9 +142,9 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="Agregar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="ScrollProducto" min="-2" pref="100" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="92" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="Registrar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Cancelar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -149,7 +160,7 @@
         <Property name="text" type="java.lang.String" value="Ingrese los siguientes datos:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="CorreoElectronico">
+    <Component class="javax.swing.JLabel" name="Descripcion">
       <Properties>
         <Property name="text" type="java.lang.String" value="Descripcion"/>
       </Properties>
@@ -165,7 +176,7 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JLabel" name="Apellido">
+    <Component class="javax.swing.JLabel" name="Precio">
       <Properties>
         <Property name="text" type="java.lang.String" value="Precio"/>
       </Properties>
@@ -271,12 +282,7 @@
     <Component class="javax.swing.JComboBox" name="Productos">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
       <Events>
@@ -306,17 +312,13 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Agregar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AgregarActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
-    <Container class="javax.swing.JScrollPane" name="ScrollProducto">
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-      </AuxValues>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-    </Container>
     <Component class="javax.swing.JSpinner" name="Cantidad">
       <Properties>
         <Property name="autoscrolls" type="boolean" value="true"/>
@@ -343,5 +345,24 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTable" name="tablaProducto">
+          <Properties>
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+              <Table columnCount="2" rowCount="0">
+                <Column editable="false" title="Producto" type="java.lang.String"/>
+                <Column editable="false" title="Cantidad" type="java.lang.Integer"/>
+              </Table>
+            </Property>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>

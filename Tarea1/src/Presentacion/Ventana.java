@@ -9,7 +9,9 @@ import Logica.IControladorUsuario;
 import Logica.IControladorProducto;
 import Logica.IControladorPedido;
 import Logica.ManejadorCategoria;
+import Logica.ManejadorUsuario;
 import Logica.Restaurante;
+import Logica.Usuario;
 import Presentacion.CargarFoto;
 import Presentacion.RegistrarCliente;
 import java.awt.Component;
@@ -149,9 +151,17 @@ public class Ventana extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void RegRestauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegRestauranteActionPerformed
-       RegistrarRestaurante registrarRestaurante = new RegistrarRestaurante();
-       this.jDesktopPane1.add(registrarRestaurante);
-       registrarRestaurante.show();
+       ManejadorCategoria mc=ManejadorCategoria.getinstance();
+        int cantidad=mc.cantidad();
+        if(cantidad==0){
+            JOptionPane.showMessageDialog(this,"No hay Categorias en el sistema","REGISTRO",JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            RegistrarRestaurante registrarRestaurante = new RegistrarRestaurante();
+            this.jDesktopPane1.add(registrarRestaurante);
+            registrarRestaurante.show();    
+        }
+        
     }//GEN-LAST:event_RegRestauranteActionPerformed
 
     private void RegClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegClienteActionPerformed
@@ -167,43 +177,21 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_restauranteActionPerformed
 
     private void clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteActionPerformed
-        InfoCliente info = new InfoCliente();
-        this.jDesktopPane1.add(info);
-        info.show();
+        ManejadorUsuario MU = ManejadorUsuario.getinstance();
+        int cantidadusuarios=MU.CantClientes();
+        if(cantidadusuarios==0){
+            JOptionPane.showMessageDialog(this,"No hay clientes en el sistema","INFORMACION CLIENTE",JOptionPane.WARNING_MESSAGE );
+        }
+        else{
+            InfoCliente info = new InfoCliente();
+            this.jDesktopPane1.add(info);
+            info.show();
+        }
     }//GEN-LAST:event_clienteActionPerformed
 
     private void RegistrarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarProductoActionPerformed
         RegistrarProducto registrarProducto = new RegistrarProducto();          
         this.jDesktopPane1.add(registrarProducto);
-        
-        //PARA CARGAR COMBOBOX DE RESTARUANTES
-        ManejadorUsuario MU = ManejadorUsuario.getinstance();            
-        Map ColRest= MU.getColeccionRestaurante();
-        final Iterator<Usuario> it = ColRest.values().iterator();
-            Usuario Rest=null;
-            String a=(String) registrarProducto.SelectRestaurante.getItemAt(0);
-            if(a==null){
-                while (it.hasNext()) {
-                    Rest=it.next();//en cat tenemos el valor
-                    registrarProducto.SelectRestaurante.addItem(Rest.getnickname());
-                }
-            } 
-                
-        //PARA CARGAR COMBOBOX DE PRDUCTOS
-        /*Object n = registrarProducto.SelectRestaurante.getSelectedItem();
-        String nickname = String.valueOf(n);
-        ManejadorProducto MP = ManejadorProducto.getinstance();  
-        Map ColeccionProducto = MP.getColeccionProductos(nickname);
-        final Iterator<Producto> itProducto = ColeccionProducto.values().iterator();
-            Producto prod=null;
-            String b=(String) registrarProducto.Productos.getItemAt(0);
-            if(b==null){
-                while (it.hasNext()) {
-                    prod=itProducto.next(); //en cat tenemos el valor
-                    registrarProducto.Productos.addItem(prod.getnombre());  
-                }
-            } 
-            */
         registrarProducto.show();
     }//GEN-LAST:event_RegistrarProductoActionPerformed
 

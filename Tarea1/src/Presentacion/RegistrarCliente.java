@@ -25,13 +25,22 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
     private IControladorUsuario ICU;
     private String d,m,a;
     private int D,M,A;
-    /**
-     * Creates new form RegistrarCliente
-     */
+    public void cargarcombobox(){
+        int cantidad=1940,posicion=1;
+        anio.insertItemAt("AÑO", 0);
+        anio.setSelectedIndex(0);
+        while(cantidad<=2015){
+            anio.insertItemAt(cantidad, posicion);
+            cantidad++;
+            posicion++;
+        }
+    }
+    
     public RegistrarCliente() {
         initComponents();
         Fabrica fabrica = Fabrica.getInstance();
         ICU = fabrica.getIControladorUsuario();
+        cargarcombobox();
         this.txtNickname.requestFocus();
     }
 
@@ -111,7 +120,6 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
             }
         });
 
-        anio.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "AÑO", "1990", "1991", "1992", "1993", "1994", "1995", "1996" }));
         anio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 anioActionPerformed(evt);

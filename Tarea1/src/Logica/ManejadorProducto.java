@@ -18,10 +18,10 @@ public class ManejadorProducto {
         return instancia;
     }
     //FUNCIONES COLECCION PRODUCTOS
-    /*public Map getColeccionProductos(String nickname){
+    public Map getColeccionProductos(String nickname){
        ManejadorUsuario MU = ManejadorUsuario.getinstance();
-       return ((Map)MU.findRestaurante(nickname).getProductos());
-    }*/
+       return MU.findRestaurante(nickname).getProductos();
+    }
     
     public void addProducto(String nombre, Producto prod) {
         ColeccionProducto.put(nombre,prod);

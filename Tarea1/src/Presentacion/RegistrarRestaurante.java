@@ -28,7 +28,24 @@ import javax.swing.DefaultListModel;
 
 public class RegistrarRestaurante extends javax.swing.JInternalFrame {
 
-        private IControladorUsuario ICU;
+    private IControladorUsuario ICU;
+    
+    public void comboboxcategorias(){
+        //AGREGO LOS ELEMENTOS DE LA COLECCION CATEGORIA AL COMBOBOX
+        ManejadorCategoria mc=ManejadorCategoria.getinstance();
+        Map cole=mc.coleccion();
+        Iterator<Categoria> it = cole.values().iterator();
+        Categoria cat=null;
+        String a=(String) this.combocoleccion.getItemAt(0);
+        if(a==null){
+            while (it.hasNext()) {
+                cat=it.next();//en cat tenemos el valor
+                this.combocoleccion.addItem(cat.getnombre());
+            }
+        }
+            
+        
+    }
         
     
     public RegistrarRestaurante() {
@@ -36,6 +53,7 @@ public class RegistrarRestaurante extends javax.swing.JInternalFrame {
         Fabrica fabrica = Fabrica.getInstance();
         ICU = fabrica.getIControladorUsuario();
         this.txtNickname.requestFocus();
+        comboboxcategorias();
     }
 
     /**
@@ -134,7 +152,8 @@ public class RegistrarRestaurante extends javax.swing.JInternalFrame {
 
         jScrollPane1.setViewportView(listacoleccion);
 
-        refrescarcoleccion.setText("Ver/Agregar Coleciones");
+        refrescarcoleccion.setText("Agregar");
+        refrescarcoleccion.setActionCommand("Agregar ");
         refrescarcoleccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refrescarcoleccionActionPerformed(evt);
@@ -148,39 +167,44 @@ public class RegistrarRestaurante extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(107, 107, 107)
-                        .addComponent(IngreseDatosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Nickname, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(CorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Cancelar)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(56, 56, 56)
-                                .addComponent(SeleccionarImagen)))
-                        .addGap(46, 46, 46)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGap(75, 75, 75)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45)
+                        .addComponent(combocoleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(215, 215, 215)
+                            .addComponent(refrescarcoleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(197, 197, 197))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(Nickname, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(CorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(Direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(56, 56, 56)
+                                    .addComponent(SeleccionarImagen)))
+                            .addGap(46, 46, 46)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(LabelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
                                 .addComponent(txtNickname, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(txtDireccion)
                                 .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(txtCorreoElectronico))
-                            .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(163, 163, 163)
-                        .addComponent(refrescarcoleccion))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)
-                        .addComponent(combocoleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                                .addComponent(txtCorreoElectronico)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(Cancelar)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(IngreseDatosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(140, 140, 140))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,18 +237,15 @@ public class RegistrarRestaurante extends javax.swing.JInternalFrame {
                         .addComponent(SeleccionarImagen)
                         .addGap(67, 67, 67)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(combocoleccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                        .addComponent(refrescarcoleccion)
-                        .addGap(40, 40, 40)
-                        .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Registrar)))
-                .addGap(18, 18, 18))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(combocoleccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(refrescarcoleccion)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Cancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Registrar, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -328,32 +349,14 @@ File fichero;
     Map<String,Categoria> coleccion=new HashMap<String,Categoria>();
     
     private void refrescarcoleccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refrescarcoleccionActionPerformed
-        //AGREGO LOS ELEMENTOS DE LA COLECCION CATEGORIA AL COMBOBOX
-        ManejadorCategoria mc=ManejadorCategoria.getinstance();
-        int cantidad=mc.cantidad();
-        if(cantidad==0){
-            JOptionPane.showMessageDialog(this,"No hay Categorias en el sistema","REGISTRO",JOptionPane.WARNING_MESSAGE);
-        }
-        else{
-            Map cole=mc.coleccion();
-            Iterator<Categoria> it = cole.values().iterator();
-            Categoria cat=null;
-            String a=(String) this.combocoleccion.getItemAt(0);
-            if(a==null){
-                while (it.hasNext()) {
-                    cat=it.next();//en cat tenemos el valor
-                    this.combocoleccion.addItem(cat.getnombre());
-                }
-            }
-            else{
-                String seleccion=(String) this.combocoleccion.getSelectedItem(); 
-                modelo.add(posision,seleccion);
-                listacoleccion.setModel(modelo);
-                Categoria c=new Categoria(seleccion);
-                coleccion.put(seleccion, c);
-                posision++;  
-            }
-        }
+        
+        String seleccion=(String) this.combocoleccion.getSelectedItem(); 
+        modelo.add(posision,seleccion);
+        listacoleccion.setModel(modelo);
+        Categoria c=new Categoria(seleccion);
+        coleccion.put(seleccion, c);
+        posision++;  
+           
     }//GEN-LAST:event_refrescarcoleccionActionPerformed
 
 

@@ -27,28 +27,34 @@
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
-                      <Component id="IngreseDatosCliente" min="-2" pref="216" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="154" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                      <Component id="combocoleccion" min="-2" pref="164" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="Nickname" min="-2" pref="118" max="-2" attributes="0"/>
-                                  <Component id="CorreoElectronico" min="-2" pref="143" max="-2" attributes="0"/>
-                                  <Component id="Nombre" min="-2" pref="143" max="-2" attributes="0"/>
-                                  <Component id="Direccion" min="-2" pref="143" max="-2" attributes="0"/>
-                                  <Component id="Cancelar" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="215" max="-2" attributes="0"/>
+                          <Component id="refrescarcoleccion" min="-2" pref="80" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="197" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="Nickname" min="-2" pref="118" max="-2" attributes="0"/>
+                                      <Component id="CorreoElectronico" min="-2" pref="143" max="-2" attributes="0"/>
+                                      <Component id="Nombre" min="-2" pref="143" max="-2" attributes="0"/>
+                                      <Component id="Direccion" min="-2" pref="143" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                                  <Component id="SeleccionarImagen" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                              <Component id="SeleccionarImagen" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
+                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="LabelImagen" pref="291" max="32767" attributes="0"/>
                               <Component id="txtNickname" alignment="1" max="32767" attributes="0"/>
@@ -56,21 +62,21 @@
                               <Component id="txtNombre" alignment="1" max="32767" attributes="0"/>
                               <Component id="txtCorreoElectronico" alignment="0" max="32767" attributes="0"/>
                           </Group>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="Cancelar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="Registrar" min="-2" pref="43" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
-                      <Component id="refrescarcoleccion" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="154" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                      <Component id="combocoleccion" min="-2" pref="164" max="-2" attributes="0"/>
-                  </Group>
               </Group>
-              <EmptySpace pref="22" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Component id="IngreseDatosCliente" min="-2" pref="216" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -112,19 +118,17 @@
                   </Group>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane1" min="-2" pref="172" max="-2" attributes="0"/>
-                          <Component id="combocoleccion" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="41" max="32767" attributes="0"/>
-                      <Component id="refrescarcoleccion" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                      <Component id="Cancelar" min="-2" pref="35" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="Registrar" min="-2" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="172" max="-2" attributes="0"/>
+                  <Component id="combocoleccion" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="refrescarcoleccion" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="Cancelar" alignment="1" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="Registrar" alignment="1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -250,7 +254,8 @@
     </Container>
     <Component class="javax.swing.JButton" name="refrescarcoleccion">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ver/Agregar Coleciones"/>
+        <Property name="text" type="java.lang.String" value="Agregar"/>
+        <Property name="actionCommand" type="java.lang.String" value="Agregar "/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="refrescarcoleccionActionPerformed"/>
