@@ -27,8 +27,6 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
     private int D,M,A;
     public void cargarcombobox(){
         int cantidad=1940,posicion=1;
-        anio.insertItemAt("AÑO", 0);
-        anio.setSelectedIndex(0);
         while(cantidad<=2015){
             anio.insertItemAt(cantidad, posicion);
             cantidad++;
@@ -120,6 +118,7 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
             }
         });
 
+        anio.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "AÑO" }));
         anio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 anioActionPerformed(evt);
@@ -141,6 +140,7 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
         });
 
         LabelImagen.setText("IMAGEN");
+        LabelImagen.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         Cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/back_alt.png"))); // NOI18N
         Cancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -298,6 +298,7 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
     File fichero;
     private void SeleccionarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarImagenActionPerformed
         
+        
         int resultado;
 
         CargarFoto ventana = new CargarFoto();
@@ -317,6 +318,9 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, "Error abriendo la imagen "+ ex);
             }
         }
+        long totalSpace = fichero.getTotalSpace();
+        int a=(int) totalSpace;
+        JOptionPane.showMessageDialog(this,a);
     }//GEN-LAST:event_SeleccionarImagenActionPerformed
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
