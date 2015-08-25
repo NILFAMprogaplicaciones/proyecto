@@ -257,7 +257,7 @@ public class InfoCliente extends javax.swing.JInternalFrame {
                 listadeclientes.setModel(modelo);
                 a++;
             }
-            //AREGO VALORES A  LAS FILAS
+            //AGREGO VALORES A  LAS FILAS
             Map coleccion=MU.obtenercoleccion();
             final Iterator<Usuario> it = coleccion.values().iterator();
             Usuario usu=null;

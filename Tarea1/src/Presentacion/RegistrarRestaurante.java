@@ -302,7 +302,7 @@ File fichero;
                 ICU.Caso_Registro_Restaurante(this.txtNickname.getText(),this.txtCorreoElectronico.getText(), 
                         this.txtNombre.getText(),this.txtDireccion.getText(),coleccion);
                 //NO LIMPIO NADA YA QUE CADA VES QUE LLAMO EL INTERNAL REALIZO UN NEW
-                this.dispose(); 
+                this.dispose();                
             }
         }
     }//GEN-LAST:event_RegistrarActionPerformed
@@ -346,7 +346,6 @@ File fichero;
                 Categoria c=new Categoria(seleccion);
                 coleccion.put(seleccion, c);
                 posision++;  
-
             }
         }
     }//GEN-LAST:event_refrescarcoleccionActionPerformed

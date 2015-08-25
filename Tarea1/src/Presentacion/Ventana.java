@@ -7,6 +7,10 @@ import Logica.Fecha;
 import Logica.IControladorUsuario;
 import Logica.IControladorProducto;
 import Logica.IControladorPedido;
+import Logica.ManejadorProducto;
+import Logica.ManejadorUsuario;
+import Logica.Producto;
+import Logica.Usuario;
 import Presentacion.CargarFoto;
 import Presentacion.RegistrarCliente;
 import java.awt.Component;
@@ -17,12 +21,15 @@ import javax.swing.JFileChooser;
 import javax.swing.ImageIcon;
 import javax.swing.Icon;
 import java.awt.Image;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.SortedSet;
 
 public class Ventana extends javax.swing.JFrame {
     
     public Ventana() {
-        initComponents();
-        
+        initComponents();      
     }
 
     /**
@@ -40,7 +47,7 @@ public class Ventana extends javax.swing.JFrame {
         Registros = new javax.swing.JMenu();
         RegCliente = new javax.swing.JMenuItem();
         RegRestaurante = new javax.swing.JMenuItem();
-        GenerarPedido = new javax.swing.JMenuItem();
+        RegistrarProducto = new javax.swing.JMenuItem();
         RegCategoria = new javax.swing.JMenuItem();
         GenPedido = new javax.swing.JMenuItem();
         Informacion = new javax.swing.JMenu();
@@ -52,7 +59,6 @@ public class Ventana extends javax.swing.JFrame {
         setTitle("Quick Order");
         setBackground(new java.awt.Color(51, 255, 204));
         setIconImages(null);
-        setLocation(new java.awt.Point(500, 200));
 
         Inicio.setText("Inicio");
         jMenuBar2.add(Inicio);
@@ -76,13 +82,13 @@ public class Ventana extends javax.swing.JFrame {
         });
         Registros.add(RegRestaurante);
 
-        GenerarPedido.setText("Registrar Producto");
-        GenerarPedido.addActionListener(new java.awt.event.ActionListener() {
+        RegistrarProducto.setText("Registrar Producto");
+        RegistrarProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GenerarPedidoActionPerformed(evt);
+                RegistrarProductoActionPerformed(evt);
             }
         });
-        Registros.add(GenerarPedido);
+        Registros.add(RegistrarProducto);
 
         RegCategoria.setText("Registrar Categoria");
         RegCategoria.addActionListener(new java.awt.event.ActionListener() {
@@ -167,11 +173,40 @@ public class Ventana extends javax.swing.JFrame {
         info.show();
     }//GEN-LAST:event_clienteActionPerformed
 
-    private void GenerarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerarPedidoActionPerformed
+    private void RegistrarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarProductoActionPerformed
         RegistrarProducto registrarProducto = new RegistrarProducto();          
         this.jDesktopPane1.add(registrarProducto);
+        
+        //PARA CARGAR COMBOBOX DE RESTARUANTES
+        ManejadorUsuario MU = ManejadorUsuario.getinstance();            
+        Map ColRest= MU.getColeccionRestaurante();
+        final Iterator<Usuario> it = ColRest.values().iterator();
+            Usuario Rest=null;
+            String a=(String) registrarProducto.SelectRestaurante.getItemAt(0);
+            if(a==null){
+                while (it.hasNext()) {
+                    Rest=it.next();//en cat tenemos el valor
+                    registrarProducto.SelectRestaurante.addItem(Rest.getnickname());
+                }
+            } 
+                
+        //PARA CARGAR COMBOBOX DE PRDUCTOS
+        /*Object n = registrarProducto.SelectRestaurante.getSelectedItem();
+        String nickname = String.valueOf(n);
+        ManejadorProducto MP = ManejadorProducto.getinstance();  
+        Map ColeccionProducto = MP.getColeccionProductos(nickname);
+        final Iterator<Producto> itProducto = ColeccionProducto.values().iterator();
+            Producto prod=null;
+            String b=(String) registrarProducto.Productos.getItemAt(0);
+            if(b==null){
+                while (it.hasNext()) {
+                    prod=itProducto.next(); //en cat tenemos el valor
+                    registrarProducto.Productos.addItem(prod.getnombre());  
+                }
+            } 
+            */
         registrarProducto.show();
-    }//GEN-LAST:event_GenerarPedidoActionPerformed
+    }//GEN-LAST:event_RegistrarProductoActionPerformed
 
     private void RegCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegCategoriaActionPerformed
         RegistrarCategoria registrarCategoria = new RegistrarCategoria();
@@ -222,12 +257,12 @@ public class Ventana extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem GenPedido;
-    private javax.swing.JMenuItem GenerarPedido;
     private javax.swing.JMenu Informacion;
     private javax.swing.JMenu Inicio;
     private javax.swing.JMenuItem RegCategoria;
     private javax.swing.JMenuItem RegCliente;
     private javax.swing.JMenuItem RegRestaurante;
+    private javax.swing.JMenuItem RegistrarProducto;
     private javax.swing.JMenu Registros;
     private javax.swing.JMenuItem cliente;
     private javax.swing.JDesktopPane jDesktopPane1;

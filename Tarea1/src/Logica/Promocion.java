@@ -11,7 +11,7 @@ public class Promocion extends Producto {
     private double  descuento;
     private Map<String,Producto>     ColeccionProducto=new HashMap<String,Producto>();
     
-    public Promocion(String nombre, String descripcion, double precio, boolean activa, int cantidad, double descuento){
+    public Promocion(String nombre, String descripcion, String precio, boolean activa, int cantidad, double descuento){
         super(nombre, descripcion, precio);
         this.activa=activa;
         this.cantidad=cantidad;

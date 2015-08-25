@@ -16,6 +16,7 @@ public class ManejadorCategoria {
         }
         return instancia;
     }    
+    
 //FUNCIONES DE COLECCION CATEGORIAS
     public void addCategoria(String nombre, Categoria cat) {
         ColeccionCategoria.put(nombre, cat);
