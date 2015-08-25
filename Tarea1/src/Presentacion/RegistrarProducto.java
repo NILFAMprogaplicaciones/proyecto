@@ -13,6 +13,7 @@ import Logica.IControladorUsuario;
 import Logica.ManejadorProducto;
 import Logica.ManejadorUsuario;
 import Logica.Producto;
+import Logica.Restaurante;
 import Logica.Usuario;
 import java.awt.Image;
 import java.io.File;
@@ -50,6 +51,7 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
         this.Agregar.setVisible(false);
         this.tablaProducto.setVisible(false);
         this.Registrar.setVisible(false);
+        this.scrollProducto.setVisible(false);
     }
     public void comboboxRestaurante(){
           //PARA CARGAR COMBOBOX DE RESTARUANTES
@@ -109,7 +111,7 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
         Cantidad = new javax.swing.JSpinner();
         Restaurante = new javax.swing.JLabel();
         SelectRestaurante = new javax.swing.JComboBox();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        scrollProducto = new javax.swing.JScrollPane();
         tablaProducto = new javax.swing.JTable();
 
         setClosable(true);
@@ -198,6 +200,7 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
             }
         });
 
+        Cantidad.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
         Cantidad.setAutoscrolls(true);
 
         Restaurante.setText("Restaurante:");
@@ -213,14 +216,14 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Producto", "Cantidad"
+                "Producto", "Cantidad", "Total"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.Double.class, java.lang.Double.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -231,7 +234,7 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tablaProducto);
+        scrollProducto.setViewportView(tablaProducto);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -287,7 +290,7 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
                         .addComponent(IngreseDatosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(scrollProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -328,7 +331,7 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(Agregar)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrollProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Registrar)
@@ -366,28 +369,51 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
         }
         if(this.Promocion.isSelected()){
             if(this.Productos.getSelectedIndex() == -1){
-                JOptionPane.showMessageDialog(this,"Ingrese el nombre","REGISTRO",JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this,"Seleccione algun producto","REGISTRO",JOptionPane.WARNING_MESSAGE);
                 txtNombre.requestFocus();
             }
+            if(this.txtNombre.getText().equals("")){
+                JOptionPane.showMessageDialog(this,"Ingrese el nombre","REGISTRO",JOptionPane.WARNING_MESSAGE);
+                txtNombre.requestFocus();
+            }else if(this.txtDescripcion.getText().equals("")){
+                JOptionPane.showMessageDialog(this,"Ingrese descripcion","REGISTRO",JOptionPane.WARNING_MESSAGE);
+                txtDescripcion.requestFocus();
+            }else if(this.txtPrecio.getText().equals("")){
+                JOptionPane.showMessageDialog(this,"Ingrese el precio","REGISTRO",JOptionPane.WARNING_MESSAGE);
+                txtPrecio.requestFocus();
+            }else {
+                String nombreRestaurante=(String) SelectRestaurante.getSelectedItem();
+                ManejadorUsuario MU = ManejadorUsuario.getinstance();
+                Restaurante rest = MU.findRestaurante(nombreRestaurante);
+                /*double precioTotal = Double.parseDouble(txtPrecio.getText()*Cantidad.getValue());
+                ICP.AltaProductoPromocion(nombreRestaurante,txtNombre.getText(),txtDescripcion.getText(), double precioTotal, boolean activa, double descuento, Map coleccionProducto);
+                JOptionPane.showMessageDialog(this,"Producto ingresado con Exito");
+                txtNombre.setText("");
+                dispose();*/
+            }            
         } 
-        
-        if(this.txtNombre.getText().equals("")){
-            JOptionPane.showMessageDialog(this,"Ingrese el nombre","REGISTRO",JOptionPane.WARNING_MESSAGE);
-            txtNombre.requestFocus();
-        }else if(this.txtDescripcion.getText().equals("")){
-            JOptionPane.showMessageDialog(this,"Ingrese descripcion","REGISTRO",JOptionPane.WARNING_MESSAGE);
-            txtDescripcion.requestFocus();
-        }else if(this.txtPrecio.getText().equals("")){
-            JOptionPane.showMessageDialog(this,"Ingrese el precio","REGISTRO",JOptionPane.WARNING_MESSAGE);
-            txtPrecio.requestFocus();
-        }else {
-            Object res = SelectRestaurante.getSelectedItem();
-            String Restaurante = String.valueOf(res);
-            ICP.AltaProducto(Restaurante,txtNombre.getText(),txtDescripcion.getText(),txtPrecio.getText());
-            JOptionPane.showMessageDialog(this,"Producto ingresado con Exito");
-            txtNombre.setText("");
-            dispose();
+        else if (this.Individual.isSelected()) {
+            if(this.txtNombre.getText().equals("")){
+                JOptionPane.showMessageDialog(this,"Ingrese el nombre","REGISTRO",JOptionPane.WARNING_MESSAGE);
+                txtNombre.requestFocus();
+            }else if(this.txtDescripcion.getText().equals("")){
+                JOptionPane.showMessageDialog(this,"Ingrese descripcion","REGISTRO",JOptionPane.WARNING_MESSAGE);
+                txtDescripcion.requestFocus();
+            }else if(this.txtPrecio.getText().equals("")){
+                JOptionPane.showMessageDialog(this,"Ingrese el precio","REGISTRO",JOptionPane.WARNING_MESSAGE);
+                txtPrecio.requestFocus();
+            }else {
+                //(String) castea el valor seleccionado a tipo string 
+                String nombreRestaurante=(String) SelectRestaurante.getSelectedItem();
+                ManejadorUsuario MU = ManejadorUsuario.getinstance();
+                Restaurante rest = MU.findRestaurante(nombreRestaurante);
+                double precio = Double.parseDouble(txtPrecio.getText());
+                ICP.AltaProductoIndividual(rest,txtNombre.getText(),txtDescripcion.getText(),precio);
+                JOptionPane.showMessageDialog(this,"Producto ingresado con Exito");
+                dispose();
+            }
         }
+        
     }//GEN-LAST:event_RegistrarActionPerformed
 
     File fichero;
@@ -436,18 +462,18 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
         this.Cantidad.setVisible(true);
         this.Agregar.setVisible(true);
         this.tablaProducto.setVisible(true);
+        this.scrollProducto.setVisible(true);
         
          //PARA CARGAR COMBOBOX DE PRDUCTOS
-        Object n = SelectRestaurante.getSelectedItem();
-        String nickname = String.valueOf(n);
+        String nombreRestaurante=(String) SelectRestaurante.getSelectedItem();
         ManejadorProducto MP = ManejadorProducto.getinstance();  
-        Map ColeccionProducto = MP.getColeccionProductos(nickname);
+        Map ColeccionProducto = MP.getColeccionProductos(nombreRestaurante);
         final Iterator<Producto> itProducto = ColeccionProducto.values().iterator();
             Producto prod=null;
             String b=(String) Productos.getItemAt(0);
             if(b==null){
                 while (itProducto.hasNext()) {
-                    prod=itProducto.next(); //en cat tenemos el valor
+                    prod=itProducto.next();
                     Productos.addItem(prod.getnombre());  
                 }
             } 
@@ -477,15 +503,23 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_SelectRestauranteActionPerformed
     int fila=0;
     private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
+        ManejadorUsuario MU= ManejadorUsuario.getinstance();
+        
         //AGREGAR FILAS A LA TABLA
         DefaultTableModel modelo= (DefaultTableModel) this.tablaProducto.getModel();
         int columna = modelo.getColumnCount();
         modelo.addRow(new Object[columna]);
         tablaProducto.setModel(modelo);
-
+        String nombreRestaurante=(String) SelectRestaurante.getSelectedItem();
+        String nombreProducto=(String) Productos.getSelectedItem();
+        double precio=MU.buscarprecioproducto(nombreRestaurante,nombreProducto);
         //AGREGO VALORES A  LAS FILAS
         tablaProducto.setValueAt(Productos.getSelectedItem(), fila, 0);
         tablaProducto.setValueAt(Cantidad.getValue(), fila, 1);
+        int cantidad=(int) Cantidad.getValue();
+        
+        double total=(precio * cantidad);
+        tablaProducto.setValueAt(total, fila, 2);
         fila++;     
     }//GEN-LAST:event_AgregarActionPerformed
 
@@ -509,7 +543,7 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
     public javax.swing.JButton SeleccionarImagen;
     public javax.swing.JLabel SeleccioneProducto;
     public javax.swing.JComboBox SelectRestaurante;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane scrollProducto;
     private javax.swing.JTable tablaProducto;
     public javax.swing.JTextField txtDescripcion;
     public javax.swing.JTextField txtNombre;

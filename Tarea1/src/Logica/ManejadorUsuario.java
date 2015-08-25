@@ -31,6 +31,9 @@ public class ManejadorUsuario {
         return ((Cliente)ColeccionUsuarios.get(nickname));
     }
     public Restaurante findRestaurante(String nickname){
+        /*(Restaurante) castea del tipo a Usuario al tipo Restaurante
+           en criollo:busca en la coleccion de usuarios solo los Restaurantes
+        */
         return ((Restaurante)ColeccionUsuarios.get(nickname));
     }
     public boolean verificarnickname(String nickname){
@@ -85,11 +88,18 @@ public class ManejadorUsuario {
         return ColeccionRest;
    }
    
-   public void addProducto(String Restaurante,Producto prod){
+   public void addProductoIndividual(String Restaurante,Individual prod){
        this.findRestaurante(Restaurante).addProducto(prod);
    }
+   public void addProductoPromocion(String Restaurante,Promocion prod){
+       this.findRestaurante(Restaurante).addProducto(prod);
+   }
+   public double buscarprecioproducto(String nickrestaurante, String nombreproducto){
+       
+       return this.findRestaurante(nickrestaurante).buscarprecio(nombreproducto);
+   }
    
-    }
+}
     
     
 

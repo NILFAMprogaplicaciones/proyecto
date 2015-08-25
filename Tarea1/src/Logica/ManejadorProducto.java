@@ -2,6 +2,7 @@
 package Logica;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 
@@ -18,14 +19,24 @@ public class ManejadorProducto {
         return instancia;
     }
     //FUNCIONES COLECCION PRODUCTOS
+    
     public Map getColeccionProductos(String nickname){
-       ManejadorUsuario MU = ManejadorUsuario.getinstance();
-       return MU.findRestaurante(nickname).getProductos();
+        Map<String,Producto> ColeccionProd = new HashMap<String,Producto>();
+        Iterator<Producto> it = ColeccionProducto.values().iterator();
+        Producto objeto=null;
+        while(it.hasNext()){
+            objeto=it.next();
+            if(objeto.nombreRestaurante().equals(nickname))
+                ColeccionProd.put(objeto.getnombre(),objeto);
+        }
+        return ColeccionProd;
     }
     
-    public void addProducto(String nombre, Producto prod) {
+    public void addProductoIndividual(String nombre, Individual prod) {
+        ColeccionProducto.put(nombre,prod);
+    }
+    public void addProductoPromocion(String nombre, Promocion prod) {
         ColeccionProducto.put(nombre,prod);
     }
     
-
 }

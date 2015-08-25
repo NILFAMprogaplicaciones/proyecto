@@ -7,15 +7,17 @@ import java.util.Map;
 
 public class Promocion extends Producto {
     private boolean activa;
-    private int     cantidad;
     private double  descuento;
+    private double  precioTotal;
     private Map<String,Producto>     ColeccionProducto=new HashMap<String,Producto>();
     
-    public Promocion(String nombre, String descripcion, String precio, boolean activa, int cantidad, double descuento){
-        super(nombre, descripcion, precio);
+    public Promocion(Restaurante res,String nombre, String descripcion, double precioTotal, boolean activa, double descuento, Map coleccionProducto){
+        super(nombre, descripcion,res);
         this.activa=activa;
-        this.cantidad=cantidad;
         this.descuento=descuento;
+        this.precioTotal=precioTotal;
+        //copia una coleccion entera de una a otra
+        this.ColeccionProducto.putAll(coleccionProducto);
     
     }
     
@@ -25,9 +27,7 @@ public class Promocion extends Producto {
     public boolean getactiva(){
         return activa;
     }
-    public int getcantidad(){
-        return cantidad;
-    }
+    
     public double getdescuento(){
         return descuento;
     }
@@ -35,9 +35,7 @@ public class Promocion extends Producto {
     public void setactiva(boolean activa){
         this.activa=activa;
     }
-    public void setcantidad(int cantidad){
-        this.cantidad=cantidad;
-    }
+   
     public void setdescuento(double descuento){
         this.descuento=descuento;
     }

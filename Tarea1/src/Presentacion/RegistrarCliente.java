@@ -313,14 +313,12 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
                 Icon icono = new ImageIcon(icon.getImage().getScaledInstance(LabelImagen.getWidth(), LabelImagen.getHeight(), Image.SCALE_DEFAULT));
                 LabelImagen.setText(null);
                 LabelImagen.setIcon( icono );
+                //JOptionPane.showMessageDialog(null, fichero.toString());
 
             }catch(Exception ex){
                 JOptionPane.showMessageDialog(null, "Error abriendo la imagen "+ ex);
             }
         }
-        long totalSpace = fichero.getTotalSpace();
-        int a=(int) totalSpace;
-        JOptionPane.showMessageDialog(this,a);
     }//GEN-LAST:event_SeleccionarImagenActionPerformed
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed

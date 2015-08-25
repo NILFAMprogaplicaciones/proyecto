@@ -5,13 +5,14 @@ package Logica;
 public class Producto {
     private String nombre;
     private String descripcion;
-    private String precio;
+    private Restaurante restaruante;
+    //private File imagen;
    
     //imagen
-    public Producto(String nombre, String descripcion, String precio){
+    public Producto(String nombre, String descripcion, Restaurante restaurante){
         this.nombre=nombre;
         this.descripcion=descripcion;
-        this.precio=precio;
+        this.restaruante=restaurante;
     }
     
     public String getnombre(){
@@ -20,9 +21,11 @@ public class Producto {
     public String getdescripcion(){
         return descripcion;
     }
-    public String getprecio(){
-        return precio;
+    
+    public String nombreRestaurante(){
+        return this.restaruante.getnickname();
     }
+
     
     public void setnombre(String nombre){
         this.nombre=nombre;
@@ -30,7 +33,5 @@ public class Producto {
     public void setdescripcion(String descripcion){
         this.descripcion=descripcion;
     }
-    public void setprecio(String precio){
-        this.precio=precio;
-    }
+ 
 }

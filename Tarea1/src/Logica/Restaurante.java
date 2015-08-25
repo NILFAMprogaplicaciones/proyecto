@@ -8,6 +8,7 @@ import Logica.Producto;
 import java.io.File;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -27,6 +28,21 @@ public class Restaurante extends Usuario {
         super(nickname, correo, nombre, direccion);
         this.ColeccionCategoria.putAll(categoria);
     }
+    public double buscarprecio(String nombreproducto){
+        double precio=0;
+        Iterator<Producto> it = ColeccionProducto.values().iterator();
+        Producto objeto=null;
+        while(it.hasNext()){
+            objeto=it.next();
+            if(objeto.getClass().getSimpleName().equals("Individual")){
+                
+                if(objeto.getnombre().equals(nombreproducto)){
+                   Individual ind=(Individual) objeto;
+                   precio=ind.getPrecio();
+                }
+            }
+        }
+        return precio;
     }    
 
-
+}
