@@ -203,9 +203,21 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_RegCategoriaActionPerformed
 
     private void GenPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenPedidoActionPerformed
-       GenerarPedido generarpedido = new GenerarPedido();
-       this.jDesktopPane1.add(generarpedido);
-       generarpedido.show();
+        ManejadorUsuario MU = ManejadorUsuario.getinstance();
+        ManejadorCategoria mc=ManejadorCategoria.getinstance();
+        int cantidadusuarios=MU.CantClientes();
+        int cantidadcategoria=mc.cantidad(),posision=0;
+        if(cantidadusuarios==0){
+            JOptionPane.showMessageDialog(this,"No hay clientes en el sistema","INFORMACION CLIENTE",JOptionPane.ERROR_MESSAGE);
+        }
+        else if(cantidadcategoria==0){
+            JOptionPane.showMessageDialog(this,"No hay Categorias en el sistema","GENERAR PEDIDO",JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            GenerarPedido generarpedido = new GenerarPedido();
+            this.jDesktopPane1.add(generarpedido);
+            generarpedido.show();
+        }
     }//GEN-LAST:event_GenPedidoActionPerformed
 
     /**
