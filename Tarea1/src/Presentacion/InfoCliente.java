@@ -165,6 +165,7 @@ public class InfoCliente extends javax.swing.JInternalFrame {
         });
 
         jLabel1.setText("IMAGEN");
+        jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
