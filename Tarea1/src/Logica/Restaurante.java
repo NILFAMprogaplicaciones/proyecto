@@ -44,5 +44,32 @@ public class Restaurante extends Usuario {
         }
         return precio;
     }    
+    public Producto getProducto(String nombreproducto){
+        
+        Iterator<Producto> it = ColeccionProducto.values().iterator();
+        Producto objeto=null;
+        while(it.hasNext()){
+            objeto=it.next();
+            if(objeto.getnombre().equals(nombreproducto)){
+                   
+                   return objeto;
+                }
+            
+        }
+        return objeto;
+    }
+    public boolean verificarproducto(String nombreproducto){
+        boolean resultado=false;
+        Iterator<Producto> it = ColeccionProducto.values().iterator();
+        Producto objeto=null;
+        while(it.hasNext()){
+            objeto=it.next();
+            if(objeto.getnombre().equals(nombreproducto)){
+                resultado=true;
+            }
+            
+        }
+        return resultado;
+    }
 
 }

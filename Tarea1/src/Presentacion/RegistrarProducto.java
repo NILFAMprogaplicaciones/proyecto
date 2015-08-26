@@ -17,6 +17,7 @@ import Logica.Restaurante;
 import Logica.Usuario;
 import java.awt.Image;
 import java.io.File;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.SortedSet;
@@ -52,6 +53,7 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
         this.tablaProducto.setVisible(false);
         this.Registrar.setVisible(false);
         this.scrollProducto.setVisible(false);
+        
     }
     public void comboboxRestaurante(){
           //PARA CARGAR COMBOBOX DE RESTARUANTES
@@ -67,9 +69,7 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
                     SelectRestaurante.insertItemAt(Rest.getnickname(), posicion);
                     posicion++;
                 }
-            }
-           
-         
+            }    
     }
            
     public RegistrarProducto() {
@@ -240,103 +240,106 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Agregar)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(SeleccioneProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Productos, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(47, 47, 47)
-                        .addComponent(Cant, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(3, 3, 3)
-                        .addComponent(Cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(IngreseDatosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(Cancelar)
-                                .addGap(267, 267, 267)
-                                .addComponent(Registrar))
+                                .addComponent(Restaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(SelectRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(31, 31, 31)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(Individual)
-                                        .addComponent(Descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(Precio, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(Individual)
+                                .addGap(18, 18, 18)
+                                .addComponent(Promocion)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(Agregar)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(Restaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(53, 53, 53)))
-                                .addGap(31, 31, 31)
+                                        .addComponent(Cancelar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(Registrar))
+                                    .addComponent(scrollProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(SeleccioneProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Productos, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(Cant, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(Cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Precio, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                        .addComponent(txtDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                        .addComponent(txtPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                        .addComponent(LabelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                        .addComponent(SelectRestaurante, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(Promocion)
-                                    .addComponent(SeleccionarImagen))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(IngreseDatosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(scrollProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(SeleccionarImagen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(LabelImagen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(25, 25, 25)))
+                        .addGap(0, 15, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(IngreseDatosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Restaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SelectRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Individual)
-                    .addComponent(Promocion))
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Nombre)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Descripcion)
-                    .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Precio, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(LabelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(Individual))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Promocion)))
+                .addGap(41, 41, 41)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(LabelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Nombre)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Descripcion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Precio, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(SeleccionarImagen)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Cant)
                     .addComponent(Cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Productos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SeleccioneProducto))
-                .addGap(18, 18, 18)
+                .addGap(23, 23, 23)
                 .addComponent(Agregar)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(scrollProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Registrar)
-                    .addComponent(Cancelar))
-                .addContainerGap())
+                    .addComponent(Cancelar)
+                    .addComponent(Registrar))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         pack();
@@ -355,9 +358,9 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtPrecioActionPerformed
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
-        //RegistrarCliente registrar = new RegistrarCliente();
+       
         this.dispose();
-        //TODO add your handling code here:
+       
     }//GEN-LAST:event_CancelarActionPerformed
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
@@ -378,18 +381,19 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
             }else if(this.txtDescripcion.getText().equals("")){
                 JOptionPane.showMessageDialog(this,"Ingrese descripcion","REGISTRO",JOptionPane.WARNING_MESSAGE);
                 txtDescripcion.requestFocus();
-            }else if(this.txtPrecio.getText().equals("")){
-                JOptionPane.showMessageDialog(this,"Ingrese el precio","REGISTRO",JOptionPane.WARNING_MESSAGE);
-                txtPrecio.requestFocus();
             }else {
                 String nombreRestaurante=(String) SelectRestaurante.getSelectedItem();
                 ManejadorUsuario MU = ManejadorUsuario.getinstance();
                 Restaurante rest = MU.findRestaurante(nombreRestaurante);
-                /*double precioTotal = Double.parseDouble(txtPrecio.getText()*Cantidad.getValue());
-                ICP.AltaProductoPromocion(nombreRestaurante,txtNombre.getText(),txtDescripcion.getText(), double precioTotal, boolean activa, double descuento, Map coleccionProducto);
-                JOptionPane.showMessageDialog(this,"Producto ingresado con Exito");
-                txtNombre.setText("");
-                dispose();*/
+                if (rest.verificarproducto(txtNombre.getText())){
+                    JOptionPane.showMessageDialog(this,"La Promocion ya existe","REGISTRO",JOptionPane.WARNING_MESSAGE);
+                    txtNombre.requestFocus();
+                }
+                else{
+                ICP.AltaProductoPromocion(rest,txtNombre.getText(),txtDescripcion.getText(), preciototal, true, 0, coleccionProductosAgregar);
+                JOptionPane.showMessageDialog(this,"Promocion ingresada con Exito","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
+                dispose();
+                }
             }            
         } 
         else if (this.Individual.isSelected()) {
@@ -407,10 +411,16 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
                 String nombreRestaurante=(String) SelectRestaurante.getSelectedItem();
                 ManejadorUsuario MU = ManejadorUsuario.getinstance();
                 Restaurante rest = MU.findRestaurante(nombreRestaurante);
-                double precio = Double.parseDouble(txtPrecio.getText());
-                ICP.AltaProductoIndividual(rest,txtNombre.getText(),txtDescripcion.getText(),precio);
-                JOptionPane.showMessageDialog(this,"Producto ingresado con Exito");
-                dispose();
+                if (rest.verificarproducto(txtNombre.getText())){
+                    JOptionPane.showMessageDialog(this,"El Producto ya existe","REGISTRO",JOptionPane.WARNING_MESSAGE);
+                    txtNombre.requestFocus();
+                }
+                else{    
+                    double precio = Double.parseDouble(txtPrecio.getText());
+                    ICP.AltaProductoIndividual(rest,txtNombre.getText(),txtDescripcion.getText(),precio);
+                    JOptionPane.showMessageDialog(this,"Producto ingresado con Exito","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
+                    dispose();
+                }
             }
         }
         
@@ -445,17 +455,24 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_ProductosActionPerformed
 
     private void IndividualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IndividualActionPerformed
-        // TODO add your handling code here:
-        this.SeleccioneProducto.setVisible(false);
-        this.Productos.setVisible(false);
-        this.Cant.setVisible(false);
-        this.Cantidad.setVisible(false);
-        this.Agregar.setVisible(false);
-        this.tablaProducto.setVisible(false);
+        
+        this.txtNombre.setVisible(true);
+        this.txtDescripcion.setVisible(true);
+        this.txtPrecio.setVisible(true);
+        this.Nombre.setVisible(true);
+        this.Descripcion.setVisible(true);
+        this.Precio.setVisible(true);
+        this.LabelImagen.setVisible(true);
+        this.SeleccionarImagen.setVisible(true);
+        this.Registrar.setVisible(true);
     }//GEN-LAST:event_IndividualActionPerformed
 
     private void PromocionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PromocionActionPerformed
-        // TODO add your handling code here:
+        
+        this.Nombre.setVisible(true);
+        this.txtNombre.setVisible(true);
+        this.Descripcion.setVisible(true);
+        this.txtDescripcion.setVisible(true);
         this.SeleccioneProducto.setVisible(true);
         this.Productos.setVisible(true);
         this.Cant.setVisible(true);
@@ -463,12 +480,13 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
         this.Agregar.setVisible(true);
         this.tablaProducto.setVisible(true);
         this.scrollProducto.setVisible(true);
+        this.Registrar.setVisible(true);
         
          //PARA CARGAR COMBOBOX DE PRDUCTOS
         String nombreRestaurante=(String) SelectRestaurante.getSelectedItem();
-        ManejadorProducto MP = ManejadorProducto.getinstance();  
-        Map ColeccionProducto = MP.getColeccionProductos(nombreRestaurante);
-        final Iterator<Producto> itProducto = ColeccionProducto.values().iterator();
+        ManejadorUsuario MU = ManejadorUsuario.getinstance();  
+        Map ColeccionProducto = MU.getColeccionProductosRestaurantes(nombreRestaurante);
+        Iterator<Producto> itProducto = ColeccionProducto.values().iterator();
             Producto prod=null;
             String b=(String) Productos.getItemAt(0);
             if(b==null){
@@ -482,26 +500,17 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
     private void SelectRestauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectRestauranteActionPerformed
         // TODO add your handling code here:
         if(this.SelectRestaurante.getSelectedIndex() != -1){
-            this.txtNombre.setVisible(true);
-            this.txtDescripcion.setVisible(true);
-            this.txtPrecio.setVisible(true);
-            this.Nombre.setVisible(true);
-            this.Descripcion.setVisible(true);
-            this.Precio.setVisible(true);
-            this.LabelImagen.setVisible(true);
-            this.SeleccionarImagen.setVisible(true);
+            
             this.Promocion.setVisible(true);
             this.Individual.setVisible(true);
-            this.SeleccioneProducto.setVisible(true);
-            this.Productos.setVisible(true);
-            this.Cant.setVisible(true);
-            this.Cantidad.setVisible(true);
-            this.Agregar.setVisible(true);
-            this.tablaProducto.setVisible(true);
-            this.Registrar.setVisible(true);
+            
         }
     }//GEN-LAST:event_SelectRestauranteActionPerformed
     int fila=0;
+    //VARIABLE GLOBAL PARA SUMAR LOS SUBTOTALES DE LA TABLA Y
+    //LUEGO PASARLO A LA FUNCION DE AGREGAR PROMO
+    double preciototal=0;
+    Map<String,Producto> coleccionProductosAgregar=new HashMap<String,Producto>();
     private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
         ManejadorUsuario MU= ManejadorUsuario.getinstance();
         
@@ -510,20 +519,24 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
         int columna = modelo.getColumnCount();
         modelo.addRow(new Object[columna]);
         tablaProducto.setModel(modelo);
+            //OBTENGO NOM DE RESTAURANTE Y PRODUCTO
         String nombreRestaurante=(String) SelectRestaurante.getSelectedItem();
         String nombreProducto=(String) Productos.getSelectedItem();
         double precio=MU.buscarprecioproducto(nombreRestaurante,nombreProducto);
         //AGREGO VALORES A  LAS FILAS
         tablaProducto.setValueAt(Productos.getSelectedItem(), fila, 0);
         tablaProducto.setValueAt(Cantidad.getValue(), fila, 1);
+            //CALCULO EL TOTAL
         int cantidad=(int) Cantidad.getValue();
-        
         double total=(precio * cantidad);
         tablaProducto.setValueAt(total, fila, 2);
+        //AGREGO VALOR A LAS VARIABLES GLOBALES QUE PASO A LA FUNCION DE ALTAPROMOCION
+        preciototal=preciototal+total;
+        Producto pro=MU.getProductoRestaurante(nombreRestaurante, nombreProducto);
+        coleccionProductosAgregar.put(nombreProducto, pro);
         fila++;     
     }//GEN-LAST:event_AgregarActionPerformed
-
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton Agregar;
     private javax.swing.ButtonGroup Botonoes;

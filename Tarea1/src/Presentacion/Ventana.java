@@ -60,6 +60,7 @@ public class Ventana extends javax.swing.JFrame {
         setTitle("Quick Order");
         setBackground(new java.awt.Color(51, 255, 204));
         setIconImages(null);
+        setLocation(new java.awt.Point(500, 200));
 
         Inicio.setText("Inicio");
         jMenuBar2.add(Inicio);

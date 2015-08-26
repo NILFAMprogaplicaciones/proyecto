@@ -87,6 +87,24 @@ public class ManejadorUsuario {
         }
         return ColeccionRest;
    }
+   public Map getColeccionProductosRestaurantes(String nickname){
+        Map resultado=null;
+        Iterator<Usuario> it = ColeccionUsuarios.values().iterator();
+        Restaurante res;
+        Usuario objeto=null;
+        while(it.hasNext()){
+            objeto=it.next();
+            if(objeto.getClass().getSimpleName().equals("Restaurante")){
+                if(objeto.getnickname().equals(nickname)){
+                    res=(Restaurante) objeto;
+                    resultado=res.getProductos();
+                }
+            }
+                
+               
+        }
+        return resultado;
+   }
    
    public void addProductoIndividual(String Restaurante,Individual prod){
        this.findRestaurante(Restaurante).addProducto(prod);
@@ -98,7 +116,24 @@ public class ManejadorUsuario {
        
        return this.findRestaurante(nickrestaurante).buscarprecio(nombreproducto);
    }
-   
+   public Producto getProductoRestaurante(String nickname,String nombreproducto){
+        Producto pro=null;
+        Restaurante res;
+        Iterator<Usuario> it = ColeccionUsuarios.values().iterator();
+        Usuario objeto=null;
+        while(it.hasNext()){
+            objeto=it.next();
+            if(objeto.getClass().getSimpleName().equals("Restaurante")){
+                if(objeto.getnickname().equals(nickname)){
+                    res=(Restaurante) objeto;
+                    pro=res.getProducto(nombreproducto);
+                }
+            }
+                
+               
+        }
+        return pro;
+   }
 }
     
     
