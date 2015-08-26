@@ -248,7 +248,7 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
         while (it.hasNext()) {
             pro=it.next();
             modelo.add(posision,pro.getnombre());
-            this.listaproductos.setModel(modelo);
+            this.listaproductos.setModel(modelo);//
             posision++; 
         }
     }//GEN-LAST:event_MostrarProdcutosActionPerformed
