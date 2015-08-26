@@ -216,7 +216,10 @@ public class infoProducto extends javax.swing.JInternalFrame {
             DataIndividual di;
             di = ICP.Caso_Ver_Individual(nombre);
             this.txtNombreProd.setText(di.getNombre());
-            this.txtDescripcion.setText(di.getDescripcion());
+            double precio = di.getPrecio();
+            String precioString = Double.toString(precio);
+            
+            this.txtDescripcion.setText(precioString);
             //this.txtPrecio.setText(di.getPrecio());
         }
     }//GEN-LAST:event_verActionPerformed

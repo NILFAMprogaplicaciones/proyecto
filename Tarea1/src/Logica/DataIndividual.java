@@ -15,10 +15,10 @@ public class DataIndividual {
     private Restaurante restaurante;
     private double precio;
     
-    public DataIndividual(String nombre, String descripcion, Restaurante restaurante, double precio){
-        this.nombre=nombre;
+    public DataIndividual(/*String nombre, String descripcion, Restaurante restaurante, */double precio){
+        /*this.nombre=nombre;
         this.descripcion=descripcion;
-        this.restaurante=restaurante;
+        this.restaurante=restaurante;*/
         this.precio=precio;
     }
     
