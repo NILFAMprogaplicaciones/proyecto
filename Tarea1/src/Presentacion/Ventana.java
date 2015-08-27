@@ -277,7 +277,7 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JMenuItem RegistrarProducto;
     private javax.swing.JMenu Registros;
     private javax.swing.JMenuItem cliente;
-    private javax.swing.JDesktopPane jDesktopPane1;
+    public javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem producto;
     private javax.swing.JMenuItem restaurante;

@@ -5,82 +5,30 @@
  */
 package Presentacion;
 
-import Logica.Categoria;
-import Logica.Fabrica;
-import Logica.IControladorPedido;
-import Logica.IControladorProducto;
-import Logica.IControladorUsuario;
-import Logica.ManejadorProducto;
 import Logica.ManejadorUsuario;
 import Logica.Producto;
-import Logica.Restaurante;
-import Logica.Usuario;
 import java.awt.Image;
 import java.io.File;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.SortedSet;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.table.DefaultTableModel;
 
-public class RegistrarProducto extends javax.swing.JInternalFrame {
-   
-    private IControladorProducto ICP;
-    
-    public void ocultar(){
-    
-        this.txtNombre.setVisible(false);
-        this.txtDescripcion.setVisible(false);
-        this.txtPrecio.setVisible(false);
-        this.Nombre.setVisible(false);
-        this.Descripcion.setVisible(false);
-        this.Precio.setVisible(false);
-        this.LabelImagen.setVisible(false);
-        this.SeleccionarImagen.setVisible(false);
-        this.Promocion.setVisible(false);
-        this.Individual.setVisible(false);
-        this.SeleccioneProducto.setVisible(false);
-        this.Productos.setVisible(false);
-        this.Cant.setVisible(false);
-        this.Cantidad.setVisible(false);
-        this.Agregar.setVisible(false);
-        this.tablaProducto.setVisible(false);
-        this.Registrar.setVisible(false);
-        this.scrollProducto.setVisible(false);
-        this.Activa.setVisible(false);
-        
-    }
-    public void comboboxRestaurante(){
-          //PARA CARGAR COMBOBOX DE RESTARUANTES
-        ManejadorUsuario MU = ManejadorUsuario.getinstance();            
-        Map ColRest= MU.getColeccionRestaurante();
-        int posicion=0;
-        Iterator<Usuario> it = ColRest.values().iterator();
-            Usuario Rest=null;
-            String a=(String) SelectRestaurante.getItemAt(0);
-            if(a==null){
-                while (it.hasNext()) {
-                    Rest=it.next();
-                    SelectRestaurante.insertItemAt(Rest.getnickname(), posicion);
-                    posicion++;
-                }
-            }    
-    }
-           
-    public RegistrarProducto() {
+/**
+ *
+ * @author natalia
+ */
+public class EditarProducto extends javax.swing.JInternalFrame {
+
+    /**
+     * Creates new form EditarProducto
+     */
+    public EditarProducto() {
         initComponents();
-        Fabrica fabrica = Fabrica.getInstance();
-        ICP = fabrica.getIControladorProducto();
-        ocultar();
-        comboboxRestaurante();
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -91,41 +39,53 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Botonoes = new javax.swing.ButtonGroup();
         IngreseDatosCliente = new javax.swing.JLabel();
-        Descripcion = new javax.swing.JLabel();
-        Nombre = new javax.swing.JLabel();
-        Precio = new javax.swing.JLabel();
+        Restaurante = new javax.swing.JLabel();
+        SelectRestaurante = new javax.swing.JComboBox();
+        Individual = new javax.swing.JRadioButton();
+        Promocion = new javax.swing.JRadioButton();
         txtNombre = new javax.swing.JTextField();
         txtDescripcion = new javax.swing.JTextField();
         txtPrecio = new javax.swing.JTextField();
-        Cancelar = new javax.swing.JButton();
-        Registrar = new javax.swing.JButton();
         LabelImagen = new javax.swing.JLabel();
+        Nombre = new javax.swing.JLabel();
+        Descripcion = new javax.swing.JLabel();
+        Precio = new javax.swing.JLabel();
         SeleccionarImagen = new javax.swing.JButton();
-        Individual = new javax.swing.JRadioButton();
-        Promocion = new javax.swing.JRadioButton();
         Productos = new javax.swing.JComboBox();
         SeleccioneProducto = new javax.swing.JLabel();
         Cant = new javax.swing.JLabel();
-        Agregar = new javax.swing.JButton();
         Cantidad = new javax.swing.JSpinner();
-        Restaurante = new javax.swing.JLabel();
-        SelectRestaurante = new javax.swing.JComboBox();
+        Agregar = new javax.swing.JButton();
+        Activa = new javax.swing.JCheckBox();
         scrollProducto = new javax.swing.JScrollPane();
         tablaProducto = new javax.swing.JTable();
-        Activa = new javax.swing.JCheckBox();
+        Cancelar = new javax.swing.JButton();
+        Editar = new javax.swing.JButton();
 
-        setClosable(true);
-        setIconifiable(true);
+        IngreseDatosCliente.setText("Editar los siguientes datos:");
 
-        IngreseDatosCliente.setText("Ingrese los siguientes datos:");
+        Restaurante.setText("Restaurante:");
 
-        Descripcion.setText("Descripcion");
+        SelectRestaurante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SelectRestauranteActionPerformed(evt);
+            }
+        });
 
-        Nombre.setText("Nombre");
+        Individual.setText("Individual");
+        Individual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IndividualActionPerformed(evt);
+            }
+        });
 
-        Precio.setText("Precio");
+        Promocion.setText("Promocion");
+        Promocion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PromocionActionPerformed(evt);
+            }
+        });
 
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,43 +105,19 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
             }
         });
 
-        Cancelar.setText("Cancelar");
-        Cancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CancelarActionPerformed(evt);
-            }
-        });
-
-        Registrar.setText("Registrar");
-        Registrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegistrarActionPerformed(evt);
-            }
-        });
-
         LabelImagen.setText("Imagen");
         LabelImagen.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        Nombre.setText("Nombre");
+
+        Descripcion.setText("Descripcion");
+
+        Precio.setText("Precio");
 
         SeleccionarImagen.setText("Seleccionar Imagen");
         SeleccionarImagen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SeleccionarImagenActionPerformed(evt);
-            }
-        });
-
-        Botonoes.add(Individual);
-        Individual.setText("Individual");
-        Individual.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IndividualActionPerformed(evt);
-            }
-        });
-
-        Botonoes.add(Promocion);
-        Promocion.setText("Promocion");
-        Promocion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PromocionActionPerformed(evt);
             }
         });
 
@@ -195,6 +131,9 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
 
         Cant.setText("Cantidad");
 
+        Cantidad.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
+        Cantidad.setAutoscrolls(true);
+
         Agregar.setText("Agregar");
         Agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -202,14 +141,10 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
             }
         });
 
-        Cantidad.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
-        Cantidad.setAutoscrolls(true);
-
-        Restaurante.setText("Restaurante:");
-
-        SelectRestaurante.addActionListener(new java.awt.event.ActionListener() {
+        Activa.setText("Activa");
+        Activa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SelectRestauranteActionPerformed(evt);
+                ActivaActionPerformed(evt);
             }
         });
 
@@ -238,10 +173,17 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
         });
         scrollProducto.setViewportView(tablaProducto);
 
-        Activa.setText("Activa");
-        Activa.addActionListener(new java.awt.event.ActionListener() {
+        Cancelar.setText("Cancelar");
+        Cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ActivaActionPerformed(evt);
+                CancelarActionPerformed(evt);
+            }
+        });
+
+        Editar.setText("Editar");
+        Editar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditarActionPerformed(evt);
             }
         });
 
@@ -255,7 +197,7 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Cancelar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Registrar))
+                        .addComponent(Editar))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(scrollProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -265,7 +207,7 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
                             .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Precio, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(SeleccionarImagen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -351,12 +293,69 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Cancelar)
-                    .addComponent(Registrar))
-                .addContainerGap(42, Short.MAX_VALUE))
+                    .addComponent(Editar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void SelectRestauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectRestauranteActionPerformed
+        // TODO add your handling code here:
+        if(this.SelectRestaurante.getSelectedIndex() != -1){
+
+            this.Promocion.setVisible(true);
+            this.Individual.setVisible(true);
+
+        }
+    }//GEN-LAST:event_SelectRestauranteActionPerformed
+
+    private void IndividualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IndividualActionPerformed
+
+        this.txtNombre.setVisible(true);
+        this.txtDescripcion.setVisible(true);
+        this.txtPrecio.setVisible(true);
+        this.Nombre.setVisible(true);
+        this.Descripcion.setVisible(true);
+        this.Precio.setVisible(true);
+        this.LabelImagen.setVisible(true);
+        this.SeleccionarImagen.setVisible(true);
+        this.Editar.setVisible(true);
+    }//GEN-LAST:event_IndividualActionPerformed
+
+    private void PromocionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PromocionActionPerformed
+
+        this.Nombre.setVisible(true);
+        this.txtNombre.setVisible(true);
+        this.Descripcion.setVisible(true);
+        this.txtDescripcion.setVisible(true);
+        this.SeleccioneProducto.setVisible(true);
+        this.Productos.setVisible(true);
+        this.Cant.setVisible(true);
+        this.Cantidad.setVisible(true);
+        this.Agregar.setVisible(true);
+        this.tablaProducto.setVisible(true);
+        this.scrollProducto.setVisible(true);
+        this.Editar.setVisible(true);
+        this.Activa.setVisible(true);
+
+        //PARA CARGAR COMBOBOX DE PRDUCTOS
+        String nombreRestaurante=(String) SelectRestaurante.getSelectedItem();
+        ManejadorUsuario MU = ManejadorUsuario.getinstance();
+        Map ColeccionProducto = MU.getColeccionProductosRestaurantes(nombreRestaurante);
+        Iterator<Producto> itProducto = ColeccionProducto.values().iterator();
+        Producto prod=null;
+        //PARA QUE LA PRIMERA OPCION SEA EN BLANCO
+        String b=(String) Productos.getItemAt(0);
+        if(b==null){
+            while (itProducto.hasNext()) {
+                prod=itProducto.next();
+                if(prod.getClass().getSimpleName().equals("Individual")) {
+                    Productos.addItem(prod.getnombre());
+                }
+            }
+        }
+    }//GEN-LAST:event_PromocionActionPerformed
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
@@ -369,76 +368,7 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
     private void txtPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPrecioActionPerformed
-
-    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
-       
-        this.dispose();
-       
-    }//GEN-LAST:event_CancelarActionPerformed
-
-    private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
-        ManejadorProducto MP = ManejadorProducto.getinstance();
-
-        if(!this.Individual.isSelected() && (!this.Promocion.isSelected())){
-            JOptionPane.showMessageDialog(this,"Seleccione si el producto es individual o promocion","REGISTRO",JOptionPane.WARNING_MESSAGE);
-            Individual.requestFocus();
-        }
-        if(this.Promocion.isSelected()){
-            if(this.Productos.getSelectedIndex() == -1){
-                JOptionPane.showMessageDialog(this,"Seleccione algun producto","REGISTRO",JOptionPane.WARNING_MESSAGE);
-                txtNombre.requestFocus();
-            }else if(this.txtNombre.getText().equals("")){
-                JOptionPane.showMessageDialog(this,"Ingrese el nombre","REGISTRO",JOptionPane.WARNING_MESSAGE);
-                txtNombre.requestFocus();
-            }else if(this.txtDescripcion.getText().equals("")){
-                JOptionPane.showMessageDialog(this,"Ingrese descripcion","REGISTRO",JOptionPane.WARNING_MESSAGE);
-                txtDescripcion.requestFocus();
-            }
-            else {
-                String nombreRestaurante=(String) SelectRestaurante.getSelectedItem();
-                ManejadorUsuario MU = ManejadorUsuario.getinstance();
-                Restaurante rest = MU.findRestaurante(nombreRestaurante);
-                if (rest.verificarproducto(txtNombre.getText())){
-                    JOptionPane.showMessageDialog(this,"La Promocion ya existe","REGISTRO",JOptionPane.WARNING_MESSAGE);
-                    txtNombre.requestFocus();
-                }
-                else{
-                ICP.AltaProductoPromocion(rest,txtNombre.getText(),txtDescripcion.getText(), preciototal, Activa.isSelected(), 0, coleccionProductosAgregar);
-                JOptionPane.showMessageDialog(this,"Promocion ingresada con Exito","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
-                dispose();
-                }
-            }            
-        } 
-        else if (this.Individual.isSelected()) {
-            if(this.txtNombre.getText().equals("")){
-                JOptionPane.showMessageDialog(this,"Ingrese el nombre","REGISTRO",JOptionPane.WARNING_MESSAGE);
-                txtNombre.requestFocus();
-            }else if(this.txtDescripcion.getText().equals("")){
-                JOptionPane.showMessageDialog(this,"Ingrese descripcion","REGISTRO",JOptionPane.WARNING_MESSAGE);
-                txtDescripcion.requestFocus();
-            }else if(this.txtPrecio.getText().equals("")){
-                JOptionPane.showMessageDialog(this,"Ingrese el precio","REGISTRO",JOptionPane.WARNING_MESSAGE);
-                txtPrecio.requestFocus();
-            }else {
-                //(String) castea el valor seleccionado a tipo string 
-                String nombreRestaurante=(String) SelectRestaurante.getSelectedItem();
-                ManejadorUsuario MU = ManejadorUsuario.getinstance();
-                Restaurante rest = MU.findRestaurante(nombreRestaurante);
-                if (rest.verificarproducto(txtNombre.getText())){
-                    JOptionPane.showMessageDialog(this,"El Producto ya existe","REGISTRO",JOptionPane.WARNING_MESSAGE);
-                    txtNombre.requestFocus();
-                }
-                else{    
-                    double precio = Double.parseDouble(txtPrecio.getText());
-                    ICP.AltaProductoIndividual(rest,txtNombre.getText(),txtDescripcion.getText(),precio);
-                    JOptionPane.showMessageDialog(this,"Producto ingresado con Exito","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
-                    dispose();
-                }
-            }
-        }
-        
-    }//GEN-LAST:event_RegistrarActionPerformed
-
+    
     File fichero;
     private void SeleccionarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarImagenActionPerformed
         // TODO add your handling code here:
@@ -467,83 +397,22 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ProductosActionPerformed
 
-    private void IndividualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IndividualActionPerformed
-        
-        this.txtNombre.setVisible(true);
-        this.txtDescripcion.setVisible(true);
-        this.txtPrecio.setVisible(true);
-        this.Nombre.setVisible(true);
-        this.Descripcion.setVisible(true);
-        this.Precio.setVisible(true);
-        this.LabelImagen.setVisible(true);
-        this.SeleccionarImagen.setVisible(true);
-        this.Registrar.setVisible(true);
-    }//GEN-LAST:event_IndividualActionPerformed
-
-    private void PromocionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PromocionActionPerformed
-        
-        this.Nombre.setVisible(true);
-        this.txtNombre.setVisible(true);
-        this.Descripcion.setVisible(true);
-        this.txtDescripcion.setVisible(true);
-        this.SeleccioneProducto.setVisible(true);
-        this.Productos.setVisible(true);
-        this.Cant.setVisible(true);
-        this.Cantidad.setVisible(true);
-        this.Agregar.setVisible(true);
-        this.tablaProducto.setVisible(true);
-        this.scrollProducto.setVisible(true);
-        this.Registrar.setVisible(true);
-        this.Activa.setVisible(true);
-        
-         //PARA CARGAR COMBOBOX DE PRDUCTOS
-        String nombreRestaurante=(String) SelectRestaurante.getSelectedItem();
-        ManejadorUsuario MU = ManejadorUsuario.getinstance();  
-        Map ColeccionProducto = MU.getColeccionProductosRestaurantes(nombreRestaurante);
-        Iterator<Producto> itProducto = ColeccionProducto.values().iterator();
-            Producto prod=null;
-            //PARA QUE LA PRIMERA OPCION SEA EN BLANCO
-            String b=(String) Productos.getItemAt(0);
-            if(b==null){
-                while (itProducto.hasNext()) {
-                    prod=itProducto.next(); 
-                    if(prod.getClass().getSimpleName().equals("Individual")) {   
-                        Productos.addItem(prod.getnombre());  
-                    }
-                }
-            }    
-    }//GEN-LAST:event_PromocionActionPerformed
-
-    private void SelectRestauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectRestauranteActionPerformed
-        // TODO add your handling code here:
-        if(this.SelectRestaurante.getSelectedIndex() != -1){
-            
-            this.Promocion.setVisible(true);
-            this.Individual.setVisible(true);
-            
-        }
-    }//GEN-LAST:event_SelectRestauranteActionPerformed
-    int fila=0;
-    //VARIABLE GLOBAL PARA SUMAR LOS SUBTOTALES DE LA TABLA Y
-    //LUEGO PASARLO A LA FUNCION DE AGREGAR PROMO
-    double preciototal=0;
-    Map<String,Producto> coleccionProductosAgregar=new HashMap<String,Producto>();
     private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
         ManejadorUsuario MU= ManejadorUsuario.getinstance();
-        
+/*
         //AGREGAR FILAS A LA TABLA
         DefaultTableModel modelo= (DefaultTableModel) this.tablaProducto.getModel();
         int columna = modelo.getColumnCount();
         modelo.addRow(new Object[columna]);
         tablaProducto.setModel(modelo);
-            //OBTENGO NOM DE RESTAURANTE Y PRODUCTO
+        //OBTENGO NOM DE RESTAURANTE Y PRODUCTO
         String nombreRestaurante=(String) SelectRestaurante.getSelectedItem();
         String nombreProducto=(String) Productos.getSelectedItem();
         double precio=MU.buscarprecioproducto(nombreRestaurante,nombreProducto);
         //AGREGO VALORES A  LAS FILAS
         tablaProducto.setValueAt(Productos.getSelectedItem(), fila, 0);
         tablaProducto.setValueAt(Cantidad.getValue(), fila, 1);
-            //CALCULO EL TOTAL
+        //CALCULO EL TOTAL
         int cantidad=(int) Cantidad.getValue();
         double total=(precio * cantidad);
         tablaProducto.setValueAt(total, fila, 2);
@@ -551,22 +420,91 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
         preciototal=preciototal+total;
         Producto pro=MU.getProductoRestaurante(nombreRestaurante, nombreProducto);
         coleccionProductosAgregar.put(nombreProducto, pro);
-        fila++;     
+        fila++;
+        */
     }//GEN-LAST:event_AgregarActionPerformed
 
     private void ActivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActivaActionPerformed
-        
-// TODO add your handling code here:
+
+        // TODO add your handling code here:
     }//GEN-LAST:event_ActivaActionPerformed
-    
+
+    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_CancelarActionPerformed
+
+    private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
+      /*  ManejadorProducto MP = ManejadorProducto.getinstance();
+
+        if(!this.Individual.isSelected() && (!this.Promocion.isSelected())){
+            JOptionPane.showMessageDialog(this,"Seleccione si el producto es individual o promocion","REGISTRO",JOptionPane.WARNING_MESSAGE);
+            Individual.requestFocus();
+        }
+        if(this.Promocion.isSelected()){
+            if(this.Productos.getSelectedIndex() == -1){
+                JOptionPane.showMessageDialog(this,"Seleccione algun producto","REGISTRO",JOptionPane.WARNING_MESSAGE);
+                txtNombre.requestFocus();
+            }else if(this.txtNombre.getText().equals("")){
+                JOptionPane.showMessageDialog(this,"Ingrese el nombre","REGISTRO",JOptionPane.WARNING_MESSAGE);
+                txtNombre.requestFocus();
+            }else if(this.txtDescripcion.getText().equals("")){
+                JOptionPane.showMessageDialog(this,"Ingrese descripcion","REGISTRO",JOptionPane.WARNING_MESSAGE);
+                txtDescripcion.requestFocus();
+            }
+            else {
+                String nombreRestaurante=(String) SelectRestaurante.getSelectedItem();
+                ManejadorUsuario MU = ManejadorUsuario.getinstance();
+                Restaurante rest = MU.findRestaurante(nombreRestaurante);
+                if (rest.verificarproducto(txtNombre.getText())){
+                    JOptionPane.showMessageDialog(this,"La Promocion ya existe","REGISTRO",JOptionPane.WARNING_MESSAGE);
+                    txtNombre.requestFocus();
+                }
+                else{
+                    ICP.AltaProductoPromocion(rest,txtNombre.getText(),txtDescripcion.getText(), preciototal, Activa.isSelected(), 0, coleccionProductosAgregar);
+                    JOptionPane.showMessageDialog(this,"Promocion ingresada con Exito","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
+                    dispose();
+                }
+            }
+        }
+        else if (this.Individual.isSelected()) {
+            if(this.txtNombre.getText().equals("")){
+                JOptionPane.showMessageDialog(this,"Ingrese el nombre","REGISTRO",JOptionPane.WARNING_MESSAGE);
+                txtNombre.requestFocus();
+            }else if(this.txtDescripcion.getText().equals("")){
+                JOptionPane.showMessageDialog(this,"Ingrese descripcion","REGISTRO",JOptionPane.WARNING_MESSAGE);
+                txtDescripcion.requestFocus();
+            }else if(this.txtPrecio.getText().equals("")){
+                JOptionPane.showMessageDialog(this,"Ingrese el precio","REGISTRO",JOptionPane.WARNING_MESSAGE);
+                txtPrecio.requestFocus();
+            }else {
+                //(String) castea el valor seleccionado a tipo string
+                String nombreRestaurante=(String) SelectRestaurante.getSelectedItem();
+                ManejadorUsuario MU = ManejadorUsuario.getinstance();
+                Restaurante rest = MU.findRestaurante(nombreRestaurante);
+                if (rest.verificarproducto(txtNombre.getText())){
+                    JOptionPane.showMessageDialog(this,"El Producto ya existe","REGISTRO",JOptionPane.WARNING_MESSAGE);
+                    txtNombre.requestFocus();
+                }
+                else{
+                    double precio = Double.parseDouble(txtPrecio.getText());
+                    ICP.AltaProductoIndividual(rest,txtNombre.getText(),txtDescripcion.getText(),precio);
+                    JOptionPane.showMessageDialog(this,"Producto ingresado con Exito","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
+                    dispose();
+                }
+            }
+        }*/
+
+    }//GEN-LAST:event_EditarActionPerformed
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox Activa;
     public javax.swing.JButton Agregar;
-    private javax.swing.ButtonGroup Botonoes;
     private javax.swing.JButton Cancelar;
     public javax.swing.JLabel Cant;
     public javax.swing.JSpinner Cantidad;
     public javax.swing.JLabel Descripcion;
+    public javax.swing.JButton Editar;
     public javax.swing.JRadioButton Individual;
     private javax.swing.JLabel IngreseDatosCliente;
     public javax.swing.JLabel LabelImagen;
@@ -574,7 +512,6 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
     public javax.swing.JLabel Precio;
     public javax.swing.JComboBox Productos;
     public javax.swing.JRadioButton Promocion;
-    public javax.swing.JButton Registrar;
     private javax.swing.JLabel Restaurante;
     public javax.swing.JButton SeleccionarImagen;
     public javax.swing.JLabel SeleccioneProducto;

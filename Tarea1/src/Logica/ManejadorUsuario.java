@@ -100,8 +100,7 @@ public class ManejadorUsuario {
                     resultado=res.getProductos();
                 }
             }
-                
-               
+             
         }
         return resultado;
    }
