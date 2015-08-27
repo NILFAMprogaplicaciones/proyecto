@@ -48,6 +48,6 @@ public class DataUsuario {
         return fecha;   
     }
     public Icon getFoto(){
-        return foto.
+        return foto;
     }
 }
