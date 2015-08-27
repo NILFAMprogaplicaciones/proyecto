@@ -12,6 +12,7 @@ public class DataUsuario {
     private Fecha  fecha_nacimiento;
     private Icon   foto;
     
+    
     public DataUsuario(String nombre, String nickname, String correo, String direccion,String apellido, Fecha fecha_nacimiento, Icon foto){
         this.nombre=nombre;
         this.nickname=nickname;
