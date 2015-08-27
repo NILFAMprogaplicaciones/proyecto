@@ -76,7 +76,7 @@ public class InfoCliente extends javax.swing.JInternalFrame {
         txtNombre = new javax.swing.JTextField();
         ver = new javax.swing.JButton();
         txtFecha = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        Foto = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -164,8 +164,8 @@ public class InfoCliente extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel1.setText("IMAGEN");
-        jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Foto.setText("IMAGEN");
+        Foto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -206,7 +206,7 @@ public class InfoCliente extends javax.swing.JInternalFrame {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(79, 79, 79)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(28, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -216,7 +216,7 @@ public class InfoCliente extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ver, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(IngreseDatosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -295,6 +295,7 @@ public class InfoCliente extends javax.swing.JInternalFrame {
             this.txtApellido.setText(du.getapellido());
             this.txtDireccion.setText(du.getdireccion());
             this.txtFecha.setText(du.getfechastring());
+            this.Foto.setIcon(du.getFoto());
         }
     }//GEN-LAST:event_verActionPerformed
 
@@ -304,10 +305,10 @@ public class InfoCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel CorreoElectronico;
     public javax.swing.JLabel Direccion;
     public javax.swing.JLabel FechaNacimiento;
+    private javax.swing.JLabel Foto;
     public javax.swing.JLabel IngreseDatosCliente;
     private javax.swing.JLabel Nickname;
     public javax.swing.JLabel Nombre;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable listadeclientes;
     private javax.swing.JButton listo;

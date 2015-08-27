@@ -2,12 +2,13 @@
 package Logica;
 
 import java.util.Map;
+import javax.swing.Icon;
 
 
 public interface IControladorUsuario {
     
     public abstract void Caso_Registro_Cliente(String nombre,String nickname, String correo,  
-            String direccion, String apellido, Fecha fecha);
+            String direccion, String apellido, Fecha fecha,Icon foto);
     
     
     

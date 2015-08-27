@@ -296,6 +296,8 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_CancelarActionPerformed
 
     File fichero;
+    ImageIcon icon;
+    Icon icono;
     private void SeleccionarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarImagenActionPerformed
         
         
@@ -309,8 +311,8 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
         if (JFileChooser.APPROVE_OPTION == resultado){
             fichero = ventana.FileChooser.getSelectedFile();
             try{
-                ImageIcon icon = new ImageIcon(fichero.toString());
-                Icon icono = new ImageIcon(icon.getImage().getScaledInstance(LabelImagen.getWidth(), LabelImagen.getHeight(), Image.SCALE_DEFAULT));
+                icon = new ImageIcon(fichero.toString());
+                icono = new ImageIcon(icon.getImage().getScaledInstance(LabelImagen.getWidth(), LabelImagen.getHeight(), Image.SCALE_DEFAULT));
                 LabelImagen.setText(null);
                 LabelImagen.setIcon( icono );
                 //JOptionPane.showMessageDialog(null, fichero.toString());
@@ -383,7 +385,7 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
 
                     ICU.Caso_Registro_Cliente(this.txtNombre.getText(), this.txtNickname.getText(),
                         this.txtCorreoElectronico.getText(), this.txtDireccion.getText(),
-                        this.txtApellido.getText(), fecha);
+                        this.txtApellido.getText(), fecha,this.LabelImagen.getIcon());
 
                     //NO LIMPIO NADA YA QUE CADA VES QUE LLAMO EL INTERNAL REALIZO UN NEW    
                     this.dispose();

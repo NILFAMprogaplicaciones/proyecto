@@ -5,14 +5,15 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import javax.swing.*;
-
+import javax.swing.Icon;
+        
 public class ControladorUsuario implements IControladorUsuario  {
     
     
     
-    public void Caso_Registro_Cliente(String nombre, String nickname, String correo,  String direccion, String apellido, Fecha fecha){
+    public void Caso_Registro_Cliente(String nombre, String nickname, String correo,  String direccion, String apellido, Fecha fecha,Icon foto){
         ManejadorUsuario mc=ManejadorUsuario.getinstance();
-        Cliente c=new Cliente( nickname,correo,nombre,direccion,apellido,fecha);
+        Cliente c=new Cliente(nickname,correo,nombre,direccion,apellido,fecha,foto);
         mc.addUsuario(nickname,c);
         JOptionPane.showMessageDialog(null,"Cliente Registrado","REGISTRO",JOptionPane.INFORMATION_MESSAGE);            
     
@@ -20,7 +21,7 @@ public class ControladorUsuario implements IControladorUsuario  {
     public DataUsuario Caso_Ver_Cliente(String nickname){
         ManejadorUsuario mc=ManejadorUsuario.getinstance();
         Cliente c= mc.findCliente(nickname);
-        DataUsuario du=new DataUsuario(c.getnombre(),c.getnickname(),c.getcorreo(),c.getdireccion(),c.getapellido(),c.getfecha());
+        DataUsuario du=new DataUsuario(c.getnombre(),c.getnickname(),c.getcorreo(),c.getdireccion(),c.getapellido(),c.getfecha(),c.getFoto());
         return du;
     }
     
