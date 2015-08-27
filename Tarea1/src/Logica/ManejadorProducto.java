@@ -38,5 +38,14 @@ public class ManejadorProducto {
     public void addProductoPromocion(String nombre, Promocion prod) {
         ColeccionProducto.put(nombre,prod);
     }
+    public int cantidadProductos(){
+        return ColeccionProducto.size();
+    }
+    public Map getColeccion(){
+        return ColeccionProducto;
+    }
     
+    public Individual findIndividual(String nombre){
+        return ((Individual)ColeccionProducto.get(nombre));
+    }
 }

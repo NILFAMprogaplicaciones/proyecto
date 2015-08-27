@@ -1,6 +1,8 @@
 
 package Logica;
 
+import javax.swing.Icon;
+
 public class DataUsuario {
     private String nombre;
     private String nickname;
@@ -8,14 +10,17 @@ public class DataUsuario {
     private String direccion;
     private String apellido;
     private Fecha  fecha_nacimiento;
+    private Icon   foto;
     
-    public DataUsuario(String nombre, String nickname, String correo, String direccion,String apellido, Fecha fecha_nacimiento){
+    
+    public DataUsuario(String nombre, String nickname, String correo, String direccion,String apellido, Fecha fecha_nacimiento, Icon foto){
         this.nombre=nombre;
         this.nickname=nickname;
         this.correo=correo;
         this.direccion=direccion;
         this.apellido=apellido;
         this.fecha_nacimiento=fecha_nacimiento;
+        this.foto=foto;
     }
     
     public String getnombre(){
@@ -43,5 +48,7 @@ public class DataUsuario {
         String fecha=Integer.toString(dia)+"/"+Integer.toString(mes)+"/"+Integer.toString(año);
         return fecha;   
     }
-    
+    public Icon getFoto(){
+        return foto;
+    }
 }

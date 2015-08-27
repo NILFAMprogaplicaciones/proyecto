@@ -60,7 +60,6 @@ public class Ventana extends javax.swing.JFrame {
         setTitle("Quick Order");
         setBackground(new java.awt.Color(51, 255, 204));
         setIconImages(null);
-        setLocation(new java.awt.Point(500, 200));
 
         Inicio.setText("Inicio");
         jMenuBar2.add(Inicio);
@@ -129,6 +128,11 @@ public class Ventana extends javax.swing.JFrame {
         Informacion.add(restaurante);
 
         producto.setText("Producto");
+        producto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                productoActionPerformed(evt);
+            }
+        });
         Informacion.add(producto);
 
         jMenuBar2.add(Informacion);
@@ -219,6 +223,14 @@ public class Ventana extends javax.swing.JFrame {
             generarpedido.show();
         }
     }//GEN-LAST:event_GenPedidoActionPerformed
+
+    private void productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productoActionPerformed
+        infoProducto verProducto = new infoProducto();          
+        this.jDesktopPane1.add(verProducto);
+        verProducto.show();
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_productoActionPerformed
 
     /**
      * @param args the command line arguments
