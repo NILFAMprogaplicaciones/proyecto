@@ -505,9 +505,11 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
             String b=(String) Productos.getItemAt(0);
             if(b==null){
                 while (itProducto.hasNext()) {
-                    prod=itProducto.next();
-                    Productos.addItem(prod.getnombre());  
-                }
+                   prod=itProducto.next(); 
+                   if(prod.getClass().getSimpleName().equals("Individual")) {   
+                       Productos.addItem(prod.getnombre());  
+                   }
+               }
             } 
     }//GEN-LAST:event_PromocionActionPerformed
 
