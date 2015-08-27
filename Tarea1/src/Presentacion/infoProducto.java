@@ -218,9 +218,8 @@ public class infoProducto extends javax.swing.JInternalFrame {
             this.txtNombreProd.setText(di.getNombre());
             double precio = di.getPrecio();
             String precioString = Double.toString(precio);
-            
-            this.txtDescripcion.setText(precioString);
-            //this.txtPrecio.setText(di.getPrecio());
+            this.txtPrecio.setText(precioString);
+            this.txtDescripcion.setText(di.getDescripcion());
         }
     }//GEN-LAST:event_verActionPerformed
 
