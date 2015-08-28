@@ -76,7 +76,6 @@ public class ManejadorUsuario {
    }
    
    public Map getColeccionRestaurante() {
-       ColeccionUsuarios.
        new String("Restaurante"); 
        Integer indice=0;
         Map<Integer,Usuario> ColeccionRest = new HashMap<Integer,Usuario>();
