@@ -1,19 +1,20 @@
 
 package Logica;
 
+import java.io.File;
 import javax.swing.Icon;
 
-public class DataUsuario {
+public class DataCliente {
     private String nombre;
     private String nickname;
     private String correo;
     private String direccion;
     private String apellido;
     private Fecha  fecha_nacimiento;
-    private Icon   foto;
+    private File   foto;
     
     
-    public DataUsuario(String nombre, String nickname, String correo, String direccion,String apellido, Fecha fecha_nacimiento, Icon foto){
+    public DataCliente(String nombre, String nickname, String correo, String direccion,String apellido, Fecha fecha_nacimiento, File foto){
         this.nombre=nombre;
         this.nickname=nickname;
         this.correo=correo;
@@ -48,7 +49,7 @@ public class DataUsuario {
         String fecha=Integer.toString(dia)+"/"+Integer.toString(mes)+"/"+Integer.toString(año);
         return fecha;   
     }
-    public Icon getFoto(){
+    public File getFoto(){
         return foto;
     }
 }

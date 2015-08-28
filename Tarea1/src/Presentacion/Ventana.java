@@ -1,7 +1,7 @@
 package Presentacion;
 
 import Logica.Categoria;
-import Logica.DataUsuario;
+import Logica.DataCliente;
 import Logica.ControladorUsuario;
 import Logica.Fabrica;
 import Logica.Fecha;

@@ -8,13 +8,13 @@ import javax.swing.Icon;
 public class Cliente extends Usuario{
     private String apellido;
     private Fecha  fecha_nacimiento;
-    private Icon   foto;
+    private File   foto;
     
-    public Cliente( String nickname, String correo, String nombre,String direccion, String apellido, Fecha fecha_nacimiento,Icon foto){
-        super(nickname,correo,nombre,direccion);
-        this.apellido=apellido;
-        this.fecha_nacimiento=fecha_nacimiento;
-        //this.foto=foto;
+    public Cliente( DataCliente datacliente){
+        super(datacliente.getnickname(),datacliente.getcorreo(),datacliente.getnombre(),datacliente.getdireccion());
+        this.apellido=datacliente.getapellido();
+        this.fecha_nacimiento=datacliente.getfecha();
+        this.foto=datacliente.getFoto();
     }
     public String getapellido(){
         return apellido;
@@ -22,7 +22,7 @@ public class Cliente extends Usuario{
     public Fecha getfecha(){
         return fecha_nacimiento;
     }
-    public Icon getFoto(){
+    public File getFoto(){
         return foto;
     }
     public void setapellido(String apellido){

@@ -6,6 +6,8 @@
 package Presentacion;
 
 import Logica.Categoria;
+import Logica.DataIndividual;
+import Logica.DataPromocion;
 import Logica.Fabrica;
 import Logica.IControladorPedido;
 import Logica.IControladorProducto;
@@ -403,9 +405,14 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
                     txtNombre.requestFocus();
                 }
                 else{
-                ICP.AltaProductoPromocion(rest,txtNombre.getText(),txtDescripcion.getText(), preciototal, Activa.isSelected(), 0, coleccionProductosAgregar);
-                JOptionPane.showMessageDialog(this,"Promocion ingresada con Exito","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
-                dispose();
+                    
+                    DataPromocion datapromocion=new DataPromocion(rest,txtNombre.getText(),txtDescripcion.getText(), preciototal, 
+                            Activa.isSelected(), 0, coleccionProductosAgregar);
+                    
+                    ICP.AltaProductoPromocion(datapromocion);
+                    
+                    JOptionPane.showMessageDialog(this,"Promocion ingresada con Exito","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
+                    dispose();
                 }
             }            
         } 
@@ -429,8 +436,13 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
                     txtNombre.requestFocus();
                 }
                 else{    
+                    
                     double precio = Double.parseDouble(txtPrecio.getText());
-                    ICP.AltaProductoIndividual(rest,txtNombre.getText(),txtDescripcion.getText(),precio);
+                    
+                    DataIndividual dataindividual=new DataIndividual(txtNombre.getText(),txtDescripcion.getText(),rest,precio);
+                    
+                    ICP.AltaProductoIndividual(dataindividual);
+                    
                     JOptionPane.showMessageDialog(this,"Producto ingresado con Exito","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
                     dispose();
                 }

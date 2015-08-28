@@ -33,7 +33,7 @@ public class ManejadorCategoria {
         int a;
         return a=ColeccionCategoria.size();
     }
-    public void agregarrestaurante(String nombrecategoria,String nickname,Restaurante restaurante){
+    /*public void agregarrestaurante(String nombrecategoria,String nickname,Restaurante restaurante){
      Iterator<Categoria> it = ColeccionCategoria.values().iterator();
         Categoria objeto=null;
         while(it.hasNext()){
@@ -43,5 +43,5 @@ public class ManejadorCategoria {
                ColeccionCategoria.put(nombrecategoria, objeto);
             }  
         }    
-    }
+    }*/
 }
