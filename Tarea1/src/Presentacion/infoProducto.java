@@ -26,7 +26,7 @@ public class infoProducto extends javax.swing.JInternalFrame {
      */
     public infoProducto() {
         initComponents();
-         Fabrica fabrica = Fabrica.getInstance();
+        Fabrica fabrica = Fabrica.getInstance();
         ICP = fabrica.getIControladorProducto();
         tablaProducto();
     }
@@ -79,6 +79,7 @@ public class infoProducto extends javax.swing.JInternalFrame {
         txtPrecio = new javax.swing.JTextField();
         IngreseDatosCliente1 = new javax.swing.JLabel();
         editar = new javax.swing.JButton();
+        actualizar = new javax.swing.JButton();
 
         IngreseDatosCliente.setText("Informacion de cliente");
 
@@ -150,16 +151,17 @@ public class infoProducto extends javax.swing.JInternalFrame {
             }
         });
 
+        actualizar.setText("Actualizar");
+        actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(IngreseDatosCliente1)
-                .addGap(74, 74, 74)
-                .addComponent(editar)
-                .addGap(45, 45, 45))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -181,7 +183,18 @@ public class infoProducto extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(5, 12, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(IngreseDatosCliente1)
+                        .addGap(74, 74, 74)
+                        .addComponent(editar)
+                        .addGap(45, 45, 45))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(actualizar)
+                        .addGap(219, 219, 219))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,13 +222,18 @@ public class infoProducto extends javax.swing.JInternalFrame {
                             .addComponent(precio)
                             .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(165, 165, 165))
+                .addGap(18, 18, 18)
+                .addComponent(actualizar)
+                .addGap(119, 119, 119))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void verActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verActionPerformed
+        this.txtDescripcion.setEditable(false);
+        this.txtNombreProd.setEditable(false);
+        this.txtPrecio.setEditable(false);
         //TOMO LA FILA DE LA QUE SELECCIONO EL VALOR
         int fila = this.listadeproductos.getSelectedRow();
 
@@ -248,8 +266,17 @@ public class infoProducto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtPrecioActionPerformed
 
     private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
+        this.txtDescripcion.setEditable(true);
+        this.txtNombreProd.setEditable(true);
+        this.txtPrecio.setEditable(true);
         // TODO add your handling code here:    
     }//GEN-LAST:event_editarActionPerformed
+
+    private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
+        double precio = Double.parseDouble(txtPrecio.getText());
+        ICP.Caso_Editar_Individual(this.txtNombreProd.getText(),this.txtDescripcion.getText(),precio);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_actualizarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -257,6 +284,7 @@ public class infoProducto extends javax.swing.JInternalFrame {
     public javax.swing.JLabel IngreseDatosCliente;
     public javax.swing.JLabel IngreseDatosCliente1;
     private javax.swing.JLabel NombreProd;
+    private javax.swing.JButton actualizar;
     private javax.swing.JButton editar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

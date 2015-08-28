@@ -2,7 +2,7 @@
 package Logica;
 
 
-public class Producto {
+/*abstract*/ public class Producto {
     private String nombre;
     private String descripcion;
     private Restaurante restaurante;
@@ -29,12 +29,24 @@ public class Producto {
     public String nombreRestaurante(){
         return this.restaurante.getnickname();
     }
-    
-    public void setnombre(String nombre){
+    public void setNombre(String nombre){
         this.nombre=nombre;
     }
-    public void setdescripcion(String descripcion){
-        this.descripcion=descripcion;
-    }
- 
+    public void setDescripcion(String nombre){
+        this.descripcion=nombre;
+    } 
+    public void setRestaurante(Restaurante res){
+        this.restaurante=res;
+    }/*
+    public void setNombre(String nombre){
+        this.nombre=nombre;
+    }abstract public void setnombre(String nombre);//{
+        //this.nombre=nombre;
+    //}
+    abstract public void setdescripcion(String descripcion);//{
+        //this.descripcion=descripcion;
+   // }
+    abstract public void setprecio(double precio);
+    */
+    
 }

@@ -26,6 +26,7 @@ public class ManejadorUsuario {
     //FUNCIONES DE COLECCION USUARIOS
     public void addUsuario(String nickname, Usuario usuario){
         ColeccionUsuarios.put(nickname, usuario);
+        
     }
     public Cliente findCliente(String nickname){
         return ((Cliente)ColeccionUsuarios.get(nickname));
@@ -44,6 +45,7 @@ public class ManejadorUsuario {
         Usuario objeto=null;
         while(it.hasNext()){
             objeto=it.next();
+            
             if(objeto.getcorreo()==correo)
                 return true;
         }
@@ -74,6 +76,7 @@ public class ManejadorUsuario {
    }
    
    public Map getColeccionRestaurante() {
+       ColeccionUsuarios.
        new String("Restaurante"); 
        Integer indice=0;
         Map<Integer,Usuario> ColeccionRest = new HashMap<Integer,Usuario>();

@@ -9,6 +9,8 @@ public class Promocion extends Producto {
     private boolean activa;
     private double  descuento;
     private double  precioTotal;
+    /*private String descripcion;
+    private String nombre;*/
     private Map<String,Producto>     ColeccionProducto=new HashMap<String,Producto>();
     
     public Promocion(Restaurante res,String nombre, String descripcion, double precioTotal, boolean activa, double descuento, Map coleccionProducto){
@@ -39,5 +41,16 @@ public class Promocion extends Producto {
     public void setdescuento(double descuento){
         this.descuento=descuento;
     }
-        
+    public void setprecio(double precio){
+       this.precioTotal = precio;
+    }
+  /*
+    public void setnombre(String nombre){
+      //setnombre(nombre);
+        this.nombre=nombre;
+    }
+    
+    public void setdescripcion(String descripcion){
+      this.descripcion=descripcion;
+    }*/
 }
