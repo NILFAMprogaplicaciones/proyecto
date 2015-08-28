@@ -11,32 +11,26 @@ public class ControladorUsuario implements IControladorUsuario  {
     
     
     
-    public void Caso_Registro_Cliente(String nombre, String nickname, String correo,  String direccion, String apellido, Fecha fecha,Icon foto){
+    public void Caso_Registro_Cliente(DataCliente datacliente){
         ManejadorUsuario mc=ManejadorUsuario.getinstance();
-        Cliente c=new Cliente(nickname,correo,nombre,direccion,apellido,fecha,foto);
-        mc.addUsuario(nickname,c);
+        Cliente c=new Cliente(datacliente);
+        mc.addUsuario(datacliente.getnickname(),c);
         JOptionPane.showMessageDialog(null,"Cliente Registrado","REGISTRO",JOptionPane.INFORMATION_MESSAGE);            
     
     }
-    public DataUsuario Caso_Ver_Cliente(String nickname){
+    public DataCliente Caso_Ver_Cliente(String nickname){
         ManejadorUsuario mc=ManejadorUsuario.getinstance();
         Cliente c= mc.findCliente(nickname);
-        DataUsuario du=new DataUsuario(c.getnombre(),c.getnickname(),c.getcorreo(),c.getdireccion(),c.getapellido(),c.getfecha(),c.getFoto());
+        DataCliente du=new DataCliente(c.getnombre(),c.getnickname(),c.getcorreo(),c.getdireccion(),c.getapellido(),c.getfecha(),c.getFoto());
         return du;
     }
     
-    public void Caso_Registro_Restaurante(String nickname,String correo, String nombre,  String direccion, Map categoria){
+    public void Caso_Registro_Restaurante(DataRestaurante datarestaurante){
         ManejadorUsuario mu=ManejadorUsuario.getinstance();
         ManejadorCategoria mc=ManejadorCategoria.getinstance();
         
-        Restaurante res=new Restaurante(nickname,correo,nombre,direccion,categoria);
-        mu.addUsuario(nickname, res);
-        Iterator<Categoria> it = categoria.values().iterator();
-        Categoria objeto=null;
-        while(it.hasNext()){
-            objeto=it.next();
-            mc.agregarrestaurante(objeto.getnombre(), nickname, res);
-        }
+        Restaurante res=new Restaurante(datarestaurante);
+        mu.addUsuario(datarestaurante.getnickname(), res);
         JOptionPane.showMessageDialog(null,"Restaurante Registrado","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
     }
     public void Caso_Ver_Restaurante(String nickname, String correo){

@@ -18,15 +18,10 @@ public class Restaurante extends Usuario {
     private Map<String,Producto> ColeccionProducto = new HashMap<String,Producto>();
     private File imagen;
     
-    public  Map getProductos(){
-        return this.ColeccionProducto;
-    }
-    public void addProducto(Producto prod){
-        this.ColeccionProducto.put(prod.getnombre(), prod);
-    }
-    public Restaurante(String nickname, String correo, String nombre, String direccion, Map categoria){
-        super(nickname, correo, nombre, direccion);
-        this.ColeccionCategoria.putAll(categoria);
+    
+    public Restaurante(DataRestaurante datarestaurante){
+        super(datarestaurante.getnickname(), datarestaurante.getcorreo(), datarestaurante.getnombre(),datarestaurante.getdireccion());
+        this.ColeccionCategoria.putAll(datarestaurante.getColeccionCategoria());
     }
     public double buscarprecio(String nombreproducto){
         double precio=0;
@@ -54,7 +49,6 @@ public class Restaurante extends Usuario {
                    
                    return objeto;
                 }
-            
         }
         return objeto;
     }
@@ -70,6 +64,12 @@ public class Restaurante extends Usuario {
             
         }
         return resultado;
+    }
+    public  Map getProductos(){
+        return this.ColeccionProducto;
+    }
+    public void addProducto(Producto prod){
+        this.ColeccionProducto.put(prod.getnombre(), prod);
     }
 
 }

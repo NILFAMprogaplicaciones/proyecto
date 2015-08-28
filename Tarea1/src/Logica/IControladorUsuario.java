@@ -7,17 +7,15 @@ import javax.swing.Icon;
 
 public interface IControladorUsuario {
     
-    public abstract void Caso_Registro_Cliente(String nombre,String nickname, String correo,  
-            String direccion, String apellido, Fecha fecha,Icon foto);
+    public abstract void Caso_Registro_Cliente(DataCliente datacliente);
     
     
     
-    public abstract void Caso_Registro_Restaurante(String nickname, String correo, String nombre, 
-            String direccion, Map categoria);
+    public abstract void Caso_Registro_Restaurante(DataRestaurante datarestaurante);
     
     
     
-    public abstract DataUsuario Caso_Ver_Cliente(String nickname);
+    public abstract DataCliente Caso_Ver_Cliente(String nickname);
     
     
     

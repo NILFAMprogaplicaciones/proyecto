@@ -6,6 +6,7 @@
 package Presentacion;
 
 import Logica.Categoria;
+import Logica.DataRestaurante;
 import Logica.Fabrica;
 import java.awt.Image;
 import java.io.File;
@@ -324,8 +325,9 @@ File fichero;
                 this.refrescarcoleccion.requestFocus();
             }
             else{
-                ICU.Caso_Registro_Restaurante(this.txtNickname.getText(),this.txtCorreoElectronico.getText(), 
+                DataRestaurante datarestaurante=new DataRestaurante(this.txtNickname.getText(),this.txtCorreoElectronico.getText(), 
                         this.txtNombre.getText(),this.txtDireccion.getText(),coleccion);
+                ICU.Caso_Registro_Restaurante(datarestaurante);
                 
                 //NO LIMPIO NADA YA QUE CADA VES QUE LLAMO EL INTERNAL REALIZO UN NEW
                 this.dispose();                

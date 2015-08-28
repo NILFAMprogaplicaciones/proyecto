@@ -5,15 +5,19 @@
  */
 package Presentacion;
 
-import Logica.DataUsuario;
+import Logica.DataCliente;
 import Logica.Fabrica;
 import Logica.IControladorPedido;
 import Logica.IControladorProducto;
 import Logica.IControladorUsuario;
 import Logica.ManejadorUsuario;
 import Logica.Usuario;
+import java.awt.Image;
+import java.io.File;
 import java.util.Iterator;
 import java.util.Map;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -288,14 +292,21 @@ public class InfoCliente extends javax.swing.JInternalFrame {
         else{
             String nickname=(String)this.listadeclientes.getValueAt(fila, 0);
             //MUESTRO EL CLIENTE
-            DataUsuario du=ICU.Caso_Ver_Cliente(nickname);
+            DataCliente du=ICU.Caso_Ver_Cliente(nickname);
             this.txtNickname.setText(du.getnickname());
             this.txtCorreoElectronico.setText(du.getcorreo());
             this.txtNombre.setText(du.getnombre());
             this.txtApellido.setText(du.getapellido());
             this.txtDireccion.setText(du.getdireccion());
             this.txtFecha.setText(du.getfechastring());
-            this.Foto.setIcon(du.getFoto());
+            //APARTIR DE ACA TODO EL CODIGO ES PARA CARGAR FOTO, CON UN FILE
+            File fichero=du.getFoto();
+            ImageIcon icon;
+            Icon icono;
+            icon = new ImageIcon(fichero.toString());
+            icono = new ImageIcon(icon.getImage().getScaledInstance(Foto.getWidth(), Foto.getHeight(), Image.SCALE_DEFAULT));
+            Foto.setText(null);
+            Foto.setIcon( icono );
         }
     }//GEN-LAST:event_verActionPerformed
 

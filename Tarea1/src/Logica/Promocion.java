@@ -11,13 +11,13 @@ public class Promocion extends Producto {
     private double  precioTotal;
     private Map<String,Producto>     ColeccionProducto=new HashMap<String,Producto>();
     
-    public Promocion(Restaurante res,String nombre, String descripcion, double precioTotal, boolean activa, double descuento, Map coleccionProducto){
-        super(nombre, descripcion,res);
-        this.activa=activa;
-        this.descuento=descuento;
-        this.precioTotal=precioTotal;
+    public Promocion(DataPromocion datapromocion){
+        super(datapromocion.getNombre(),datapromocion.getDescripcion(),datapromocion.getRestaurante());
+        this.activa=datapromocion.getActiva();
+        this.descuento=datapromocion.getDescuento();
+        this.precioTotal=datapromocion.getPrecioTotal();
         //copia una coleccion entera de una a otra
-        this.ColeccionProducto.putAll(coleccionProducto);
+        this.ColeccionProducto.putAll(datapromocion.getColeccionProducto());
     
     }
     
