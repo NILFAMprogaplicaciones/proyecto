@@ -299,7 +299,7 @@ public class InfoCliente extends javax.swing.JInternalFrame {
             this.txtApellido.setText(du.getapellido());
             this.txtDireccion.setText(du.getdireccion());
             this.txtFecha.setText(du.getfechastring());
-            //APARTIR DE ACA TODO EL CODIGO ES PARA CARGAR FOTO
+            //APARTIR DE ACA TODO EL CODIGO ES PARA CARGAR FOTO, CON UN FILE
             File fichero=du.getFoto();
             ImageIcon icon;
             Icon icono;
