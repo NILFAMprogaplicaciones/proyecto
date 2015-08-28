@@ -33,15 +33,5 @@ public class ManejadorCategoria {
         int a;
         return a=ColeccionCategoria.size();
     }
-    /*public void agregarrestaurante(String nombrecategoria,String nickname,Restaurante restaurante){
-     Iterator<Categoria> it = ColeccionCategoria.values().iterator();
-        Categoria objeto=null;
-        while(it.hasNext()){
-            objeto=it.next();
-            if(objeto.getnombre()==nombrecategoria){
-               objeto.setColeccionRestaurante(nickname, restaurante);
-               ColeccionCategoria.put(nombrecategoria, objeto);
-            }  
-        }    
-    }*/
+    
 }

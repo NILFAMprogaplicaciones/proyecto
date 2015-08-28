@@ -11,18 +11,21 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 public class Restaurante extends Usuario {
     
     private Map<String,Categoria> ColeccionCategoria = new HashMap<String,Categoria>();
     private Map<String,Producto> ColeccionProducto = new HashMap<String,Producto>();
-    private File imagen;
+    private Map<Integer,File> ColeccionImagenes = new TreeMap<Integer,File>();
     
     
     public Restaurante(DataRestaurante datarestaurante){
         super(datarestaurante.getnickname(), datarestaurante.getcorreo(), datarestaurante.getnombre(),datarestaurante.getdireccion());
         this.ColeccionCategoria.putAll(datarestaurante.getColeccionCategoria());
+        this.ColeccionImagenes.putAll(datarestaurante.getColeccionImagenes());
     }
+    
     public double buscarprecio(String nombreproducto){
         double precio=0;
         Iterator<Producto> it = ColeccionProducto.values().iterator();
@@ -70,6 +73,22 @@ public class Restaurante extends Usuario {
     }
     public void addProducto(Producto prod){
         this.ColeccionProducto.put(prod.getnombre(), prod);
+    }
+    public int getCantidadDeImagenes(){
+        return ColeccionImagenes.size();
+    }
+    public boolean ExisteCategoria(String nombrecategoria){
+        boolean resultado=false;
+        Iterator<Categoria> it = ColeccionCategoria.values().iterator();
+        Categoria objeto=null;
+        while(it.hasNext()){
+            objeto=it.next();
+            if(objeto.getnombre().equals(nombrecategoria)){
+                resultado=true;
+            }
+            
+        }
+        return resultado;   
     }
 
 }

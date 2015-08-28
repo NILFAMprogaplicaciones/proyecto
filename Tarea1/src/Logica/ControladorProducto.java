@@ -26,7 +26,7 @@ public class ControladorProducto implements IControladorProducto {
     public DataIndividual Caso_Ver_Individual(String nombre){
         ManejadorProducto mp = ManejadorProducto.getinstance();
         Individual i= mp.findIndividual(nombre);
-        DataIndividual di = new DataIndividual(i.getnombre(),i.getdescripcion(),i.getRestaurante(),i.getPrecio());
+        DataIndividual di = new DataIndividual(i.getnombre(),i.getdescripcion(),i.getRestaurante(),i.getPrecio(),i.getImagen());
         return di;
     }
          

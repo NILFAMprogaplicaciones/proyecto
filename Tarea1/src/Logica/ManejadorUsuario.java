@@ -53,8 +53,6 @@ public class ManejadorUsuario {
         int size;
         return size=ColeccionUsuarios.size();
     }
-    
-
     public int CantClientes(){
         int cantidad=0;
         Iterator<Usuario> it = ColeccionUsuarios.values().iterator();
@@ -69,13 +67,12 @@ public class ManejadorUsuario {
         return cantidad;
     }
     public Map obtenercoleccion(){
-       Map cu;
-       return cu=this.ColeccionUsuarios;   
+       return this.ColeccionUsuarios;   
    }
-   
+   //ME RETORNA TODOS LOS RESTAURANTES
    public Map getColeccionRestaurante() {
-       new String("Restaurante"); 
-       Integer indice=0;
+        new String("Restaurante"); 
+        Integer indice=0;
         Map<Integer,Usuario> ColeccionRest = new HashMap<Integer,Usuario>();
         Iterator<Usuario> it = ColeccionUsuarios.values().iterator();
         Usuario objeto=null;

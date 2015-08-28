@@ -26,11 +26,14 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.SortedSet;
+import javax.swing.JFrame;
 
 public class Ventana extends javax.swing.JFrame {
     
     public Ventana() {
-        initComponents();      
+        initComponents(); 
+        
+        
     }
 
     /**
@@ -60,6 +63,9 @@ public class Ventana extends javax.swing.JFrame {
         setTitle("Quick Order");
         setBackground(new java.awt.Color(51, 255, 204));
         setIconImages(null);
+        setLocation(new java.awt.Point(500, 200));
+        setSize(new java.awt.Dimension(0, 0));
+        setType(java.awt.Window.Type.POPUP);
 
         Inicio.setText("Inicio");
         jMenuBar2.add(Inicio);
@@ -143,13 +149,11 @@ public class Ventana extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 632, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1113, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 735, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)
         );
 
         pack();
@@ -225,7 +229,7 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_GenPedidoActionPerformed
 
     private void productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productoActionPerformed
-        infoProducto verProducto = new infoProducto();          
+        InfoProducto verProducto = new InfoProducto();          
         this.jDesktopPane1.add(verProducto);
         verProducto.show();
         // TODO add your handling code here:
@@ -262,7 +266,11 @@ public class Ventana extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Ventana().setVisible(true);
+                
+                Ventana a=new Ventana();
+                a.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                a.setVisible(true);
+                
             }
         });
     }

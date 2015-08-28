@@ -294,7 +294,7 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_CancelarActionPerformed
 
-    File fichero;
+    File fichero=null;
     ImageIcon icon;
     Icon icono;
     private void SeleccionarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarImagenActionPerformed

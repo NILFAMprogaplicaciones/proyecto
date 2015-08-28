@@ -1,8 +1,10 @@
 
 package Logica;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 import javax.swing.Icon;
 
 public class DataRestaurante {
@@ -10,17 +12,16 @@ public class DataRestaurante {
     private String nickname;
     private String correo;
     private String direccion;
-    private Icon   foto;
     private Map<String,Categoria> ColeccionCategoria = new HashMap<String,Categoria>();
+    private Map<Integer,File> ColeccionImagenes = new TreeMap<Integer,File>();
     
-    
-    public DataRestaurante(String nombre, String nickname, String correo, String direccion, Map coleccioncategoria){
+    public DataRestaurante(String nombre, String nickname, String correo, String direccion, Map coleccioncategoria, Map coleccionimagenes){
         this.nombre=nombre;
         this.nickname=nickname;
         this.correo=correo;
         this.direccion=direccion;
-        //this.foto=foto;
         this.ColeccionCategoria.putAll(coleccioncategoria);
+        this.ColeccionImagenes.putAll(coleccionimagenes);
     }
     
     public String getnombre(){
@@ -35,8 +36,8 @@ public class DataRestaurante {
     public String getdireccion(){
         return direccion;
     }
-    public Icon getFoto(){
-        return foto;
+    public Map getColeccionImagenes(){
+        return ColeccionImagenes;
     }
     public Map getColeccionCategoria(){
         return ColeccionCategoria;

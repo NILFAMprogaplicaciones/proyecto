@@ -1,25 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Logica;
 
-/**
- *
- * @author natalia
- */
+import java.io.File;
+
+
 public class DataIndividual {
     private String nombre;
     private String descripcion;
     private Restaurante restaurante;
     private double precio;
+    private File imagen;
     
-    public DataIndividual(String nombre, String descripcion, Restaurante restaurante, double precio){
+    public DataIndividual(String nombre, String descripcion, Restaurante restaurante, double precio, File imagen){
         this.nombre=nombre;
         this.descripcion=descripcion;
         this.restaurante=restaurante;
         this.precio=precio;
+        this.imagen=imagen;
     }
     
     public String getNombre(){
@@ -33,6 +30,9 @@ public class DataIndividual {
     }
     public double getPrecio(){
         return precio;
+    }
+    public File getImagen(){
+        return imagen;
     }
 }
 

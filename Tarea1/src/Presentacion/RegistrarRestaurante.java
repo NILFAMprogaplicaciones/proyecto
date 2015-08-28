@@ -23,6 +23,7 @@ import java.awt.Component;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.TreeMap;
 import javax.swing.DefaultListModel;
 
 
@@ -268,6 +269,8 @@ public class RegistrarRestaurante extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDireccionActionPerformed
 File fichero;
+Map<Integer,File> coleccionimagenes = new TreeMap<Integer,File>();
+int indice=1;
     private void SeleccionarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarImagenActionPerformed
         // TODO add your handling code here:
         int resultado;
@@ -289,6 +292,9 @@ File fichero;
                 JOptionPane.showMessageDialog(null, "Error abriendo la imagen "+ ex);
             }
         }
+        //AGREGO A UNA COLECCION GLOBAL PARA PASARLA EN EL DATARESTAURANTE
+        coleccionimagenes.put(indice, fichero);
+        indice++;
     }//GEN-LAST:event_SeleccionarImagenActionPerformed
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
@@ -326,7 +332,7 @@ File fichero;
             }
             else{
                 DataRestaurante datarestaurante=new DataRestaurante(this.txtNickname.getText(),this.txtCorreoElectronico.getText(), 
-                        this.txtNombre.getText(),this.txtDireccion.getText(),coleccion);
+                        this.txtNombre.getText(),this.txtDireccion.getText(),coleccion,coleccionimagenes);
                 ICU.Caso_Registro_Restaurante(datarestaurante);
                 
                 //NO LIMPIO NADA YA QUE CADA VES QUE LLAMO EL INTERNAL REALIZO UN NEW

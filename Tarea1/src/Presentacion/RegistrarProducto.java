@@ -439,7 +439,7 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
                     
                     double precio = Double.parseDouble(txtPrecio.getText());
                     
-                    DataIndividual dataindividual=new DataIndividual(txtNombre.getText(),txtDescripcion.getText(),rest,precio);
+                    DataIndividual dataindividual=new DataIndividual(txtNombre.getText(),txtDescripcion.getText(),rest,precio,fichero);
                     
                     ICP.AltaProductoIndividual(dataindividual);
                     

@@ -27,8 +27,6 @@ public class ControladorUsuario implements IControladorUsuario  {
     
     public void Caso_Registro_Restaurante(DataRestaurante datarestaurante){
         ManejadorUsuario mu=ManejadorUsuario.getinstance();
-        ManejadorCategoria mc=ManejadorCategoria.getinstance();
-        
         Restaurante res=new Restaurante(datarestaurante);
         mu.addUsuario(datarestaurante.getnickname(), res);
         JOptionPane.showMessageDialog(null,"Restaurante Registrado","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
