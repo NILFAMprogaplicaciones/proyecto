@@ -19,12 +19,12 @@ import javax.swing.JFrame;
 
 public class Ventana extends javax.swing.JFrame {
     
-    /*private  IControladorUsuario     ICU;
+    private  IControladorUsuario     ICU;
     private  IControladorProducto    ICP;
-    private  IControladorPedido      ICPE;*/
+    private  IControladorPedido      ICPE;
     public Ventana() {
         initComponents(); 
-        /*Fabrica fabrica = Fabrica.getInstance();
+        Fabrica fabrica = Fabrica.getInstance();
         ICU = fabrica.getIControladorUsuario();
         ICP = fabrica.getIControladorProducto();
         ICPE = fabrica.getIControladorPedido();
@@ -42,7 +42,7 @@ public class Ventana extends javax.swing.JFrame {
         DataIndividual dataindividual=new DataIndividual("prod1","producto prod1",res,10.20,foto);
         DataIndividual dataindividual1=new DataIndividual("prod2","producto prod2",res,20.05,foto);
         ICP.AltaProductoIndividual(dataindividual);
-        ICP.AltaProductoIndividual(dataindividual1);*/
+        ICP.AltaProductoIndividual(dataindividual1);
 
     }
     @SuppressWarnings("unchecked")

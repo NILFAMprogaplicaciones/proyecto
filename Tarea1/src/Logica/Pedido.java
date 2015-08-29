@@ -7,13 +7,13 @@ import java.util.Map;
 
 public class Pedido {
     
-    private int     num;
-    private FechaHora   fecha;
-    private double  precio_total;
-    private Estado  estado;
-    private Cliente  cliente;
-    private Map<String,Producto> ColeccionProductos=new HashMap<String,Producto>();
-    private Restaurante restaurante;
+    private int                     num;
+    private FechaHora               fecha;
+    private double                  precio_total;
+    private Estado                  estado;
+    private Cliente                 cliente;
+    private Map<String,Producto>    ColeccionProductos=new HashMap<String,Producto>();
+    private Restaurante             restaurante;
    
     public Pedido(DataPedido datapedido){
         this.num=datapedido.getId();

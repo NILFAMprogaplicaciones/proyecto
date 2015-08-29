@@ -12,8 +12,9 @@ public class DataPedido {
     private Cliente cliente;
     private Map<String,Producto> ColeccionProductos=new HashMap<String,Producto>();
     private Restaurante restaurante;
+    private Map<Integer,DataProductosPedido> ColeccionProductosPedido=new HashMap<Integer,DataProductosPedido>();
     
-    public DataPedido(int id, FechaHora fechahora, double preciototal, Estado estado, Cliente cliente, Map coleccionproductos, Restaurante restaurante){
+    public DataPedido(int id, FechaHora fechahora, double preciototal, Estado estado, Cliente cliente, Map coleccionproductos, Restaurante restaurante, Map coledataprodpedido){
         this.id=id;
         this.fechahora=fechahora;
         this.preciototal=preciototal;
@@ -21,6 +22,7 @@ public class DataPedido {
         this.cliente=cliente;
         this.ColeccionProductos.putAll(coleccionproductos);
         this.restaurante=restaurante;
+        this.ColeccionProductosPedido.putAll(coledataprodpedido);
     }
     public int getId(){
         return id;
@@ -42,6 +44,9 @@ public class DataPedido {
     }
     public Restaurante getRestaurante(){
         return restaurante;
+    }
+    public Map getColeccionProductosPedido(){
+        return ColeccionProductosPedido;
     }
 }
 
