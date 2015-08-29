@@ -29,10 +29,22 @@ public class infoProducto extends javax.swing.JInternalFrame {
     /**
      * Creates new form infoProducto
      */
+    public void Ocultar(){
+         Activa.setVisible(false);
+         EstadoPromo.setVisible(false);
+         ProductosPromo.setVisible(false);
+         Productos.setVisible(false);
+         TablaPedidos.setVisible(false);
+         TablaProductos.setVisible(false);
+         infoPedidos.setVisible(false);
+         PedidosProductos.setVisible(false);        
+    }
+    
     public infoProducto() {
         initComponents();
          Fabrica fabrica = Fabrica.getInstance();
         ICP = fabrica.getIControladorProducto();
+        Ocultar();
         tablaProducto();
     }
     
@@ -89,11 +101,11 @@ public class infoProducto extends javax.swing.JInternalFrame {
         EstadoPromo = new javax.swing.JLabel();
         Activa = new javax.swing.JTextField();
         ProductosPromo = new javax.swing.JLabel();
+        TablaPedidos = new javax.swing.JScrollPane();
+        infoPedidos = new javax.swing.JTable();
+        PedidosProductos = new javax.swing.JLabel();
         TablaProductos = new javax.swing.JScrollPane();
         Productos = new javax.swing.JTable();
-        ProductosPromo1 = new javax.swing.JLabel();
-        TablaProductos1 = new javax.swing.JScrollPane();
-        Productos1 = new javax.swing.JTable();
 
         IngreseDatosCliente.setText("Informacion de cliente");
 
@@ -173,7 +185,7 @@ public class infoProducto extends javax.swing.JInternalFrame {
 
         ProductosPromo.setText("Productos de la promocion.");
 
-        Productos.setModel(new javax.swing.table.DefaultTableModel(
+        infoPedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -196,11 +208,11 @@ public class infoProducto extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        TablaProductos.setViewportView(Productos);
+        TablaPedidos.setViewportView(infoPedidos);
 
-        ProductosPromo1.setText("Pedidos que incluyen este Producto");
+        PedidosProductos.setText("Pedidos que incluyen este Producto");
 
-        Productos1.setModel(new javax.swing.table.DefaultTableModel(
+        Productos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -223,7 +235,7 @@ public class infoProducto extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        TablaProductos1.setViewportView(Productos1);
+        TablaProductos.setViewportView(Productos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -260,9 +272,9 @@ public class infoProducto extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(TablaProductos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TablaProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TablaProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(TablaPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(187, 187, 187)
                         .addComponent(ProductosPromo)))
@@ -274,7 +286,7 @@ public class infoProducto extends javax.swing.JInternalFrame {
                         .addComponent(IngreseDatosCliente1)
                         .addGap(199, 199, 199))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(ProductosPromo1)
+                        .addComponent(PedidosProductos)
                         .addGap(154, 154, 154))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(ver)
@@ -316,13 +328,14 @@ public class infoProducto extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ProductosPromo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(TablaProductos1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ProductosPromo1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TablaProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addComponent(listo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PedidosProductos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TablaPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(listo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -340,6 +353,7 @@ public class infoProducto extends javax.swing.JInternalFrame {
         }
         else{
             if (MP.findProducto(nombre).getClass().getSimpleName().equals("Individual")){
+                Ocultar();
                 DataIndividual di;
                 di = ICP.Caso_Ver_Individual(nombre);
                 this.txtNombreProd.setText(di.getNombre());
@@ -363,6 +377,21 @@ public class infoProducto extends javax.swing.JInternalFrame {
                     String precioString = Double.toString(precio);
                     this.txtPrecio.setText(precioString);
                     this.txtDescripcion.setText(dp.getDescripcion());
+                    this.EstadoPromo.setVisible(true);
+                    this.Activa.setVisible(true);
+                    if (dp.getActiva()){
+                        this.Activa.setText("Activa");
+                    }else{
+                        this.Activa.setText("No Activa");
+                    }
+                    this.ProductosPromo.setVisible(true);
+                    this.TablaProductos.setVisible(true);
+                    this.TablaPedidos.setVisible(true);
+                    this.Productos.setVisible(true);
+                    this.PedidosProductos.setVisible(true);
+                    this.infoPedidos.setVisible(true);
+                    
+                    
                     //APARTIR DE ACA TODO EL CODIGO ES PARA CARGAR FOTO, CON UN FILE
                    /* File fichero=dp.getImagen();
                     ImageIcon icon;
@@ -403,12 +432,12 @@ public class infoProducto extends javax.swing.JInternalFrame {
     public javax.swing.JLabel IngreseDatosCliente;
     public javax.swing.JLabel IngreseDatosCliente1;
     private javax.swing.JLabel NombreProd;
+    private javax.swing.JLabel PedidosProductos;
     private javax.swing.JTable Productos;
-    private javax.swing.JTable Productos1;
     private javax.swing.JLabel ProductosPromo;
-    private javax.swing.JLabel ProductosPromo1;
+    private javax.swing.JScrollPane TablaPedidos;
     private javax.swing.JScrollPane TablaProductos;
-    private javax.swing.JScrollPane TablaProductos1;
+    private javax.swing.JTable infoPedidos;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable listadeproductos;
