@@ -5,7 +5,7 @@ import java.util.Map;
 import javax.swing.Icon;
 
 
-public interface IControladorUsuario {
+public abstract interface IControladorUsuario {
     
     public abstract void Caso_Registro_Cliente(DataCliente datacliente);
     

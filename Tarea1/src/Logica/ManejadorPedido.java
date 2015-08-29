@@ -17,5 +17,11 @@ public class ManejadorPedido {
         return instancia;
     }
     //FUNCIONES COLECCION PEDIDOS
+    public void addPedido(int id,Pedido pedido){
+        ColeccionPedido.put(id, pedido);
+    }
+    public int getCantidadEnColeccion(){
+        return ColeccionPedido.size();
+    }
     
 }

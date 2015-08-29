@@ -1,53 +1,72 @@
 
 package Logica;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class Pedido {
     
     private int     num;
-    private Fecha   fecha;
+    private FechaHora   fecha;
     private double  precio_total;
     private Estado  estado;
-    private String  cliente;
+    private Cliente  cliente;
+    private Map<String,Producto> ColeccionProductos=new HashMap<String,Producto>();
+    private Restaurante restaurante;
    
-    public Pedido(int num, Fecha fecha, double precio_total, Estado estado, String cliente){
-        this.num=num;
-        this.fecha=fecha;
-        this.precio_total=precio_total;
-        this.estado=estado;
-        this.cliente=cliente;
+    public Pedido(DataPedido datapedido){
+        this.num=datapedido.getId();
+        this.fecha=datapedido.getFechaHora();
+        this.precio_total=datapedido.getPrecioTotal();
+        this.estado=datapedido.getEstado();
+        this.cliente=datapedido.getCliente();
+        this.ColeccionProductos.putAll(datapedido.getColeccionProductos());
+        this.restaurante=datapedido.getRestaurante();
     }
     
     public int getnum(){
         return num;
     }
-    public Fecha getfecha(){
+    public FechaHora getfecha(){
         return fecha;
     }
-    public double getprecio_total(){
+    public double getPrecioTotal(){
         return precio_total;
     }
-    public Estado getestado(){
+    public Estado getEstado(){
         return estado;
     }
-    public String getcliente(){
+    public Cliente getCliente(){
         return cliente;
     }
+    public Map getColeccionProductos(){
+        return ColeccionProductos;
+    }
+    public Restaurante getRestaurante(){
+        return restaurante;
+    }
     
-    public void setnum(int num){
+    public void setNum(int num){
         this.num=num;
     }
-    public void setfecha(Fecha fecha){
+    public void setFecha(FechaHora fecha){
         this.fecha=fecha;
     }
-    public void setprecio_total(double precio_total){
+    public void setPrecioTotal(double precio_total){
         this.precio_total=precio_total;
     }
-    public void setestado(Estado estado){
+    public void setEstado(Estado estado){
         this.estado=estado;
     }
-    public void setcliente(String cliente){
+    public void setCliente(Cliente cliente){
         this.cliente=cliente;
+    }
+    public void setColeccionProductos(Map coleccionproductos){
+        this.ColeccionProductos.putAll(coleccionproductos);
+    }
+    public void setRestaurante(Restaurante restaurante){
+        this.restaurante=restaurante;
     }
     
 }
