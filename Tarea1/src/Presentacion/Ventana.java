@@ -233,7 +233,7 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_GenPedidoActionPerformed
 
     private void productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productoActionPerformed
-        InfoProducto verProducto = new InfoProducto();          
+        infoProducto verProducto = new infoProducto();          
         this.jDesktopPane1.add(verProducto);
         verProducto.show();
         // TODO add your handling code here:
