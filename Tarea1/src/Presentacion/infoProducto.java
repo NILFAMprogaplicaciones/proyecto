@@ -6,6 +6,7 @@
 package Presentacion;
 
 import Logica.DataIndividual;
+import Logica.DataPromocion;
 import Logica.Fabrica;
 import Logica.IControladorProducto;
 import Logica.ManejadorProducto;
@@ -225,29 +226,49 @@ public class infoProducto extends javax.swing.JInternalFrame {
 
     private void verActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verActionPerformed
         //TOMO LA FILA DE LA QUE SELECCIONO EL VALOR
+        ManejadorProducto MP=ManejadorProducto.getinstance();
         int fila = this.listadeproductos.getSelectedRow();
+        String nombre=(String)this.listadeproductos.getValueAt(fila, 0);
 
         //COLOCO LA FILA, EL 0 ES PARA SELECCIONAR EL VALOR DE LA PRIMERA COLUMNA
         if(fila==-1){
             JOptionPane.showMessageDialog(this,"Por favor, seleccione un Producto","INFORMACION PRODUCTO",JOptionPane.WARNING_MESSAGE );
         }
         else{
-            String nombre=(String)this.listadeproductos.getValueAt(fila, 0);
-            DataIndividual di;
-            di = ICP.Caso_Ver_Individual(nombre);
-            this.txtNombreProd.setText(di.getNombre());
-            double precio = di.getPrecio();
-            String precioString = Double.toString(precio);
-            this.txtPrecio.setText(precioString);
-            this.txtDescripcion.setText(di.getDescripcion());
-            //APARTIR DE ACA TODO EL CODIGO ES PARA CARGAR FOTO, CON UN FILE
-            File fichero=di.getImagen();
-            ImageIcon icon;
-            Icon icono;
-            icon = new ImageIcon(fichero.toString());
-            icono = new ImageIcon(icon.getImage().getScaledInstance(Foto.getWidth(), Foto.getHeight(), Image.SCALE_DEFAULT));
-            Foto.setText(null);
-            Foto.setIcon( icono );
+            if (MP.findProducto(nombre).getClass().getSimpleName().equals("Individual")){
+                DataIndividual di;
+                di = ICP.Caso_Ver_Individual(nombre);
+                this.txtNombreProd.setText(di.getNombre());
+                double precio = di.getPrecio();
+                String precioString = Double.toString(precio);
+                this.txtPrecio.setText(precioString);
+                this.txtDescripcion.setText(di.getDescripcion());
+                //APARTIR DE ACA TODO EL CODIGO ES PARA CARGAR FOTO, CON UN FILE
+                File fichero=di.getImagen();
+                ImageIcon icon;
+                Icon icono;
+                icon = new ImageIcon(fichero.toString());
+                icono = new ImageIcon(icon.getImage().getScaledInstance(Foto.getWidth(), Foto.getHeight(), Image.SCALE_DEFAULT));
+                Foto.setText(null);
+                Foto.setIcon( icono );
+            } else{
+                    DataPromocion dp;
+                    dp = ICP.Caso_Ver_Promocion(nombre);
+                    this.txtNombreProd.setText(dp.getNombre());
+                    double precio = dp.getPrecioTotal();
+                    String precioString = Double.toString(precio);
+                    this.txtPrecio.setText(precioString);
+                    this.txtDescripcion.setText(dp.getDescripcion());
+                    //APARTIR DE ACA TODO EL CODIGO ES PARA CARGAR FOTO, CON UN FILE
+                   /* File fichero=dp.getImagen();
+                    ImageIcon icon;
+                    Icon icono;
+                    icon = new ImageIcon(fichero.toString());
+                    icono = new ImageIcon(icon.getImage().getScaledInstance(Foto.getWidth(), Foto.getHeight(), Image.SCALE_DEFAULT));
+                    Foto.setText(null);
+                    Foto.setIcon( icono );
+                      */      
+                }
         }
     }//GEN-LAST:event_verActionPerformed
 
