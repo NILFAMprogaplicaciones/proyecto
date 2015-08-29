@@ -6,12 +6,20 @@
 package Presentacion;
 
 import Logica.Categoria;
+import Logica.Cliente;
+import Logica.DataPedido;
+import Logica.Estado;
+import Logica.Fabrica;
+import Logica.FechaHora;
+import Logica.IControladorPedido;
 import Logica.ManejadorCategoria;
+import Logica.ManejadorPedido;
 import Logica.ManejadorUsuario;
 import Logica.Producto;
 import Logica.Restaurante;
 import Logica.Usuario;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import javax.swing.DefaultListModel;
@@ -21,9 +29,10 @@ import javax.swing.table.DefaultTableModel;
 
 public class GenerarPedido extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form GenerarPedido
-     */
+    private IControladorPedido ICP;
+    
+        
+    
     public void cargarclientes(){
         //INSTANCEO EL MANEJADOR DE USUARIO
         ManejadorUsuario MU = ManejadorUsuario.getinstance();
@@ -39,7 +48,7 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
         }
         //AREGO VALORES A  LAS FILAS
         Map coleccion=MU.obtenercoleccion();
-        final Iterator<Usuario> it = coleccion.values().iterator();
+        Iterator<Usuario> it = coleccion.values().iterator();
         Usuario usu=null;
         int fila=0;
         while (it.hasNext()) {
@@ -72,6 +81,8 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
         initComponents();
         cargarclientes();
         cargarcategorias();
+        Fabrica fabrica = Fabrica.getInstance();
+        ICP = fabrica.getIControladorPedido();
     }
 
     /**
@@ -104,9 +115,9 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
         jScrollPane6 = new javax.swing.JScrollPane();
         TablaCliente = new javax.swing.JTable();
         lblEstado = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblRestaurante = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        TablaProductos1 = new javax.swing.JTable();
+        TablaPedido = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         txtPrecioTotal = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -182,9 +193,16 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.Integer.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jScrollPane5.setViewportView(TablaProductos);
@@ -212,9 +230,9 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
 
         lblEstado.setText("Estado del pedido...");
 
-        jLabel4.setText("Restaurante...");
+        lblRestaurante.setText("Restaurante...");
 
-        TablaProductos1.setModel(new javax.swing.table.DefaultTableModel(
+        TablaPedido.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -223,7 +241,7 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Double.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
@@ -237,11 +255,15 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane7.setViewportView(TablaProductos1);
+        jScrollPane7.setViewportView(TablaPedido);
 
         jLabel5.setText("Precio Total");
 
+        txtPrecioTotal.setEditable(false);
+
         jLabel6.setText("Codigo");
+
+        txtCodigo.setEditable(false);
 
         jButton2.setText("Generar Pedido");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -294,7 +316,7 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblEstado)
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
+                    .addComponent(lblRestaurante)
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
@@ -319,9 +341,9 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblEstado)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(jLabel4)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblRestaurante)
                         .addGap(25, 25, 25)
                         .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -353,7 +375,7 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(CantidadProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel2)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -419,24 +441,58 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Map<String,Producto> coleccionproducto=new HashMap<String,Producto>();
+        //INSTANCEO MANEJADORES
+        ManejadorUsuario MU=ManejadorUsuario.getinstance();
+        ManejadorPedido MP=ManejadorPedido.getinstance();
+        //ESCRIBO EN LAS LBL
         lblEstado.setText("Estado del Pedido: PREPARACION");
-        
+        lblRestaurante.setText((String) listares.getSelectedValue());
         //AGREGAR FILAS A LA TABLA
         DefaultTableModel modelo= (DefaultTableModel) this.TablaCliente.getModel();
         int columna = modelo.getColumnCount();
         modelo.addRow(new Object[columna]);
         TablaCliente.setModel(modelo);
         
-        int fila=listadeclientes.getSelectedRow();
+        int filalistacliente=listadeclientes.getSelectedRow();
             //FECHA Y HORA DEL SISTEMA
         Calendar fechayhora = Calendar.getInstance();
         int dia=fechayhora.get(Calendar.DATE), mes=fechayhora.get(Calendar.MONTH),año=fechayhora.get(Calendar.YEAR),
                 hora=fechayhora.get(Calendar.HOUR),minutos=fechayhora.get(Calendar.MINUTE);
-        String fecha = Integer.toString(dia)+Integer.toString(mes)+Integer.toString(hora)+Integer.toString(minutos)+Integer.toString(año);
+        String fecha = Integer.toString(dia)+"/"+Integer.toString(mes)+"/"+Integer.toString(año)+"-"+Integer.toString(hora)+":"+Integer.toString(minutos);
         //AGREGO VALORES A LA FILAS
-        TablaCliente.setValueAt(listadeclientes.getValueAt(fila, 0),0, 0);
-        TablaCliente.setValueAt(listadeclientes.getValueAt(fila, 1),0, 1);
+        TablaCliente.setValueAt(listadeclientes.getValueAt(filalistacliente, 0),0, 0);
+        TablaCliente.setValueAt(listadeclientes.getValueAt(filalistacliente, 1),0, 1);
         TablaCliente.setValueAt(fecha,0, 2);
+        ////////////////////////////////////////////////////////////////
+        int cantidad=0;
+        double preciototal=0;
+        
+        while(cantidad!=fila){
+            DefaultTableModel modelo2= (DefaultTableModel) this.TablaPedido.getModel();
+            int columna2 = modelo2.getColumnCount();
+            modelo2.addRow(new Object[columna]);
+            TablaPedido.setModel(modelo2);
+            
+            
+            TablaPedido.setValueAt((String) TablaProductos.getValueAt(cantidad,0), cantidad, 0);
+            TablaPedido.setValueAt((Integer) TablaProductos.getValueAt(cantidad,1), cantidad, 1);
+            TablaPedido.setValueAt(MU.findRestaurante((String) listares.getSelectedValue()).getProducto((String) TablaProductos.getValueAt(cantidad,0)).getClass().getSimpleName(), cantidad, 2);
+            TablaPedido.setValueAt((Double)MU.findRestaurante((String) listares.getSelectedValue()).buscarprecio((String) TablaProductos.getValueAt(cantidad,0)), cantidad, 3);
+            preciototal=preciototal+((Integer) TablaProductos.getValueAt(cantidad,1))*((Double)MU.findRestaurante((String) listares.getSelectedValue()).buscarprecio((String) TablaProductos.getValueAt(cantidad,0)));
+            coleccionproducto.put((String) TablaPedido.getValueAt(cantidad,0 ),MU.findRestaurante((String)listares.getSelectedValue()).getProducto((String) TablaPedido.getValueAt(cantidad,0 )));
+            
+            cantidad++;
+        }
+        //SETEO EN LAS TXT FINALES
+        txtPrecioTotal.setText(String.valueOf(preciototal));
+        txtCodigo.setText(Integer.toString(MP.getCantidadEnColeccion()+1));
+        //LLAMO FUNCION DEL CONTROLADOR
+        FechaHora fechahora=new FechaHora(dia,mes,año,hora,minutos);
+        Cliente cliente=MU.findCliente((String) TablaCliente.getValueAt(0, 0));
+        DataPedido datapedido=new DataPedido((MP.getCantidadEnColeccion()+1),fechahora,preciototal,Estado.PREPARCION,cliente,coleccionproducto,(MU.findRestaurante((String)listares.getSelectedValue())));
+        ICP.Caso_Generar_Pedido(datapedido);
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
@@ -445,13 +501,12 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
     private javax.swing.JButton MostrarProdcutos;
     private javax.swing.JButton Mostrarrestaurantes;
     private javax.swing.JTable TablaCliente;
+    private javax.swing.JTable TablaPedido;
     private javax.swing.JTable TablaProductos;
-    private javax.swing.JTable TablaProductos1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
@@ -462,6 +517,7 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JLabel lblEstado;
+    private javax.swing.JLabel lblRestaurante;
     private javax.swing.JLabel listacategoria;
     private javax.swing.JList listacategorias;
     private javax.swing.JTable listadeclientes;

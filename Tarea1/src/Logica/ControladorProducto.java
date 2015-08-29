@@ -13,6 +13,7 @@ public class ControladorProducto implements IControladorProducto {
         Individual prod = new Individual(dataindividual);
         MU.addProductoIndividual(dataindividual.getRestaurante().getnickname(),prod);
         MP.addProductoIndividual(dataindividual.getNombre(), prod);
+        JOptionPane.showMessageDialog(null,"Promocion ingresada con Exito","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
     }
     
     public void AltaProductoPromocion(DataPromocion datapromocion) {
@@ -21,6 +22,7 @@ public class ControladorProducto implements IControladorProducto {
         Promocion prod = new Promocion(datapromocion);
         MU.addProductoPromocion(datapromocion.getRestaurante().getnickname(),prod);
         MP.addProductoPromocion(datapromocion.getNombre(), prod);
+        JOptionPane.showMessageDialog(null,"Producto ingresado con Exito","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
     }
     
     public DataIndividual Caso_Ver_Individual(String nombre){

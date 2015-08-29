@@ -2,8 +2,8 @@
 package Logica;
 
 
-public interface IControladorPedido {
+public abstract interface IControladorPedido {
     
-    public abstract void prueba();
+    public abstract void Caso_Generar_Pedido(DataPedido datapedido);
     
 }

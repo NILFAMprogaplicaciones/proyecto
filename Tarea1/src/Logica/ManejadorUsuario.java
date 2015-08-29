@@ -8,7 +8,6 @@ import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import javax.swing.JOptionPane;
-import Logica.Restaurante;
 
 public class ManejadorUsuario {
     

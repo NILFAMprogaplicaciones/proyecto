@@ -5,13 +5,10 @@
  */
 package Presentacion;
 
-import Logica.Categoria;
 import Logica.DataIndividual;
 import Logica.DataPromocion;
 import Logica.Fabrica;
-import Logica.IControladorPedido;
 import Logica.IControladorProducto;
-import Logica.IControladorUsuario;
 import Logica.ManejadorProducto;
 import Logica.ManejadorUsuario;
 import Logica.Producto;
@@ -22,8 +19,6 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.SortedSet;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -33,7 +28,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class RegistrarProducto extends javax.swing.JInternalFrame {
    
-    private IControladorProducto ICP;
+    private final IControladorProducto ICP;
     
     public void ocultar(){
     
@@ -410,8 +405,6 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
                             Activa.isSelected(), 0, coleccionProductosAgregar);
                     
                     ICP.AltaProductoPromocion(datapromocion);
-                    
-                    JOptionPane.showMessageDialog(this,"Promocion ingresada con Exito","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
                     dispose();
                 }
             }            
@@ -442,8 +435,6 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
                     DataIndividual dataindividual=new DataIndividual(txtNombre.getText(),txtDescripcion.getText(),rest,precio,fichero);
                     
                     ICP.AltaProductoIndividual(dataindividual);
-                    
-                    JOptionPane.showMessageDialog(this,"Producto ingresado con Exito","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
                     dispose();
                 }
             }

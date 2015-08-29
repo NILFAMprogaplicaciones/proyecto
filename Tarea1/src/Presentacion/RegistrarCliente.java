@@ -9,8 +9,6 @@ package Presentacion;
 import Logica.DataCliente;
 import Logica.Fabrica;
 import Logica.Fecha;
-import Logica.IControladorPedido;
-import Logica.IControladorProducto;
 import Logica.IControladorUsuario;
 import Logica.ManejadorUsuario;
 import java.awt.Image;
