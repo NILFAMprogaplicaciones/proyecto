@@ -326,7 +326,8 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
                             .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
                             .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 956, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(listo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(listo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -385,133 +386,159 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MostrarrestaurantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarrestaurantesActionPerformed
-        //AGREGO LOS ELEMENTOS DE LA COLECCION CATEGORIA A LA LISTA
-        DefaultListModel<String> modelo=new DefaultListModel<>();
-        ManejadorUsuario MU=ManejadorUsuario.getinstance();
-        String seleccion = (String) listacategorias.getSelectedValue(); 
-        int posision=0;
+        String seleccion = (String) listacategorias.getSelectedValue();
         
-        Map coleccionrestaurantes=MU.getColeccionRestaurante();
-        Iterator<Restaurante> it = coleccionrestaurantes.values().iterator();
-        Restaurante res=null;
-        while (it.hasNext()) {
-            res=it.next();
-            if(res.ExisteCategoria(seleccion)){
-                modelo.add(posision,res.getnickname());
-                this.listares.setModel(modelo);
-                posision++; 
-            }
-                     
+        if(seleccion==null){
+            JOptionPane.showMessageDialog(this,"Por vafor seleccione una Categoria","GENERAR PEDIDO",JOptionPane.WARNING_MESSAGE);
         }
-             
+        else{
+            //AGREGO LOS ELEMENTOS DE LA COLECCION CATEGORIA A LA LISTA
+            DefaultListModel<String> modelo=new DefaultListModel<>();
+            ManejadorUsuario MU=ManejadorUsuario.getinstance();
+
+            int posision=0;
+
+            Map coleccionrestaurantes=MU.getColeccionRestaurante();
+            Iterator<Restaurante> it = coleccionrestaurantes.values().iterator();
+            Restaurante res=null;
+            while (it.hasNext()) {
+                res=it.next();
+                if(res.ExisteCategoria(seleccion)){
+                    modelo.add(posision,res.getnickname());
+                    this.listares.setModel(modelo);
+                    posision++; 
+                }
+
+            }
+        }     
     }//GEN-LAST:event_MostrarrestaurantesActionPerformed
 
     private void MostrarProdcutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarProdcutosActionPerformed
-        //AGREGO LOS PRODUCTOS DE MI RESTAURANTE
-        DefaultListModel<String> modelo=new DefaultListModel<>();
-        ManejadorUsuario MU=ManejadorUsuario.getinstance();
         String seleccion = (String) listares.getSelectedValue(); 
-        int posision=0;
-        
-        Map cole=MU.getColeccionProductosRestaurantes(seleccion);
-        Iterator<Producto> it = cole.values().iterator();
-        Producto pro=null;
-        while (it.hasNext()) {
-            pro=it.next();
-            modelo.add(posision,pro.getnombre());
-            this.listaproductos.setModel(modelo);//
-            posision++; 
+        if(seleccion==null){
+            JOptionPane.showMessageDialog(this,"Por vafor seleccione un Restaurante","GENERAR PEDIDO",JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            //AGREGO LOS PRODUCTOS DE MI RESTAURANTE
+            DefaultListModel<String> modelo=new DefaultListModel<>();
+            ManejadorUsuario MU=ManejadorUsuario.getinstance();
+
+            int posision=0;
+
+            Map cole=MU.getColeccionProductosRestaurantes(seleccion);
+            Iterator<Producto> it = cole.values().iterator();
+            Producto pro=null;
+            while (it.hasNext()) {
+                pro=it.next();
+                modelo.add(posision,pro.getnombre());
+                this.listaproductos.setModel(modelo);//
+                posision++; 
+            }
         }
     }//GEN-LAST:event_MostrarProdcutosActionPerformed
     int fila=0;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //AGREGAR FILAS A LA TABLA
-        DefaultTableModel modelo= (DefaultTableModel) this.TablaProductos.getModel();
-        int columna = modelo.getColumnCount();
-        modelo.addRow(new Object[columna]);
-        TablaProductos.setModel(modelo);
         //OBTENGO VALORES DE LA LISTA DE PRODUCTOS
         String producto=(String)listaproductos.getSelectedValue();
-        //AGREGO VALORES A  LAS FILAS
-        TablaProductos.setValueAt(producto, fila, 0);
-        TablaProductos.setValueAt(CantidadProductos.getValue(), fila, 1);
-        
-        fila++;
+        if(producto==null){
+            JOptionPane.showMessageDialog(this,"Por vafor seleccione un Producto","GENERAR PEDIDO",JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            if(CantidadProductos.getValue().equals(0))
+                JOptionPane.showMessageDialog(this,"Verifique su cantidad de Productos","GENERAR PEDIDO",JOptionPane.WARNING_MESSAGE);
+            else{
+                //AGREGAR FILAS A LA TABLA
+                DefaultTableModel modelo= (DefaultTableModel) this.TablaProductos.getModel();
+                int columna = modelo.getColumnCount();
+                modelo.addRow(new Object[columna]);
+                TablaProductos.setModel(modelo);
+
+                //AGREGO VALORES A  LAS FILAS
+                TablaProductos.setValueAt(producto, fila, 0);
+                TablaProductos.setValueAt(CantidadProductos.getValue(), fila, 1);
+
+                fila++;
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Map<String,Producto> coleccionproducto=new HashMap<String,Producto>();
-        Map<Integer,DataProductosPedido> ColeccionDPP=new HashMap<Integer,DataProductosPedido>();
-        //INSTANCEO MANEJADORES
-        ManejadorUsuario MU=ManejadorUsuario.getinstance();
-        ManejadorPedido MP=ManejadorPedido.getinstance();
-        //ESCRIBO EN LAS LBL
-        lblEstado.setText("Estado del Pedido: PREPARACION");
-        lblRestaurante.setText((String) listares.getSelectedValue());
-        //AGREGAR FILAS A LA TABLA
-        DefaultTableModel modelo= (DefaultTableModel) this.TablaCliente.getModel();
-        int columna = modelo.getColumnCount();
-        modelo.addRow(new Object[columna]);
-        TablaCliente.setModel(modelo);
-        
         int filalistacliente=listadeclientes.getSelectedRow();
-            //FECHA Y HORA DEL SISTEMA
-        Calendar fechayhora = Calendar.getInstance();
-        int dia=fechayhora.get(Calendar.DATE), mes=fechayhora.get(Calendar.MONTH),año=fechayhora.get(Calendar.YEAR),
-                hora=fechayhora.get(Calendar.HOUR),minutos=fechayhora.get(Calendar.MINUTE);
-        String fecha = Integer.toString(dia)+"/"+Integer.toString(mes)+"/"+Integer.toString(año)+"-"+Integer.toString(hora)+":"+Integer.toString(minutos);
-        //AGREGO VALORES A LA FILAS
-        TablaCliente.setValueAt(listadeclientes.getValueAt(filalistacliente, 0),0, 0);
-        TablaCliente.setValueAt(listadeclientes.getValueAt(filalistacliente, 1),0, 1);
-        TablaCliente.setValueAt(fecha,0, 2);
-        ////////////////////////////////////////////////////////////////
-        int cantidad=0;
-        double preciototal=0;
-        
-        while(cantidad!=fila){
-            DefaultTableModel modelo2= (DefaultTableModel) this.TablaPedido.getModel();
-            int columna2 = modelo2.getColumnCount();
-            modelo2.addRow(new Object[columna]);
-            TablaPedido.setModel(modelo2);
-            
-            //OBTENGO NOMBRE DEL PRODUCTO DE TABLAPRODUCTOS A TABLAPEDIDO
-            String nombreProducto=(String) TablaProductos.getValueAt(cantidad,0);
-            TablaPedido.setValueAt(nombreProducto, cantidad, 0);
-            //CANTIDAD POR PRODUCTO
-            int cantidadPedido=(Integer) TablaProductos.getValueAt(cantidad,1);
-            TablaPedido.setValueAt(cantidadPedido, cantidad, 1);
-            //TIPO DE PRODUCTO
-            String tipoDeProducto=MU.findRestaurante((String) listares.getSelectedValue()).getProducto((String) TablaProductos.getValueAt(cantidad,0)).getClass().getSimpleName();
-            TablaPedido.setValueAt(tipoDeProducto, cantidad, 2);
-            //PRECIO POR UNIDAD
-            double precioDeProducto=(Double)MU.findRestaurante((String) listares.getSelectedValue()).buscarprecio(nombreProducto);
-            TablaPedido.setValueAt(precioDeProducto, cantidad, 3);
-            
-            
-            String PedidoNomProducto=(String) TablaPedido.getValueAt(cantidad,0 );
-            Producto producto=MU.findRestaurante((String)listares.getSelectedValue()).getProducto((String) TablaPedido.getValueAt(cantidad,0 ));
-            
-            preciototal=preciototal+((cantidadPedido)*(precioDeProducto));
-            coleccionproducto.put(PedidoNomProducto,producto);
-            
-            
-            DataProductosPedido dpp=new DataProductosPedido(producto,cantidadPedido,((cantidadPedido)*(precioDeProducto)));
-            int id=1;
-            ColeccionDPP.put(id,dpp);
-            id++;
-            cantidad++;
+        //JOptionPane.showMessageDialog(this,filalistacliente);
+        if(filalistacliente==-1)
+            JOptionPane.showMessageDialog(this,"Seleccion un Cliente de la tabla","GENERAR PEDIDO",JOptionPane.WARNING_MESSAGE);
+        else{ 
+            String seleccion=(String) listadeclientes.getValueAt(filalistacliente, 0);
+            Map<String,Producto> coleccionproducto=new HashMap<String,Producto>();
+            Map<Integer,DataProductosPedido> ColeccionDPP=new HashMap<Integer,DataProductosPedido>();
+            //INSTANCEO MANEJADORES
+            ManejadorUsuario MU=ManejadorUsuario.getinstance();
+            ManejadorPedido MP=ManejadorPedido.getinstance();
+            //ESCRIBO EN LAS LBL
+            lblEstado.setText("Estado del Pedido: PREPARACION");
+            lblRestaurante.setText("Restaurante: "+(String) listares.getSelectedValue());
+            //AGREGAR FILAS A LA TABLA
+            DefaultTableModel modelo= (DefaultTableModel) this.TablaCliente.getModel();
+            int columna = modelo.getColumnCount();
+            modelo.addRow(new Object[columna]);
+            TablaCliente.setModel(modelo);
+                //FECHA Y HORA DEL SISTEMA
+            Calendar fechayhora = Calendar.getInstance();
+            int dia=fechayhora.get(Calendar.DATE), mes=fechayhora.get(Calendar.MONTH),año=fechayhora.get(Calendar.YEAR),
+                    hora=fechayhora.get(Calendar.HOUR),minutos=fechayhora.get(Calendar.MINUTE);
+            String fecha = Integer.toString(dia)+"/"+Integer.toString(mes)+"/"+Integer.toString(año)+"-"+Integer.toString(hora)+":"+Integer.toString(minutos);
+            //AGREGO VALORES A LA FILAS
+            TablaCliente.setValueAt(listadeclientes.getValueAt(filalistacliente, 0),0, 0);
+            TablaCliente.setValueAt(listadeclientes.getValueAt(filalistacliente, 1),0, 1);
+            TablaCliente.setValueAt(fecha,0, 2);
+            ////////////////////////////////////////////////////////////////
+            int cantidad=0;
+            double preciototal=0;
+
+            while(cantidad!=fila){
+                DefaultTableModel modelo2= (DefaultTableModel) this.TablaPedido.getModel();
+                int columna2 = modelo2.getColumnCount();
+                modelo2.addRow(new Object[columna]);
+                TablaPedido.setModel(modelo2);
+
+                //OBTENGO NOMBRE DEL PRODUCTO DE TABLAPRODUCTOS A TABLAPEDIDO
+                String nombreProducto=(String) TablaProductos.getValueAt(cantidad,0);
+                TablaPedido.setValueAt(nombreProducto, cantidad, 0);
+                //CANTIDAD POR PRODUCTO
+                int cantidadPedido=(Integer) TablaProductos.getValueAt(cantidad,1);
+                TablaPedido.setValueAt(cantidadPedido, cantidad, 1);
+                //TIPO DE PRODUCTO
+                String tipoDeProducto=MU.findRestaurante((String) listares.getSelectedValue()).getProducto((String) TablaProductos.getValueAt(cantidad,0)).getClass().getSimpleName();
+                TablaPedido.setValueAt(tipoDeProducto, cantidad, 2);
+                //PRECIO POR UNIDAD
+                double precioDeProducto=(Double)MU.findRestaurante((String) listares.getSelectedValue()).buscarprecio(nombreProducto);
+                TablaPedido.setValueAt(precioDeProducto, cantidad, 3);
+
+
+                String PedidoNomProducto=(String) TablaPedido.getValueAt(cantidad,0 );
+                Producto producto=MU.findRestaurante((String)listares.getSelectedValue()).getProducto((String) TablaPedido.getValueAt(cantidad,0 ));
+
+                preciototal=preciototal+((cantidadPedido)*(precioDeProducto));
+                coleccionproducto.put(PedidoNomProducto,producto);
+
+
+                DataProductosPedido dpp=new DataProductosPedido(producto,cantidadPedido,((cantidadPedido)*(precioDeProducto)));
+                int id=1;
+                ColeccionDPP.put(id,dpp);
+                id++;
+                cantidad++;
+            }
+            //SETEO EN LAS TXT FINALES
+            txtPrecioTotal.setText(String.valueOf(preciototal));
+            txtCodigo.setText(Integer.toString(MP.getCantidadEnColeccion()+1));
+
+            FechaHora fechahora=new FechaHora(dia,mes,año,hora,minutos);
+            Cliente cliente=MU.findCliente((String) TablaCliente.getValueAt(0, 0));
+
+            DataPedido datapedido=new DataPedido((MP.getCantidadEnColeccion()+1),fechahora,preciototal,Estado.PREPARCION,cliente,coleccionproducto,(MU.findRestaurante((String)listares.getSelectedValue())),coleccionproducto);
+            ICP.Caso_Generar_Pedido(datapedido);
+            JOptionPane.showMessageDialog(this, MP.getCantidadColeccionProductosPedido());
         }
-        //SETEO EN LAS TXT FINALES
-        txtPrecioTotal.setText(String.valueOf(preciototal));
-        txtCodigo.setText(Integer.toString(MP.getCantidadEnColeccion()+1));
-        
-        FechaHora fechahora=new FechaHora(dia,mes,año,hora,minutos);
-        Cliente cliente=MU.findCliente((String) TablaCliente.getValueAt(0, 0));
-        
-        DataPedido datapedido=new DataPedido((MP.getCantidadEnColeccion()+1),fechahora,preciototal,Estado.PREPARCION,cliente,coleccionproducto,(MU.findRestaurante((String)listares.getSelectedValue())),coleccionproducto);
-        ICP.Caso_Generar_Pedido(datapedido);
-        JOptionPane.showMessageDialog(this, MP.getCantidadColeccionProductosPedido());
-        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void listoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listoActionPerformed
