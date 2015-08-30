@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Presentacion;
 
 import Logica.DataIndividual;
@@ -23,15 +19,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author natalia
- */
+
 public class InfoProducto extends javax.swing.JInternalFrame {
     private IControladorProducto ICP;
-    /**
-     * Creates new form InfoProducto
-     */
+    
     public void Ocultar(){
          Activa.setVisible(false);
          EstadoPromo.setVisible(false);
@@ -45,7 +36,7 @@ public class InfoProducto extends javax.swing.JInternalFrame {
     
     public InfoProducto() {
         initComponents();
-         Fabrica fabrica = Fabrica.getInstance();
+        Fabrica fabrica = Fabrica.getInstance();
         ICP = fabrica.getIControladorProducto();
         Ocultar();
         tablaProducto();

@@ -15,6 +15,7 @@ import Logica.IControladorProducto;
 import Logica.IControladorPedido;
 import Logica.Individual;
 import Logica.ManejadorCategoria;
+import Logica.ManejadorPedido;
 import Logica.ManejadorUsuario;
 import Logica.Producto;
 import Logica.Restaurante;
@@ -55,6 +56,7 @@ public class Ventana extends javax.swing.JFrame {
         ICP.AltaProductoIndividual(dataindividual1);
         //GENERO EL PEDIDO
         /*FechaHora fechahora=new FechaHora(1,1,1,1,1);
+        FechaHora fechahora1=new FechaHora(2,2,2,2,2);
         Cliente cliente=new Cliente(datacliente);
         Individual producto=new Individual(dataindividual);
         Individual producto1=new Individual(dataindividual1);
@@ -68,7 +70,9 @@ public class Ventana extends javax.swing.JFrame {
         ColeccionProductosPedido.put(1, dpp);
         ColeccionProductosPedido.put(2, dpp1);
         DataPedido pedido=new DataPedido(1,fechahora,40,Estado.PREPARCION,cliente,ColeccionProductos,restaurante,ColeccionProductosPedido);
+        //DataPedido pedido1=new DataPedido(2,fechahora1,40,Estado.PREPARCION,cliente,ColeccionProductos,restaurante,ColeccionProductosPedido);
         ICPE.Caso_Generar_Pedido(pedido);*/
+        //ICPE.Caso_Generar_Pedido(pedido1);
 
     }
     @SuppressWarnings("unchecked")
@@ -77,17 +81,19 @@ public class Ventana extends javax.swing.JFrame {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar2 = new javax.swing.JMenuBar();
-        Inicio = new javax.swing.JMenu();
         Registros = new javax.swing.JMenu();
         RegCliente = new javax.swing.JMenuItem();
         RegRestaurante = new javax.swing.JMenuItem();
         RegistrarProducto = new javax.swing.JMenuItem();
         RegCategoria = new javax.swing.JMenuItem();
-        GenPedido = new javax.swing.JMenuItem();
         Informacion = new javax.swing.JMenu();
         cliente = new javax.swing.JMenuItem();
         restaurante = new javax.swing.JMenuItem();
         producto = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        GenPedido = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Quick Order");
@@ -96,9 +102,6 @@ public class Ventana extends javax.swing.JFrame {
         setLocation(new java.awt.Point(500, 200));
         setSize(new java.awt.Dimension(0, 0));
         setType(java.awt.Window.Type.POPUP);
-
-        Inicio.setText("Inicio");
-        jMenuBar2.add(Inicio);
 
         Registros.setText("Registros");
         Registros.setName(""); // NOI18N
@@ -135,14 +138,6 @@ public class Ventana extends javax.swing.JFrame {
         });
         Registros.add(RegCategoria);
 
-        GenPedido.setText("Generar Pedido");
-        GenPedido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GenPedidoActionPerformed(evt);
-            }
-        });
-        Registros.add(GenPedido);
-
         jMenuBar2.add(Registros);
 
         Informacion.setText("Informacion");
@@ -172,6 +167,34 @@ public class Ventana extends javax.swing.JFrame {
         Informacion.add(producto);
 
         jMenuBar2.add(Informacion);
+
+        jMenu1.setText("Pedido");
+
+        GenPedido.setText("Generar");
+        GenPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GenPedidoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(GenPedido);
+
+        jMenuItem1.setText("Informacion");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setText("Actualizar estado");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+
+        jMenuBar2.add(jMenu1);
 
         setJMenuBar(jMenuBar2);
 
@@ -289,6 +312,38 @@ public class Ventana extends javax.swing.JFrame {
         verProducto.show();      
     }//GEN-LAST:event_productoActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        ManejadorPedido MP=ManejadorPedido.getinstance();
+        int cantidad=MP.getCantidadEnColeccion();
+        if(cantidad==0){
+            JOptionPane.showMessageDialog(this,"No hay Pedidos en el sistema","INFORMACION PEDIDO",JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            InfoPedido infopedido=new InfoPedido();
+            int x=(jDesktopPane1.getWidth()/2)-infopedido.getWidth()/2;
+            int y=(jDesktopPane1.getHeight()/2)-infopedido.getHeight()/2;
+            this.jDesktopPane1.add(infopedido);
+            infopedido.setLocation(x, y);
+            infopedido.show();   
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        ManejadorPedido MP=ManejadorPedido.getinstance();
+        int cantidad=MP.getCantidadEnColeccion();
+        if(cantidad==0){
+            JOptionPane.showMessageDialog(this,"No hay Pedidos en el sistema","ACTUALIZAR ESTADO PEDIDO",JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            ActualizarEstadoPedido actualizarEP=new ActualizarEstadoPedido();
+            int x=(jDesktopPane1.getWidth()/2)-actualizarEP.getWidth()/2;
+            int y=(jDesktopPane1.getHeight()/2)-actualizarEP.getHeight()/2;
+            this.jDesktopPane1.add(actualizarEP);
+            actualizarEP.setLocation(x, y);
+            actualizarEP.show();   
+        }
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -331,7 +386,6 @@ public class Ventana extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem GenPedido;
     private javax.swing.JMenu Informacion;
-    private javax.swing.JMenu Inicio;
     private javax.swing.JMenuItem RegCategoria;
     private javax.swing.JMenuItem RegCliente;
     private javax.swing.JMenuItem RegRestaurante;
@@ -339,7 +393,10 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JMenu Registros;
     private javax.swing.JMenuItem cliente;
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem producto;
     private javax.swing.JMenuItem restaurante;
     // End of variables declaration//GEN-END:variables
