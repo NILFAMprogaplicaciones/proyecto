@@ -44,8 +44,13 @@ public class Promocion extends Producto {
         return precioTotal;
     }
     
+    public int CantidadProductos(){
+        return ColeccionProducto.size();
+    }
+    
     public Map getColeccionProductos(){
         return ColeccionProducto;
     }
+    
         
 }

@@ -69,4 +69,10 @@ public class Pedido {
         this.restaurante=restaurante;
     }
     
+    public boolean ExisteProducto(String producto){
+        return ColeccionProductos.containsKey(producto);
+    }
+    
+    
+    
 }

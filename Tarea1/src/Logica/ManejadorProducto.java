@@ -54,4 +54,7 @@ public class ManejadorProducto {
     public Producto findProducto(String nombre){
         return ColeccionProducto.get(nombre);
     }
+     public int CantidadProductosPromo(String nombre){
+        return findPromocion(nombre).CantidadProductos();
+    }
 }

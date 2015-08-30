@@ -34,6 +34,16 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
             posicion++;
         }
     }
+    public void Imagenpordefecto(){
+        int ancho = 235;
+        int alto = 152;
+        fichero = new File("src/Imagenes/usuario.png");
+        icon = new ImageIcon(fichero.toString());
+        //icono = new ImageIcon(icon.getImage().getScaledInstance(LabelImagen.getWidth(), LabelImagen.getHeight(), Image.SCALE_DEFAULT));
+        icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
+        LabelImagen.setText(null);
+        LabelImagen.setIcon( icono );
+    }
     
     public RegistrarCliente() {
         initComponents();
@@ -41,6 +51,7 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
         ICU = fabrica.getIControladorUsuario();
         cargarcombobox();
         this.txtNickname.requestFocus();
+        Imagenpordefecto();
     }
 
     

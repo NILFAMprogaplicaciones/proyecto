@@ -38,7 +38,7 @@ public class ControladorProducto implements IControladorProducto {
         DataPromocion dp = new DataPromocion(p.getRestaurante(),p.getnombre(),p.getdescripcion(),p.getPrecioTotal(),p.getactiva(),p.getdescuento(),p.getColeccionProductos()/*,p.getImagen()*/);
         return dp;
     }
+    
+   
          
 } 
-
-

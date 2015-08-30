@@ -9,8 +9,11 @@ import Logica.DataIndividual;
 import Logica.DataPromocion;
 import Logica.Fabrica;
 import Logica.IControladorProducto;
+import Logica.ManejadorPedido;
 import Logica.ManejadorProducto;
+import Logica.Pedido;
 import Logica.Producto;
+import Logica.Promocion;
 import java.awt.Image;
 import java.io.File;
 import java.util.Iterator;
@@ -69,6 +72,64 @@ public class infoProducto extends javax.swing.JInternalFrame {
               prod=it.next();
                 this.listadeproductos.setValueAt(prod.getnombre(), fila, 0);
                 this.listadeproductos.setValueAt(prod.nombreRestaurante(), fila, 1);
+                fila++;
+        }
+        
+    }
+    
+        public void tablaProductosPromo(){
+            ManejadorProducto MP = ManejadorProducto.getinstance();  
+            int fila = this.listadeproductos.getSelectedRow();
+            String nombre=(String)this.listadeproductos.getValueAt(fila, 0);
+            Promocion promo=MP.findPromocion(nombre);
+            //AGREGO LAS FILAS NECESARIAS EN MI JTABLE
+            int cantidadproductos= MP.CantidadProductosPromo(nombre);
+            int a=0;
+            while (a!=cantidadproductos){
+                DefaultTableModel modelo= (DefaultTableModel) Productos.getModel();
+                int columna = modelo.getColumnCount();
+                modelo.addRow(new Object[columna]);
+                Productos.setModel(modelo);
+                a++;
+            }
+            //AGREGO VALORES A  LAS FILAS
+            Map coleccion=promo.getColeccionProductos();
+            Iterator<Producto> it = coleccion.values().iterator();
+            Producto prod=null;
+            fila=0;
+            while (it.hasNext()) {
+                  prod=it.next();
+                    this.Productos.setValueAt(prod.getnombre(), fila, 0);
+                    this.listadeproductos.setValueAt(promo.CantidadProductos(), fila, 1);//aca hay que ver el tipo asociativo CANTIDAD
+                    fila++;
+            }
+
+    }
+        public void tablaPedidos(){
+        ManejadorPedido MP = ManejadorPedido.getinstance();  
+        int fila = this.listadeproductos.getSelectedRow();
+        String nombre=(String)this.listadeproductos.getValueAt(fila, 0);
+
+        //AGREGO LAS FILAS NECESARIAS EN MI JTABLE
+        int cantidadproductos=MP.getPedidos_Producto(nombre).size();
+        int a=0;
+        while (a!=cantidadproductos){
+            DefaultTableModel modelo= (DefaultTableModel) infoPedidos.getModel();
+            int columna = modelo.getColumnCount();
+            modelo.addRow(new Object[columna]);
+            infoPedidos.setModel(modelo);
+            a++;
+        }
+        //AGREGO VALORES A  LAS FILAS
+        Map coleccion=MP.getPedidos_Producto(nombre);
+        Iterator<Pedido> it = coleccion.values().iterator();
+        Pedido ped=null;
+        fila=0;
+        while (it.hasNext()) {
+              ped=it.next();
+                this.infoPedidos.setValueAt(ped.getfecha(),fila, 0);
+                this.infoPedidos.setValueAt(ped.getCliente().getnombre(),fila, 1);
+                this.listadeproductos.setValueAt(ped.getPrecioTotal(), fila, 2);
                 fila++;
         }
         
@@ -264,13 +325,13 @@ public class infoProducto extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Activa, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)))
                         .addGap(19, 19, 19)
-                        .addComponent(Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Editar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
+                        .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(TablaProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -302,26 +363,26 @@ public class infoProducto extends javax.swing.JInternalFrame {
                 .addGap(2, 2, 2)
                 .addComponent(ver, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Editar)
-                        .addGap(36, 36, 36)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(Editar)
+                            .addGap(36, 36, 36)
+                            .addComponent(jButton1))
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(NombreProd)
                                 .addComponent(txtNombreProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(Descripcion)
                                 .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(precio)
-                                .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                                .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EstadoPromo)
                     .addComponent(Activa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -335,7 +396,7 @@ public class infoProducto extends javax.swing.JInternalFrame {
                 .addComponent(TablaPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(listo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -354,6 +415,9 @@ public class infoProducto extends javax.swing.JInternalFrame {
         else{
             if (MP.findProducto(nombre).getClass().getSimpleName().equals("Individual")){
                 Ocultar();
+                this.TablaPedidos.setVisible(true);
+                this.infoPedidos.setVisible(true);
+                this.PedidosProductos.setVisible(true); 
                 DataIndividual di;
                 di = ICP.Caso_Ver_Individual(nombre);
                 this.txtNombreProd.setText(di.getNombre());
@@ -361,6 +425,7 @@ public class infoProducto extends javax.swing.JInternalFrame {
                 String precioString = Double.toString(precio);
                 this.txtPrecio.setText(precioString);
                 this.txtDescripcion.setText(di.getDescripcion());
+                this.tablaPedidos();
                 //APARTIR DE ACA TODO EL CODIGO ES PARA CARGAR FOTO, CON UN FILE
                 File fichero=di.getImagen();
                 ImageIcon icon;
@@ -369,6 +434,7 @@ public class infoProducto extends javax.swing.JInternalFrame {
                 icono = new ImageIcon(icon.getImage().getScaledInstance(Foto.getWidth(), Foto.getHeight(), Image.SCALE_DEFAULT));
                 Foto.setText(null);
                 Foto.setIcon( icono );
+                             
             } else{
                     DataPromocion dp;
                     dp = ICP.Caso_Ver_Promocion(nombre);
@@ -382,7 +448,7 @@ public class infoProducto extends javax.swing.JInternalFrame {
                     if (dp.getActiva()){
                         this.Activa.setText("Activa");
                     }else{
-                        this.Activa.setText("No Activa");
+                        this.Activa.setText("Inactiva");
                     }
                     this.ProductosPromo.setVisible(true);
                     this.TablaProductos.setVisible(true);
@@ -390,6 +456,8 @@ public class infoProducto extends javax.swing.JInternalFrame {
                     this.Productos.setVisible(true);
                     this.PedidosProductos.setVisible(true);
                     this.infoPedidos.setVisible(true);
+                    this.tablaProductosPromo();
+                    this.tablaPedidos();
                     
                     
                     //APARTIR DE ACA TODO EL CODIGO ES PARA CARGAR FOTO, CON UN FILE
