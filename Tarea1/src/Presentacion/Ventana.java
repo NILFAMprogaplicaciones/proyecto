@@ -52,7 +52,7 @@ public class Ventana extends javax.swing.JFrame {
         ICP.AltaProductoIndividual(dataindividual);
         ICP.AltaProductoIndividual(dataindividual1);
         //GENERO EL PEDIDO
-        FechaHora fechahora=new FechaHora(1,1,1,1,1);
+        /*FechaHora fechahora=new FechaHora(1,1,1,1,1);
         Cliente cliente=new Cliente(datacliente);
         Individual producto=new Individual(dataindividual);
         Individual producto1=new Individual(dataindividual1);
@@ -66,7 +66,7 @@ public class Ventana extends javax.swing.JFrame {
         ColeccionProductosPedido.put(1, dpp);
         ColeccionProductosPedido.put(2, dpp1);
         DataPedido pedido=new DataPedido(1,fechahora,40,Estado.PREPARCION,cliente,ColeccionProductos,restaurante,ColeccionProductosPedido);
-        ICPE.Caso_Generar_Pedido(pedido);
+        ICPE.Caso_Generar_Pedido(pedido);*/
 
     }
     @SuppressWarnings("unchecked")
