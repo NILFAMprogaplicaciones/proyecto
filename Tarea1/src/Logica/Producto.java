@@ -6,9 +6,7 @@ public class Producto {
     private String nombre;
     private String descripcion;
     private Restaurante restaurante;
-    //private File imagen;
-   
-    //imagen
+    
     public Producto(String nombre, String descripcion, Restaurante restaurante){
         this.nombre=nombre;
         this.descripcion=descripcion;

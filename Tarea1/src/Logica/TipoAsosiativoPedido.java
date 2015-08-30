@@ -4,11 +4,11 @@ package Logica;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ProductosPedido {
+public class TipoAsosiativoPedido {
     private Pedido pedido;
-    private Map<Integer,DataProductosPedido> ColeccionProductosPedido=new HashMap<Integer,DataProductosPedido>();
+    private Map<String,DataProductosPedido> ColeccionProductosPedido=new HashMap<String,DataProductosPedido>();
     
-    public ProductosPedido(Pedido pedido, Map coleccionproductospedido){
+    public TipoAsosiativoPedido(Pedido pedido, Map coleccionproductospedido){
         this.pedido=pedido;
         this.ColeccionProductosPedido=coleccionproductospedido;
     }
@@ -23,5 +23,9 @@ public class ProductosPedido {
     }
     public int getCantidadColeccionProductosPedido(){
         return ColeccionProductosPedido.size();
+    }
+    public DataProductosPedido getProducto(String nombreproducto){
+        return ColeccionProductosPedido.get(nombreproducto);
+        
     }
 }

@@ -9,7 +9,7 @@ import java.util.TreeMap;
 
 public class ManejadorPedido {
     private Map<Integer, Pedido> ColeccionPedido = new TreeMap<Integer, Pedido>();
-    private Map<Integer,ProductosPedido> ColeccionProductosPedido = new TreeMap<Integer,ProductosPedido>();
+    private Map<Integer,TipoAsosiativoPedido> ColeccionProductosPedido = new TreeMap<Integer,TipoAsosiativoPedido>();
     //SINGLENTON
     private static ManejadorPedido instancia = null;
     
@@ -23,7 +23,7 @@ public class ManejadorPedido {
     public void addPedido(int id,Pedido pedido){
         ColeccionPedido.put(id, pedido);
     }
-    public void addProductoPedido(int id, ProductosPedido pp){
+    public void addProductoPedido(int id, TipoAsosiativoPedido pp){
         ColeccionProductosPedido.put(id,pp);
     }
     public int getCantidadEnColeccion(){
@@ -47,5 +47,11 @@ public class ManejadorPedido {
                 }    
         }
     return Pedidos_Producto;
+    }
+    public Pedido getPedido(int id){
+        return ColeccionPedido.get(id);
+    }
+    public TipoAsosiativoPedido getTipoAsosiativoPedido(int id){
+        return ColeccionProductosPedido.get(id);
     }
 }
