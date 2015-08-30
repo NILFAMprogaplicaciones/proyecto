@@ -18,6 +18,8 @@ import Logica.ManejadorCategoria;
 import Logica.ManejadorUsuario;
 import Logica.Producto;
 import Logica.Restaurante;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import java.io.File;
 import java.util.HashMap;
@@ -195,22 +197,32 @@ public class Ventana extends javax.swing.JFrame {
         }
         else{
             RegistrarRestaurante registrarRestaurante = new RegistrarRestaurante();
+            int x=(jDesktopPane1.getWidth()/2)-registrarRestaurante.getWidth()/2;
+            int y=(jDesktopPane1.getHeight()/2)-registrarRestaurante.getHeight()/2;
             this.jDesktopPane1.add(registrarRestaurante);
+            registrarRestaurante.setLocation(x, y);
             registrarRestaurante.show();    
         }
         
     }//GEN-LAST:event_RegRestauranteActionPerformed
 
     private void RegClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegClienteActionPerformed
-       RegistrarCliente registrar = new RegistrarCliente();
-       this.jDesktopPane1.add(registrar);
-       registrar.show();
+       
+        RegistrarCliente registrar = new RegistrarCliente();
+        int x=(jDesktopPane1.getWidth()/2)-registrar.getWidth()/2;
+        int y=(jDesktopPane1.getHeight()/2)-registrar.getHeight()/2;
+        jDesktopPane1.add(registrar);
+        registrar.setLocation(x,y);
+        registrar.show();
     }//GEN-LAST:event_RegClienteActionPerformed
 
     private void restauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restauranteActionPerformed
-       InfoRestaurante infoRest = new InfoRestaurante();
-       this.jDesktopPane1.add(infoRest);
-       infoRest.show();
+        InfoRestaurante infoRest = new InfoRestaurante();
+        int x=(jDesktopPane1.getWidth()/2)-infoRest.getWidth()/2;
+        int y=(jDesktopPane1.getHeight()/2)-infoRest.getHeight()/2;
+        this.jDesktopPane1.add(infoRest);
+        infoRest.setLocation(x,y);
+        infoRest.show();
     }//GEN-LAST:event_restauranteActionPerformed
 
     private void clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteActionPerformed
@@ -221,20 +233,29 @@ public class Ventana extends javax.swing.JFrame {
         }
         else{
             InfoCliente info = new InfoCliente();
+            int x=(jDesktopPane1.getWidth()/2)-info.getWidth()/2;
+            int y=(jDesktopPane1.getHeight()/2)-info.getHeight()/2;
             this.jDesktopPane1.add(info);
+            info.setLocation(x, y);
             info.show();
         }
     }//GEN-LAST:event_clienteActionPerformed
 
     private void RegistrarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarProductoActionPerformed
         RegistrarProducto registrarProducto = new RegistrarProducto();          
+        int x=(jDesktopPane1.getWidth()/2)-registrarProducto.getWidth()/2;
+        int y=(jDesktopPane1.getHeight()/2)-registrarProducto.getHeight()/2;
         this.jDesktopPane1.add(registrarProducto);
+        registrarProducto.setLocation(x, y);
         registrarProducto.show();
     }//GEN-LAST:event_RegistrarProductoActionPerformed
 
     private void RegCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegCategoriaActionPerformed
         RegistrarCategoria registrarCategoria = new RegistrarCategoria();
+        int x=(jDesktopPane1.getWidth()/2)-registrarCategoria.getWidth()/2;
+        int y=(jDesktopPane1.getHeight()/2)-registrarCategoria.getHeight()/2;
         this.jDesktopPane1.add(registrarCategoria);
+        registrarCategoria.setLocation(x, y);
         registrarCategoria.show();
     }//GEN-LAST:event_RegCategoriaActionPerformed
 
@@ -251,17 +272,21 @@ public class Ventana extends javax.swing.JFrame {
         }
         else{
             GenerarPedido generarpedido = new GenerarPedido();
+            int x=(jDesktopPane1.getWidth()/2)-generarpedido.getWidth()/2;
+            int y=(jDesktopPane1.getHeight()/2)-generarpedido.getHeight()/2;
             this.jDesktopPane1.add(generarpedido);
+            generarpedido.setLocation(x, y);
             generarpedido.show();
         }
     }//GEN-LAST:event_GenPedidoActionPerformed
 
     private void productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productoActionPerformed
-        infoProducto verProducto = new infoProducto();          
+        InfoProducto verProducto = new InfoProducto();          
+        int x=(jDesktopPane1.getWidth()/2)-verProducto.getWidth()/2;
+        int y=(jDesktopPane1.getHeight()/2)-verProducto.getHeight()/2;
         this.jDesktopPane1.add(verProducto);
-        verProducto.show();
-        // TODO add your handling code here:
-        
+        verProducto.setLocation(x, y);
+        verProducto.show();      
     }//GEN-LAST:event_productoActionPerformed
 
     /**

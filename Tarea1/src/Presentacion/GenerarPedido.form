@@ -86,6 +86,7 @@
                   <Component id="jScrollPane1" alignment="0" min="-2" pref="956" max="-2" attributes="0"/>
                   <Component id="listo" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace pref="13" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
