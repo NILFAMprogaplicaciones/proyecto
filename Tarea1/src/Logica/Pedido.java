@@ -31,6 +31,11 @@ public class Pedido {
     public FechaHora getfecha(){
         return fecha;
     }
+    public String verfechastring(){
+        int dia=fecha.getDia(),mes=fecha.getMes(),año=fecha.getAño(),hora=fecha.getHora(),minutos=fecha.getMinuto();
+        String fecha=Integer.toString(dia)+"/"+Integer.toString(mes)+"/"+Integer.toString(año)+"-"+Integer.toString(hora)+":"+Integer.toString(minutos);
+        return fecha;  
+    }
     public double getPrecioTotal(){
         return precio_total;
     }

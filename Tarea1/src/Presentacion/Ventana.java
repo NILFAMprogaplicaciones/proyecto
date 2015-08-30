@@ -1,18 +1,26 @@
 package Presentacion;
 
+import Logica.Cliente;
 import Logica.DataCliente;
 import Logica.DataIndividual;
+import Logica.DataPedido;
+import Logica.DataProductosPedido;
 import Logica.DataRestaurante;
+import Logica.Estado;
 import Logica.Fabrica;
 import Logica.Fecha;
+import Logica.FechaHora;
 import Logica.IControladorUsuario;
 import Logica.IControladorProducto;
 import Logica.IControladorPedido;
+import Logica.Individual;
 import Logica.ManejadorCategoria;
 import Logica.ManejadorUsuario;
+import Logica.Producto;
 import Logica.Restaurante;
 import javax.swing.JOptionPane;
 import java.io.File;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 import javax.swing.JFrame;
@@ -43,6 +51,22 @@ public class Ventana extends javax.swing.JFrame {
         DataIndividual dataindividual1=new DataIndividual("prod2","producto prod2",res,20.05,foto);
         ICP.AltaProductoIndividual(dataindividual);
         ICP.AltaProductoIndividual(dataindividual1);
+        //GENERO EL PEDIDO
+        FechaHora fechahora=new FechaHora(1,1,1,1,1);
+        Cliente cliente=new Cliente(datacliente);
+        Individual producto=new Individual(dataindividual);
+        Individual producto1=new Individual(dataindividual1);
+        Map<String,Producto> ColeccionProductos=new HashMap<String,Producto>();
+        ColeccionProductos.put(producto.getnombre(), producto);
+        ColeccionProductos.put(producto1.getnombre(),producto1);
+        Restaurante restaurante=new Restaurante(datarestaurante);
+        DataProductosPedido dpp=new DataProductosPedido(producto,2,40);
+        DataProductosPedido dpp1=new DataProductosPedido(producto1,5,20);
+        Map<Integer,DataProductosPedido> ColeccionProductosPedido=new HashMap<Integer,DataProductosPedido>();
+        ColeccionProductosPedido.put(1, dpp);
+        ColeccionProductosPedido.put(2, dpp1);
+        DataPedido pedido=new DataPedido(1,fechahora,40,Estado.PREPARCION,cliente,ColeccionProductos,restaurante,ColeccionProductosPedido);
+        ICPE.Caso_Generar_Pedido(pedido);
 
     }
     @SuppressWarnings("unchecked")

@@ -127,9 +127,9 @@ public class infoProducto extends javax.swing.JInternalFrame {
         fila=0;
         while (it.hasNext()) {
               ped=it.next();
-                this.infoPedidos.setValueAt(ped.getfecha(),fila, 0);
+                this.infoPedidos.setValueAt(ped.verfechastring(),fila, 0);
                 this.infoPedidos.setValueAt(ped.getCliente().getnombre(),fila, 1);
-                this.listadeproductos.setValueAt(ped.getPrecioTotal(), fila, 2);
+                this.infoPedidos.setValueAt(ped.getPrecioTotal(), fila, 2);
                 fila++;
         }
         
