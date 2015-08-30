@@ -39,5 +39,18 @@ public class Promocion extends Producto {
     public void setdescuento(double descuento){
         this.descuento=descuento;
     }
+    
+    public double getPrecioTotal (){
+        return precioTotal;
+    }
+    
+    public int CantidadProductos(){
+        return ColeccionProducto.size();
+    }
+    
+    public Map getColeccionProductos(){
+        return ColeccionProducto;
+    }
+    
         
 }

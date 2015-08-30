@@ -2,6 +2,7 @@
 package Logica;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -30,5 +31,21 @@ public class ManejadorPedido {
     }
     public int getCantidadColeccionProductosPedido(){
         return ColeccionProductosPedido.size();
+    }
+    public Map getColeccionPedido(){
+        return ColeccionPedido;
+    }
+    public Map getPedidos_Producto(String producto){
+        Map<Integer,Pedido> Pedidos_Producto =  new TreeMap<Integer,Pedido>();
+        Map coleccion = getColeccionPedido();
+        Iterator<Pedido> it = coleccion.values().iterator();
+        Pedido ped=null;
+        while (it.hasNext()) {
+              ped=it.next();
+                if (ped.ExisteProducto(producto)){
+                    Pedidos_Producto.put(ped.getnum(), ped);
+                }    
+        }
+    return Pedidos_Producto;
     }
 }

@@ -48,4 +48,13 @@ public class ManejadorProducto {
     public Individual findIndividual(String nombre){
         return ((Individual)ColeccionProducto.get(nombre));
     }
+    public Promocion findPromocion(String nombre){
+        return ((Promocion)ColeccionProducto.get(nombre));
+    }
+    public Producto findProducto(String nombre){
+        return ColeccionProducto.get(nombre);
+    }
+     public int CantidadProductosPromo(String nombre){
+        return findPromocion(nombre).CantidadProductos();
+    }
 }

@@ -31,6 +31,14 @@ public class ControladorProducto implements IControladorProducto {
         DataIndividual di = new DataIndividual(i.getnombre(),i.getdescripcion(),i.getRestaurante(),i.getPrecio(),i.getImagen());
         return di;
     }
+    
+    public DataPromocion Caso_Ver_Promocion(String nombre){
+        ManejadorProducto mp = ManejadorProducto.getinstance();
+        Promocion p= mp.findPromocion(nombre);
+        DataPromocion dp = new DataPromocion(p.getRestaurante(),p.getnombre(),p.getdescripcion(),p.getPrecioTotal(),p.getactiva(),p.getdescuento(),p.getColeccionProductos()/*,p.getImagen()*/);
+        return dp;
+    }
+    
+   
          
-}
-
+} 

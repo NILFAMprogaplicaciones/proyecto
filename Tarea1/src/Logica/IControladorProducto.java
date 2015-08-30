@@ -13,4 +13,8 @@ public abstract interface IControladorProducto {
     
     
     public abstract DataIndividual Caso_Ver_Individual(String nombre);
+    
+    public abstract DataPromocion Caso_Ver_Promocion(String nombre);
+
+    
 }
