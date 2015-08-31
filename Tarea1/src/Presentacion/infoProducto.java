@@ -97,36 +97,36 @@ public class infoProducto extends javax.swing.JInternalFrame {
                     fila++;
             }
 
-    }
+        }
         public void tablaPedidos(){
-        ManejadorPedido MP = ManejadorPedido.getinstance();  
-        int fila = this.listadeproductos.getSelectedRow();
-        String nombre=(String)this.listadeproductos.getValueAt(fila, 0);
+            ManejadorPedido MP = ManejadorPedido.getinstance();  
+            int fila = this.listadeproductos.getSelectedRow();
+            String nombre=(String)this.listadeproductos.getValueAt(fila, 0);
 
-        //AGREGO LAS FILAS NECESARIAS EN MI JTABLE
-        int cantidadproductos=MP.getPedidos_Producto(nombre).size();
-        int a=0;
-        while (a!=cantidadproductos){
-            DefaultTableModel modelo= (DefaultTableModel) infoPedidos.getModel();
-            int columna = modelo.getColumnCount();
-            modelo.addRow(new Object[columna]);
-            infoPedidos.setModel(modelo);
-            a++;
-        }
-        //AGREGO VALORES A  LAS FILAS
-        Map coleccion=MP.getPedidos_Producto(nombre);
-        Iterator<Pedido> it = coleccion.values().iterator();
-        Pedido ped=null;
-        fila=0;
-        while (it.hasNext()) {
-              ped=it.next();
-                this.infoPedidos.setValueAt(ped.verfechastring(),fila, 0);
-                this.infoPedidos.setValueAt(ped.getCliente().getnombre(),fila, 1);
-                this.infoPedidos.setValueAt(ped.getPrecioTotal(), fila, 2);
-                fila++;
-        }
+            //AGREGO LAS FILAS NECESARIAS EN MI JTABLE
+            int cantidadproductos=MP.getPedidos_Producto(nombre).size();
+            int a=0;
+            while (a!=cantidadproductos){
+                DefaultTableModel modelo= (DefaultTableModel) infoPedidos.getModel();
+                int columna = modelo.getColumnCount();
+                modelo.addRow(new Object[columna]);
+                infoPedidos.setModel(modelo);
+                a++;
+            }
+            //AGREGO VALORES A  LAS FILAS
+            Map coleccion=MP.getPedidos_Producto(nombre);
+            Iterator<Pedido> it = coleccion.values().iterator();
+            Pedido ped=null;
+            fila=0;
+            while (it.hasNext()) {
+                  ped=it.next();
+                    this.infoPedidos.setValueAt(ped.verfechastring(),fila, 0);
+                    this.infoPedidos.setValueAt(ped.getCliente().getnombre(),fila, 1);
+                    this.infoPedidos.setValueAt(ped.getPrecioTotal(), fila, 2);
+                    fila++;
+            }
         
-    }
+        }
         public void limpiarTablaPedidos(JTable infoPedidos){
             try {
                 DefaultTableModel modelo=(DefaultTableModel) infoPedidos.getModel();
@@ -137,7 +137,7 @@ public class infoProducto extends javax.swing.JInternalFrame {
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error al limpiar la tabla.");
             }
-    }
+        }
         public void limpiarTablaProductosPromo(JTable Productos){
             try {
                 DefaultTableModel modelo=(DefaultTableModel) Productos.getModel();
@@ -148,7 +148,7 @@ public class infoProducto extends javax.swing.JInternalFrame {
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error al limpiar la tabla.");
             }
-    }    
+        }    
         
     /**
      * This method is called from within the constructor to initialize the form.
