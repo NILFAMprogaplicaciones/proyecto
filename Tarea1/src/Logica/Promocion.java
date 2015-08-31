@@ -9,7 +9,7 @@ public class Promocion extends Producto {
     private boolean activa;
     private double  descuento;
     private double  precioTotal;
-    private Map<String,Producto>     ColeccionProducto=new HashMap<String,Producto>();
+    private Map<String,DataCantidad>     ColeccionProducto=new HashMap<String,DataCantidad>();
     
     public Promocion(DataPromocion datapromocion){
         super(datapromocion.getNombre(),datapromocion.getDescripcion(),datapromocion.getRestaurante());
@@ -21,7 +21,7 @@ public class Promocion extends Producto {
     
     }
     
-    public void addProducto(String nombre, Producto producto){
+    public void addProducto(String nombre, DataCantidad producto){
         ColeccionProducto.put(nombre, producto);
     }
     public boolean getactiva(){
