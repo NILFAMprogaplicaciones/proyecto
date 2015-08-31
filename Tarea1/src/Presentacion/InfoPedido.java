@@ -2,6 +2,8 @@
 package Presentacion;
 
 import Logica.Estado;
+import Logica.Fabrica;
+import Logica.IControladorPedido;
 import Logica.Individual;
 import Logica.ManejadorPedido;
 import Logica.Pedido;
@@ -16,7 +18,8 @@ import javax.swing.table.DefaultTableModel;
 
 
 public class InfoPedido extends javax.swing.JInternalFrame {
-
+    private IControladorPedido ICP;
+    
     public void cargarTablaPedidos(){
         ManejadorPedido MP = ManejadorPedido.getinstance();        
         //AGREGO LAS FILAS NECESARIAS EN MI JTABLE
@@ -44,6 +47,8 @@ public class InfoPedido extends javax.swing.JInternalFrame {
     public InfoPedido() {
         initComponents();
         cargarTablaPedidos();
+        Fabrica fabrica = Fabrica.getInstance();
+        ICP = fabrica.getIControladorPedido();
     }
 
     
@@ -65,6 +70,7 @@ public class InfoPedido extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         TablaPedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -174,6 +180,13 @@ public class InfoPedido extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/minus.png"))); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -194,32 +207,33 @@ public class InfoPedido extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(161, 161, 161)
                                 .addComponent(jLabel4)))))
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 22, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblEstado)
                                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
+                                .addGap(151, 151, 151)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(29, 29, 29)
+                                        .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(29, 29, 29)
-                                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 13, Short.MAX_VALUE))))
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,12 +253,15 @@ public class InfoPedido extends javax.swing.JInternalFrame {
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jButton3))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
@@ -329,6 +346,18 @@ public class InfoPedido extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        int fila=TablaPedidos.getSelectedRow();
+        if(fila==-1)
+            JOptionPane.showMessageDialog(this,"Seleccione un Pedido","INFORMACION PEDIDO",JOptionPane.WARNING_MESSAGE);
+        else{
+            int idPedido=(int) TablaPedidos.getValueAt(fila,0);
+            ICP.Caso_Cancelar_Pedido(idPedido);
+        }
+            
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TablaPedidos;
@@ -336,6 +365,7 @@ public class InfoPedido extends javax.swing.JInternalFrame {
     private javax.swing.JTable TablaUsuarios;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

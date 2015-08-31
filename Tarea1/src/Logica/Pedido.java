@@ -8,7 +8,7 @@ import java.util.Map;
 public class Pedido {
     
     private int                     num;
-    private FechaHora               fecha;
+    private FechaHora               fechahora;
     private double                  precio_total;
     private Estado                  estado;
     private Cliente                 cliente;
@@ -17,7 +17,7 @@ public class Pedido {
    
     public Pedido(DataPedido datapedido){
         this.num=datapedido.getId();
-        this.fecha=datapedido.getFechaHora();
+        this.fechahora=datapedido.getFechaHora();
         this.precio_total=datapedido.getPrecioTotal();
         this.estado=datapedido.getEstado();
         this.cliente=datapedido.getCliente();
@@ -29,10 +29,10 @@ public class Pedido {
         return num;
     }
     public FechaHora getfecha(){
-        return fecha;
+        return fechahora;
     }
     public String verfechastring(){
-        int dia=fecha.getDia(),mes=fecha.getMes(),año=fecha.getAño(),hora=fecha.getHora(),minutos=fecha.getMinuto();
+        int dia=fechahora.getDia(),mes=fechahora.getMes(),año=fechahora.getAño(),hora=fechahora.getHora(),minutos=fechahora.getMinuto();
         String fecha=Integer.toString(dia)+"/"+Integer.toString(mes)+"/"+Integer.toString(año)+"-"+Integer.toString(hora)+":"+Integer.toString(minutos);
         return fecha;  
     }
@@ -55,8 +55,8 @@ public class Pedido {
     public void setNum(int num){
         this.num=num;
     }
-    public void setFecha(FechaHora fecha){
-        this.fecha=fecha;
+    public void setFecha(FechaHora fechahora){
+        this.fechahora=fechahora;
     }
     public void setPrecioTotal(double precio_total){
         this.precio_total=precio_total;

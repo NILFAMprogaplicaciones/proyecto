@@ -2,6 +2,9 @@
 package Presentacion;
 
 import Logica.Estado;
+import Logica.Fabrica;
+import Logica.IControladorPedido;
+import Logica.IControladorUsuario;
 import Logica.ManejadorPedido;
 import Logica.Pedido;
 import java.util.Iterator;
@@ -36,9 +39,12 @@ public class ActualizarEstadoPedido extends javax.swing.JInternalFrame {
             
         }
     }
+    private IControladorPedido ICP;
     public ActualizarEstadoPedido() {
         initComponents();
         cargarTablaPedidos();
+        Fabrica fabrica = Fabrica.getInstance();
+        ICP = fabrica.getIControladorPedido();
     }
 
     
@@ -210,24 +216,21 @@ public class ActualizarEstadoPedido extends javax.swing.JInternalFrame {
             if(Enviado.isSelected())
                 JOptionPane.showMessageDialog(this, "Verifique su opcion","ACTUALIZACION",JOptionPane.WARNING_MESSAGE);
             else if(Recibido.isSelected()){
-                pedido.setEstado(Estado.RECIBIDO);
-                MP.addPedido(pedido.getnum(), pedido);
-                JOptionPane.showMessageDialog(this, "Estado Modificado","ACTUALIZACION",JOptionPane.INFORMATION_MESSAGE);
+                ICP.Caso_Actualizar_Estado_Pedido(pedido.getnum(), Estado.RECIBIDO);
+                dispose();
             }
         }
         else if(txtEstado.getText().equals("PREPARACION")){
             if(Enviado.isSelected()){
-                pedido.setEstado(Estado.ENVIADO);
-                MP.addPedido(pedido.getnum(), pedido);
-                JOptionPane.showMessageDialog(this, "Estado Modificado","ACTUALIZACION",JOptionPane.INFORMATION_MESSAGE);
+                ICP.Caso_Actualizar_Estado_Pedido(pedido.getnum(), Estado.ENVIADO);
+                dispose();
             }
             else if(Recibido.isSelected()){
-                pedido.setEstado(Estado.RECIBIDO);
-                MP.addPedido(pedido.getnum(), pedido);
-                JOptionPane.showMessageDialog(this, "Estado Modificado","ACTUALIZACION",JOptionPane.INFORMATION_MESSAGE);
+                ICP.Caso_Actualizar_Estado_Pedido(pedido.getnum(), Estado.RECIBIDO);
+                dispose();
             }
         }
-        dispose();
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
