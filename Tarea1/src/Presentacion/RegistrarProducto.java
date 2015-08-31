@@ -403,7 +403,7 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
                 else{
                     
                     DataPromocion datapromocion=new DataPromocion(rest,txtNombre.getText(),txtDescripcion.getText(), preciototal, 
-                            Activa.isSelected(), 0, coleccionProductosAgregar);
+                            Activa.isSelected(), 0, coleccionProductosAgregar,fichero);
                     
                     ICP.AltaProductoPromocion(datapromocion);
                     dispose();
@@ -499,6 +499,8 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
         this.scrollProducto.setVisible(true);
         this.Registrar.setVisible(true);
         this.Activa.setVisible(true);
+        this.LabelImagen.setVisible(true);
+        this.SeleccionarImagen.setVisible(true);
         
          //PARA CARGAR COMBOBOX DE PRDUCTOS
         String nombreRestaurante=(String) SelectRestaurante.getSelectedItem();

@@ -35,7 +35,7 @@ public class ControladorProducto implements IControladorProducto {
     public DataPromocion Caso_Ver_Promocion(String nombre){
         ManejadorProducto mp = ManejadorProducto.getinstance();
         Promocion p= mp.findPromocion(nombre);
-        DataPromocion dp = new DataPromocion(p.getRestaurante(),p.getnombre(),p.getdescripcion(),p.getPrecioTotal(),p.getactiva(),p.getdescuento(),p.getColeccionProductos()/*,p.getImagen()*/);
+        DataPromocion dp = new DataPromocion(p.getRestaurante(),p.getnombre(),p.getdescripcion(),p.getPrecioTotal(),p.getactiva(),p.getdescuento(),p.getColeccionProductos(),p.getImagen());
         return dp;
     }
     
