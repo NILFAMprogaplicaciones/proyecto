@@ -10,7 +10,7 @@ public class TipoAsosiativoPedido {
     
     public TipoAsosiativoPedido(Pedido pedido, Map coleccionproductospedido){
         this.pedido=pedido;
-        this.ColeccionProductosPedido=coleccionproductospedido;
+        this.ColeccionProductosPedido.putAll(coleccionproductospedido);
     }
     public void addColeccion(Map coleccionproductospedido){
         this.ColeccionProductosPedido.putAll(coleccionproductospedido);

@@ -12,7 +12,7 @@ public class DataPedido {
     private Cliente cliente;
     private Map<String,Producto> ColeccionProductos=new HashMap<String,Producto>();
     private Restaurante restaurante;
-    private Map<Integer,DataProductosPedido> ColeccionProductosPedido=new HashMap<Integer,DataProductosPedido>();
+    private Map<String,DataProductosPedido> ColeccionProductosPedido=new HashMap<String,DataProductosPedido>();
     
     public DataPedido(int id, FechaHora fechahora, double preciototal, Estado estado, Cliente cliente, Map coleccionproductos, Restaurante restaurante, Map coledataprodpedido){
         this.id=id;

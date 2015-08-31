@@ -9,4 +9,10 @@ public abstract interface IControladorPedido {
     
     public abstract DataPedido Caso_Ver_Pedido(int id);
     
+    
+    public abstract void Caso_Cancelar_Pedido(int id);
+    
+    
+    public abstract void Caso_Actualizar_Estado_Pedido(int id, Estado estado);
+    
 }

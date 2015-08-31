@@ -9,7 +9,7 @@ import java.util.TreeMap;
 
 public class ManejadorPedido {
     private Map<Integer, Pedido> ColeccionPedido = new TreeMap<Integer, Pedido>();
-    private Map<Integer,TipoAsosiativoPedido> ColeccionProductosPedido = new TreeMap<Integer,TipoAsosiativoPedido>();
+    private Map<Integer,TipoAsosiativoPedido> ColeccionTipoAsosiativoPedido = new TreeMap<Integer,TipoAsosiativoPedido>();
     //SINGLENTON
     private static ManejadorPedido instancia = null;
     
@@ -24,16 +24,19 @@ public class ManejadorPedido {
         ColeccionPedido.put(id, pedido);
     }
     public void addProductoPedido(int id, TipoAsosiativoPedido pp){
-        ColeccionProductosPedido.put(id,pp);
+        ColeccionTipoAsosiativoPedido.put(id,pp);
     }
     public int getCantidadEnColeccion(){
         return ColeccionPedido.size();
     }
     public int getCantidadColeccionProductosPedido(){
-        return ColeccionProductosPedido.size();
+        return ColeccionTipoAsosiativoPedido.size();
     }
     public Map getColeccionPedido(){
         return ColeccionPedido;
+    }
+    public Map getColeccionTipoAsosiativoPedido(){
+        return ColeccionTipoAsosiativoPedido;
     }
     public Map getPedidos_Producto(String producto){
         Map<Integer,Pedido> Pedidos_Producto =  new TreeMap<Integer,Pedido>();
@@ -52,6 +55,6 @@ public class ManejadorPedido {
         return ColeccionPedido.get(id);
     }
     public TipoAsosiativoPedido getTipoAsosiativoPedido(int id){
-        return ColeccionProductosPedido.get(id);
+        return ColeccionTipoAsosiativoPedido.get(id);
     }
 }
