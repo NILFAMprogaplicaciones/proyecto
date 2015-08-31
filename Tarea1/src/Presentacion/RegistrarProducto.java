@@ -5,6 +5,7 @@
  */
 package Presentacion;
 
+import Logica.DataCantidad;
 import Logica.DataIndividual;
 import Logica.DataPromocion;
 import Logica.Fabrica;
@@ -402,7 +403,7 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
                 else{
                     
                     DataPromocion datapromocion=new DataPromocion(rest,txtNombre.getText(),txtDescripcion.getText(), preciototal, 
-                            Activa.isSelected(), 0, coleccionProductosAgregar);
+                            Activa.isSelected(), 0, coleccionProductosAgregar,fichero);
                     
                     ICP.AltaProductoPromocion(datapromocion);
                     dispose();
@@ -498,6 +499,8 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
         this.scrollProducto.setVisible(true);
         this.Registrar.setVisible(true);
         this.Activa.setVisible(true);
+        this.LabelImagen.setVisible(true);
+        this.SeleccionarImagen.setVisible(true);
         
          //PARA CARGAR COMBOBOX DE PRDUCTOS
         String nombreRestaurante=(String) SelectRestaurante.getSelectedItem();
@@ -529,7 +532,7 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
     //VARIABLE GLOBAL PARA SUMAR LOS SUBTOTALES DE LA TABLA Y
     //LUEGO PASARLO A LA FUNCION DE AGREGAR PROMO
     double preciototal=0;
-    Map<String,Producto> coleccionProductosAgregar=new HashMap<String,Producto>();
+    Map<String,DataCantidad> coleccionProductosAgregar=new HashMap<String,DataCantidad>();
     private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
         ManejadorUsuario MU= ManejadorUsuario.getinstance();
         
@@ -552,7 +555,8 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
         //AGREGO VALOR A LAS VARIABLES GLOBALES QUE PASO A LA FUNCION DE ALTAPROMOCION
         preciototal=preciototal+total;
         Producto pro=MU.getProductoRestaurante(nombreRestaurante, nombreProducto);
-        coleccionProductosAgregar.put(nombreProducto, pro);
+        DataCantidad CantidadProducto = new DataCantidad(cantidad,pro);
+        coleccionProductosAgregar.put(nombreProducto, CantidadProducto);
         fila++;     
     }//GEN-LAST:event_AgregarActionPerformed
 

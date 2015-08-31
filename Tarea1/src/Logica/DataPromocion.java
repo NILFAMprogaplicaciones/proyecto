@@ -1,8 +1,11 @@
 
 package Logica;
 
+import java.io.File;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class DataPromocion {
     private String nombre;
@@ -11,17 +14,20 @@ public class DataPromocion {
     private boolean activa;
     private double  descuento;
     private double  precioTotal;
-    private Map<String,Producto>     ColeccionProducto=new HashMap<String,Producto>();
+    private File    foto;
+    private Map<String,DataCantidad>     CantidadProductos=new HashMap<String,DataCantidad>();
+    //private Set<DataCantidad>        CantidadProductos=new HashSet<DataCantidad>();
     
-    public DataPromocion(Restaurante res,String nombre, String descripcion, double precioTotal, boolean activa, double descuento, Map coleccionProducto){
+    public DataPromocion(Restaurante res,String nombre, String descripcion, double precioTotal, boolean activa, double descuento, Map CantidadProductos,File foto){
         this.nombre=nombre;
         this.descripcion=descripcion;
         this.restaurante=res;
         this.activa=activa;
         this.descuento=descuento;
         this.precioTotal=precioTotal;
+        this.foto=foto;
         //copia una coleccion entera de una a otra
-        this.ColeccionProducto.putAll(coleccionProducto);
+        this.CantidadProductos.putAll(CantidadProductos);
     
     }
     
@@ -44,6 +50,9 @@ public class DataPromocion {
         return precioTotal;
     }
     public Map getColeccionProducto(){
-        return ColeccionProducto;
+        return CantidadProductos;
+    }
+    public File getImagen(){
+        return foto;
     }
 }
