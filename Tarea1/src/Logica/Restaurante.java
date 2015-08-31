@@ -27,19 +27,17 @@ public class Restaurante extends Usuario {
     }
     
     public double buscarprecio(String nombreproducto){
+        Producto objeto=ColeccionProducto.get(nombreproducto);
         double precio=0;
-        Iterator<Producto> it = ColeccionProducto.values().iterator();
-        Producto objeto=null;
-        while(it.hasNext()){
-            objeto=it.next();
-            if(objeto.getClass().getSimpleName().equals("Individual")){
-                
-                if(objeto.getnombre().equals(nombreproducto)){
-                   Individual ind=(Individual) objeto;
-                   precio=ind.getPrecio();
-                }
-            }
+        if(objeto.getClass().getSimpleName().equals("Individual")){
+            Individual ind=(Individual) objeto;
+            precio=ind.getPrecio();
         }
+        else{
+            Promocion pro=(Promocion) objeto;
+            precio=pro.getPrecioTotal();
+        }
+        
         return precio;
     }    
     public Producto getProducto(String nombreproducto){

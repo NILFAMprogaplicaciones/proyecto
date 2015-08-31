@@ -6,6 +6,7 @@ import Logica.Individual;
 import Logica.ManejadorPedido;
 import Logica.Pedido;
 import Logica.Producto;
+import Logica.Promocion;
 import java.awt.Color;
 import java.text.DecimalFormat;
 import java.util.Iterator;
@@ -291,7 +292,13 @@ public class InfoPedido extends javax.swing.JInternalFrame {
                     this.TablaProductos.setValueAt(MP.getTipoAsosiativoPedido(idPedido).getProducto(objeto.getnombre()).getSubTotal(), filapedido, 4);
                 }
                 else{
-                    //EN CASO DE SER PROMOCION
+                    Promocion pro=(Promocion) objeto;
+                    this.TablaProductos.setValueAt(pro.getnombre(), filapedido, 0);
+                    this.TablaProductos.setValueAt(pro.getPrecioTotal(), filapedido, 1);
+                    this.TablaProductos.setValueAt("Promocion", filapedido, 2);
+                    this.TablaProductos.setValueAt(MP.getTipoAsosiativoPedido(idPedido).getProducto(objeto.getnombre()).getCantidad(), filapedido, 3);
+                    this.TablaProductos.setValueAt(MP.getTipoAsosiativoPedido(idPedido).getProducto(objeto.getnombre()).getSubTotal(), filapedido, 4);
+                    
                 }
 
                 filapedido++;
