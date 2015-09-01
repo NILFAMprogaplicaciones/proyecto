@@ -14,6 +14,7 @@ public class Pedido {
     private Cliente                 cliente;
     private Map<String,Producto>    ColeccionProductos=new HashMap<String,Producto>();
     private Restaurante             restaurante;
+    private TipoAsosiativoPedido    tipoAP;
    
     public Pedido(DataPedido datapedido){
         this.num=datapedido.getId();
@@ -23,6 +24,8 @@ public class Pedido {
         this.cliente=datapedido.getCliente();
         this.ColeccionProductos.putAll(datapedido.getColeccionProductos());
         this.restaurante=datapedido.getRestaurante();
+        this.tipoAP=datapedido.getTipoAP();
+        
     }
     
     public int getnum(){
@@ -50,6 +53,9 @@ public class Pedido {
     }
     public Restaurante getRestaurante(){
         return restaurante;
+    }
+    public TipoAsosiativoPedido getTipoAP(){
+        return tipoAP;
     }
     
     public void setNum(int num){
