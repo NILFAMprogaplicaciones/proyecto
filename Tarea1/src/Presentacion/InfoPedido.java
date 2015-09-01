@@ -21,7 +21,10 @@ import javax.swing.table.DefaultTableModel;
 
 public class InfoPedido extends javax.swing.JInternalFrame {
     private IControladorPedido ICP;
-    
+    public void setidPasado(int id){
+        idpasado=id;
+    }
+    int idpasado;
     public void cargarTablaPedidos(){
         ManejadorPedido MP = ManejadorPedido.getinstance();        
         //AGREGO LAS FILAS NECESARIAS EN MI JTABLE
