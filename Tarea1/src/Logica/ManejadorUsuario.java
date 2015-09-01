@@ -30,23 +30,21 @@ public class ManejadorUsuario {
         return ((Cliente)ColeccionUsuarios.get(nickname));
     }
     public Restaurante findRestaurante(String nickname){
-        /*(Restaurante) castea del tipo a Usuario al tipo Restaurante
-           en criollo:busca en la coleccion de usuarios solo los Restaurantes
-        */
         return ((Restaurante)ColeccionUsuarios.get(nickname));
     }
     public boolean verificarnickname(String nickname){
         return ColeccionUsuarios.containsKey(nickname);
     }
     public boolean verificarcorreo(String correo){
+        boolean resultado=false;
         Iterator<Usuario> it = ColeccionUsuarios.values().iterator();
         Usuario objeto=null;
         while(it.hasNext()){
             objeto=it.next();
-            if(objeto.getcorreo()==correo)
-                return true;
+            if(objeto.getcorreo().equals(correo))
+                resultado= true;
         }
-        return false;
+        return resultado;
     }
     public int CantUsuarios(){
         int size;

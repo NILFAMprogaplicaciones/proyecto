@@ -300,11 +300,12 @@ int indice=1;
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
         ManejadorUsuario MU = ManejadorUsuario.getinstance();
         ManejadorCategoria MC = ManejadorCategoria.getinstance();
+        
         if(MU.verificarnickname(txtNickname.getText())==true){
             JOptionPane.showMessageDialog(this,"Nickname ya tomado","REGISTRO",JOptionPane.ERROR_MESSAGE);
             txtNickname.requestFocus();
         }
-        else if(MU.verificarnickname(txtCorreoElectronico.getText())==true){
+        else if(MU.verificarcorreo(txtCorreoElectronico.getText())==true){
             JOptionPane.showMessageDialog(this,"Correo electronico ya tomado","REGISTRO",JOptionPane.ERROR_MESSAGE);
             txtCorreoElectronico.requestFocus();
         }
@@ -330,13 +331,26 @@ int indice=1;
                 JOptionPane.showMessageDialog(this,"Ingrese al menos 1 Categoria","REGISTRO",JOptionPane.WARNING_MESSAGE);
                 this.refrescarcoleccion.requestFocus();
             }
-            else{
-                DataRestaurante datarestaurante=new DataRestaurante(this.txtNickname.getText(),this.txtCorreoElectronico.getText(), 
-                        this.txtNombre.getText(),this.txtDireccion.getText(),coleccion,coleccionimagenes);
-                ICU.Caso_Registro_Restaurante(datarestaurante);
+           else if(!this.txtCorreoElectronico.getText().equals("")){
                 
-                //NO LIMPIO NADA YA QUE CADA VES QUE LLAMO EL INTERNAL REALIZO UN NEW
-                this.dispose();                
+                boolean arroba=false;    
+                for (int x=0;x<txtCorreoElectronico.getText().length();x++){
+                    char caracter=this.txtCorreoElectronico.getText().charAt(x);
+                    if(caracter=='@')
+                        arroba=true;
+                }
+                if(arroba==false){        
+                    JOptionPane.showMessageDialog(this,"Verifique el dominio de su correo","REGISTRO",JOptionPane.WARNING_MESSAGE);
+                    txtCorreoElectronico.requestFocus();
+                }
+                else{
+                    DataRestaurante datarestaurante=new DataRestaurante(this.txtNickname.getText(),this.txtCorreoElectronico.getText(), 
+                            this.txtNombre.getText(),this.txtDireccion.getText(),coleccion,coleccionimagenes);
+                    ICU.Caso_Registro_Restaurante(datarestaurante);
+
+                    //NO LIMPIO NADA YA QUE CADA VES QUE LLAMO EL INTERNAL REALIZO UN NEW
+                    this.dispose();   
+                }
             }
         }
     }//GEN-LAST:event_RegistrarActionPerformed

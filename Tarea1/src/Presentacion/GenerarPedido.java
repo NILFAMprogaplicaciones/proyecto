@@ -14,11 +14,13 @@ import Logica.ManejadorPedido;
 import Logica.ManejadorUsuario;
 import Logica.Pedido;
 import Logica.Producto;
+import Logica.Promocion;
 import Logica.Restaurante;
 import Logica.TipoAsosiativoPedido;
 import Logica.Usuario;
 import java.text.DecimalFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -447,8 +449,18 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
             Producto pro=null;
             while (it.hasNext()) {
                 pro=it.next();
-                modelo.add(posision,pro.getnombre());
-                this.listaproductos.setModel(modelo);//
+                if(pro.getClass().getSimpleName().equals("Promocion")){
+                    Promocion promo=(Promocion) pro;
+                    if(promo.getactiva()==true){
+                        modelo.add(posision,promo.getnombre());
+                        this.listaproductos.setModel(modelo);
+                    }
+                        
+                }
+                else{
+                    modelo.add(posision,pro.getnombre());
+                    this.listaproductos.setModel(modelo);
+                }
                 posision++; 
             }
         }
@@ -507,7 +519,8 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
             TablaCliente.setModel(modelo);
                 //FECHA Y HORA DEL SISTEMA
             Calendar fechayhora = Calendar.getInstance();
-            int dia=fechayhora.get(Calendar.DATE), mes=fechayhora.get(Calendar.MONTH),año=fechayhora.get(Calendar.YEAR),
+           
+            int dia=fechayhora.get(Calendar.DATE), mes=1+fechayhora.get(Calendar.MONTH),año=fechayhora.get(Calendar.YEAR),
                     hora=fechayhora.get(Calendar.HOUR),minutos=fechayhora.get(Calendar.MINUTE);
             String fecha = Integer.toString(dia)+"/"+Integer.toString(mes)+"/"+Integer.toString(año)+"-"+Integer.toString(hora)+":"+Integer.toString(minutos);
             //AGREGO VALORES A LA FILAS

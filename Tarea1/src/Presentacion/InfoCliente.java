@@ -10,7 +10,9 @@ import Logica.Fabrica;
 import Logica.IControladorPedido;
 import Logica.IControladorProducto;
 import Logica.IControladorUsuario;
+import Logica.ManejadorPedido;
 import Logica.ManejadorUsuario;
+import Logica.Pedido;
 import Logica.Usuario;
 import java.awt.Image;
 import java.io.File;
@@ -19,12 +21,24 @@ import java.util.Map;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 
 public class InfoCliente extends javax.swing.JInternalFrame {
     private IControladorUsuario ICU;
     
+    public void limpiarTabla(JTable infoPedidos){
+            try {
+                DefaultTableModel modelo=(DefaultTableModel) infoPedidos.getModel();
+                int filas=infoPedidos.getRowCount();
+                for (int i = 0;filas>i; i++) {
+                    modelo.removeRow(0);
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error al limpiar la tabla.");
+            }
+        }
     public void tablacliente(){
         ManejadorUsuario MU = ManejadorUsuario.getinstance();        
         //AGREGO LAS FILAS NECESARIAS EN MI JTABLE
@@ -53,7 +67,34 @@ public class InfoCliente extends javax.swing.JInternalFrame {
         }
         
     }
-    
+    public void TablaPedidos(){
+        limpiarTabla(Pedidos);
+        ManejadorPedido MP=ManejadorPedido.getinstance();
+        //AGREGO LAS FILAS NECESARIAS EN MI JTABLE
+        int cantidadpedidos=MP.getCantidadColeccionCliente(du.getnickname());
+        int a=0;
+        while (a!=cantidadpedidos){
+            DefaultTableModel modelo= (DefaultTableModel) Pedidos.getModel();
+            int columna = modelo.getColumnCount();
+            modelo.addRow(new Object[columna]);
+            Pedidos.setModel(modelo);
+            a++;
+        }
+        //AGREGO VALORES A  LAS FILAS
+        Map coleccion=MP.getColeccionPedido();
+        final Iterator<Pedido> it = coleccion.values().iterator();
+        Pedido objeto=null;
+        int fila=0;
+        while (it.hasNext()) {
+            objeto=it.next();
+            if(objeto.getCliente().getnickname().equals(du.getnickname())){
+                this.Pedidos.setValueAt(objeto.verfechastring(), fila, 0);
+                this.Pedidos.setValueAt(objeto.getRestaurante().getnickname(), fila, 1);
+                fila++;
+            }
+            }
+        
+    }
     public InfoCliente() {
         initComponents();
         Fabrica fabrica = Fabrica.getInstance();
@@ -261,32 +302,32 @@ public class InfoCliente extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtNickname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtNickname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Nickname, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CorreoElectronico))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Nombre))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Apellido))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Direccion))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(FechaNacimiento))
+                        .addGap(0, 48, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(Nickname, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(CorreoElectronico)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Nombre)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Apellido)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Direccion)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(FechaNacimiento)
-                        .addGap(18, 18, 18)
+                        .addGap(158, 181, Short.MAX_VALUE)
                         .addComponent(listo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -318,7 +359,7 @@ public class InfoCliente extends javax.swing.JInternalFrame {
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
-
+DataCliente du;
     private void verActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verActionPerformed
         //TOMO LA FILA DE LA QUE SELECCIONO EL VALOR
         int fila = this.listadeclientes.getSelectedRow();
@@ -330,7 +371,7 @@ public class InfoCliente extends javax.swing.JInternalFrame {
         else{
             String nickname=(String)this.listadeclientes.getValueAt(fila, 0);
             //MUESTRO EL CLIENTE
-            DataCliente du=ICU.Caso_Ver_Cliente(nickname);
+             du=ICU.Caso_Ver_Cliente(nickname);
             this.txtNickname.setText(du.getnickname());
             this.txtCorreoElectronico.setText(du.getcorreo());
             this.txtNombre.setText(du.getnombre());
@@ -350,6 +391,7 @@ public class InfoCliente extends javax.swing.JInternalFrame {
                 Foto.setIcon( icono );
             }
         }
+        TablaPedidos();
     }//GEN-LAST:event_verActionPerformed
 
 

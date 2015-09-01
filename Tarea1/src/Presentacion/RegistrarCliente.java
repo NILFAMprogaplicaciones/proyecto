@@ -336,7 +336,7 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this,"Nickname ya tomado","REGISTRO",JOptionPane.ERROR_MESSAGE);
             txtNickname.requestFocus();
         }
-        else if(MC.verificarnickname(txtCorreoElectronico.getText())==true){
+        else if(MC.verificarcorreo(txtCorreoElectronico.getText())==true){
             JOptionPane.showMessageDialog(this,"Correo electronico ya tomado","REGISTRO",JOptionPane.ERROR_MESSAGE);
             txtCorreoElectronico.requestFocus();
         }

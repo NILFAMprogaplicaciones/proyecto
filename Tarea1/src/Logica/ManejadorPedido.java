@@ -49,4 +49,16 @@ public class ManejadorPedido {
     public Pedido getPedido(int id){
         return ColeccionPedido.get(id);
     }
+    public int getCantidadColeccionCliente(String nickcliente){
+        Iterator<Pedido> it = ColeccionPedido.values().iterator();
+        Pedido ped=null;
+        int cantidad=0;
+        while (it.hasNext()) {
+            ped=it.next();
+            if(ped.getCliente().getnickname().equals(nickcliente))
+                cantidad++;
+        }
+        return cantidad;
+            
+    }
 }
