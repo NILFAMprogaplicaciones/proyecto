@@ -1,6 +1,7 @@
 
 package Presentacion;
 
+import Logica.DataPedido;
 import Logica.Estado;
 import Logica.Fabrica;
 import Logica.IControladorPedido;
@@ -14,6 +15,7 @@ import java.text.DecimalFormat;
 import java.util.Iterator;
 import java.util.Map;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -43,6 +45,17 @@ public class InfoPedido extends javax.swing.JInternalFrame {
             fila++;
             
         }
+    }
+    public void limpiarTabla(JTable TablaPedidos){
+            try {
+                DefaultTableModel modelo=(DefaultTableModel) TablaPedidos.getModel();
+                int filas=TablaPedidos.getRowCount();
+                for (int i = 0;filas>i; i++) {
+                    modelo.removeRow(0);
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error al limpiar la tabla.");
+            }
     }
     public InfoPedido() {
         initComponents();
@@ -273,6 +286,7 @@ public class InfoPedido extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        limpiarTabla(TablaProductos);
         ManejadorPedido MP=ManejadorPedido.getinstance();
         //OBTENGO EL ID DEL PEDIDO
         int fila=TablaPedidos.getSelectedRow();
@@ -281,9 +295,10 @@ public class InfoPedido extends javax.swing.JInternalFrame {
         else{
             int idPedido=(int) TablaPedidos.getValueAt(fila,0);
             //OBJETO EL PEDIDO
-            Pedido pedido=MP.getPedido(idPedido);
+            DataPedido datapedido=ICP.Caso_Ver_Pedido(idPedido);
+            
             //OBTENGO LA COLECCION DE PRODUCTOS
-            Map coleccionproductos=pedido.getColeccionProductos();
+            Map coleccionproductos=datapedido.getColeccionProductos();
             int cantidadproductos=coleccionproductos.size();
             //AGREGO FILA A LA TABLA
             int a=0;
@@ -305,39 +320,39 @@ public class InfoPedido extends javax.swing.JInternalFrame {
                     this.TablaProductos.setValueAt(ind.getnombre(), filapedido, 0);
                     this.TablaProductos.setValueAt(ind.getPrecio(), filapedido, 1);
                     this.TablaProductos.setValueAt("Individual", filapedido, 2);
-                    this.TablaProductos.setValueAt(MP.getTipoAsosiativoPedido(idPedido).getProducto(objeto.getnombre()).getCantidad(), filapedido, 3);
-                    this.TablaProductos.setValueAt(MP.getTipoAsosiativoPedido(idPedido).getProducto(objeto.getnombre()).getSubTotal(), filapedido, 4);
+                    this.TablaProductos.setValueAt(datapedido.getTipoAP().getDataProductoPedido(objeto.getnombre()).getCantidad(), filapedido, 3);
+                    this.TablaProductos.setValueAt(datapedido.getTipoAP().getDataProductoPedido(objeto.getnombre()).getSubTotal(), filapedido, 4);
                 }
                 else{
                     Promocion pro=(Promocion) objeto;
                     this.TablaProductos.setValueAt(pro.getnombre(), filapedido, 0);
                     this.TablaProductos.setValueAt(pro.getPrecioTotal(), filapedido, 1);
                     this.TablaProductos.setValueAt("Promocion", filapedido, 2);
-                    this.TablaProductos.setValueAt(MP.getTipoAsosiativoPedido(idPedido).getProducto(objeto.getnombre()).getCantidad(), filapedido, 3);
-                    this.TablaProductos.setValueAt(MP.getTipoAsosiativoPedido(idPedido).getProducto(objeto.getnombre()).getSubTotal(), filapedido, 4);
+                    this.TablaProductos.setValueAt(datapedido.getTipoAP().getDataProductoPedido(objeto.getnombre()).getCantidad(), filapedido, 3);
+                    this.TablaProductos.setValueAt(datapedido.getTipoAP().getDataProductoPedido(objeto.getnombre()).getSubTotal(), filapedido, 4);
                     
                 }
 
                 filapedido++;
 
             }
-            TablaUsuarios.setValueAt(pedido.getCliente().getnickname(), 0, 0);
-            TablaUsuarios.setValueAt(pedido.getRestaurante().getnickname(), 0, 1);
+            TablaUsuarios.setValueAt(datapedido.getCliente().getnickname(), 0, 0);
+            TablaUsuarios.setValueAt(datapedido.getRestaurante().getnickname(), 0, 1);
 
-            if (pedido.getEstado().equals(Estado.PREPARCION)){
+            if (datapedido.getEstado().equals(Estado.PREPARCION)){
                 lblEstado.setForeground(Color.RED);
                 lblEstado.setText("Estado: PREPARACION");
             }
-            if (pedido.getEstado().equals(Estado.ENVIADO)){
+            if (datapedido.getEstado().equals(Estado.ENVIADO)){
                 lblEstado.setForeground(Color.YELLOW);
                 lblEstado.setText("Estado: ENVIADO");
             }
-            if (pedido.getEstado().equals(Estado.RECIBIDO)){
+            if (datapedido.getEstado().equals(Estado.RECIBIDO)){
                 lblEstado.setForeground(Color.GREEN);
                 lblEstado.setText("Estado: RECIBIDO");
             }
 
-            double precioTotal=pedido.getPrecioTotal();
+            double precioTotal=datapedido.getPrecioTotal();
             txtTotal.setText("$U "+(Double.toString(precioTotal)));
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -352,10 +367,14 @@ public class InfoPedido extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this,"Seleccione un Pedido","INFORMACION PEDIDO",JOptionPane.WARNING_MESSAGE);
         else{
             int idPedido=(int) TablaPedidos.getValueAt(fila,0);
-            ICP.Caso_Cancelar_Pedido(idPedido);
-        }
+            int respuesta=JOptionPane.showConfirmDialog(this, "Seguro que desea eliminar el Pedido","PEDIDO",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+            if(respuesta==JOptionPane.YES_OPTION){
+                ICP.Caso_Cancelar_Pedido(idPedido);
+                limpiarTabla(TablaPedidos);
+                cargarTablaPedidos();
+            }
             
-        
+        }   
     }//GEN-LAST:event_jButton3ActionPerformed
 
 

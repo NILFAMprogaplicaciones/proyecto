@@ -12,8 +12,10 @@ import Logica.IControladorPedido;
 import Logica.ManejadorCategoria;
 import Logica.ManejadorPedido;
 import Logica.ManejadorUsuario;
+import Logica.Pedido;
 import Logica.Producto;
 import Logica.Restaurante;
+import Logica.TipoAsosiativoPedido;
 import Logica.Usuario;
 import java.text.DecimalFormat;
 import java.util.Calendar;
@@ -551,12 +553,23 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
             }
             //SETEO EN LAS TXT FINALES
             txtPrecioTotal.setText(String.valueOf(Redondear(preciototal)));
-            txtCodigo.setText(Integer.toString(MP.getCantidadEnColeccion()+1));
+            Map col=MP.getColeccionPedido();
+            Iterator<Pedido> it = col.values().iterator();
+            Pedido ped=null;
+            int id=0;
+            while (it.hasNext()) {
+                ped=it.next();
+                id=ped.getnum();
+            }
+            txtCodigo.setText(Integer.toString(id+1));
 
             FechaHora fechahora=new FechaHora(dia,mes,año,hora,minutos);
             Cliente cliente=MU.findCliente((String) TablaCliente.getValueAt(0, 0));
             
-            DataPedido datapedido=new DataPedido((MP.getCantidadEnColeccion()+1),fechahora,Redondear(preciototal),Estado.PREPARCION,cliente,coleccionproducto,(MU.findRestaurante((String)listares.getSelectedValue())),ColeccionDPP);
+            TipoAsosiativoPedido tipoasosiativopedido=new TipoAsosiativoPedido(ColeccionDPP);
+            
+            DataPedido datapedido=new DataPedido((id+1),fechahora,Redondear(preciototal),Estado.PREPARCION,cliente,coleccionproducto,(MU.findRestaurante((String)listares.getSelectedValue())),tipoasosiativopedido);
+            
             ICP.Caso_Generar_Pedido(datapedido);
             dispose();
             

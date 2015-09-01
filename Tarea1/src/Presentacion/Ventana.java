@@ -19,6 +19,7 @@ import Logica.ManejadorPedido;
 import Logica.ManejadorUsuario;
 import Logica.Producto;
 import Logica.Restaurante;
+import Logica.TipoAsosiativoPedido;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
@@ -66,11 +67,12 @@ public class Ventana extends javax.swing.JFrame {
         Restaurante restaurante=new Restaurante(datarestaurante);
         DataProductosPedido dpp=new DataProductosPedido(producto,2,40);
         DataProductosPedido dpp1=new DataProductosPedido(producto1,5,20);
-        Map<Integer,DataProductosPedido> ColeccionProductosPedido=new HashMap<Integer,DataProductosPedido>();
-        ColeccionProductosPedido.put(1, dpp);
-        ColeccionProductosPedido.put(2, dpp1);
-        DataPedido pedido=new DataPedido(1,fechahora,40,Estado.PREPARCION,cliente,ColeccionProductos,restaurante,ColeccionProductosPedido);
-        DataPedido pedido1=new DataPedido(2,fechahora1,40,Estado.PREPARCION,cliente,ColeccionProductos,restaurante,ColeccionProductosPedido);
+        Map<String,DataProductosPedido> ColeccionProductosPedido=new HashMap<String,DataProductosPedido>();
+        ColeccionProductosPedido.put(dpp.getProducto().getnombre(), dpp);
+        ColeccionProductosPedido.put(dpp1.getProducto().getnombre(), dpp1);
+        TipoAsosiativoPedido tap=new TipoAsosiativoPedido(ColeccionProductosPedido);
+        DataPedido pedido=new DataPedido(1,fechahora,40,Estado.PREPARCION,cliente,ColeccionProductos,restaurante,tap);
+        DataPedido pedido1=new DataPedido(2,fechahora1,40,Estado.PREPARCION,cliente,ColeccionProductos,restaurante,tap);
         ICPE.Caso_Generar_Pedido(pedido);
         ICPE.Caso_Generar_Pedido(pedido1);
 
@@ -79,7 +81,7 @@ public class Ventana extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        PanelEscritorio = new javax.swing.JDesktopPane();
         jMenuBar2 = new javax.swing.JMenuBar();
         Registros = new javax.swing.JMenu();
         RegCliente = new javax.swing.JMenuItem();
@@ -202,11 +204,11 @@ public class Ventana extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1113, Short.MAX_VALUE)
+            .addComponent(PanelEscritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 1113, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)
+            .addComponent(PanelEscritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)
         );
 
         pack();
@@ -220,9 +222,9 @@ public class Ventana extends javax.swing.JFrame {
         }
         else{
             RegistrarRestaurante registrarRestaurante = new RegistrarRestaurante();
-            int x=(jDesktopPane1.getWidth()/2)-registrarRestaurante.getWidth()/2;
-            int y=(jDesktopPane1.getHeight()/2)-registrarRestaurante.getHeight()/2;
-            this.jDesktopPane1.add(registrarRestaurante);
+            int x=(PanelEscritorio.getWidth()/2)-registrarRestaurante.getWidth()/2;
+            int y=(PanelEscritorio.getHeight()/2)-registrarRestaurante.getHeight()/2;
+            this.PanelEscritorio.add(registrarRestaurante);
             registrarRestaurante.setLocation(x, y);
             registrarRestaurante.show();    
         }
@@ -232,18 +234,18 @@ public class Ventana extends javax.swing.JFrame {
     private void RegClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegClienteActionPerformed
        
         RegistrarCliente registrar = new RegistrarCliente();
-        int x=(jDesktopPane1.getWidth()/2)-registrar.getWidth()/2;
-        int y=(jDesktopPane1.getHeight()/2)-registrar.getHeight()/2;
-        jDesktopPane1.add(registrar);
+        int x=(PanelEscritorio.getWidth()/2)-registrar.getWidth()/2;
+        int y=(PanelEscritorio.getHeight()/2)-registrar.getHeight()/2;
+        PanelEscritorio.add(registrar);
         registrar.setLocation(x,y);
         registrar.show();
     }//GEN-LAST:event_RegClienteActionPerformed
 
     private void restauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restauranteActionPerformed
         InfoRestaurante infoRest = new InfoRestaurante();
-        int x=(jDesktopPane1.getWidth()/2)-infoRest.getWidth()/2;
-        int y=(jDesktopPane1.getHeight()/2)-infoRest.getHeight()/2;
-        this.jDesktopPane1.add(infoRest);
+        int x=(PanelEscritorio.getWidth()/2)-infoRest.getWidth()/2;
+        int y=(PanelEscritorio.getHeight()/2)-infoRest.getHeight()/2;
+        this.PanelEscritorio.add(infoRest);
         infoRest.setLocation(x,y);
         infoRest.show();
     }//GEN-LAST:event_restauranteActionPerformed
@@ -256,9 +258,9 @@ public class Ventana extends javax.swing.JFrame {
         }
         else{
             InfoCliente info = new InfoCliente();
-            int x=(jDesktopPane1.getWidth()/2)-info.getWidth()/2;
-            int y=(jDesktopPane1.getHeight()/2)-info.getHeight()/2;
-            this.jDesktopPane1.add(info);
+            int x=(PanelEscritorio.getWidth()/2)-info.getWidth()/2;
+            int y=(PanelEscritorio.getHeight()/2)-info.getHeight()/2;
+            this.PanelEscritorio.add(info);
             info.setLocation(x, y);
             info.show();
         }
@@ -266,18 +268,18 @@ public class Ventana extends javax.swing.JFrame {
 
     private void RegistrarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarProductoActionPerformed
         RegistrarProducto registrarProducto = new RegistrarProducto();          
-        int x=(jDesktopPane1.getWidth()/2)-registrarProducto.getWidth()/2;
-        int y=(jDesktopPane1.getHeight()/2)-registrarProducto.getHeight()/2;
-        this.jDesktopPane1.add(registrarProducto);
+        int x=(PanelEscritorio.getWidth()/2)-registrarProducto.getWidth()/2;
+        int y=(PanelEscritorio.getHeight()/2)-registrarProducto.getHeight()/2;
+        this.PanelEscritorio.add(registrarProducto);
         registrarProducto.setLocation(x, y);
         registrarProducto.show();
     }//GEN-LAST:event_RegistrarProductoActionPerformed
 
     private void RegCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegCategoriaActionPerformed
         RegistrarCategoria registrarCategoria = new RegistrarCategoria();
-        int x=(jDesktopPane1.getWidth()/2)-registrarCategoria.getWidth()/2;
-        int y=(jDesktopPane1.getHeight()/2)-registrarCategoria.getHeight()/2;
-        this.jDesktopPane1.add(registrarCategoria);
+        int x=(PanelEscritorio.getWidth()/2)-registrarCategoria.getWidth()/2;
+        int y=(PanelEscritorio.getHeight()/2)-registrarCategoria.getHeight()/2;
+        this.PanelEscritorio.add(registrarCategoria);
         registrarCategoria.setLocation(x, y);
         registrarCategoria.show();
     }//GEN-LAST:event_RegCategoriaActionPerformed
@@ -295,9 +297,9 @@ public class Ventana extends javax.swing.JFrame {
         }
         else{
             GenerarPedido generarpedido = new GenerarPedido();
-            int x=(jDesktopPane1.getWidth()/2)-generarpedido.getWidth()/2;
-            int y=(jDesktopPane1.getHeight()/2)-generarpedido.getHeight()/2;
-            this.jDesktopPane1.add(generarpedido);
+            int x=(PanelEscritorio.getWidth()/2)-generarpedido.getWidth()/2;
+            int y=(PanelEscritorio.getHeight()/2)-generarpedido.getHeight()/2;
+            this.PanelEscritorio.add(generarpedido);
             generarpedido.setLocation(x, y);
             generarpedido.show();
         }
@@ -305,9 +307,9 @@ public class Ventana extends javax.swing.JFrame {
 
     private void productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productoActionPerformed
         infoProducto verProducto = new infoProducto();          
-        int x=(jDesktopPane1.getWidth()/2)-verProducto.getWidth()/2;
-        int y=(jDesktopPane1.getHeight()/2)-verProducto.getHeight()/2;
-        this.jDesktopPane1.add(verProducto);
+        int x=(PanelEscritorio.getWidth()/2)-verProducto.getWidth()/2;
+        int y=(PanelEscritorio.getHeight()/2)-verProducto.getHeight()/2;
+        this.PanelEscritorio.add(verProducto);
         verProducto.setLocation(x, y);
         verProducto.show();      
     }//GEN-LAST:event_productoActionPerformed
@@ -320,9 +322,9 @@ public class Ventana extends javax.swing.JFrame {
         }
         else{
             InfoPedido infopedido=new InfoPedido();
-            int x=(jDesktopPane1.getWidth()/2)-infopedido.getWidth()/2;
-            int y=(jDesktopPane1.getHeight()/2)-infopedido.getHeight()/2;
-            this.jDesktopPane1.add(infopedido);
+            int x=(PanelEscritorio.getWidth()/2)-infopedido.getWidth()/2;
+            int y=(PanelEscritorio.getHeight()/2)-infopedido.getHeight()/2;
+            this.PanelEscritorio.add(infopedido);
             infopedido.setLocation(x, y);
             infopedido.show();   
         }
@@ -336,9 +338,9 @@ public class Ventana extends javax.swing.JFrame {
         }
         else{
             ActualizarEstadoPedido actualizarEP=new ActualizarEstadoPedido();
-            int x=(jDesktopPane1.getWidth()/2)-actualizarEP.getWidth()/2;
-            int y=(jDesktopPane1.getHeight()/2)-actualizarEP.getHeight()/2;
-            this.jDesktopPane1.add(actualizarEP);
+            int x=(PanelEscritorio.getWidth()/2)-actualizarEP.getWidth()/2;
+            int y=(PanelEscritorio.getHeight()/2)-actualizarEP.getHeight()/2;
+            this.PanelEscritorio.add(actualizarEP);
             actualizarEP.setLocation(x, y);
             actualizarEP.show();   
         }
@@ -386,13 +388,13 @@ public class Ventana extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem GenPedido;
     private javax.swing.JMenu Informacion;
+    private javax.swing.JDesktopPane PanelEscritorio;
     private javax.swing.JMenuItem RegCategoria;
     private javax.swing.JMenuItem RegCliente;
     private javax.swing.JMenuItem RegRestaurante;
     private javax.swing.JMenuItem RegistrarProducto;
     private javax.swing.JMenu Registros;
     private javax.swing.JMenuItem cliente;
-    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;

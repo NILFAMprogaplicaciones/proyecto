@@ -11,15 +11,15 @@ public class ControladorPedido implements IControladorPedido {
     public void Caso_Generar_Pedido(DataPedido datapedido){
         ManejadorPedido MP=ManejadorPedido.getinstance();
         Pedido pedido=new Pedido(datapedido);
-        TipoAsosiativoPedido pp=new TipoAsosiativoPedido(pedido,datapedido.getColeccionProductosPedido());
         MP.addPedido(datapedido.getId(), pedido);
-        MP.addProductoPedido(pp.getPedido().getnum(), pp);
         JOptionPane.showMessageDialog(null,"Pedido Registrado","REGISTRO",JOptionPane.INFORMATION_MESSAGE); 
     }
     
     public DataPedido Caso_Ver_Pedido(int id){
-        DataPedido a=null;
-        return a;
+        ManejadorPedido MP=ManejadorPedido.getinstance();
+        Pedido p=MP.getPedido(id);
+        DataPedido datapedido=new DataPedido(p.getnum(),p.getfecha(),p.getPrecioTotal(),p.getEstado(),p.getCliente(),p.getColeccionProductos(),p.getRestaurante(),p.getTipoAP());
+        return datapedido;
     } 
     
     public void Caso_Cancelar_Pedido(int id){
@@ -27,7 +27,6 @@ public class ControladorPedido implements IControladorPedido {
         Estado estado=MP.getPedido(id).getEstado();
         if(estado.equals(Estado.PREPARCION)){
             MP.getColeccionPedido().remove(id);
-            MP.getColeccionTipoAsosiativoPedido().remove(id);
             JOptionPane.showMessageDialog(null,"Pedido Eliminado","PEDIDO",JOptionPane.INFORMATION_MESSAGE); 
         }
         else{
