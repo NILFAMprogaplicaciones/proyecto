@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class Promocion extends Producto {
     private boolean activa;
-    private double  descuento;
+    private int  descuento;
     private double  precioTotal;
     private File    foto;
     private Map<String,DataCantidad>     ColeccionProducto=new HashMap<String,DataCantidad>();
@@ -31,7 +31,7 @@ public class Promocion extends Producto {
         return activa;
     }
     
-    public double getdescuento(){
+    public int getdescuento(){
         return descuento;
     }
     
@@ -39,7 +39,7 @@ public class Promocion extends Producto {
         this.activa=activa;
     }
    
-    public void setdescuento(double descuento){
+    public void setdescuento(int descuento){
         this.descuento=descuento;
     }
     

@@ -344,8 +344,8 @@ int indice=1;
                     txtCorreoElectronico.requestFocus();
                 }
                 else{
-                    DataRestaurante datarestaurante=new DataRestaurante(this.txtNickname.getText(),this.txtCorreoElectronico.getText(), 
-                            this.txtNombre.getText(),this.txtDireccion.getText(),coleccion,coleccionimagenes);
+                    DataRestaurante datarestaurante=new DataRestaurante(this.txtNombre.getText(),this.txtNickname.getText(),this.txtCorreoElectronico.getText(), 
+                            this.txtDireccion.getText(),coleccion,coleccionimagenes);
                     ICU.Caso_Registro_Restaurante(datarestaurante);
 
                     //NO LIMPIO NADA YA QUE CADA VES QUE LLAMO EL INTERNAL REALIZO UN NEW

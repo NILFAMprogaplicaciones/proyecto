@@ -12,13 +12,13 @@ public class DataPromocion {
     private String descripcion;
     private Restaurante restaurante;
     private boolean activa;
-    private double  descuento;
+    private int  descuento;
     private double  precioTotal;
     private File    foto;
     private Map<String,DataCantidad>     CantidadProductos=new HashMap<String,DataCantidad>();
     
     
-    public DataPromocion(Restaurante res,String nombre, String descripcion, double precioTotal, boolean activa, double descuento, Map CantidadProductos,File foto){
+    public DataPromocion(Restaurante res,String nombre, String descripcion, double precioTotal, boolean activa, int descuento, Map CantidadProductos,File foto){
         this.nombre=nombre;
         this.descripcion=descripcion;
         this.restaurante=res;
@@ -43,7 +43,7 @@ public class DataPromocion {
     public boolean getActiva(){
         return activa;
     }
-    public double getDescuento(){
+    public int getDescuento(){
         return descuento;
     }
     public double getPrecioTotal(){
