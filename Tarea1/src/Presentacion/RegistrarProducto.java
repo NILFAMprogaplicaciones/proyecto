@@ -39,7 +39,7 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
         this.Nombre.setVisible(false);
         this.Descripcion.setVisible(false);
         this.Precio.setVisible(false);
-        this.LabelImagen.setVisible(false);
+        this.Imagen.setVisible(false);
         this.SeleccionarImagen.setVisible(false);
         this.Promocion.setVisible(false);
         this.Individual.setVisible(false);
@@ -70,13 +70,25 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
                 }
             }    
     }
-           
+    
+    public void Imagenpordefecto(){
+        ImageIcon icon;
+        Icon icono;
+        int ancho = 178;
+        int alto = 116;
+        File fichero = new File("src/Imagenes/producto.jpg");
+        icon = new ImageIcon(fichero.toString());
+        icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
+        Imagen.setText(null);
+        Imagen.setIcon( icono );
+    }
     public RegistrarProducto() {
         initComponents();
         Fabrica fabrica = Fabrica.getInstance();
         ICP = fabrica.getIControladorProducto();
         ocultar();
         comboboxRestaurante();
+        Imagenpordefecto();
     }
     
 
@@ -99,7 +111,7 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
         txtPrecio = new javax.swing.JTextField();
         Cancelar = new javax.swing.JButton();
         Registrar = new javax.swing.JButton();
-        LabelImagen = new javax.swing.JLabel();
+        Imagen = new javax.swing.JLabel();
         SeleccionarImagen = new javax.swing.JButton();
         Individual = new javax.swing.JRadioButton();
         Promocion = new javax.swing.JRadioButton();
@@ -157,8 +169,8 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
             }
         });
 
-        LabelImagen.setText("Imagen");
-        LabelImagen.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Imagen.setText("Imagen");
+        Imagen.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         SeleccionarImagen.setText("Seleccionar Imagen");
         SeleccionarImagen.addActionListener(new java.awt.event.ActionListener() {
@@ -283,10 +295,13 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
                                         .addComponent(Individual)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(Promocion)))
-                                .addGap(56, 56, 56)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(LabelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(SeleccionarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(56, 56, 56)
+                                        .addComponent(SeleccionarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(5, 5, 5)
+                                        .addComponent(Imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -331,7 +346,7 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
                         .addGap(28, 28, 28))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(LabelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)))
                 .addComponent(SeleccionarImagen)
                 .addGap(15, 15, 15)
@@ -350,7 +365,7 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
@@ -457,9 +472,9 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
             fichero = ventana.FileChooser.getSelectedFile();
             try{
                 ImageIcon icon = new ImageIcon(fichero.toString());
-                Icon icono = new ImageIcon(icon.getImage().getScaledInstance(LabelImagen.getWidth(), LabelImagen.getHeight(), Image.SCALE_DEFAULT));
-                LabelImagen.setText(null);
-                LabelImagen.setIcon( icono );
+                Icon icono = new ImageIcon(icon.getImage().getScaledInstance(Imagen.getWidth(), Imagen.getHeight(), Image.SCALE_DEFAULT));
+                Imagen.setText(null);
+                Imagen.setIcon( icono );
 
             }catch(Exception ex){
                 JOptionPane.showMessageDialog(null, "Error abriendo la imagen "+ ex);
@@ -486,7 +501,7 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
         this.Nombre.setVisible(true);
         this.Descripcion.setVisible(true);
         this.Precio.setVisible(true);
-        this.LabelImagen.setVisible(true);
+        this.Imagen.setVisible(true);
         this.SeleccionarImagen.setVisible(true);
         this.Registrar.setVisible(true);
     }//GEN-LAST:event_IndividualActionPerformed
@@ -506,7 +521,7 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
         this.scrollProducto.setVisible(true);
         this.Registrar.setVisible(true);
         this.Activa.setVisible(true);
-        this.LabelImagen.setVisible(true);
+        this.Imagen.setVisible(true);
         this.SeleccionarImagen.setVisible(true);
         
          //PARA CARGAR COMBOBOX DE PRDUCTOS
@@ -580,9 +595,9 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
     public javax.swing.JLabel Cant;
     public javax.swing.JSpinner Cantidad;
     public javax.swing.JLabel Descripcion;
+    public javax.swing.JLabel Imagen;
     public javax.swing.JRadioButton Individual;
     private javax.swing.JLabel IngreseDatosCliente;
-    public javax.swing.JLabel LabelImagen;
     public javax.swing.JLabel Nombre;
     public javax.swing.JLabel Precio;
     public javax.swing.JComboBox Productos;

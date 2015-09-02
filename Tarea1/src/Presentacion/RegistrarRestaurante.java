@@ -375,8 +375,8 @@ int indice=1;
         String seleccion=(String) this.combocoleccion.getSelectedItem(); 
         modelo.add(posision,seleccion);
         listacoleccion.setModel(modelo);
-        Categoria c=new Categoria(seleccion);
-        coleccion.put(seleccion, c);
+        ManejadorCategoria MC=ManejadorCategoria.getinstance();
+        coleccion.put(MC.getCategoria(seleccion).getnombre(), MC.getCategoria(seleccion));
         posision++;  
            
     }//GEN-LAST:event_refrescarcoleccionActionPerformed
