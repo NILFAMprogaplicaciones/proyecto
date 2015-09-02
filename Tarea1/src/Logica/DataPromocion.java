@@ -16,7 +16,7 @@ public class DataPromocion {
     private double  precioTotal;
     private File    foto;
     private Map<String,DataCantidad>     CantidadProductos=new HashMap<String,DataCantidad>();
-    //private Set<DataCantidad>        CantidadProductos=new HashSet<DataCantidad>();
+    
     
     public DataPromocion(Restaurante res,String nombre, String descripcion, double precioTotal, boolean activa, double descuento, Map CantidadProductos,File foto){
         this.nombre=nombre;

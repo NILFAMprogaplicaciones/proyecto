@@ -42,7 +42,7 @@ public class Ventana extends javax.swing.JFrame {
         ICP = fabrica.getIControladorProducto();
         ICPE = fabrica.getIControladorPedido();
         
-        ICU.AltaCategoria("categoria1");
+        /*ICU.AltaCategoria("categoria1");
         Fecha fecha=new Fecha(15,07,1993);
         File foto=new File("src/Imagenes/usuario.png");
    
@@ -76,7 +76,7 @@ public class Ventana extends javax.swing.JFrame {
         DataPedido pedido=new DataPedido(1,fechahora,40,Estado.PREPARCION,cliente,ColeccionProductos,restaurante,tap);
         DataPedido pedido1=new DataPedido(2,fechahora1,40,Estado.PREPARCION,cliente,ColeccionProductos,restaurante,tap);
         ICPE.Caso_Generar_Pedido(pedido);
-        ICPE.Caso_Generar_Pedido(pedido1);
+        ICPE.Caso_Generar_Pedido(pedido1);*/
 
     }
     @SuppressWarnings("unchecked")
@@ -361,10 +361,17 @@ public class Ventana extends javax.swing.JFrame {
             actualizarEP.show();   
         }
     }//GEN-LAST:event_ActEstadoActionPerformed
-
+int entro=0;
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        DatosPrecargados datos=DatosPrecargados.getinstance();
-        datos.DatosPrecargado();
+        
+        if(entro==0){
+            DatosPrecargados datos=DatosPrecargados.getinstance();
+            datos.DatosPrecargado();
+            entro=1;
+        }
+        else{
+            JOptionPane.showMessageDialog(this,"Ya realizo esta accion","DATOS PRECARGADOS",JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**

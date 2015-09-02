@@ -33,5 +33,8 @@ public class ManejadorCategoria {
         int a;
         return a=ColeccionCategoria.size();
     }
+    public Categoria getCategoria(String nombrecategoria){
+        return ColeccionCategoria.get(nombrecategoria);
+    }
     
 }
