@@ -98,6 +98,8 @@ public class InfoCliente extends javax.swing.JInternalFrame {
             }
         
     }
+    
+    
     public InfoCliente() {
         initComponents();
         Fabrica fabrica = Fabrica.getInstance();

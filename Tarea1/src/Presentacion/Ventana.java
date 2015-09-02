@@ -6,6 +6,7 @@ import Logica.DataIndividual;
 import Logica.DataPedido;
 import Logica.DataProductosPedido;
 import Logica.DataRestaurante;
+import Logica.DatosPrecargados;
 import Logica.Estado;
 import Logica.Fabrica;
 import Logica.Fecha;
@@ -43,7 +44,8 @@ public class Ventana extends javax.swing.JFrame {
         
         ICU.AltaCategoria("categoria1");
         Fecha fecha=new Fecha(15,07,1993);
-        File foto=null;
+        File foto=new File("src/Imagenes/usuario.png");
+   
         DataCliente datacliente=new DataCliente("cliente1","cli1","cli1@cliente1","rafael 4542","apellidocliente",fecha,foto);
         ICU.Caso_Registro_Cliente(datacliente);
         ManejadorCategoria MC=ManejadorCategoria.getinstance();
@@ -96,6 +98,8 @@ public class Ventana extends javax.swing.JFrame {
         GenPedido = new javax.swing.JMenuItem();
         InfPedido = new javax.swing.JMenuItem();
         ActEstado = new javax.swing.JMenuItem();
+        DatosPrecargaos = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Quick Order");
@@ -197,6 +201,18 @@ public class Ventana extends javax.swing.JFrame {
         Pedido.add(ActEstado);
 
         jMenuBar2.add(Pedido);
+
+        DatosPrecargaos.setText("Datos Precargados");
+
+        jMenuItem1.setText("Cargar datos");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        DatosPrecargaos.add(jMenuItem1);
+
+        jMenuBar2.add(DatosPrecargaos);
 
         setJMenuBar(jMenuBar2);
 
@@ -346,6 +362,11 @@ public class Ventana extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ActEstadoActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        DatosPrecargados datos=DatosPrecargados.getinstance();
+        datos.DatosPrecargado();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -387,6 +408,7 @@ public class Ventana extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem ActEstado;
+    private javax.swing.JMenu DatosPrecargaos;
     private javax.swing.JMenuItem GenPedido;
     private javax.swing.JMenuItem InfPedido;
     private javax.swing.JMenu Informacion;
@@ -399,6 +421,7 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JMenu Registros;
     private javax.swing.JMenuItem cliente;
     private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem producto;
     private javax.swing.JMenuItem restaurante;
     // End of variables declaration//GEN-END:variables
