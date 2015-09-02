@@ -92,10 +92,10 @@ public class Ventana extends javax.swing.JFrame {
         cliente = new javax.swing.JMenuItem();
         restaurante = new javax.swing.JMenuItem();
         producto = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
+        Pedido = new javax.swing.JMenu();
         GenPedido = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        InfPedido = new javax.swing.JMenuItem();
+        ActEstado = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Quick Order");
@@ -170,7 +170,7 @@ public class Ventana extends javax.swing.JFrame {
 
         jMenuBar2.add(Informacion);
 
-        jMenu1.setText("Pedido");
+        Pedido.setText("Pedido");
 
         GenPedido.setText("Generar");
         GenPedido.addActionListener(new java.awt.event.ActionListener() {
@@ -178,25 +178,25 @@ public class Ventana extends javax.swing.JFrame {
                 GenPedidoActionPerformed(evt);
             }
         });
-        jMenu1.add(GenPedido);
+        Pedido.add(GenPedido);
 
-        jMenuItem1.setText("Informacion");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        InfPedido.setText("Informacion");
+        InfPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                InfPedidoActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        Pedido.add(InfPedido);
 
-        jMenuItem2.setText("Actualizar estado");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        ActEstado.setText("Actualizar estado");
+        ActEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                ActEstadoActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        Pedido.add(ActEstado);
 
-        jMenuBar2.add(jMenu1);
+        jMenuBar2.add(Pedido);
 
         setJMenuBar(jMenuBar2);
 
@@ -314,7 +314,7 @@ public class Ventana extends javax.swing.JFrame {
         verProducto.show();      
     }//GEN-LAST:event_productoActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void InfPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfPedidoActionPerformed
         ManejadorPedido MP=ManejadorPedido.getinstance();
         int cantidad=MP.getCantidadEnColeccion();
         if(cantidad==0){
@@ -328,9 +328,9 @@ public class Ventana extends javax.swing.JFrame {
             infopedido.setLocation(x, y);
             infopedido.show();   
         }
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_InfPedidoActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void ActEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActEstadoActionPerformed
         ManejadorPedido MP=ManejadorPedido.getinstance();
         int cantidad=MP.getCantidadEnColeccion();
         if(cantidad==0){
@@ -344,7 +344,7 @@ public class Ventana extends javax.swing.JFrame {
             actualizarEP.setLocation(x, y);
             actualizarEP.show();   
         }
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_ActEstadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -386,19 +386,19 @@ public class Ventana extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem ActEstado;
     private javax.swing.JMenuItem GenPedido;
+    private javax.swing.JMenuItem InfPedido;
     private javax.swing.JMenu Informacion;
-    private javax.swing.JDesktopPane PanelEscritorio;
+    public transient javax.swing.JDesktopPane PanelEscritorio;
+    private javax.swing.JMenu Pedido;
     private javax.swing.JMenuItem RegCategoria;
     private javax.swing.JMenuItem RegCliente;
     private javax.swing.JMenuItem RegRestaurante;
     private javax.swing.JMenuItem RegistrarProducto;
     private javax.swing.JMenu Registros;
     private javax.swing.JMenuItem cliente;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem producto;
     private javax.swing.JMenuItem restaurante;
     // End of variables declaration//GEN-END:variables
