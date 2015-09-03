@@ -13,7 +13,7 @@ public class ControladorProducto implements IControladorProducto {
         Individual prod = new Individual(dataindividual);
         MU.addProductoIndividual(dataindividual.getRestaurante().getnickname(),prod);
         MP.addProductoIndividual(dataindividual.getNombre(), prod);
-        JOptionPane.showMessageDialog(null,"Promocion ingresada con Exito","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null,"Producto ingresada con Exito","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
     }
     
     public void AltaProductoPromocion(DataPromocion datapromocion) {
@@ -39,6 +39,27 @@ public class ControladorProducto implements IControladorProducto {
         return dp;
     }
     
-   
-         
+    public void Caso_Actualizar_Individual(String nombreproducto,DataIndividual dataindividual){
+        ManejadorProducto   mp=ManejadorProducto.getinstance();
+        ManejadorUsuario    mu=ManejadorUsuario.getinstance();
+        mp.remove(nombreproducto);
+        Map col=mu.getColeccionProductosRestaurantes(dataindividual.getRestaurante().getnickname());
+        col.remove(nombreproducto);
+        Individual individual=new Individual(dataindividual);
+        mu.addProductoIndividual(dataindividual.getRestaurante().getnickname(),individual);
+        mp.addProductoIndividual(dataindividual.getNombre(), individual);
+        JOptionPane.showMessageDialog(null,"Producto actualizado con Exito","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
+    }
+     
+    public void Caso_Actualizar_Promocion(String nombreproducto,DataPromocion datapromocion){
+        ManejadorProducto   mp=ManejadorProducto.getinstance();
+        ManejadorUsuario    mu=ManejadorUsuario.getinstance();
+        mp.remove(nombreproducto);
+        Map col=mu.getColeccionProductosRestaurantes(datapromocion.getRestaurante().getnickname());
+        col.remove(nombreproducto);
+        Promocion promocion=new Promocion(datapromocion);
+        mu.addProductoPromocion(datapromocion.getRestaurante().getnickname(),promocion);
+        mp.addProductoPromocion(datapromocion.getNombre(), promocion);
+        JOptionPane.showMessageDialog(null,"Producto actualizado con Exito","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
+    }
 } 
