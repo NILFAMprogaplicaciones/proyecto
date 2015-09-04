@@ -8,9 +8,11 @@ import javax.swing.JOptionPane;
 
 
 public class DatosPrecargados {
-    ManejadorUsuario    MU= ManejadorUsuario.getinstance(); 
-    ManejadorCategoria  MC= ManejadorCategoria.getinstance();
-    ManejadorProducto   MP= ManejadorProducto.getinstance();
+    ManejadorUsuario    MU=     ManejadorUsuario.getinstance(); 
+    ManejadorCategoria  MC=     ManejadorCategoria.getinstance();
+    ManejadorProducto   MP=     ManejadorProducto.getinstance();
+    ManejadorPedido     MPP=    ManejadorPedido.getinstance();
+    
     private static DatosPrecargados instancia = null;
     
     public static DatosPrecargados getinstance() {
@@ -229,16 +231,120 @@ public class DatosPrecargados {
         MP.addProductoIndividual(di16.getNombre(),i16);
         MU.addProductoIndividual(di16.getRestaurante().getnickname(),i16);
     }
-    /*public void ProductosPromociones(){
-        Restaurante 
-        DataPromocion(Restaurante res,String nombre, String descripcion, double precioTotal, boolean activa, double descuento, Map CantidadProductos,File foto){
-
-    }*/
+    public void ProductosPromociones(){
+        Restaurante pm=MU.findRestaurante("mera"),br=MU.findRestaurante("rossell");
+        File foto=new File("src/Imagenes/producto.jpg");
+        
+        Map<String,DataCantidad> col1=new HashMap<String,DataCantidad>();
+        Producto producto1=MU.getProductoRestaurante(pm.getnickname(), "Chivito canadiense");
+        Producto producto2=MU.getProductoRestaurante(pm.getnickname(), "Pizza 2 gustos");
+        DataCantidad datacan1=new DataCantidad(1,producto1);
+        DataCantidad datacan2=new DataCantidad(1, producto2);
+        col1.put(datacan1.getProducto().getnombre(), datacan1);
+        col1.put(datacan2.getProducto().getnombre(), datacan2);
+        DataPromocion datapromo1=new DataPromocion(pm,"ChiviPizza", "Chivito y Pizza" , 348,  true, 20 , col1,foto);
+        Promocion promo1=new Promocion(datapromo1);
+        MP.addProductoPromocion(promo1.getnombre(),promo1);
+        MU.addProductoPromocion(promo1.getRestaurante().getnickname(),promo1);
+        
+        Map<String,DataCantidad> col2=new HashMap<String,DataCantidad>();
+        Producto producto3=MU.getProductoRestaurante(pm.getnickname(), "Milanesa de Carne");
+        Producto producto4=MU.getProductoRestaurante(pm.getnickname(), "Asado");
+        DataCantidad datacan3=new DataCantidad(3,producto3);
+        DataCantidad datacan4=new DataCantidad(1, producto4);
+        col2.put(datacan3.getProducto().getnombre(), datacan3);
+        col2.put(datacan4.getProducto().getnombre(), datacan4);
+        DataPromocion datapromo2=new DataPromocion(pm,"MilaAsado", "3 Milanesas + 1 Asado para compartir" , 535.5,  true, 30 , col2,foto);
+        Promocion promo2=new Promocion(datapromo2);
+        MP.addProductoPromocion(promo2.getnombre(),promo2);
+        MU.addProductoPromocion(promo2.getRestaurante().getnickname(),promo2);
+        
+        Map<String,DataCantidad> col3=new HashMap<String,DataCantidad>();
+        Producto producto5=MU.getProductoRestaurante(br.getnickname(), "Milanesa a caballo");
+        Producto producto6=MU.getProductoRestaurante(br.getnickname(), "Pizza con 2 gustos");
+        DataCantidad datacan5=new DataCantidad(2,producto5);
+        DataCantidad datacan6=new DataCantidad(1, producto6);
+        col3.put(datacan5.getProducto().getnombre(), datacan5);
+        col3.put(datacan6.getProducto().getnombre(), datacan6);
+        DataPromocion datapromo3=new DataPromocion(br,"MilaPizza", "2 Milanesas a caballo + 1 Pizzas 2 gustos" , 578.7,  true, 10 , col3,foto);
+        Promocion promo3=new Promocion(datapromo3);
+        MP.addProductoPromocion(promo3.getnombre(),promo3);
+        MU.addProductoPromocion(promo3.getRestaurante().getnickname(),promo3);
+    }
+    public void Pedidos(){
+        FechaHora fecha1=new FechaHora(12,8,2015,0,0),fecha2=new FechaHora(19,8,2015,0,0),fecha3=new FechaHora(19,8,2015,0,0),
+                fecha4=new FechaHora(22,8,2015,0,0),fecha5=new FechaHora(25,8,2015,0,0);
+        Cliente co=MU.findCliente("costas"),ro=MU.findCliente("roro"),ch=MU.findCliente("chechi"),an=MU.findCliente("andy"),we=MU.findCliente("weiss");
+        Producto ecb=MP.findProducto("Empanada de Carne"), eab=MP.findProducto("Empanada Americana"), eqb=MP.findProducto("Empanada QyC"),
+                asm=MP.findProducto("Asado"), tww=MP.findProducto("Thai wok"), cww=MP.findProducto("China wok"), ccm=MP.findProducto("Chivito canadiense"), par=MP.findProducto("Agnolotis");
+        Restaurante eb=MU.findRestaurante("bocatti"),pm=MU.findRestaurante("mera"),wb=MU.findRestaurante("winb"),br=MU.findRestaurante("rossell");
+        
+        
+        Map<String,Producto> col1=new HashMap<String,Producto>();
+        col1.put(ecb.getnombre(),ecb);
+        col1.put(eab.getnombre(), eab);
+        col1.put(eqb.getnombre(), eqb);
+        Map<String,DataProductosPedido> colpp1=new HashMap<String,DataProductosPedido>();
+        DataProductosPedido dpp1=new DataProductosPedido(ecb, 1,44),dpp2=new DataProductosPedido(eab, 2,88),dpp3=new DataProductosPedido(eqb, 2,88);
+        colpp1.put(dpp1.getProducto().getnombre(), dpp1);
+        colpp1.put(dpp2.getProducto().getnombre(), dpp2);
+        colpp1.put(dpp3.getProducto().getnombre(), dpp3);
+        TipoAsosiativoPedido tap1=new TipoAsosiativoPedido(colpp1);
+        DataPedido datapedido1=new DataPedido(1, fecha1, 220, Estado.PREPARCION, co, col1,  eb, tap1);
+        Pedido pedido1=new Pedido(datapedido1);
+        MPP.addPedido(pedido1.getnum(), pedido1);
+        
+        Map<String,Producto> col2=new HashMap<String,Producto>();
+        col2.put(asm.getnombre(),asm);
+        Map<String,DataProductosPedido> colpp2=new HashMap<String,DataProductosPedido>();
+        DataProductosPedido dpp4=new DataProductosPedido(asm, 3,675);
+        colpp2.put(dpp4.getProducto().getnombre(), dpp4);
+        TipoAsosiativoPedido tap2=new TipoAsosiativoPedido(colpp2);
+        DataPedido datapedido2=new DataPedido(2, fecha2, 675, Estado.ENVIADO, ro, col2,  pm, tap2);
+        Pedido pedido2=new Pedido(datapedido2);
+        MPP.addPedido(pedido2.getnum(), pedido2);
+        
+        Map<String,Producto> col3=new HashMap<String,Producto>();
+        col3.put(tww.getnombre(),tww);
+        col3.put(cww.getnombre(),cww);
+        Map<String,DataProductosPedido> colpp3=new HashMap<String,DataProductosPedido>();
+        DataProductosPedido dpp5=new DataProductosPedido(tww, 2,480),dpp6=new DataProductosPedido(cww, 3,720);
+        colpp3.put(dpp5.getProducto().getnombre(), dpp5);
+        colpp3.put(dpp6.getProducto().getnombre(), dpp6);
+        TipoAsosiativoPedido tap3=new TipoAsosiativoPedido(colpp3);
+        DataPedido datapedido3=new DataPedido(3, fecha3, 1200, Estado.RECIBIDO, ch, col3,  wb, tap3);
+        Pedido pedido3=new Pedido(datapedido3);
+        MPP.addPedido(pedido3.getnum(), pedido3);
+        
+        Map<String,Producto> col4=new HashMap<String,Producto>();
+        col4.put(ccm.getnombre(),ccm);
+        Map<String,DataProductosPedido> colpp4=new HashMap<String,DataProductosPedido>();
+        DataProductosPedido dpp7=new DataProductosPedido(ccm, 4,1220);
+        colpp4.put(dpp7.getProducto().getnombre(), dpp7);
+        TipoAsosiativoPedido tap4=new TipoAsosiativoPedido(colpp3);
+        DataPedido datapedido4=new DataPedido(4, fecha4, 1220, Estado.RECIBIDO, an, col4,  pm, tap4);
+        Pedido pedido4=new Pedido(datapedido4);
+        MPP.addPedido(pedido4.getnum(), pedido4);
+        
+        Map<String,Producto> col5=new HashMap<String,Producto>();
+        col5.put(par.getnombre(),par);
+        Map<String,DataProductosPedido> colpp5=new HashMap<String,DataProductosPedido>();
+        DataProductosPedido dpp8=new DataProductosPedido(par, 1,225);
+        colpp5.put(dpp8.getProducto().getnombre(), dpp8);
+        TipoAsosiativoPedido tap5=new TipoAsosiativoPedido(colpp5);
+        DataPedido datapedido5=new DataPedido(5, fecha5, 225, Estado.RECIBIDO, we, col5,  br, tap5);
+        Pedido pedido5=new Pedido(datapedido5);
+        MPP.addPedido(pedido5.getnum(), pedido5);
+        
+    }
+    
     public void DatosPrecargado(){
         Clientes();
         Categorias();
         Restaurantes();
         ProductosIndividuales();
+        ProductosPromociones();
+        Pedidos();
         JOptionPane.showMessageDialog(null,"Datos Cargados","DATOS PRECARGADOS",JOptionPane.INFORMATION_MESSAGE);
         
     }
