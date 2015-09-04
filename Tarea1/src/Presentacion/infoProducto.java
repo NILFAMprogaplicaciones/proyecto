@@ -6,11 +6,14 @@ import Logica.DataIndividual;
 import Logica.DataPromocion;
 import Logica.Fabrica;
 import Logica.IControladorProducto;
+import Logica.Individual;
 import Logica.ManejadorPedido;
 import Logica.ManejadorProducto;
+import Logica.ManejadorUsuario;
 import Logica.Pedido;
 import Logica.Producto;
 import Logica.Promocion;
+import Logica.Restaurante;
 import java.awt.Image;
 import java.io.File;
 import java.util.Iterator;
@@ -33,7 +36,9 @@ public class infoProducto extends javax.swing.JInternalFrame {
          TablaPedidos.setVisible(false);
          TablaProductos.setVisible(false);
          infoPedidos.setVisible(false);
-         PedidosProductos.setVisible(false);        
+         PedidosProductos.setVisible(false);   
+         txtDescuento.setVisible(false);
+         this.lbldescuento.setVisible(false);
     }
     
     public infoProducto() {
@@ -182,6 +187,8 @@ public class infoProducto extends javax.swing.JInternalFrame {
         PedidosProductos = new javax.swing.JLabel();
         TablaProductos = new javax.swing.JScrollPane();
         Productos = new javax.swing.JTable();
+        lbldescuento = new javax.swing.JLabel();
+        txtDescuento = new javax.swing.JTextField();
 
         IngreseDatosCliente.setText("Informacion de cliente");
 
@@ -222,12 +229,14 @@ public class infoProducto extends javax.swing.JInternalFrame {
 
         NombreProd.setText("Nombre");
 
+        txtNombreProd.setEditable(false);
         txtNombreProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreProdActionPerformed(evt);
             }
         });
 
+        txtDescripcion.setEditable(false);
         txtDescripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDescripcionActionPerformed(evt);
@@ -238,6 +247,7 @@ public class infoProducto extends javax.swing.JInternalFrame {
 
         precio.setText("Precio");
 
+        txtPrecio.setEditable(false);
         txtPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPrecioActionPerformed(evt);
@@ -261,8 +271,15 @@ public class infoProducto extends javax.swing.JInternalFrame {
         });
 
         jButton1.setText("Actualizar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         EstadoPromo.setText("La Promocion se encuentra: ");
+
+        Activa.setEditable(false);
 
         ProductosPromo.setText("Productos de la promocion.");
 
@@ -318,6 +335,10 @@ public class infoProducto extends javax.swing.JInternalFrame {
         });
         TablaProductos.setViewportView(Productos);
 
+        lbldescuento.setText("Descuento");
+
+        txtDescuento.setEditable(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -353,15 +374,18 @@ public class infoProducto extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(NombreProd, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(Descripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
-                                            .addComponent(precio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(NombreProd, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(Descripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
+                                                .addComponent(precio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addComponent(lbldescuento))
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(txtDescripcion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                                             .addComponent(txtNombreProd, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtPrecio))
+                                            .addComponent(txtPrecio)
+                                            .addComponent(txtDescuento))
                                         .addGap(18, 18, 18)
                                         .addComponent(Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
@@ -389,26 +413,31 @@ public class infoProducto extends javax.swing.JInternalFrame {
                 .addComponent(ver)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(Editar)
-                            .addGap(18, 18, 18)
-                            .addComponent(jButton1)
-                            .addGap(16, 16, 16))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(NombreProd)
-                                .addComponent(txtNombreProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Descripcion)
-                                .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(precio)
-                                .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                    .addComponent(Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Editar)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton1)
+                                .addGap(16, 16, 16))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(NombreProd)
+                                    .addComponent(txtNombreProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Descripcion)
+                                    .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(precio)
+                                    .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbldescuento)
+                            .addComponent(txtDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EstadoPromo)
                     .addComponent(Activa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -443,6 +472,7 @@ public class infoProducto extends javax.swing.JInternalFrame {
         else{
             if (MP.findProducto(nombre).getClass().getSimpleName().equals("Individual")){
                 Ocultar();
+                
                 this.TablaPedidos.setVisible(true);
                 this.infoPedidos.setVisible(true);
                 this.PedidosProductos.setVisible(true); 
@@ -466,6 +496,7 @@ public class infoProducto extends javax.swing.JInternalFrame {
                              
             } else{
                     DataPromocion dp;
+                    txtDescuento.setEditable(true);
                     dp = ICP.Caso_Ver_Promocion(nombre);
                     this.txtNombreProd.setText(dp.getNombre());
                     double precio = dp.getPrecioTotal();
@@ -479,6 +510,9 @@ public class infoProducto extends javax.swing.JInternalFrame {
                     }else{
                         this.Activa.setText("Inactiva");
                     }
+                    this.lbldescuento.setVisible(true);
+                    this.txtDescuento.setVisible(true);
+                    this.txtDescuento.setText(Integer.toString(dp.getDescuento()));
                     this.ProductosPromo.setVisible(true);
                     this.TablaProductos.setVisible(true);
                     this.TablaPedidos.setVisible(true);
@@ -522,9 +556,55 @@ public class infoProducto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_listoActionPerformed
 
     private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
-        
-        // TODO add your handling code here:
+    if(producto.getClass().getSimpleName().equals("Individual")){
+        txtNombreProd.setEditable(true);
+        txtDescripcion.setEditable(true);
+        txtPrecio.setEditable(true);
+    }
+    else
+    {
+        txtNombreProd.setEditable(true);
+        txtDescripcion.setEditable(true);
+        txtDescuento.setEditable(true);
+        Activa.setEditable(true);
+    }
+            
     }//GEN-LAST:event_EditarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ManejadorProducto MP=ManejadorProducto.getinstance();
+        ManejadorUsuario MU=ManejadorUsuario.getinstance();
+        int fila = listadeproductos.getSelectedRow();
+        String nombreproducto=(String)listadeproductos.getValueAt(fila, 0);
+        String nombrerestaurante=(String) listadeproductos.getValueAt(fila, 1);
+        Producto producto= MU.getProductoRestaurante(nombrerestaurante, nombreproducto);
+        Restaurante res=MU.findRestaurante(nombrerestaurante);
+        if(producto.getClass().getSimpleName().equals("Individual")){
+            Individual individual=(Individual) producto;
+            if(!res.verificarproducto(txtNombreProd.getText())){
+                DataIndividual dataindividual=new DataIndividual(txtNombreProd.getText(),txtDescripcion.getText(), individual.getRestaurante(), Double.parseDouble(txtPrecio.getText()), individual.getImagen());    
+                ICP.Caso_Actualizar_Individual(nombreproducto, dataindividual);
+            }
+            else
+                JOptionPane.showMessageDialog(this,"Nombre de Producto ya tomado","INFORMACION PRODUCTO",JOptionPane.ERROR_MESSAGE );
+
+        } 
+        else{
+            if(!res.verificarproducto(txtNombreProd.getText())){
+                Promocion promo= (Promocion) producto;
+                boolean activa;
+                if(Activa.equals("Activa"))
+                    activa=true;
+                else
+                    activa=false;
+                    DataPromocion datapromo= new DataPromocion(promo.getRestaurante(), txtNombreProd.getText(), txtDescripcion.getText(), promo.getPrecioTotal(),activa, Integer.parseInt(txtDescuento.getText()), promo.getColeccionProductos(), promo.getImagen());
+                    ICP.Caso_Actualizar_Promocion(nombreproducto, datapromo);
+            }
+            else
+                JOptionPane.showMessageDialog(this,"Nombre de Producto ya tomado","INFORMACION PRODUCTO",JOptionPane.ERROR_MESSAGE );
+            
+        }        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -544,10 +624,12 @@ public class infoProducto extends javax.swing.JInternalFrame {
     private javax.swing.JTable infoPedidos;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbldescuento;
     private javax.swing.JTable listadeproductos;
     private javax.swing.JButton listo;
     public javax.swing.JLabel precio;
     private javax.swing.JTextField txtDescripcion;
+    private javax.swing.JTextField txtDescuento;
     private javax.swing.JTextField txtNombreProd;
     private javax.swing.JTextField txtPrecio;
     private javax.swing.JButton ver;
