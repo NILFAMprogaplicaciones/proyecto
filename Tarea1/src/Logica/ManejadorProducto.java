@@ -57,4 +57,7 @@ public class ManejadorProducto {
      public int CantidadProductosPromo(String nombre){
         return findPromocion(nombre).CantidadProductos();
     }
+    public void remove(String nombreproducto){
+        ColeccionProducto.remove(nombreproducto);
+    }
 }
