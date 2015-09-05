@@ -14,6 +14,7 @@ import Logica.FechaHora;
 import Logica.IControladorUsuario;
 import Logica.IControladorProducto;
 import Logica.IControladorPedido;
+import Logica.IDatosPrecargados;
 import Logica.Individual;
 import Logica.ManejadorCategoria;
 import Logica.ManejadorPedido;
@@ -34,15 +35,17 @@ import javax.swing.JFrame;
 public class Ventana extends javax.swing.JFrame {
 
     
-    private  IControladorUsuario     ICU;
-    private  IControladorProducto    ICP;
-    private  IControladorPedido      ICPE;
+    private IControladorUsuario     ICU;
+    private IControladorProducto    ICP;
+    private IControladorPedido      ICPE;
+    private IDatosPrecargados       IDP;
     public Ventana() {
         initComponents(); 
         Fabrica fabrica = Fabrica.getInstance();
-        ICU = fabrica.getIControladorUsuario();
-        ICP = fabrica.getIControladorProducto();
-        ICPE = fabrica.getIControladorPedido();
+        ICU     = fabrica.getIControladorUsuario();
+        ICP     = fabrica.getIControladorProducto();
+        ICPE    = fabrica.getIControladorPedido();
+        IDP     = fabrica.getIDatosPrecargados();
         
     }
     @SuppressWarnings("unchecked")
@@ -331,8 +334,7 @@ int entro=0;
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         
         if(entro==0){
-            DatosPrecargados datos=DatosPrecargados.getinstance();
-            datos.DatosPrecargado();
+            IDP.DatosPrecargado();
             entro=1;
         }
         else{

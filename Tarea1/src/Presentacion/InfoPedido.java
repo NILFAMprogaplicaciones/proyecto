@@ -88,6 +88,10 @@ public class InfoPedido extends javax.swing.JInternalFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
+        setTitle("Informacion Pedido");
+
         TablaPedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

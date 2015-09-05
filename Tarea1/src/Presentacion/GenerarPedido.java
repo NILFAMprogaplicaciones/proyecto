@@ -125,6 +125,7 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
+        setTitle("Registrar Pedido");
 
         listadeclientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

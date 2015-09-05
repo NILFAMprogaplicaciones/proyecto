@@ -30,5 +30,10 @@ public class Fabrica {
         return ICPE;
     }
     
+    public IDatosPrecargados getIDatosPrecargados() {
+        IDatosPrecargados IDP = new DatosPrecargados();
+        return IDP;
+    }
+    
     
 }

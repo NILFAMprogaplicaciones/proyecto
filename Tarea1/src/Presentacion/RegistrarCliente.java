@@ -81,6 +81,7 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
+        setTitle("Registrar Cliente");
 
         Nickname.setText("Nickname");
 

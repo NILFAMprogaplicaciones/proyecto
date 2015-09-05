@@ -76,8 +76,8 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
     public void Imagenpordefecto(){
         ImageIcon icon;
         Icon icono;
-        int ancho = 178;
-        int alto = 116;
+        int ancho = 150;
+        int alto = 108;
         fichero = new File("src/Imagenes/producto.jpg");
         icon = new ImageIcon(fichero.toString());
         icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
@@ -132,6 +132,7 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
+        setTitle("Registrar Producto");
 
         IngreseDatosCliente.setText("Ingrese los siguientes datos:");
 

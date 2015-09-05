@@ -49,6 +49,10 @@ private IControladorUsuario ICU;
 
         jTextField1.setText("jTextField1");
 
+        setClosable(true);
+        setIconifiable(true);
+        setTitle("Registrar Cliente");
+
         IngreseDatosCategoria.setText("Ingrese nombre de Categoria");
 
         Categoria.setText("Categoria");

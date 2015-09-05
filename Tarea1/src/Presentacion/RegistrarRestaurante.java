@@ -32,6 +32,18 @@ public class RegistrarRestaurante extends javax.swing.JInternalFrame {
 
     private IControladorUsuario ICU;
     
+    public void Imagenpordefecto(){
+        ImageIcon icon;
+        Icon icono;
+        int ancho = 291;
+        int alto = 145;
+        fichero = new File("src/Imagenes/usuario.png");
+        icon = new ImageIcon(fichero.toString());
+        icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
+        LabelImagen.setText(null);
+        LabelImagen.setIcon( icono );
+    }
+    
     public void comboboxcategorias(){
         //AGREGO LOS ELEMENTOS DE LA COLECCION CATEGORIA AL COMBOBOX
         ManejadorCategoria mc=ManejadorCategoria.getinstance();
@@ -56,6 +68,7 @@ public class RegistrarRestaurante extends javax.swing.JInternalFrame {
         ICU = fabrica.getIControladorUsuario();
         this.txtNickname.requestFocus();
         comboboxcategorias();
+        Imagenpordefecto();
     }
 
     /**

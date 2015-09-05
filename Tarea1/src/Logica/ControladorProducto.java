@@ -12,7 +12,7 @@ public class ControladorProducto implements IControladorProducto {
         ManejadorUsuario MU=ManejadorUsuario.getinstance();
         Individual prod = new Individual(dataindividual);
         MU.addProductoIndividual(dataindividual.getRestaurante().getnickname(),prod);
-        MP.addProductoIndividual(dataindividual.getNombre(), prod);
+        MP.addProductoIndividual( prod);
         JOptionPane.showMessageDialog(null,"Producto ingresada con Exito","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
     }
     
@@ -21,7 +21,7 @@ public class ControladorProducto implements IControladorProducto {
         ManejadorUsuario MU=ManejadorUsuario.getinstance();
         Promocion prod = new Promocion(datapromocion);
         MU.addProductoPromocion(datapromocion.getRestaurante().getnickname(),prod);
-        MP.addProductoPromocion(datapromocion.getNombre(), prod);
+        MP.addProductoPromocion( prod);
         JOptionPane.showMessageDialog(null,"Producto ingresado con Exito","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
     }
     
@@ -47,7 +47,7 @@ public class ControladorProducto implements IControladorProducto {
         col.remove(nombreproducto);
         Individual individual=new Individual(dataindividual);
         mu.addProductoIndividual(dataindividual.getRestaurante().getnickname(),individual);
-        mp.addProductoIndividual(dataindividual.getNombre(), individual);
+        mp.addProductoIndividual(individual);
         JOptionPane.showMessageDialog(null,"Producto actualizado con Exito","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
     }
      
@@ -59,7 +59,7 @@ public class ControladorProducto implements IControladorProducto {
         col.remove(nombreproducto);
         Promocion promocion=new Promocion(datapromocion);
         mu.addProductoPromocion(datapromocion.getRestaurante().getnickname(),promocion);
-        mp.addProductoPromocion(datapromocion.getNombre(), promocion);
+        mp.addProductoPromocion(promocion);
         JOptionPane.showMessageDialog(null,"Producto actualizado con Exito","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
     }
 } 

@@ -7,7 +7,7 @@ import java.util.Map;
 import javax.swing.JOptionPane;
 
 
-public class DatosPrecargados {
+public class DatosPrecargados implements IDatosPrecargados {
     ManejadorUsuario    MU=     ManejadorUsuario.getinstance(); 
     ManejadorCategoria  MC=     ManejadorCategoria.getinstance();
     ManejadorProducto   MP=     ManejadorProducto.getinstance();
@@ -119,7 +119,7 @@ public class DatosPrecargados {
         colcat2.put("Pastas", MC.getCategoria("Pastas"));
         Map<Integer,File> colfoto2=new HashMap<Integer,File>();
         File foto2 = new File("src/Imagenes/usuario.png"); 
-        colfoto2.put(2, foto2);
+        colfoto2.put(1, foto2);
         DataRestaurante dr2=new DataRestaurante("Bar Rossell","rossell","bar.rossel@gmail.com","Bvar. Artigas 1601",colcat2,colfoto2);
         Restaurante res2=new Restaurante(dr2);
         MU.addUsuario(res2.getnickname(), res2);
@@ -128,7 +128,7 @@ public class DatosPrecargados {
         colcat3.put("Empanadas", MC.getCategoria("Empanadas"));
         Map<Integer,File> colfoto3=new HashMap<Integer,File>();
         File foto3 = new File("src/Imagenes/usuario.png"); 
-        colfoto3.put(3, foto3);
+        colfoto3.put(1, foto3);
         DataRestaurante dr3=new DataRestaurante("Empanadas Bocatti","bocatti","bocatti@gmail.com","18 de julio 2138",colcat3,colfoto3);
         Restaurante res3=new Restaurante(dr3);
         MU.addUsuario(res3.getnickname(), res3);
@@ -139,7 +139,7 @@ public class DatosPrecargados {
         colcat4.put("Woks", MC.getCategoria("Woks"));
         Map<Integer,File> colfoto4=new HashMap<Integer,File>();
         File foto4 = new File("src/Imagenes/wb.png"); 
-        colfoto4.put(4, foto4);
+        colfoto4.put(1, foto4);
         DataRestaurante dr4=new DataRestaurante("Wok in Box","winb","wok.in.box@hotmail.com","Libertad 2535",colcat4,colfoto4);
         Restaurante res4=new Restaurante(dr4);
         MU.addUsuario(res4.getnickname(), res4);
@@ -153,82 +153,82 @@ public class DatosPrecargados {
         
         DataIndividual di1=new DataIndividual( "Asado", "Asado a la parrilla", pm, 225, foto1);
         Individual i1=new Individual(di1);
-        MP.addProductoIndividual(di1.getNombre(),i1);
+        MP.addProductoIndividual(i1);
         MU.addProductoIndividual(di1.getRestaurante().getnickname(),i1);
         
         DataIndividual di2=new DataIndividual( "Milanesa de Carne", "Con lechuga, tomate, mayonesa y fritas", pm, 180, mcm);
         Individual i2=new Individual(di2);
-        MP.addProductoIndividual(di2.getNombre(),i2);
+        MP.addProductoIndividual(i2);
         MU.addProductoIndividual(di2.getRestaurante().getnickname(),i2);
         
         DataIndividual di3=new DataIndividual( "Chivito canadiense", "Lomito, jamón, muzza, tomate, aceitunas, panceta, huevo, morrón y fritas", pm, 305, ccm);
         Individual i3=new Individual(di3);
-        MP.addProductoIndividual(di3.getNombre(),i3);
+        MP.addProductoIndividual(i3);
         MU.addProductoIndividual(di3.getRestaurante().getnickname(),i3);
         
         DataIndividual di4=new DataIndividual( "Pizza 2 gustos", "Pizza con dos gustos a elección", pm, 130, foto1);
         Individual i4=new Individual(di4);
-        MP.addProductoIndividual(di4.getNombre(),i4);
+        MP.addProductoIndividual(i4);
         MU.addProductoIndividual(di4.getRestaurante().getnickname(),i4);
         
         DataIndividual di5=new DataIndividual( "Chivito al plato", "Ensalada rusa, mixta, huevo, jamón, muzza, panceta, aceitunas y fritas", br, 324, foto1);
         Individual i5=new Individual(di5);
-        MP.addProductoIndividual(di5.getNombre(),i5);
+        MP.addProductoIndividual(i5);
         MU.addProductoIndividual(di5.getRestaurante().getnickname(),i5);
         
         DataIndividual di6=new DataIndividual( "Milanesa a caballo", "Milanesa con dos huevos fritos acompañado de fritas", br, 270, mcr);
         Individual i6=new Individual(di6);
-        MP.addProductoIndividual(di6.getNombre(),i6);
+        MP.addProductoIndividual(i6);
         MU.addProductoIndividual(di6.getRestaurante().getnickname(),i6);
         
         DataIndividual di7=new DataIndividual( "Pizza con 2 gustos", "Pizza con dos gustos a elección", br, 103, foto1);
         Individual i7=new Individual(di7);
-        MP.addProductoIndividual(di7.getNombre(),i7);
+        MP.addProductoIndividual(i7);
         MU.addProductoIndividual(di7.getRestaurante().getnickname(),i7);
         
         DataIndividual di8=new DataIndividual( "Agnolotis", "Agnolotis de jamón y queso", br, 225, foto1);
         Individual i8=new Individual(di8);
-        MP.addProductoIndividual(di8.getNombre(),i8);
+        MP.addProductoIndividual(i8);
         MU.addProductoIndividual(di8.getRestaurante().getnickname(),i8);
         
         DataIndividual di9=new DataIndividual( "Empanada de Carne", "Carne, aceitunas, huevo duro, condimentos", eb, 44, ecb);
         Individual i9=new Individual(di9);
-        MP.addProductoIndividual(di9.getNombre(),i9);
+        MP.addProductoIndividual(i9);
         MU.addProductoIndividual(di9.getRestaurante().getnickname(),i9);
         
         DataIndividual di10=new DataIndividual( "Empanada Americana", "Carne, panceta y huevo duro", eb, 44, foto1);
         Individual i10=new Individual(di10);
-        MP.addProductoIndividual(di10.getNombre(),i10);
+        MP.addProductoIndividual(i10);
         MU.addProductoIndividual(di10.getRestaurante().getnickname(),i10);
         
         DataIndividual di11=new DataIndividual( "Empanada QyC", "Empanada de Queso y Cebolla", eb, 44, eqb);
         Individual i11=new Individual(di11);
-        MP.addProductoIndividual(di11.getNombre(),i11);
+        MP.addProductoIndividual(i11);
         MU.addProductoIndividual(di11.getRestaurante().getnickname(),i11);
         
         DataIndividual di12=new DataIndividual( "Empanada Capresse", "Queso, tomate y albahaca", eb, 44, eca);
         Individual i12=new Individual(di12);
-        MP.addProductoIndividual(di12.getNombre(),i12);
+        MP.addProductoIndividual(i12);
         MU.addProductoIndividual(di12.getRestaurante().getnickname(),i12);
         
         DataIndividual di13=new DataIndividual( "Thai wok", "Cerdo, calamares, sweet chili, salsa de ostras, maní y jugo de lima, acompañado de tallarines o arroz.", wb, 240, tww);
         Individual i13=new Individual(di13);
-        MP.addProductoIndividual(di13.getNombre(),i13);
+        MP.addProductoIndividual(i13);
         MU.addProductoIndividual(di13.getRestaurante().getnickname(),i13);
         
         DataIndividual di14=new DataIndividual( "China wok", "Tempura de cerdo, vegetales mixtos, almendras, salsa de soja y naranja, acompañado de tallarines o arroz.", wb, 240, foto1);
         Individual i14=new Individual(di14);
-        MP.addProductoIndividual(di14.getNombre(),i14);
+        MP.addProductoIndividual(i14);
         MU.addProductoIndividual(di14.getRestaurante().getnickname(),i14);
         
         DataIndividual di15=new DataIndividual( "Classic wok de pollo", "Pollo, vegetales mixtos, salsa agridulce, salsa de soja y cebollita de verdeo, acompañado de tallarines o arroz.", wb, 230, cpw);
         Individual i15=new Individual(di15);
-        MP.addProductoIndividual(di15.getNombre(),i15);
+        MP.addProductoIndividual(i15);
         MU.addProductoIndividual(di15.getRestaurante().getnickname(),i15);
         
         DataIndividual di16=new DataIndividual( "Classic wok de cerdo", "Cerdo, vegetales mixtos, jengibre, salsa de ostras y ralladura de lima, acompañado de tallarines o arroz.", wb, 230, foto1);
         Individual i16=new Individual(di16);
-        MP.addProductoIndividual(di16.getNombre(),i16);
+        MP.addProductoIndividual(i16);
         MU.addProductoIndividual(di16.getRestaurante().getnickname(),i16);
     }
     public void ProductosPromociones(){
@@ -244,7 +244,7 @@ public class DatosPrecargados {
         col1.put(datacan2.getProducto().getnombre(), datacan2);
         DataPromocion datapromo1=new DataPromocion(pm,"ChiviPizza", "Chivito y Pizza" , 348,  true, 20 , col1,foto);
         Promocion promo1=new Promocion(datapromo1);
-        MP.addProductoPromocion(promo1.getnombre(),promo1);
+        MP.addProductoPromocion(promo1);
         MU.addProductoPromocion(promo1.getRestaurante().getnickname(),promo1);
         
         Map<String,DataCantidad> col2=new HashMap<String,DataCantidad>();
@@ -256,7 +256,7 @@ public class DatosPrecargados {
         col2.put(datacan4.getProducto().getnombre(), datacan4);
         DataPromocion datapromo2=new DataPromocion(pm,"MilaAsado", "3 Milanesas + 1 Asado para compartir" , 535.5,  true, 30 , col2,foto);
         Promocion promo2=new Promocion(datapromo2);
-        MP.addProductoPromocion(promo2.getnombre(),promo2);
+        MP.addProductoPromocion(promo2);
         MU.addProductoPromocion(promo2.getRestaurante().getnickname(),promo2);
         
         Map<String,DataCantidad> col3=new HashMap<String,DataCantidad>();
@@ -268,7 +268,7 @@ public class DatosPrecargados {
         col3.put(datacan6.getProducto().getnombre(), datacan6);
         DataPromocion datapromo3=new DataPromocion(br,"MilaPizza", "2 Milanesas a caballo + 1 Pizzas 2 gustos" , 578.7,  true, 10 , col3,foto);
         Promocion promo3=new Promocion(datapromo3);
-        MP.addProductoPromocion(promo3.getnombre(),promo3);
+        MP.addProductoPromocion(promo3);
         MU.addProductoPromocion(promo3.getRestaurante().getnickname(),promo3);
     }
     public void Pedidos(){
@@ -321,7 +321,7 @@ public class DatosPrecargados {
         Map<String,DataProductosPedido> colpp4=new HashMap<String,DataProductosPedido>();
         DataProductosPedido dpp7=new DataProductosPedido(ccm, 4,1220);
         colpp4.put(dpp7.getProducto().getnombre(), dpp7);
-        TipoAsosiativoPedido tap4=new TipoAsosiativoPedido(colpp3);
+        TipoAsosiativoPedido tap4=new TipoAsosiativoPedido(colpp4);
         DataPedido datapedido4=new DataPedido(4, fecha4, 1220, Estado.RECIBIDO, an, col4,  pm, tap4);
         Pedido pedido4=new Pedido(datapedido4);
         MPP.addPedido(pedido4.getnum(), pedido4);
@@ -347,11 +347,5 @@ public class DatosPrecargados {
         Pedidos();
         JOptionPane.showMessageDialog(null,"Datos Cargados","DATOS PRECARGADOS",JOptionPane.INFORMATION_MESSAGE);
         
-    }
-            
-     
-
-
-
-    
+    } 
 }
