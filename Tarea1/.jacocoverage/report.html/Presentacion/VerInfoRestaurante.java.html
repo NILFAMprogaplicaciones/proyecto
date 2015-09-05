@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es-j-client -j-xss2m -j-xms32m -j-xx:permsize=32m -j-dapple.laf.usescreenmenubar=true -j-dapple.awt.graphics.usequartz=true -j-dsun.java2d.noddraw=true -j-dsun.java2d.dpiaware=true -j-dsun.zip.disablememorymapping=true -j-xmx1024m -l-xx:maxpermsize=384m"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>VerInfoRestaurante.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Tarea1&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Presentacion</a> &gt; <span class="el_source">VerInfoRestaurante.java</span></div><h1>VerInfoRestaurante.java</h1><pre class="source lang-java linenums">
+package Presentacion;
+
+import Logica.DataRestaurante;
+import Logica.Fabrica;
+import Logica.IControladorUsuario;
+import java.awt.Image;
+import java.io.File;
+import java.util.Map;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
+
+public class VerInfoRestaurante extends javax.swing.JInternalFrame {
+    private IControladorUsuario ICU;
+    
+    public void datosRestaurante(){
+<span class="nc" id="L19">        txtNickRestaurante.setEditable(false);</span>
+<span class="nc" id="L20">        txtNomRestaurante.setEditable(false);</span>
+<span class="nc" id="L21">        txtCorreoRestaurante.setEditable(false);</span>
+<span class="nc" id="L22">        txtDirRestaurante.setEditable(false);</span>
+        
+        
+<span class="nc" id="L25">    }</span>
+    
+<span class="nc" id="L27">    int idFoto=1;</span>
+    DataRestaurante datarestaurante;
+    
+    public void CargaDeDatos(DataRestaurante dres){
+<span class="nc" id="L31">        txtNickRestaurante.setText(dres.getnickname());</span>
+<span class="nc" id="L32">        txtNomRestaurante.setText(dres.getnombre());</span>
+<span class="nc" id="L33">        txtDirRestaurante.setText(dres.getdireccion());</span>
+<span class="nc" id="L34">        txtCorreoRestaurante.setText(dres.getcorreo());</span>
+        
+                
+<span class="nc" id="L37">        File foto=dres.getFoto(idFoto);</span>
+<span class="nc" id="L38">        int largo=237, ancho=127;</span>
+        ImageIcon icon;
+        Icon icono;
+<span class="nc" id="L41">        icon = new ImageIcon(foto.toString());</span>
+<span class="nc" id="L42">        icono = new ImageIcon(icon.getImage().getScaledInstance(largo, ancho, Image.SCALE_DEFAULT));</span>
+<span class="nc" id="L43">        imagenRestaurante.setText(null);</span>
+<span class="nc" id="L44">        imagenRestaurante.setIcon( icono );</span>
+<span class="nc" id="L45">    }</span>
+    
+<span class="nc" id="L47">    public VerInfoRestaurante(DataRestaurante dr) {</span>
+<span class="nc" id="L48">        initComponents();</span>
+<span class="nc" id="L49">        Fabrica fabrica = Fabrica.getInstance();</span>
+<span class="nc" id="L50">        ICU = fabrica.getIControladorUsuario();</span>
+<span class="nc" id="L51">        CargaDeDatos(dr);</span>
+<span class="nc" id="L52">        datosRestaurante();</span>
+<span class="nc" id="L53">        datarestaurante=dr;</span>
+        
+          
+<span class="nc" id="L56">    }</span>
+    @SuppressWarnings(&quot;unchecked&quot;)
+    // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+<span class="nc" id="L61">        PanelDatos = new javax.swing.JPanel();</span>
+<span class="nc" id="L62">        iNickRestaurante = new javax.swing.JLabel();</span>
+<span class="nc" id="L63">        iNomRestaurante = new javax.swing.JLabel();</span>
+<span class="nc" id="L64">        iCorreoRestaurante = new javax.swing.JLabel();</span>
+<span class="nc" id="L65">        iDirRestaurante = new javax.swing.JLabel();</span>
+<span class="nc" id="L66">        txtNickRestaurante = new javax.swing.JTextField();</span>
+<span class="nc" id="L67">        txtNomRestaurante = new javax.swing.JTextField();</span>
+<span class="nc" id="L68">        txtCorreoRestaurante = new javax.swing.JTextField();</span>
+<span class="nc" id="L69">        txtDirRestaurante = new javax.swing.JTextField();</span>
+<span class="nc" id="L70">        imagenRestaurante = new javax.swing.JLabel();</span>
+<span class="nc" id="L71">        ScrollProductos = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L72">        jtablaProdRestaurante = new javax.swing.JTable();</span>
+<span class="nc" id="L73">        btnSiguiente = new javax.swing.JButton();</span>
+<span class="nc" id="L74">        btnAnterior = new javax.swing.JButton();</span>
+
+<span class="nc" id="L76">        setClosable(true);</span>
+<span class="nc" id="L77">        setIconifiable(true);</span>
+<span class="nc" id="L78">        setTitle(&quot;Informacion Restaurante&quot;);</span>
+
+<span class="nc" id="L80">        iNickRestaurante.setText(&quot;Nickname :&quot;);</span>
+
+<span class="nc" id="L82">        iNomRestaurante.setText(&quot;Nombrre :&quot;);</span>
+
+<span class="nc" id="L84">        iCorreoRestaurante.setText(&quot;Correo :&quot;);</span>
+
+<span class="nc" id="L86">        iDirRestaurante.setText(&quot;Dirección:&quot;);</span>
+
+<span class="nc" id="L88">        txtNickRestaurante.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L90">                txtNickRestauranteActionPerformed(evt);</span>
+<span class="nc" id="L91">            }</span>
+        });
+
+<span class="nc" id="L94">        imagenRestaurante.setText(&quot;ImagenRestaurante&quot;);</span>
+<span class="nc" id="L95">        imagenRestaurante.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));</span>
+
+<span class="nc" id="L97">        javax.swing.GroupLayout PanelDatosLayout = new javax.swing.GroupLayout(PanelDatos);</span>
+<span class="nc" id="L98">        PanelDatos.setLayout(PanelDatosLayout);</span>
+<span class="nc" id="L99">        PanelDatosLayout.setHorizontalGroup(</span>
+<span class="nc" id="L100">            PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L101">            .addGroup(PanelDatosLayout.createSequentialGroup()</span>
+<span class="nc" id="L102">                .addGap(23, 23, 23)</span>
+<span class="nc" id="L103">                .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L104">                    .addComponent(iNickRestaurante)</span>
+<span class="nc" id="L105">                    .addComponent(iNomRestaurante)</span>
+<span class="nc" id="L106">                    .addComponent(iCorreoRestaurante)</span>
+<span class="nc" id="L107">                    .addComponent(iDirRestaurante))</span>
+<span class="nc" id="L108">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L109">                .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)</span>
+<span class="nc" id="L110">                    .addComponent(txtCorreoRestaurante)</span>
+<span class="nc" id="L111">                    .addComponent(txtNomRestaurante)</span>
+<span class="nc" id="L112">                    .addComponent(txtNickRestaurante)</span>
+<span class="nc" id="L113">                    .addComponent(txtDirRestaurante, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))</span>
+<span class="nc" id="L114">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L115">                .addComponent(imagenRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L116">                .addGap(29, 29, 29))</span>
+        );
+<span class="nc" id="L118">        PanelDatosLayout.setVerticalGroup(</span>
+<span class="nc" id="L119">            PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L120">            .addGroup(PanelDatosLayout.createSequentialGroup()</span>
+<span class="nc" id="L121">                .addContainerGap()</span>
+<span class="nc" id="L122">                .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)</span>
+<span class="nc" id="L123">                    .addComponent(imagenRestaurante, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L124">                    .addGroup(PanelDatosLayout.createSequentialGroup()</span>
+<span class="nc" id="L125">                        .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L126">                            .addComponent(iNickRestaurante)</span>
+<span class="nc" id="L127">                            .addComponent(txtNickRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L128">                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L129">                        .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L130">                            .addComponent(iNomRestaurante)</span>
+<span class="nc" id="L131">                            .addComponent(txtNomRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L132">                        .addGap(13, 13, 13)</span>
+<span class="nc" id="L133">                        .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L134">                            .addComponent(iCorreoRestaurante)</span>
+<span class="nc" id="L135">                            .addComponent(txtCorreoRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L136">                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L137">                        .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L138">                            .addComponent(iDirRestaurante)</span>
+<span class="nc" id="L139">                            .addComponent(txtDirRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))</span>
+<span class="nc" id="L140">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))</span>
+        );
+
+<span class="nc" id="L143">        ScrollProductos.setBorder(null);</span>
+<span class="nc" id="L144">        ScrollProductos.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);</span>
+<span class="nc" id="L145">        ScrollProductos.setAutoscrolls(true);</span>
+
+<span class="nc" id="L147">        jtablaProdRestaurante.setModel(new javax.swing.table.DefaultTableModel(</span>
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                &quot;Nombre&quot;, &quot;Descripción&quot;
+            }
+<span class="nc" id="L157">        ) {</span>
+<span class="nc" id="L158">            boolean[] canEdit = new boolean [] {</span>
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+<span class="nc" id="L163">                return canEdit [columnIndex];</span>
+            }
+        });
+<span class="nc" id="L166">        jtablaProdRestaurante.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);</span>
+<span class="nc" id="L167">        jtablaProdRestaurante.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));</span>
+<span class="nc" id="L168">        ScrollProductos.setViewportView(jtablaProdRestaurante);</span>
+
+<span class="nc" id="L170">        btnSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagenes/forward_alt.png&quot;))); // NOI18N</span>
+<span class="nc" id="L171">        btnSiguiente.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L173">                btnSiguienteActionPerformed(evt);</span>
+<span class="nc" id="L174">            }</span>
+        });
+
+<span class="nc" id="L177">        btnAnterior.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagenes/back_alt.png&quot;))); // NOI18N</span>
+<span class="nc" id="L178">        btnAnterior.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L180">                btnAnteriorActionPerformed(evt);</span>
+<span class="nc" id="L181">            }</span>
+        });
+
+<span class="nc" id="L184">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
+<span class="nc" id="L185">        getContentPane().setLayout(layout);</span>
+<span class="nc" id="L186">        layout.setHorizontalGroup(</span>
+<span class="nc" id="L187">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L188">            .addComponent(PanelDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L189">            .addComponent(ScrollProductos, javax.swing.GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE)</span>
+<span class="nc" id="L190">            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()</span>
+<span class="nc" id="L191">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L192">                .addComponent(btnAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L193">                .addGap(141, 141, 141)</span>
+<span class="nc" id="L194">                .addComponent(btnSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L195">                .addGap(29, 29, 29))</span>
+        );
+<span class="nc" id="L197">        layout.setVerticalGroup(</span>
+<span class="nc" id="L198">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L199">            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L200">                .addComponent(PanelDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L201">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
+<span class="nc" id="L202">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L203">                    .addComponent(btnAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L204">                    .addComponent(btnSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L205">                .addGap(28, 28, 28)</span>
+<span class="nc" id="L206">                .addComponent(ScrollProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L207">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))</span>
+        );
+
+<span class="nc" id="L210">        pack();</span>
+<span class="nc" id="L211">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+
+    private void txtNickRestauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNickRestauranteActionPerformed
+        // TODO add your handling code here:
+        
+<span class="nc" id="L216">    }//GEN-LAST:event_txtNickRestauranteActionPerformed</span>
+
+    private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
+<span class="nc" id="L219">        int cantidad=datarestaurante.getColeccionImagenes().size();</span>
+<span class="nc" id="L220">        File foto=datarestaurante.getFoto(idFoto+1);</span>
+<span class="nc bnc" id="L221" title="All 2 branches missed.">        if(idFoto&lt;cantidad){</span>
+<span class="nc" id="L222">            idFoto++;</span>
+<span class="nc" id="L223">            int largo=237, ancho=127;</span>
+            ImageIcon icon;
+            Icon icono;
+<span class="nc" id="L226">            icon = new ImageIcon(foto.toString());</span>
+<span class="nc" id="L227">            icono = new ImageIcon(icon.getImage().getScaledInstance(largo, ancho, Image.SCALE_DEFAULT));</span>
+<span class="nc" id="L228">            imagenRestaurante.setText(null);</span>
+<span class="nc" id="L229">            imagenRestaurante.setIcon( icono );</span>
+        }
+<span class="nc" id="L231">    }//GEN-LAST:event_btnSiguienteActionPerformed</span>
+
+    private void btnAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorActionPerformed
+<span class="nc" id="L234">        File foto=datarestaurante.getFoto(idFoto-1);</span>
+<span class="nc bnc" id="L235" title="All 2 branches missed.">        if(idFoto&gt;1){</span>
+<span class="nc" id="L236">            idFoto--;</span>
+<span class="nc" id="L237">            int largo=237, ancho=127;</span>
+            ImageIcon icon;
+            Icon icono;
+<span class="nc" id="L240">            icon = new ImageIcon(foto.toString());</span>
+<span class="nc" id="L241">            icono = new ImageIcon(icon.getImage().getScaledInstance(largo, ancho, Image.SCALE_DEFAULT));</span>
+<span class="nc" id="L242">            imagenRestaurante.setText(null);</span>
+<span class="nc" id="L243">            imagenRestaurante.setIcon( icono );</span>
+        }
+<span class="nc" id="L245">    }//GEN-LAST:event_btnAnteriorActionPerformed</span>
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel PanelDatos;
+    private javax.swing.JScrollPane ScrollProductos;
+    private javax.swing.JButton btnAnterior;
+    private javax.swing.JButton btnSiguiente;
+    private javax.swing.JLabel iCorreoRestaurante;
+    private javax.swing.JLabel iDirRestaurante;
+    private javax.swing.JLabel iNickRestaurante;
+    private javax.swing.JLabel iNomRestaurante;
+    private javax.swing.JLabel imagenRestaurante;
+    private javax.swing.JTable jtablaProdRestaurante;
+    private javax.swing.JTextField txtCorreoRestaurante;
+    private javax.swing.JTextField txtDirRestaurante;
+    private javax.swing.JTextField txtNickRestaurante;
+    private javax.swing.JTextField txtNomRestaurante;
+    // End of variables declaration//GEN-END:variables
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

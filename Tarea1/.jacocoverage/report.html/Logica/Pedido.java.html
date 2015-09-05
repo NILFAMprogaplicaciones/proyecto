@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es-j-client -j-xss2m -j-xms32m -j-xx:permsize=32m -j-dapple.laf.usescreenmenubar=true -j-dapple.awt.graphics.usequartz=true -j-dsun.java2d.noddraw=true -j-dsun.java2d.dpiaware=true -j-dsun.zip.disablememorymapping=true -j-xmx1024m -l-xx:maxpermsize=384m"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Pedido.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Tarea1&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Logica</a> &gt; <span class="el_source">Pedido.java</span></div><h1>Pedido.java</h1><pre class="source lang-java linenums">
+package Logica;
+
+import java.util.HashMap;
+import java.util.Map;
+
+
+public class Pedido {
+    
+    private int                     num;
+    private FechaHora               fechahora;
+    private double                  precio_total;
+    private Estado                  estado;
+    private Cliente                 cliente;
+<span class="fc" id="L15">    private Map&lt;String,Producto&gt;    ColeccionProductos=new HashMap&lt;String,Producto&gt;();</span>
+    private Restaurante             restaurante;
+    private TipoAsosiativoPedido    tipoAP;
+   
+<span class="fc" id="L19">    public Pedido(DataPedido datapedido){</span>
+<span class="fc" id="L20">        this.num=datapedido.getId();</span>
+<span class="fc" id="L21">        this.fechahora=datapedido.getFechaHora();</span>
+<span class="fc" id="L22">        this.precio_total=datapedido.getPrecioTotal();</span>
+<span class="fc" id="L23">        this.estado=datapedido.getEstado();</span>
+<span class="fc" id="L24">        this.cliente=datapedido.getCliente();</span>
+<span class="fc" id="L25">        this.ColeccionProductos.putAll(datapedido.getColeccionProductos());</span>
+<span class="fc" id="L26">        this.restaurante=datapedido.getRestaurante();</span>
+<span class="fc" id="L27">        this.tipoAP=datapedido.getTipoAP();</span>
+        
+<span class="fc" id="L29">    }</span>
+    
+    public int getnum(){
+<span class="fc" id="L32">        return num;</span>
+    }
+    public FechaHora getfecha(){
+<span class="fc" id="L35">        return fechahora;</span>
+    }
+    public String verfechastring(){
+<span class="nc" id="L38">        int dia=fechahora.getDia(),mes=fechahora.getMes(),año=fechahora.getAño(),hora=fechahora.getHora(),minutos=fechahora.getMinuto();</span>
+<span class="nc" id="L39">        String fecha=Integer.toString(dia)+&quot;/&quot;+Integer.toString(mes)+&quot;/&quot;+Integer.toString(año)+&quot;-&quot;+Integer.toString(hora)+&quot;:&quot;+Integer.toString(minutos);</span>
+<span class="nc" id="L40">        return fecha;  </span>
+    }
+    public double getPrecioTotal(){
+<span class="fc" id="L43">        return precio_total;</span>
+    }
+    public Estado getEstado(){
+<span class="fc" id="L46">        return estado;</span>
+    }
+    public Cliente getCliente(){
+<span class="fc" id="L49">        return cliente;</span>
+    }
+    public Map getColeccionProductos(){
+<span class="fc" id="L52">        return ColeccionProductos;</span>
+    }
+    public Restaurante getRestaurante(){
+<span class="fc" id="L55">        return restaurante;</span>
+    }
+    public TipoAsosiativoPedido getTipoAP(){
+<span class="fc" id="L58">        return tipoAP;</span>
+    }
+    
+    public void setNum(int num){
+<span class="nc" id="L62">        this.num=num;</span>
+<span class="nc" id="L63">    }</span>
+    public void setFecha(FechaHora fechahora){
+<span class="nc" id="L65">        this.fechahora=fechahora;</span>
+<span class="nc" id="L66">    }</span>
+    public void setPrecioTotal(double precio_total){
+<span class="nc" id="L68">        this.precio_total=precio_total;</span>
+<span class="nc" id="L69">    }</span>
+    public void setEstado(Estado estado){
+<span class="fc" id="L71">        this.estado=estado;</span>
+<span class="fc" id="L72">    }</span>
+    public void setCliente(Cliente cliente){
+<span class="nc" id="L74">        this.cliente=cliente;</span>
+<span class="nc" id="L75">    }</span>
+    public void setColeccionProductos(Map coleccionproductos){
+<span class="nc" id="L77">        this.ColeccionProductos.putAll(coleccionproductos);</span>
+<span class="nc" id="L78">    }</span>
+    public void setRestaurante(Restaurante restaurante){
+<span class="nc" id="L80">        this.restaurante=restaurante;</span>
+<span class="nc" id="L81">    }</span>
+    
+    public boolean ExisteProducto(String producto){
+<span class="nc" id="L84">        return ColeccionProductos.containsKey(producto);</span>
+    }
+    
+    
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es-j-client -j-xss2m -j-xms32m -j-xx:permsize=32m -j-dapple.laf.usescreenmenubar=true -j-dapple.awt.graphics.usequartz=true -j-dsun.java2d.noddraw=true -j-dsun.java2d.dpiaware=true -j-dsun.zip.disablememorymapping=true -j-xmx1024m -l-xx:maxpermsize=384m"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Ventana.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Tarea1&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Presentacion</a> &gt; <span class="el_source">Ventana.java</span></div><h1>Ventana.java</h1><pre class="source lang-java linenums">package Presentacion;
+
+import Logica.Cliente;
+import Logica.DataCliente;
+import Logica.DataIndividual;
+import Logica.DataPedido;
+import Logica.DataProductosPedido;
+import Logica.DataRestaurante;
+import Logica.DatosPrecargados;
+import Logica.Estado;
+import Logica.Fabrica;
+import Logica.Fecha;
+import Logica.FechaHora;
+import Logica.IControladorUsuario;
+import Logica.IControladorProducto;
+import Logica.IControladorPedido;
+import Logica.IDatosPrecargados;
+import Logica.Individual;
+import Logica.ManejadorCategoria;
+import Logica.ManejadorPedido;
+import Logica.ManejadorUsuario;
+import Logica.Producto;
+import Logica.Restaurante;
+import Logica.TipoAsosiativoPedido;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import javax.swing.JOptionPane;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
+import javax.swing.JDesktopPane;
+import javax.swing.JFrame;
+
+public class Ventana extends javax.swing.JFrame {
+
+    
+    private IControladorUsuario     ICU;
+    private IControladorProducto    ICP;
+    private IControladorPedido      ICPE;
+    private IDatosPrecargados       IDP;
+<span class="nc" id="L42">    public Ventana() {</span>
+<span class="nc" id="L43">        initComponents(); </span>
+<span class="nc" id="L44">        Fabrica fabrica = Fabrica.getInstance();</span>
+<span class="nc" id="L45">        ICU     = fabrica.getIControladorUsuario();</span>
+<span class="nc" id="L46">        ICP     = fabrica.getIControladorProducto();</span>
+<span class="nc" id="L47">        ICPE    = fabrica.getIControladorPedido();</span>
+<span class="nc" id="L48">        IDP     = fabrica.getIDatosPrecargados();</span>
+        
+<span class="nc" id="L50">    }</span>
+    @SuppressWarnings(&quot;unchecked&quot;)
+    // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+<span class="nc" id="L55">        PanelEscritorio = new javax.swing.JDesktopPane();</span>
+<span class="nc" id="L56">        jMenuBar2 = new javax.swing.JMenuBar();</span>
+<span class="nc" id="L57">        Registros = new javax.swing.JMenu();</span>
+<span class="nc" id="L58">        RegCliente = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L59">        RegRestaurante = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L60">        RegistrarProducto = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L61">        RegCategoria = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L62">        Informacion = new javax.swing.JMenu();</span>
+<span class="nc" id="L63">        cliente = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L64">        restaurante = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L65">        producto = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L66">        Pedido = new javax.swing.JMenu();</span>
+<span class="nc" id="L67">        GenPedido = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L68">        InfPedido = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L69">        ActEstado = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L70">        DatosPrecargaos = new javax.swing.JMenu();</span>
+<span class="nc" id="L71">        jMenuItem1 = new javax.swing.JMenuItem();</span>
+
+<span class="nc" id="L73">        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);</span>
+<span class="nc" id="L74">        setTitle(&quot;Quick Order&quot;);</span>
+<span class="nc" id="L75">        setBackground(new java.awt.Color(51, 255, 204));</span>
+<span class="nc" id="L76">        setIconImages(null);</span>
+<span class="nc" id="L77">        setLocation(new java.awt.Point(500, 200));</span>
+<span class="nc" id="L78">        setSize(new java.awt.Dimension(0, 0));</span>
+<span class="nc" id="L79">        setType(java.awt.Window.Type.POPUP);</span>
+
+<span class="nc" id="L81">        Registros.setText(&quot;Registros&quot;);</span>
+<span class="nc" id="L82">        Registros.setName(&quot;&quot;); // NOI18N</span>
+
+<span class="nc" id="L84">        RegCliente.setText(&quot;Registrar Cliente&quot;);</span>
+<span class="nc" id="L85">        RegCliente.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L87">                RegClienteActionPerformed(evt);</span>
+<span class="nc" id="L88">            }</span>
+        });
+<span class="nc" id="L90">        Registros.add(RegCliente);</span>
+
+<span class="nc" id="L92">        RegRestaurante.setText(&quot;Registrar Restaurante&quot;);</span>
+<span class="nc" id="L93">        RegRestaurante.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L95">                RegRestauranteActionPerformed(evt);</span>
+<span class="nc" id="L96">            }</span>
+        });
+<span class="nc" id="L98">        Registros.add(RegRestaurante);</span>
+
+<span class="nc" id="L100">        RegistrarProducto.setText(&quot;Registrar Producto&quot;);</span>
+<span class="nc" id="L101">        RegistrarProducto.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L103">                RegistrarProductoActionPerformed(evt);</span>
+<span class="nc" id="L104">            }</span>
+        });
+<span class="nc" id="L106">        Registros.add(RegistrarProducto);</span>
+
+<span class="nc" id="L108">        RegCategoria.setText(&quot;Registrar Categoria&quot;);</span>
+<span class="nc" id="L109">        RegCategoria.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L111">                RegCategoriaActionPerformed(evt);</span>
+<span class="nc" id="L112">            }</span>
+        });
+<span class="nc" id="L114">        Registros.add(RegCategoria);</span>
+
+<span class="nc" id="L116">        jMenuBar2.add(Registros);</span>
+
+<span class="nc" id="L118">        Informacion.setText(&quot;Informacion&quot;);</span>
+
+<span class="nc" id="L120">        cliente.setText(&quot;Cliente&quot;);</span>
+<span class="nc" id="L121">        cliente.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L123">                clienteActionPerformed(evt);</span>
+<span class="nc" id="L124">            }</span>
+        });
+<span class="nc" id="L126">        Informacion.add(cliente);</span>
+
+<span class="nc" id="L128">        restaurante.setText(&quot;Restaurante&quot;);</span>
+<span class="nc" id="L129">        restaurante.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L131">                restauranteActionPerformed(evt);</span>
+<span class="nc" id="L132">            }</span>
+        });
+<span class="nc" id="L134">        Informacion.add(restaurante);</span>
+
+<span class="nc" id="L136">        producto.setText(&quot;Producto&quot;);</span>
+<span class="nc" id="L137">        producto.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L139">                productoActionPerformed(evt);</span>
+<span class="nc" id="L140">            }</span>
+        });
+<span class="nc" id="L142">        Informacion.add(producto);</span>
+
+<span class="nc" id="L144">        jMenuBar2.add(Informacion);</span>
+
+<span class="nc" id="L146">        Pedido.setText(&quot;Pedido&quot;);</span>
+
+<span class="nc" id="L148">        GenPedido.setText(&quot;Generar&quot;);</span>
+<span class="nc" id="L149">        GenPedido.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L151">                GenPedidoActionPerformed(evt);</span>
+<span class="nc" id="L152">            }</span>
+        });
+<span class="nc" id="L154">        Pedido.add(GenPedido);</span>
+
+<span class="nc" id="L156">        InfPedido.setText(&quot;Informacion&quot;);</span>
+<span class="nc" id="L157">        InfPedido.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L159">                InfPedidoActionPerformed(evt);</span>
+<span class="nc" id="L160">            }</span>
+        });
+<span class="nc" id="L162">        Pedido.add(InfPedido);</span>
+
+<span class="nc" id="L164">        ActEstado.setText(&quot;Actualizar estado&quot;);</span>
+<span class="nc" id="L165">        ActEstado.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L167">                ActEstadoActionPerformed(evt);</span>
+<span class="nc" id="L168">            }</span>
+        });
+<span class="nc" id="L170">        Pedido.add(ActEstado);</span>
+
+<span class="nc" id="L172">        jMenuBar2.add(Pedido);</span>
+
+<span class="nc" id="L174">        DatosPrecargaos.setText(&quot;Datos Precargados&quot;);</span>
+
+<span class="nc" id="L176">        jMenuItem1.setText(&quot;Cargar datos&quot;);</span>
+<span class="nc" id="L177">        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L179">                jMenuItem1ActionPerformed(evt);</span>
+<span class="nc" id="L180">            }</span>
+        });
+<span class="nc" id="L182">        DatosPrecargaos.add(jMenuItem1);</span>
+
+<span class="nc" id="L184">        jMenuBar2.add(DatosPrecargaos);</span>
+
+<span class="nc" id="L186">        setJMenuBar(jMenuBar2);</span>
+
+<span class="nc" id="L188">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
+<span class="nc" id="L189">        getContentPane().setLayout(layout);</span>
+<span class="nc" id="L190">        layout.setHorizontalGroup(</span>
+<span class="nc" id="L191">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L192">            .addComponent(PanelEscritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 1113, Short.MAX_VALUE)</span>
+        );
+<span class="nc" id="L194">        layout.setVerticalGroup(</span>
+<span class="nc" id="L195">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L196">            .addComponent(PanelEscritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)</span>
+        );
+
+<span class="nc" id="L199">        pack();</span>
+<span class="nc" id="L200">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+
+    private void RegRestauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegRestauranteActionPerformed
+<span class="nc" id="L203">       ManejadorCategoria mc=ManejadorCategoria.getinstance();</span>
+<span class="nc" id="L204">        int cantidad=mc.cantidad();</span>
+<span class="nc bnc" id="L205" title="All 2 branches missed.">        if(cantidad==0){</span>
+<span class="nc" id="L206">            JOptionPane.showMessageDialog(this,&quot;No hay Categorias en el sistema&quot;,&quot;REGISTRO&quot;,JOptionPane.WARNING_MESSAGE);</span>
+        }
+        else{
+<span class="nc" id="L209">            RegistrarRestaurante registrarRestaurante = new RegistrarRestaurante();</span>
+<span class="nc" id="L210">            int x=(PanelEscritorio.getWidth()/2)-registrarRestaurante.getWidth()/2;</span>
+<span class="nc" id="L211">            int y=(PanelEscritorio.getHeight()/2)-registrarRestaurante.getHeight()/2;</span>
+<span class="nc" id="L212">            this.PanelEscritorio.add(registrarRestaurante);</span>
+<span class="nc" id="L213">            registrarRestaurante.setLocation(x, y);</span>
+<span class="nc" id="L214">            registrarRestaurante.show();    </span>
+        }
+        
+<span class="nc" id="L217">    }//GEN-LAST:event_RegRestauranteActionPerformed</span>
+
+    private void RegClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegClienteActionPerformed
+       
+<span class="nc" id="L221">        RegistrarCliente registrar = new RegistrarCliente();</span>
+<span class="nc" id="L222">        int x=(PanelEscritorio.getWidth()/2)-registrar.getWidth()/2;</span>
+<span class="nc" id="L223">        int y=(PanelEscritorio.getHeight()/2)-registrar.getHeight()/2;</span>
+<span class="nc" id="L224">        PanelEscritorio.add(registrar);</span>
+<span class="nc" id="L225">        registrar.setLocation(x,y);</span>
+<span class="nc" id="L226">        registrar.show();</span>
+<span class="nc" id="L227">    }//GEN-LAST:event_RegClienteActionPerformed</span>
+
+    private void restauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restauranteActionPerformed
+<span class="nc" id="L230">        InfoRestaurante infoRest = new InfoRestaurante();</span>
+<span class="nc" id="L231">        int x=(PanelEscritorio.getWidth()/2)-infoRest.getWidth()/2;</span>
+<span class="nc" id="L232">        int y=(PanelEscritorio.getHeight()/2)-infoRest.getHeight()/2;</span>
+<span class="nc" id="L233">        this.PanelEscritorio.add(infoRest);</span>
+<span class="nc" id="L234">        infoRest.setLocation(x,y);</span>
+<span class="nc" id="L235">        infoRest.show();</span>
+<span class="nc" id="L236">    }//GEN-LAST:event_restauranteActionPerformed</span>
+
+    private void clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteActionPerformed
+<span class="nc" id="L239">        ManejadorUsuario MU = ManejadorUsuario.getinstance();</span>
+<span class="nc" id="L240">        int cantidadusuarios=MU.CantClientes();</span>
+<span class="nc bnc" id="L241" title="All 2 branches missed.">        if(cantidadusuarios==0){</span>
+<span class="nc" id="L242">            JOptionPane.showMessageDialog(this,&quot;No hay clientes en el sistema&quot;,&quot;INFORMACION CLIENTE&quot;,JOptionPane.WARNING_MESSAGE );</span>
+        }
+        else{
+<span class="nc" id="L245">            InfoCliente info = new InfoCliente();</span>
+<span class="nc" id="L246">            int x=(PanelEscritorio.getWidth()/2)-info.getWidth()/2;</span>
+<span class="nc" id="L247">            int y=(PanelEscritorio.getHeight()/2)-info.getHeight()/2;</span>
+<span class="nc" id="L248">            this.PanelEscritorio.add(info);</span>
+<span class="nc" id="L249">            info.setLocation(x, y);</span>
+<span class="nc" id="L250">            info.show();</span>
+        }
+<span class="nc" id="L252">    }//GEN-LAST:event_clienteActionPerformed</span>
+
+    private void RegistrarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarProductoActionPerformed
+<span class="nc" id="L255">        RegistrarProducto registrarProducto = new RegistrarProducto();          </span>
+<span class="nc" id="L256">        int x=(PanelEscritorio.getWidth()/2)-registrarProducto.getWidth()/2;</span>
+<span class="nc" id="L257">        int y=(PanelEscritorio.getHeight()/2)-registrarProducto.getHeight()/2;</span>
+<span class="nc" id="L258">        this.PanelEscritorio.add(registrarProducto);</span>
+<span class="nc" id="L259">        registrarProducto.setLocation(x, y);</span>
+<span class="nc" id="L260">        registrarProducto.show();</span>
+<span class="nc" id="L261">    }//GEN-LAST:event_RegistrarProductoActionPerformed</span>
+
+    private void RegCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegCategoriaActionPerformed
+<span class="nc" id="L264">        RegistrarCategoria registrarCategoria = new RegistrarCategoria();</span>
+<span class="nc" id="L265">        int x=(PanelEscritorio.getWidth()/2)-registrarCategoria.getWidth()/2;</span>
+<span class="nc" id="L266">        int y=(PanelEscritorio.getHeight()/2)-registrarCategoria.getHeight()/2;</span>
+<span class="nc" id="L267">        this.PanelEscritorio.add(registrarCategoria);</span>
+<span class="nc" id="L268">        registrarCategoria.setLocation(x, y);</span>
+<span class="nc" id="L269">        registrarCategoria.show();</span>
+<span class="nc" id="L270">    }//GEN-LAST:event_RegCategoriaActionPerformed</span>
+
+    private void GenPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenPedidoActionPerformed
+<span class="nc" id="L273">        ManejadorUsuario MU = ManejadorUsuario.getinstance();</span>
+<span class="nc" id="L274">        ManejadorCategoria mc=ManejadorCategoria.getinstance();</span>
+<span class="nc" id="L275">        int cantidadusuarios=MU.CantClientes();</span>
+<span class="nc" id="L276">        int cantidadcategoria=mc.cantidad(),posision=0;</span>
+<span class="nc bnc" id="L277" title="All 2 branches missed.">        if(cantidadusuarios==0){</span>
+<span class="nc" id="L278">            JOptionPane.showMessageDialog(this,&quot;No hay clientes en el sistema&quot;,&quot;INFORMACION CLIENTE&quot;,JOptionPane.ERROR_MESSAGE);</span>
+        }
+<span class="nc bnc" id="L280" title="All 2 branches missed.">        else if(cantidadcategoria==0){</span>
+<span class="nc" id="L281">            JOptionPane.showMessageDialog(this,&quot;No hay Categorias en el sistema&quot;,&quot;GENERAR PEDIDO&quot;,JOptionPane.WARNING_MESSAGE);</span>
+        }
+        else{
+<span class="nc" id="L284">            GenerarPedido generarpedido = new GenerarPedido();</span>
+<span class="nc" id="L285">            int x=(PanelEscritorio.getWidth()/2)-generarpedido.getWidth()/2;</span>
+<span class="nc" id="L286">            int y=(PanelEscritorio.getHeight()/2)-generarpedido.getHeight()/2;</span>
+<span class="nc" id="L287">            this.PanelEscritorio.add(generarpedido);</span>
+<span class="nc" id="L288">            generarpedido.setLocation(x, y);</span>
+<span class="nc" id="L289">            generarpedido.show();</span>
+        }
+<span class="nc" id="L291">    }//GEN-LAST:event_GenPedidoActionPerformed</span>
+
+    private void productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productoActionPerformed
+<span class="nc" id="L294">        infoProducto verProducto = new infoProducto();          </span>
+<span class="nc" id="L295">        int x=(PanelEscritorio.getWidth()/2)-verProducto.getWidth()/2;</span>
+<span class="nc" id="L296">        int y=(PanelEscritorio.getHeight()/2)-verProducto.getHeight()/2;</span>
+<span class="nc" id="L297">        this.PanelEscritorio.add(verProducto);</span>
+<span class="nc" id="L298">        verProducto.setLocation(x, y);</span>
+<span class="nc" id="L299">        verProducto.show();      </span>
+<span class="nc" id="L300">    }//GEN-LAST:event_productoActionPerformed</span>
+
+    private void InfPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfPedidoActionPerformed
+<span class="nc" id="L303">        ManejadorPedido MP=ManejadorPedido.getinstance();</span>
+<span class="nc" id="L304">        int cantidad=MP.getCantidadEnColeccion();</span>
+<span class="nc bnc" id="L305" title="All 2 branches missed.">        if(cantidad==0){</span>
+<span class="nc" id="L306">            JOptionPane.showMessageDialog(this,&quot;No hay Pedidos en el sistema&quot;,&quot;INFORMACION PEDIDO&quot;,JOptionPane.ERROR_MESSAGE);</span>
+        }
+        else{
+<span class="nc" id="L309">            InfoPedido infopedido=new InfoPedido();</span>
+<span class="nc" id="L310">            int x=(PanelEscritorio.getWidth()/2)-infopedido.getWidth()/2;</span>
+<span class="nc" id="L311">            int y=(PanelEscritorio.getHeight()/2)-infopedido.getHeight()/2;</span>
+<span class="nc" id="L312">            this.PanelEscritorio.add(infopedido);</span>
+<span class="nc" id="L313">            infopedido.setLocation(x, y);</span>
+<span class="nc" id="L314">            infopedido.show();   </span>
+        }
+<span class="nc" id="L316">    }//GEN-LAST:event_InfPedidoActionPerformed</span>
+
+    private void ActEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActEstadoActionPerformed
+<span class="nc" id="L319">        ManejadorPedido MP=ManejadorPedido.getinstance();</span>
+<span class="nc" id="L320">        int cantidad=MP.getCantidadEnColeccion();</span>
+<span class="nc bnc" id="L321" title="All 2 branches missed.">        if(cantidad==0){</span>
+<span class="nc" id="L322">            JOptionPane.showMessageDialog(this,&quot;No hay Pedidos en el sistema&quot;,&quot;ACTUALIZAR ESTADO PEDIDO&quot;,JOptionPane.ERROR_MESSAGE);</span>
+        }
+        else{
+<span class="nc" id="L325">            ActualizarEstadoPedido actualizarEP=new ActualizarEstadoPedido();</span>
+<span class="nc" id="L326">            int x=(PanelEscritorio.getWidth()/2)-actualizarEP.getWidth()/2;</span>
+<span class="nc" id="L327">            int y=(PanelEscritorio.getHeight()/2)-actualizarEP.getHeight()/2;</span>
+<span class="nc" id="L328">            this.PanelEscritorio.add(actualizarEP);</span>
+<span class="nc" id="L329">            actualizarEP.setLocation(x, y);</span>
+<span class="nc" id="L330">            actualizarEP.show();   </span>
+        }
+<span class="nc" id="L332">    }//GEN-LAST:event_ActEstadoActionPerformed</span>
+<span class="nc" id="L333">int entro=0;</span>
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        
+<span class="nc bnc" id="L336" title="All 2 branches missed.">        if(entro==0){</span>
+<span class="nc" id="L337">            IDP.DatosPrecargado();</span>
+<span class="nc" id="L338">            entro=1;</span>
+        }
+        else{
+<span class="nc" id="L341">            JOptionPane.showMessageDialog(this,&quot;Ya realizo esta accion&quot;,&quot;DATOS PRECARGADOS&quot;,JOptionPane.ERROR_MESSAGE);</span>
+        }
+<span class="nc" id="L343">    }//GEN-LAST:event_jMenuItem1ActionPerformed</span>
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot; Look and feel setting code (optional) &quot;&gt;
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+<span class="nc bnc" id="L355" title="All 2 branches missed.">            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {</span>
+<span class="nc bnc" id="L356" title="All 2 branches missed.">                if (&quot;Nimbus&quot;.equals(info.getName())) {</span>
+<span class="nc" id="L357">                    javax.swing.UIManager.setLookAndFeel(info.getClassName());</span>
+<span class="nc" id="L358">                    break;</span>
+                }
+            }
+<span class="nc" id="L361">        } catch (ClassNotFoundException ex) {</span>
+<span class="nc" id="L362">            java.util.logging.Logger.getLogger(Ventana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L363">        } catch (InstantiationException ex) {</span>
+<span class="nc" id="L364">            java.util.logging.Logger.getLogger(Ventana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L365">        } catch (IllegalAccessException ex) {</span>
+<span class="nc" id="L366">            java.util.logging.Logger.getLogger(Ventana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L367">        } catch (javax.swing.UnsupportedLookAndFeelException ex) {</span>
+<span class="nc" id="L368">            java.util.logging.Logger.getLogger(Ventana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L369">        }</span>
+        //&lt;/editor-fold&gt;
+
+        /* Create and display the form */
+<span class="nc" id="L373">        java.awt.EventQueue.invokeLater(new Runnable() {</span>
+            public void run() {
+                
+<span class="nc" id="L376">                Ventana a=new Ventana();</span>
+<span class="nc" id="L377">                a.setExtendedState(JFrame.MAXIMIZED_BOTH);</span>
+<span class="nc" id="L378">                a.setVisible(true);</span>
+                
+<span class="nc" id="L380">            }</span>
+        });
+<span class="nc" id="L382">    }</span>
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem ActEstado;
+    private javax.swing.JMenu DatosPrecargaos;
+    private javax.swing.JMenuItem GenPedido;
+    private javax.swing.JMenuItem InfPedido;
+    private javax.swing.JMenu Informacion;
+    public static javax.swing.JDesktopPane PanelEscritorio;
+    private javax.swing.JMenu Pedido;
+    private javax.swing.JMenuItem RegCategoria;
+    private javax.swing.JMenuItem RegCliente;
+    private javax.swing.JMenuItem RegRestaurante;
+    private javax.swing.JMenuItem RegistrarProducto;
+    private javax.swing.JMenu Registros;
+    private javax.swing.JMenuItem cliente;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem producto;
+    private javax.swing.JMenuItem restaurante;
+    // End of variables declaration//GEN-END:variables
+
+    public static JDesktopPane getjDesktopPane(){
+<span class="nc" id="L405">           return PanelEscritorio;</span>
+   }
+}
+
+<span class="nc" id="L409">class validador {</span>
+	 
+<span class="nc" id="L411">    public static java.util.HashMap&lt;String, javax.swing.JInternalFrame&gt; jIframes = new java.util.HashMap&lt;String, javax.swing.JInternalFrame&gt;();</span>
+ 
+    public static void addJIframe(String key, javax.swing.JInternalFrame jiframe) {
+<span class="nc" id="L414">        jIframes.put(key, jiframe);</span>
+<span class="nc" id="L415">    }</span>
+ 
+    public static javax.swing.JInternalFrame getJInternalFrame(String key) {
+<span class="nc" id="L418">        return jIframes.get(key);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>
