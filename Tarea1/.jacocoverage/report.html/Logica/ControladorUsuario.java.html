@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es-j-client -j-xss2m -j-xms32m -j-xx:permsize=32m -j-dapple.laf.usescreenmenubar=true -j-dapple.awt.graphics.usequartz=true -j-dsun.java2d.noddraw=true -j-dsun.java2d.dpiaware=true -j-dsun.zip.disablememorymapping=true -j-xmx1024m -l-xx:maxpermsize=384m"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ControladorUsuario.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Tarea1&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Logica</a> &gt; <span class="el_source">ControladorUsuario.java</span></div><h1>ControladorUsuario.java</h1><pre class="source lang-java linenums">
+package Logica;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import javax.swing.*;
+import javax.swing.Icon;
+        
+<span class="fc" id="L10">public class ControladorUsuario implements IControladorUsuario  {</span>
+    
+    
+    
+    public void Caso_Registro_Cliente(DataCliente datacliente){
+<span class="fc" id="L15">        ManejadorUsuario mc=ManejadorUsuario.getinstance();</span>
+<span class="fc" id="L16">        Cliente c=new Cliente(datacliente);</span>
+<span class="fc" id="L17">        mc.addUsuario(datacliente.getnickname(),c);</span>
+<span class="fc" id="L18">        JOptionPane.showMessageDialog(null,&quot;Cliente Registrado&quot;,&quot;REGISTRO&quot;,JOptionPane.INFORMATION_MESSAGE);            </span>
+    
+<span class="fc" id="L20">    }</span>
+    public DataCliente Caso_Ver_Cliente(String nickname){
+<span class="fc" id="L22">        ManejadorUsuario mc=ManejadorUsuario.getinstance();</span>
+<span class="fc" id="L23">        Cliente c= mc.findCliente(nickname);</span>
+<span class="fc" id="L24">        DataCliente du=new DataCliente(c.getnombre(),c.getnickname(),c.getcorreo(),c.getdireccion(),c.getapellido(),c.getfecha(),c.getFoto());</span>
+<span class="fc" id="L25">        return du;</span>
+    }
+    
+    public void Caso_Registro_Restaurante(DataRestaurante datarestaurante){
+<span class="fc" id="L29">        ManejadorUsuario mu=ManejadorUsuario.getinstance();</span>
+<span class="fc" id="L30">        Restaurante res=new Restaurante(datarestaurante);</span>
+<span class="fc" id="L31">        mu.addUsuario(datarestaurante.getnickname(), res);</span>
+<span class="fc" id="L32">        JOptionPane.showMessageDialog(null,&quot;Restaurante Registrado&quot;,&quot;REGISTRO&quot;,JOptionPane.INFORMATION_MESSAGE);</span>
+<span class="fc" id="L33">    }</span>
+    public DataRestaurante Caso_Ver_Restaurante(String nickName){
+<span class="fc" id="L35">        ManejadorUsuario mu=ManejadorUsuario.getinstance();</span>
+<span class="fc" id="L36">        Restaurante r= mu.findRestaurante(nickName);</span>
+<span class="fc" id="L37">        DataRestaurante dr = new DataRestaurante(r.getnombre(),r.getnickname(), r.getcorreo(),  r.getdireccion(),r.getCategorias(), r.getColeccionImagenes());</span>
+<span class="fc" id="L38">        return  dr;</span>
+    }
+    
+    public void AltaCategoria(String nombre) {
+<span class="fc" id="L42">        ManejadorCategoria mc=ManejadorCategoria.getinstance();</span>
+<span class="fc" id="L43">        Categoria cat = new Categoria(nombre);</span>
+<span class="fc" id="L44">        mc.addCategoria(nombre, cat);</span>
+<span class="fc" id="L45">    }</span>
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

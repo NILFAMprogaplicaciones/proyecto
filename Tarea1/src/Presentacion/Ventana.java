@@ -23,6 +23,7 @@ import Logica.Producto;
 import Logica.Restaurante;
 import Logica.TipoAsosiativoPedido;
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import java.io.File;
@@ -47,6 +48,14 @@ public class Ventana extends javax.swing.JFrame {
         ICPE    = fabrica.getIControladorPedido();
         IDP     = fabrica.getIDatosPrecargados();
         
+    }
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().
+                getImage(ClassLoader.getSystemResource("Imagenes/Quick_Order.png"));
+
+
+        return retValue;
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -73,7 +82,7 @@ public class Ventana extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Quick Order");
         setBackground(new java.awt.Color(51, 255, 204));
-        setIconImages(null);
+        setIconImage(getIconImage());
         setLocation(new java.awt.Point(500, 200));
         setSize(new java.awt.Dimension(0, 0));
         setType(java.awt.Window.Type.POPUP);

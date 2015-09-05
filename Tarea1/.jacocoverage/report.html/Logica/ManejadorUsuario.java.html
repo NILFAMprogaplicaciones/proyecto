@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es-j-client -j-xss2m -j-xms32m -j-xx:permsize=32m -j-dapple.laf.usescreenmenubar=true -j-dapple.awt.graphics.usequartz=true -j-dsun.java2d.noddraw=true -j-dsun.java2d.dpiaware=true -j-dsun.zip.disablememorymapping=true -j-xmx1024m -l-xx:maxpermsize=384m"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ManejadorUsuario.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Tarea1&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Logica</a> &gt; <span class="el_source">ManejadorUsuario.java</span></div><h1>ManejadorUsuario.java</h1><pre class="source lang-java linenums">
+package Logica;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeSet;
+import javax.swing.JOptionPane;
+
+<span class="fc" id="L12">public class ManejadorUsuario {</span>
+    
+<span class="fc" id="L14">    private Map&lt;String,Usuario&gt; ColeccionUsuarios = new HashMap&lt;String,Usuario&gt;();</span>
+    //SINGLENTON
+<span class="fc" id="L16">    private static ManejadorUsuario instancia = null;</span>
+    
+    public static ManejadorUsuario getinstance() {
+<span class="fc bfc" id="L19" title="All 2 branches covered.">        if (instancia == null) {</span>
+<span class="fc" id="L20">            instancia = new ManejadorUsuario();</span>
+        }
+<span class="fc" id="L22">        return instancia;</span>
+    }
+    
+    //FUNCIONES DE COLECCION USUARIOS
+    public void addUsuario(String nickname, Usuario usuario){
+<span class="fc" id="L27">        ColeccionUsuarios.put(nickname, usuario);</span>
+<span class="fc" id="L28">    }</span>
+    public Cliente findCliente(String nickname){
+<span class="fc" id="L30">        return ((Cliente)ColeccionUsuarios.get(nickname));</span>
+    }
+    public Restaurante findRestaurante(String nickname){
+<span class="fc" id="L33">        return ((Restaurante)ColeccionUsuarios.get(nickname));</span>
+    }
+    public boolean verificarnickname(String nickname){
+<span class="nc" id="L36">        return ColeccionUsuarios.containsKey(nickname);</span>
+    }
+    public boolean verificarcorreo(String correo){
+<span class="nc" id="L39">        boolean resultado=false;</span>
+<span class="nc" id="L40">        Iterator&lt;Usuario&gt; it = ColeccionUsuarios.values().iterator();</span>
+<span class="nc" id="L41">        Usuario objeto=null;</span>
+<span class="nc bnc" id="L42" title="All 2 branches missed.">        while(it.hasNext()){</span>
+<span class="nc" id="L43">            objeto=it.next();</span>
+<span class="nc bnc" id="L44" title="All 2 branches missed.">            if(objeto.getcorreo().equals(correo))</span>
+<span class="nc" id="L45">                resultado= true;</span>
+        }
+<span class="nc" id="L47">        return resultado;</span>
+    }
+    public int CantUsuarios(){
+        int size;
+<span class="nc" id="L51">        return size=ColeccionUsuarios.size();</span>
+    }
+    public int CantClientes(){
+<span class="nc" id="L54">        int cantidad=0;</span>
+<span class="nc" id="L55">        Iterator&lt;Usuario&gt; it = ColeccionUsuarios.values().iterator();</span>
+<span class="nc" id="L56">        Usuario objeto=null;</span>
+<span class="nc bnc" id="L57" title="All 2 branches missed.">        while(it.hasNext()){</span>
+<span class="nc" id="L58">            objeto=it.next();</span>
+<span class="nc" id="L59">            String tipo=objeto.getClass().getSimpleName();</span>
+            
+<span class="nc bnc" id="L61" title="All 2 branches missed.">            if(tipo.equals(&quot;Cliente&quot;))</span>
+<span class="nc" id="L62">                cantidad=cantidad+1;</span>
+<span class="nc" id="L63">        }</span>
+<span class="nc" id="L64">        return cantidad;</span>
+    }
+    public Map obtenercoleccion(){
+<span class="nc" id="L67">       return this.ColeccionUsuarios;   </span>
+   }
+   //ME RETORNA TODOS LOS RESTAURANTES
+   public Map getColeccionRestaurante() {
+<span class="nc" id="L71">        new String(&quot;Restaurante&quot;); </span>
+<span class="nc" id="L72">        Integer indice=0;</span>
+<span class="nc" id="L73">        Map&lt;Integer,Usuario&gt; ColeccionRest = new HashMap&lt;Integer,Usuario&gt;();</span>
+<span class="nc" id="L74">        Iterator&lt;Usuario&gt; it = ColeccionUsuarios.values().iterator();</span>
+<span class="nc" id="L75">        Usuario objeto=null;</span>
+<span class="nc bnc" id="L76" title="All 2 branches missed.">        while(it.hasNext()){</span>
+<span class="nc" id="L77">            objeto=it.next();</span>
+<span class="nc bnc" id="L78" title="All 2 branches missed.">            if(objeto.getClass().getSimpleName().equals(&quot;Restaurante&quot;))</span>
+<span class="nc" id="L79">                ColeccionRest.put(indice,objeto);</span>
+<span class="nc" id="L80">            indice++;</span>
+        }
+<span class="nc" id="L82">        return ColeccionRest;</span>
+   }
+   public Map getColeccionProductosRestaurantes(String nickname){
+<span class="nc" id="L85">        Map resultado=null;</span>
+<span class="nc" id="L86">        Iterator&lt;Usuario&gt; it = ColeccionUsuarios.values().iterator();</span>
+        Restaurante res;
+<span class="nc" id="L88">        Usuario objeto=null;</span>
+<span class="nc bnc" id="L89" title="All 2 branches missed.">        while(it.hasNext()){</span>
+<span class="nc" id="L90">            objeto=it.next();</span>
+<span class="nc bnc" id="L91" title="All 2 branches missed.">            if(objeto.getClass().getSimpleName().equals(&quot;Restaurante&quot;)){</span>
+<span class="nc bnc" id="L92" title="All 2 branches missed.">                if(objeto.getnickname().equals(nickname)){</span>
+<span class="nc" id="L93">                    res=(Restaurante) objeto;</span>
+<span class="nc" id="L94">                    resultado=res.getProductos();</span>
+                }
+            }
+                
+               
+        }
+<span class="nc" id="L100">        return resultado;</span>
+   }
+   
+   public void addProductoIndividual(String Restaurante,Individual prod){
+<span class="fc" id="L104">       this.findRestaurante(Restaurante).addProducto(prod);</span>
+<span class="fc" id="L105">   }</span>
+   public void addProductoPromocion(String Restaurante,Promocion prod){
+<span class="fc" id="L107">       this.findRestaurante(Restaurante).addProducto(prod);</span>
+<span class="fc" id="L108">   }</span>
+   public double buscarprecioproducto(String nickrestaurante, String nombreproducto){
+       
+<span class="nc" id="L111">       return this.findRestaurante(nickrestaurante).buscarprecio(nombreproducto);</span>
+   }
+   public Producto getProductoRestaurante(String nickname,String nombreproducto){
+<span class="nc" id="L114">        Producto pro=null;</span>
+        Restaurante res;
+<span class="nc" id="L116">        Iterator&lt;Usuario&gt; it = ColeccionUsuarios.values().iterator();</span>
+<span class="nc" id="L117">        Usuario objeto=null;</span>
+<span class="nc bnc" id="L118" title="All 2 branches missed.">        while(it.hasNext()){</span>
+<span class="nc" id="L119">            objeto=it.next();</span>
+<span class="nc bnc" id="L120" title="All 2 branches missed.">            if(objeto.getClass().getSimpleName().equals(&quot;Restaurante&quot;)){</span>
+<span class="nc bnc" id="L121" title="All 2 branches missed.">                if(objeto.getnickname().equals(nickname)){</span>
+<span class="nc" id="L122">                    res=(Restaurante) objeto;</span>
+<span class="nc" id="L123">                    pro=res.getProducto(nombreproducto);</span>
+                }
+            }
+                
+               
+        }
+<span class="nc" id="L129">        return pro;</span>
+   }
+   public Map getCategoriasRestaurantes(String nickname){
+<span class="nc" id="L132">        Map resultado=null;</span>
+<span class="nc" id="L133">        Iterator&lt;Usuario&gt; it = ColeccionUsuarios.values().iterator();</span>
+        Restaurante res;
+<span class="nc" id="L135">        Usuario objeto=null;</span>
+<span class="nc bnc" id="L136" title="All 2 branches missed.">        while(it.hasNext()){</span>
+<span class="nc" id="L137">            objeto=it.next();</span>
+<span class="nc bnc" id="L138" title="All 2 branches missed.">            if(objeto.getClass().getSimpleName().equals(&quot;Restaurante&quot;)){</span>
+<span class="nc bnc" id="L139" title="All 2 branches missed.">                if(objeto.getnickname().equals(nickname)){</span>
+<span class="nc" id="L140">                    res=(Restaurante) objeto;</span>
+<span class="nc" id="L141">                    resultado=res.getCategorias();</span>
+                }
+            }
+                
+        }
+<span class="nc" id="L146">        return resultado;</span>
+   }
+}
+    
+    
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

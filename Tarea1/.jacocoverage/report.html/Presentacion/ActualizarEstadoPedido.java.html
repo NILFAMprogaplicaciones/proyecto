@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es-j-client -j-xss2m -j-xms32m -j-xx:permsize=32m -j-dapple.laf.usescreenmenubar=true -j-dapple.awt.graphics.usequartz=true -j-dsun.java2d.noddraw=true -j-dsun.java2d.dpiaware=true -j-dsun.zip.disablememorymapping=true -j-xmx1024m -l-xx:maxpermsize=384m"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ActualizarEstadoPedido.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Tarea1&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Presentacion</a> &gt; <span class="el_source">ActualizarEstadoPedido.java</span></div><h1>ActualizarEstadoPedido.java</h1><pre class="source lang-java linenums">
+package Presentacion;
+
+import Logica.Estado;
+import Logica.Fabrica;
+import Logica.IControladorPedido;
+import Logica.IControladorUsuario;
+import Logica.ManejadorPedido;
+import Logica.Pedido;
+import java.util.Iterator;
+import java.util.Map;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+
+public class ActualizarEstadoPedido extends javax.swing.JInternalFrame {
+
+    public void cargarTablaPedidos(){
+<span class="nc" id="L19">        ManejadorPedido MP = ManejadorPedido.getinstance();        </span>
+        //AGREGO LAS FILAS NECESARIAS EN MI JTABLE
+<span class="nc" id="L21">        int cantidadpedidos=MP.getCantidadEnColeccion(),a=0;</span>
+<span class="nc bnc" id="L22" title="All 2 branches missed.">        while (a!=cantidadpedidos){</span>
+<span class="nc" id="L23">            DefaultTableModel modelo= (DefaultTableModel) TablaPedidos.getModel();</span>
+<span class="nc" id="L24">            int columna = modelo.getColumnCount();</span>
+<span class="nc" id="L25">            modelo.addRow(new Object[columna]);</span>
+<span class="nc" id="L26">            TablaPedidos.setModel(modelo);</span>
+<span class="nc" id="L27">            a++;</span>
+<span class="nc" id="L28">        }</span>
+        //AGREGO VALORES A  LAS FILAS
+<span class="nc" id="L30">        Map coleccion=MP.getColeccionPedido();</span>
+<span class="nc" id="L31">        Iterator&lt;Pedido&gt; it = coleccion.values().iterator();</span>
+<span class="nc" id="L32">        Pedido pedido=null;</span>
+<span class="nc" id="L33">        int fila=0;</span>
+<span class="nc bnc" id="L34" title="All 2 branches missed.">        while (it.hasNext()) {</span>
+<span class="nc" id="L35">            pedido=it.next();</span>
+<span class="nc" id="L36">            this.TablaPedidos.setValueAt(pedido.getnum(), fila, 0);</span>
+<span class="nc" id="L37">            this.TablaPedidos.setValueAt(pedido.verfechastring(), fila, 1);</span>
+<span class="nc" id="L38">            fila++;</span>
+            
+        }
+<span class="nc" id="L41">    }</span>
+    private IControladorPedido ICP;
+<span class="nc" id="L43">    public ActualizarEstadoPedido() {</span>
+<span class="nc" id="L44">        initComponents();</span>
+<span class="nc" id="L45">        cargarTablaPedidos();</span>
+<span class="nc" id="L46">        Fabrica fabrica = Fabrica.getInstance();</span>
+<span class="nc" id="L47">        ICP = fabrica.getIControladorPedido();</span>
+<span class="nc" id="L48">    }</span>
+
+    
+    @SuppressWarnings(&quot;unchecked&quot;)
+    // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+<span class="nc" id="L55">        jLabel1 = new javax.swing.JLabel();</span>
+<span class="nc" id="L56">        jScrollPane1 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L57">        TablaPedidos = new javax.swing.JTable();</span>
+<span class="nc" id="L58">        panel1 = new java.awt.Panel();</span>
+<span class="nc" id="L59">        jButton1 = new javax.swing.JButton();</span>
+<span class="nc" id="L60">        jLabel2 = new javax.swing.JLabel();</span>
+<span class="nc" id="L61">        txtEstado = new javax.swing.JTextField();</span>
+<span class="nc" id="L62">        jLabel3 = new javax.swing.JLabel();</span>
+<span class="nc" id="L63">        Enviado = new javax.swing.JCheckBox();</span>
+<span class="nc" id="L64">        Recibido = new javax.swing.JCheckBox();</span>
+<span class="nc" id="L65">        jButton2 = new javax.swing.JButton();</span>
+
+<span class="nc" id="L67">        setClosable(true);</span>
+<span class="nc" id="L68">        setIconifiable(true);</span>
+<span class="nc" id="L69">        setTitle(&quot;Actualizar Pedido&quot;);</span>
+
+<span class="nc" id="L71">        jLabel1.setFont(new java.awt.Font(&quot;Tahoma&quot;, 0, 14)); // NOI18N</span>
+<span class="nc" id="L72">        jLabel1.setText(&quot;Pedidos en el Sistema&quot;);</span>
+
+<span class="nc" id="L74">        TablaPedidos.setModel(new javax.swing.table.DefaultTableModel(</span>
+            new Object [][] {
+
+            },
+            new String [] {
+                &quot;ID&quot;, &quot;Fecha&quot;
+            }
+<span class="nc" id="L81">        ) {</span>
+<span class="nc" id="L82">            Class[] types = new Class [] {</span>
+                java.lang.String.class, java.lang.String.class
+            };
+<span class="nc" id="L85">            boolean[] canEdit = new boolean [] {</span>
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+<span class="nc" id="L90">                return types [columnIndex];</span>
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+<span class="nc" id="L94">                return canEdit [columnIndex];</span>
+            }
+        });
+<span class="nc" id="L97">        jScrollPane1.setViewportView(TablaPedidos);</span>
+
+<span class="nc" id="L99">        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagenes/down_alt.png&quot;))); // NOI18N</span>
+<span class="nc" id="L100">        jButton1.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L102">                jButton1ActionPerformed(evt);</span>
+<span class="nc" id="L103">            }</span>
+        });
+
+<span class="nc" id="L106">        jLabel2.setText(&quot;ESTADO:&quot;);</span>
+
+<span class="nc" id="L108">        txtEstado.setEditable(false);</span>
+
+<span class="nc" id="L110">        jLabel3.setText(&quot;Seleccione una opcion:&quot;);</span>
+
+<span class="nc" id="L112">        Enviado.setText(&quot;ENVIADO&quot;);</span>
+
+<span class="nc" id="L114">        Recibido.setText(&quot;RECIBIDO&quot;);</span>
+<span class="nc" id="L115">        Recibido.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L117">                RecibidoActionPerformed(evt);</span>
+<span class="nc" id="L118">            }</span>
+        });
+
+<span class="nc" id="L121">        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagenes/edit.png&quot;))); // NOI18N</span>
+<span class="nc" id="L122">        jButton2.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L124">                jButton2ActionPerformed(evt);</span>
+<span class="nc" id="L125">            }</span>
+        });
+
+<span class="nc" id="L128">        javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);</span>
+<span class="nc" id="L129">        panel1.setLayout(panel1Layout);</span>
+<span class="nc" id="L130">        panel1Layout.setHorizontalGroup(</span>
+<span class="nc" id="L131">            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L132">            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L133">                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L134">                    .addGroup(panel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L135">                        .addComponent(jLabel2)</span>
+<span class="nc" id="L136">                        .addGap(18, 18, 18)</span>
+<span class="nc" id="L137">                        .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L138">                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L139">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L140">                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L141">                    .addComponent(jLabel3)</span>
+<span class="nc" id="L142">                    .addComponent(Recibido)</span>
+<span class="nc" id="L143">                    .addComponent(Enviado))</span>
+<span class="nc" id="L144">                .addGap(44, 44, 44)</span>
+<span class="nc" id="L145">                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+        );
+<span class="nc" id="L147">        panel1Layout.setVerticalGroup(</span>
+<span class="nc" id="L148">            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L149">            .addGroup(panel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L150">                .addContainerGap()</span>
+<span class="nc" id="L151">                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L152">                    .addGroup(panel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L153">                        .addComponent(jButton1)</span>
+<span class="nc" id="L154">                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
+<span class="nc" id="L155">                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L156">                            .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L157">                            .addComponent(jLabel2)))</span>
+<span class="nc" id="L158">                    .addGroup(panel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L159">                        .addComponent(jLabel3)</span>
+<span class="nc" id="L160">                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L161">                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)</span>
+<span class="nc" id="L162">                            .addGroup(panel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L163">                                .addComponent(Enviado)</span>
+<span class="nc" id="L164">                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L165">                                .addComponent(Recibido))</span>
+<span class="nc" id="L166">                            .addComponent(jButton2))))</span>
+<span class="nc" id="L167">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))</span>
+        );
+
+<span class="nc" id="L170">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
+<span class="nc" id="L171">        getContentPane().setLayout(layout);</span>
+<span class="nc" id="L172">        layout.setHorizontalGroup(</span>
+<span class="nc" id="L173">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L174">            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L175">                .addContainerGap()</span>
+<span class="nc" id="L176">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L177">                    .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L178">                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L179">                            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L180">                                .addGap(155, 155, 155)</span>
+<span class="nc" id="L181">                                .addComponent(jLabel1))</span>
+<span class="nc" id="L182">                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L183">                        .addGap(0, 0, Short.MAX_VALUE))</span>
+<span class="nc" id="L184">                    .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))</span>
+<span class="nc" id="L185">                .addContainerGap())</span>
+        );
+<span class="nc" id="L187">        layout.setVerticalGroup(</span>
+<span class="nc" id="L188">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L189">            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L190">                .addContainerGap()</span>
+<span class="nc" id="L191">                .addComponent(jLabel1)</span>
+<span class="nc" id="L192">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L193">                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L194">                .addGap(19, 19, 19)</span>
+<span class="nc" id="L195">                .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L196">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))</span>
+        );
+
+<span class="nc" id="L199">        pack();</span>
+<span class="nc" id="L200">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+
+    private void RecibidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RecibidoActionPerformed
+        // TODO add your handling code here:
+<span class="nc" id="L204">    }//GEN-LAST:event_RecibidoActionPerformed</span>
+    Pedido pedido;
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+<span class="nc" id="L207">        int fila=TablaPedidos.getSelectedRow();</span>
+<span class="nc bnc" id="L208" title="All 2 branches missed.">        if(fila==-1)</span>
+<span class="nc" id="L209">            JOptionPane.showMessageDialog(this, &quot;Seleccione un Pedido&quot;,&quot;ACTUALIZACION&quot;,JOptionPane.WARNING_MESSAGE);</span>
+        else{
+<span class="nc" id="L211">            ManejadorPedido MP=ManejadorPedido.getinstance();</span>
+
+<span class="nc" id="L213">            int ID=(int) TablaPedidos.getValueAt(fila, 0);</span>
+            //OBTENGO EL PEDIDO CON LA ID SELECCIONADA
+<span class="nc" id="L215">            pedido=MP.getPedido(ID);</span>
+            //CARGO MI TXT
+<span class="nc bnc" id="L217" title="All 2 branches missed.">            if(pedido.getEstado().equals(Estado.PREPARCION))</span>
+<span class="nc" id="L218">                txtEstado.setText(&quot;PREPARACION&quot;);</span>
+<span class="nc bnc" id="L219" title="All 2 branches missed.">            else if(pedido.getEstado().equals(Estado.ENVIADO))</span>
+<span class="nc" id="L220">                txtEstado.setText(&quot;ENVIADO&quot;);</span>
+            else
+<span class="nc" id="L222">                txtEstado.setText(&quot;RECIBIDO&quot;);</span>
+        }
+<span class="nc" id="L224">    }//GEN-LAST:event_jButton1ActionPerformed</span>
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+<span class="nc" id="L227">        ManejadorPedido MP=ManejadorPedido.getinstance();</span>
+<span class="nc bnc" id="L228" title="All 2 branches missed.">        if(txtEstado.getText().equals(&quot;RECIBIDO&quot;)){</span>
+<span class="nc" id="L229">            JOptionPane.showMessageDialog(this, &quot;Imposible cambiar Estado del Pedido&quot;,&quot;ACTUALIZACION&quot;,JOptionPane.ERROR_MESSAGE);</span>
+        }
+<span class="nc bnc" id="L231" title="All 2 branches missed.">        else if(txtEstado.getText().equals(&quot;ENVIADO&quot;)){</span>
+<span class="nc bnc" id="L232" title="All 2 branches missed.">            if(Enviado.isSelected())</span>
+<span class="nc" id="L233">                JOptionPane.showMessageDialog(this, &quot;Verifique su opcion&quot;,&quot;ACTUALIZACION&quot;,JOptionPane.WARNING_MESSAGE);</span>
+<span class="nc bnc" id="L234" title="All 2 branches missed.">            else if(Recibido.isSelected()){</span>
+<span class="nc" id="L235">                ICP.Caso_Actualizar_Estado_Pedido(pedido.getnum(), Estado.RECIBIDO);</span>
+<span class="nc" id="L236">                dispose();</span>
+            }
+        }
+<span class="nc bnc" id="L239" title="All 2 branches missed.">        else if(txtEstado.getText().equals(&quot;PREPARACION&quot;)){</span>
+<span class="nc bnc" id="L240" title="All 4 branches missed.">            if(Enviado.isSelected()&amp;&amp;!Recibido.isSelected()){</span>
+<span class="nc" id="L241">                ICP.Caso_Actualizar_Estado_Pedido(pedido.getnum(), Estado.ENVIADO);</span>
+<span class="nc" id="L242">                dispose();</span>
+            }
+<span class="nc bnc" id="L244" title="All 4 branches missed.">            else if(Recibido.isSelected()&amp;&amp;!Enviado.isSelected()){</span>
+<span class="nc" id="L245">                ICP.Caso_Actualizar_Estado_Pedido(pedido.getnum(), Estado.RECIBIDO);</span>
+<span class="nc" id="L246">                dispose();</span>
+            }
+            else{
+<span class="nc" id="L249">                JOptionPane.showMessageDialog(this, &quot;Verifique su opcion&quot;,&quot;ACTUALIZACION&quot;,JOptionPane.WARNING_MESSAGE);</span>
+            }
+        }
+        
+<span class="nc" id="L253">    }//GEN-LAST:event_jButton2ActionPerformed</span>
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox Enviado;
+    private javax.swing.JCheckBox Recibido;
+    private javax.swing.JTable TablaPedidos;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private java.awt.Panel panel1;
+    private javax.swing.JTextField txtEstado;
+    // End of variables declaration//GEN-END:variables
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>
