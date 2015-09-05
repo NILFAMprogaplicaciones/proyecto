@@ -66,8 +66,8 @@ public class infoProducto extends javax.swing.JInternalFrame {
             a++;
         }
         //AGREGO VALORES A  LAS FILAS
-        Set coleccion=MP.getColeccion();
-        Iterator<Producto> it = coleccion.iterator();
+        Map coleccion=MP.getColeccion();
+        Iterator<Producto> it = coleccion.values().iterator();
         Producto prod=null;
         int fila=0;
         while (it.hasNext()) {
@@ -609,6 +609,10 @@ File fichero;
         String nombrerestaurante=(String) listadeproductos.getValueAt(fila, 1);
         Producto producto= MU.getProductoRestaurante(nombrerestaurante, nombreproducto);
         Restaurante res=MU.findRestaurante(nombrerestaurante);
+        
+        Map col=MU.getColeccionProductosRestaurantes(nombrerestaurante);
+        col.remove(nombreproducto);
+        
         if(producto.getClass().getSimpleName().equals("Individual")){
             Individual individual=(Individual) producto;
             if(!res.verificarproducto(txtNombreProd.getText())){

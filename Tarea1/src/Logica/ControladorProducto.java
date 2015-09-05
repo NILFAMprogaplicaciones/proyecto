@@ -43,8 +43,8 @@ public class ControladorProducto implements IControladorProducto {
         ManejadorProducto   mp=ManejadorProducto.getinstance();
         ManejadorUsuario    mu=ManejadorUsuario.getinstance();
         mp.remove(nombreproducto);
-        Map col=mu.getColeccionProductosRestaurantes(dataindividual.getRestaurante().getnickname());
-        col.remove(nombreproducto);
+        //Map col=mu.getColeccionProductosRestaurantes(dataindividual.getRestaurante().getnickname());
+        //col.remove(nombreproducto);
         Individual individual=new Individual(dataindividual);
         mu.addProductoIndividual(dataindividual.getRestaurante().getnickname(),individual);
         mp.addProductoIndividual(individual);
@@ -55,8 +55,8 @@ public class ControladorProducto implements IControladorProducto {
         ManejadorProducto   mp=ManejadorProducto.getinstance();
         ManejadorUsuario    mu=ManejadorUsuario.getinstance();
         mp.remove(nombreproducto);
-        Map col=mu.getColeccionProductosRestaurantes(datapromocion.getRestaurante().getnickname());
-        col.remove(nombreproducto);
+        //Map col=mu.getColeccionProductosRestaurantes(datapromocion.getRestaurante().getnickname());
+        //col.remove(nombreproducto);
         Promocion promocion=new Promocion(datapromocion);
         mu.addProductoPromocion(datapromocion.getRestaurante().getnickname(),promocion);
         mp.addProductoPromocion(promocion);
