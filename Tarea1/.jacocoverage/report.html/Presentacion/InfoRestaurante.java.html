@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es-j-client -j-xss2m -j-xms32m -j-xx:permsize=32m -j-dapple.laf.usescreenmenubar=true -j-dapple.awt.graphics.usequartz=true -j-dsun.java2d.noddraw=true -j-dsun.java2d.dpiaware=true -j-dsun.zip.disablememorymapping=true -j-xmx1024m -l-xx:maxpermsize=384m"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>InfoRestaurante.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Tarea1&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Presentacion</a> &gt; <span class="el_source">InfoRestaurante.java</span></div><h1>InfoRestaurante.java</h1><pre class="source lang-java linenums">
+package Presentacion;
+
+import Logica.Categoria;
+import Logica.DataRestaurante;
+import Logica.Fabrica;
+import Logica.IControladorUsuario;
+import Logica.ManejadorCategoria;
+import Logica.ManejadorUsuario;
+import Logica.Usuario;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.util.Iterator;
+import java.util.Map;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTree;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreePath;
+import javax.swing.tree.TreeSelectionModel;
+
+public class InfoRestaurante extends javax.swing.JInternalFrame {
+    public IControladorUsuario ICU;
+    public JTree arbolModelo;
+    public DataRestaurante datosRestaurante;
+    
+<span class="nc" id="L35">    ManejadorCategoria MC = ManejadorCategoria.getinstance();</span>
+<span class="nc" id="L36">    ManejadorUsuario MU = ManejadorUsuario.getinstance();</span>
+    
+    public void llenarArbol(){
+<span class="nc" id="L39">        this.setLayout(new BorderLayout(5,10));</span>
+        
+<span class="nc" id="L41">        JScrollPane Menu = new JScrollPane();</span>
+        
+<span class="nc" id="L43">        Map&lt;String, Categoria&gt; listaCat = MC.coleccion();</span>
+<span class="nc" id="L44">        Iterator&lt;Categoria&gt; it = listaCat.values().iterator();</span>
+<span class="nc" id="L45">        DefaultMutableTreeNode dmtn = new DefaultMutableTreeNode(&quot;Categorías&quot;);</span>
+<span class="nc" id="L46">        DefaultTreeModel modelo = new DefaultTreeModel(dmtn);</span>
+        
+<span class="nc" id="L48">        arbolModelo = new JTree(modelo);</span>
+        
+<span class="nc" id="L50">        Categoria cat = null;</span>
+<span class="nc bnc" id="L51" title="All 2 branches missed.">        while(it.hasNext()){</span>
+            
+<span class="nc" id="L53">            cat = it.next();</span>
+<span class="nc" id="L54">            String nombreCat = cat.getnombre();</span>
+<span class="nc" id="L55">            DefaultMutableTreeNode n1 = new DefaultMutableTreeNode(nombreCat);</span>
+<span class="nc" id="L56">            dmtn.add(n1);</span>
+            
+<span class="nc" id="L58">            Map&lt;String, Usuario&gt; listaUsr = MU.obtenercoleccion();</span>
+<span class="nc" id="L59">            Iterator&lt;Usuario&gt; iter = listaUsr.values().iterator();</span>
+            
+<span class="nc" id="L61">            Usuario usr = null;</span>
+            
+<span class="nc bnc" id="L63" title="All 2 branches missed.">            while(iter.hasNext()){</span>
+<span class="nc" id="L64">                usr = iter.next();</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">                if(usr.getClass().getSimpleName().equals(&quot;Restaurante&quot;)){</span>
+<span class="nc" id="L66">                    Map&lt;String, Categoria&gt; u = MU.getCategoriasRestaurantes(usr.getnickname());</span>
+<span class="nc bnc" id="L67" title="All 2 branches missed.">                    if(u.containsKey(nombreCat)){</span>
+<span class="nc" id="L68">                        String nombreRest = usr.getnickname();</span>
+<span class="nc" id="L69">                        DefaultMutableTreeNode n2 = new DefaultMutableTreeNode(nombreRest);</span>
+<span class="nc" id="L70">                        n1.add(n2);</span>
+                    
+                    }
+<span class="nc" id="L73">                }</span>
+            }
+<span class="nc" id="L75">         }</span>
+        
+<span class="nc" id="L77">        Menu.add(arbolModelo);</span>
+<span class="nc" id="L78">        Menu.setViewportView(arbolModelo);</span>
+        
+        
+<span class="nc" id="L81">        arbolModelo.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);</span>
+               
+<span class="nc" id="L83">        JLabel tit = new JLabel();</span>
+<span class="nc" id="L84">        tit.setText(&quot;Seleccione el restaurante&quot;);</span>
+        
+<span class="nc" id="L86">        JButton ok = new JButton();</span>
+<span class="nc" id="L87">        ok.setText(&quot;OK&quot;);</span>
+        
+<span class="nc" id="L89">        add(tit, BorderLayout.NORTH);</span>
+<span class="nc" id="L90">        add(ok, BorderLayout.SOUTH);</span>
+<span class="nc" id="L91">        add(Menu, BorderLayout.CENTER);</span>
+<span class="nc" id="L92">        setVisible(true);</span>
+        
+<span class="nc" id="L94">        arbolModelo.addTreeSelectionListener(new TreeSelectionListener() {</span>
+            @Override
+            public void valueChanged(TreeSelectionEvent e) {
+<span class="nc" id="L97">                DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode)arbolModelo.getLastSelectedPathComponent();          </span>
+<span class="nc" id="L98">                TreePath[] paths = arbolModelo.getSelectionPaths();</span>
+<span class="nc bnc" id="L99" title="All 2 branches missed.">                if(!selectedNode.equals(null)){</span>
+<span class="nc" id="L100">                    nick = selectedNode.toString();</span>
+                       
+                     
+                } 
+<span class="nc" id="L104">            }</span>
+            
+        }); 
+<span class="nc" id="L107">        ok.addActionListener(getButtonActionListener());   </span>
+<span class="nc" id="L108">    }</span>
+    String nick;
+    private ActionListener getButtonActionListener(){
+<span class="nc" id="L111">        return new ActionListener(){</span>
+            public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L113">                JInternalFrame ji = validador.getJInternalFrame(VerInfoRestaurante.class.getName());</span>
+<span class="nc bnc" id="L114" title="All 4 branches missed.">                if(ji == null || ji.isClosed()){</span>
+<span class="nc" id="L115">                    datosRestaurante = ICU.Caso_Ver_Restaurante(nick); </span>
+<span class="nc" id="L116">                    ji = new VerInfoRestaurante(datosRestaurante);</span>
+<span class="nc" id="L117">                    Ventana.getjDesktopPane().add(ji);</span>
+<span class="nc" id="L118">                    validador.addJIframe(VerInfoRestaurante.class.getName(), ji);</span>
+                    
+<span class="nc" id="L120">                    Toolkit t = Toolkit.getDefaultToolkit();</span>
+<span class="nc" id="L121">                    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();</span>
+<span class="nc" id="L122">                    int x=(int) ((screenSize.getWidth()/2)-ji.getWidth()/2);</span>
+<span class="nc" id="L123">                    int y=(int) ((screenSize.getHeight()/2)-ji.getHeight()/2);</span>
+<span class="nc" id="L124">                    ji.setLocation(x, y);</span>
+<span class="nc" id="L125">                    ji.show();</span>
+                }
+                
+<span class="nc" id="L128">            }</span>
+        };
+
+    }
+    
+<span class="nc" id="L133">    public InfoRestaurante() {</span>
+<span class="nc" id="L134">        initComponents();</span>
+<span class="nc" id="L135">        Fabrica fabrica = Fabrica.getInstance();</span>
+<span class="nc" id="L136">        ICU = fabrica.getIControladorUsuario();</span>
+<span class="nc" id="L137">        llenarArbol();   </span>
+<span class="nc" id="L138">    }</span>
+
+    
+    @SuppressWarnings(&quot;unchecked&quot;)
+    // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+<span class="nc" id="L145">        setClosable(true);</span>
+<span class="nc" id="L146">        setIconifiable(true);</span>
+<span class="nc" id="L147">        setTitle(&quot;Informacion Restaurante&quot;);</span>
+
+<span class="nc" id="L149">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
+<span class="nc" id="L150">        getContentPane().setLayout(layout);</span>
+<span class="nc" id="L151">        layout.setHorizontalGroup(</span>
+<span class="nc" id="L152">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L153">            .addGap(0, 596, Short.MAX_VALUE)</span>
+        );
+<span class="nc" id="L155">        layout.setVerticalGroup(</span>
+<span class="nc" id="L156">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L157">            .addGap(0, 481, Short.MAX_VALUE)</span>
+        );
+
+<span class="nc" id="L160">        pack();</span>
+<span class="nc" id="L161">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // End of variables declaration//GEN-END:variables
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

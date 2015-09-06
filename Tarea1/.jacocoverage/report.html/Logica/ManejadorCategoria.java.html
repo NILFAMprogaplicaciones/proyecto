@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es-j-client -j-xss2m -j-xms32m -j-xx:permsize=32m -j-dapple.laf.usescreenmenubar=true -j-dapple.awt.graphics.usequartz=true -j-dsun.java2d.noddraw=true -j-dsun.java2d.dpiaware=true -j-dsun.zip.disablememorymapping=true -j-xmx1024m -l-xx:maxpermsize=384m"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ManejadorCategoria.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Tarea1&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Logica</a> &gt; <span class="el_source">ManejadorCategoria.java</span></div><h1>ManejadorCategoria.java</h1><pre class="source lang-java linenums">
+package Logica;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+
+<span class="fc" id="L9">public class ManejadorCategoria {</span>
+<span class="fc" id="L10">    private Map&lt;String, Categoria&gt; ColeccionCategoria = new HashMap&lt;String, Categoria&gt;();</span>
+//SINGLENTON
+<span class="fc" id="L12">    private static ManejadorCategoria instancia = null;</span>
+    
+    public static ManejadorCategoria getinstance() {
+<span class="pc bpc" id="L15" title="1 of 2 branches missed.">        if (instancia == null) {</span>
+<span class="fc" id="L16">            instancia = new ManejadorCategoria();</span>
+        }
+<span class="fc" id="L18">        return instancia;</span>
+    }    
+    
+//FUNCIONES DE COLECCION CATEGORIAS
+    public void addCategoria(String nombre, Categoria cat) {
+<span class="fc" id="L23">        ColeccionCategoria.put(nombre, cat);</span>
+<span class="fc" id="L24">    }</span>
+
+    public boolean verificoCat(String nombre) {
+<span class="fc" id="L27">        return ColeccionCategoria.containsKey(nombre);</span>
+    }
+    public Map coleccion(){
+<span class="fc" id="L30">        return ColeccionCategoria;</span>
+    }
+    public int cantidad(){
+<span class="fc" id="L33">        return ColeccionCategoria.size();</span>
+    }
+    public Categoria getCategoria(String nombrecategoria){
+<span class="fc" id="L36">        return ColeccionCategoria.get(nombrecategoria);</span>
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

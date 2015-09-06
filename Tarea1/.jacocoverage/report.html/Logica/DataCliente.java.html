@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es-j-client -j-xss2m -j-xms32m -j-xx:permsize=32m -j-dapple.laf.usescreenmenubar=true -j-dapple.awt.graphics.usequartz=true -j-dsun.java2d.noddraw=true -j-dsun.java2d.dpiaware=true -j-dsun.zip.disablememorymapping=true -j-xmx1024m -l-xx:maxpermsize=384m"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>DataCliente.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Tarea1&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Logica</a> &gt; <span class="el_source">DataCliente.java</span></div><h1>DataCliente.java</h1><pre class="source lang-java linenums">
+package Logica;
+
+import java.io.File;
+import javax.swing.Icon;
+
+public class DataCliente {
+    private String nombre;
+    private String nickname;
+    private String correo;
+    private String direccion;
+    private String apellido;
+    private Fecha  fecha_nacimiento;
+    private File   foto;
+    
+    
+<span class="fc" id="L17">    public DataCliente(String nombre, String nickname, String correo, String direccion,String apellido, Fecha fecha_nacimiento, File foto){</span>
+<span class="fc" id="L18">        this.nombre=nombre;</span>
+<span class="fc" id="L19">        this.nickname=nickname;</span>
+<span class="fc" id="L20">        this.correo=correo;</span>
+<span class="fc" id="L21">        this.direccion=direccion;</span>
+<span class="fc" id="L22">        this.apellido=apellido;</span>
+<span class="fc" id="L23">        this.fecha_nacimiento=fecha_nacimiento;</span>
+<span class="fc" id="L24">        this.foto=foto;</span>
+<span class="fc" id="L25">    }</span>
+    
+    public String getnombre(){
+<span class="fc" id="L28">        return nombre;</span>
+    }
+    public String getnickname(){
+<span class="fc" id="L31">        return nickname;</span>
+    }
+    public String getcorreo(){
+<span class="fc" id="L34">        return correo;</span>
+    }
+    public String getdireccion(){
+<span class="fc" id="L37">        return direccion;</span>
+    }
+    public String getapellido(){
+<span class="fc" id="L40">        return apellido;</span>
+    }
+    public Fecha getfecha(){
+<span class="fc" id="L43">        return fecha_nacimiento;</span>
+    }
+    public String getfechastring(){
+<span class="fc" id="L46">        int dia=this.fecha_nacimiento.getdia();</span>
+<span class="fc" id="L47">        int mes=this.fecha_nacimiento.getmes();</span>
+<span class="fc" id="L48">        int año=this.fecha_nacimiento.getaño();</span>
+<span class="fc" id="L49">        String fecha=Integer.toString(dia)+&quot;/&quot;+Integer.toString(mes)+&quot;/&quot;+Integer.toString(año);</span>
+<span class="fc" id="L50">        return fecha;   </span>
+    }
+    public File getFoto(){
+<span class="fc" id="L53">        return foto;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

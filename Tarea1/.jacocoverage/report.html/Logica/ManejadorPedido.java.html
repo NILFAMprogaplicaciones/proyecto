@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es-j-client -j-xss2m -j-xms32m -j-xx:permsize=32m -j-dapple.laf.usescreenmenubar=true -j-dapple.awt.graphics.usequartz=true -j-dsun.java2d.noddraw=true -j-dsun.java2d.dpiaware=true -j-dsun.zip.disablememorymapping=true -j-xmx1024m -l-xx:maxpermsize=384m"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ManejadorPedido.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Tarea1&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Logica</a> &gt; <span class="el_source">ManejadorPedido.java</span></div><h1>ManejadorPedido.java</h1><pre class="source lang-java linenums">
+package Logica;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.TreeMap;
+
+
+<span class="fc" id="L10">public class ManejadorPedido {</span>
+<span class="fc" id="L11">    private Map&lt;Integer, Pedido&gt; ColeccionPedido = new TreeMap&lt;Integer, Pedido&gt;();</span>
+    
+    //SINGLENTON
+<span class="fc" id="L14">    private static ManejadorPedido instancia = null;</span>
+    
+    public static ManejadorPedido getinstance() {
+<span class="fc bfc" id="L17" title="All 2 branches covered.">        if (instancia == null) {</span>
+<span class="fc" id="L18">            instancia = new ManejadorPedido();</span>
+        }
+<span class="fc" id="L20">        return instancia;</span>
+    }
+    //FUNCIONES COLECCION PEDIDOS
+    public void addPedido(int id,Pedido pedido){
+<span class="fc" id="L24">        ColeccionPedido.put(id, pedido);</span>
+    
+<span class="fc" id="L26">    }</span>
+    
+    public int getCantidadEnColeccion(){
+<span class="fc" id="L29">        return ColeccionPedido.size();</span>
+    }
+    
+    public Map getColeccionPedido(){
+<span class="fc" id="L33">        return ColeccionPedido;</span>
+    }
+    
+    public Map getPedidos_Producto(String producto){
+<span class="fc" id="L37">        Map&lt;Integer,Pedido&gt; Pedidos_Producto =  new TreeMap&lt;Integer,Pedido&gt;();</span>
+<span class="fc" id="L38">        Map coleccion = getColeccionPedido();</span>
+<span class="fc" id="L39">        Iterator&lt;Pedido&gt; it = coleccion.values().iterator();</span>
+<span class="fc" id="L40">        Pedido ped=null;</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">        while (it.hasNext()) {</span>
+<span class="fc" id="L42">              ped=it.next();</span>
+<span class="pc bpc" id="L43" title="1 of 2 branches missed.">                if (ped.ExisteProducto(producto)){</span>
+<span class="fc" id="L44">                    Pedidos_Producto.put(ped.getnum(), ped);</span>
+                }    
+        }
+<span class="fc" id="L47">    return Pedidos_Producto;</span>
+    }
+    public Pedido getPedido(int id){
+<span class="fc" id="L50">        return ColeccionPedido.get(id);</span>
+    }
+    public int getCantidadColeccionCliente(String nickcliente){
+<span class="fc" id="L53">        Iterator&lt;Pedido&gt; it = ColeccionPedido.values().iterator();</span>
+<span class="fc" id="L54">        Pedido ped=null;</span>
+<span class="fc" id="L55">        int cantidad=0;</span>
+<span class="fc bfc" id="L56" title="All 2 branches covered.">        while (it.hasNext()) {</span>
+<span class="fc" id="L57">            ped=it.next();</span>
+<span class="pc bpc" id="L58" title="1 of 2 branches missed.">            if(ped.getCliente().getnickname().equals(nickcliente))</span>
+<span class="fc" id="L59">                cantidad++;</span>
+        }
+<span class="fc" id="L61">        return cantidad;</span>
+            
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

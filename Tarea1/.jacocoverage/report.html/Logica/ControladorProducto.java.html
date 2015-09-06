@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es-j-client -j-xss2m -j-xms32m -j-xx:permsize=32m -j-dapple.laf.usescreenmenubar=true -j-dapple.awt.graphics.usequartz=true -j-dsun.java2d.noddraw=true -j-dsun.java2d.dpiaware=true -j-dsun.zip.disablememorymapping=true -j-xmx1024m -l-xx:maxpermsize=384m"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ControladorProducto.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Tarea1&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Logica</a> &gt; <span class="el_source">ControladorProducto.java</span></div><h1>ControladorProducto.java</h1><pre class="source lang-java linenums">
+package Logica;
+
+import java.util.Map;
+import javax.swing.JOptionPane;
+
+
+<span class="fc" id="L8">public class ControladorProducto implements IControladorProducto {   </span>
+          
+    public void AltaProductoIndividual(DataIndividual dataindividual) {
+<span class="fc" id="L11">        ManejadorProducto MP=ManejadorProducto.getinstance();</span>
+<span class="fc" id="L12">        ManejadorUsuario MU=ManejadorUsuario.getinstance();</span>
+<span class="fc" id="L13">        Individual prod = new Individual(dataindividual);</span>
+<span class="fc" id="L14">        MU.addProductoIndividual(dataindividual.getRestaurante().getnickname(),prod);</span>
+<span class="fc" id="L15">        MP.addProductoIndividual( prod);</span>
+<span class="fc" id="L16">        JOptionPane.showMessageDialog(null,&quot;Producto ingresada con Exito&quot;,&quot;REGISTRO&quot;,JOptionPane.INFORMATION_MESSAGE);</span>
+<span class="fc" id="L17">    }</span>
+    
+    public void AltaProductoPromocion(DataPromocion datapromocion) {
+<span class="fc" id="L20">        ManejadorProducto MP=ManejadorProducto.getinstance();</span>
+<span class="fc" id="L21">        ManejadorUsuario MU=ManejadorUsuario.getinstance();</span>
+<span class="fc" id="L22">        Promocion prod = new Promocion(datapromocion);</span>
+<span class="fc" id="L23">        MU.addProductoPromocion(datapromocion.getRestaurante().getnickname(),prod);</span>
+<span class="fc" id="L24">        MP.addProductoPromocion( prod);</span>
+<span class="fc" id="L25">        JOptionPane.showMessageDialog(null,&quot;Producto ingresado con Exito&quot;,&quot;REGISTRO&quot;,JOptionPane.INFORMATION_MESSAGE);</span>
+<span class="fc" id="L26">    }</span>
+    
+    public DataIndividual Caso_Ver_Individual(String nombre){
+<span class="fc" id="L29">        ManejadorProducto mp = ManejadorProducto.getinstance();</span>
+<span class="fc" id="L30">        Individual i= mp.findIndividual(nombre);</span>
+<span class="fc" id="L31">        DataIndividual di = new DataIndividual(i.getnombre(),i.getdescripcion(),i.getRestaurante(),i.getPrecio(),i.getImagen());</span>
+<span class="fc" id="L32">        return di;</span>
+    }
+    
+    public DataPromocion Caso_Ver_Promocion(String nombre){
+<span class="fc" id="L36">        ManejadorProducto mp = ManejadorProducto.getinstance();</span>
+<span class="fc" id="L37">        Promocion p= mp.findPromocion(nombre);</span>
+<span class="fc" id="L38">        DataPromocion dp = new DataPromocion(p.getRestaurante(),p.getnombre(),p.getdescripcion(),p.getPrecioTotal(),p.getactiva(),p.getdescuento(),p.getColeccionProductos(),p.getImagen());</span>
+<span class="fc" id="L39">        return dp;</span>
+    }
+    
+    public void Caso_Actualizar_Individual(String nombreproducto,DataIndividual dataindividual){
+<span class="fc" id="L43">        ManejadorProducto   mp=ManejadorProducto.getinstance();</span>
+<span class="fc" id="L44">        ManejadorUsuario    mu=ManejadorUsuario.getinstance();</span>
+<span class="fc" id="L45">        mp.remove(nombreproducto);</span>
+<span class="fc" id="L46">        Individual individual=new Individual(dataindividual);</span>
+<span class="fc" id="L47">        mu.addProductoIndividual(dataindividual.getRestaurante().getnickname(),individual);</span>
+<span class="fc" id="L48">        mp.addProductoIndividual(individual);</span>
+<span class="fc" id="L49">        JOptionPane.showMessageDialog(null,&quot;Producto actualizado con Exito&quot;,&quot;REGISTRO&quot;,JOptionPane.INFORMATION_MESSAGE);</span>
+<span class="fc" id="L50">    }</span>
+     
+    public void Caso_Actualizar_Promocion(String nombreproducto,DataPromocion datapromocion){
+<span class="fc" id="L53">        ManejadorProducto   mp=ManejadorProducto.getinstance();</span>
+<span class="fc" id="L54">        ManejadorUsuario    mu=ManejadorUsuario.getinstance();</span>
+<span class="fc" id="L55">        mp.remove(nombreproducto);</span>
+<span class="fc" id="L56">        Promocion promocion=new Promocion(datapromocion);</span>
+<span class="fc" id="L57">        mu.addProductoPromocion(datapromocion.getRestaurante().getnickname(),promocion);</span>
+<span class="fc" id="L58">        mp.addProductoPromocion(promocion);</span>
+<span class="fc" id="L59">        JOptionPane.showMessageDialog(null,&quot;Producto actualizado con Exito&quot;,&quot;REGISTRO&quot;,JOptionPane.INFORMATION_MESSAGE);</span>
+<span class="fc" id="L60">    }</span>
+} 
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>
