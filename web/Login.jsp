@@ -9,17 +9,22 @@
 
 <body>
 	<div id="header">
-		<a href="index.html" class="float"><img src="images/Logo_Quick Order.png" alt="" width="171" height="73"/></a>	
-	</div>
+            <div class="float">
+                <img  src="images/Logo_Quick Order.png" alt="" width="160" height="150"/></a>	
+                <br>
+                <span><b><i>La mejor manera de pedir comida</i></b></span>
+            </div>
+        </div>
 	
 	<div id="container">
-	  <div id="right" class="column">
+	  <div id="right" class="login">
 		<div>
-                    <div>
+                    <div>                       
                         <form action="#" style="position: center; margin-top:200px">
+                             <span style="font-size: 18px;"><i><b>Iniciar Sesi&oacute;n</b></i></span>
                             <p><span><b class="letras">Usuario:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</span> <input type="text" /></p>
                             <p><span><b class="letras">Contrase&ntilde;a:</b></span> <input type="password" /></p>
-                            <p><a href="#" class="reg letras">Ingresar</a> | <a href="#" class="reg letras">Olvido Contrase&ntilde;a?</a></p>
+                            <p><a href="Inicio.jsp" class="reg letras">Ingresar</a> | <a href="#" class="reg letras">Olvido Contrase&ntilde;a?</a></p>
 			</form>
                     </div>
 		</div>
