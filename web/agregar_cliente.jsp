@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-4">
-                <form class="form-horizontal" id="restauranteFRM">
+                <form class="form-horizontal" id="clienteFRM">
                     <div class="form-group">
                         <label for="inputNickname" class="control-label col-xs-2">Nickname</label>
                             <div class="col-xs-10">
@@ -32,22 +32,23 @@
                     <div class="form-group">
                         <label for="inputContrasena" class="control-label col-xs-2">Contrase&ntilde;a</label>
                             <div class="col-xs-10">
-                                <input type="text" class="form-control" id="inputContrasena" placeholder="Contrase&ntilde;a">
+                                <input type="password" class="form-control" id="inputContrasena" placeholder="Contrase&ntilde;a">
                             </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputCategoria" class="control-label col-xs-2">Categoria</label>
-                        <div class="col-xs-10 selectContainer">
-                            <select name="inputCategoria" id="inputCategoria" class="form-control">
-                                <option value="0">Seleccione Categoria</option>
-                                <option value="Cat1">Cat 1</option>
-                                <option value="Cat2">Cat 2</option>
-                            </select>
-                        </div>
+                        <label for="inputApellido" class="control-label col-xs-2">Apellido</label>
+                            <div class="col-xs-10">
+                                <input type="text" class="form-control" id="inputApellido" placeholder="Apellido">
+                            </div>
                     </div>
-
+                    <div class="form-group">
+                        <label for="inputFecha_nacimiento" class="control-label col-xs-2">Fecha Nacimiento</label>
+                            <div class="col-xs-10">
+                                <input type="date" class="form-control" id="inputFecha_nacimiento" placeholder="Fecha Nacimiento">
+                            </div>
+                    </div>
                     <div class="col-lg-8 col-lg-offset-4">
-                        <input type="button" class="btn" value="Enviar" onclick="CheckRestaurante();"/>
+                        <input type="button" class="btn" value="Enviar" onclick="CheckCliente();"/>
                         <input type="reset"  class="btn" value="Cancelar" />
                     </div>
                 </form>

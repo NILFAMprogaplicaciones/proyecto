@@ -54,15 +54,15 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cliente <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                              <li><a href="#">Agregar</a></li>
-                              <li><a href="#">Informaci&oacute;n</a></li>
+                              <li><a href="agregar_cliente.jsp">Agregar</a></li>
+                              <li><a href="info_cliente.jsp">Informaci&oacute;n</a></li>
                             </ul>
                     </li>
                     
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Producto <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                              <li><a href="#">Agregar</a></li>
+                              <li><a href="agregar_producto.jsp">Agregar</a></li>
                               <li><a href="#">Informaci&oacute;n</a></li>
                             </ul>
                     </li>
@@ -70,7 +70,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pedido <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                              <li><a href="#">Generar</a></li>
+                              <li><a href="generar_pedido.jsp">Generar</a></li>
                               <li><a href="#">Informaci&oacute;n</a></li>
                             </ul>
                     </li>
