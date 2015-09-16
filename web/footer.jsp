@@ -4,7 +4,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <span>2014 &copy; Programacion Avanzada </span> <a href="Inicio.jsp">Home</a>  |  <a href="Company.jsp"> Company</a>  |  <a href="Blog.jsp">Blog</a>  
+                    <span>2015 &copy; Programacion Avanzada </span> <a href="index.jsp">Home</a>  |  <a href="Company.jsp"> Company</a>  |  <a href="Blog.jsp">Blog</a>  
                 </div>
             </div>
         </footer>
