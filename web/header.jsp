@@ -42,14 +42,37 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a href="">Algo mas</a>
+                  
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Restaurante <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                              <li><a href="agregar_restaurante.jsp">Agregar</a></li>
+                              <li><a href="info_restaurante.jsp">Informaci&oacute;n</a></li>
+                            </ul>
                     </li>
-                    <li>
-                        <a href="">No se que mas</a>
+    
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cliente <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                              <li><a href="#">Agregar</a></li>
+                              <li><a href="#">Informaci&oacute;n</a></li>
+                            </ul>
                     </li>
-                    <li>
-                        <a href="">Otra cosa</a>
+                    
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Producto <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                              <li><a href="#">Agregar</a></li>
+                              <li><a href="#">Informaci&oacute;n</a></li>
+                            </ul>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pedido <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                              <li><a href="#">Generar</a></li>
+                              <li><a href="#">Informaci&oacute;n</a></li>
+                            </ul>
                     </li>
                 </ul>
             </div>
