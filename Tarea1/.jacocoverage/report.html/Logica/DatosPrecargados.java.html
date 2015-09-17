@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es-j-client -j-xss2m -j-xms32m -j-xx:permsize=32m -j-dapple.laf.usescreenmenubar=true -j-dapple.awt.graphics.usequartz=true -j-dsun.java2d.noddraw=true -j-dsun.java2d.dpiaware=true -j-dsun.zip.disablememorymapping=true -j-xmx1024m -l-xx:maxpermsize=384m"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>DatosPrecargados.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Tarea1&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Logica</a> &gt; <span class="el_source">DatosPrecargados.java</span></div><h1>DatosPrecargados.java</h1><pre class="source lang-java linenums">
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>DatosPrecargados.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Tarea1&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Logica</a> &gt; <span class="el_source">DatosPrecargados.java</span></div><h1>DatosPrecargados.java</h1><pre class="source lang-java linenums">
 package Logica;
 
 import java.io.File;
@@ -27,23 +27,23 @@ import javax.swing.JOptionPane;
 <span class="fc" id="L27">        Fecha fecha1=new Fecha(15,11,1983),fecha2=new Fecha(2,8,1975),fecha3=new Fecha(12,9,1987),fecha4=new Fecha(28,07,1951),fecha5=new Fecha(23,12,1978);</span>
 <span class="fc" id="L28">        File foto1 = new File(&quot;src/Imagenes/co.jpg&quot;),foto2 = new File(&quot;src/Imagenes/ro.jpg&quot;),foto3 = new File(&quot;src/Imagenes/usuario.png&quot;),foto4 = new File(&quot;src/Imagenes/an.jpg&quot;),foto5 = new File(&quot;src/Imagenes/we.jpg&quot;);</span>
         
-<span class="fc" id="L30">        DataCliente datacliente1=new DataCliente(&quot;Gerardo&quot;, &quot;costas&quot;, &quot;gcostas@gmail.com&quot;, &quot;Pdte. Berro 1548&quot;,&quot;Cotelo&quot;, fecha1, foto1); </span>
+<span class="fc" id="L30">        DataCliente datacliente1=new DataCliente(&quot;contraseña&quot;,&quot;Gerardo&quot;, &quot;costas&quot;, &quot;gcostas@gmail.com&quot;, &quot;Pdte. Berro 1548&quot;,&quot;Cotelo&quot;, fecha1, foto1); </span>
 <span class="fc" id="L31">        Cliente cliente1=new Cliente(datacliente1);</span>
 <span class="fc" id="L32">        MU.addUsuario(cliente1.getnickname(), cliente1);</span>
         
-<span class="fc" id="L34">        DataCliente datacliente2=new DataCliente(&quot;Rodrigo&quot;, &quot;roro&quot;, &quot;rcotelo@yahoo.com&quot;, &quot;Av. Italia 2078&quot;,&quot;Costas&quot;, fecha2, foto2); </span>
+<span class="fc" id="L34">        DataCliente datacliente2=new DataCliente(&quot;contraseña&quot;,&quot;Rodrigo&quot;, &quot;roro&quot;, &quot;rcotelo@yahoo.com&quot;, &quot;Av. Italia 2078&quot;,&quot;Costas&quot;, fecha2, foto2); </span>
 <span class="fc" id="L35">        Cliente cliente2=new Cliente(datacliente2);</span>
 <span class="fc" id="L36">        MU.addUsuario(cliente2.getnickname(), cliente2);</span>
         
-<span class="fc" id="L38">        DataCliente datacliente3=new DataCliente(&quot;Cecilia&quot;, &quot;chechi&quot;, &quot;cgarrido@hotmail.com&quot;, &quot;Gral. Urquiza 1548&quot;,&quot;Garrido&quot;, fecha3, foto3); </span>
+<span class="fc" id="L38">        DataCliente datacliente3=new DataCliente(&quot;contraseña&quot;,&quot;Cecilia&quot;, &quot;chechi&quot;, &quot;cgarrido@hotmail.com&quot;, &quot;Gral. Urquiza 1548&quot;,&quot;Garrido&quot;, fecha3, foto3); </span>
 <span class="fc" id="L39">        Cliente cliente3=new Cliente(datacliente3);</span>
 <span class="fc" id="L40">        MU.addUsuario(cliente3.getnickname(), cliente3);</span>
         
-<span class="fc" id="L42">        DataCliente datacliente4=new DataCliente(&quot;Andrea&quot;, &quot;andy&quot;, &quot;agarcia@gmail.com&quot;, &quot;Dr. Manuel Albo 4512&quot;,&quot;García&quot;, fecha4, foto4); </span>
+<span class="fc" id="L42">        DataCliente datacliente4=new DataCliente(&quot;contraseña&quot;,&quot;Andrea&quot;, &quot;andy&quot;, &quot;agarcia@gmail.com&quot;, &quot;Dr. Manuel Albo 4512&quot;,&quot;García&quot;, fecha4, foto4); </span>
 <span class="fc" id="L43">        Cliente cliente4=new Cliente(datacliente4);</span>
 <span class="fc" id="L44">        MU.addUsuario(cliente4.getnickname(), cliente4);</span>
         
-<span class="fc" id="L46">        DataCliente datacliente5=new DataCliente(&quot;Adrian&quot;, &quot;weiss&quot;, &quot;aweiss@hotmail.com&quot;, &quot;Monte Caseros 5615&quot;,&quot;Weiss&quot;, fecha5, foto5); </span>
+<span class="fc" id="L46">        DataCliente datacliente5=new DataCliente(&quot;contraseña&quot;,&quot;Adrian&quot;, &quot;weiss&quot;, &quot;aweiss@hotmail.com&quot;, &quot;Monte Caseros 5615&quot;,&quot;Weiss&quot;, fecha5, foto5); </span>
 <span class="fc" id="L47">        Cliente cliente5=new Cliente(datacliente5);</span>
 <span class="fc" id="L48">        MU.addUsuario(cliente5.getnickname(), cliente5);</span>
         
@@ -108,7 +108,7 @@ import javax.swing.JOptionPane;
 <span class="fc" id="L108">        Map&lt;Integer,File&gt; colfoto1=new HashMap&lt;Integer,File&gt;();</span>
 <span class="fc" id="L109">        File foto1 = new File(&quot;src/Imagenes/usuario.png&quot;); </span>
 <span class="fc" id="L110">        colfoto1.put(1, foto1);</span>
-<span class="fc" id="L111">        DataRestaurante dr1=new DataRestaurante(&quot;Pizzeria Mera&quot;,&quot;mera&quot;,&quot;mera@hotmail.com&quot;,&quot;Av 8 de octubre 2704&quot;,colcat1,colfoto1);</span>
+<span class="fc" id="L111">        DataRestaurante dr1=new DataRestaurante(&quot;contraseña&quot;,&quot;Pizzeria Mera&quot;,&quot;mera&quot;,&quot;mera@hotmail.com&quot;,&quot;Av 8 de octubre 2704&quot;,colcat1,colfoto1);</span>
 <span class="fc" id="L112">        Restaurante res1=new Restaurante(dr1);</span>
 <span class="fc" id="L113">        MU.addUsuario(res1.getnickname(), res1);</span>
         
@@ -120,7 +120,7 @@ import javax.swing.JOptionPane;
 <span class="fc" id="L120">        Map&lt;Integer,File&gt; colfoto2=new HashMap&lt;Integer,File&gt;();</span>
 <span class="fc" id="L121">        File foto2 = new File(&quot;src/Imagenes/usuario.png&quot;); </span>
 <span class="fc" id="L122">        colfoto2.put(1, foto2);</span>
-<span class="fc" id="L123">        DataRestaurante dr2=new DataRestaurante(&quot;Bar Rossell&quot;,&quot;rossell&quot;,&quot;bar.rossel@gmail.com&quot;,&quot;Bvar. Artigas 1601&quot;,colcat2,colfoto2);</span>
+<span class="fc" id="L123">        DataRestaurante dr2=new DataRestaurante(&quot;contraseña&quot;,&quot;Bar Rossell&quot;,&quot;rossell&quot;,&quot;bar.rossel@gmail.com&quot;,&quot;Bvar. Artigas 1601&quot;,colcat2,colfoto2);</span>
 <span class="fc" id="L124">        Restaurante res2=new Restaurante(dr2);</span>
 <span class="fc" id="L125">        MU.addUsuario(res2.getnickname(), res2);</span>
         
@@ -129,7 +129,7 @@ import javax.swing.JOptionPane;
 <span class="fc" id="L129">        Map&lt;Integer,File&gt; colfoto3=new HashMap&lt;Integer,File&gt;();</span>
 <span class="fc" id="L130">        File foto3 = new File(&quot;src/Imagenes/usuario.png&quot;); </span>
 <span class="fc" id="L131">        colfoto3.put(1, foto3);</span>
-<span class="fc" id="L132">        DataRestaurante dr3=new DataRestaurante(&quot;Empanadas Bocatti&quot;,&quot;bocatti&quot;,&quot;bocatti@gmail.com&quot;,&quot;18 de julio 2138&quot;,colcat3,colfoto3);</span>
+<span class="fc" id="L132">        DataRestaurante dr3=new DataRestaurante(&quot;contraseña&quot;,&quot;Empanadas Bocatti&quot;,&quot;bocatti&quot;,&quot;bocatti@gmail.com&quot;,&quot;18 de julio 2138&quot;,colcat3,colfoto3);</span>
 <span class="fc" id="L133">        Restaurante res3=new Restaurante(dr3);</span>
 <span class="fc" id="L134">        MU.addUsuario(res3.getnickname(), res3);</span>
         
@@ -138,9 +138,9 @@ import javax.swing.JOptionPane;
 <span class="fc" id="L138">        colcat4.put(&quot;Comida China&quot;, MC.getCategoria(&quot;Comida China&quot;));</span>
 <span class="fc" id="L139">        colcat4.put(&quot;Woks&quot;, MC.getCategoria(&quot;Woks&quot;));</span>
 <span class="fc" id="L140">        Map&lt;Integer,File&gt; colfoto4=new HashMap&lt;Integer,File&gt;();</span>
-<span class="fc" id="L141">        File foto4 = new File(&quot;src/Imagenes/wb.png&quot;); </span>
+<span class="fc" id="L141">        File foto4 = new File(&quot;src/Imagenes/wb.jpg&quot;); </span>
 <span class="fc" id="L142">        colfoto4.put(1, foto4);</span>
-<span class="fc" id="L143">        DataRestaurante dr4=new DataRestaurante(&quot;Wok in Box&quot;,&quot;winb&quot;,&quot;wok.in.box@hotmail.com&quot;,&quot;Libertad 2535&quot;,colcat4,colfoto4);</span>
+<span class="fc" id="L143">        DataRestaurante dr4=new DataRestaurante(&quot;contraseña&quot;,&quot;Wok in Box&quot;,&quot;winb&quot;,&quot;wok.in.box@hotmail.com&quot;,&quot;Libertad 2535&quot;,colcat4,colfoto4);</span>
 <span class="fc" id="L144">        Restaurante res4=new Restaurante(dr4);</span>
 <span class="fc" id="L145">        MU.addUsuario(res4.getnickname(), res4);</span>
 <span class="fc" id="L146">    }</span>

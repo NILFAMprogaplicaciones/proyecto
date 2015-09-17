@@ -1,3 +1,0 @@
-Presentacion.validador
-Presentacion.validador$DesktopConFondo
-Presentacion.Ventana

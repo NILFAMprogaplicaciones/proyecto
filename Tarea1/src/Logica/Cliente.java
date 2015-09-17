@@ -11,10 +11,15 @@ public class Cliente extends Usuario{
     private File   foto;
     
     public Cliente( DataCliente datacliente){
-        super(datacliente.getnickname(),datacliente.getcorreo(),datacliente.getnombre(),datacliente.getdireccion());
+        super(datacliente.getContraseña(),datacliente.getnickname(),datacliente.getcorreo(),datacliente.getnombre(),datacliente.getdireccion());
         this.apellido=datacliente.getapellido();
         this.fecha_nacimiento=datacliente.getfecha();
         this.foto=datacliente.getFoto();
+    }
+    
+    public String getcontraseña(){
+        return getContraseña();
+       
     }
     public String getapellido(){
         return apellido;

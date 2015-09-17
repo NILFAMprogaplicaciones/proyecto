@@ -17,12 +17,12 @@ public class PedidoTest {
     //CLIENTE
     Fecha fecha1=new Fecha(15,11,1983);
     File foto1 = new File("src/Imagenes/co.jpg");
-    DataCliente datacliente1=new DataCliente("Gerardo", "costas", "gcostas@gmail.com", "Pdte. Berro 1548","Cotelo", fecha1, foto1); 
+    DataCliente datacliente1=new DataCliente("contraseña","Gerardo", "costas", "gcostas@gmail.com", "Pdte. Berro 1548","Cotelo", fecha1, foto1); 
     Cliente cliente1=new Cliente(datacliente1);
     //RESTAURANTE  
     Map<String,Categoria> colcat1=new HashMap<String,Categoria>();
     Map<Integer,File> colfoto1=new HashMap<Integer,File>();
-    DataRestaurante datarestaurante=new DataRestaurante("Pizzeria Mera","mera","mera@hotmail.com","Av 8 de octubre 2704",colcat1,colfoto1);
+    DataRestaurante datarestaurante=new DataRestaurante("contraseña","Pizzeria Mera","mera","mera@hotmail.com","Av 8 de octubre 2704",colcat1,colfoto1);
     Restaurante res1=new Restaurante(datarestaurante);
     //PEDIDO
     FechaHora fecha=new FechaHora(12,8,2015,0,0);
@@ -40,13 +40,13 @@ public class PedidoTest {
         //CLIENTE
         Fecha fechacli=null;
         File fotocli=null;
-        DataCliente datacliente1=new DataCliente("cliente", "cli", "gcostas@gmail.com", "Pdte. Berro 1548","Cotelo", fechacli, fotocli); 
+        DataCliente datacliente1=new DataCliente("contraseña","cliente", "cli", "gcostas@gmail.com", "Pdte. Berro 1548","Cotelo", fechacli, fotocli); 
         Cliente cli=new Cliente(datacliente1);
         
         //RESTAURANTE
         Map<String,Categoria> colcat1=new HashMap<String,Categoria>();
         Map<Integer,File> colfoto1=new HashMap<Integer,File>();
-        DataRestaurante datarestaurante=new DataRestaurante("restaurante","res","mera@hotmail.com","Av 8 de octubre 2704",colcat1,colfoto1);
+        DataRestaurante datarestaurante=new DataRestaurante("contraseña","restaurante","res","mera@hotmail.com","Av 8 de octubre 2704",colcat1,colfoto1);
         Restaurante res=new Restaurante(datarestaurante);
         
         FechaHora fecha=new FechaHora(1,1,1,1,1);

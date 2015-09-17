@@ -8,6 +8,7 @@ import java.util.TreeMap;
 import javax.swing.Icon;
 
 public class DataRestaurante {
+    private String contraseña;
     private String nombre;
     private String nickname;
     private String correo;
@@ -15,7 +16,8 @@ public class DataRestaurante {
     private Map<String,Categoria> ColeccionCategoria = new HashMap<String,Categoria>();
     private Map<Integer,File> ColeccionImagenes = new TreeMap<Integer,File>();
     
-    public DataRestaurante(String nombre, String nickname, String correo, String direccion, Map coleccioncategoria, Map coleccionimagenes){
+    public DataRestaurante(String contraseña,String nombre, String nickname, String correo, String direccion, Map coleccioncategoria, Map coleccionimagenes){
+        this.contraseña=contraseña;
         this.nombre=nombre;
         this.nickname=nickname;
         this.correo=correo;
@@ -24,6 +26,9 @@ public class DataRestaurante {
         this.ColeccionImagenes.putAll(coleccionimagenes);
     }
     
+    public String getContraseña(){
+        return contraseña;
+    }
     public String getnombre(){
         return nombre;
     }

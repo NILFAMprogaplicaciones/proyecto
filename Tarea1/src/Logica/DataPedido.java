@@ -14,7 +14,10 @@ public class DataPedido {
     private Restaurante restaurante;
     private TipoAsosiativoPedido tipoAP;
     
-    public DataPedido(int id, FechaHora fechahora, double preciototal, Estado estado, Cliente cliente, Map coleccionproductos, Restaurante restaurante, TipoAsosiativoPedido tipoAP){
+    
+    public DataPedido(int id, FechaHora fechahora, double preciototal, Estado estado, Cliente cliente, 
+            Map coleccionproductos, Restaurante restaurante, TipoAsosiativoPedido tipoAP){
+        
         this.id=id;
         this.fechahora=fechahora;
         this.preciototal=preciototal;
@@ -23,6 +26,7 @@ public class DataPedido {
         this.ColeccionProductos.putAll(coleccionproductos);
         this.restaurante=restaurante;
         this.tipoAP=tipoAP;
+        
     }
     public int getId(){
         return id;

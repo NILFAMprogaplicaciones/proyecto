@@ -20,7 +20,7 @@ public class DataRestauranteTest {
         Map<Integer,File> colfoto1=new HashMap<Integer,File>();
         File foto1 = new File("src/Imagenes/co.jpg");
         colfoto1.put(1, foto1);
-        DataRestaurante datarestaurante=new DataRestaurante("Pizzeria Mera","mera","mera@hotmail.com","Av 8 de octubre 2704",colcat1,colfoto1);
+        DataRestaurante datarestaurante=new DataRestaurante("contraseña","Pizzeria Mera","mera","mera@hotmail.com","Av 8 de octubre 2704",colcat1,colfoto1);
         
         return datarestaurante;
     }

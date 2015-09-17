@@ -5,6 +5,7 @@ import java.io.File;
 import javax.swing.Icon;
 
 public class DataCliente {
+    private String contraseña;
     private String nombre;
     private String nickname;
     private String correo;
@@ -14,7 +15,8 @@ public class DataCliente {
     private File   foto;
     
     
-    public DataCliente(String nombre, String nickname, String correo, String direccion,String apellido, Fecha fecha_nacimiento, File foto){
+    public DataCliente(String contraseña,String nombre, String nickname, String correo, String direccion,String apellido, Fecha fecha_nacimiento, File foto){
+        this.contraseña=contraseña;
         this.nombre=nombre;
         this.nickname=nickname;
         this.correo=correo;
@@ -24,6 +26,9 @@ public class DataCliente {
         this.foto=foto;
     }
     
+    public String getContraseña(){
+        return contraseña;
+    }
     public String getnombre(){
         return nombre;
     }

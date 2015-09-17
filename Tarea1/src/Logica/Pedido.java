@@ -15,6 +15,7 @@ public final class Pedido {
     private Map<String,Producto>    ColeccionProductos=new HashMap<String,Producto>();
     private Restaurante             restaurante;
     private TipoAsosiativoPedido    tipoAP;
+    private Comentario Comentario;
    
     public Pedido(DataPedido datapedido){
         
@@ -59,6 +60,9 @@ public final class Pedido {
     public TipoAsosiativoPedido getTipoAP(){
         return tipoAP;
     }
+    public Comentario getComentario(){
+        return Comentario;
+    }
     
     public void setNum(int num){
         this.num=num;
@@ -81,11 +85,12 @@ public final class Pedido {
     public void setRestaurante(Restaurante restaurante){
         this.restaurante=restaurante;
     }
+    public void setComentario(Comentario comentario){
+        this.Comentario=comentario;
+    }
     
     public boolean ExisteProducto(String producto){
         return ColeccionProductos.containsKey(producto);
     }
-    
-    
     
 }

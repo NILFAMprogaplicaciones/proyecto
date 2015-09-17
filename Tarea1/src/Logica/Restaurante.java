@@ -21,11 +21,15 @@ public class Restaurante extends Usuario {
     
     
     public Restaurante(DataRestaurante datarestaurante){
-        super(datarestaurante.getnickname(), datarestaurante.getcorreo(), datarestaurante.getnombre(),datarestaurante.getdireccion());
+        super(datarestaurante.getContraseña(),datarestaurante.getnickname(), datarestaurante.getcorreo(), datarestaurante.getnombre(),datarestaurante.getdireccion());
         this.ColeccionCategoria.putAll(datarestaurante.getColeccionCategoria());
         this.ColeccionImagenes.putAll(datarestaurante.getColeccionImagenes());
     }
     
+    public String getcontraseña(){
+        return getContraseña();
+       
+    }
     public double buscarprecio(String nombreproducto){
         Producto objeto=ColeccionProducto.get(nombreproducto);
         double precio=0;

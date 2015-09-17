@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
-3456 
-*/ 
+
 package Presentacion;
 
 import Logica.DataCliente;
@@ -393,7 +388,9 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
                     M = Integer.parseInt(m);
                     A = Integer.parseInt(a);
                     Fecha fecha=new Fecha(D,M,A);
-                    DataCliente datacliente=new DataCliente(this.txtNombre.getText(), this.txtNickname.getText(),
+                    //ESTA CONTRASEÑA NO LA INGRESO EN EL SWING, DEBERIA
+                    String con="hola";
+                    DataCliente datacliente=new DataCliente(con,this.txtNombre.getText(), this.txtNickname.getText(),
                         this.txtCorreoElectronico.getText(), this.txtDireccion.getText(),
                         this.txtApellido.getText(), fecha,fichero);
                     ICU.Caso_Registro_Cliente(datacliente);

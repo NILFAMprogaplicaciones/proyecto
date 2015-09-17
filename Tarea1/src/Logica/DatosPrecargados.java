@@ -27,23 +27,23 @@ public class DatosPrecargados implements IDatosPrecargados {
         Fecha fecha1=new Fecha(15,11,1983),fecha2=new Fecha(2,8,1975),fecha3=new Fecha(12,9,1987),fecha4=new Fecha(28,07,1951),fecha5=new Fecha(23,12,1978);
         File foto1 = new File("src/Imagenes/co.jpg"),foto2 = new File("src/Imagenes/ro.jpg"),foto3 = new File("src/Imagenes/usuario.png"),foto4 = new File("src/Imagenes/an.jpg"),foto5 = new File("src/Imagenes/we.jpg");
         
-        DataCliente datacliente1=new DataCliente("Gerardo", "costas", "gcostas@gmail.com", "Pdte. Berro 1548","Cotelo", fecha1, foto1); 
+        DataCliente datacliente1=new DataCliente("contraseña","Gerardo", "costas", "gcostas@gmail.com", "Pdte. Berro 1548","Cotelo", fecha1, foto1); 
         Cliente cliente1=new Cliente(datacliente1);
         MU.addUsuario(cliente1.getnickname(), cliente1);
         
-        DataCliente datacliente2=new DataCliente("Rodrigo", "roro", "rcotelo@yahoo.com", "Av. Italia 2078","Costas", fecha2, foto2); 
+        DataCliente datacliente2=new DataCliente("contraseña","Rodrigo", "roro", "rcotelo@yahoo.com", "Av. Italia 2078","Costas", fecha2, foto2); 
         Cliente cliente2=new Cliente(datacliente2);
         MU.addUsuario(cliente2.getnickname(), cliente2);
         
-        DataCliente datacliente3=new DataCliente("Cecilia", "chechi", "cgarrido@hotmail.com", "Gral. Urquiza 1548","Garrido", fecha3, foto3); 
+        DataCliente datacliente3=new DataCliente("contraseña","Cecilia", "chechi", "cgarrido@hotmail.com", "Gral. Urquiza 1548","Garrido", fecha3, foto3); 
         Cliente cliente3=new Cliente(datacliente3);
         MU.addUsuario(cliente3.getnickname(), cliente3);
         
-        DataCliente datacliente4=new DataCliente("Andrea", "andy", "agarcia@gmail.com", "Dr. Manuel Albo 4512","García", fecha4, foto4); 
+        DataCliente datacliente4=new DataCliente("contraseña","Andrea", "andy", "agarcia@gmail.com", "Dr. Manuel Albo 4512","García", fecha4, foto4); 
         Cliente cliente4=new Cliente(datacliente4);
         MU.addUsuario(cliente4.getnickname(), cliente4);
         
-        DataCliente datacliente5=new DataCliente("Adrian", "weiss", "aweiss@hotmail.com", "Monte Caseros 5615","Weiss", fecha5, foto5); 
+        DataCliente datacliente5=new DataCliente("contraseña","Adrian", "weiss", "aweiss@hotmail.com", "Monte Caseros 5615","Weiss", fecha5, foto5); 
         Cliente cliente5=new Cliente(datacliente5);
         MU.addUsuario(cliente5.getnickname(), cliente5);
         
@@ -108,7 +108,7 @@ public class DatosPrecargados implements IDatosPrecargados {
         Map<Integer,File> colfoto1=new HashMap<Integer,File>();
         File foto1 = new File("src/Imagenes/usuario.png"); 
         colfoto1.put(1, foto1);
-        DataRestaurante dr1=new DataRestaurante("Pizzeria Mera","mera","mera@hotmail.com","Av 8 de octubre 2704",colcat1,colfoto1);
+        DataRestaurante dr1=new DataRestaurante("contraseña","Pizzeria Mera","mera","mera@hotmail.com","Av 8 de octubre 2704",colcat1,colfoto1);
         Restaurante res1=new Restaurante(dr1);
         MU.addUsuario(res1.getnickname(), res1);
         
@@ -120,7 +120,7 @@ public class DatosPrecargados implements IDatosPrecargados {
         Map<Integer,File> colfoto2=new HashMap<Integer,File>();
         File foto2 = new File("src/Imagenes/usuario.png"); 
         colfoto2.put(1, foto2);
-        DataRestaurante dr2=new DataRestaurante("Bar Rossell","rossell","bar.rossel@gmail.com","Bvar. Artigas 1601",colcat2,colfoto2);
+        DataRestaurante dr2=new DataRestaurante("contraseña","Bar Rossell","rossell","bar.rossel@gmail.com","Bvar. Artigas 1601",colcat2,colfoto2);
         Restaurante res2=new Restaurante(dr2);
         MU.addUsuario(res2.getnickname(), res2);
         
@@ -129,7 +129,7 @@ public class DatosPrecargados implements IDatosPrecargados {
         Map<Integer,File> colfoto3=new HashMap<Integer,File>();
         File foto3 = new File("src/Imagenes/usuario.png"); 
         colfoto3.put(1, foto3);
-        DataRestaurante dr3=new DataRestaurante("Empanadas Bocatti","bocatti","bocatti@gmail.com","18 de julio 2138",colcat3,colfoto3);
+        DataRestaurante dr3=new DataRestaurante("contraseña","Empanadas Bocatti","bocatti","bocatti@gmail.com","18 de julio 2138",colcat3,colfoto3);
         Restaurante res3=new Restaurante(dr3);
         MU.addUsuario(res3.getnickname(), res3);
         
@@ -140,7 +140,7 @@ public class DatosPrecargados implements IDatosPrecargados {
         Map<Integer,File> colfoto4=new HashMap<Integer,File>();
         File foto4 = new File("src/Imagenes/wb.jpg"); 
         colfoto4.put(1, foto4);
-        DataRestaurante dr4=new DataRestaurante("Wok in Box","winb","wok.in.box@hotmail.com","Libertad 2535",colcat4,colfoto4);
+        DataRestaurante dr4=new DataRestaurante("contraseña","Wok in Box","winb","wok.in.box@hotmail.com","Libertad 2535",colcat4,colfoto4);
         Restaurante res4=new Restaurante(dr4);
         MU.addUsuario(res4.getnickname(), res4);
     }

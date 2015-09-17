@@ -15,4 +15,6 @@ public abstract interface IControladorPedido {
     
     public abstract void Caso_Actualizar_Estado_Pedido(int id, Estado estado);
     
+    
+    public abstract void Caso_Ingresar_Comentario(DataComentario datacomentario);
 }

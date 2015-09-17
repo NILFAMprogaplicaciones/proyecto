@@ -21,7 +21,7 @@ public class ControladorUsuario implements IControladorUsuario  {
     public DataCliente Caso_Ver_Cliente(String nickname){
         ManejadorUsuario mc=ManejadorUsuario.getinstance();
         Cliente c= mc.findCliente(nickname);
-        DataCliente du=new DataCliente(c.getnombre(),c.getnickname(),c.getcorreo(),c.getdireccion(),c.getapellido(),c.getfecha(),c.getFoto());
+        DataCliente du=new DataCliente(c.getContraseña(),c.getnombre(),c.getnickname(),c.getcorreo(),c.getdireccion(),c.getapellido(),c.getfecha(),c.getFoto());
         return du;
     }
     
@@ -34,7 +34,7 @@ public class ControladorUsuario implements IControladorUsuario  {
     public DataRestaurante Caso_Ver_Restaurante(String nickName){
         ManejadorUsuario mu=ManejadorUsuario.getinstance();
         Restaurante r= mu.findRestaurante(nickName);
-        DataRestaurante dr = new DataRestaurante(r.getnombre(),r.getnickname(), r.getcorreo(),  r.getdireccion(),r.getCategorias(), r.getColeccionImagenes());
+        DataRestaurante dr = new DataRestaurante(r.getContraseña(),r.getnombre(),r.getnickname(), r.getcorreo(),  r.getdireccion(),r.getCategorias(), r.getColeccionImagenes());
         return  dr;
     }
     

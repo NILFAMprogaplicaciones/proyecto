@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Logica;
 
 import java.io.File;
@@ -16,12 +12,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author Mauricio
- */
-
-
 public class DataCantidadTest {
     
     Map<Integer,File> coleccionimagenes = new TreeMap<Integer, File>();
@@ -29,7 +19,7 @@ public class DataCantidadTest {
     Map<String,Categoria> coleccioncategoria = new HashMap<String,Categoria>();
    
     Categoria cate = new Categoria("Categoria");
-    DataRestaurante DR= new DataRestaurante("Restaurante","res1", "res@res", "direccion",  coleccioncategoria,  coleccionimagenes);
+    DataRestaurante DR= new DataRestaurante("contraseña","Restaurante","res1", "res@res", "direccion",  coleccioncategoria,  coleccionimagenes);
     Restaurante res= new Restaurante(DR);
     File fichero = new File("src/Imagenes/usuario.png");
     Producto prod = new Producto("nombre","descripcion",res);

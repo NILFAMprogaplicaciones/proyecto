@@ -20,7 +20,7 @@ Map<Integer,File> coleccionimagenes = new TreeMap<Integer, File>();
 Map<String,DataCantidad> CantidadProductos = new HashMap<String, DataCantidad>();
 Map<String,Categoria> coleccioncategoria = new HashMap<String,Categoria>();
 
-DataRestaurante DR= new DataRestaurante("Restaurante","res1", "res@res", "direccion",  coleccioncategoria,  coleccionimagenes);
+DataRestaurante DR= new DataRestaurante("contraseña","Restaurante","res1", "res@res", "direccion",  coleccioncategoria,  coleccionimagenes);
 Restaurante res= new Restaurante(DR);
 File fichero = new File("src/Imagenes/usuario.png");
 File fichero1 = new File("src/Imagenes/co.jpeg");

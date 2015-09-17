@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Presentacion;
 
 import Logica.Categoria;
@@ -357,7 +353,9 @@ int indice=1;
                     txtCorreoElectronico.requestFocus();
                 }
                 else{
-                    DataRestaurante datarestaurante=new DataRestaurante(this.txtNombre.getText(),this.txtNickname.getText(),this.txtCorreoElectronico.getText(), 
+                    //ESTA CONTRASEÑA NO LA INGRESO EN EL SWING, DEBERIA
+                    String con="hola";
+                    DataRestaurante datarestaurante=new DataRestaurante(con,this.txtNombre.getText(),this.txtNickname.getText(),this.txtCorreoElectronico.getText(), 
                             this.txtDireccion.getText(),coleccion,coleccionimagenes);
                     ICU.Caso_Registro_Restaurante(datarestaurante);
 

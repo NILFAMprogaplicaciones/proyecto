@@ -19,7 +19,7 @@ public class ManejadorProductoTest {
     Map<String,Categoria> colcat1=new HashMap<String,Categoria>();
     Map<Integer,File> colfoto1=new HashMap<Integer,File>();
     File foto1;
-    DataRestaurante datarestaurante=new DataRestaurante("Pizzeria Mera","mera","mera@hotmail.com","Av 8 de octubre 2704",colcat1,colfoto1);
+    DataRestaurante datarestaurante=new DataRestaurante("contraseña","Pizzeria Mera","mera","mera@hotmail.com","Av 8 de octubre 2704",colcat1,colfoto1);
     Restaurante res=new Restaurante(datarestaurante);
     DataIndividual di=new DataIndividual("nombre", "descripcion", res, 100, foto1);
     Individual ind=new Individual(di);
@@ -30,7 +30,7 @@ public class ManejadorProductoTest {
     Map<String,Categoria> coleccioncategoria = new HashMap<String,Categoria>();
    
     Categoria cate = new Categoria("Categoria");
-    DataRestaurante DR= new DataRestaurante("Restaurante","res1", "res@res", "direccion",  coleccioncategoria,  coleccionimagenes);
+    DataRestaurante DR= new DataRestaurante("contraseña","Restaurante","res1", "res@res", "direccion",  coleccioncategoria,  coleccionimagenes);
     Restaurante res2= new Restaurante(DR);
     File fichero = new File("src/Imagenes/usuario.png");
     DataPromocion DP= new DataPromocion(res2,"Promo1", "Promocion",20, true, 10,CantidadProductos,fichero);
@@ -63,7 +63,7 @@ public class ManejadorProductoTest {
         Map<String,DataCantidad> CantidadProductos = new HashMap<String, DataCantidad>();
         Map<String,Categoria> coleccioncategoria = new HashMap<String,Categoria>();
         Categoria cate = new Categoria("Categoria");
-        DataRestaurante DR= new DataRestaurante("Restaurante","res1", "res@res", "direccion",  coleccioncategoria,  coleccionimagenes);
+        DataRestaurante DR= new DataRestaurante("contraseña","Restaurante","res1", "res@res", "direccion",  coleccioncategoria,  coleccionimagenes);
         Restaurante res2= new Restaurante(DR);
         //PROMOCION
         DataCantidad data=new DataCantidad(1,pro);

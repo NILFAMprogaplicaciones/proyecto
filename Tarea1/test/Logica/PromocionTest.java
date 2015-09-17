@@ -21,7 +21,7 @@ public class PromocionTest {
     Map<String,Categoria> coleccioncategoria = new HashMap<String,Categoria>();
    
     Categoria cate = new Categoria("Categoria");
-    DataRestaurante DR= new DataRestaurante("Restaurante","res1", "res@res", "direccion",  coleccioncategoria,  coleccionimagenes);
+    DataRestaurante DR= new DataRestaurante("contraseña","Restaurante","res1", "res@res", "direccion",  coleccioncategoria,  coleccionimagenes);
     Restaurante res= new Restaurante(DR);
     File fichero = new File("src/Imagenes/usuario.png");
     DataPromocion DP= new DataPromocion(res,"Promo1", "Promocion",20, false, 10,CantidadProductos,fichero);

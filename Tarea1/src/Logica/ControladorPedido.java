@@ -42,4 +42,9 @@ public class ControladorPedido implements IControladorPedido {
 
     }
 
+    public void Caso_Ingresar_Comentario(DataComentario dc){
+        ManejadorPedido MP=ManejadorPedido.getinstance();
+        Comentario com=new Comentario(dc);
+        MP.getPedido(dc.getPedido().getnum()).setComentario(com);
+    }
 }
