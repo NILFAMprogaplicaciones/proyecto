@@ -109,7 +109,7 @@ function CheckCliente() {
     if (error) {
         window.alert(mensaje);
     } else {
-        document.getElementById("restaurantFRM").submit();
+        document.getElementById("clienteFRM").submit();
     } // endif                                
 } // end function
 

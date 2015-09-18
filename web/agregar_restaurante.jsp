@@ -1,10 +1,16 @@
+
+
+<%@page import="java.util.Map"%>
+<%@page import="Logica.ManejadorCategoria"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="Logica.Categoria"%>
 <jsp:include page='header.jsp'/>                
     
 <!-- Page Content -->
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-4">
-                <form class="form-horizontal" id="restauranteFRM">
+                <form class="form-horizontal" id="restauranteFRM" method="POST" action="Categorias">
                     <div class="form-group">
                         <label for="inputNickname" class="control-label col-xs-2">Nickname</label>
                             <div class="col-xs-10">
@@ -40,12 +46,15 @@
                         <div class="col-xs-10 selectContainer">
                             <select name="inputCategoria" id="inputCategoria" class="form-control">
                                 <option value="0">Seleccione Categoria</option>
+                                    <%
+                                        Map<String, Categoria> categorias = (Map)request.getAttribute("MapCategorias");
+                                       // categorias tiene todas las categorias del sistema
+                                    %>
                                 <option value="Cat1">Cat 1</option>
                                 <option value="Cat2">Cat 2</option>
                             </select>
                         </div>
                     </div>
-
                     <div class="col-lg-8 col-lg-offset-4">
                         <input type="button" class="btn" value="Enviar" onclick="CheckRestaurante();"/>
                         <input type="reset"  class="btn" value="Cancelar" />
