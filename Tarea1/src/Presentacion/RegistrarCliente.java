@@ -2,6 +2,7 @@
 package Presentacion;
 
 import Logica.DataCliente;
+import Logica.ExcepcionesPersonalizadas;
 import Logica.Fabrica;
 import Logica.Fecha;
 import Logica.IControladorUsuario;
@@ -327,81 +328,31 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
         ManejadorUsuario MC = ManejadorUsuario.getinstance();
-        
-        if(MC.verificarnickname(txtNickname.getText())==true){
-            JOptionPane.showMessageDialog(this,"Nickname ya tomado","REGISTRO",JOptionPane.ERROR_MESSAGE);
-            txtNickname.requestFocus();
-        }
-        else if(MC.verificarcorreo(txtCorreoElectronico.getText())==true){
-            JOptionPane.showMessageDialog(this,"Correo electronico ya tomado","REGISTRO",JOptionPane.ERROR_MESSAGE);
-            txtCorreoElectronico.requestFocus();
-        }
-        else{
-            if(this.txtNickname.getText().equals("")){
-                JOptionPane.showMessageDialog(this,"Ingrese un nickname","REGISTRO",JOptionPane.WARNING_MESSAGE);
-                txtNickname.requestFocus();
-            }
-            else if(this.txtCorreoElectronico.getText().equals("")){
-                JOptionPane.showMessageDialog(this,"Ingrese su Correo Electronico","REGISTRO",JOptionPane.WARNING_MESSAGE);
-                txtCorreoElectronico.requestFocus();
-            }
-            else if(this.txtNombre.getText().equals("")){
-                JOptionPane.showMessageDialog(this,"Ingrese su Nombre","REGISTRO",JOptionPane.WARNING_MESSAGE);
-                txtNombre.requestFocus();
-            }
-            else if(this.txtApellido.getText().equals("")){
-                JOptionPane.showMessageDialog(this,"Ingrese su Apelldio","REGISTRO",JOptionPane.WARNING_MESSAGE);
-                txtApellido.requestFocus();
-            }
-            else if(this.txtDireccion.getText().equals("")){
-                JOptionPane.showMessageDialog(this,"Ingrese su Direccion","REGISTRO",JOptionPane.WARNING_MESSAGE);
-                txtDireccion.requestFocus();
-            }
-            else if(this.dia.getSelectedItem().equals("DIA")){
-                JOptionPane.showMessageDialog(this,"Ingrese su DIA de nacimiento","REGISTRO",JOptionPane.WARNING_MESSAGE);
-                dia.requestFocus();
-            }
-            else if(this.mes.getSelectedItem().equals("MES")){
-                JOptionPane.showMessageDialog(this,"Ingrese su MES de nacimiento","REGISTRO",JOptionPane.WARNING_MESSAGE);
-                mes.requestFocus();
-            }
-            else if(this.anio.getSelectedItem().equals("AÑO")){
-                JOptionPane.showMessageDialog(this,"Ingrese su AÑO de nacimiento","REGISTRO",JOptionPane.WARNING_MESSAGE);
-                anio.requestFocus();
-            }
-            else if(!this.txtCorreoElectronico.getText().equals("")){
-                
-                boolean arroba=false;    
-                for (int x=0;x<txtCorreoElectronico.getText().length();x++){
-                    char caracter=this.txtCorreoElectronico.getText().charAt(x);
-                    if(caracter=='@')
-                        arroba=true;
-                }
-                if(arroba==false){        
-                    JOptionPane.showMessageDialog(this,"Verifique el dominio de su correo","REGISTRO",JOptionPane.WARNING_MESSAGE);
-                    txtCorreoElectronico.requestFocus();
-                }
-                else{
-                    //D,M,A estan parseados
-                    int D,M,A;
-                    D = Integer.parseInt(d);
-                    M = Integer.parseInt(m);
-                    A = Integer.parseInt(a);
-                    Fecha fecha=new Fecha(D,M,A);
-                    //ESTA CONTRASEÑA NO LA INGRESO EN EL SWING, DEBERIA
-                    String con="hola";
-                    DataCliente datacliente=new DataCliente(con,this.txtNombre.getText(), this.txtNickname.getText(),
-                        this.txtCorreoElectronico.getText(), this.txtDireccion.getText(),
-                        this.txtApellido.getText(), fecha,fichero);
-                    ICU.Caso_Registro_Cliente(datacliente);
-
-                    //NO LIMPIO NADA YA QUE CADA VES QUE LLAMO EL INTERNAL REALIZO UN NEW    
-                    this.dispose();
-
-                }
-            }
+       
+        try{
+            MC.ExcepcionDatosCliente(txtNickname.getText(),txtCorreoElectronico.getText(),txtNombre.getText(),txtApellido.getText(),
+                    txtDireccion.getText(),dia.getSelectedItem().toString(),mes.getSelectedItem().toString(),anio.getSelectedItem().toString());
+            //D,M,A estan parseados
+            int D,M,A;
+            D = Integer.parseInt(d);
+            M = Integer.parseInt(m);
+            A = Integer.parseInt(a);
+            Fecha fecha=new Fecha(D,M,A);
+            //ESTA CONTRASEÑA NO LA INGRESO EN EL SWING, DEBERIA
+            String con="hola";
+            DataCliente datacliente=new DataCliente(con,this.txtNombre.getText(), this.txtNickname.getText(),
+                this.txtCorreoElectronico.getText(), this.txtDireccion.getText(),
+                this.txtApellido.getText(), fecha,fichero);
+            ICU.Caso_Registro_Cliente(datacliente);
+            JOptionPane.showMessageDialog(null,"Cliente Registrado","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
+            //NO LIMPIO NADA YA QUE CADA VES QUE LLAMO EL INTERNAL REALIZO UN NEW    
+            this.dispose();
             
+        }catch(ExcepcionesPersonalizadas ep){
+            
+            JOptionPane.showMessageDialog(this,ep.getMessage(),"REGISTRO",JOptionPane.ERROR_MESSAGE);
         }
+        
     }//GEN-LAST:event_RegistrarActionPerformed
 
 

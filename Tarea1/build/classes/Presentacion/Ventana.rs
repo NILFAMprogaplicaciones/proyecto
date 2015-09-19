@@ -1,2 +1,0 @@
-Presentacion.validador
-Presentacion.Ventana

@@ -13,7 +13,7 @@ public class ControladorProducto implements IControladorProducto {
         Individual prod = new Individual(dataindividual);
         MU.addProductoIndividual(dataindividual.getRestaurante().getnickname(),prod);
         MP.addProductoIndividual( prod);
-        JOptionPane.showMessageDialog(null,"Producto ingresada con Exito","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
+        
     }
     
     public void AltaProductoPromocion(DataPromocion datapromocion) {
@@ -22,7 +22,7 @@ public class ControladorProducto implements IControladorProducto {
         Promocion prod = new Promocion(datapromocion);
         MU.addProductoPromocion(datapromocion.getRestaurante().getnickname(),prod);
         MP.addProductoPromocion( prod);
-        JOptionPane.showMessageDialog(null,"Producto ingresado con Exito","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
+        
     }
     
     public DataIndividual Caso_Ver_Individual(String nombre){
@@ -46,7 +46,7 @@ public class ControladorProducto implements IControladorProducto {
         Individual individual=new Individual(dataindividual);
         mu.addProductoIndividual(dataindividual.getRestaurante().getnickname(),individual);
         mp.addProductoIndividual(individual);
-        JOptionPane.showMessageDialog(null,"Producto actualizado con Exito","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
+        
     }
      
     public void Caso_Actualizar_Promocion(String nombreproducto,DataPromocion datapromocion){
@@ -56,6 +56,6 @@ public class ControladorProducto implements IControladorProducto {
         Promocion promocion=new Promocion(datapromocion);
         mu.addProductoPromocion(datapromocion.getRestaurante().getnickname(),promocion);
         mp.addProductoPromocion(promocion);
-        JOptionPane.showMessageDialog(null,"Producto actualizado con Exito","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
+        
     }
 } 

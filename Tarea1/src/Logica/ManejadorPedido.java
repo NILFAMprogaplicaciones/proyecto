@@ -61,4 +61,14 @@ public class ManejadorPedido {
         return cantidad;
             
     }
+    
+    //EXCEPCIONES
+    
+    public void ExcepcionEliminacion(int id) throws ExcepcionesPersonalizadas{
+        Estado estado=ColeccionPedido.get(id).getEstado();
+        if(!estado.equals(Estado.PREPARCION))
+            throw new ExcepcionesPersonalizadas("Imposible Cancelar Pedido, Verifique su Estado");
+    }
+    
+    
 }

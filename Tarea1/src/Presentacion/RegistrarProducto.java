@@ -445,6 +445,7 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
                             Activa.isSelected(), Integer.parseInt(txtDescuento.getText()), coleccionProductosAgregar,fichero);
                     
                     ICP.AltaProductoPromocion(datapromocion);
+                    JOptionPane.showMessageDialog(null,"Producto ingresado con Exito","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
                     dispose();
                 }
             }            
@@ -475,6 +476,7 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
                     DataIndividual dataindividual=new DataIndividual(txtNombre.getText(),txtDescripcion.getText(),rest,precio,fichero);
                     
                     ICP.AltaProductoIndividual(dataindividual);
+                    JOptionPane.showMessageDialog(null,"Producto ingresado con Exito","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
                     dispose();
                 }
             }

@@ -617,6 +617,7 @@ File fichero;
             if(!res.verificarproducto(txtNombreProd.getText())){
                 DataIndividual dataindividual=new DataIndividual(txtNombreProd.getText(),txtDescripcion.getText(), individual.getRestaurante(), Double.parseDouble(txtPrecio.getText()), fichero);    
                 ICP.Caso_Actualizar_Individual(nombreproducto, dataindividual);
+                JOptionPane.showMessageDialog(null,"Producto actualizado con Exito","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
             }
             else
                 JOptionPane.showMessageDialog(this,"Nombre de Producto ya tomado","INFORMACION PRODUCTO",JOptionPane.ERROR_MESSAGE );
@@ -633,6 +634,7 @@ File fichero;
                 
                     DataPromocion datapromo= new DataPromocion(promo.getRestaurante(), txtNombreProd.getText(), txtDescripcion.getText(), promo.getPrecioTotal(),act, Integer.parseInt(txtDescuento.getText()), promo.getColeccionProductos(), fichero);
                     ICP.Caso_Actualizar_Promocion(nombreproducto, datapromo);
+                    JOptionPane.showMessageDialog(null,"Producto actualizado con Exito","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
             }
             else
                 JOptionPane.showMessageDialog(this,"Nombre de Producto ya tomado","INFORMACION PRODUCTO",JOptionPane.ERROR_MESSAGE );

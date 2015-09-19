@@ -15,7 +15,7 @@ public class ControladorUsuario implements IControladorUsuario  {
         ManejadorUsuario mc=ManejadorUsuario.getinstance();
         Cliente c=new Cliente(datacliente);
         mc.addUsuario(datacliente.getnickname(),c);
-        JOptionPane.showMessageDialog(null,"Cliente Registrado","REGISTRO",JOptionPane.INFORMATION_MESSAGE);            
+                    
     
     }
     public DataCliente Caso_Ver_Cliente(String nickname){
@@ -29,7 +29,7 @@ public class ControladorUsuario implements IControladorUsuario  {
         ManejadorUsuario mu=ManejadorUsuario.getinstance();
         Restaurante res=new Restaurante(datarestaurante);
         mu.addUsuario(datarestaurante.getnickname(), res);
-        JOptionPane.showMessageDialog(null,"Restaurante Registrado","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
+        
     }
     public DataRestaurante Caso_Ver_Restaurante(String nickName){
         ManejadorUsuario mu=ManejadorUsuario.getinstance();
