@@ -145,6 +145,96 @@ public class ManejadorUsuario {
         }
         return resultado;
    }
+   
+   //EXCEPCIONES
+   public void ExcepcionDatosCliente(String Nickname,String CorreoElectronico, String Nombre, String Apellido, String Direccion, 
+           String dia, String mes, String anio) throws ExcepcionesPersonalizadas{
+       
+        if(verificarnickname(Nickname)==true){
+            throw new ExcepcionesPersonalizadas("Nickname ya tomado");
+        }
+        else if(verificarcorreo(CorreoElectronico)==true){
+            throw new ExcepcionesPersonalizadas("Correo Electronico ya tomado");
+        }
+        else{
+            if(Nickname.equals("")){
+                throw new ExcepcionesPersonalizadas("Ingrese un Nickname");
+            }
+            else if(CorreoElectronico.equals("")){
+                throw new ExcepcionesPersonalizadas("Ingrese su Correo Electronico");
+            }
+            else if(Nombre.equals("")){
+                throw new ExcepcionesPersonalizadas("Ingrese su Nombre");
+            }
+            else if(Apellido.equals("")){
+                throw new ExcepcionesPersonalizadas("Ingrese su Apellido");
+            }
+            else if(Direccion.equals("")){
+                throw new ExcepcionesPersonalizadas("Ingrese su Direccion");
+            }
+            else if(dia.equals("DIA")){
+                throw new ExcepcionesPersonalizadas("Ingrese su DIA de nacimiento");
+            }
+            else if(mes.equals("MES")){
+                throw new ExcepcionesPersonalizadas("Ingrese su MES de nacimiento");
+            }
+            else if(anio.equals("AÑO")){
+                throw new ExcepcionesPersonalizadas("Ingrese su AÑO de nacimiento");
+            }
+            else if(!CorreoElectronico.equals("")){
+                
+                boolean arroba=false;    
+                for (int x=0;x<CorreoElectronico.length();x++){
+                    char caracter=CorreoElectronico.charAt(x);
+                    if(caracter=='@')
+                        arroba=true;
+                }
+                if(arroba==false){        
+                    throw new ExcepcionesPersonalizadas("Verifique el dominio de su correo");
+                    
+                }
+            }
+        }
+   }
+   
+   public void ExcepcionDatosRestaurante(String Nickname,String CorreoElectronico, String Nombre, String Direccion, Map coleccion) throws ExcepcionesPersonalizadas{
+        if(verificarnickname(Nickname)==true){
+            throw new ExcepcionesPersonalizadas("Nickname ya tomado");
+        }
+        else if(verificarcorreo(CorreoElectronico)==true){
+            throw new ExcepcionesPersonalizadas("Correo Electronico ya tomado");
+        }
+        else{
+            if(Nickname.equals("")){
+                throw new ExcepcionesPersonalizadas("Ingrese un Nickname");
+            }
+            else if(CorreoElectronico.equals("")){
+                throw new ExcepcionesPersonalizadas("Ingrese su Correo Electronico");
+            }
+            else if(Nombre.equals("")){
+                throw new ExcepcionesPersonalizadas("Ingrese su Nombre");
+            }
+            else if(Direccion.equals("")){
+                throw new ExcepcionesPersonalizadas("Ingrese su Direccion");
+            }
+            else if(coleccion.isEmpty()){
+                throw new ExcepcionesPersonalizadas("Ingrese al menos 1 Categoria");
+            }
+            else if(!CorreoElectronico.equals("")){
+                
+                boolean arroba=false;    
+                for (int x=0;x<CorreoElectronico.length();x++){
+                    char caracter=CorreoElectronico.charAt(x);
+                    if(caracter=='@')
+                        arroba=true;
+                }
+                if(arroba==false){        
+                    throw new ExcepcionesPersonalizadas("Verifique el dominio de su correo");
+                    
+                }
+            }
+        }
+   }
 }
     
     

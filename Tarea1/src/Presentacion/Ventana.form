@@ -219,11 +219,6 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JDesktopPane" name="PanelEscritorio">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color type="null"/>
-        </Property>
-      </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
       </AuxValues>

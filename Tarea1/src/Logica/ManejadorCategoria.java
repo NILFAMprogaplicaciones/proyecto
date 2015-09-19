@@ -36,4 +36,15 @@ public class ManejadorCategoria {
         return ColeccionCategoria.get(nombrecategoria);
     }
     
+//EXCEPCIONES
+    public void ExcepcionCategoria(String Categoria)throws ExcepcionesPersonalizadas{
+        if(verificoCat(Categoria)==true){
+            throw new ExcepcionesPersonalizadas("Categoria ya Ingresada");
+        } 
+        else {
+            if (Categoria.equals("")){
+                throw new ExcepcionesPersonalizadas("Ingrese Categoria");
+            }
+        }
+    }
 }

@@ -3,6 +3,7 @@ package Presentacion;
 
 import Logica.Categoria;
 import Logica.DataRestaurante;
+import Logica.ExcepcionesPersonalizadas;
 import Logica.Fabrica;
 import java.awt.Image;
 import java.io.File;
@@ -308,62 +309,23 @@ int indice=1;
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
         ManejadorUsuario MU = ManejadorUsuario.getinstance();
-        ManejadorCategoria MC = ManejadorCategoria.getinstance();
-        
-        if(MU.verificarnickname(txtNickname.getText())==true){
-            JOptionPane.showMessageDialog(this,"Nickname ya tomado","REGISTRO",JOptionPane.ERROR_MESSAGE);
-            txtNickname.requestFocus();
-        }
-        else if(MU.verificarcorreo(txtCorreoElectronico.getText())==true){
-            JOptionPane.showMessageDialog(this,"Correo electronico ya tomado","REGISTRO",JOptionPane.ERROR_MESSAGE);
-            txtCorreoElectronico.requestFocus();
-        }
-        else{
-            if(this.txtNickname.getText().equals("")){
-                JOptionPane.showMessageDialog(this,"Ingrese un nickname","REGISTRO",JOptionPane.WARNING_MESSAGE);
-                txtNickname.requestFocus();
-            }
-            else if(this.txtCorreoElectronico.getText().equals("")){
-                JOptionPane.showMessageDialog(this,"Ingrese su Correo Electronico","REGISTRO",JOptionPane.WARNING_MESSAGE);
-                txtCorreoElectronico.requestFocus();
-            }
-            else if(this.txtNombre.getText().equals("")){
-                JOptionPane.showMessageDialog(this,"Ingrese su Nombre","REGISTRO",JOptionPane.WARNING_MESSAGE);
-                txtNombre.requestFocus();
-            }
+              
+        try{
+            MU.ExcepcionDatosRestaurante(txtNickname.getText(),txtCorreoElectronico.getText(), txtNombre.getText(), txtDireccion.getText(), coleccion);
+            //ESTA CONTRASEÑA NO LA INGRESO EN EL SWING, DEBERIA
+            String con="hola";
+            DataRestaurante datarestaurante=new DataRestaurante(con,this.txtNombre.getText(),this.txtNickname.getText(),this.txtCorreoElectronico.getText(), 
+                    this.txtDireccion.getText(),coleccion,coleccionimagenes);
+            ICU.Caso_Registro_Restaurante(datarestaurante);
+            JOptionPane.showMessageDialog(null,"Restaurante Registrado","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
+            //NO LIMPIO NADA YA QUE CADA VES QUE LLAMO EL INTERNAL REALIZO UN NEW
+            this.dispose();   
+        }catch(ExcepcionesPersonalizadas ep){
             
-            else if(this.txtDireccion.getText().equals("")){
-                JOptionPane.showMessageDialog(this,"Ingrese su Direccion","REGISTRO",JOptionPane.WARNING_MESSAGE);
-                txtDireccion.requestFocus();
-            }
-            else if(coleccion.isEmpty()){
-                JOptionPane.showMessageDialog(this,"Ingrese al menos 1 Categoria","REGISTRO",JOptionPane.WARNING_MESSAGE);
-                this.refrescarcoleccion.requestFocus();
-            }
-           else if(!this.txtCorreoElectronico.getText().equals("")){
-                
-                boolean arroba=false;    
-                for (int x=0;x<txtCorreoElectronico.getText().length();x++){
-                    char caracter=this.txtCorreoElectronico.getText().charAt(x);
-                    if(caracter=='@')
-                        arroba=true;
-                }
-                if(arroba==false){        
-                    JOptionPane.showMessageDialog(this,"Verifique el dominio de su correo","REGISTRO",JOptionPane.WARNING_MESSAGE);
-                    txtCorreoElectronico.requestFocus();
-                }
-                else{
-                    //ESTA CONTRASEÑA NO LA INGRESO EN EL SWING, DEBERIA
-                    String con="hola";
-                    DataRestaurante datarestaurante=new DataRestaurante(con,this.txtNombre.getText(),this.txtNickname.getText(),this.txtCorreoElectronico.getText(), 
-                            this.txtDireccion.getText(),coleccion,coleccionimagenes);
-                    ICU.Caso_Registro_Restaurante(datarestaurante);
-
-                    //NO LIMPIO NADA YA QUE CADA VES QUE LLAMO EL INTERNAL REALIZO UN NEW
-                    this.dispose();   
-                }
-            }
+            JOptionPane.showMessageDialog(this,ep.getMessage(),"REGISTRO",JOptionPane.ERROR_MESSAGE);
         }
+            
+        
     }//GEN-LAST:event_RegistrarActionPerformed
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed

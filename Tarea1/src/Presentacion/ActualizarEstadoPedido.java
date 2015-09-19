@@ -233,16 +233,19 @@ public class ActualizarEstadoPedido extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Verifique su opcion","ACTUALIZACION",JOptionPane.WARNING_MESSAGE);
             else if(Recibido.isSelected()){
                 ICP.Caso_Actualizar_Estado_Pedido(pedido.getnum(), Estado.RECIBIDO);
+                JOptionPane.showMessageDialog(null, "Estado Modificado","ACTUALIZACION",JOptionPane.INFORMATION_MESSAGE);
                 dispose();
             }
         }
         else if(txtEstado.getText().equals("PREPARACION")){
             if(Enviado.isSelected()&&!Recibido.isSelected()){
                 ICP.Caso_Actualizar_Estado_Pedido(pedido.getnum(), Estado.ENVIADO);
+                JOptionPane.showMessageDialog(null, "Estado Modificado","ACTUALIZACION",JOptionPane.INFORMATION_MESSAGE);
                 dispose();
             }
             else if(Recibido.isSelected()&&!Enviado.isSelected()){
                 ICP.Caso_Actualizar_Estado_Pedido(pedido.getnum(), Estado.RECIBIDO);
+                JOptionPane.showMessageDialog(null, "Estado Modificado","ACTUALIZACION",JOptionPane.INFORMATION_MESSAGE);
                 dispose();
             }
             else{

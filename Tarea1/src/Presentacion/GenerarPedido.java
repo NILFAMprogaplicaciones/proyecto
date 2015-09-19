@@ -317,7 +317,7 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
                             .addComponent(listacategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(125, 125, 125)
+                                .addGap(116, 116, 116)
                                 .addComponent(MostrarProdcutos, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(29, 29, 29)
@@ -586,6 +586,7 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
             DataPedido datapedido=new DataPedido((id+1),fechahora,Redondear(preciototal),Estado.PREPARCION,cliente,coleccionproducto,(MU.findRestaurante((String)listares.getSelectedValue())),tipoasosiativopedido);
             
             ICP.Caso_Generar_Pedido(datapedido);
+            JOptionPane.showMessageDialog(null,"Pedido Registrado","REGISTRO",JOptionPane.INFORMATION_MESSAGE); 
             dispose();
             
         }

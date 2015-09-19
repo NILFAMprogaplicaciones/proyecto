@@ -3,6 +3,7 @@ package Presentacion;
 
 import Logica.DataPedido;
 import Logica.Estado;
+import Logica.ExcepcionesPersonalizadas;
 import Logica.Fabrica;
 import Logica.IControladorPedido;
 import Logica.Individual;
@@ -365,17 +366,26 @@ public class InfoPedido extends javax.swing.JInternalFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int fila=TablaPedidos.getSelectedRow();
+        ManejadorPedido MP=ManejadorPedido.getinstance();
         if(fila==-1)
             JOptionPane.showMessageDialog(this,"Seleccione un Pedido","INFORMACION PEDIDO",JOptionPane.WARNING_MESSAGE);
         else{
             int idPedido=(int) TablaPedidos.getValueAt(fila,0);
             int respuesta=JOptionPane.showConfirmDialog(this, "Seguro que desea eliminar el Pedido","PEDIDO",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
             if(respuesta==JOptionPane.YES_OPTION){
-                ICP.Caso_Cancelar_Pedido(idPedido);
-                limpiarTabla(TablaPedidos);
-                cargarTablaPedidos();
+                try{
+                    MP.ExcepcionEliminacion(idPedido);
+                    ICP.Caso_Cancelar_Pedido(idPedido);
+                    JOptionPane.showMessageDialog(null,"Pedido Eliminado","PEDIDO",JOptionPane.INFORMATION_MESSAGE); 
+                    
+                }catch(ExcepcionesPersonalizadas ep){
+                    JOptionPane.showMessageDialog(this,ep.getMessage(),"REGISTRO",JOptionPane.ERROR_MESSAGE);
+                }
+                finally{
+                    limpiarTabla(TablaPedidos);
+                    cargarTablaPedidos();
+                }
             }
-            
         }   
     }//GEN-LAST:event_jButton3ActionPerformed
 
