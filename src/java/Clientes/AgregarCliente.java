@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Clientes;
 
 import java.io.IOException;
@@ -14,10 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import Logica.*;
-/**
- *
- * @author mnotari
- */
+
 public class AgregarCliente extends HttpServlet {
 
     /**
@@ -81,7 +74,7 @@ public class AgregarCliente extends HttpServlet {
         String apellido = request.getParameter("inputApellido");
         String nacimiento = request.getParameter("inputFecha_nacimiento");
 
-        DataCliente DC = new DataCliente(nombre,nickname,email,direccion,apellido,null,null);
+        DataCliente DC = new DataCliente("hola",nombre,nickname,email,direccion,apellido,null,null);
 
         request.setAttribute("DC",DC); 
        
