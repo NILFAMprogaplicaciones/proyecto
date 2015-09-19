@@ -12,40 +12,31 @@ import Logica.FechaHora;
 <span class="fc" id="L12">        ManejadorPedido MP=ManejadorPedido.getinstance();</span>
 <span class="fc" id="L13">        Pedido pedido=new Pedido(datapedido);</span>
 <span class="fc" id="L14">        MP.addPedido(datapedido.getId(), pedido);</span>
-<span class="fc" id="L15">        JOptionPane.showMessageDialog(null,&quot;Pedido Registrado&quot;,&quot;REGISTRO&quot;,JOptionPane.INFORMATION_MESSAGE); </span>
-<span class="fc" id="L16">    }</span>
+<span class="fc" id="L15">    }</span>
     
     public DataPedido Caso_Ver_Pedido(int id){
-<span class="fc" id="L19">        ManejadorPedido MP=ManejadorPedido.getinstance();</span>
-<span class="fc" id="L20">        Pedido p=MP.getPedido(id);</span>
-<span class="fc" id="L21">        DataPedido datapedido=new DataPedido(p.getnum(),p.getfecha(),p.getPrecioTotal(),p.getEstado(),p.getCliente(),p.getColeccionProductos(),p.getRestaurante(),p.getTipoAP());</span>
-<span class="fc" id="L22">        return datapedido;</span>
+<span class="fc" id="L18">        ManejadorPedido MP=ManejadorPedido.getinstance();</span>
+<span class="fc" id="L19">        Pedido p=MP.getPedido(id);</span>
+<span class="fc" id="L20">        DataPedido datapedido=new DataPedido(p.getnum(),p.getfecha(),p.getPrecioTotal(),p.getEstado(),p.getCliente(),p.getColeccionProductos(),p.getRestaurante(),p.getTipoAP());</span>
+<span class="fc" id="L21">        return datapedido;</span>
     } 
     
     public void Caso_Cancelar_Pedido(int id){
-<span class="fc" id="L26">        ManejadorPedido MP=ManejadorPedido.getinstance();</span>
-<span class="fc" id="L27">        Estado estado=MP.getPedido(id).getEstado();</span>
-<span class="fc bfc" id="L28" title="All 2 branches covered.">        if(estado.equals(Estado.PREPARCION)){</span>
-<span class="fc" id="L29">            MP.getColeccionPedido().remove(id);</span>
-<span class="fc" id="L30">            JOptionPane.showMessageDialog(null,&quot;Pedido Eliminado&quot;,&quot;PEDIDO&quot;,JOptionPane.INFORMATION_MESSAGE); </span>
-        }
-        else{
-<span class="fc" id="L33">            JOptionPane.showMessageDialog(null,&quot;Imposible Cancelar Pedido, Verifique su Estado&quot;,&quot;PEDIDO&quot;,JOptionPane.ERROR_MESSAGE); </span>
-
-        }
-<span class="fc" id="L36">    }</span>
+<span class="fc" id="L25">        ManejadorPedido MP=ManejadorPedido.getinstance();</span>
+<span class="fc" id="L26">        MP.getColeccionPedido().remove(id);</span>
+<span class="fc" id="L27">    }</span>
     
     public void Caso_Actualizar_Estado_Pedido(int id, Estado estado){
-<span class="fc" id="L39">        ManejadorPedido MP=ManejadorPedido.getinstance();</span>
-<span class="fc" id="L40">        MP.getPedido(id).setEstado(estado);</span>
-<span class="fc" id="L41">        JOptionPane.showMessageDialog(null, &quot;Estado Modificado&quot;,&quot;ACTUALIZACION&quot;,JOptionPane.INFORMATION_MESSAGE);</span>
+<span class="fc" id="L30">        ManejadorPedido MP=ManejadorPedido.getinstance();</span>
+<span class="fc" id="L31">        MP.getPedido(id).setEstado(estado);</span>
+        
 
-<span class="fc" id="L43">    }</span>
+<span class="fc" id="L34">    }</span>
 
     public void Caso_Ingresar_Comentario(DataComentario dc){
-<span class="nc" id="L46">        ManejadorPedido MP=ManejadorPedido.getinstance();</span>
-<span class="nc" id="L47">        Comentario com=new Comentario(dc);</span>
-<span class="nc" id="L48">        MP.getPedido(dc.getPedido().getnum()).setComentario(com);</span>
-<span class="nc" id="L49">    }</span>
+<span class="nc" id="L37">        ManejadorPedido MP=ManejadorPedido.getinstance();</span>
+<span class="nc" id="L38">        Comentario com=new Comentario(dc);</span>
+<span class="nc" id="L39">        MP.getPedido(dc.getPedido().getnum()).setComentario(com);</span>
+<span class="nc" id="L40">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

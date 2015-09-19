@@ -233,24 +233,27 @@ public class ActualizarEstadoPedido extends javax.swing.JInternalFrame {
 <span class="nc" id="L233">                JOptionPane.showMessageDialog(this, &quot;Verifique su opcion&quot;,&quot;ACTUALIZACION&quot;,JOptionPane.WARNING_MESSAGE);</span>
 <span class="nc bnc" id="L234" title="All 2 branches missed.">            else if(Recibido.isSelected()){</span>
 <span class="nc" id="L235">                ICP.Caso_Actualizar_Estado_Pedido(pedido.getnum(), Estado.RECIBIDO);</span>
-<span class="nc" id="L236">                dispose();</span>
+<span class="nc" id="L236">                JOptionPane.showMessageDialog(null, &quot;Estado Modificado&quot;,&quot;ACTUALIZACION&quot;,JOptionPane.INFORMATION_MESSAGE);</span>
+<span class="nc" id="L237">                dispose();</span>
             }
         }
-<span class="nc bnc" id="L239" title="All 2 branches missed.">        else if(txtEstado.getText().equals(&quot;PREPARACION&quot;)){</span>
-<span class="nc bnc" id="L240" title="All 4 branches missed.">            if(Enviado.isSelected()&amp;&amp;!Recibido.isSelected()){</span>
-<span class="nc" id="L241">                ICP.Caso_Actualizar_Estado_Pedido(pedido.getnum(), Estado.ENVIADO);</span>
-<span class="nc" id="L242">                dispose();</span>
+<span class="nc bnc" id="L240" title="All 2 branches missed.">        else if(txtEstado.getText().equals(&quot;PREPARACION&quot;)){</span>
+<span class="nc bnc" id="L241" title="All 4 branches missed.">            if(Enviado.isSelected()&amp;&amp;!Recibido.isSelected()){</span>
+<span class="nc" id="L242">                ICP.Caso_Actualizar_Estado_Pedido(pedido.getnum(), Estado.ENVIADO);</span>
+<span class="nc" id="L243">                JOptionPane.showMessageDialog(null, &quot;Estado Modificado&quot;,&quot;ACTUALIZACION&quot;,JOptionPane.INFORMATION_MESSAGE);</span>
+<span class="nc" id="L244">                dispose();</span>
             }
-<span class="nc bnc" id="L244" title="All 4 branches missed.">            else if(Recibido.isSelected()&amp;&amp;!Enviado.isSelected()){</span>
-<span class="nc" id="L245">                ICP.Caso_Actualizar_Estado_Pedido(pedido.getnum(), Estado.RECIBIDO);</span>
-<span class="nc" id="L246">                dispose();</span>
+<span class="nc bnc" id="L246" title="All 4 branches missed.">            else if(Recibido.isSelected()&amp;&amp;!Enviado.isSelected()){</span>
+<span class="nc" id="L247">                ICP.Caso_Actualizar_Estado_Pedido(pedido.getnum(), Estado.RECIBIDO);</span>
+<span class="nc" id="L248">                JOptionPane.showMessageDialog(null, &quot;Estado Modificado&quot;,&quot;ACTUALIZACION&quot;,JOptionPane.INFORMATION_MESSAGE);</span>
+<span class="nc" id="L249">                dispose();</span>
             }
             else{
-<span class="nc" id="L249">                JOptionPane.showMessageDialog(this, &quot;Verifique su opcion&quot;,&quot;ACTUALIZACION&quot;,JOptionPane.WARNING_MESSAGE);</span>
+<span class="nc" id="L252">                JOptionPane.showMessageDialog(this, &quot;Verifique su opcion&quot;,&quot;ACTUALIZACION&quot;,JOptionPane.WARNING_MESSAGE);</span>
             }
         }
         
-<span class="nc" id="L253">    }//GEN-LAST:event_jButton2ActionPerformed</span>
+<span class="nc" id="L256">    }//GEN-LAST:event_jButton2ActionPerformed</span>
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

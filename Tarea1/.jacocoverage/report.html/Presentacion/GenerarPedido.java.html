@@ -317,7 +317,7 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
 <span class="nc" id="L317">                            .addComponent(listacategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
 <span class="nc" id="L318">                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
 <span class="nc" id="L319">                            .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L320">                                .addGap(125, 125, 125)</span>
+<span class="nc" id="L320">                                .addGap(116, 116, 116)</span>
 <span class="nc" id="L321">                                .addComponent(MostrarProdcutos, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
 <span class="nc" id="L322">                            .addGroup(layout.createSequentialGroup()</span>
 <span class="nc" id="L323">                                .addGap(29, 29, 29)</span>
@@ -586,15 +586,16 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
 <span class="nc" id="L586">            DataPedido datapedido=new DataPedido((id+1),fechahora,Redondear(preciototal),Estado.PREPARCION,cliente,coleccionproducto,(MU.findRestaurante((String)listares.getSelectedValue())),tipoasosiativopedido);</span>
             
 <span class="nc" id="L588">            ICP.Caso_Generar_Pedido(datapedido);</span>
-<span class="nc" id="L589">            dispose();</span>
+<span class="nc" id="L589">            JOptionPane.showMessageDialog(null,&quot;Pedido Registrado&quot;,&quot;REGISTRO&quot;,JOptionPane.INFORMATION_MESSAGE); </span>
+<span class="nc" id="L590">            dispose();</span>
             
         }
-<span class="nc" id="L592">    }//GEN-LAST:event_jButton2ActionPerformed</span>
+<span class="nc" id="L593">    }//GEN-LAST:event_jButton2ActionPerformed</span>
 
     private void listoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listoActionPerformed
         //NO LIMPIO NADA YA QUE CADA VES QUE LLAMO EL INTERNAL REALIZO UN NEW
-<span class="nc" id="L596">        dispose();</span>
-<span class="nc" id="L597">    }//GEN-LAST:event_listoActionPerformed</span>
+<span class="nc" id="L597">        dispose();</span>
+<span class="nc" id="L598">    }//GEN-LAST:event_listoActionPerformed</span>
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

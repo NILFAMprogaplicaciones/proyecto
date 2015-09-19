@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 <span class="fc" id="L13">        Individual prod = new Individual(dataindividual);</span>
 <span class="fc" id="L14">        MU.addProductoIndividual(dataindividual.getRestaurante().getnickname(),prod);</span>
 <span class="fc" id="L15">        MP.addProductoIndividual( prod);</span>
-<span class="fc" id="L16">        JOptionPane.showMessageDialog(null,&quot;Producto ingresada con Exito&quot;,&quot;REGISTRO&quot;,JOptionPane.INFORMATION_MESSAGE);</span>
+        
 <span class="fc" id="L17">    }</span>
     
     public void AltaProductoPromocion(DataPromocion datapromocion) {
@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
 <span class="fc" id="L22">        Promocion prod = new Promocion(datapromocion);</span>
 <span class="fc" id="L23">        MU.addProductoPromocion(datapromocion.getRestaurante().getnickname(),prod);</span>
 <span class="fc" id="L24">        MP.addProductoPromocion( prod);</span>
-<span class="fc" id="L25">        JOptionPane.showMessageDialog(null,&quot;Producto ingresado con Exito&quot;,&quot;REGISTRO&quot;,JOptionPane.INFORMATION_MESSAGE);</span>
+        
 <span class="fc" id="L26">    }</span>
     
     public DataIndividual Caso_Ver_Individual(String nombre){
@@ -46,7 +46,7 @@ import javax.swing.JOptionPane;
 <span class="fc" id="L46">        Individual individual=new Individual(dataindividual);</span>
 <span class="fc" id="L47">        mu.addProductoIndividual(dataindividual.getRestaurante().getnickname(),individual);</span>
 <span class="fc" id="L48">        mp.addProductoIndividual(individual);</span>
-<span class="fc" id="L49">        JOptionPane.showMessageDialog(null,&quot;Producto actualizado con Exito&quot;,&quot;REGISTRO&quot;,JOptionPane.INFORMATION_MESSAGE);</span>
+        
 <span class="fc" id="L50">    }</span>
      
     public void Caso_Actualizar_Promocion(String nombreproducto,DataPromocion datapromocion){
@@ -56,7 +56,7 @@ import javax.swing.JOptionPane;
 <span class="fc" id="L56">        Promocion promocion=new Promocion(datapromocion);</span>
 <span class="fc" id="L57">        mu.addProductoPromocion(datapromocion.getRestaurante().getnickname(),promocion);</span>
 <span class="fc" id="L58">        mp.addProductoPromocion(promocion);</span>
-<span class="fc" id="L59">        JOptionPane.showMessageDialog(null,&quot;Producto actualizado con Exito&quot;,&quot;REGISTRO&quot;,JOptionPane.INFORMATION_MESSAGE);</span>
+        
 <span class="fc" id="L60">    }</span>
 } 
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

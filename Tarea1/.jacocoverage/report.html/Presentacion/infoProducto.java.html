@@ -617,50 +617,52 @@ File fichero;
 <span class="nc bnc" id="L617" title="All 2 branches missed.">            if(!res.verificarproducto(txtNombreProd.getText())){</span>
 <span class="nc" id="L618">                DataIndividual dataindividual=new DataIndividual(txtNombreProd.getText(),txtDescripcion.getText(), individual.getRestaurante(), Double.parseDouble(txtPrecio.getText()), fichero);    </span>
 <span class="nc" id="L619">                ICP.Caso_Actualizar_Individual(nombreproducto, dataindividual);</span>
-<span class="nc" id="L620">            }</span>
+<span class="nc" id="L620">                JOptionPane.showMessageDialog(null,&quot;Producto actualizado con Exito&quot;,&quot;REGISTRO&quot;,JOptionPane.INFORMATION_MESSAGE);</span>
+<span class="nc" id="L621">            }</span>
             else
-<span class="nc" id="L622">                JOptionPane.showMessageDialog(this,&quot;Nombre de Producto ya tomado&quot;,&quot;INFORMACION PRODUCTO&quot;,JOptionPane.ERROR_MESSAGE );</span>
+<span class="nc" id="L623">                JOptionPane.showMessageDialog(this,&quot;Nombre de Producto ya tomado&quot;,&quot;INFORMACION PRODUCTO&quot;,JOptionPane.ERROR_MESSAGE );</span>
 
-<span class="nc" id="L624">        } </span>
+<span class="nc" id="L625">        } </span>
         else{
-<span class="nc bnc" id="L626" title="All 2 branches missed.">            if(!res.verificarproducto(txtNombreProd.getText())){</span>
-<span class="nc" id="L627">                Promocion promo= (Promocion) producto;</span>
+<span class="nc bnc" id="L627" title="All 2 branches missed.">            if(!res.verificarproducto(txtNombreProd.getText())){</span>
+<span class="nc" id="L628">                Promocion promo= (Promocion) producto;</span>
                 boolean act;
-<span class="nc bnc" id="L629" title="All 2 branches missed.">                if(activa.isSelected())</span>
-<span class="nc" id="L630">                    act=true;</span>
+<span class="nc bnc" id="L630" title="All 2 branches missed.">                if(activa.isSelected())</span>
+<span class="nc" id="L631">                    act=true;</span>
                 else
-<span class="nc" id="L632">                    act=false;</span>
+<span class="nc" id="L633">                    act=false;</span>
                 
-<span class="nc" id="L634">                    DataPromocion datapromo= new DataPromocion(promo.getRestaurante(), txtNombreProd.getText(), txtDescripcion.getText(), promo.getPrecioTotal(),act, Integer.parseInt(txtDescuento.getText()), promo.getColeccionProductos(), fichero);</span>
-<span class="nc" id="L635">                    ICP.Caso_Actualizar_Promocion(nombreproducto, datapromo);</span>
-<span class="nc" id="L636">            }</span>
+<span class="nc" id="L635">                    DataPromocion datapromo= new DataPromocion(promo.getRestaurante(), txtNombreProd.getText(), txtDescripcion.getText(), promo.getPrecioTotal(),act, Integer.parseInt(txtDescuento.getText()), promo.getColeccionProductos(), fichero);</span>
+<span class="nc" id="L636">                    ICP.Caso_Actualizar_Promocion(nombreproducto, datapromo);</span>
+<span class="nc" id="L637">                    JOptionPane.showMessageDialog(null,&quot;Producto actualizado con Exito&quot;,&quot;REGISTRO&quot;,JOptionPane.INFORMATION_MESSAGE);</span>
+<span class="nc" id="L638">            }</span>
             else
-<span class="nc" id="L638">                JOptionPane.showMessageDialog(this,&quot;Nombre de Producto ya tomado&quot;,&quot;INFORMACION PRODUCTO&quot;,JOptionPane.ERROR_MESSAGE );</span>
+<span class="nc" id="L640">                JOptionPane.showMessageDialog(this,&quot;Nombre de Producto ya tomado&quot;,&quot;INFORMACION PRODUCTO&quot;,JOptionPane.ERROR_MESSAGE );</span>
             
         }        
-<span class="nc" id="L641">    }//GEN-LAST:event_jButton1ActionPerformed</span>
+<span class="nc" id="L643">    }//GEN-LAST:event_jButton1ActionPerformed</span>
 
     private void SeleccionarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarImagenActionPerformed
 
         int resultado;
 
-<span class="nc" id="L647">        CargarFoto ventana = new CargarFoto();</span>
-<span class="nc" id="L648">        FileNameExtensionFilter filtro = new FileNameExtensionFilter(&quot;JPG y PNG&quot;,&quot;jpg&quot;,&quot;png&quot;);</span>
-<span class="nc" id="L649">        ventana.FileChooser.setFileFilter(filtro);</span>
-<span class="nc" id="L650">        resultado= ventana.FileChooser.showOpenDialog(null);</span>
+<span class="nc" id="L649">        CargarFoto ventana = new CargarFoto();</span>
+<span class="nc" id="L650">        FileNameExtensionFilter filtro = new FileNameExtensionFilter(&quot;JPG y PNG&quot;,&quot;jpg&quot;,&quot;png&quot;);</span>
+<span class="nc" id="L651">        ventana.FileChooser.setFileFilter(filtro);</span>
+<span class="nc" id="L652">        resultado= ventana.FileChooser.showOpenDialog(null);</span>
 
-<span class="nc bnc" id="L652" title="All 2 branches missed.">        if (JFileChooser.APPROVE_OPTION == resultado){</span>
-<span class="nc" id="L653">            fichero = ventana.FileChooser.getSelectedFile();</span>
+<span class="nc bnc" id="L654" title="All 2 branches missed.">        if (JFileChooser.APPROVE_OPTION == resultado){</span>
+<span class="nc" id="L655">            fichero = ventana.FileChooser.getSelectedFile();</span>
             try{
-<span class="nc" id="L655">                ImageIcon icon = new ImageIcon(fichero.toString());</span>
-<span class="nc" id="L656">                ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(Foto.getWidth(), Foto.getHeight(), Image.SCALE_DEFAULT));</span>
-<span class="nc" id="L657">                Foto.setText(null);</span>
-<span class="nc" id="L658">                Foto.setIcon( icono );</span>
-<span class="nc" id="L659">            }catch(Exception ex){</span>
-<span class="nc" id="L660">                JOptionPane.showMessageDialog(null, &quot;Error abriendo la imagen &quot;+ ex);</span>
-<span class="nc" id="L661">            }</span>
+<span class="nc" id="L657">                ImageIcon icon = new ImageIcon(fichero.toString());</span>
+<span class="nc" id="L658">                ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(Foto.getWidth(), Foto.getHeight(), Image.SCALE_DEFAULT));</span>
+<span class="nc" id="L659">                Foto.setText(null);</span>
+<span class="nc" id="L660">                Foto.setIcon( icono );</span>
+<span class="nc" id="L661">            }catch(Exception ex){</span>
+<span class="nc" id="L662">                JOptionPane.showMessageDialog(null, &quot;Error abriendo la imagen &quot;+ ex);</span>
+<span class="nc" id="L663">            }</span>
         }
-<span class="nc" id="L663">    }//GEN-LAST:event_SeleccionarImagenActionPerformed</span>
+<span class="nc" id="L665">    }//GEN-LAST:event_SeleccionarImagenActionPerformed</span>
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

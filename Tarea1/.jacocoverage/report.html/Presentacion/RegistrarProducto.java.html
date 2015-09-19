@@ -445,177 +445,179 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
 <span class="nc" id="L445">                            Activa.isSelected(), Integer.parseInt(txtDescuento.getText()), coleccionProductosAgregar,fichero);</span>
                     
 <span class="nc" id="L447">                    ICP.AltaProductoPromocion(datapromocion);</span>
-<span class="nc" id="L448">                    dispose();</span>
+<span class="nc" id="L448">                    JOptionPane.showMessageDialog(null,&quot;Producto ingresado con Exito&quot;,&quot;REGISTRO&quot;,JOptionPane.INFORMATION_MESSAGE);</span>
+<span class="nc" id="L449">                    dispose();</span>
                 }
-<span class="nc" id="L450">            }            </span>
+<span class="nc" id="L451">            }            </span>
         } 
-<span class="nc bnc" id="L452" title="All 2 branches missed.">        else if (this.Individual.isSelected()) {</span>
-<span class="nc bnc" id="L453" title="All 2 branches missed.">            if(this.txtNombre.getText().equals(&quot;&quot;)){</span>
-<span class="nc" id="L454">                JOptionPane.showMessageDialog(this,&quot;Ingrese el nombre&quot;,&quot;REGISTRO&quot;,JOptionPane.WARNING_MESSAGE);</span>
-<span class="nc" id="L455">                txtNombre.requestFocus();</span>
-<span class="nc bnc" id="L456" title="All 2 branches missed.">            }else if(this.txtDescripcion.getText().equals(&quot;&quot;)){</span>
-<span class="nc" id="L457">                JOptionPane.showMessageDialog(this,&quot;Ingrese descripcion&quot;,&quot;REGISTRO&quot;,JOptionPane.WARNING_MESSAGE);</span>
-<span class="nc" id="L458">                txtDescripcion.requestFocus();</span>
-<span class="nc bnc" id="L459" title="All 2 branches missed.">            }else if(this.txtPrecio.getText().equals(&quot;&quot;)){</span>
-<span class="nc" id="L460">                JOptionPane.showMessageDialog(this,&quot;Ingrese el precio&quot;,&quot;REGISTRO&quot;,JOptionPane.WARNING_MESSAGE);</span>
-<span class="nc" id="L461">                txtPrecio.requestFocus();</span>
+<span class="nc bnc" id="L453" title="All 2 branches missed.">        else if (this.Individual.isSelected()) {</span>
+<span class="nc bnc" id="L454" title="All 2 branches missed.">            if(this.txtNombre.getText().equals(&quot;&quot;)){</span>
+<span class="nc" id="L455">                JOptionPane.showMessageDialog(this,&quot;Ingrese el nombre&quot;,&quot;REGISTRO&quot;,JOptionPane.WARNING_MESSAGE);</span>
+<span class="nc" id="L456">                txtNombre.requestFocus();</span>
+<span class="nc bnc" id="L457" title="All 2 branches missed.">            }else if(this.txtDescripcion.getText().equals(&quot;&quot;)){</span>
+<span class="nc" id="L458">                JOptionPane.showMessageDialog(this,&quot;Ingrese descripcion&quot;,&quot;REGISTRO&quot;,JOptionPane.WARNING_MESSAGE);</span>
+<span class="nc" id="L459">                txtDescripcion.requestFocus();</span>
+<span class="nc bnc" id="L460" title="All 2 branches missed.">            }else if(this.txtPrecio.getText().equals(&quot;&quot;)){</span>
+<span class="nc" id="L461">                JOptionPane.showMessageDialog(this,&quot;Ingrese el precio&quot;,&quot;REGISTRO&quot;,JOptionPane.WARNING_MESSAGE);</span>
+<span class="nc" id="L462">                txtPrecio.requestFocus();</span>
             }else {
                 //(String) castea el valor seleccionado a tipo string 
-<span class="nc" id="L464">                String nombreRestaurante=(String) SelectRestaurante.getSelectedItem();</span>
-<span class="nc" id="L465">                ManejadorUsuario MU = ManejadorUsuario.getinstance();</span>
-<span class="nc" id="L466">                Restaurante rest = MU.findRestaurante(nombreRestaurante);</span>
-<span class="nc bnc" id="L467" title="All 2 branches missed.">                if (rest.verificarproducto(txtNombre.getText())){</span>
-<span class="nc" id="L468">                    JOptionPane.showMessageDialog(this,&quot;El Producto ya existe&quot;,&quot;REGISTRO&quot;,JOptionPane.WARNING_MESSAGE);</span>
-<span class="nc" id="L469">                    txtNombre.requestFocus();</span>
+<span class="nc" id="L465">                String nombreRestaurante=(String) SelectRestaurante.getSelectedItem();</span>
+<span class="nc" id="L466">                ManejadorUsuario MU = ManejadorUsuario.getinstance();</span>
+<span class="nc" id="L467">                Restaurante rest = MU.findRestaurante(nombreRestaurante);</span>
+<span class="nc bnc" id="L468" title="All 2 branches missed.">                if (rest.verificarproducto(txtNombre.getText())){</span>
+<span class="nc" id="L469">                    JOptionPane.showMessageDialog(this,&quot;El Producto ya existe&quot;,&quot;REGISTRO&quot;,JOptionPane.WARNING_MESSAGE);</span>
+<span class="nc" id="L470">                    txtNombre.requestFocus();</span>
                 }
                 else{    
                     
-<span class="nc" id="L473">                    double precio = Double.parseDouble(txtPrecio.getText());</span>
+<span class="nc" id="L474">                    double precio = Double.parseDouble(txtPrecio.getText());</span>
                     
-<span class="nc" id="L475">                    DataIndividual dataindividual=new DataIndividual(txtNombre.getText(),txtDescripcion.getText(),rest,precio,fichero);</span>
+<span class="nc" id="L476">                    DataIndividual dataindividual=new DataIndividual(txtNombre.getText(),txtDescripcion.getText(),rest,precio,fichero);</span>
                     
-<span class="nc" id="L477">                    ICP.AltaProductoIndividual(dataindividual);</span>
-<span class="nc" id="L478">                    dispose();</span>
+<span class="nc" id="L478">                    ICP.AltaProductoIndividual(dataindividual);</span>
+<span class="nc" id="L479">                    JOptionPane.showMessageDialog(null,&quot;Producto ingresado con Exito&quot;,&quot;REGISTRO&quot;,JOptionPane.INFORMATION_MESSAGE);</span>
+<span class="nc" id="L480">                    dispose();</span>
                 }
             }
         }
         
-<span class="nc" id="L483">    }//GEN-LAST:event_RegistrarActionPerformed</span>
+<span class="nc" id="L485">    }//GEN-LAST:event_RegistrarActionPerformed</span>
 
     File fichero;
     private void SeleccionarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarImagenActionPerformed
         // TODO add your handling code here:
         int resultado;
 
-<span class="nc" id="L490">        CargarFoto ventana = new CargarFoto();</span>
-<span class="nc" id="L491">        FileNameExtensionFilter filtro = new FileNameExtensionFilter(&quot;JPG y PNG&quot;,&quot;jpg&quot;,&quot;png&quot;);</span>
-<span class="nc" id="L492">        ventana.FileChooser.setFileFilter(filtro);</span>
-<span class="nc" id="L493">        resultado= ventana.FileChooser.showOpenDialog(null);</span>
+<span class="nc" id="L492">        CargarFoto ventana = new CargarFoto();</span>
+<span class="nc" id="L493">        FileNameExtensionFilter filtro = new FileNameExtensionFilter(&quot;JPG y PNG&quot;,&quot;jpg&quot;,&quot;png&quot;);</span>
+<span class="nc" id="L494">        ventana.FileChooser.setFileFilter(filtro);</span>
+<span class="nc" id="L495">        resultado= ventana.FileChooser.showOpenDialog(null);</span>
 
-<span class="nc bnc" id="L495" title="All 2 branches missed.">        if (JFileChooser.APPROVE_OPTION == resultado){</span>
-<span class="nc" id="L496">            fichero = ventana.FileChooser.getSelectedFile();</span>
+<span class="nc bnc" id="L497" title="All 2 branches missed.">        if (JFileChooser.APPROVE_OPTION == resultado){</span>
+<span class="nc" id="L498">            fichero = ventana.FileChooser.getSelectedFile();</span>
             try{
-<span class="nc" id="L498">                ImageIcon icon = new ImageIcon(fichero.toString());</span>
-<span class="nc" id="L499">                Icon icono = new ImageIcon(icon.getImage().getScaledInstance(Imagen.getWidth(), Imagen.getHeight(), Image.SCALE_DEFAULT));</span>
-<span class="nc" id="L500">                Imagen.setText(null);</span>
-<span class="nc" id="L501">                Imagen.setIcon( icono );</span>
+<span class="nc" id="L500">                ImageIcon icon = new ImageIcon(fichero.toString());</span>
+<span class="nc" id="L501">                Icon icono = new ImageIcon(icon.getImage().getScaledInstance(Imagen.getWidth(), Imagen.getHeight(), Image.SCALE_DEFAULT));</span>
+<span class="nc" id="L502">                Imagen.setText(null);</span>
+<span class="nc" id="L503">                Imagen.setIcon( icono );</span>
 
-<span class="nc" id="L503">            }catch(Exception ex){</span>
-<span class="nc" id="L504">                JOptionPane.showMessageDialog(null, &quot;Error abriendo la imagen &quot;+ ex);</span>
-<span class="nc" id="L505">            }</span>
+<span class="nc" id="L505">            }catch(Exception ex){</span>
+<span class="nc" id="L506">                JOptionPane.showMessageDialog(null, &quot;Error abriendo la imagen &quot;+ ex);</span>
+<span class="nc" id="L507">            }</span>
         }
-<span class="nc" id="L507">    }//GEN-LAST:event_SeleccionarImagenActionPerformed</span>
+<span class="nc" id="L509">    }//GEN-LAST:event_SeleccionarImagenActionPerformed</span>
 
     private void ProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProductosActionPerformed
         // TODO add your handling code here:
-<span class="nc" id="L511">    }//GEN-LAST:event_ProductosActionPerformed</span>
+<span class="nc" id="L513">    }//GEN-LAST:event_ProductosActionPerformed</span>
 
     private void IndividualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IndividualActionPerformed
-<span class="nc" id="L514">        this.Productos.setVisible(false);</span>
-<span class="nc" id="L515">        this.Cant.setVisible(false);</span>
-<span class="nc" id="L516">        this.Cantidad.setVisible(false);</span>
-<span class="nc" id="L517">        this.Agregar.setVisible(false);</span>
-<span class="nc" id="L518">        this.tablaProducto.setVisible(false);</span>
-<span class="nc" id="L519">        this.scrollProducto.setVisible(false);</span>
-<span class="nc" id="L520">        this.Activa.setVisible(false);</span>
-<span class="nc" id="L521">        this.SeleccioneProducto.setVisible(false);</span>
-<span class="nc" id="L522">        this.txtNombre.setVisible(true);</span>
-<span class="nc" id="L523">        this.txtDescripcion.setVisible(true);</span>
-<span class="nc" id="L524">        this.txtPrecio.setVisible(true);</span>
-<span class="nc" id="L525">        this.Nombre.setVisible(true);</span>
-<span class="nc" id="L526">        this.Descripcion.setVisible(true);</span>
-<span class="nc" id="L527">        this.Precio.setVisible(true);</span>
-<span class="nc" id="L528">        this.Imagen.setVisible(true);</span>
-<span class="nc" id="L529">        this.SeleccionarImagen.setVisible(true);</span>
-<span class="nc" id="L530">        this.Registrar.setVisible(true);</span>
-<span class="nc" id="L531">    }//GEN-LAST:event_IndividualActionPerformed</span>
+<span class="nc" id="L516">        this.Productos.setVisible(false);</span>
+<span class="nc" id="L517">        this.Cant.setVisible(false);</span>
+<span class="nc" id="L518">        this.Cantidad.setVisible(false);</span>
+<span class="nc" id="L519">        this.Agregar.setVisible(false);</span>
+<span class="nc" id="L520">        this.tablaProducto.setVisible(false);</span>
+<span class="nc" id="L521">        this.scrollProducto.setVisible(false);</span>
+<span class="nc" id="L522">        this.Activa.setVisible(false);</span>
+<span class="nc" id="L523">        this.SeleccioneProducto.setVisible(false);</span>
+<span class="nc" id="L524">        this.txtNombre.setVisible(true);</span>
+<span class="nc" id="L525">        this.txtDescripcion.setVisible(true);</span>
+<span class="nc" id="L526">        this.txtPrecio.setVisible(true);</span>
+<span class="nc" id="L527">        this.Nombre.setVisible(true);</span>
+<span class="nc" id="L528">        this.Descripcion.setVisible(true);</span>
+<span class="nc" id="L529">        this.Precio.setVisible(true);</span>
+<span class="nc" id="L530">        this.Imagen.setVisible(true);</span>
+<span class="nc" id="L531">        this.SeleccionarImagen.setVisible(true);</span>
+<span class="nc" id="L532">        this.Registrar.setVisible(true);</span>
+<span class="nc" id="L533">    }//GEN-LAST:event_IndividualActionPerformed</span>
 
     private void PromocionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PromocionActionPerformed
         
-<span class="nc" id="L535">        this.Nombre.setVisible(true);</span>
-<span class="nc" id="L536">        this.txtNombre.setVisible(true);</span>
-<span class="nc" id="L537">        this.Descripcion.setVisible(true);</span>
-<span class="nc" id="L538">        this.txtDescripcion.setVisible(true);</span>
-<span class="nc" id="L539">        this.SeleccioneProducto.setVisible(true);</span>
-<span class="nc" id="L540">        this.Productos.setVisible(true);</span>
-<span class="nc" id="L541">        this.Cant.setVisible(true);</span>
-<span class="nc" id="L542">        this.Cantidad.setVisible(true);</span>
-<span class="nc" id="L543">        this.Agregar.setVisible(true);</span>
-<span class="nc" id="L544">        this.tablaProducto.setVisible(true);</span>
-<span class="nc" id="L545">        this.scrollProducto.setVisible(true);</span>
-<span class="nc" id="L546">        this.Registrar.setVisible(true);</span>
-<span class="nc" id="L547">        this.Activa.setVisible(true);</span>
-<span class="nc" id="L548">        this.Imagen.setVisible(true);</span>
-<span class="nc" id="L549">        this.lblDescuento.setVisible(true);</span>
-<span class="nc" id="L550">        this.txtDescuento.setVisible(true);</span>
-<span class="nc" id="L551">        this.SeleccionarImagen.setVisible(true);</span>
+<span class="nc" id="L537">        this.Nombre.setVisible(true);</span>
+<span class="nc" id="L538">        this.txtNombre.setVisible(true);</span>
+<span class="nc" id="L539">        this.Descripcion.setVisible(true);</span>
+<span class="nc" id="L540">        this.txtDescripcion.setVisible(true);</span>
+<span class="nc" id="L541">        this.SeleccioneProducto.setVisible(true);</span>
+<span class="nc" id="L542">        this.Productos.setVisible(true);</span>
+<span class="nc" id="L543">        this.Cant.setVisible(true);</span>
+<span class="nc" id="L544">        this.Cantidad.setVisible(true);</span>
+<span class="nc" id="L545">        this.Agregar.setVisible(true);</span>
+<span class="nc" id="L546">        this.tablaProducto.setVisible(true);</span>
+<span class="nc" id="L547">        this.scrollProducto.setVisible(true);</span>
+<span class="nc" id="L548">        this.Registrar.setVisible(true);</span>
+<span class="nc" id="L549">        this.Activa.setVisible(true);</span>
+<span class="nc" id="L550">        this.Imagen.setVisible(true);</span>
+<span class="nc" id="L551">        this.lblDescuento.setVisible(true);</span>
+<span class="nc" id="L552">        this.txtDescuento.setVisible(true);</span>
+<span class="nc" id="L553">        this.SeleccionarImagen.setVisible(true);</span>
         
          //PARA CARGAR COMBOBOX DE PRDUCTOS
-<span class="nc" id="L554">        String nombreRestaurante=(String) SelectRestaurante.getSelectedItem();</span>
-<span class="nc" id="L555">        ManejadorUsuario MU = ManejadorUsuario.getinstance();  </span>
-<span class="nc" id="L556">        Map ColeccionProducto = MU.getColeccionProductosRestaurantes(nombreRestaurante);</span>
-<span class="nc" id="L557">        Iterator&lt;Producto&gt; itProducto = ColeccionProducto.values().iterator();</span>
-<span class="nc" id="L558">            Producto prod=null;</span>
-<span class="nc" id="L559">            String b=(String) Productos.getItemAt(0);</span>
-<span class="nc bnc" id="L560" title="All 2 branches missed.">            if(b==null){</span>
-<span class="nc bnc" id="L561" title="All 2 branches missed.">                while (itProducto.hasNext()) {</span>
-<span class="nc" id="L562">                   prod=itProducto.next(); </span>
-<span class="nc bnc" id="L563" title="All 2 branches missed.">                   if(prod.getClass().getSimpleName().equals(&quot;Individual&quot;)) {   </span>
-<span class="nc" id="L564">                       Productos.addItem(prod.getnombre());  </span>
+<span class="nc" id="L556">        String nombreRestaurante=(String) SelectRestaurante.getSelectedItem();</span>
+<span class="nc" id="L557">        ManejadorUsuario MU = ManejadorUsuario.getinstance();  </span>
+<span class="nc" id="L558">        Map ColeccionProducto = MU.getColeccionProductosRestaurantes(nombreRestaurante);</span>
+<span class="nc" id="L559">        Iterator&lt;Producto&gt; itProducto = ColeccionProducto.values().iterator();</span>
+<span class="nc" id="L560">            Producto prod=null;</span>
+<span class="nc" id="L561">            String b=(String) Productos.getItemAt(0);</span>
+<span class="nc bnc" id="L562" title="All 2 branches missed.">            if(b==null){</span>
+<span class="nc bnc" id="L563" title="All 2 branches missed.">                while (itProducto.hasNext()) {</span>
+<span class="nc" id="L564">                   prod=itProducto.next(); </span>
+<span class="nc bnc" id="L565" title="All 2 branches missed.">                   if(prod.getClass().getSimpleName().equals(&quot;Individual&quot;)) {   </span>
+<span class="nc" id="L566">                       Productos.addItem(prod.getnombre());  </span>
                    }
                }
             } 
-<span class="nc" id="L568">    }//GEN-LAST:event_PromocionActionPerformed</span>
+<span class="nc" id="L570">    }//GEN-LAST:event_PromocionActionPerformed</span>
 
     private void SelectRestauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectRestauranteActionPerformed
         // TODO add your handling code here:
-<span class="nc bnc" id="L572" title="All 2 branches missed.">        if(this.SelectRestaurante.getSelectedIndex() != -1){</span>
+<span class="nc bnc" id="L574" title="All 2 branches missed.">        if(this.SelectRestaurante.getSelectedIndex() != -1){</span>
             
-<span class="nc" id="L574">            this.Promocion.setVisible(true);</span>
-<span class="nc" id="L575">            this.Individual.setVisible(true);</span>
+<span class="nc" id="L576">            this.Promocion.setVisible(true);</span>
+<span class="nc" id="L577">            this.Individual.setVisible(true);</span>
             
         }
-<span class="nc" id="L578">    }//GEN-LAST:event_SelectRestauranteActionPerformed</span>
-<span class="nc" id="L579">    int fila=0;</span>
+<span class="nc" id="L580">    }//GEN-LAST:event_SelectRestauranteActionPerformed</span>
+<span class="nc" id="L581">    int fila=0;</span>
     //VARIABLE GLOBAL PARA SUMAR LOS SUBTOTALES DE LA TABLA Y
     //LUEGO PASARLO A LA FUNCION DE AGREGAR PROMO
-<span class="nc" id="L582">    double preciototal=0;</span>
-<span class="nc" id="L583">    Map&lt;String,DataCantidad&gt; coleccionProductosAgregar=new HashMap&lt;String,DataCantidad&gt;();</span>
+<span class="nc" id="L584">    double preciototal=0;</span>
+<span class="nc" id="L585">    Map&lt;String,DataCantidad&gt; coleccionProductosAgregar=new HashMap&lt;String,DataCantidad&gt;();</span>
     private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
-<span class="nc" id="L585">        ManejadorUsuario MU= ManejadorUsuario.getinstance();</span>
+<span class="nc" id="L587">        ManejadorUsuario MU= ManejadorUsuario.getinstance();</span>
         
         //AGREGAR FILAS A LA TABLA
-<span class="nc" id="L588">        DefaultTableModel modelo= (DefaultTableModel) this.tablaProducto.getModel();</span>
-<span class="nc" id="L589">        int columna = modelo.getColumnCount();</span>
-<span class="nc" id="L590">        modelo.addRow(new Object[columna]);</span>
-<span class="nc" id="L591">        tablaProducto.setModel(modelo);</span>
+<span class="nc" id="L590">        DefaultTableModel modelo= (DefaultTableModel) this.tablaProducto.getModel();</span>
+<span class="nc" id="L591">        int columna = modelo.getColumnCount();</span>
+<span class="nc" id="L592">        modelo.addRow(new Object[columna]);</span>
+<span class="nc" id="L593">        tablaProducto.setModel(modelo);</span>
             //OBTENGO NOM DE RESTAURANTE Y PRODUCTO
-<span class="nc" id="L593">        String nombreRestaurante=(String) SelectRestaurante.getSelectedItem();</span>
-<span class="nc" id="L594">        String nombreProducto=(String) Productos.getSelectedItem();</span>
-<span class="nc" id="L595">        double precio=MU.buscarprecioproducto(nombreRestaurante,nombreProducto);</span>
+<span class="nc" id="L595">        String nombreRestaurante=(String) SelectRestaurante.getSelectedItem();</span>
+<span class="nc" id="L596">        String nombreProducto=(String) Productos.getSelectedItem();</span>
+<span class="nc" id="L597">        double precio=MU.buscarprecioproducto(nombreRestaurante,nombreProducto);</span>
         //AGREGO VALORES A  LAS FILAS
-<span class="nc" id="L597">        tablaProducto.setValueAt(Productos.getSelectedItem(), fila, 0);</span>
-<span class="nc" id="L598">        tablaProducto.setValueAt(Cantidad.getValue(), fila, 1);</span>
+<span class="nc" id="L599">        tablaProducto.setValueAt(Productos.getSelectedItem(), fila, 0);</span>
+<span class="nc" id="L600">        tablaProducto.setValueAt(Cantidad.getValue(), fila, 1);</span>
             //CALCULO EL TOTAL
-<span class="nc" id="L600">        int cantidad=(int) Cantidad.getValue();</span>
-<span class="nc" id="L601">        double total=(precio * cantidad);</span>
-<span class="nc" id="L602">        tablaProducto.setValueAt(total, fila, 2);</span>
+<span class="nc" id="L602">        int cantidad=(int) Cantidad.getValue();</span>
+<span class="nc" id="L603">        double total=(precio * cantidad);</span>
+<span class="nc" id="L604">        tablaProducto.setValueAt(total, fila, 2);</span>
         //AGREGO VALOR A LAS VARIABLES GLOBALES QUE PASO A LA FUNCION DE ALTAPROMOCION
-<span class="nc" id="L604">        preciototal=preciototal+total;</span>
-<span class="nc" id="L605">        Producto pro=MU.getProductoRestaurante(nombreRestaurante, nombreProducto);</span>
-<span class="nc" id="L606">        DataCantidad CantidadProducto = new DataCantidad(cantidad,pro);</span>
-<span class="nc" id="L607">        coleccionProductosAgregar.put(nombreProducto, CantidadProducto);</span>
-<span class="nc" id="L608">        fila++;     </span>
-<span class="nc" id="L609">    }//GEN-LAST:event_AgregarActionPerformed</span>
+<span class="nc" id="L606">        preciototal=preciototal+total;</span>
+<span class="nc" id="L607">        Producto pro=MU.getProductoRestaurante(nombreRestaurante, nombreProducto);</span>
+<span class="nc" id="L608">        DataCantidad CantidadProducto = new DataCantidad(cantidad,pro);</span>
+<span class="nc" id="L609">        coleccionProductosAgregar.put(nombreProducto, CantidadProducto);</span>
+<span class="nc" id="L610">        fila++;     </span>
+<span class="nc" id="L611">    }//GEN-LAST:event_AgregarActionPerformed</span>
 
     private void ActivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActivaActionPerformed
         
 // TODO add your handling code here:
-<span class="nc" id="L614">    }//GEN-LAST:event_ActivaActionPerformed</span>
+<span class="nc" id="L616">    }//GEN-LAST:event_ActivaActionPerformed</span>
 
     private void txtDescuentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescuentoActionPerformed
         // TODO add your handling code here:
-<span class="nc" id="L618">    }//GEN-LAST:event_txtDescuentoActionPerformed</span>
+<span class="nc" id="L620">    }//GEN-LAST:event_txtDescuentoActionPerformed</span>
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox Activa;

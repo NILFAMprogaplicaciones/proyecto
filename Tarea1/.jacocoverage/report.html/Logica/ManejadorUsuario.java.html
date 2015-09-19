@@ -145,6 +145,96 @@ import javax.swing.JOptionPane;
         }
 <span class="fc" id="L146">        return resultado;</span>
    }
+   
+   //EXCEPCIONES
+   public void ExcepcionDatosCliente(String Nickname,String CorreoElectronico, String Nombre, String Apellido, String Direccion, 
+           String dia, String mes, String anio) throws ExcepcionesPersonalizadas{
+       
+<span class="nc bnc" id="L153" title="All 2 branches missed.">        if(verificarnickname(Nickname)==true){</span>
+<span class="nc" id="L154">            throw new ExcepcionesPersonalizadas(&quot;Nickname ya tomado&quot;);</span>
+        }
+<span class="nc bnc" id="L156" title="All 2 branches missed.">        else if(verificarcorreo(CorreoElectronico)==true){</span>
+<span class="nc" id="L157">            throw new ExcepcionesPersonalizadas(&quot;Correo Electronico ya tomado&quot;);</span>
+        }
+        else{
+<span class="nc bnc" id="L160" title="All 2 branches missed.">            if(Nickname.equals(&quot;&quot;)){</span>
+<span class="nc" id="L161">                throw new ExcepcionesPersonalizadas(&quot;Ingrese un Nickname&quot;);</span>
+            }
+<span class="nc bnc" id="L163" title="All 2 branches missed.">            else if(CorreoElectronico.equals(&quot;&quot;)){</span>
+<span class="nc" id="L164">                throw new ExcepcionesPersonalizadas(&quot;Ingrese su Correo Electronico&quot;);</span>
+            }
+<span class="nc bnc" id="L166" title="All 2 branches missed.">            else if(Nombre.equals(&quot;&quot;)){</span>
+<span class="nc" id="L167">                throw new ExcepcionesPersonalizadas(&quot;Ingrese su Nombre&quot;);</span>
+            }
+<span class="nc bnc" id="L169" title="All 2 branches missed.">            else if(Apellido.equals(&quot;&quot;)){</span>
+<span class="nc" id="L170">                throw new ExcepcionesPersonalizadas(&quot;Ingrese su Apellido&quot;);</span>
+            }
+<span class="nc bnc" id="L172" title="All 2 branches missed.">            else if(Direccion.equals(&quot;&quot;)){</span>
+<span class="nc" id="L173">                throw new ExcepcionesPersonalizadas(&quot;Ingrese su Direccion&quot;);</span>
+            }
+<span class="nc bnc" id="L175" title="All 2 branches missed.">            else if(dia.equals(&quot;DIA&quot;)){</span>
+<span class="nc" id="L176">                throw new ExcepcionesPersonalizadas(&quot;Ingrese su DIA de nacimiento&quot;);</span>
+            }
+<span class="nc bnc" id="L178" title="All 2 branches missed.">            else if(mes.equals(&quot;MES&quot;)){</span>
+<span class="nc" id="L179">                throw new ExcepcionesPersonalizadas(&quot;Ingrese su MES de nacimiento&quot;);</span>
+            }
+<span class="nc bnc" id="L181" title="All 2 branches missed.">            else if(anio.equals(&quot;AÑO&quot;)){</span>
+<span class="nc" id="L182">                throw new ExcepcionesPersonalizadas(&quot;Ingrese su AÑO de nacimiento&quot;);</span>
+            }
+<span class="nc bnc" id="L184" title="All 2 branches missed.">            else if(!CorreoElectronico.equals(&quot;&quot;)){</span>
+                
+<span class="nc" id="L186">                boolean arroba=false;    </span>
+<span class="nc bnc" id="L187" title="All 2 branches missed.">                for (int x=0;x&lt;CorreoElectronico.length();x++){</span>
+<span class="nc" id="L188">                    char caracter=CorreoElectronico.charAt(x);</span>
+<span class="nc bnc" id="L189" title="All 2 branches missed.">                    if(caracter=='@')</span>
+<span class="nc" id="L190">                        arroba=true;</span>
+                }
+<span class="nc bnc" id="L192" title="All 2 branches missed.">                if(arroba==false){        </span>
+<span class="nc" id="L193">                    throw new ExcepcionesPersonalizadas(&quot;Verifique el dominio de su correo&quot;);</span>
+                    
+                }
+            }
+        }
+<span class="nc" id="L198">   }</span>
+   
+   public void ExcepcionDatosRestaurante(String Nickname,String CorreoElectronico, String Nombre, String Direccion, Map coleccion) throws ExcepcionesPersonalizadas{
+<span class="nc bnc" id="L201" title="All 2 branches missed.">        if(verificarnickname(Nickname)==true){</span>
+<span class="nc" id="L202">            throw new ExcepcionesPersonalizadas(&quot;Nickname ya tomado&quot;);</span>
+        }
+<span class="nc bnc" id="L204" title="All 2 branches missed.">        else if(verificarcorreo(CorreoElectronico)==true){</span>
+<span class="nc" id="L205">            throw new ExcepcionesPersonalizadas(&quot;Correo Electronico ya tomado&quot;);</span>
+        }
+        else{
+<span class="nc bnc" id="L208" title="All 2 branches missed.">            if(Nickname.equals(&quot;&quot;)){</span>
+<span class="nc" id="L209">                throw new ExcepcionesPersonalizadas(&quot;Ingrese un Nickname&quot;);</span>
+            }
+<span class="nc bnc" id="L211" title="All 2 branches missed.">            else if(CorreoElectronico.equals(&quot;&quot;)){</span>
+<span class="nc" id="L212">                throw new ExcepcionesPersonalizadas(&quot;Ingrese su Correo Electronico&quot;);</span>
+            }
+<span class="nc bnc" id="L214" title="All 2 branches missed.">            else if(Nombre.equals(&quot;&quot;)){</span>
+<span class="nc" id="L215">                throw new ExcepcionesPersonalizadas(&quot;Ingrese su Nombre&quot;);</span>
+            }
+<span class="nc bnc" id="L217" title="All 2 branches missed.">            else if(Direccion.equals(&quot;&quot;)){</span>
+<span class="nc" id="L218">                throw new ExcepcionesPersonalizadas(&quot;Ingrese su Direccion&quot;);</span>
+            }
+<span class="nc bnc" id="L220" title="All 2 branches missed.">            else if(coleccion.isEmpty()){</span>
+<span class="nc" id="L221">                throw new ExcepcionesPersonalizadas(&quot;Ingrese al menos 1 Categoria&quot;);</span>
+            }
+<span class="nc bnc" id="L223" title="All 2 branches missed.">            else if(!CorreoElectronico.equals(&quot;&quot;)){</span>
+                
+<span class="nc" id="L225">                boolean arroba=false;    </span>
+<span class="nc bnc" id="L226" title="All 2 branches missed.">                for (int x=0;x&lt;CorreoElectronico.length();x++){</span>
+<span class="nc" id="L227">                    char caracter=CorreoElectronico.charAt(x);</span>
+<span class="nc bnc" id="L228" title="All 2 branches missed.">                    if(caracter=='@')</span>
+<span class="nc" id="L229">                        arroba=true;</span>
+                }
+<span class="nc bnc" id="L231" title="All 2 branches missed.">                if(arroba==false){        </span>
+<span class="nc" id="L232">                    throw new ExcepcionesPersonalizadas(&quot;Verifique el dominio de su correo&quot;);</span>
+                    
+                }
+            }
+        }
+<span class="nc" id="L237">   }</span>
 }
     
     

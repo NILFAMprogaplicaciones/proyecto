@@ -61,5 +61,15 @@ import java.util.TreeMap;
 <span class="fc" id="L61">        return cantidad;</span>
             
     }
+    
+    //EXCEPCIONES
+    
+    public void ExcepcionEliminacion(int id) throws ExcepcionesPersonalizadas{
+<span class="nc" id="L68">        Estado estado=ColeccionPedido.get(id).getEstado();</span>
+<span class="nc bnc" id="L69" title="All 2 branches missed.">        if(!estado.equals(Estado.PREPARCION))</span>
+<span class="nc" id="L70">            throw new ExcepcionesPersonalizadas(&quot;Imposible Cancelar Pedido, Verifique su Estado&quot;);</span>
+<span class="nc" id="L71">    }</span>
+    
+    
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>
