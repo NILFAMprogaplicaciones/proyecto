@@ -1,10 +1,5 @@
- <%@page import="Logica.DataCliente"%>
 <jsp:include page='header.jsp'/>
 
-<% 
-   DataCliente DC=(DataCliente)request.getAttribute("DC"); 
-   String name=DC.getnombre();
-%> 
 <div class="container">
     <div class="col-sm-4 col-lg-4 col-md-4">
         <div class="thumbnail">
@@ -23,40 +18,39 @@
                     <div class="tab-pane" id="Informacion">
                         <form class="form-horizontal" id="clienteFRM">
                             <div class="form-group">
-                                
                                 <label for="inputNickname" class="control-label col-xs-2">Nickname</label>
-                                    <div class="col-xs-10">                               
-                                        <text type="text" class="form-control" name="inputNickname" id="inputNickname" placeholder="Nickname" value=<%=out.println(name)%>>
+                                    <div class="col-xs-10">
+                                        <input type="text" class="form-control" id="inputNickname" placeholder="Nickname">
                                     </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail" class="control-label col-xs-2">Email</label>
                                     <div class="col-xs-10">
-                                        <text type="text" class="form-control" id="inputEmail" placeholder="Email" value=${email}>
+                                        <input type="text" class="form-control" id="inputEmail" placeholder="Email">
                                     </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputNombre" class="control-label col-xs-2">Nombre</label>
                                     <div class="col-xs-10">
-                                        <text type="text" class="form-control" id="inputNombre" placeholder="Nombre" value=${nombre}>
+                                        <input type="text" class="form-control" id="inputNombre" placeholder="Nombre">
                                     </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputDireccion" class="control-label col-xs-2">Direcci&oacute;n</label>
                                     <div class="col-xs-10">
-                                        <text type="text" class="form-control" id="inputDireccion" placeholder="Direcci&oacute;n" value=${direccion}>
+                                        <input type="text" class="form-control" id="inputDireccion" placeholder="Direcci&oacute;n">
                                     </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputApellido" class="control-label col-xs-2">Apellido</label>
                                     <div class="col-xs-10">
-                                        <text type="text" class="form-control" id="inputApellido" placeholder="Apellido" value=${apellido}>
+                                        <input type="text" class="form-control" id="inputApellido" placeholder="Apellido">
                                     </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputFecha_nacimiento" class="control-label col-xs-2">Fecha Nacimiento</label>
                                     <div class="col-xs-10">
-                                        <text type="date" class="form-control" id="inputFecha_nacimiento" placeholder="Fecha Nacimiento" value=${nacimiento}>
+                                        <input type="date" class="form-control" id="inputFecha_nacimiento" placeholder="Fecha Nacimiento">
                                     </div>
                             </div>
                             <div class="col-lg-8 col-lg-offset-4">

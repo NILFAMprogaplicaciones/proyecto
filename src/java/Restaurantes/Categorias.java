@@ -9,18 +9,27 @@ package Restaurantes;
 import Logica.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.util.ArrayList;
+import static java.util.Collections.list;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.google.gson.Gson;
+import java.util.LinkedHashMap;
 
 /**
  *
  * @author mnotari
  */
 public class Categorias extends HttpServlet {
+
+    private ArrayList<Categoria> categorias = new ArrayList<>();
+    //private IControladorUsuario     ICU;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -58,11 +67,36 @@ public class Categorias extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+
+           /* Fabrica fabrica = Fabrica.getInstance();
+            ICU = fabrica.getIControladorUsuario();
+            ICU.AltaCategoria("categoria");
+            ICU.AltaCategoria("categoria1");
+            ICU.AltaCategoria("categoria2");
+
+            ManejadorCategoria mc=ManejadorCategoria.getinstance();
+            Map cole=mc.coleccion();
+            Iterator<Categoria> it = cole.values().iterator();
+            Categoria cat=null;
+                while (it.hasNext()) {
+                   options.put(cat.getnombre(),cat.getnombre());
+                   cat=it.next();//en cat tenemos el valor
+                }
+            */
+            Map<String, String> options = new LinkedHashMap<String, String>();
+           
+            options.put("value1", "label1");
+            options.put("value2", "label2");
+            options.put("value3", "label3");
+                
+            String json = new Gson().toJson(options);
+
+            response.setContentType("application/json");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write(json);
+    }
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -74,15 +108,7 @@ public class Categorias extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-             
-            Fabrica fabrica = Fabrica.getInstance();
-            IControladorUsuario ICU = fabrica.getIControladorUsuario();
-            ManejadorCategoria MC = ManejadorCategoria.getinstance();
-            String nombrecategoria  = request.getParameter("inputCategoria");
-            ICU.AltaCategoria(nombrecategoria);
-     
-            request.setAttribute("MapCategorias",MC.coleccion()); 
-            request.getRequestDispatcher("/info_restaurante.jsp").forward(request, response);
+            
         }
 
     /**

@@ -15,6 +15,10 @@
     <script src="js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-1.4.2.min.js"></script>
+    <script src="js/jquery-ui-1.8.4.custom.min.js"></script>
     <script src="js/validacion.js"></script>
+    
 </body>
 </html>
