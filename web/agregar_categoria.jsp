@@ -13,7 +13,7 @@
                     </div>
                     <div class="col-lg-8 col-lg-offset-4">
                         <input type="button" class="btn" value="Enviar" onclick="CheckCategoria();"/>
-                        <input type="reset"  class="btn" value="Cancelar" />
+                        <a href="index.jsp"><input type="button" class="btn" value="Cancelar" /></a>
                     </div>
                 </form>
             </div>    

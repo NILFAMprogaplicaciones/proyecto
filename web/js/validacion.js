@@ -12,7 +12,6 @@ function CheckRestaurante() {
     var direccion    = document.getElementById("inputDireccion").value;
     var contrasena   = document.getElementById("inputContrasena").value;
     var expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    
     // validar datos
     if (nickname=="") {
         error   = true;
@@ -37,6 +36,10 @@ function CheckRestaurante() {
     if (contrasena=="") {
         error   = true;
         mensaje = mensaje + "Contraseña\n";
+    } // endif
+    if (categoria==0) {
+        error   = true;
+        mensaje = mensaje + "Categoria\n";
     } // endif
 
     // controlar error

@@ -45,9 +45,8 @@
                     </div>
 
                     <div class="col-lg-8 col-lg-offset-4">
-                        <input type="button" id="somebutton" class="btn" value="Cargar categorias" />
                         <input type="button" class="btn" value="Enviar" onclick="CheckRestaurante();"/>
-                        <input type="reset"  class="btn" value="Cancelar" />
+                        <a href="index.jsp"><input type="button" class="btn" value="Cancelar" /></a>
                     </div>
                 </form>
             </div>    
@@ -58,8 +57,7 @@
     <script src="http://code.jquery.com/jquery-latest.js"></script> 
 
     <script>
-        $(document).ready(function() {                                        // When the HTML DOM is ready loading, then execute the following function...
-            $('#somebutton').click(function() {                               // Locate HTML DOM element with ID "somebutton" and assign the following function to its "click" event...
+        $(document).ready(function() {                                   // Locate HTML DOM element with ID "somebutton" and assign the following function to its "click" event...
                 $.get('Categorias', function(responseJson) {                 // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response JSON...
                     var $select = $('#selectCategoria');                           // Locate HTML DOM element with ID "someselect".
                     $select.find('option').remove();                          // Find all child elements with tag name "option" and remove them (just to prevent duplicate options when button is pressed again).
@@ -67,7 +65,6 @@
                         $('<option>').val(key).text(value).appendTo($select); // Create HTML <option> element, set its value with currently iterated key and its text content with currently iterated item and finally append it to the <select>.
                     });
                 });
-            });
         });
     </script> 
 <jsp:include page='footer.jsp'/>
