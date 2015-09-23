@@ -12,6 +12,14 @@
         <servlet-name>Categorias</servlet-name>
         <servlet-class>Restaurantes.Categorias</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Pedidos</servlet-name>
+        <servlet-class>Pedidos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListarPedidos</servlet-name>
+        <servlet-class>Pedidos.ListarPedidos</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AgregarCliente</servlet-name>
         <url-pattern>/AgregarCliente</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>Categorias</servlet-name>
         <url-pattern>/Categorias</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Pedidos</servlet-name>
+        <url-pattern>/Pedidos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarPedidos</servlet-name>
+        <url-pattern>/ListarPedidos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -1,5 +1,5 @@
 <jsp:include page='header.jsp'/>                
-<link href="css/jquery.bootstrap-touchspin.css" rel="stylesheet">  
+<link href="css/jquery.bootstrap-touchspin.css" rel="stylesheet">   
 
 <!-- Page Content -->
     <div class="container">
@@ -76,7 +76,11 @@
                             <div class="col-xs-10">
                                 <input id="cantidad" type="text" value="" name="cantidad">
                             </div>
-                        </div>   
+                        </div>  
+                        
+                        <div class="col-lg-8 col-lg-offset-4">
+                            <input type="button" class="btn" value="Agregar Producto"/> 
+                        </div> 
 
                     </div>
                     
@@ -84,7 +88,8 @@
                         <input type="button" class="btn" value="Enviar" onclick="CheckProducto();"/>
                         <a href="index.jsp"><input type="button" class="btn" value="Cancelar" /></a>
                     </div>
-                </form>
+                </form>                
+                
             </div>    
         </div>
 
@@ -92,7 +97,8 @@
     <!-- /.container -->
 
 <script src="http://code.jquery.com/jquery-latest.js"></script> 
-<script src="js/jquery.bootstrap-touchspin.js"></script>   
+<script src="js/jquery.bootstrap-touchspin.js"></script>
+
 <script>
     function showIndividual() { 
         document.getElementById('divIndividual').style.display = "block";
@@ -112,26 +118,26 @@
       verticaldownclass: 'glyphicon glyphicon-minus'
     });
 </script>
-<script>
-        $(document).ready(function() {                                     // Locate HTML DOM element with ID "somebutton" and assign the following function to its "click" event...
-                $.get('Restaurantes', function(responseJson) {                 // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response JSON...
-                    var $select = $('#selectRestaurante');                           // Locate HTML DOM element with ID "someselect".
-                    $select.find('option').remove();                          // Find all child elements with tag name "option" and remove them (just to prevent duplicate options when button is pressed again).
-                    $.each(responseJson, function(key, value) {               // Iterate over the JSON object.
-                        $('<option>').val(key).text(value).appendTo($select); // Create HTML <option> element, set its value with currently iterated key and its text content with currently iterated item and finally append it to the <select>.
-                    });
-                });
-        });
-</script> 
-<script>
-        $(document).ready(function() {                                     // Locate HTML DOM element with ID "somebutton" and assign the following function to its "click" event...
-                $.get('Productos', function(responseJson) {                 // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response JSON...
+<script type="text/javascript" class="init">
+
+    $(document).ready(function() {
+            
+            $.get('Productos', function(responseJson) {                 // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response JSON...
                     var $select = $('#selectProductos');                           // Locate HTML DOM element with ID "someselect".
                     $select.find('option').remove();                          // Find all child elements with tag name "option" and remove them (just to prevent duplicate options when button is pressed again).
                     $.each(responseJson, function(key, value) {               // Iterate over the JSON object.
                         $('<option>').val(key).text(value).appendTo($select); // Create HTML <option> element, set its value with currently iterated key and its text content with currently iterated item and finally append it to the <select>.
                     });
-                });
-        });
-</script> 
+            });
+            
+            $.get('Restaurantes', function(responseJson) {                 // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response JSON...
+                    var $select = $('#selectRestaurante');                           // Locate HTML DOM element with ID "someselect".
+                    $select.find('option').remove();                          // Find all child elements with tag name "option" and remove them (just to prevent duplicate options when button is pressed again).
+                    $.each(responseJson, function(key, value) {               // Iterate over the JSON object.
+                        $('<option>').val(key).text(value).appendTo($select); // Create HTML <option> element, set its value with currently iterated key and its text content with currently iterated item and finally append it to the <select>.
+                    });
+            });      
+                
+    } );
+</script>
 <jsp:include page='footer.jsp'/>

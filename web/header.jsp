@@ -78,6 +78,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pedido <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                               <li><a href="generar_pedido.jsp">Generar</a></li>
+                              <li><a href="actualizar_pedido.jsp">Actualizar</a></li>
                               <li><a href="#">Informaci&oacute;n</a></li>
                             </ul>
                     </li>
