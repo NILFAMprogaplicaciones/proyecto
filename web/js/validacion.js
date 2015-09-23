@@ -133,4 +133,39 @@ function CheckCategoria() {
     } // endif                                
 } // end function
 
+function CheckProducto() {
+    // Validar formulario de datos de ingreso
+    
+    // preparar mensaje y control de error
+    var error   = false;
+    var mensaje = "ATENCION!!!.. Ingrese:\n";
+    
+    // capturar datos del formulario
+    var nombre     = document.getElementById("inputNombre").value;
+    var resto      = document.getElementById("selectRestaurante").value;
+    var desc       = document.getElementById("inputDescripcion").value;
+    var precio     = document.getElementById("inputPrecio").value;
 
+    if (nombre=="") {
+        error   = true;
+        mensaje = mensaje + "Nombre\n";
+    } // endif
+    if (resto=="") {
+        error   = true;
+        mensaje = mensaje + "Restaurante\n";
+    } // endif
+    if (desc=="") {
+        error   = true;
+        mensaje = mensaje + "Descripcion\n";
+    } // endif
+    if (precio=="") {
+        error   = true;
+        mensaje = mensaje + "Precio\n";
+    } // endif
+    // controlar error
+    if (error) {
+        window.alert(mensaje);
+    } else {
+        document.getElementById("productoFRM").submit();
+    } // endif                                
+} // end function

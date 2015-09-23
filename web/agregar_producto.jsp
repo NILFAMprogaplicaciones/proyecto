@@ -5,11 +5,11 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-4">
-                <form class="form-horizontal" id="productoFRM">
+                <form method="POST" action="AgregarProductos" class="form-horizontal" id="productoFRM">
                     <div class="form-group">
                         <label for="inputRestaurante" class="control-label col-xs-2">Restaurante</label>
                         <div class="col-xs-10 selectContainer">
-                            <select name="selectRestaurante" id="selectRestaurante" class="form-control">
+                            <select name="selectRestaurante" id="selectRestaurante" name="selectRestaurante" class="form-control">
                                 <option value="0">Seleccione Restaurante</option>
                             </select>
                         </div>
@@ -37,13 +37,13 @@
                         <div class="form-group">
                             <label for="inputDescripcion" class="control-label col-xs-2">Descripci&oacute;n</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="inputDescripcion" placeholder="Descripci&oacute;n">
+                                    <input type="text" class="form-control" id="inputDescripcion" name="inputDescripcion" placeholder="Descripci&oacute;n">
                                 </div>
                         </div>
                         <div class="form-group">
                             <label for="inputPrecio" class="control-label col-xs-2">Precio</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="inputPrecio" placeholder="Precio">
+                                    <input type="text" class="form-control" id="inputPrecio" name="inputPrecio" placeholder="Precio">
                                 </div>
                         </div>
                     </div>
@@ -122,7 +122,7 @@
 
     $(document).ready(function() {
             
-            $.get('Productos', function(responseJson) {                 // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response JSON...
+            $.get('AgregarProductos', function(responseJson) {                 // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response JSON...
                     var $select = $('#selectProductos');                           // Locate HTML DOM element with ID "someselect".
                     $select.find('option').remove();                          // Find all child elements with tag name "option" and remove them (just to prevent duplicate options when button is pressed again).
                     $.each(responseJson, function(key, value) {               // Iterate over the JSON object.

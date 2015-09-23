@@ -20,6 +20,10 @@
         <servlet-name>ListarPedidos</servlet-name>
         <servlet-class>Pedidos.ListarPedidos</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AgregarProductos</servlet-name>
+        <servlet-class>Productos.AgregarProductos</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AgregarCliente</servlet-name>
         <url-pattern>/AgregarCliente</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>ListarPedidos</servlet-name>
         <url-pattern>/ListarPedidos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AgregarProductos</servlet-name>
+        <url-pattern>/AgregarProductos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
