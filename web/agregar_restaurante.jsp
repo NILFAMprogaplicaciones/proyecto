@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-4">
-                <form class="form-horizontal" id="restauranteFRM">
+                <form method="POST" action="AgregarRestaurante" class="form-horizontal" id="restauranteFRM">
                     <div class="form-group">
                         <label for="inputNickname" class="control-label col-xs-2">Nickname</label>
                             <div class="col-xs-10">

@@ -13,18 +13,18 @@ import javax.servlet.http.*;
 
 public class AgregarRestaurante extends HttpServlet {
     
-     private IControladorUsuario     ICU;
-     private Map<String,Categoria> ColeccionCategoria = new HashMap<String,Categoria>();
-     private Map<Integer,File> ColeccionImagenes = new TreeMap<Integer,File>();
+     private IControladorUsuario    ICU;
+     private Map<String,Categoria>  ColeccionCategoria = new HashMap<String,Categoria>();
+     private Map<Integer,File>      ColeccionImagenes = new TreeMap<Integer,File>();
     
      protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        String inputNickname=request.getParameter("inputNickname");
-        String inputEmail=request.getParameter("inputEmail");
-        String inputNombre=request.getParameter("inputNombre");
-        String inputDireccion=request.getParameter("inputDireccion");
-        String inputContrasena=request.getParameter("inputContrasena");
-        String selectCategoria=request.getParameter("selectCategoria");
+        String inputNickname    =request.getParameter("inputNickname");
+        String inputEmail       =request.getParameter("inputEmail");
+        String inputNombre      =request.getParameter("inputNombre");
+        String inputDireccion   =request.getParameter("inputDireccion");
+        String inputContrasena  =request.getParameter("inputContrasena");
+        //String selectCategoria  =request.getParameter("selectCategoria");
         
         Fabrica fabrica = Fabrica.getInstance();
         ICU = fabrica.getIControladorUsuario();
