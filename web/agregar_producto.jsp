@@ -82,6 +82,39 @@
                             <input type="button" class="btn" value="Agregar Producto"/> 
                         </div> 
 
+                        <table id="lista_productos_promocion" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>Tiger Nixon</td>
+                                    <td>1</td>
+                                    <td>100</td>
+                                </tr>
+                                <tr>
+                                    <td>Olivia Liang</td>
+                                    <td>4</td>
+                                    <td>400</td>
+                                </tr>
+                                <tr>
+                                    <td>Cara Stevens</td>
+                                    <td>3</td>
+                                    <td>300</td>
+                                </tr>
+                                <tr>
+                                    <td>Hermione Butler</td>
+                                    <td>5</td>
+                                    <td>500</td>
+                                </tr>
+                            </tbody>
+                        </table>                   
+                        
                     </div>
                     
                     <div class="col-lg-8 col-lg-offset-4">
@@ -136,7 +169,9 @@
                     $.each(responseJson, function(key, value) {               // Iterate over the JSON object.
                         $('<option>').val(key).text(value).appendTo($select); // Create HTML <option> element, set its value with currently iterated key and its text content with currently iterated item and finally append it to the <select>.
                     });
-            });      
+            });   
+
+           $('#lista_productos_promocion').DataTable();
                 
     } );
 </script>

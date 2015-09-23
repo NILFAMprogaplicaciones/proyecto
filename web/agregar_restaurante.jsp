@@ -38,9 +38,30 @@
                     <div class="form-group">
                         <label for="inputCategoria" class="control-label col-xs-2">Categoria</label>
                         <div class="col-xs-10 selectContainer">
-                            <select name="selectCategoria" id="selectCategoria" class="form-control">
+                            <select name="selectCategoria" id="selectCategoria" class="form-control" onclick="listarCategorias();">
                                 <option value="0">Seleccione Categoria</option>
                             </select>
+                        </div>
+                    </div>
+                    
+                    <div id="divListaCategorias" style="display:none">
+                      <div class="col-lg-4 col-lg-offset-4">
+                        <table id="lista_categorias" class="table table-striped table-bordered" cellspacing="0" width="50%">
+                            <thead>
+                                <tr>
+                                    <th>Categoria</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>Piza</td>
+                                </tr>
+                                <tr>
+                                    <td>Hamb</td>
+                                </tr>
+                            </tbody>
+                        </table>   
                         </div>
                     </div>
 
@@ -55,7 +76,11 @@
     </div>
     <!-- /.container -->
     <script src="http://code.jquery.com/jquery-latest.js"></script> 
-
+<script>
+    function listarCategorias() { 
+        document.getElementById('divListaCategorias').style.display = "block";
+    }
+</script>
     <script>
         $(document).ready(function() {                                   // Locate HTML DOM element with ID "somebutton" and assign the following function to its "click" event...
                 $.get('Categorias', function(responseJson) {                 // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response JSON...
