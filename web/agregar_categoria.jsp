@@ -1,14 +1,15 @@
 <jsp:include page='header.jsp'/>                
     
 <!-- Page Content -->
+
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-4">
-                <form class="form-horizontal" id="categoriaFRM">
+                <form  method="GET" action="Categorias" class="form-horizontal" id="categoriaFRM">
                     <div class="form-group">
                         <label for="inputNombre" class="control-label col-xs-2">Nombre</label>
                             <div class="col-xs-10">
-                                <input type="text" class="form-control" id="inputNombre" placeholder="Nombre">
+                                <input name="inputNombre" type="text" class="form-control" id="inputNombre" placeholder="Nombre">
                             </div>
                     </div>
                     <div class="col-lg-8 col-lg-offset-4">
