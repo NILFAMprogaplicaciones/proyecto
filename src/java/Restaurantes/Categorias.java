@@ -70,6 +70,7 @@ public class Categorias extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        //try{
             String inputName=request.getParameter("inputNombre");
             Fabrica fabrica = Fabrica.getInstance();
             ICU = fabrica.getIControladorUsuario();
@@ -93,6 +94,10 @@ public class Categorias extends HttpServlet {
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
             response.getWriter().write(json);
+       // } finally{
+        //    response.sendRedirect("http://localhost:8084/Tarea2/agregar_categoria.jsp");
+
+        //}
     }
     /**
      * Handles the HTTP <code>POST</code> method.
