@@ -31,7 +31,7 @@
                         <div class="form-group">
                             <label for="inputNombre" class="control-label col-xs-2">Nombre</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="inputNombre" placeholder="Nombre">
+                                    <input type="text" class="form-control" id="inputNombre" name="inputNombre" placeholder="Nombre">
                                 </div>
                         </div>
                         <div class="form-group">
@@ -130,7 +130,7 @@
                     });
             });
             
-            $.get('Restaurantes', function(responseJson) {                 // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response JSON...
+            $.get('AgregarRestaurante', function(responseJson) {                 // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response JSON...
                     var $select = $('#selectRestaurante');                           // Locate HTML DOM element with ID "someselect".
                     $select.find('option').remove();                          // Find all child elements with tag name "option" and remove them (just to prevent duplicate options when button is pressed again).
                     $.each(responseJson, function(key, value) {               // Iterate over the JSON object.

@@ -16,6 +16,7 @@ public class Categorias extends HttpServlet {
     private IControladorUsuario     ICU;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
         String inputName=request.getParameter("inputNombre");
         Fabrica fabrica = Fabrica.getInstance();
         ICU = fabrica.getIControladorUsuario();
@@ -28,7 +29,7 @@ public class Categorias extends HttpServlet {
     
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       
+        
         ManejadorCategoria mc=ManejadorCategoria.getinstance();
         Map<String, String> options = new LinkedHashMap<String, String>();
         
@@ -45,5 +46,4 @@ public class Categorias extends HttpServlet {
         response.getWriter().write(json);
     }
     
-
 }

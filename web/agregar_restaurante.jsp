@@ -8,31 +8,31 @@
                     <div class="form-group">
                         <label for="inputNickname" class="control-label col-xs-2">Nickname</label>
                             <div class="col-xs-10">
-                                <input type="text" class="form-control" id="inputNickname" placeholder="Nickname">
+                                <input type="text" class="form-control" id="inputNickname" name="inputNickname" placeholder="Nickname">
                             </div>
                     </div>
                     <div class="form-group">
                         <label for="inputEmail" class="control-label col-xs-2">Email</label>
                             <div class="col-xs-10">
-                                <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+                                <input type="text" class="form-control" id="inputEmail" name="inputEmail" placeholder="Email">
                             </div>
                     </div>
                     <div class="form-group">
                         <label for="inputNombre" class="control-label col-xs-2">Nombre</label>
                             <div class="col-xs-10">
-                                <input type="text" class="form-control" id="inputNombre" placeholder="Nombre">
+                                <input type="text" class="form-control" id="inputNombre" name="inputNombre" placeholder="Nombre">
                             </div>
                     </div>
                     <div class="form-group">
                         <label for="inputDireccion" class="control-label col-xs-2">Direcci&oacute;n</label>
                             <div class="col-xs-10">
-                                <input type="text" class="form-control" id="inputDireccion" placeholder="Direcci&oacute;n">
+                                <input type="text" class="form-control" id="inputDireccion" name="inputDireccion" placeholder="Direcci&oacute;n">
                             </div>
                     </div>
                     <div class="form-group">
                         <label for="inputContrasena" class="control-label col-xs-2">Contrase&ntilde;a</label>
                             <div class="col-xs-10">
-                                <input type="password" class="form-control" id="inputContrasena" placeholder="Contrase&ntilde;a">
+                                <input type="password" class="form-control" id="inputContrasena" name="inputContrasena" placeholder="Contrase&ntilde;a">
                             </div>
                     </div>
                     <div class="form-group">
