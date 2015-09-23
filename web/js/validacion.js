@@ -128,7 +128,7 @@ function CheckCategoria() {
     if (error) {
         window.alert(mensaje);
     } else {
-        document.getElementById("clienteFRM").submit();
+        document.getElementById("categoriaFRM").submit();
     } // endif                                
 } // end function
 

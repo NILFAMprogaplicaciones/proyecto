@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 /**
@@ -29,7 +30,7 @@ import java.util.LinkedHashMap;
 public class Categorias extends HttpServlet {
 
     private ArrayList<Categoria> categorias = new ArrayList<>();
-    //private IControladorUsuario     ICU;
+    private IControladorUsuario     ICU;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -69,28 +70,24 @@ public class Categorias extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
-           /* Fabrica fabrica = Fabrica.getInstance();
+            String inputName=request.getParameter("inputNombre");
+            Fabrica fabrica = Fabrica.getInstance();
             ICU = fabrica.getIControladorUsuario();
-            ICU.AltaCategoria("categoria");
-            ICU.AltaCategoria("categoria1");
-            ICU.AltaCategoria("categoria2");
-
+            
+            ICU.AltaCategoria(inputName);
+            
             ManejadorCategoria mc=ManejadorCategoria.getinstance();
-            Map cole=mc.coleccion();
-            Iterator<Categoria> it = cole.values().iterator();
-            Categoria cat=null;
-                while (it.hasNext()) {
-                   options.put(cat.getnombre(),cat.getnombre());
-                   cat=it.next();//en cat tenemos el valor
-                }
-            */
+            Map<String,Categoria> cole = new HashMap<String,Categoria>();
             Map<String, String> options = new LinkedHashMap<String, String>();
+
+            cole.putAll(mc.coleccion());
            
-            options.put("value1", "label1");
-            options.put("value2", "label2");
-            options.put("value3", "label3");
-                
+            Iterator<Categoria> it = cole.values().iterator();
+            Categoria cat;
+            while (it.hasNext()) {
+                cat=it.next();//en cat tenemos el valor
+                options.put(cat.getnombre(),cat.getnombre());                  
+            }   
             String json = new Gson().toJson(options);
 
             response.setContentType("application/json");
