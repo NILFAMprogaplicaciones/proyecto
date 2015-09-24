@@ -63,28 +63,106 @@
                 <form method="POST" action="" id="detallesproductosFRM">
                     <div class="form-group">
                             <label for="inputNombre" class="control-label col-xs-2">Nombre</label>
-                                <div class="col-xs-10">
+                                <div class="col-xs-4">
                                     <input type="text" class="form-control" id="inputNombre" name="inputNombre" placeholder="Nombre">
                                 </div>
                     </div>
                     <div class="form-group">
                         <label for="inputDescripcion" class="control-label col-xs-2">Descripci&oacute;n</label>
-                            <div class="col-xs-10">
+                            <div class="col-xs-4">
                                 <input type="text" class="form-control" id="inputDescripcion" placeholder="Descripci&oacute;n">
-                            </div>
+                            </div><br><br>
                     </div>
                     <div class="form-group">
                         <label for="inputPrecio" class="control-label col-xs-2">Precio</label>
-                            <div class="col-xs-10">
+                            <div class="col-xs-4">
                                 <input type="text" class="form-control" id="inputPrecio" placeholder="Precio">
                             </div>
                     </div>
-                </form>    
+                    <div class="form-group">
+                        <label for="inputDescuento" class="control-label col-xs-2">Descuento</label>
+                            <div class="col-xs-4">
+                                <input type="text" class="form-control" id="inputDescuento" placeholder="Descuento">
+                            </div><br><br>
+                    </div>
+                    
+                    <!-- FALTA FUNCION QUE MUESTRE ESTA DIV SOLO SI ES PROMOCION-->
+                    <div id="promocion">
+                        <div class="form-group">
+                            <label for="inputPromocion" class="control-label col-xs-4">Promocion activa</label>
+                                <div class="col-xs-8">
+                                    <input type="checkbox" id="inputPromocion">
+                                </div><br>
+                        </div>
+                        
+                        <table id="productos_promocion" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <h4>Productos de la promocion:</h4>
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>Tiger Nixon</td>
+                                    <td>3</td>                       
+                                </tr>
+
+                                <tr>
+                                    <td>Olivia Liang</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>Cara Stevens</td>
+                                    <td>2</td>
+                                </tr>
+
+                            </tbody>
+                        </table>  
+                    </div>   
+                    
+                     <table id="pedidos_producto" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <h4>Pedidos que incluyen este producto:</h4>
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Cliente</th>
+                                    <th>Precio total</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>Tiger Nixon</td>
+                                    <td>3</td>  
+                                    <td>3</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Olivia Liang</td>
+                                    <td>1</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td>Cara Stevens</td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                </tr>
+
+                            </tbody>
+                        </table>  
+                    
+                </form>
+            </p>    
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
-      </div> 
+          
+      </div>
+      
     </div>
   </div>    
     
