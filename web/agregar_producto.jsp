@@ -31,19 +31,19 @@
                         <div class="form-group">
                             <label for="inputNombre" class="control-label col-xs-2">Nombre</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="inputNombre" name="inputNombre" placeholder="Nombre">
+                                    <input type="text" class="form-control" id="inputNombre" name="inputNombre" placeholder="Nombre" required>
                                 </div>
                         </div>
                         <div class="form-group">
                             <label for="inputDescripcion" class="control-label col-xs-2">Descripci&oacute;n</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="inputDescripcion" placeholder="Descripci&oacute;n">
+                                    <input type="text" class="form-control" id="inputDescripcion" placeholder="Descripci&oacute;n" required>
                                 </div>
                         </div>
                         <div class="form-group">
                             <label for="inputPrecio" class="control-label col-xs-2">Precio</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="inputPrecio" placeholder="Precio">
+                                    <input type="text" class="form-control" id="inputPrecio" placeholder="Precio" required>
                                 </div>
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                         <div class="form-group">
                             <label for="inputDescuento" class="control-label col-xs-2">Descuento</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="inputDescuento" placeholder="Descuento">
+                                    <input type="text" class="form-control" id="inputDescuento" placeholder="Descuento" required>
                                 </div>
                         </div>
                         <div class="checkbox">
@@ -66,7 +66,7 @@
                         <div class="form-group">
                             <label for="inputProductos" class="control-label col-xs-2">Producto</label>
                             <div class="col-xs-10 selectContainer">
-                                <select name="selectProductos" id="selectProductos" class="form-control">
+                                <select name="selectProductos" id="selectProductos" class="form-control" required>
                                     <option value="0">Seleccione Producto</option>
                                 </select>
                             </div>
@@ -74,7 +74,7 @@
                         <div class="form-group">
                             <label for="inputProductos" class="control-label col-xs-2">Cantidad</label>
                             <div class="col-xs-10">
-                                <input id="cantidad" type="text" value="" name="cantidad">
+                                <input id="cantidad" type="text" value="" name="cantidad" required>
                             </div>
                         </div>  
                         
@@ -118,7 +118,7 @@
                     </div>
                     
                     <div class="col-lg-8 col-lg-offset-4">
-                        <input type="button" class="btn" value="Enviar" onclick="CheckProducto();"/>
+                        <input type="submit" class="btn" value="Enviar"/> <!--onclick="CheckProducto();"-->
                         <a href="index.jsp"><input type="button" class="btn" value="Cancelar" /></a>
                     </div>
                 </form>                

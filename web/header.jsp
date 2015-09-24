@@ -85,6 +85,20 @@
                               <li><a href="#">Informaci&oacute;n</a></li>
                             </ul>
                     </li>
+                    
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cerrar Sesion <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
+                                      <img src="images/avatar-1-small.jpg" class="circle-img" alt="">
+                                          <span class="username">Nombre Usuario</span>
+                                          <i class="clip-chevron-down"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                    </li>                                                     
+                                            
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

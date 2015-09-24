@@ -8,37 +8,37 @@
                     <div class="form-group">
                         <label for="inputNickname" class="control-label col-xs-2">Nickname</label>
                             <div class="col-xs-10">
-                                <input type="text" class="form-control" id="inputNickname" name="inputNickname" placeholder="Nickname">
+                                <input type="text" class="form-control" id="inputNickname" name="inputNickname" placeholder="Nickname" required>
                             </div>
                     </div>
                     <div class="form-group">
                         <label for="inputEmail" class="control-label col-xs-2">Email</label>
                             <div class="col-xs-10">
-                                <input type="text" class="form-control" id="inputEmail" name="inputEmail" placeholder="Email">
+                                <input type="text" class="form-control" id="inputEmail" name="inputEmail" placeholder="Email" required>
                             </div>
                     </div>
                     <div class="form-group">
                         <label for="inputNombre" class="control-label col-xs-2">Nombre</label>
                             <div class="col-xs-10">
-                                <input type="text" class="form-control" id="inputNombre" name="inputNombre" placeholder="Nombre">
+                                <input type="text" class="form-control" id="inputNombre" name="inputNombre" placeholder="Nombre" required>
                             </div>
                     </div>
                     <div class="form-group">
                         <label for="inputDireccion" class="control-label col-xs-2">Direcci&oacute;n</label>
                             <div class="col-xs-10">
-                                <input type="text" class="form-control" id="inputDireccion" name="inputDireccion" placeholder="Direcci&oacute;n">
+                                <input type="text" class="form-control" id="inputDireccion" name="inputDireccion" placeholder="Direcci&oacute;n" required>
                             </div>
                     </div>
                     <div class="form-group">
                         <label for="inputContrasena" class="control-label col-xs-2">Contrase&ntilde;a</label>
                             <div class="col-xs-10">
-                                <input type="password" class="form-control" id="inputContrasena" name="inputContrasena" placeholder="Contrase&ntilde;a">
+                                <input type="password" class="form-control" id="inputContrasena" name="inputContrasena" placeholder="Contrase&ntilde;a" required>
                             </div>
                     </div>
                     <div class="form-group">
                         <label for="inputCategoria" class="control-label col-xs-2">Categoria</label>
                         <div class="col-xs-10 selectContainer">
-                            <select name="selectCategoria" id="selectCategoria" class="form-control" onclick="listarCategorias();">
+                            <select name="selectCategoria" id="selectCategoria" class="form-control" onclick="listarCategorias();" required>
                                 <option value="0">Seleccione Categoria</option>
                             </select>
                         </div>
@@ -66,7 +66,7 @@
                     </div>
 
                     <div class="col-lg-8 col-lg-offset-4">
-                        <input type="button" class="btn" value="Enviar" onclick="CheckRestaurante();"/>
+                        <input type="submit" class="btn" value="Enviar"/><!-- onclick="CheckRestaurante();"-->
                         <a href="index.jsp"><input type="button" class="btn" value="Cancelar" /></a>
                     </div>
                 </form>

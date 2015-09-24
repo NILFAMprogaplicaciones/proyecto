@@ -171,5 +171,5 @@
     $(document).ready(function() {
         $('#lista_productos').DataTable();
     } );
-</script>    
+</script>  
 <jsp:include page='footer.jsp'/>
