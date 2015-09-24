@@ -19,6 +19,10 @@
     <script src="js/jquery-1.4.2.min.js"></script>
     <script src="js/jquery-ui-1.8.4.custom.min.js"></script>
     <script src="js/validacion.js"></script>
+    <script src="js/jquery-1.11.3.min.js"></script> 
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.bootstrap.min.js"></script>
+    
     
 </body>
 </html>

@@ -15,6 +15,9 @@
 
     <!-- Custom CSS -->
     <link href="css/shop-homepage.css" rel="stylesheet">
+    
+    <link href="css/jquery.bootstrap-touchspin.css" rel="stylesheet"> 
+    <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -70,7 +73,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Producto <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                               <li><a href="agregar_producto.jsp">Agregar</a></li>
-                              <li><a href="#">Informaci&oacute;n</a></li>
+                              <li><a href="info_producto.jsp">Informaci&oacute;n</a></li>
                             </ul>
                     </li>
                     
@@ -82,6 +85,20 @@
                               <li><a href="#">Informaci&oacute;n</a></li>
                             </ul>
                     </li>
+                    
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cerrar Sesion <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
+                                      <img src="images/avatar-1-small.jpg" class="circle-img" alt="">
+                                          <span class="username">Nombre Usuario</span>
+                                          <i class="clip-chevron-down"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                    </li>                                                     
+                                            
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
