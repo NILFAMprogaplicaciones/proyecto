@@ -15,7 +15,6 @@ import Logica.Restaurante;
 import com.google.gson.Gson;
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -46,8 +45,8 @@ public class AgregarProductos extends HttpServlet {
         MU = ManejadorUsuario.getinstance();
        
         Restaurante Restaurante = MU.findRestaurante(selectRestaurante);
-        double precio = Double.parseDouble(selectRestaurante);
-        File imagen=new File("images/IMG_0578.JPG");
+        double precio = Double.parseDouble(inputPrecio);
+        File imagen=new File("Web Pages/images/IMG_0578.JPG");
         DataIndividual DI = new DataIndividual(inputName,inputDescripcion,Restaurante,precio,imagen);
        
         ICP.AltaProductoIndividual(DI);
