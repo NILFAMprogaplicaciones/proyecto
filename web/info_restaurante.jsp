@@ -16,6 +16,7 @@
             </div>
             <div class="col-md-9">
                 <div class="row" id="CuadriculaRestaurantes">
+                    
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
                             <img src="http://placehold.it/320x150" alt="">
@@ -126,16 +127,16 @@
     });
 </script> 
 
-<script>
+<script type="text/javascript" class="init">
     $(document).ready(function() {                                   // Locate HTML DOM element with ID "somebutton" and assign the following function to its "click" event...
         $.get('AgregarRestaurante', function(responseJson) {                 // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response JSON...
             var $CuadriculaRestaurantes = $('#CuadriculaRestaurantes');                           // Locate HTML DOM element with ID "someselect".
                 $.each(responseJson, function(key, value) {               // Iterate over the JSON object.                        
-                   $('<div class="col-sm-4 col-lg-4 col-md-4"><div class="thumbnail"><img src="http://placehold.it/320x150" alt=""><div class="caption"><h4><a href="ver_restaurante.jsp">'+key+'</a></h4></div><div class="ratings"><p class="pull-right">'+15 reviews+'</p><p><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span></p></div></div></div>').appendTo($CuadriculaRestaurantes);               
-                });
+                 $('<div class="col-sm-4 col-lg-4 col-md-4"><div class="thumbnail"><img src="http://placehold.it/320x150" alt=""><div class="caption"><h4><a href="ver_restaurante.jsp">'+key+'</a></h4></div><div class="ratings"><p class="pull-right">15 reviews</p><p><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span></p></div></div></div>').appendTo($CuadriculaRestaurantes);                            
+                
+    });
             });
     });
 </script> 
-    
-<jsp:include page='footer.jsp'/>
 
+<jsp:include page='footer.jsp'/>

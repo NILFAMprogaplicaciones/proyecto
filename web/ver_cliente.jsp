@@ -1,11 +1,10 @@
 <%@page import="Logica.DataCliente"%>
 <jsp:include page='header.jsp'/>
+
 <% 
 DataCliente dc=(DataCliente)request.getAttribute("DC");
 
 %> 
-
-
 
 <div class="container">
     <div class="col-sm-4 col-lg-4 col-md-4">
@@ -24,9 +23,7 @@ DataCliente dc=(DataCliente)request.getAttribute("DC");
                     
                     <div class="tab-pane" id="Informacion">
                         <form method="GET" action="AgregarCliente" class="form-horizontal" id="clienteFRM">
-                           
-                            
-                            
+ 
                             <div class="form-group">
                                 <label for="inputNickname" class="control-label col-xs-2">Nickname</label>
                                     <div class="col-xs-10">
