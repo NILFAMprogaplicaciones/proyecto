@@ -9,7 +9,7 @@ DataCliente dc=(DataCliente)request.getAttribute("DC");
 <div class="container">
     <div class="col-sm-4 col-lg-4 col-md-4">
         <div class="thumbnail">
-            <img src="images/usuario.jpg" alt="">
+            <img src="images/usuario.png" alt="">
         </div>
     </div>
     <div class="col-sm-6 col-lg-6 col-md-6">
