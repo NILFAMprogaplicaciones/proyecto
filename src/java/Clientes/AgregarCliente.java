@@ -17,6 +17,28 @@ public class AgregarCliente extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
+        ManejadorUsuario MU=ManejadorUsuario.getinstance();
+        Map<String, File> options = new LinkedHashMap<String, File>();
+        
+        Iterator<Usuario> it = MU.getColeccionClientes().values().iterator();
+        Usuario rest;
+        while (it.hasNext()) {
+            rest=it.next();
+            Cliente cliente=(Cliente) rest;
+            options.put(cliente.getnickname(),cliente.getFoto());                  
+        }   
+        
+        String json = new Gson().toJson(options);
+
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write(json);
+        
+    }
+
+    
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+       
         String nickname  = request.getParameter("inputNickname");
         String email = request.getParameter("inputEmail");
         String nombre = request.getParameter("inputNombre");
@@ -25,7 +47,7 @@ public class AgregarCliente extends HttpServlet {
         String apellido = request.getParameter("inputApellido");
         String nacimiento = request.getParameter("inputFecha_nacimiento");
         Fecha fecha=new Fecha(1,1,1);
-        File foto1 = new File("images/usuario.jpg");
+        File foto1 = new File("images/usuario.png");
         
         DataCliente DC = new DataCliente(contraseña,nombre,nickname,email,direccion,apellido,fecha,foto1);
 
@@ -35,33 +57,6 @@ public class AgregarCliente extends HttpServlet {
         ICU.Caso_Registro_Cliente(DC);
         
         request.getRequestDispatcher("index.jsp").forward(request, response);
-            
-    }
-
-    
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       
-        Fabrica fabrica = Fabrica.getInstance();
-        ICU = fabrica.getIControladorUsuario();
-        //DataCliente DC=ICU.Caso_Ver_Cliente("leo");
-        
-        ManejadorUsuario mu=ManejadorUsuario.getinstance();
-        Map<String, Usuario> options = new LinkedHashMap<String, Usuario>();
-        
-        Iterator<Usuario> it = mu.obtenercoleccion().values().iterator();
-        Usuario objeto;
-        while (it.hasNext()) {
-            objeto=it.next();//en objeto tenemos el valor
-            options.put(objeto.getnombre(),objeto);                  
-        }   
-        String json = new Gson().toJson(options);
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-        response.getWriter().write(json);
-        
-        //request.setAttribute("DC", DC);
-        //request.getRequestDispatcher("info_cliente.jsp").forward(request, response);
-        
     }
 
     

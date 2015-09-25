@@ -35,13 +35,13 @@ public class Categorias extends HttpServlet {
         
         ManejadorCategoria mc=ManejadorCategoria.getinstance();
         Map<String, String> options = new LinkedHashMap<String, String>();
-        //List<String> ListaCategoria = new ArrayList<String>();
+        
         Iterator<Categoria> it = mc.coleccion().values().iterator();
         Categoria cat;
         while (it.hasNext()) {
             cat=it.next();//en cat tenemos el valor
             options.put(cat.getnombre(),cat.getnombre());
-            //ListaCategoria.add(cat.getnombre());
+           
         }   
         String json = new Gson().toJson(options);
 

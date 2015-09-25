@@ -44,8 +44,8 @@ public class AgregarRestaurante extends HttpServlet {
         Iterator<Usuario> it = MU.getColeccionRestaurante().values().iterator();
         Usuario rest;
         while (it.hasNext()) {
-            rest=it.next();//en cat tenemos el valor
-            options.put(rest.getnombre(),rest.getnombre());                  
+            rest=it.next();
+            options.put(rest.getnickname(),rest.getnickname());                  
         }   
         
         String json = new Gson().toJson(options);
