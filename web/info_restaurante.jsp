@@ -32,9 +32,9 @@
                     
                         <div class="col-sm-4 col-lg-4 col-md-4">
                             <div class="thumbnail">
-                                <img src="images/usuario.png" alt="">
+                                <img src="images/restaurante.png" alt="">
                                 <div class="caption">
-                                    <h4><a href="ver_restaurante.jsp"> <%=u.getnickname()%> </a>
+                                    <h4><a href="ver_restaurante.jsp?nicknamerestaurante=<%=u.getnickname()%>"> <%=u.getnickname()%> </a>
                                     
                                     </h4>
                                 </div>

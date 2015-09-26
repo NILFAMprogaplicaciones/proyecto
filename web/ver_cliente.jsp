@@ -1,9 +1,15 @@
-<%@page import="Logica.DataCliente"%>
+<%@page import="Logica.*"%>
 <jsp:include page='header.jsp'/>
+<!DOCTYPE html>
+<html>
+<body>
 
-<% 
-DataCliente dc=(DataCliente)request.getAttribute("DC");
 
+<%
+    IControladorUsuario ICU;
+    Fabrica fabrica = Fabrica.getInstance();
+    ICU = fabrica .getIControladorUsuario();
+    DataCliente dc=ICU.Caso_Ver_Cliente(request.getParameter("nickname"));
 %> 
 
 <div class="container">
@@ -22,7 +28,7 @@ DataCliente dc=(DataCliente)request.getAttribute("DC");
                 <div id="my-tab-content" class="tab-content">
                     
                     <div class="tab-pane" id="Informacion">
-                        <form method="GET" action="AgregarCliente" class="form-horizontal" id="clienteFRM">
+                        <form  class="form-horizontal" id="clienteFRM">
  
                             <div class="form-group">
                                 <label for="inputNickname" class="control-label col-xs-2">Nickname</label>
@@ -30,40 +36,43 @@ DataCliente dc=(DataCliente)request.getAttribute("DC");
                                         <input  type="text" class="form-control" id="inputNickname" placeholder=<%= dc.getnickname() %>>
                                     </div>
                             </div>
+                                    
                             <div class="form-group">
                                 <label for="inputEmail" class="control-label col-xs-2">Email</label>
                                     <div class="col-xs-10">
                                         <input type="text" class="form-control" id="inputEmail" placeholder=<%= dc.getcorreo()%>>
                                     </div>
                             </div>
+                                    
                             <div class="form-group">
                                 <label for="inputNombre" class="control-label col-xs-2">Nombre</label>
                                     <div class="col-xs-10">
                                         <input type="text" class="form-control" id="inputNombre" placeholder=<%= dc.getnombre()%>>
                                     </div>
                             </div>
-                            <div class="form-group">
-                                <label for="inputDireccion" class="control-label col-xs-2">Direcci&oacute;n</label>
-                                    <div class="col-xs-10">
-                                        <input type="text" class="form-control" id="inputDireccion" placeholder=<%= dc.getdireccion()%>>
-                                    </div>
-                            </div>
+                                    
                             <div class="form-group">
                                 <label for="inputApellido" class="control-label col-xs-2">Apellido</label>
                                     <div class="col-xs-10">
                                         <input type="text" class="form-control" id="inputApellido" placeholder=<%= dc.getapellido()%>>
                                     </div>
                             </div>
+                                    
+                            <div class="form-group">
+                                <label for="inputDireccion" class="control-label col-xs-2">Direcci&oacute;n</label>
+                                    <div class="col-xs-10">
+                                        <input type="text" class="form-control" id="inputDireccion" placeholder=<%= dc.getdireccion()%>>
+                                    </div>
+                            </div>
+                            
                             <div class="form-group">
                                 <label for="inputFecha_nacimiento" class="control-label col-xs-2">Fecha Nacimiento</label>
                                     <div class="col-xs-10">
                                         <input type="date" class="form-control" id="inputFecha_nacimiento" placeholder=<%= dc.getfechastring()%>>
                                     </div>
                             </div>
-                            <div class="col-lg-8 col-lg-offset-4">
-                                <input type="button" class="btn" value="Enviar" onclick="CheckCliente();"/>
-                                <input type="reset"  class="btn" value="Cancelar" />
-                            </div>
+                                    
+                            
                         </form>
                     </div>
                     
@@ -102,5 +111,7 @@ DataCliente dc=(DataCliente)request.getAttribute("DC");
         </div> 
     </div>
 </div>
+</body>
+</html>
 
 <jsp:include page='footer.jsp'/>

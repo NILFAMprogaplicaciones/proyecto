@@ -1,10 +1,16 @@
+<%@page import="Logica.*"%>
 <jsp:include page='header.jsp'/>
-
+<%
+    IControladorUsuario ICU;
+    Fabrica fabrica = Fabrica.getInstance();
+    ICU = fabrica .getIControladorUsuario();
+    DataRestaurante dc=ICU.Caso_Ver_Restaurante(request.getParameter("nicknamerestaurante"));
+%> 
 <div class="container">
     <div class="col-sm-4 col-lg-4 col-md-4">
         <div class="thumbnail">
-            <img src="images/Logo_Quick Order.png" alt="">
-             <span>Nombre Resto</span>
+            <img src="images/restaurante.png" alt="">
+            <span> <%=dc.getnombre()%> </span>
                 <div class="ratings">
                         <p>
                             <span class="glyphicon glyphicon-star"></span>
@@ -35,22 +41,7 @@
                             </tr>
                             </thead>
                         </table>
-                        <script>
-                            // client side
-                            function responseHandler(res) {
-                                return res.repos;
-                            }
-
-                            // server side
-                            /*
-                            function responseHandler(res) {
-                                return {
-                                    rows: res.repos;
-                                    total: res.repos.length
-                                }
-                            }
-                            */
-                        </script>
+                        
                         
                     </div>
                     
@@ -59,25 +50,25 @@
                             <div class="form-group">
                                 <label for="inputNombre" class="control-label col-xs-2">Nombre</label>
                                 <div class="col-xs-10">
-                                    <input type="email" class="form-control" id="inputEmail" placeholder="Nombre">
+                                    <input type="text" class="form-control" id="inputEmail" placeholder=<%=dc.getnombre()%>>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputNickname" class="control-label col-xs-2">Nickname</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="inputNickname" placeholder="Nickname">
+                                    <input type="text" class="form-control" id="inputNickname" placeholder=<%=dc.getnickname()%>>
                                 </div>
                             </div>
                            <div class="form-group">
                                 <label for="inputDireccion" class="control-label col-xs-2">Direcci&oacute;n</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="inputDireccion" placeholder="Direcci&oacute;n">
+                                    <input type="text" class="form-control" id="inputDireccion" placeholder=<%=dc.getdireccion()%>>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail" class="control-label col-xs-2">Email</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+                                    <input type="email" class="form-control" id="inputEmail" placeholder=<%=dc.getcorreo()%>>
                                 </div>
                             </div>
                         </form>

@@ -1,5 +1,8 @@
+<%@page import="Logica.ManejadorUsuario"%>
 <jsp:include page='header.jsp'/>                
-    
+<%
+ManejadorUsuario MU=ManejadorUsuario.getinstance();//MU.verificarnickname(nickname);
+%>   
 <!-- Page Content -->
     <div class="container">
         <div class="row">
@@ -54,7 +57,7 @@
                             </div>    
                     </div>
                     <div class="col-lg-8 col-lg-offset-4">
-                        <input type="submit" class="btn" value="Enviar" /><!-- onclick="CheckCliente();"-->
+                        <input type="submit" class="btn" value="Enviar"/>
                          <a href="index.jsp"><input type="button" class="btn" value="Cancelar" /></a>
                     </div>
                 </form>

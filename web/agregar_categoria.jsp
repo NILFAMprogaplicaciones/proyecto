@@ -1,10 +1,12 @@
+<%@page import="Logica.ManejadorCategoria"%>
+<%@page import="Logica.ManejadorUsuario"%>
 <jsp:include page='header.jsp'/>                
     
 <!-- Page Content -->
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-4">
-                <form method="POST" action="Categorias" class="form-horizontal" id="categoriaFRM">
+                <form method="POST" action="Categorias" class="form-horizontal" id="categoriaFRM" onsubmit="return validarcategoria()">
                     <div class="form-group">
                         <label for="inputNombre" class="control-label col-xs-2">Nombre</label>
                             <div class="col-xs-10">
@@ -12,7 +14,7 @@
                             </div>
                     </div>
                     <div class="col-lg-8 col-lg-offset-4">
-                        <input type="submit" class="btn" value="Enviar"/> <!-- onclick="CheckCategoria();"-->
+                        <input type="submit" class="btn" value="Enviar" /> <!--onclick="CheckCategoria();" -->
                         <a href="index.jsp"><input type="button" class="btn" value="Cancelar" /></a>
                     </div>
                 </form>
@@ -21,5 +23,11 @@
 
     </div>
     <!-- /.container -->
-    
+   
+    <script type="text/javascript">
+    function validarcategoria(){
+        //var $listaCategorias = $('#inputNombre');
+                    window.alert($('#inputNombre').toString());
+    }
+</script> 
 <jsp:include page='footer.jsp'/>
