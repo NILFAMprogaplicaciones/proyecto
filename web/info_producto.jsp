@@ -62,7 +62,6 @@
                 <form method="GET" action="AgregarProductos" id="detallesproductosFRM">
                     <%
                         Producto pro=MP.findProducto("PRODUCTO");
-                        
                     %> 
                     <div class="form-group">
                             <label for="inputNombre" class="control-label col-xs-2">Nombre</label>
