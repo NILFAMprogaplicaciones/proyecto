@@ -22,37 +22,46 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Usuario
  */
 public class AgregarProductos extends HttpServlet {
-
+    
     private IControladorProducto        ICP;
     private ManejadorUsuario            MU;
     private ManejadorProducto           MP;
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-        String inputName=request.getParameter("inputNombre");
-        String inputDescripcion=request.getParameter("inputDescripcion");
-        String inputPrecio=request.getParameter("inputPrecio");
-        String selectRestaurante=request.getParameter("selectRestaurante");
-       
-        Fabrica fabrica = Fabrica.getInstance();
-        ICP = fabrica.getIControladorProducto();
-        MU = ManejadorUsuario.getinstance();
-       
-        Restaurante Restaurante = MU.findRestaurante(selectRestaurante);
-        double precio = Double.parseDouble(inputPrecio);
-        File imagen=new File("Web Pages/images/IMG_0578.JPG");
-        DataIndividual DI = new DataIndividual(inputName,inputDescripcion,Restaurante,precio,imagen);
-       
-        ICP.AltaProductoIndividual(DI);
-        
-        request.getRequestDispatcher("index.jsp").
-        forward(request, response);
+        //JOptionPane.showMessageDialog(null, MU);
+        String individual = request.getParameter("tipo_individual");
+        //String promocion = request.getParameter("tipo_promocion");
+        if (individual!=null){
+            
+            String inputName=request.getParameter("inputNombre");
+            String inputDescripcion=request.getParameter("inputDescripcion");
+            String inputPrecio=request.getParameter("inputPrecio");
+            String selectRestaurante=request.getParameter("selectRestaurante");
+            
+            Fabrica fabrica = Fabrica.getInstance();
+            ICP = fabrica.getIControladorProducto();
+            MU = ManejadorUsuario.getinstance();
+
+            Restaurante restaurante = MU.findRestaurante(selectRestaurante);
+            double precio = Double.parseDouble(inputPrecio);
+            File imagen=new File("images/producto.jpg");
+            
+            DataIndividual DI = new DataIndividual(inputName,inputDescripcion,restaurante,precio,imagen);
+
+            ICP.AltaProductoIndividual(DI);
+
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        }
+        else{
+            
+        }
     }
     
     

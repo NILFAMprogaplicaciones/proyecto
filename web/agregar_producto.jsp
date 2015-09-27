@@ -17,11 +17,11 @@
                     <div class="form-group">
                         <div class="radio">
                             <label>
-                              <input type="radio" name="tipo_producto" id="individual" value="individual" onclick="showIndividual()">
+                              <input type="radio" name="tipo_individual" id="individual" value="Individual" onclick="showIndividual()">
                               Individual
                             </label>
                             <label>
-                              <input type="radio" name="tipo_producto" id="promocion" value="promocion" onclick="showPromocion()">
+                              <input type="radio" name="tipo_promocion" id="promocion" value="Promocion" onclick="showPromocion()">
                               Promoci&oacute;n
                             </label>
                         </div>  
@@ -38,17 +38,13 @@
                             <label for="inputDescripcion" class="control-label col-xs-2">Descripci&oacute;n</label>
                                 <div class="col-xs-10">
 
-                                    <input type="text" class="form-control" id="inputDescripcion" name="inputDescripcion" placeholder="Descripci&oacute;n">
-
-                                    <input type="text" class="form-control" id="inputDescripcion" placeholder="Descripci&oacute;n" required>
+                                    <input type="text" class="form-control" id="inputDescripcion" name="inputDescripcion" placeholder="Descripci&oacute;n" required>
                                 </div>
                         </div>
                         <div class="form-group">
                             <label for="inputPrecio" class="control-label col-xs-2">Precio</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="inputPrecio" name="inputPrecio" placeholder="Precio">
-
-                                    <input type="text" class="form-control" id="inputPrecio" placeholder="Precio" required>
+                                    <input type="text" class="form-control" id="inputPrecio" name="inputPrecio" placeholder="Precio" required>
                                 </div>
                         </div>
                     </div>
@@ -57,7 +53,7 @@
                         <div class="form-group">
                             <label for="inputDescuento" class="control-label col-xs-2">Descuento</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="inputDescuento" placeholder="Descuento" required>
+                                    <input type="text" class="form-control" id="inputDescuento" placeholder="Descuento" >
                                 </div>
                         </div>
                         <div class="checkbox">
@@ -71,7 +67,7 @@
                         <div class="form-group">
                             <label for="inputProductos" class="control-label col-xs-2">Producto</label>
                             <div class="col-xs-10 selectContainer">
-                                <select name="selectProductos" id="selectProductos" class="form-control" required>
+                                <select name="selectProductos" id="selectProductos" class="form-control" >
                                     <option value="0">Seleccione Producto</option>
                                 </select>
                             </div>
@@ -79,7 +75,7 @@
                         <div class="form-group">
                             <label for="inputProductos" class="control-label col-xs-2">Cantidad</label>
                             <div class="col-xs-10">
-                                <input id="cantidad" type="text" value="" name="cantidad" required>
+                                <input id="cantidad" type="text" value="" name="cantidad" >
                             </div>
                         </div>  
                         
@@ -98,25 +94,10 @@
 
                             <tbody>
                                 <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>1</td>
-                                    <td>100</td>
-                                </tr>
-                                <tr>
-                                    <td>Olivia Liang</td>
-                                    <td>4</td>
-                                    <td>400</td>
-                                </tr>
-                                <tr>
-                                    <td>Cara Stevens</td>
-                                    <td>3</td>
-                                    <td>300</td>
-                                </tr>
-                                <tr>
-                                    <td>Hermione Butler</td>
-                                    <td>5</td>
-                                    <td>500</td>
-                                </tr>
+                                    <td>Un Producto</td>
+                                    <td>Una cantidad</td>
+                                    <td>El Total</td>
+                                
                             </tbody>
                         </table>                   
                         
@@ -140,7 +121,7 @@
 <script>
     function showIndividual() { 
         document.getElementById('divIndividual').style.display = "block";
-        document.getElementById('divPromocion').style.display = "none";
+        //document.getElementById('divPromocion').style.display = "none";
     }
 </script>
 <script>

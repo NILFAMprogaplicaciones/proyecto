@@ -1,5 +1,14 @@
+<%@page import="Logica.Producto"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.Map"%>
+<%@page import="Logica.ManejadorProducto"%>
 <jsp:include page='header.jsp'/>                
+<%
+    ManejadorProducto MP=ManejadorProducto.getinstance();
+    Iterator<Producto> it = MP.getColeccion().values().iterator();
+    Producto p;
     
+%>  
 <!-- Page Content -->
     <div class="container">
         <div class="row">
@@ -16,31 +25,21 @@
 
                 <tbody>
                     <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
+                        <%
+                            while (it.hasNext()){
+                            p=it.next();
+                        %>
+                        <td><%=p.getnombre()%></td>
+                        
+                        <td><%=p.getRestaurante().getnickname()%></td>
                         <td>
-                            <img src='images/Zoom In.png'title='Detalles' data-toggle="modal" data-target="#myModal">
-                            </> 
-                        </td>                        
+                            <img src='images/Zoom In.png'title='Detalles' data-toggle="modal" data-target="#myModal"   ></> 
+                        </td>  
+                        
+                        <% 
+                            }
+                        %>
                     </tr>
-
-                    <tr>
-                        <td>Olivia Liang</td>
-                        <td>Support Engineer</td>
-                        <td> 
-                            <img src='images/Zoom In.png'title='Detalles' data-toggle="modal" data-target="#myModal">
-                            </>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Cara Stevens</td>
-                        <td>Sales Assistant</td>
-                        <td> 
-                            <img src='images/Zoom In.png'title='Detalles' data-toggle="modal" data-target="#myModal">
-                            </>
-                        </td>
-                    </tr>
-                
                 </tbody>
             </table>  
                 
@@ -60,11 +59,15 @@
           <h4 class="modal-title">Detalles</h4>
         </div>
         <div class="modal-body">
-                <form method="POST" action="" id="detallesproductosFRM">
+                <form method="GET" action="AgregarProductos" id="detallesproductosFRM">
+                    <%
+                        Producto pro=MP.findProducto("PRODUCTO");
+                        
+                    %> 
                     <div class="form-group">
                             <label for="inputNombre" class="control-label col-xs-2">Nombre</label>
                                 <div class="col-xs-4">
-                                    <input type="text" class="form-control" id="inputNombre" name="inputNombre" placeholder="Nombre">
+                                    <input type="text" class="form-control" id="inputNombre" name="inputNombre" placeholder=<%=pro.getnombre()%>>
                                 </div>
                     </div>
                     <div class="form-group">
@@ -166,10 +169,6 @@
     </div>
   </div>    
     
-<script src="http://code.jquery.com/jquery-latest.js"></script>    
-<script>
-    $(document).ready(function() {
-        $('#lista_productos').DataTable();
-    } );
-</script>  
+ 
+ 
 <jsp:include page='footer.jsp'/>
