@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-lg-offset-4">
-                <form class="form-signin" id="loginFRM" action="">
+                <form class="form-signin" id="loginFRM" method="POST" action="Login">
                   <h3 class="form-signin-heading">Ingresar</h3>
 
                   <label for="inputNicknameEmail" class="sr-only" >Email address</label>
