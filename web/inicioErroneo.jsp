@@ -1,41 +1,31 @@
-<%@page contentType="text/html" pageEncoding="UTF-8" %>
-<%@page errorPage="500.jsp" %>
-<!doctype html>
-<html>
-   <head>
-	  
-	<title>Iniciar sesión :: gamebook</title>
-    </head>
-    <body>
-       <jsp:include page='header.jsp'/>   
+<%@page import="Logica.Fabrica"%>
+<%@page import="Logica.DataCliente"%>
+<%@page import="java.io.File"%>
+<%@page import="Logica.Fecha"%>
+<%@page import="Logica.*"%>
+<jsp:include page='header.jsp'/>  
 
-	<form class="formulario_centrar main" action="Login" ACTION="POST">
-		<div class="error">
-		<b>La combinación de correo electrónico/contraseña es incorrecta.</b>
-			<p>
-				Asegurese que la entró correctamente y en el si de que estas seguro
-				de que sea correcta, entonces alguien hackeo tu cuenta.
-				En ese caso usa el login <code>papli@papli.com</code>
-				con contraseña <code>manda</code>.
-			</p>
-		</div>
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-lg-4 col-lg-offset-4">
+                <form class="form-signin" id="loginFRM" method="POST" action="Login">
+                  <h3 class="form-signin-heading">Error al iniciar Sesion, pruebe con nickname Grupo3, password Grupo3</h3>
 
-		<div class="fila_input">
-			<label for="error_login">Correo: </label>
-			<input id="error_login" type="text" name="login"/>
-		</div>
+                  <label for="inputNicknameEmail" class="sr-only" >Email address</label>
+                  <input type="text" id="inputNicknameEmail" name="inputNicknameEmail" class="form-control" placeholder="Nickname o email" required>
+                 
+                  <label for="inputPassword" class="sr-only">Contrase&nacute;a</label>
+                  <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Contrase&nacute;a" required>
+                  <br><br>
+                  <div class="col-lg-8 col-lg-offset-3">  
+                    <button class="btn" type="submit"Entrar>Entrar</button>
+                    <a href="index.jsp"><input type="button" class="btn" value="Cancelar" /></a>
+                  </div>   
+                </form>
+            </div>    
+        </div>    
+    </div> <!-- /container -->
 
-		<div class="fila_input">
-			<label for="error_password">Contraseña:</label>
-			<input id="error_password" type="password" name="password"/>
-		</div>
-
-		<div class="fila_input">
-			<input class="con_margen" type="button"
-				   value="Entrar" onclick="submit()"/>
-		</div>
-	</form>
-
-	 <jsp:include page='footer.jsp'/>
-</body>
-</html>
+    
+<jsp:include page='footer.jsp'/>
