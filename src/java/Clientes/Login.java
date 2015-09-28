@@ -14,55 +14,44 @@ import javax.servlet.http.HttpSession;
 
 public class Login extends HttpServlet {
    
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request,
-        HttpServletResponse response) throws ServletException, IOException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
         HttpSession objSesion = request.getSession();
         String login = request.getParameter("inputNicknameEmail");
         String password = request.getParameter("inputPassword");
         EstadoSesion nuevoEstado;
 
-		// chequea contraseña
+	// chequea contraseña
 		
-			Cliente cli = ManejadorUsuario.getinstance().findCliente(login);
-                    if (cli==null){
-                       RequestDispatcher dispatcher = request.getRequestDispatcher("inicioErroneo.jsp");
-                       dispatcher.forward(request, response); 
-                    }else{    
-			if(!cli.getContraseña().equals(password)){
-                            nuevoEstado = EstadoSesion.LOGIN_INCORRECTO;
-                            RequestDispatcher dispatcher = request.getRequestDispatcher("inicioErroneo.jsp");
-                            dispatcher.forward(request, response); 
-                        }else {
-                            nuevoEstado = EstadoSesion.LOGIN_CORRECTO;
-                            // setea el usuario logueado
-                            objSesion.setAttribute("usuario_logueado", cli.getnickname());
-			}                           
-                        objSesion.setAttribute("estado_sesion", nuevoEstado);
+	Cliente cli = ManejadorUsuario.getinstance().findCliente(login);
+            if (cli==null){
+               RequestDispatcher dispatcher = request.getRequestDispatcher("inicioErroneo.jsp");
+               dispatcher.forward(request, response); 
+            }else{    
+                if(!cli.getContraseña().equals(password)){
+                    nuevoEstado = EstadoSesion.LOGIN_INCORRECTO;
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("inicioErroneo.jsp");
+                    dispatcher.forward(request, response); 
+                }else {
+                    nuevoEstado = EstadoSesion.LOGIN_CORRECTO;
+                    // setea el usuario logueado
+                    objSesion.setAttribute("usuario_logueado", cli.getnickname());
+                }                           
+                objSesion.setAttribute("estado_sesion", nuevoEstado);
 
-                                // redirige a la página principal para que luego rediriga a la página
-                                // que corresponde
-                        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-                        dispatcher.forward(request, response);
-                    }
+                // redirige a la página principal para que luego rediriga a la página que corresponde
+                RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+                dispatcher.forward(request, response);
+            }
     } 
 	
-	/**
-	 * Devuelve el usuario logueado
-	 * @param request
-	 * @return
-	 * @throws Usuario_NoEncontrado 
-	 */
-	static public Cliente getUsuarioLogueado(HttpServletRequest request) {
-		
-            return ManejadorUsuario.getinstance().findCliente((String) request.getSession().getAttribute("usuario_logueado"));
-	}
+    /**
+     * Devuelve el usuario logueado
+     */
+    static public Cliente getUsuarioLogueado(HttpServletRequest request) {
+
+        return ManejadorUsuario.getinstance().findCliente((String) request.getSession().getAttribute("usuario_logueado"));
+    }
 
     @Override
     protected void doGet(HttpServletRequest request,
