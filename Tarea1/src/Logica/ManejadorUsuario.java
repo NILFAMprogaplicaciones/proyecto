@@ -1,6 +1,7 @@
 
 package Logica;
 
+import Exception.UsuarioNoEncontrado;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -26,12 +27,21 @@ public class ManejadorUsuario {
     public void addUsuario(String nickname, Usuario usuario){
         ColeccionUsuarios.put(nickname, usuario);
     }
-    public Cliente findCliente(String nickname){
+   /* public Cliente findCliente(String nickname){
         return ((Cliente)ColeccionUsuarios.get(nickname));
-    }
+    }*/
     public Restaurante findRestaurante(String nickname){
         return ((Restaurante)ColeccionUsuarios.get(nickname));
     }
+    
+    public Cliente findCliente(String nickname) throws UsuarioNoEncontrado{
+        Cliente Cli = ((Cliente)ColeccionUsuarios.get(nickname));
+        if (Cli == null){
+            throw new UsuarioNoEncontrado(nickname);
+        }
+        return Cli;
+    }
+    
     public boolean verificarnickname(String nickname){
         return ColeccionUsuarios.containsKey(nickname);
     }
