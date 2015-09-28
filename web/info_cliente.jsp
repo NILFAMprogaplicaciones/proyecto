@@ -19,6 +19,7 @@
                     ManejadorUsuario MU=ManejadorUsuario.getinstance();
                     Iterator<Usuario> it = MU.getColeccionClientes().values().iterator();
                     Usuario u;
+                    
                 %>
 		
                 <%

@@ -1,4 +1,7 @@
-  <!DOCTYPE html>
+<%@page import="Logica.Cliente"%>
+<%@page import="Clientes.Login"%>
+<%@page import="Logica.Usuario"%>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -84,21 +87,24 @@
                               <li><a href="actualizar_pedido.jsp">Actualizar</a></li>
                               <li><a href="#">Informaci&oacute;n</a></li>
                             </ul>
-                    </li>
-                    
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cerrar Sesion <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
-                                      <img src="images/avatar-1-small.jpg" class="circle-img" alt="">
-                                          <span class="username">Nombre Usuario</span>
-                                          <i class="clip-chevron-down"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                    </li>                                                     
-                                            
+                    </li>                   
+                    <%
+                        Cliente cli;
+                            cli = Login.getUsuarioLogueado(request);
+                        if(cli != null) {
+                    %>
+                        <li class="dropdown">
+                            <a id="logout"class="btn" type="submit" onclick="logout()">
+                              <img src="images/avatar-1-small.jpg" class="circle-img" alt="">
+                                  <span class="username">Cerrar Sesion</span>
+                                  <i class="clip-chevron-down"></i>
+                            </a>                              
+                        </li> 
+                <% }else{ %> 
+                        <li class="dropdown">
+                            <a href="login.jsp" class="btn">Iniciar Sesion</a>
+                        </li> 
+                    <%}%> 
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -106,4 +112,11 @@
         <!-- /.container -->
     </nav>
 
-    
+<script type="text/javascript">               
+
+    function logout() 
+    {
+        window.alert("Se cerro su Sesion");
+        window.location="Logout";
+    }
+</script>
