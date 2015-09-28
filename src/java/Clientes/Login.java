@@ -21,8 +21,7 @@ public class Login extends HttpServlet {
         String password = request.getParameter("inputPassword");
         EstadoSesion nuevoEstado;
 
-	// chequea contraseña
-		
+	// chequea contraseña		
 	Cliente cli = ManejadorUsuario.getinstance().findCliente(login);
             if (cli==null){
                RequestDispatcher dispatcher = request.getRequestDispatcher("inicioErroneo.jsp");

@@ -1,4 +1,3 @@
-
 <%@page import="Logica.Cliente"%>
 <%@page import="Clientes.Login"%>
 <%@page import="Logica.Usuario"%>
@@ -88,8 +87,7 @@
                               <li><a href="actualizar_pedido.jsp">Actualizar</a></li>
                               <li><a href="#">Informaci&oacute;n</a></li>
                             </ul>
-                    </li>
-                    
+                    </li>                   
                     <%
                         Cliente cli;
                             cli = Login.getUsuarioLogueado(request);
@@ -107,8 +105,7 @@
                                 </li>
                             </ul>
                     </li> 
-                <% } %>
-                       
+                <% } %>                     
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

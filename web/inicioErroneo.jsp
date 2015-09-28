@@ -10,7 +10,7 @@
             
             <div class="col-lg-4 col-lg-offset-4">
                 <form class="form-signin" id="loginFRM" method="POST" action="Login">
-                  <h3 class="form-signin-heading">Error al iniciar Sesion, pruebe con nickname Grupo3, password Grupo3</h3>
+                  <h3 class="alert alert-danger" role="alert">Error al iniciar Sesion, pruebe con nickname Grupo3, password Grupo3</h3>
 
                   <label for="inputNicknameEmail" class="sr-only" >Email address</label>
                   <input type="text" id="inputNicknameEmail" name="inputNicknameEmail" class="form-control" placeholder="Nickname o email" required>
