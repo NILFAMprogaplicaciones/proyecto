@@ -28,6 +28,10 @@
         <servlet-name>Login</servlet-name>
         <servlet-class>Clientes.Login</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>Clientes.Logout</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AgregarCliente</servlet-name>
         <url-pattern>/AgregarCliente</url-pattern>
@@ -56,12 +60,16 @@
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/Logout</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>login.jsp</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 </web-app>
