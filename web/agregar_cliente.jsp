@@ -1,8 +1,6 @@
 <%@page import="Logica.ManejadorUsuario"%>
 <jsp:include page='header.jsp'/>                
-<%
-ManejadorUsuario MU=ManejadorUsuario.getinstance();//MU.verificarnickname(nickname);
-%>   
+  
 <!-- Page Content -->
     <div class="container">
         <div class="row">

@@ -10,12 +10,6 @@
 
                 <div class="row" id="clientes">  
                 <% 
-                    DataCliente DC = new DataCliente("contraseña","nombre","LEIÑO","email","direccion","apellido",null,null);
-                    IControladorUsuario ICU;
-                    Fabrica fabrica = Fabrica.getInstance();
-                    ICU = fabrica .getIControladorUsuario();
-                    ICU.Caso_Registro_Cliente(DC);
-                    
                     ManejadorUsuario MU=ManejadorUsuario.getinstance();
                     Iterator<Usuario> it = MU.getColeccionClientes().values().iterator();
                     Usuario u;

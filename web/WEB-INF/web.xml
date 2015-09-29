@@ -32,6 +32,10 @@
         <servlet-name>Logout</servlet-name>
         <servlet-class>Clientes.Logout</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CargaDeDatos</servlet-name>
+        <servlet-class>Datos_Cargados.CargaDeDatos</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AgregarCliente</servlet-name>
         <url-pattern>/AgregarCliente</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>Logout</servlet-name>
         <url-pattern>/Logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CargaDeDatos</servlet-name>
+        <url-pattern>/CargaDeDatos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -94,17 +94,30 @@
                         if(cli != null) {
                     %>
                         <li class="dropdown">
+                            
+                            <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <img src="images/avatar-1-small.jpg" class="circle-img" alt=""/> <%=cli.getnombre()%> <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
                             <a id="logout"class="btn" type="submit" onclick="logout()">
-                              <img src="images/avatar-1-small.jpg" class="circle-img" alt="">
+                              
                                   <span class="username">Cerrar Sesion</span>
                                   <i class="clip-chevron-down"></i>
-                            </a>                              
+                            </a>  
+                                </ul>
                         </li> 
                 <% }else{ %> 
                         <li class="dropdown">
                             <a href="login.jsp" class="btn">Iniciar Sesion</a>
                         </li> 
                     <%}%> 
+                    
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cargar Datos <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                              <li><a href="carga_datos.jsp">CARGA</a></li>
+                              <!--<li><a href="ver_individual.jsp">ver ind</a></li>
+                              <li><a href="ver_promocion.jsp">ver pro</a></li>-->
+                            </ul>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

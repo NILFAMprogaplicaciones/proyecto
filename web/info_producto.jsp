@@ -24,22 +24,23 @@
                 </thead>
 
                 <tbody>
+                    <%
+                        while (it.hasNext()){
+                        p=it.next();
+                    %>
                     <tr>
-                        <%
-                            while (it.hasNext()){
-                            p=it.next();
-                        %>
+                        
                         <td><%=p.getnombre()%></td>
                         
                         <td><%=p.getRestaurante().getnickname()%></td>
                         <td>
                             <img src='images/Zoom In.png'title='Detalles' data-toggle="modal" data-target="#myModal"   ></> 
                         </td>  
-                        
-                        <% 
-                            }
-                        %>
+                          
                     </tr>
+                    <% 
+                        }
+                    %>
                 </tbody>
             </table>  
                 

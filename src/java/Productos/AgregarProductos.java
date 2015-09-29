@@ -1,11 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Productos;
 
 import Logica.DataIndividual;
+import Logica.DataPromocion;
 import Logica.Fabrica;
 import Logica.IControladorProducto;
 import Logica.ManejadorProducto;
@@ -24,10 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Usuario
- */
+
 public class AgregarProductos extends HttpServlet {
     
     private IControladorProducto        ICP;
@@ -61,6 +55,24 @@ public class AgregarProductos extends HttpServlet {
         }
         else{
             
+            String selectRestaurante=request.getParameter("selectRestaurante");
+            Restaurante restaurante = MU.findRestaurante(selectRestaurante);
+            String inputName=request.getParameter("inputNombre");
+            String inputDescripcion=request.getParameter("inputDescripcion");
+            String inputPrecio=request.getParameter("inputPrecio");
+            double precioTotal = 200;
+            String act=request.getParameter("inputActiva");
+            boolean activa= true;
+            String des=request.getParameter("inputDescuento");
+            int descuento = Integer.parseInt(des);
+            Map CantidadProductos=null;
+            File foto=null;
+            
+            DataPromocion DP=new DataPromocion(restaurante,inputName,inputDescripcion,precioTotal, activa,descuento,CantidadProductos,foto);
+            
+            ICP.AltaProductoPromocion(DP);
+
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         }
     }
     
