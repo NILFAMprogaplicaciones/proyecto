@@ -4,10 +4,8 @@ package Restaurantes;
 import Logica.*;
 import com.google.gson.Gson;
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -26,8 +24,7 @@ public class Categorias extends HttpServlet {
         
         ICU.AltaCategoria(inputName);
         
-        request.getRequestDispatcher("index.jsp").
-        forward(request, response);
+        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
     
     
