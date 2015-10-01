@@ -94,7 +94,7 @@
         
         if(arrayClientes[0]==null){
             
-            window.alert.("Cliente Agregado");
+            window.alert("Cliente Agregado");
             document.getElementById("clienteFRM").submit();//mando submit
         }else{ 
             while(posicion <= arrayClientes.length){
