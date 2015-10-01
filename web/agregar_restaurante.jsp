@@ -1,3 +1,6 @@
+<%@page import="Logica.Usuario"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="Logica.ManejadorUsuario"%>
 <jsp:include page='header.jsp'/>            
 
 <!-- Page Content -->
@@ -66,7 +69,7 @@
                     </div>
 
                     <div class="col-lg-8 col-lg-offset-4">
-                        <input type="submit" class="btn" value="Enviar"/><!-- onclick="CheckRestaurante();"-->
+                        <input type="button" class="btn" value="Enviar" onclick="validarrestaurante();"/>
                         <a href="index.jsp"><input type="button" class="btn" value="Cancelar" /></a>
                     </div>
                 </form>
@@ -75,7 +78,56 @@
 
     </div>
     <!-- /.container -->
-    <script src="http://code.jquery.com/jquery-latest.js"></script> 
+<script type="text/javascript">
+        
+    function validarrestaurante(){
+        
+        var arrayNick = [];
+        var arrayCorreo = [];
+        var posicion = 0;
+        var nick = document.getElementById("inputNickname").value;
+        var correo = document.getElementById("inputEmail").value;
+        //LLENO MI ARRAYCLIENTES CON LOS NOMBRES DE TODOS LOS CLIENTES DEL SISTEMA
+        <%
+            ManejadorUsuario MU=ManejadorUsuario.getinstance();
+            Iterator<Usuario> it = MU.obtenercoleccion().values().iterator();
+            Usuario objeto;
+            while (it.hasNext()){
+            objeto=it.next();
+        %>
+                arrayNick.push("<%= objeto.getnickname()%>");
+                arrayCorreo.push("<%= objeto.getcorreo()%>");
+        <%
+            }
+        %>
+        
+        if(arrayNick[0]==null){
+            
+            window.alert("Restaurante Agregado");
+            document.getElementById("restauranteFRM").submit();//mando submit
+        }else{ 
+            while(posicion <= arrayNick.length){
+                if(arrayNick[posicion]==nick || arrayCorreo[posicion]==correo){
+                    if(arrayNick[posicion]==nick){
+                        window.alert("Nickname ya tomado");
+                        posicion = arrayNick.length + 1;
+                    }else{
+                        window.alert("Correo ya tomado");
+                        posicion = arrayNick.length + 1;
+                    }
+                }
+                else if(arrayNick[posicion]==null){
+                    window.alert("Restaurante Agregado");
+                    document.getElementById("restauranteFRM").submit();
+
+                }else{
+                    ++posicion;
+                }
+            }
+        }
+    }
+</script>
+
 <script>
     function listarCategorias() { 
         document.getElementById('divListaCategorias').style.display = "block";

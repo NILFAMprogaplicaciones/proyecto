@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-4">
-                <form method="POST" action="Categorias" class="form-horizontal" id="categoriaFRM" onsubmit="return validarcategoria()">
+                <form method="POST" action="Categorias" class="form-horizontal" id="categoriaFRM" >
                     <div class="form-group">
                         <label for="inputNombre" class="control-label col-xs-2">Nombre</label>
                             <div class="col-xs-10">
@@ -16,7 +16,7 @@
                             </div>
                     </div>
                     <div class="col-lg-8 col-lg-offset-4">
-                        <input type="submit" class="btn" value="Enviar" /> <!--onclick="CheckCategoria();" -->
+                        <input type="submit" class="btn" value="Enviar" onclick="validarcategoria()"/> <!--onclick="CheckCategoria();" -->
                         <a href="index.jsp"><input type="button" class="btn" value="Cancelar" /></a>
                     </div>
                 </form>
@@ -54,7 +54,7 @@
                     while(posicion <= array.length){
                         if(array[posicion]==elemento){
                             window.alert("Imposible agregar Categoria");
-
+                            posicion = array.length + 1;
                         }
                         else if(array[posicion]==null){
                             window.alert("Categoria Agregada");

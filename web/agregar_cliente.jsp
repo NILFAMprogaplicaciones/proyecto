@@ -1,11 +1,14 @@
+<%@page import="Logica.Usuario"%>
+<%@page import="Logica.Cliente"%>
+<%@page import="java.util.Iterator"%>
 <%@page import="Logica.ManejadorUsuario"%>
 <jsp:include page='header.jsp'/>                
-  
+
 <!-- Page Content -->
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-4">
-                <form method="POST" action="AgregarCliente"class="form-horizontal" id="clienteFRM">
+                <form method="POST" action="AgregarCliente"class="form-horizontal" id="clienteFRM" >
                     <div class="form-group">
                         <label for="inputNickname" class="control-label col-xs-2">Nickname</label>
                             <div class="col-xs-10">
@@ -55,7 +58,8 @@
                             </div>    
                     </div>
                     <div class="col-lg-8 col-lg-offset-4">
-                        <input type="submit" class="btn" value="Enviar"/>
+                        <input type="button" class="btn" value="Enviar" onclick="validarcliente();"/>
+                        
                          <a href="index.jsp"><input type="button" class="btn" value="Cancelar" /></a>
                     </div>
                 </form>
@@ -65,4 +69,53 @@
     </div>
     <!-- /.container -->
     
+    <script type="text/javascript">
+        
+    function validarcliente(){
+        
+        var arrayClientes = [];
+        var arrayCorreo = [];
+        var posicion = 0;
+        var elemento = document.getElementById("inputNickname").value;
+        var correo = document.getElementById("inputEmail").value;
+        //LLENO MI ARRAYCLIENTES CON LOS NOMBRES DE TODOS LOS CLIENTES DEL SISTEMA
+        <%
+            ManejadorUsuario MU=ManejadorUsuario.getinstance();
+            Iterator<Usuario> it = MU.obtenercoleccion().values().iterator();
+            Usuario objeto;
+            while (it.hasNext()){
+            objeto=it.next();
+        %>
+                arrayClientes.push("<%= objeto.getnickname()%>");
+                arrayCorreo.push("<%= objeto.getcorreo()%>");
+        <%
+            }
+        %>
+        
+        if(arrayClientes[0]==null){
+            
+            window.alert.("Cliente Agregado");
+            document.getElementById("clienteFRM").submit();//mando submit
+        }else{ 
+            while(posicion <= arrayClientes.length){
+                if(arrayClientes[posicion]==elemento || arrayCorreo[posicion]==correo){
+                    if(arrayClientes[posicion]==elemento){
+                        window.alert("Nickname ya tomado");
+                        posicion = arrayClientes.length + 1;
+                    }else{
+                        window.alert("Correo ya tomado");
+                        posicion = arrayClientes.length + 1;
+                    }
+                }
+                else if(arrayClientes[posicion]==null){
+                    window.alert("Cliente Agregado");
+                    document.getElementById("clienteFRM").submit();
+
+                }else{
+                    ++posicion;
+                }
+            }
+        }
+    }
+</script>
 <jsp:include page='footer.jsp'/>

@@ -33,42 +33,42 @@
                             <div class="form-group">
                                 <label for="inputNickname" class="control-label col-xs-2">Nickname</label>
                                     <div class="col-xs-10">
-                                        <input  type="text" class="form-control" id="inputNickname" placeholder=<%= dc.getnickname() %>>
+                                        <input  type="text"  class="form-control" id="inputNickname" value="<%= dc.getnickname() %>" readonly>
                                     </div>
                             </div>
                                     
                             <div class="form-group">
                                 <label for="inputEmail" class="control-label col-xs-2">Email</label>
                                     <div class="col-xs-10">
-                                        <input type="text" class="form-control" id="inputEmail" placeholder=<%= dc.getcorreo()%>>
+                                        <input type="text" class="form-control" id="inputEmail" value="<%= dc.getcorreo()%>" readonly>
                                     </div>
                             </div>
                                     
                             <div class="form-group">
                                 <label for="inputNombre" class="control-label col-xs-2">Nombre</label>
                                     <div class="col-xs-10">
-                                        <input type="text" class="form-control" id="inputNombre" placeholder=<%= dc.getnombre()%>>
+                                        <input type="text" class="form-control" id="inputNombre" value="<%= dc.getnombre()%>" readonly>
                                     </div>
                             </div>
                                     
                             <div class="form-group">
                                 <label for="inputApellido" class="control-label col-xs-2">Apellido</label>
                                     <div class="col-xs-10">
-                                        <input type="text" class="form-control" id="inputApellido" placeholder=<%= dc.getapellido()%>>
+                                        <input type="text" class="form-control" id="inputApellido" value="<%= dc.getapellido()%>" readonly>
                                     </div>
                             </div>
                                     
                             <div class="form-group">
                                 <label for="inputDireccion" class="control-label col-xs-2">Direcci&oacute;n</label>
                                     <div class="col-xs-10">
-                                        <input type="text" class="form-control" id="inputDireccion" placeholder=<%= dc.getdireccion()%>>
+                                        <input type="text" class="form-control" id="inputDireccion" value="<%= dc.getdireccion()%>" readonly>
                                     </div>
                             </div>
                             
                             <div class="form-group">
                                 <label for="inputFecha_nacimiento" class="control-label col-xs-2">Fecha Nacimiento</label>
                                     <div class="col-xs-10">
-                                        <input type="date" class="form-control" id="inputFecha_nacimiento" placeholder=<%= dc.getfechastring()%>>
+                                        <input type="date" class="form-control" id="inputFecha_nacimiento" value="<%= dc.getfechastring()%>" readonly>
                                     </div>
                             </div>
                                     
