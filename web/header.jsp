@@ -1,6 +1,9 @@
 <%@page import="Logica.Cliente"%>
 <%@page import="Clientes.Login"%>
 <%@page import="Logica.Usuario"%>
+<script src="http://code.jquery.com/jquery-latest.js"></script> 
+<script src="js/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/sweetalert.css">
 <!DOCTYPE html>
 <html lang="en">
 
@@ -113,7 +116,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cargar Datos <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                              <li><a href="carga_datos.jsp">CARGA</a></li>
+                                <li><a href="carga_datos.jsp">CARGA</a>  </li>
                               <!--<li><a href="ver_individual.jsp">ver ind</a></li>
                               <li><a href="ver_promocion.jsp">ver pro</a></li>-->
                             </ul>

@@ -121,7 +121,7 @@
 <script>
     function showIndividual() { 
         document.getElementById('divIndividual').style.display = "block";
-        //document.getElementById('divPromocion').style.display = "none";
+        document.getElementById('divPromocion').style.display = "none";
     }
 </script>
 <script>
