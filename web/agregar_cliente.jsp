@@ -12,13 +12,15 @@
                     <div class="form-group">
                         <label for="inputNickname" class="control-label col-xs-2">Nickname</label>
                             <div class="col-xs-10">
-                                <input name="inputNickname" type="text" class="form-control" id="inputNickname" placeholder="Nickname" required>
+                                <input  onblur="verificarnick()" name="inputNickname" type="text" class="form-control" id="inputNickname" placeholder="Nickname" required > 
+                                <h4  id="comprobarnick"> </h4>
                             </div>
                     </div>
                     <div class="form-group">
                         <label for="inputEmail" class="control-label col-xs-2">Email</label>
                             <div class="col-xs-10">
-                                <input name="inputEmail"type="text" class="form-control" id="inputEmail" placeholder="Email" required>
+                                <input onblur="verificarcorreo()" name="inputEmail"type="text" class="form-control" id="inputEmail" placeholder="Email" required>
+                                <h4  id="comprobarcorreo"> </h4>
                             </div>
                     </div>
                     <div class="form-group">
@@ -70,7 +72,68 @@
     <!-- /.container -->
     
     <script type="text/javascript">
-        
+      function verificarnick(){
+         
+        var arrayCli = [];
+        var pos = 0;
+        var nick = document.getElementById("inputNickname").value;
+
+        <%
+            ManejadorUsuario mu=ManejadorUsuario.getinstance();
+            Iterator<Usuario> ite = mu.obtenercoleccion().values().iterator();
+            Usuario ob;
+            while (ite.hasNext()){
+            ob=ite.next();
+        %>
+                arrayCli.push("<%= ob.getnickname()%>");
+        <%
+            }
+        %>
+            while(pos <= arrayCli.length){
+                if(arrayCli[pos]==nick){
+                    document.getElementById("comprobarnick").innerHTML = '<img src="images/Delete.png" class="circle-img" alt=""/> Nickname ya tomado'; 
+                    pos = arrayCli.length + 1;
+                }else if(arrayCli[pos]==null){
+                    document.getElementById("comprobarnick").innerHTML = '<img src="images/Apply.png" class="circle-img" alt=""/> Nickname correcto'; 
+                    pos = arrayCli.length + 1;
+                }else{
+                    ++pos;
+                }   
+        }
+         
+      }  
+      function verificarcorreo(){
+          
+          var arrayCorreo = [];
+          var posicion = 0;
+          var correo = document.getElementById("inputEmail").value;
+          
+          <%
+            ManejadorUsuario M=ManejadorUsuario.getinstance();
+            Iterator<Usuario> iter = M.obtenercoleccion().values().iterator();
+            Usuario elemento;
+            while (iter.hasNext()){
+            elemento=iter.next();
+        %>
+                arrayCorreo.push("<%= elemento.getcorreo()%>");
+        <%
+            }
+        %>
+            while(posicion <= arrayCorreo.length){
+                if(arrayCorreo[posicion]==correo){
+                    document.getElementById("comprobarcorreo").innerHTML = '<img src="images/Delete.png" class="circle-img" alt=""/> Email ya tomado'; 
+                    posicion = arrayCorreo.length + 1;
+                }
+                else if(arrayCorreo[posicion]==null){
+                    document.getElementById("comprobarcorreo").innerHTML = '<img src="images/Apply.png" class="circle-img" alt=""/> Email correcto'; 
+                    posicion = arrayCorreo.length + 1;
+
+                }else{
+                    ++posicion;
+                }
+            }
+           
+      }
     function validarcliente(){
         
         var arrayClientes = [];
