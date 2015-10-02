@@ -100,12 +100,13 @@
                             
                             <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <img src="images/avatar-1-small.jpg" class="circle-img" alt=""/> <%=cli.getnombre()%> <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                            <a id="logout"class="btn" type="submit" onclick="logout()">
-                              
-                                  <span class="username">Cerrar Sesion</span>
-                                  <i class="clip-chevron-down"></i>
-                            </a>  
-                                </ul>
+                                <a id="logout"class="btn" type="submit" onclick="logout()">
+
+                                      <span class="username">Cerrar Sesion</span>
+                                      <i class="clip-chevron-down"></i>
+                                </a>  
+                                <li> <a  href="ver_cliente.jsp?nickname=<%=cli.getnickname()%>">Ver Perfil</a> </li>
+                            </ul>
                         </li> 
                 <% }else{ %> 
                         <li class="dropdown">
