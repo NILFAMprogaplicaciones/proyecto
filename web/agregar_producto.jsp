@@ -1,3 +1,6 @@
+<%@page import="Logica.Producto"%>
+<%@page import="Logica.Restaurante"%>
+<%@page import="Logica.ManejadorUsuario"%>
 <%@page import="Logica.Individual"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="Logica.ManejadorProducto"%>
@@ -12,7 +15,7 @@
                     <div class="form-group">
                         <label for="inputRestaurante" class="control-label col-xs-2">Restaurante</label>
                         <div class="col-xs-10 selectContainer">
-                            <select name="selectRestaurante" id="selectRestaurante"  class="form-control">
+                            <select  onchange="cargaproductos()" name="selectRestaurante" id="selectRestaurante"  class="form-control">
                                 <option value="0">Seleccione Restaurante</option>
                             </select>
                         </div>
@@ -132,36 +135,90 @@
 <script src="js/jquery.bootstrap-touchspin.js"></script>
 
 <script>
-    function agregarProducto() { 
-        var arrayProducto = [];
-        var arrayProductoPrecio = [];
+    
+    function cargaproductos(){
+        document.getElementById("selectProductos").innerHTML="";
+        
+        var Res;
+        var prod;
+        var datosactuales;
+        var restaurante=document.getElementById("selectRestaurante").value;
+        
         <%
-            ManejadorProducto MP=ManejadorProducto.getinstance();
-            Iterator<Individual> it = MP.getColeccionIndividual().values().iterator();
-            Individual objeto;
-            while (it.hasNext()){
-                objeto=it.next();
-                String precio=String.valueOf(objeto.getPrecio());
-        %> 
-                arrayProducto.push("<%=objeto.getnombre()%>");
-                arrayProductoPrecio.push("<%=precio%>");
+            ManejadorUsuario MU=ManejadorUsuario.getinstance();
+            Iterator<Restaurante> ite = MU.getColeccionRestaurante().values().iterator();
+            Restaurante elemento;
+            
+            while (ite.hasNext()){
+                elemento=ite.next();
+        %>
+                Res=("<%= elemento.getnickname()%>");
+                if(Res==restaurante){
+                    <%
+                        Iterator<Producto> iter = MU.getColeccionProductosRestaurantes(elemento.getnickname()).values().iterator();
+                        Producto pro;
+                        while (iter.hasNext()){
+                            pro=iter.next();
+                    %>
+                            prod='<option value="'+'<%= pro.getnombre()%>'+'">'+'<%= pro.getnombre()%>'+'</option>';
+                            
+                            datosactuales = document.getElementById("selectProductos").innerHTML;
+                            document.getElementById("selectProductos").innerHTML = datosactuales+prod ; 
+                    <%
+                        }
+                    %>
+                    
+                }
         <%
             }
         %>
         
+    }
         
+</script>
+
+<script>
+    function agregarProducto() { 
         var producto = document.getElementById("selectProductos").value;
         var cantidad = document.getElementById("cantidad").value;
-        var datosactuales = document.getElementById("lista_productos_promocion").innerHTML;
-        
-        for(var indice=0;indice<=arrayProducto.length; indice++){
-            if(arrayProducto[indice]==producto){
-                var total=cantidad*arrayProductoPrecio[indice];
+                
+        if(cantidad==""){
+            window.alert("Seleccione una Cantidad");   
+        }else if(producto==""){
+            window.alert("Seleccione un Producto");
+        }else{
+            
+            var arrayProducto = [];
+            var arrayProductoPrecio = [];
+            <%
+                ManejadorProducto MP=ManejadorProducto.getinstance();
+                Iterator<Individual> it = MP.getColeccionIndividual().values().iterator();
+                Individual objeto;
+                String precio;
+                while (it.hasNext()){
+                    objeto=it.next();
+                    precio=String.valueOf(objeto.getPrecio());
+            %> 
+                    arrayProducto.push("<%=objeto.getnombre()%>");
+                    arrayProductoPrecio.push("<%=precio%>");
+                    
+            <%
+                }
+            %>
+
+            var datosactuales = document.getElementById("lista_productos_promocion").innerHTML;
+
+            for(var indice=0;indice<=arrayProducto.length; indice++){
+                
+                if(arrayProducto[indice]==producto){
+                    var total=cantidad*arrayProductoPrecio[indice];
+                    
+                }
             }
+
+            var datos = "<tbody><tr> <td>"+producto+"</td> <td>"+cantidad+"</td> <td>"+total+"</td> </tr>";
+            document.getElementById("lista_productos_promocion").innerHTML = datosactuales + datos;
         }
-        
-        var datos = "<tbody><tr> <td>"+producto+"</td> <td>"+cantidad+"</td> <td>"+total+"</td> </tr>";
-        document.getElementById("lista_productos_promocion").innerHTML = datosactuales + datos;
     }
 </script>
 <script>
@@ -187,13 +244,7 @@
 
     $(document).ready(function() {
             
-            $.get('AgregarProductos', function(responseJson) {                 // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response JSON...
-                    var $select = $('#selectProductos');                           // Locate HTML DOM element with ID "someselect".
-                    $select.find('option').remove();                          // Find all child elements with tag name "option" and remove them (just to prevent duplicate options when button is pressed again).
-                    $.each(responseJson, function(key, value) {               // Iterate over the JSON object.
-                        $('<option>').val(key).text(value).appendTo($select); // Create HTML <option> element, set its value with currently iterated key and its text content with currently iterated item and finally append it to the <select>.
-                    });
-            });
+            
             
             $.get('AgregarRestaurante', function(responseJson) {                 // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response JSON...
                     var $select = $('#selectRestaurante');                           // Locate HTML DOM element with ID "someselect".
