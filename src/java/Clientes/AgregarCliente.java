@@ -15,7 +15,10 @@ public class AgregarCliente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-       
+       ManejadorUsuario MP=ManejadorUsuario.getinstance();
+       String nombre =request.getParameter("nombre");
+       JOptionPane.showMessageDialog(null, nombre);
+       boolean usuario=MP.verificarnickname(nombre);
         
     }
 

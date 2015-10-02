@@ -40,7 +40,7 @@ public class AgregarRestaurante extends HttpServlet {
        
         ManejadorUsuario MU=ManejadorUsuario.getinstance();
         Map<String, String> options = new LinkedHashMap<String, String>();
-        
+        options.put("Seleccione Restaurante", "Seleccione Restaurante");
         Iterator<Usuario> it = MU.getColeccionRestaurante().values().iterator();
         Usuario rest;
         while (it.hasNext()) {
