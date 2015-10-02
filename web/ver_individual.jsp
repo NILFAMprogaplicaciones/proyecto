@@ -37,19 +37,19 @@
             <div class="form-group">
                     <label for="inputNombre" class="control-label col-xs-2">Nombre</label>
                         <div class="col-xs-4">
-                            <input type="text" class="form-control" id="inputNombre" name="inputNombre" value="<%=DI.getNombre()%>">
+                            <input type="text" class="form-control" id="inputNombre" name="inputNombre" value="<%=DI.getNombre()%>" readonly>
                         </div>
             </div>
             <div class="form-group">
                 <label for="inputDescripcion" class="control-label col-xs-2">Descripci&oacute;n</label>
                     <div class="col-xs-4">
-                        <input type="text" class="form-control" id="inputDescripcion" value="<%=DI.getDescripcion()%>">
+                        <input type="text" class="form-control" id="inputDescripcion" value="<%=DI.getDescripcion()%>" readonly>
                     </div>
             </div>
             <div class="form-group">
                 <label for="inputPrecio" class="control-label col-xs-2">Precio</label>
                     <div class="col-xs-4">
-                        <input type="text" class="form-control" id="inputPrecio"  value="<%=DI.getPrecio()%>">
+                        <input type="text" class="form-control" id="inputPrecio"  value="<%=DI.getPrecio()%>" readonly >
                     </div>
             </div>
             </div>

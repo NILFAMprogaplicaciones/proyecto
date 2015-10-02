@@ -22,19 +22,19 @@
             <div class="form-group">
                     <label for="inputNombre" class="control-label col-xs-2">Nombre</label>
                         <div class="col-xs-4">
-                            <input type="text" class="form-control" id="inputNombre" name="inputNombre" placeholder=<%=DP.getNombre()%>>
+                            <input type="text" class="form-control" id="inputNombre" name="inputNombre" value="<%=DP.getNombre()%>" readonly>
                         </div>
             </div>
             <div class="form-group">
                 <label for="inputDescripcion" class="control-label col-xs-2">Descripci&oacute;n</label>
                     <div class="col-xs-4">
-                        <input type="text" class="form-control" id="inputDescripcion" placeholder=<%=DP.getDescripcion()%>>
+                        <input type="text" class="form-control" id="inputDescripcion" value="<%=DP.getDescripcion()%>" readonly>
                     </div>
             </div>
             <div class="form-group">
                 <label for="inputPrecio" class="control-label col-xs-2">Precio</label>
                     <div class="col-xs-4">
-                        <input type="text" class="form-control" id="inputPrecio" placeholder=<%=DP.getPrecioTotal()%>>
+                        <input type="text" class="form-control" id="inputPrecio" value="<%=DP.getPrecioTotal()%>" readonly >
                     </div>
             </div>
             <div id="promocion">

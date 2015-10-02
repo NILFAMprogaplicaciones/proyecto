@@ -12,6 +12,7 @@ import Logica.Restaurante;
 import com.google.gson.Gson;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -31,20 +32,26 @@ public class AgregarProductos extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //JOptionPane.showMessageDialog(null, MU);
         String individual = request.getParameter("tipo_individual");
-        //String promocion = request.getParameter("tipo_promocion");
+        
         if (individual!=null){
             
             String inputName=request.getParameter("inputNombre");
+            
             String inputDescripcion=request.getParameter("inputDescripcion");
+            
             String inputPrecio=request.getParameter("inputPrecio");
+            
             String selectRestaurante=request.getParameter("selectRestaurante");
             
+           
             Fabrica fabrica = Fabrica.getInstance();
             ICP = fabrica.getIControladorProducto();
             MU = ManejadorUsuario.getinstance();
 
             Restaurante restaurante = MU.findRestaurante(selectRestaurante);
+            
             double precio = Double.parseDouble(inputPrecio);
+            
             File imagen=new File("images/producto.jpg");
             
             DataIndividual DI = new DataIndividual(inputName,inputDescripcion,restaurante,precio,imagen);
@@ -55,21 +62,34 @@ public class AgregarProductos extends HttpServlet {
         }
         else{
             
-            String selectRestaurante=request.getParameter("selectRestaurante");
-            Restaurante restaurante = MU.findRestaurante(selectRestaurante);
-            String inputName=request.getParameter("inputNombre");
-            String inputDescripcion=request.getParameter("inputDescripcion");
-            String inputPrecio=request.getParameter("inputPrecio");
+            String rest=request.getParameter("selectRestaurante");
+            
+            MU = ManejadorUsuario.getinstance();
+            Restaurante restaurante = MU.findRestaurante(rest);
+            
+            String Name=request.getParameter("inputNombrePromo");
+            
+            String Descripcion=request.getParameter("inputDescripcionPromo");
+            
             double precioTotal = 200;
-            String act=request.getParameter("inputActiva");
-            boolean activa= true;
-            String des=request.getParameter("inputDescuento");
-            int descuento = Integer.parseInt(des);
-            Map CantidadProductos=null;
-            File foto=null;
             
-            DataPromocion DP=new DataPromocion(restaurante,inputName,inputDescripcion,precioTotal, activa,descuento,CantidadProductos,foto);
+            boolean activa=true;
+            String inputActiva=request.getParameter("inputActiva");
+            if((inputActiva)==(null))
+                activa=false;
             
+            
+            String inputDescuento=request.getParameter("inputDescuento");
+            int descuento = Integer.parseInt(inputDescuento);
+                        
+            Map<String,Producto> ColProducto = new HashMap<String,Producto>();
+            
+            File foto=new File("images/producto.jpg");
+            
+            DataPromocion DP=new DataPromocion(restaurante,Name,Descripcion,precioTotal, activa,descuento,ColProducto,foto);
+            
+            Fabrica fabrica = Fabrica.getInstance();
+            ICP = fabrica.getIControladorProducto();
             ICP.AltaProductoPromocion(DP);
 
             request.getRequestDispatcher("index.jsp").forward(request, response);

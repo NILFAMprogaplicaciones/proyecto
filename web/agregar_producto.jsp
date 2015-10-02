@@ -1,3 +1,6 @@
+<%@page import="Logica.Individual"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="Logica.ManejadorProducto"%>
 <jsp:include page='header.jsp'/>                
 <link href="css/jquery.bootstrap-touchspin.css" rel="stylesheet">   
 
@@ -9,7 +12,7 @@
                     <div class="form-group">
                         <label for="inputRestaurante" class="control-label col-xs-2">Restaurante</label>
                         <div class="col-xs-10 selectContainer">
-                            <select name="selectRestaurante" id="selectRestaurante" name="selectRestaurante" class="form-control">
+                            <select name="selectRestaurante" id="selectRestaurante"  class="form-control">
                                 <option value="0">Seleccione Restaurante</option>
                             </select>
                         </div>
@@ -28,39 +31,55 @@
                     </div>
                     
                     <div id="divIndividual" style="display:none">
+                        
                         <div class="form-group">
                             <label for="inputNombre" class="control-label col-xs-2">Nombre</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="inputNombre" name="inputNombre" placeholder="Nombre" required>
+                                    <input type="text" class="form-control" id="inputNombre" name="inputNombre" placeholder="Nombre" >
                                 </div>
                         </div>
                         <div class="form-group">
                             <label for="inputDescripcion" class="control-label col-xs-2">Descripci&oacute;n</label>
                                 <div class="col-xs-10">
 
-                                    <input type="text" class="form-control" id="inputDescripcion" name="inputDescripcion" placeholder="Descripci&oacute;n" required>
+                                    <input type="text" class="form-control" id="inputDescripcion" name="inputDescripcion" placeholder="Descripci&oacute;n" >
                                 </div>
                         </div>
                         <div class="form-group">
                             <label for="inputPrecio" class="control-label col-xs-2">Precio</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="inputPrecio" name="inputPrecio" placeholder="Precio" required>
+                                    <input type="text" class="form-control" id="inputPrecio" name="inputPrecio" placeholder="Precio" >
                                 </div>
                         </div>
                     </div>
                     
                     <div id="divPromocion" style="display:none">
+                        
+                        <div class="form-group">
+                            <label for="inputNombre" class="control-label col-xs-2">Nombre</label>
+                                <div class="col-xs-10">
+                                    <input type="text" class="form-control" id="inputNombre" name="inputNombrePromo" placeholder="Nombre" >
+                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputDescripcion" class="control-label col-xs-2">Descripci&oacute;n</label>
+                                <div class="col-xs-10">
+
+                                    <input type="text" class="form-control" id="inputDescripcion" name="inputDescripcionPromo" placeholder="Descripci&oacute;n"  >
+                                </div>
+                        </div>
+                        
                         <div class="form-group">
                             <label for="inputDescuento" class="control-label col-xs-2">Descuento</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="inputDescuento" placeholder="Descuento" >
+                                    <input type="text" name="inputDescuento" class="form-control" id="inputDescuento" placeholder="Descuento" >
                                 </div>
                         </div>
                         <div class="checkbox">
                             <div class="form-group">
                               <label for="inputActiva" class="control-label col-xs-2">Activa</label>
                                 <div class="col-xs-10">
-                                    <input id="inputActiva" type="checkbox" value="Activa">
+                                    <input id="inputActiva" name="inputActiva" type="checkbox" value="Activa">
                                 </div>    
                             </div>
                         </div>
@@ -80,7 +99,7 @@
                         </div>  
                         
                         <div class="col-lg-8 col-lg-offset-4">
-                            <input type="button" class="btn" value="Agregar Producto"/> 
+                            <input type="button" class="btn" value="Agregar Producto" onclick="agregarProducto();"/> 
                         </div> 
 
                         <table id="lista_productos_promocion" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -92,13 +111,7 @@
                                 </tr>
                             </thead>
 
-                            <tbody>
-                                <tr>
-                                    <td>Un Producto</td>
-                                    <td>Una cantidad</td>
-                                    <td>El Total</td>
-                                
-                            </tbody>
+                           
                         </table>                   
                         
                     </div>
@@ -119,6 +132,39 @@
 <script src="js/jquery.bootstrap-touchspin.js"></script>
 
 <script>
+    function agregarProducto() { 
+        var arrayProducto = [];
+        var arrayProductoPrecio = [];
+        <%
+            ManejadorProducto MP=ManejadorProducto.getinstance();
+            Iterator<Individual> it = MP.getColeccionIndividual().values().iterator();
+            Individual objeto;
+            while (it.hasNext()){
+                objeto=it.next();
+                String precio=String.valueOf(objeto.getPrecio());
+        %> 
+                arrayProducto.push("<%=objeto.getnombre()%>");
+                arrayProductoPrecio.push("<%=precio%>");
+        <%
+            }
+        %>
+        
+        
+        var producto = document.getElementById("selectProductos").value;
+        var cantidad = document.getElementById("cantidad").value;
+        var datosactuales = document.getElementById("lista_productos_promocion").innerHTML;
+        
+        for(var indice=0;indice<=arrayProducto.length; indice++){
+            if(arrayProducto[indice]==producto){
+                var total=cantidad*arrayProductoPrecio[indice];
+            }
+        }
+        
+        var datos = "<tbody><tr> <td>"+producto+"</td> <td>"+cantidad+"</td> <td>"+total+"</td> </tr>";
+        document.getElementById("lista_productos_promocion").innerHTML = datosactuales + datos;
+    }
+</script>
+<script>
     function showIndividual() { 
         document.getElementById('divIndividual').style.display = "block";
         document.getElementById('divPromocion').style.display = "none";
@@ -126,7 +172,7 @@
 </script>
 <script>
     function showPromocion() { 
-        document.getElementById('divIndividual').style.display = "block";
+        document.getElementById('divIndividual').style.display = "none";
         document.getElementById('divPromocion').style.display = "block"; 
     }
 </script>  
