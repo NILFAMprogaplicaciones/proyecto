@@ -1,3 +1,6 @@
+<%@page import="Logica.Pedido"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="Logica.ManejadorPedido"%>
 <%@page import="Logica.DataIndividual"%>
 <%@page import="Logica.Fabrica"%>
 <%@page import="Logica.IControladorProducto"%>
@@ -53,6 +56,35 @@
                     </div>
             </div>
             </div>
+                    <table id="pedidos_producto" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <h4>Pedidos que incluyen este producto:</h4>
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Cliente</th>
+                        <th>Precio total</th>
+                    </tr>
+                </thead>
+                <%
+                ManejadorPedido MP=ManejadorPedido.getinstance();
+                Iterator<Pedido> ite = MP.getPedidos_Producto(DI.getNombre()).values().iterator();
+                Pedido pe=null;
+
+                %>
+                <%
+                    while (ite.hasNext()){
+                    pe=ite.next();
+                %>
+                        <tbody>
+                            <tr>
+                                <td><%=pe.verfechastring()%></td>
+                                <td><%=pe.getCliente().getnickname()%></td>  
+                                <td><%=pe.getPrecioTotal()%></td>
+                            </tr>
+
+                        </tbody>
+                   <%}%>
+            </table> 
         </form>
                
     </body>
