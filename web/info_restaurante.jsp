@@ -17,51 +17,36 @@
                 <div class="list-group" id="listaCategorias"> </div>
             </div>
             <div class="col-md-9">
-                <div class="row" id="CuadriculaRestaurantes"> 
                 
+             <table id="lista_restaurantes" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Direccion</th>
+                    </tr>
+                </thead>
+
+                <tbody>
                     <% 
                         ManejadorUsuario MU=ManejadorUsuario.getinstance();
                         Iterator<Usuario> it = MU.getColeccionRestaurante().values().iterator();
                         Usuario u;
                     %>
-                    
                     <%
                         while (it.hasNext()){
                         u=it.next();
                     %>
-                    
-                        <div class="col-sm-4 col-lg-4 col-md-4">
-                            <div class="thumbnail">
-                                <img src="images/restaurante.png" alt="">
-                                <div class="caption">
-                                    <h4><a href="ver_restaurante.jsp?nicknamerestaurante=<%=u.getnickname()%>"> <%=u.getnickname()%> </a>
-                                    
-                                    </h4>
-                                </div>
-                                <div class="ratings">
-                                    <p class="pull-right">15 reviews</p>
-                                        <p>
-                                            <span class="glyphicon glyphicon-star">
-                                            </span>
-                                            <span class="glyphicon glyphicon-star">
-                                            </span>
-                                            <span class="glyphicon glyphicon-star">
-                                            </span>
-                                            <span class="glyphicon glyphicon-star"> 
-                                            </span>
-                                            <span class="glyphicon glyphicon-star">
-                                            </span>
-                                        </p>
-                                </div>
-                            </div>
-                        </div>
-                    
+                            <tr>
+                                <td>
+                                    <a href="ver_restaurante.jsp?nicknamerestaurante=<%=u.getnickname()%>"> <%=u.getnickname()%></a>
+                                </td>
+                                <td><%=u.getdireccion()%></td>
+                            </tr>
                     <% 
-                        } 
+                        }
                     %>
-                
-                </div>                   
-                </div>
+                </tbody>
+             </table>  
             </div>
         </div>
    <!--  </div> -->
@@ -78,7 +63,7 @@
                 
             });
         });
+    $('#lista_restaurantes').DataTable();    
     });
 </script> 
-
 <jsp:include page='footer.jsp'/>

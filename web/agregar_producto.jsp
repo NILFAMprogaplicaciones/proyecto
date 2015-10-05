@@ -4,7 +4,8 @@
 <%@page import="Logica.Individual"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="Logica.ManejadorProducto"%>
-<jsp:include page='header.jsp'/>                
+<jsp:include page='header.jsp'/>  
+
 <link href="css/jquery.bootstrap-touchspin.css" rel="stylesheet">   
 
 <!-- Page Content -->
@@ -23,11 +24,11 @@
                     <div class="form-group">
                         <div class="radio">
                             <label>
-                              <input type="radio" name="tipo_individual" id="individual" value="Individual" onclick="showIndividual()">
+                              <input type="radio" name="tipo_producto" id="individual" value="Individual" onclick="showIndividual()">
                               Individual
                             </label>
                             <label>
-                              <input type="radio" name="tipo_promocion" id="promocion" value="Promocion" onclick="showPromocion()">
+                              <input type="radio" name="tipo_producto" id="promocion" value="Promocion" onclick="showPromocion()">
                               Promoci&oacute;n
                             </label>
                         </div>  
@@ -113,7 +114,6 @@
                                     <th>Total</th>
                                 </tr>
                             </thead>
-
                            
                         </table>                   
                         

@@ -31,17 +31,18 @@
             <br>
                 <div id="my-tab-content" class="tab-content">
                     <div class="tab-pane active" id="Menu">
-                        <table data-url="data4.json" data-height="299" data-card-view="true" data-response-handler="responseHandler">
-                            <thead>
-                            <tr>
-                                <th data-field="name">Name</th>
-                                <th data-field="license">License</th>
-                                <th data-field="description">Description</th>
-                                <th data-field="url">Url</th>
-                            </tr>
-                            </thead>
-                        </table>
-                        
+                        <table id="lista_menu" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                         <thead>
+                             <tr>
+                                 <th>Menu</th>
+                                 <th>Menu</th>
+                             </tr>
+                         </thead>
+
+                         <tbody>
+                           
+                         </tbody>
+                      </table>  
                         
                     </div>
                     
@@ -109,5 +110,11 @@
         </div> 
     </div>
 </div>
- 
+                                
+ <script src="http://code.jquery.com/jquery-latest.js"></script>                                
+ <script type="text/javascript" class="init">
+    $(document).ready(function() {
+           $('#lista_menu').DataTable();               
+    } );
+</script>
 <jsp:include page='footer.jsp'/>

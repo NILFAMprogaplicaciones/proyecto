@@ -1,9 +1,7 @@
 <%@page import="Logica.Cliente"%>
 <%@page import="Clientes.Login"%>
 <%@page import="Logica.Usuario"%>
-<script src="http://code.jquery.com/jquery-latest.js"></script> 
-<script src="js/sweetalert.min.js"></script>
-<link rel="stylesheet" type="text/css" href="css/sweetalert.css">
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +22,8 @@
     
     <link href="css/jquery.bootstrap-touchspin.css" rel="stylesheet"> 
     <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="css/sweetalert.css">
+    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -110,7 +109,10 @@
                         </li> 
                 <% }else{ %> 
                         <li class="dropdown">
-                            <a href="login.jsp" class="btn">Iniciar Sesion</a>
+                            <a href="login.jsp" class="btn">Iniciar Sesion/</a>
+                        </li> 
+                        <li class="dropdown">
+                            <a href="agregar_cliente.jsp" class="btn">Registrarse</a>
                         </li> 
                     <%}%> 
                     

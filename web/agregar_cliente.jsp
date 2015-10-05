@@ -42,6 +42,12 @@
                             </div>
                     </div>
                     <div class="form-group">
+                        <label for="inputConfirmContrasena" class="control-label col-xs-2"> Confirmar Contrase&ntilde;a</label>
+                            <div class="col-xs-10">
+                                <input name="inputConfirmContrasena" type="password" class="form-control" id="inputConfirmContrasena" placeholder="Confirmar Contrase&ntilde;a" required>
+                            </div>
+                    </div>
+                    <div class="form-group">
                         <label for="inputApellido" class="control-label col-xs-2">Apellido</label>
                             <div class="col-xs-10">
                                 <input name="inputApellido" type="text" class="form-control" id="inputApellido" placeholder="Apellido" required>

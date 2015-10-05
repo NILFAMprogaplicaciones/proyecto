@@ -2,7 +2,8 @@
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.Map"%>
 <%@page import="Logica.ManejadorProducto"%>
-<jsp:include page='header.jsp'/>                
+<jsp:include page='header.jsp'/>       
+
 <%
     ManejadorProducto MP=ManejadorProducto.getinstance();
     Iterator<Producto> it = MP.getColeccion().values().iterator();
@@ -28,21 +29,20 @@
                         p=it.next();
                     %>
                             <tr>
+                                <td>
                                 <%
                                     if (p.getClass().getSimpleName().equals("Individual")){
                                 %>
-                                    <td>
-                                        <a href="ver_individual.jsp?producto=<%=p.getnombre()%>"> <%=p.getnombre()%></a>
-                                    </td>                                     
+                                        <a href="ver_individual.jsp?producto=<%=p.getnombre()%>"> <%=p.getnombre()%></a>                                        
                                 <%
                                     }else{
                                 %>
-                                    <td>
-                                        <a href="ver_promocion.jsp?producto=<%=p.getnombre()%>"> <%=p.getnombre()%></a>
-                                    </td>
+                                    <a href="ver_promocion.jsp?producto=<%=p.getnombre()%>"> <%=p.getnombre()%></a>
+                                
                                 <%
                                     }
                                 %>
+                                </td>
                                 <td><%=p.getRestaurante().getnickname()%></td>
                             </tr>
                     <% 
@@ -57,4 +57,11 @@
     </div>
     <!-- /.container -->
  
+ <script src="http://code.jquery.com/jquery-latest.js"></script> 
+ <script type="text/javascript" class="init">
+    $(document).ready(function() {
+           $('#lista_productos').DataTable();
+                
+    } );
+</script>
 <jsp:include page='footer.jsp'/>
