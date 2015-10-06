@@ -32,6 +32,7 @@ public class Categorias extends HttpServlet {
         
         ManejadorCategoria mc=ManejadorCategoria.getinstance();
         Map<String, String> options = new LinkedHashMap<String, String>();
+        options.put("Seleccione Categoria", "Seleccione Categoria");
         
         Iterator<Categoria> it = mc.coleccion().values().iterator();
         Categoria cat;

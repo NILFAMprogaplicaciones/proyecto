@@ -101,6 +101,7 @@ public class AgregarProductos extends HttpServlet {
         
         MP = ManejadorProducto.getinstance();
         Map<String, String> options = new LinkedHashMap<String, String>();
+        options.put("Seleccione Producto", "Seleccione Producto");
         Iterator<Producto> it = MP.getColeccion().values().iterator();
         Producto prod;
         while (it.hasNext()) {

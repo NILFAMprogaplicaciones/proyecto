@@ -242,9 +242,7 @@
 </script>
 <script type="text/javascript" class="init">
 
-    $(document).ready(function() {
-            
-            
+    $(document).ready(function() {           
             
             $.get('AgregarRestaurante', function(responseJson) {                 // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response JSON...
                     var $select = $('#selectRestaurante');                           // Locate HTML DOM element with ID "someselect".

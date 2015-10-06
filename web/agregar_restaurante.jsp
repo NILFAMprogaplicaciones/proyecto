@@ -80,6 +80,8 @@
 
     </div>
     <!-- /.container -->
+    
+<script src="http://code.jquery.com/jquery-latest.js"></script>     
 <script type="text/javascript">
     function verificarnick(){
          
@@ -189,7 +191,6 @@
         }
     }
 </script>
-
 <script>
     function listarCategorias() { 
         document.getElementById('divListaCategorias').style.display = "block";
