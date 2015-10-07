@@ -3,7 +3,7 @@
 <%@page import="java.util.Iterator"%>
 <%@page import="Logica.ManejadorUsuario"%>
 <jsp:include page='header.jsp'/>                
-
+<link href="css/datepicker.css" rel="stylesheet">
 <!-- Page Content -->
     <div class="container">
         <div class="row">
@@ -56,7 +56,7 @@
                     <div class="form-group">
                         <label for="inputFecha_nacimiento" class="control-label col-xs-2">Fecha Nacimiento</label>
                             <div class="col-xs-10">
-                                <input name="inputFecha_nacimiento"type="date" class="form-control" id="inputFecha_nacimiento" placeholder="Fecha Nacimiento" required>
+                                <input name="inputFecha_nacimiento"type="text" class="form-control" id="inputFecha_nacimiento" placeholder="Fecha Nacimiento" required>
                             </div>
                     </div>
                     <div class="form-group">
@@ -77,7 +77,7 @@
     </div>
     <!-- /.container -->
     
-    <script type="text/javascript">
+<script type="text/javascript">
       function verificarnick(){
          
         var arrayCli = [];
@@ -187,4 +187,14 @@
         }
     }
 </script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+
+<script type="text/javascript" class="init">
+    $(document).ready(function() {
+        $('#inputFecha_nacimiento').datepicker({
+            format: 'dd/mm/yyyy'
+        });    
+    });     
+</script>			
 <jsp:include page='footer.jsp'/>
