@@ -1,10 +1,5 @@
 <%@page import="Logica.*"%>
 <jsp:include page='header.jsp'/>
-<!DOCTYPE html>
-<html>
-<body>
-
-
 <%
     IControladorUsuario ICU;
     Fabrica fabrica = Fabrica.getInstance();
@@ -77,41 +72,38 @@
                     </div>
                     
                     <div class="tab-pane" id="Pedidos">
-                        <table class="table">
+                        <table id="lista_pedidos_cliente" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th class="col-md-6">Pedido</th>
+                                    <th class="col-md-4">Estado</th>
+                                    <th class="col-md-1"></th>
+                                </tr>
+                            </thead>
+
                             <tbody>
                                 <tr>
+                                    <td></td>
+                                    <td></td>
                                     <td>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
+                                        <a href="agregar_comentario.jsp">
+                                            <img src="images/Bubble 1.png" alt="">
+                                        </a>
                                     </td>
-                                    <td>Muy rico todo</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                    </td>
-                                    <td>Llego en hora</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                    </td>
-                                    <td>No se que mas inventar</td>
                                 </tr>
                             </tbody>
-                        </table>
+                     </table>  
                     </div>
                 </div>
  
         </div> 
     </div>
 </div>
-</body>
-</html>
 
+<script src="http://code.jquery.com/jquery-latest.js"></script> 
+<script>
+    $(document).ready(function() {       
+      $('#lista_pedidos_cliente').DataTable();    
+    });
+</script> 
 <jsp:include page='footer.jsp'/>

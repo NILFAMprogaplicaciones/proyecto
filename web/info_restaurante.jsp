@@ -6,13 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">               
-                    <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Buscar restaurante o comida">
-                      <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">Buscar</button>
-                      </span>
-                    </div><!-- /input-group -->           
-                <br>
+                  
                 <p class="lead">Categoria</p>                               
                 <div class="list-group" id="listaCategorias"> </div>
             </div>

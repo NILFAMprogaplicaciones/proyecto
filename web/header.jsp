@@ -39,18 +39,12 @@
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
                 <a class="navbar-brand" href="index.jsp">Quick Order</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    
+           
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categoria <span class="caret"></span></a>
                             <ul class="dropdown-menu">
@@ -85,11 +79,20 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pedido <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                              <li><a href="generar_pedido.jsp">Generar</a></li>
                               <li><a href="actualizar_pedido.jsp">Actualizar</a></li>
-                              <li><a href="#">Informaci&oacute;n</a></li>
+                              <li><a href="info_pedido.jsp">Informaci&oacute;n</a></li>
                             </ul>
-                    </li>                   
+                    </li>  
+                    
+                     <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cargar Datos <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="carga_datos.jsp">CARGA</a>  </li>
+                              <!--<li><a href="ver_individual.jsp">ver ind</a></li>
+                              <li><a href="ver_promocion.jsp">ver pro</a></li>-->
+                            </ul>
+                    </li>
+                    
                     <%
                         Cliente cli;
                             cli = Login.getUsuarioLogueado(request);
@@ -109,22 +112,26 @@
                         </li> 
                 <% }else{ %> 
                         <li class="dropdown">
-                            <a href="login.jsp" class="btn">Iniciar Sesion/</a>
+                            <a href="login.jsp" class="btn">Iniciar Sesion</a>
                         </li> 
                         <li class="dropdown">
                             <a href="agregar_cliente.jsp" class="btn">Registrarse</a>
                         </li> 
-                    <%}%> 
+                    <%}%>
                     
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cargar Datos <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="carga_datos.jsp">CARGA</a>  </li>
-                              <!--<li><a href="ver_individual.jsp">ver ind</a></li>
-                              <li><a href="ver_promocion.jsp">ver pro</a></li>-->
-                            </ul>
+                        <a href="info_restaurante.jsp" role="button" aria-haspopup="true" aria-expanded="false">Visitante</a>
                     </li>
+
                 </ul>
+              
+<!--                 <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Buscar">
+                    </div>
+                    <button type="submit" class="btn btn-default">Buscar</button>
+                  </form>                       -->
+                    
             </div>
             <!-- /.navbar-collapse -->
         </div>

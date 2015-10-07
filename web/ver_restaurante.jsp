@@ -1,5 +1,6 @@
 <%@page import="Logica.*"%>
 <jsp:include page='header.jsp'/>
+<link href="css/jquery.bootstrap-touchspin.css" rel="stylesheet"> 
 <%
     IControladorUsuario ICU;
     Fabrica fabrica = Fabrica.getInstance();
@@ -34,16 +35,26 @@
                         <table id="lista_menu" class="table table-striped table-bordered" cellspacing="0" width="100%">
                          <thead>
                              <tr>
-                                 <th>Menu</th>
-                                 <th>Menu</th>
+                                 <th class="col-md-8">Menu</th>
+                                 <th>Cantidad</th>
+                                 <th class="col-md-0.5"></th>
                              </tr>
                          </thead>
 
                          <tbody>
-                           
+                            <tr>
+                                <td>texto menu</td>
+                                <td><input id="cantidad" type="text" value="" name="cantidad" ></td>
+                                <td>
+                                <!--aca habria que programar cuando hace click
+                                    en el carrito se levante un cartel que diga que
+                                    se inserto el producto al pedido
+                                -->
+                                    <img src="images/Cart.png" alt="">
+                                </td>
+                            </tr>
                          </tbody>
                       </table>  
-                        
                     </div>
                     
                     <div class="tab-pane" id="Informacion">
@@ -111,10 +122,18 @@
     </div>
 </div>
                                 
- <script src="http://code.jquery.com/jquery-latest.js"></script>                                
+ <script src="http://code.jquery.com/jquery-latest.js"></script>
+ <script src="js/jquery.bootstrap-touchspin.js"></script>
  <script type="text/javascript" class="init">
     $(document).ready(function() {
            $('#lista_menu').DataTable();               
     } );
+</script>
+<script>
+    $("input[name='cantidad']").TouchSpin({
+      verticalbuttons: true,
+      verticalupclass: 'glyphicon glyphicon-plus',
+      verticaldownclass: 'glyphicon glyphicon-minus'
+    });
 </script>
 <jsp:include page='footer.jsp'/>
