@@ -1,16 +1,14 @@
+<%@page import="Auxiliar.Auxiliar"%>
 <%@page import="Logica.*"%>
 <jsp:include page='header.jsp'/>
 <%
-    IControladorUsuario ICU;
-    Fabrica fabrica = Fabrica.getInstance();
-    ICU = fabrica .getIControladorUsuario();
-    DataCliente dc=ICU.Caso_Ver_Cliente(request.getParameter("nickname"));
+    DataCliente dc=Auxiliar.getCliente(request.getParameter("nickname"));
 %> 
 
 <div class="container">
     <div class="col-sm-4 col-lg-4 col-md-4">
         <div class="thumbnail">
-            <img src="images/usuario.png" alt="">
+            <img src="<%= dc.getDireccionFoto()%>" alt="<%= dc.getnombre()%>">
         </div>
     </div>
     <div class="col-sm-6 col-lg-6 col-md-6">

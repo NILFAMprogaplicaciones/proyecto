@@ -54,7 +54,7 @@ public class AgregarProductos extends HttpServlet {
             
             File imagen=new File("images/producto.jpg");
             
-            DataIndividual DI = new DataIndividual(inputName,inputDescripcion,restaurante,precio,imagen);
+            DataIndividual DI = new DataIndividual(inputName,inputDescripcion,restaurante,precio,imagen,"images/Productos/"+inputName+".png");
 
             ICP.AltaProductoIndividual(DI);
 
@@ -86,7 +86,7 @@ public class AgregarProductos extends HttpServlet {
             
             File foto=new File("images/producto.jpg");
             
-            DataPromocion DP=new DataPromocion(restaurante,Name,Descripcion,precioTotal, activa,descuento,ColProducto,foto);
+            DataPromocion DP=new DataPromocion(restaurante,Name,Descripcion,precioTotal, activa,descuento,ColProducto,foto,"images/Productos/"+Name+".png");
             
             Fabrica fabrica = Fabrica.getInstance();
             ICP = fabrica.getIControladorProducto();

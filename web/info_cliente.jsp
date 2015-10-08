@@ -1,3 +1,4 @@
+<%@page import="Auxiliar.Auxiliar"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.Map"%>
 <%@page import="java.util.LinkedHashMap"%>
@@ -10,21 +11,20 @@
 
                 <div class="row" id="clientes">  
                 <% 
-                    ManejadorUsuario MU=ManejadorUsuario.getinstance();
-                    Iterator<Usuario> it = MU.getColeccionClientes().values().iterator();
-                    Usuario u;
+                    Iterator<DataCliente> it = Auxiliar.getColeccionDataCliente().values().iterator();
+                    DataCliente dc;
                     
                 %>
 		
                 <%
                     while (it.hasNext()){
-                    u=it.next();
+                    dc=it.next();
                 %>	
                 <div class="col-sm-4 col-lg-4 col-md-4">
                     <div class="thumbnail">
-                        <img src="images/usuario.png" alt="">
+                        <img src="<%=dc.getDireccionFoto()%>" alt="<%=dc.getnombre()%>">
                         <div class="caption">
-                            <h4><a href="ver_cliente.jsp?nickname=<%= u.getnickname() %>"> <%= u.getnickname() %> </a>
+                            <h4><a href="ver_cliente.jsp?nickname=<%= dc.getnickname() %>"> <%= dc.getnickname() %> </a>
                             </h4>
                             
                         </div>

@@ -1,3 +1,4 @@
+<%@page import="Auxiliar.Auxiliar"%>
 <%@page import="Logica.*"%>
 <%@page import="java.util.Iterator"%>
 <jsp:include page='header.jsp'/>                
@@ -22,27 +23,37 @@
                 </thead>
 
                 <tbody>
-                    <% 
-                        ManejadorUsuario MU=ManejadorUsuario.getinstance();
-                        Iterator<Restaurante> it = MU.getColeccionRestaurante().values().iterator();
-                        Restaurante res;
-                    %>
-                    <%
-                        while (it.hasNext()){
-                        res=it.next();
-                            if (res.ExisteCategoria(request.getParameter("categoria"))){
-                    %>
+                     <% 
+                        Iterator<DataRestaurante> it = Auxiliar.getColeccionDataRestaurante().values().iterator();
+                        DataRestaurante dr;
+                   
+                        if(request.getParameter("categoria")==null){
+                            while (it.hasNext()){
+                                dr=it.next();
+                    %>   
+                        <tr>
+                           <td>
+                                <a href="ver_restaurante.jsp?nicknamerestaurante=<%=dr.getnickname()%>"> <%=dr.getnickname()%></a>
+                            </td>
+                            <td><%=dr.getdireccion()%></td>
+                        </tr>
+                      <%    } 
+                        }else {
+                            while (it.hasNext()){
+                                dr=it.next();
+                                if (dr.ExisteCategoria(request.getParameter("categoria"))){
+                      %>
                             <tr>
                                 <td>
-                                    <a href="ver_restaurante.jsp?nicknamerestaurante=<%=res.getnickname()%>"> <%=res.getnickname()%></a>
+                                    <a href="ver_restaurante.jsp?nicknamerestaurante=<%=dr.getnickname()%>"> <%=dr.getnickname()%></a>
                                 </td>
-                                <td><%=res.getdireccion()%></td>
+                                <td><%=dr.getdireccion()%></td>
                             </tr>
                     <% 
                             }
                         }
-                    %>
-                    
+                    }
+                    %>    
                 </tbody>
              </table>  
             </div>

@@ -1,3 +1,4 @@
+<%@page import="Auxiliar.Auxiliar"%>
 <%@page import="Logica.Fabrica"%>
 <%@page import="Logica.DataCliente"%>
 <%@page import="java.io.File"%>
@@ -5,16 +6,7 @@
 <%@page import="Logica.*"%>
 <jsp:include page='header.jsp'/>  
 <%
-    IControladorUsuario ICU;
-    Fecha fecha=new Fecha(1,1,1);
-    File foto1 = new File("images/usuario.png");
-
-    DataCliente DC = new DataCliente("Grupo3","Grupo3","Grupo3","Grupo3@Grupo3.com.uy","Grupo3","Grupo3",fecha,foto1);
-
-    Fabrica fabrica = Fabrica.getInstance();
-    ICU = fabrica.getIControladorUsuario();
-
-    ICU.Caso_Registro_Cliente(DC);                    
+    Auxiliar.Grupo3();                 
 %>
     <div class="container">
         <div class="row">
@@ -30,7 +22,7 @@
                   <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Contrase&nacute;a" required>
                   <br><br>
                   <div class="col-lg-8 col-lg-offset-3">  
-                    <button class="btn" type="submit"Entrar>Entrar</button>
+                    <button class="btn" type="submit">Entrar</button>
                     <a href="index.jsp"><input type="button" class="btn" value="Cancelar" /></a>
                   </div>   
                 </form>
