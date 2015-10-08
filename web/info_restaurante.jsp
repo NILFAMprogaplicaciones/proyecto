@@ -45,7 +45,7 @@
                       %>
                             <tr>
                                 <td>
-                                    <a href="ver_restaurante.jsp?nicknamerestaurante=<%=dr.getnickname()%>"> <%=dr.getnickname()%></a>
+                                    <a href="ver_restaurante.jsp?nicknamerestaurante=<%=dr.getnickname()%>"> <%=dr.getnombre()%></a>
                                 </td>
                                 <td><%=dr.getdireccion()%></td>
                             </tr>
