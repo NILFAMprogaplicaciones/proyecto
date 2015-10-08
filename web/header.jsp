@@ -69,6 +69,14 @@
                               <li><a href="ver_promocion.jsp">ver pro</a></li>-->
                             </ul>
                     </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Informacion Productos<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="info_producto.jsp">Info Productos</a>  </li>
+                              <!--<li><a href="ver_individual.jsp">ver ind</a></li>
+                              <li><a href="ver_promocion.jsp">ver pro</a></li>-->
+                            </ul>
+                    </li>
                     
                     <%
                         Cliente cli;
