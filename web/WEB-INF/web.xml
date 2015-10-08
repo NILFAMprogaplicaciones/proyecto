@@ -36,6 +36,10 @@
         <servlet-name>CargaDeDatos</servlet-name>
         <servlet-class>Datos_Cargados.CargaDeDatos</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Busqueda</servlet-name>
+        <servlet-class>Restaurantes.Busqueda</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AgregarCliente</servlet-name>
         <url-pattern>/AgregarCliente</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>CargaDeDatos</servlet-name>
         <url-pattern>/CargaDeDatos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Busqueda</servlet-name>
+        <url-pattern>/Busqueda</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

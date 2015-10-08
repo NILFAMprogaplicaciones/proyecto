@@ -43,47 +43,31 @@
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                
+                <form class="form-search navbar-form navbar-left" method="get" action="Busqueda">
+                    <div class="input-append">
+                        <input type="text" class="form-control" name="filtro" placeholder="Buscar restaurante o comida">
+                        <button type="submit" class="add-on"><i class="glyphicon-save"></i></button>
+                    </div>
+                </form>
+                <!--
+                <form class="form-search navbar-form navbar-left" method="get" action="Busqueda">
+                    <div class="input-group">
+                      <input type="text" class="form-control" name="filtro" placeholder="Buscar restaurante o comida">
+                        <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">Buscar</button>
+                        </span>
+                    </div>
+                </form> 
+                -->
                 <ul class="nav navbar-nav">
-           
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categoria <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                              <li><a href="agregar_categoria.jsp">Agregar</a></li>
-                            </ul>
-                    </li>
-                    
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Restaurante <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                               <li><a href="agregar_restaurante.jsp">Agregar</a></li>
                               <li><a href="info_restaurante.jsp">Informaci&oacute;n</a></li>
                             </ul>
-                    </li>
-    
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cliente <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                              <li><a href="agregar_cliente.jsp">Agregar</a></li>
-                              <li><a href="info_cliente.jsp">Informaci&oacute;n</a></li>
-                            </ul>
-                    </li>
-                    
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Producto <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                              <li><a href="agregar_producto.jsp">Agregar</a></li>
-                              <li><a href="info_producto.jsp">Informaci&oacute;n</a></li>
-                            </ul>
-                    </li>
-                    
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pedido <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                              <li><a href="actualizar_pedido.jsp">Actualizar</a></li>
-                              <li><a href="info_pedido.jsp">Informaci&oacute;n</a></li>
-                            </ul>
-                    </li>  
-                    
+                    </li>             
                      <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cargar Datos <span class="caret"></span></a>
                             <ul class="dropdown-menu">
@@ -118,20 +102,14 @@
                             <a href="agregar_cliente.jsp" class="btn">Registrarse</a>
                         </li> 
                     <%}%>
-                    
-                    <li class="dropdown">
-                        <a href="info_restaurante.jsp" role="button" aria-haspopup="true" aria-expanded="false">Visitante</a>
-                    </li>
-
                 </ul>
               
-<!--                 <form class="navbar-form navbar-left" role="search">
+                 <!--<form class="navbar-form navbar-left" role="search">
                     <div class="form-group">
                       <input type="text" class="form-control" placeholder="Buscar">
                     </div>
                     <button type="submit" class="btn btn-default">Buscar</button>
-                  </form>                       -->
-                    
+                  </form> -->                                    
             </div>
             <!-- /.navbar-collapse -->
         </div>
