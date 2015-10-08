@@ -1,3 +1,4 @@
+<%@page import="java.util.Iterator"%>
 <%@page import="Logica.*"%>
 <jsp:include page='header.jsp'/>
 <link href="css/jquery.bootstrap-touchspin.css" rel="stylesheet"> 
@@ -5,7 +6,10 @@
     IControladorUsuario ICU;
     Fabrica fabrica = Fabrica.getInstance();
     ICU = fabrica .getIControladorUsuario();
+    ManejadorProducto MP=ManejadorProducto.getinstance();
     DataRestaurante dc=ICU.Caso_Ver_Restaurante(request.getParameter("nicknamerestaurante"));
+    Iterator<Producto> it = MP.getColeccionProductos(dc.getnickname()).values().iterator();
+    Producto p;
 %> 
 <div class="container">
     <div class="col-sm-4 col-lg-4 col-md-4">
@@ -40,10 +44,26 @@
                                  <th class="col-md-0.5"></th>
                              </tr>
                          </thead>
-
                          <tbody>
+                            <%
+                                while (it.hasNext()){
+                                p=it.next();
+                            %>
                             <tr>
-                                <td>texto menu</td>
+                                <td>
+                                  <%
+                                      if (p.getClass().getSimpleName().equals("Individual")){
+                                  %>
+                                          <a href="ver_individual.jsp?producto=<%=p.getnombre()%>"> <%=p.getnombre()%></a>                                        
+                                  <%
+                                      }else{
+                                  %>
+                                      <a href="ver_promocion.jsp?producto=<%=p.getnombre()%>"> <%=p.getnombre()%></a>
+
+                                  <%
+                                      }
+                                  %>
+                                </td>
                                 <td><input id="cantidad" type="text" value="" name="cantidad" ></td>
                                 <td>
                                 <!--aca habria que programar cuando hace click
@@ -53,6 +73,9 @@
                                     <img src="images/Cart.png" alt="">
                                 </td>
                             </tr>
+                                <% 
+                                    }
+                                %>
                          </tbody>
                       </table>  
                     </div>
