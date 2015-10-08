@@ -47,7 +47,7 @@
                 <form class="form-search navbar-form navbar-left" method="get" action="Busqueda">
                     <div class="input-append">
                         <input type="text" class="form-control" name="filtro" placeholder="Buscar restaurante o comida">
-                        <button type="submit" class="add-on"><i class="glyphicon-save"></i></button>
+                        <button type="submit" class="add-on">Buscar</button>
                     </div>
                 </form>
                 <!--
@@ -60,14 +60,7 @@
                     </div>
                 </form> 
                 -->
-                <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Restaurante <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                              <li><a href="agregar_restaurante.jsp">Agregar</a></li>
-                              <li><a href="info_restaurante.jsp">Informaci&oacute;n</a></li>
-                            </ul>
-                    </li>             
+                <ul class="nav navbar-nav">           
                      <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cargar Datos <span class="caret"></span></a>
                             <ul class="dropdown-menu">

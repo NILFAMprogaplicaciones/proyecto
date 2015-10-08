@@ -6,20 +6,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">               
-                <form class="form-search" method="get" action="Busqueda">
-                    <div class="input-group">
-                      <input type="text" class="form-control" name="filtro" placeholder="Buscar restaurante o comida">
-                        <span class="input-group-btn">
-                        <button class="btn btn-default" type="submit">Buscar</button>
-                        </span>
-                    </div>
-                </form>          
+         
                 <br>
                 <p class="lead">Categoria</p>                               
                 <div class="list-group" id="listaCategorias"> </div>
             </div>
             <div class="col-md-9">
-                
+                    <br>
              <table id="lista_restaurantes" class="table table-striped table-bordered" cellspacing="0" width="100%">
                 <thead>
                     <tr>

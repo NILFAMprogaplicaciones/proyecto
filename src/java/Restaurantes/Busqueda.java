@@ -24,15 +24,22 @@ public class Busqueda extends HttpServlet {
         Restaurante res;
         
         String filtro = request.getParameter("filtro");
-        
-        while (it.hasNext()) {
-            res=it.next();//en cat tenemos el valor
-            if(res.ExisteCategoria(filtro) | res.verificarproducto(filtro) | res.getnombre().equals(filtro)){
-                ListaRestaurante.add(res);   
+        if(filtro==null){
+            while (it.hasNext()) {
+              res=it.next();//en cat tenemos el valor
+              ListaRestaurante.add(res);
             }
-        }
-       request.setAttribute("ListaRestaurante", ListaRestaurante);
-       request.getRequestDispatcher("/ResultadoBusqueda.jsp").forward(request, response);
+        }else{
+            while (it.hasNext()) {
+                res=it.next();//en cat tenemos el valor
+                if(res.ExisteCategoria(filtro) | res.verificarproducto(filtro) | res.getnombre().equals(filtro)){
+                    ListaRestaurante.add(res);   
+                }
+            }
+       
+        }   
+        request.setAttribute("ListaRestaurante", ListaRestaurante);
+        request.getRequestDispatcher("/ResultadoBusqueda.jsp").forward(request, response);
     }  
     
     static public List Buscar(String filtro){

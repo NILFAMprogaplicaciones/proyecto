@@ -32,7 +32,7 @@
                                     <div class="caption">
                                         <h4><a href="ver_restaurante.jsp?nicknamerestaurante=<%=res.getnickname()%>"> <%=res.getnickname()%></a></h4>
                                     </div>
-                                    <img class="img-circle" src="images/restaurante.png" alt="">                                    
+                                    <img class="img-rounded" src="images/restaurante.png" alt="">                                    
                                 </div>
                              </div>                           
                         </td>
