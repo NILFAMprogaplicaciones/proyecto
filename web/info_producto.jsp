@@ -1,3 +1,4 @@
+<%@page import="Auxiliar.Auxiliar"%>
 <%@page import="Logica.Producto"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.Map"%>
@@ -5,10 +6,8 @@
 <jsp:include page='header.jsp'/>       
 
 <%
-    ManejadorProducto MP=ManejadorProducto.getinstance();
-    Iterator<Producto> it = MP.getColeccion().values().iterator();
+    Iterator<Producto> it = Auxiliar.getColeccionesSistema("productos").values().iterator();
     Producto p;
-    
 %>  
 <!-- Page Content -->
     <div class="container">

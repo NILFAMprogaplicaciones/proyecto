@@ -1,3 +1,4 @@
+<%@page import="Auxiliar.Auxiliar"%>
 <%@page import="Logica.*"%>
 <%@page import="java.util.Iterator"%>
 <jsp:include page='header.jsp'/>                
@@ -23,9 +24,9 @@
 
                 <tbody>
                     <% 
-                        ManejadorUsuario MU=ManejadorUsuario.getinstance();
-                        Iterator<Restaurante> it = MU.getColeccionRestaurante().values().iterator();
-                        Restaurante res;
+                        
+                        Iterator<DataRestaurante> it = Auxiliar.getColeccionDataRestaurante().values().iterator();
+                        DataRestaurante res;
                     %>
                     <%
                         while (it.hasNext()){

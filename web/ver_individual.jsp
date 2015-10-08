@@ -1,3 +1,4 @@
+<%@page import="Auxiliar.Auxiliar"%>
 <%@page import="Logica.Pedido"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="Logica.ManejadorPedido"%>
@@ -9,17 +10,14 @@
 <jsp:include page='header.jsp'/>   
 
     <%
-        IControladorProducto ICP;
-        Fabrica fabrica = Fabrica.getInstance();
-        ICP = fabrica .getIControladorProducto();
-        DataIndividual DI=ICP.Caso_Ver_Individual(request.getParameter("producto")); 
+        DataIndividual DI=Auxiliar.getIndividual(request.getParameter("producto")); 
     %> 
         
     <div class="container">
         <div class="row">
             <div class="col-sm-2 col-lg-2 col-md-2">
                 <div class="thumbnail">
-                    <img src="images/producto.jpg" alt="">
+                    <img src="<%=DI.getDireccionFoto()%>" alt="<%=DI.getDireccionFoto()%>">
                 </div>    
             </div>
             <div class="col-sm-10 col-lg-10 col-md-10">

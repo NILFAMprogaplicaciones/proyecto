@@ -1,3 +1,4 @@
+<%@page import="Auxiliar.Auxiliar"%>
 <%@page import="Logica.ManejadorPedido"%>
 <%@page import="Logica.Pedido"%>
 <%@page import="java.util.Iterator"%>
@@ -10,10 +11,7 @@
 <jsp:include page='header.jsp'/>   
     
     <%
-        IControladorProducto ICP;
-        Fabrica fabrica = Fabrica.getInstance();
-        ICP = fabrica .getIControladorProducto();
-        DataPromocion DP=ICP.Caso_Ver_Promocion(request.getParameter("producto")); 
+        DataPromocion DP=Auxiliar.getPromocion(request.getParameter("producto")); 
     %> 
     <div class="container">
         <div class="row">
