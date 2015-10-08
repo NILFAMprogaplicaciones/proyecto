@@ -139,4 +139,11 @@ public class Auxiliar extends HttpServlet {
         colDevo=MP.getPedidos_Producto(nombre);
         return colDevo;
     }
+    
+    static public Map getColeccionProductos(String nombre){
+        Map colDevo;
+        ManejadorProducto MP=ManejadorProducto.getinstance();
+        colDevo=MP.getColeccionProductos(nombre);
+        return colDevo;
+    }
 }

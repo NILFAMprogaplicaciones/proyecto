@@ -1,14 +1,12 @@
+<%@page import="Auxiliar.Auxiliar"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="Logica.*"%>
 <jsp:include page='header.jsp'/>
 <link href="css/jquery.bootstrap-touchspin.css" rel="stylesheet"> 
 <%
-    IControladorUsuario ICU;
-    Fabrica fabrica = Fabrica.getInstance();
-    ICU = fabrica .getIControladorUsuario();
-    ManejadorProducto MP=ManejadorProducto.getinstance();
-    DataRestaurante dc=ICU.Caso_Ver_Restaurante(request.getParameter("nicknamerestaurante"));
-    Iterator<Producto> it = MP.getColeccionProductos(dc.getnickname()).values().iterator();
+    DataRestaurante dc=Auxiliar.getRestaurante(request.getParameter("nicknamerestaurante"));
+   
+    Iterator<Producto> it = Auxiliar.getColeccionProductos(dc.getnickname()).values().iterator();
     Producto p;
 %> 
 <div class="container">
