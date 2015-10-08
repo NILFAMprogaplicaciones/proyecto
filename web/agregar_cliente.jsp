@@ -1,3 +1,4 @@
+<%@page import="Auxiliar.Auxiliar"%>
 <%@page import="Logica.Usuario"%>
 <%@page import="Logica.Cliente"%>
 <%@page import="java.util.Iterator"%>
@@ -8,7 +9,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-4">
-                <form method="POST" action="AgregarCliente"class="form-horizontal" id="clienteFRM" >
+                <form enctype="multipart/form-data" method="POST" action="AgregarCliente"class="form-horizontal" id="clienteFRM" >
                     <div class="form-group">
                         <label for="inputNickname" class="control-label col-xs-2">Nickname</label>
                             <div class="col-xs-10">
@@ -44,8 +45,8 @@
                     <div class="form-group">
                         <label for="inputConfirmContrasena" class="control-label col-xs-2"> Confirmar Contrase&ntilde;a</label>
                             <div class="col-xs-10">
-                                <input name="inputConfirmContrasena" type="password" class="form-control" id="inputConfirmContrasena" placeholder="Confirmar Contrase&ntilde;a" required>
-                            </div>
+                                <input onblur="validarcontraseña()" name="inputConfirmContrasena" type="password" class="form-control" id="inputConfirmContrasena" placeholder="Confirmar Contrase&ntilde;a" required>
+                                <h4  id="comprobarcontraseña"> </h4></div>
                     </div>
                     <div class="form-group">
                         <label for="inputApellido" class="control-label col-xs-2">Apellido</label>
@@ -85,38 +86,44 @@
         var nick = document.getElementById("inputNickname").value;
 
         <%
-            ManejadorUsuario mu=ManejadorUsuario.getinstance();
-            Iterator<Usuario> ite = mu.obtenercoleccion().values().iterator();
+            
+            
+            Iterator<Usuario> ite = Auxiliar.getColeccionesSistema("usuarios").values().iterator();
             Usuario ob;
             while (ite.hasNext()){
             ob=ite.next();
+            
         %>
                 arrayCli.push("<%= ob.getnickname()%>");
         <%
             }
         %>
-            while(pos <= arrayCli.length){
-                if(arrayCli[pos]==nick){
-                    document.getElementById("comprobarnick").innerHTML = '<img src="images/Delete.png" class="circle-img" alt=""/> Nickname ya tomado'; 
-                    pos = arrayCli.length + 1;
-                }else if(arrayCli[pos]==null){
-                    document.getElementById("comprobarnick").innerHTML = '<img src="images/Apply.png" class="circle-img" alt=""/> Nickname correcto'; 
-                    pos = arrayCli.length + 1;
-                }else{
-                    ++pos;
-                }   
-        }
-         
-      }  
-      function verificarcorreo(){
+            if(nick==""){
+                    document.getElementById("comprobarnick").innerHTML = '<img src="images/Delete.png" class="circle-img" alt=""/> Nickname vacio';
+            }else{   
+                while(pos <= arrayCli.length){
+
+                    if(arrayCli[pos]==nick){
+                        document.getElementById("comprobarnick").innerHTML = '<img src="images/Delete.png" class="circle-img" alt=""/> Nickname ya tomado'; 
+                        pos = arrayCli.length + 1;
+                    }else if(arrayCli[pos]==null){
+                        document.getElementById("comprobarnick").innerHTML = '<img src="images/Apply.png" class="circle-img" alt=""/> Nickname correcto'; 
+                        pos = arrayCli.length + 1;
+                    }else{
+                        ++pos;
+                    }   
+                }
+            } 
+    }  
+    function verificarcorreo(){
           
-          var arrayCorreo = [];
-          var posicion = 0;
-          var correo = document.getElementById("inputEmail").value;
-          
-          <%
-            ManejadorUsuario M=ManejadorUsuario.getinstance();
-            Iterator<Usuario> iter = M.obtenercoleccion().values().iterator();
+        var arrayCorreo = [];
+        var posicion = 0;
+        var correo = document.getElementById("inputEmail").value;
+
+        <%
+            
+            Iterator<Usuario> iter = Auxiliar.getColeccionesSistema("usuarios").values().iterator();
             Usuario elemento;
             while (iter.hasNext()){
             elemento=iter.next();
@@ -125,21 +132,39 @@
         <%
             }
         %>
-            while(posicion <= arrayCorreo.length){
-                if(arrayCorreo[posicion]==correo){
-                    document.getElementById("comprobarcorreo").innerHTML = '<img src="images/Delete.png" class="circle-img" alt=""/> Email ya tomado'; 
-                    posicion = arrayCorreo.length + 1;
-                }
-                else if(arrayCorreo[posicion]==null){
-                    document.getElementById("comprobarcorreo").innerHTML = '<img src="images/Apply.png" class="circle-img" alt=""/> Email correcto'; 
-                    posicion = arrayCorreo.length + 1;
+            if(correo==""){
+                document.getElementById("comprobarcorreo").innerHTML = '<img src="images/Delete.png" class="circle-img" alt=""/> Email vacio';
+            }else{
+                while(posicion <= arrayCorreo.length){
+                    if(arrayCorreo[posicion]==correo){
+                        document.getElementById("comprobarcorreo").innerHTML = '<img src="images/Delete.png" class="circle-img" alt=""/> Email ya tomado'; 
+                        posicion = arrayCorreo.length + 1;
+                    }
+                    else if(arrayCorreo[posicion]==null){
+                        document.getElementById("comprobarcorreo").innerHTML = '<img src="images/Apply.png" class="circle-img" alt=""/> Email correcto'; 
+                        posicion = arrayCorreo.length + 1;
 
-                }else{
-                    ++posicion;
+                    }else{
+                        ++posicion;
+                    }
                 }
             }
            
-      }
+    }
+     
+    function validarcontraseña(){
+        var contraseña=document.getElementById("inputContrasena").value;
+        var conficontraseña=document.getElementById("inputConfirmContrasena").value;
+        if(contraseña==""||conficontraseña==""){
+            document.getElementById("comprobarcontraseña").innerHTML = '<img src="images/Delete.png" class="circle-img" alt=""/> Debe ingresar una contraseña';
+        }else{
+            if(contraseña!=conficontraseña){
+                document.getElementById("comprobarcontraseña").innerHTML = '<img src="images/Delete.png" class="circle-img" alt=""/> Verifique la contraseña';
+            }else{
+                document.getElementById("comprobarcontraseña").innerHTML = '<img src="images/Apply.png" class="circle-img" alt=""/> Contraseña correcta';
+            }
+        }
+    }
     function validarcliente(){
         
         var arrayClientes = [];
@@ -147,10 +172,16 @@
         var posicion = 0;
         var elemento = document.getElementById("inputNickname").value;
         var correo = document.getElementById("inputEmail").value;
+        var nombre = document.getElementById("inputNombre").value;
+        var direccion = document.getElementById("inputDireccion").value;
+        var contraseña=document.getElementById("inputContrasena").value;
+        var conficontraseña=document.getElementById("inputConfirmContrasena").value;
+        var apellido=document.getElementById("inputApellido").value;
+        var fecha=document.getElementById("inputFecha_nacimiento").value;
         //LLENO MI ARRAYCLIENTES CON LOS NOMBRES DE TODOS LOS CLIENTES DEL SISTEMA
         <%
-            ManejadorUsuario MU=ManejadorUsuario.getinstance();
-            Iterator<Usuario> it = MU.obtenercoleccion().values().iterator();
+            
+            Iterator<Usuario> it = Auxiliar.getColeccionesSistema("usuarios").values().iterator();
             Usuario objeto;
             while (it.hasNext()){
             objeto=it.next();
@@ -160,28 +191,52 @@
         <%
             }
         %>
-        
-        if(arrayClientes[0]==null){
-            
-            window.alert("Cliente Agregado");
-            document.getElementById("clienteFRM").submit();//mando submit
-        }else{ 
-            while(posicion <= arrayClientes.length){
-                if(arrayClientes[posicion]==elemento || arrayCorreo[posicion]==correo){
-                    if(arrayClientes[posicion]==elemento){
-                        window.alert("Nickname ya tomado");
-                        posicion = arrayClientes.length + 1;
-                    }else{
-                        window.alert("Correo ya tomado");
-                        posicion = arrayClientes.length + 1;
-                    }
-                }
-                else if(arrayClientes[posicion]==null){
-                    window.alert("Cliente Agregado");
-                    document.getElementById("clienteFRM").submit();
+        if(elemento==""){
+            window.alert("Nickname incorrecto");
+        }
+        else if(correo==""){
+            window.alert("Email incorrecto");
+        }
+        else if(nombre==""){
+            window.alert("Nombre incorrecto");
+        }
+        else if(direccion==""){
+            window.alert("Direcion incorrecta");
+        }
+        else if(contraseña==""){
+            window.alert("Contraseña incorrecta");
+        }
+        else if(conficontraseña==""){
+            window.alert("Contraseña incorrecta");
+        }
+        else if(apellido==""){
+            window.alert("Apellido incorrecta");
+        }
+        else if(fecha==""){
+            window.alert("Fecha incorrecta");
+        }else{
+            if(arrayClientes[0]==null){
 
-                }else{
-                    ++posicion;
+                window.alert("Cliente Agregado");
+                document.getElementById("clienteFRM").submit();//mando submit
+            }else{ 
+                while(posicion <= arrayClientes.length){
+                    if(arrayClientes[posicion]==elemento || arrayCorreo[posicion]==correo){
+                        if(arrayClientes[posicion]==elemento){
+                            window.alert("Nickname ya tomado");
+                            posicion = arrayClientes.length + 1;
+                        }else{
+                            window.alert("Correo ya tomado");
+                            posicion = arrayClientes.length + 1;
+                        }
+                    }
+                    else if(arrayClientes[posicion]==null){
+                        window.alert("Cliente Agregado");
+                        document.getElementById("clienteFRM").submit();
+
+                    }else{
+                        ++posicion;
+                    }
                 }
             }
         }
