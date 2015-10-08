@@ -30,7 +30,7 @@
                             <div class="col-sm-2 col-lg-2 col-md-2">
                                 <div class="thumbnail">
                                     <div class="caption">
-                                        <h4><a href="ver_restaurante.jsp?nicknamerestaurante=<%=res.getnickname()%>"> <%=res.getnickname()%></a></h4>
+                                        <h4><a href="ver_restaurante.jsp?nicknamerestaurante=<%=res.getnickname()%>"> <%=res.getnombre()%></a></h4>
                                     </div>
                                     <img class="img-rounded" src="images/restaurante.png" alt="">                                    
                                 </div>

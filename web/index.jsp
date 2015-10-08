@@ -34,7 +34,7 @@
                     %>    
                                 <tr>
                                     <td>
-                                        <a href="ver_restaurante.jsp?nicknamerestaurante=<%=res.getnickname()%>"> <%=res.getnickname()%></a>
+                                        <a href="ver_restaurante.jsp?nicknamerestaurante=<%=res.getnickname()%>"> <%=res.getnombre()%></a>
                                     </td>
                                     <td><%=res.getdireccion()%></td>
                                 </tr>
@@ -43,7 +43,7 @@
                             %>
                                     <tr>
                                         <td>
-                                            <a href="ver_restaurante.jsp?nicknamerestaurante=<%=res.getnickname()%>"> <%=res.getnickname()%></a>
+                                            <a href="ver_restaurante.jsp?nicknamerestaurante=<%=res.getnickname()%>"> <%=res.getnombre()%></a>
                                         </td>
                                         <td><%=res.getdireccion()%></td>
                                     </tr>
