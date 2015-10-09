@@ -1,3 +1,5 @@
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.Map"%>
 <%@page import="Auxiliar.Auxiliar"%>
 <%@page import="Logica.*"%>
 <jsp:include page='header.jsp'/>
@@ -80,15 +82,31 @@
                             </thead>
 
                             <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <a href="agregar_comentario.jsp">
-                                            <img src="images/Bubble 1.png" alt="">
-                                        </a>
-                                    </td>
-                                </tr>
+                                <%
+                                    
+                                    Iterator<DataPedido> it = Auxiliar.getColeccionPedido().values().iterator();
+                                    DataPedido objeto;
+                                    while (it.hasNext()) {
+                                        objeto=it.next();
+                                        if(objeto.getCliente().getnickname().equals(dc.getnickname())){
+                                %>
+                                            <tr>
+                                                <td><%=objeto.getId()%></td>
+                                                <td><%=objeto.getEstado()%></td>
+                                                <%
+                                                    if(objeto.getEstado().equals(Estado.RECIBIDO)){
+                                                %>
+                                                        <td> <a href="agregar_comentario.jsp"> <img src="images/Bubble 1.png" alt=""> </a> </td>
+                                                <%
+                                                    }else{
+                                                %>
+                                                        <td> </td>
+                                            </tr>
+                                <%
+                                                    }
+                                        }
+                                    }
+                                %>
                             </tbody>
                      </table>  
                     </div>

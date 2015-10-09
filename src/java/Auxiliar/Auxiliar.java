@@ -4,16 +4,20 @@ package Auxiliar;
 import Logica.Cliente;
 import Logica.DataCliente;
 import Logica.DataIndividual;
+import Logica.DataPedido;
 import Logica.DataPromocion;
 import Logica.DataRestaurante;
+import Logica.Estado;
 import Logica.Fabrica;
 import Logica.Fecha;
+import Logica.IControladorPedido;
 import Logica.IControladorProducto;
 import Logica.IControladorUsuario;
 import Logica.ManejadorCategoria;
 import Logica.ManejadorPedido;
 import Logica.ManejadorProducto;
 import Logica.ManejadorUsuario;
+import Logica.Pedido;
 import Logica.Restaurante;
 import Logica.Usuario;
 import java.io.File;
@@ -145,5 +149,23 @@ public class Auxiliar extends HttpServlet {
         ManejadorProducto MP=ManejadorProducto.getinstance();
         colDevo=MP.getColeccionProductos(nombre);
         return colDevo;
+    }
+    static public Map getColeccionPedido(){
+        IControladorPedido ICP;
+        Fabrica fabrica = Fabrica.getInstance();
+        ICP = fabrica .getIControladorPedido();
+        Map<Integer,DataPedido> colDataPedido=new HashMap<>();
+        
+        Iterator<Pedido> it = ICP.getColeccionPedido().values().iterator();
+        Pedido p;
+        while (it.hasNext()){
+                    p=it.next();
+                    DataPedido dp=new DataPedido(p.getnum(), p.getfecha(), p.getPrecioTotal(), p.getEstado(), p.getCliente(), 
+                            p.getColeccionProductos(), p.getRestaurante(), p.getTipoAP());
+                    
+                    colDataPedido.put(dp.getId(), dp);
+        }
+        return colDataPedido;
+        
     }
 }

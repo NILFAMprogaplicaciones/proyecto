@@ -47,7 +47,7 @@
                 <form class="form-search navbar-form navbar-left" method="get" action="Busqueda">
                     <div class="input-append">
                         <input type="text" class="form-control" name="filtro" placeholder="Buscar restaurante o comida">
-                        <button type="submit" class="add-on">Buscar</button>
+                        <button type="submit" class="btn">Buscar</button>
                     </div>
                 </form>
                 <!--
