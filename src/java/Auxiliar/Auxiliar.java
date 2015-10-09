@@ -31,8 +31,11 @@ public class Auxiliar extends HttpServlet {
 
     static public Map getColeccionDataCliente() {
         Map<String,DataCliente> colDataCliente=new HashMap<>();
-        ManejadorUsuario mu=ManejadorUsuario.getinstance();
-        Iterator<Usuario> it = mu.getColeccionClientes().values().iterator();
+        IControladorUsuario ICU;
+        Fabrica fabrica = Fabrica.getInstance();
+        ICU = fabrica.getIControladorUsuario();
+        //ManejadorUsuario mu=ManejadorUsuario.getinstance();
+        Iterator<Usuario> it = ICU.getColeccionClientes().values().iterator();
         Cliente c;
         Usuario u;
         while (it.hasNext()){
@@ -57,8 +60,11 @@ public class Auxiliar extends HttpServlet {
     }
     static public Map getColeccionDataRestaurante() {
         Map<String,DataRestaurante> colDataRestaurante=new HashMap<>();
-        ManejadorUsuario mu=ManejadorUsuario.getinstance();
-        Iterator<Usuario> it = mu.getColeccionRestaurante().values().iterator();
+        IControladorUsuario ICU;
+        Fabrica fabrica =Fabrica.getInstance();
+        ICU = fabrica.getIControladorUsuario();
+        //ManejadorUsuario mu=ManejadorUsuario.getinstance();
+        Iterator<Usuario> it = ICU.getColeccionRestaurante().values().iterator();
         Restaurante r;
         Usuario u;
         while (it.hasNext()){
@@ -85,22 +91,29 @@ public class Auxiliar extends HttpServlet {
     static public Map getColeccionesSistema(String col){
         //SEGUN LA PALABRA CLAVE HAGO ALGO,CLAVE(usuarios,productos,pedidos,categorias)
         Map coleccionDevolucion=null;
+        IControladorUsuario ICU;
+        IControladorPedido ICP;
+        IControladorProducto ICPRO;
+        Fabrica fabrica = Fabrica.getInstance();
+        ICU = fabrica .getIControladorUsuario();
+        ICP = fabrica.getIControladorPedido();
+        ICPRO = fabrica.getIControladorProducto();
         switch (col){
             case "usuarios":
-                ManejadorUsuario mu=ManejadorUsuario.getinstance();
-                coleccionDevolucion=mu.obtenercoleccion();
+                //ManejadorUsuario mu=ManejadorUsuario.getinstance();
+                coleccionDevolucion=ICU.obtenercoleccion();
                 break;
             case "productos":
-                ManejadorProducto mp=ManejadorProducto.getinstance();
-                coleccionDevolucion=mp.getColeccion();
+                //ManejadorProducto mp=ManejadorProducto.getinstance();
+                coleccionDevolucion=ICPRO.getColeccion();
                 break;
             case "pedidos":
-                ManejadorPedido mpp=ManejadorPedido.getinstance();
-                coleccionDevolucion=mpp.getColeccionPedido();
+                //ManejadorPedido mpp=ManejadorPedido.getinstance();
+                coleccionDevolucion=ICP.getColeccionPedido();
                 break;
             case "categorias":
-                ManejadorCategoria mc=ManejadorCategoria.getinstance();
-                coleccionDevolucion=mc.coleccion();
+                //ManejadorCategoria mc=ManejadorCategoria.getinstance();
+                coleccionDevolucion=ICU.coleccion();
                 break;
         }
         return coleccionDevolucion;
@@ -139,21 +152,27 @@ public class Auxiliar extends HttpServlet {
     
     static public Map getPedidosProductos(String nombre){
         Map colDevo;
-        ManejadorPedido MP=ManejadorPedido.getinstance();
-        colDevo=MP.getPedidos_Producto(nombre);
+        IControladorPedido ICP;
+        Fabrica fabrica = Fabrica.getInstance();
+        ICP = fabrica.getIControladorPedido();
+        //ManejadorPedido MP=ManejadorPedido.getinstance();
+        colDevo=ICP.getPedidos_Producto(nombre);
         return colDevo;
     }
     
     static public Map getColeccionProductos(String nombre){
         Map colDevo;
-        ManejadorProducto MP=ManejadorProducto.getinstance();
-        colDevo=MP.getColeccionProductos(nombre);
+        IControladorProducto ICP;
+        Fabrica fabrica = Fabrica.getInstance();
+        ICP = fabrica.getIControladorProducto();
+       // ManejadorProducto MP=ManejadorProducto.getinstance();
+        colDevo=ICP.getColeccionProductos(nombre);
         return colDevo;
     }
     static public Map getColeccionPedido(){
         IControladorPedido ICP;
         Fabrica fabrica = Fabrica.getInstance();
-        ICP = fabrica .getIControladorPedido();
+        ICP = fabrica.getIControladorPedido();
         Map<Integer,DataPedido> colDataPedido=new HashMap<>();
         
         Iterator<Pedido> it = ICP.getColeccionPedido().values().iterator();
