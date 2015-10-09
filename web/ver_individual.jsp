@@ -78,7 +78,12 @@
  <script src="http://code.jquery.com/jquery-latest.js"></script>                                
  <script type="text/javascript" class="init">
     $(document).ready(function() {
-           $('#pedidos_producto').DataTable();               
+           $('#pedidos_producto').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+ 
+            }  
+            });               
     } );
 </script>
 <jsp:include page='footer.jsp'/>    

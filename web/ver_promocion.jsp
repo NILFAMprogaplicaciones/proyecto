@@ -112,8 +112,18 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>                                
 <script type="text/javascript" class="init">
     $(document).ready(function() {
-           $('#productos_promocion').DataTable();     
-           $('#pedidos_producto').DataTable(); 
+           $('#productos_promocion').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+ 
+            }  
+            });     
+           $('#pedidos_producto').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+ 
+            }  
+            }); 
     } );
 </script>
 <jsp:include page='footer.jsp'/>

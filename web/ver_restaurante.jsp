@@ -147,7 +147,12 @@
  <script src="js/jquery.bootstrap-touchspin.js"></script>
  <script type="text/javascript" class="init">
     $(document).ready(function() {
-           $('#lista_menu').DataTable();               
+           $('#lista_menu').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+ 
+            }  
+            });               
     } );
 </script>
 <script>
