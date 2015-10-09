@@ -56,8 +56,7 @@
                     </tr>
                 </thead>
                     <%
-                        ManejadorPedido MP=ManejadorPedido.getinstance();
-                        Iterator<Pedido> ite = MP.getPedidos_Producto(DI.getNombre()).values().iterator();
+                        Iterator<Pedido> ite = Auxiliar.getPedidosProductos(DI.getNombre()).values().iterator();
                         Pedido pe=null;
                     %>
                     <%
