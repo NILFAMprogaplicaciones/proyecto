@@ -77,14 +77,15 @@
                               <li><a href="ver_promocion.jsp">ver pro</a></li>-->
                             </ul>
                     </li>
-                    
+                </ul>    
+                <ul class="nav navbar-nav navbar-right">
                     <%
                         Cliente cli;
                             cli = Login.getUsuarioLogueado(request);
                         if(cli != null) {
                     %>
+                    
                         <li class="dropdown">
-                            
                             <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <img src="images/avatar-1-small.jpg" class="circle-img" alt=""/> <%=cli.getnombre()%> <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <a id="logout"class="btn" type="submit" onclick="logout()">
@@ -95,6 +96,13 @@
                                 <li> <a  href="ver_cliente.jsp?nickname=<%=cli.getnickname()%>">Ver Perfil</a> </li>
                             </ul>
                         </li> 
+                        
+                        <li class="dropdown">
+                            <a  href="#" class="dropdown-toggle glyphicon glyphicon-shopping-cart " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> </a>
+                            <ul class="dropdown-menu">
+                               <span>texto carrito</span>
+                            </ul>
+                        </li>
                 <% }else{ %> 
                         <li class="dropdown">
                             <a href="login.jsp" class="btn">Iniciar Sesion</a>
@@ -104,13 +112,7 @@
                         </li> 
                     <%}%>
                 </ul>
-              
-                 <!--<form class="navbar-form navbar-left" role="search">
-                    <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Buscar">
-                    </div>
-                    <button type="submit" class="btn btn-default">Buscar</button>
-                  </form> -->                                    
+                
             </div>
             <!-- /.navbar-collapse -->
         </div>
