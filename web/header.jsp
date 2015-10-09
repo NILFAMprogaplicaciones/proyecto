@@ -83,8 +83,7 @@
                         Cliente cli;
                             cli = Login.getUsuarioLogueado(request);
                         if(cli != null) {
-                    %>
-                    
+                    %>                   
                         <li class="dropdown">
                             <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <img src="images/avatar-1-small.jpg" class="circle-img" alt=""/> <%=cli.getnombre()%> <span class="caret"></span></a>
                             <ul class="dropdown-menu">
@@ -96,11 +95,74 @@
                                 <li> <a  href="ver_cliente.jsp?nickname=<%=cli.getnickname()%>">Ver Perfil</a> </li>
                             </ul>
                         </li> 
-                        
                         <li class="dropdown">
-                            <a  href="#" class="dropdown-toggle glyphicon glyphicon-shopping-cart " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> </a>
+                            <a  href="#" class="dropdown-toggle glyphicon glyphicon-shopping-cart " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> </a>                          
                             <ul class="dropdown-menu">
-                               <span>texto carrito</span>
+                                <div class="row col-sm-5">
+                                    <div class="col-sm-9 col-md-9 col-md-offset-1">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Producto</th>
+                                                    <th>Cantidad</th>
+                                                    <th class="text-center">Precio</th>
+                                                    <th class="text-center">Total</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="col-sm-8 col-md-2">
+                                                    <div class="media">
+                                                        <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
+                                                        <div class="media-body">
+                                                            <h4 class="media-heading"><a href="#">Nombre</a></h4>
+                                                        </div>
+                                                    </div>
+                                                    </td>
+                                                    <td class="col-sm-8 col-md-6" style="text-align: center">
+                                                    <input class="form-control" id="exampleInputEmail1" value="3" type="email">
+                                                    </td>
+                                                    <td class="col-sm-1 col-md-1 text-center"><strong>$4.87</strong></td>
+                                                    <td class="col-sm-1 col-md-1 text-center"><strong>$14.61</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="col-sm-8 col-md-6">
+                                                    <div class="media">
+                                                        <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
+                                                        <div class="media-body">
+                                                            <h4 class="media-heading"><a href="#">Nombre</a></h4>
+                                                        </div>
+                                                    </div>
+                                                    </td>
+                                                    <td class="col-sm-1 col-md-1" style="text-align: center">
+                                                    <input class="form-control" id="exampleInputEmail1" value="3" type="email">
+                                                    </td>
+                                                    <td class="col-sm-1 col-md-1 text-center"><strong>$4.87</strong></td>
+                                                    <td class="col-sm-1 col-md-1 text-center"><strong>$14.61</strong></td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <td><h3>Total</h3></td>
+                                                    <td class="text-center"><h3>$31.53</h3></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-success">
+                                                            Confirmar <span class="glyphicon glyphicon-play"></span>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
                             </ul>
                         </li>
                 <% }else{ %> 

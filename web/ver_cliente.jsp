@@ -119,7 +119,12 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script> 
 <script>
     $(document).ready(function() {       
-      $('#lista_pedidos_cliente').DataTable();    
+      $('#lista_pedidos_cliente').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+ 
+            }  
+            });    
     });
 </script> 
 <jsp:include page='footer.jsp'/>

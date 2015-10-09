@@ -252,7 +252,12 @@
                     });
             });   
 
-           $('#lista_productos_promocion').DataTable();
+           $('#lista_productos_promocion').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+ 
+            }  
+            });
                 
     } );
 </script>
