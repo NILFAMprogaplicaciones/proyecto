@@ -13,10 +13,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import Logica.IControladorUsuario;
-import Logica.Fecha;
-import Logica.ManejadorCategoria;
-import Logica.ManejadorUsuario;
-import java.awt.Component;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -43,8 +39,7 @@ public class RegistrarRestaurante extends javax.swing.JInternalFrame {
     
     public void comboboxcategorias(){
         //AGREGO LOS ELEMENTOS DE LA COLECCION CATEGORIA AL COMBOBOX
-        ManejadorCategoria mc=ManejadorCategoria.getinstance();
-        Map cole=mc.coleccion();
+        Map cole=ICU.coleccion();
         Iterator<Categoria> it = cole.values().iterator();
         Categoria cat=null;
         String a=(String) this.combocoleccion.getItemAt(0);
@@ -54,8 +49,6 @@ public class RegistrarRestaurante extends javax.swing.JInternalFrame {
                 this.combocoleccion.addItem(cat.getnombre());
             }
         }
-            
-        
     }
         
     
@@ -308,10 +301,9 @@ int indice=1;
     }//GEN-LAST:event_SeleccionarImagenActionPerformed
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
-        ManejadorUsuario MU = ManejadorUsuario.getinstance();
-              
+
         try{
-            MU.ExcepcionDatosRestaurante(txtNickname.getText(),txtCorreoElectronico.getText(), txtNombre.getText(), txtDireccion.getText(), coleccion);
+            ICU.ExcepcionDatosRestaurante(txtNickname.getText(),txtCorreoElectronico.getText(), txtNombre.getText(), txtDireccion.getText(), coleccion);
             //ESTA CONTRASEÑA NO LA INGRESO EN EL SWING, DEBERIA
             String con="hola";
             DataRestaurante datarestaurante=new DataRestaurante(con,this.txtNombre.getText(),this.txtNickname.getText(),this.txtCorreoElectronico.getText(), 
@@ -348,8 +340,8 @@ int indice=1;
         String seleccion=(String) this.combocoleccion.getSelectedItem(); 
         modelo.add(posision,seleccion);
         listacoleccion.setModel(modelo);
-        ManejadorCategoria MC=ManejadorCategoria.getinstance();
-        coleccion.put(MC.getCategoria(seleccion).getnombre(), MC.getCategoria(seleccion));
+        
+        coleccion.put(ICU.getCategoria(seleccion).getnombre(), ICU.getCategoria(seleccion));
         posision++;  
            
     }//GEN-LAST:event_refrescarcoleccionActionPerformed

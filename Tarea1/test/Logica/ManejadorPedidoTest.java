@@ -4,10 +4,6 @@ package Logica;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -17,7 +13,7 @@ public class ManejadorPedidoTest {
     //CLIENTE
     Fecha fecha1=new Fecha(15,11,1983);
     File foto1 = new File("src/Imagenes/co.jpg");
-    DataCliente datacliente1=new DataCliente("contraseña","Gerardo", "costas", "gcostas@gmail.com", "Pdte. Berro 1548","Cotelo", fecha1, foto1); 
+    DataCliente datacliente1=new DataCliente("contraseña","Gerardo", "costas", "gcostas@gmail.com", "Pdte. Berro 1548","Cotelo", fecha1, foto1,""); 
     Cliente cliente1=new Cliente(datacliente1);
     //RESTAURANTE  
     Map<String,Categoria> colcat1=new HashMap<String,Categoria>();
@@ -26,7 +22,7 @@ public class ManejadorPedidoTest {
     Restaurante res1=new Restaurante(datarestaurante);
     //PEDIDO
     FechaHora fecha=new FechaHora(12,8,2015,0,0);
-    Producto prod=new Producto("producto","descripcion",res1);
+    Producto prod=new Producto("producto","descripcion",res1,"");
     Map<String,Producto> col1=new HashMap<String,Producto>();
         
         //TIPO ASOSIATIVO
@@ -56,7 +52,7 @@ public class ManejadorPedidoTest {
         //CLIENTE
         Fecha fecha1=new Fecha(15,11,1983);
         File foto1 = new File("src/Imagenes/co.jpg");
-        DataCliente datacliente1=new DataCliente("contraseña","Gerardo", "costas", "gcostas@gmail.com", "Pdte. Berro 1548","Cotelo", fecha1, foto1); 
+        DataCliente datacliente1=new DataCliente("contraseña","Gerardo", "costas", "gcostas@gmail.com", "Pdte. Berro 1548","Cotelo", fecha1, foto1,""); 
         Cliente cliente1=new Cliente(datacliente1);
         //RESTAURANTE  
         Map<String,Categoria> colcat1=new HashMap<String,Categoria>();
@@ -65,7 +61,7 @@ public class ManejadorPedidoTest {
         Restaurante res1=new Restaurante(datarestaurante);
         //PEDIDO
         FechaHora fecha=new FechaHora(12,8,2015,0,0);
-        Producto prod=new Producto("producto","descripcion",res1);
+        Producto prod=new Producto("producto","descripcion",res1,"");
         Map<String,Producto> col1=new HashMap<String,Producto>();
         col1.put(prod.getnombre(), prod);
         //TIPO ASOSIATIVO

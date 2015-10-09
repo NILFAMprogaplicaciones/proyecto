@@ -24,7 +24,7 @@ public class ManejadorProducto {
     public Map getColeccionProductos(String nickname){
         Map<String,Producto> ColeccionProd = new HashMap<String,Producto>();
         Iterator<Producto> it = ColProducto.values().iterator();
-        Producto objeto=null;
+        Producto objeto;
         while(it.hasNext()){
             objeto=it.next();
             if(objeto.nombreRestaurante().equals(nickname))
@@ -33,6 +33,20 @@ public class ManejadorProducto {
         return ColeccionProd;
     }
         
+    public Map getColeccionIndividual(){
+        Map<String,Individual> ColeccionProd = new HashMap<String,Individual>();
+        Iterator<Producto> it = ColProducto.values().iterator();
+        Producto objeto;
+        Individual individual;
+        while(it.hasNext()){
+            objeto=it.next();
+            if(objeto.getClass().getSimpleName().equals("Individual")){
+                individual=(Individual) objeto;
+                ColeccionProd.put(individual.getnombre(),individual);
+            }
+        }
+        return ColeccionProd;
+    }
     public void addProductoIndividual(Individual prod) {
         ColProducto.put(prod.getnombre(),prod);
     }
@@ -63,4 +77,5 @@ public class ManejadorProducto {
     public void remove(String nombreproducto){
         ColProducto.remove(nombreproducto);   
     }
+    
 }

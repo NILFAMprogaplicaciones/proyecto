@@ -7,12 +7,10 @@ import Logica.ExcepcionesPersonalizadas;
 import Logica.Fabrica;
 import Logica.IControladorPedido;
 import Logica.Individual;
-import Logica.ManejadorPedido;
 import Logica.Pedido;
 import Logica.Producto;
 import Logica.Promocion;
 import java.awt.Color;
-import java.text.DecimalFormat;
 import java.util.Iterator;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -27,9 +25,9 @@ public class InfoPedido extends javax.swing.JInternalFrame {
     }
     int idpasado;
     public void cargarTablaPedidos(){
-        ManejadorPedido MP = ManejadorPedido.getinstance();        
+           
         //AGREGO LAS FILAS NECESARIAS EN MI JTABLE
-        int cantidadpedidos=MP.getCantidadEnColeccion(),a=0;
+        int cantidadpedidos=ICP.getCantidadEnColeccion(),a=0;
         while (a!=cantidadpedidos){
             DefaultTableModel modelo= (DefaultTableModel) TablaPedidos.getModel();
             int columna = modelo.getColumnCount();
@@ -38,7 +36,7 @@ public class InfoPedido extends javax.swing.JInternalFrame {
             a++;
         }
         //AGREGO VALORES A  LAS FILAS
-        Map coleccion=MP.getColeccionPedido();
+        Map coleccion=ICP.getColeccionPedido();
         Iterator<Pedido> it = coleccion.values().iterator();
         Pedido pedido=null;
         int fila=0;
@@ -58,14 +56,14 @@ public class InfoPedido extends javax.swing.JInternalFrame {
                     modelo.removeRow(0);
                 }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error al limpiar la tabla.");
+                JOptionPane.showMessageDialog(null, "Error al limpiar la tabla."+e);
             }
     }
     public InfoPedido() {
         initComponents();
-        cargarTablaPedidos();
         Fabrica fabrica = Fabrica.getInstance();
         ICP = fabrica.getIControladorPedido();
+        cargarTablaPedidos();
     }
 
     
@@ -290,7 +288,6 @@ public class InfoPedido extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         limpiarTabla(TablaProductos);
-        ManejadorPedido MP=ManejadorPedido.getinstance();
         //OBTENGO EL ID DEL PEDIDO
         int fila=TablaPedidos.getSelectedRow();
         if(fila==-1)
@@ -366,7 +363,6 @@ public class InfoPedido extends javax.swing.JInternalFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int fila=TablaPedidos.getSelectedRow();
-        ManejadorPedido MP=ManejadorPedido.getinstance();
         if(fila==-1)
             JOptionPane.showMessageDialog(this,"Seleccione un Pedido","INFORMACION PEDIDO",JOptionPane.WARNING_MESSAGE);
         else{
@@ -374,7 +370,7 @@ public class InfoPedido extends javax.swing.JInternalFrame {
             int respuesta=JOptionPane.showConfirmDialog(this, "Seguro que desea eliminar el Pedido","PEDIDO",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
             if(respuesta==JOptionPane.YES_OPTION){
                 try{
-                    MP.ExcepcionEliminacion(idPedido);
+                    ICP.ExcepcionEliminacion(idPedido);
                     ICP.Caso_Cancelar_Pedido(idPedido);
                     JOptionPane.showMessageDialog(null,"Pedido Eliminado","PEDIDO",JOptionPane.INFORMATION_MESSAGE); 
                     

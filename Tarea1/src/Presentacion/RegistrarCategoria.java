@@ -1,15 +1,9 @@
 
 package Presentacion;
 
-import Logica.Categoria;
-import Logica.DatosPrecargados;
 import Logica.ExcepcionesPersonalizadas;
 import Logica.Fabrica;
 import Logica.IControladorUsuario;
-import Logica.ManejadorCategoria;
-
-import Logica.ManejadorUsuario;
-import java.util.Calendar;
 import javax.swing.JOptionPane;
 
 
@@ -109,9 +103,9 @@ private IControladorUsuario ICU;
     }//GEN-LAST:event_txtCategoriaActionPerformed
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
-        ManejadorCategoria MC = ManejadorCategoria.getinstance();
+        
         try{
-            MC.ExcepcionCategoria(txtCategoria.getText());
+            ICU.ExcepcionCategoria(txtCategoria.getText());
             ICU.AltaCategoria(txtCategoria.getText());
             JOptionPane.showMessageDialog(this,"Categoria Ingresada con Exito","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
             dispose();

@@ -6,7 +6,6 @@ import Logica.ExcepcionesPersonalizadas;
 import Logica.Fabrica;
 import Logica.Fecha;
 import Logica.IControladorUsuario;
-import Logica.ManejadorUsuario;
 import java.awt.Image;
 import java.io.File;
 import javax.swing.Icon;
@@ -35,7 +34,6 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
         int alto = 152;
         fichero = new File("src/Imagenes/usuario.png");
         icon = new ImageIcon(fichero.toString());
-        //icono = new ImageIcon(icon.getImage().getScaledInstance(LabelImagen.getWidth(), LabelImagen.getHeight(), Image.SCALE_DEFAULT));
         icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
         LabelImagen.setText(null);
         LabelImagen.setIcon( icono );
@@ -327,10 +325,10 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_SeleccionarImagenActionPerformed
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
-        ManejadorUsuario MC = ManejadorUsuario.getinstance();
+        
        
         try{
-            MC.ExcepcionDatosCliente(txtNickname.getText(),txtCorreoElectronico.getText(),txtNombre.getText(),txtApellido.getText(),
+            ICU.ExcepcionDatosCliente(txtNickname.getText(),txtCorreoElectronico.getText(),txtNombre.getText(),txtApellido.getText(),
                     txtDireccion.getText(),dia.getSelectedItem().toString(),mes.getSelectedItem().toString(),anio.getSelectedItem().toString());
             //D,M,A estan parseados
             int D,M,A;
@@ -342,7 +340,7 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
             String con="hola";
             DataCliente datacliente=new DataCliente(con,this.txtNombre.getText(), this.txtNickname.getText(),
                 this.txtCorreoElectronico.getText(), this.txtDireccion.getText(),
-                this.txtApellido.getText(), fecha,fichero);
+                this.txtApellido.getText(), fecha,fichero,"");
             ICU.Caso_Registro_Cliente(datacliente);
             JOptionPane.showMessageDialog(null,"Cliente Registrado","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
             //NO LIMPIO NADA YA QUE CADA VES QUE LLAMO EL INTERNAL REALIZO UN NEW    

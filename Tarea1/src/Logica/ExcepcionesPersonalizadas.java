@@ -1,8 +1,6 @@
 
 package Logica;
 
-import javax.swing.JOptionPane;
-
 
 public class ExcepcionesPersonalizadas extends Exception{
     

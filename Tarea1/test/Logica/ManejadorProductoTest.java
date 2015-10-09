@@ -5,10 +5,6 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -21,7 +17,7 @@ public class ManejadorProductoTest {
     File foto1;
     DataRestaurante datarestaurante=new DataRestaurante("contraseña","Pizzeria Mera","mera","mera@hotmail.com","Av 8 de octubre 2704",colcat1,colfoto1);
     Restaurante res=new Restaurante(datarestaurante);
-    DataIndividual di=new DataIndividual("nombre", "descripcion", res, 100, foto1);
+    DataIndividual di=new DataIndividual("nombre", "descripcion", res, 100, foto1,"");
     Individual ind=new Individual(di);
     ManejadorProducto MP=new ManejadorProducto();
     
@@ -33,7 +29,7 @@ public class ManejadorProductoTest {
     DataRestaurante DR= new DataRestaurante("contraseña","Restaurante","res1", "res@res", "direccion",  coleccioncategoria,  coleccionimagenes);
     Restaurante res2= new Restaurante(DR);
     File fichero = new File("src/Imagenes/usuario.png");
-    DataPromocion DP= new DataPromocion(res2,"Promo1", "Promocion",20, true, 10,CantidadProductos,fichero);
+    DataPromocion DP= new DataPromocion(res2,"Promo1", "Promocion",20, true, 10,CantidadProductos,fichero,"");
     Promocion pro=new Promocion(DP);
     
     @Test
@@ -69,7 +65,7 @@ public class ManejadorProductoTest {
         DataCantidad data=new DataCantidad(1,pro);
         CantidadProductos.put(pro.getnombre(),data);
         File fichero = new File("src/Imagenes/usuario.png");
-        DataPromocion DP= new DataPromocion(res2,"Promo1", "Promocion",20, true, 10,CantidadProductos,fichero);
+        DataPromocion DP= new DataPromocion(res2,"Promo1", "Promocion",20, true, 10,CantidadProductos,fichero,"");
         Promocion pro=new Promocion(DP);
         
         

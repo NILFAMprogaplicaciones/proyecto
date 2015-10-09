@@ -9,18 +9,14 @@ import Logica.Estado;
 import Logica.Fabrica;
 import Logica.FechaHora;
 import Logica.IControladorPedido;
-import Logica.ManejadorCategoria;
-import Logica.ManejadorPedido;
-import Logica.ManejadorUsuario;
+import Logica.IControladorUsuario;
 import Logica.Pedido;
 import Logica.Producto;
 import Logica.Promocion;
 import Logica.Restaurante;
 import Logica.TipoAsosiativoPedido;
 import Logica.Usuario;
-import java.text.DecimalFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -32,14 +28,14 @@ import javax.swing.table.DefaultTableModel;
 public class GenerarPedido extends javax.swing.JInternalFrame {
 
     private IControladorPedido ICP;
-    
+    private IControladorUsuario ICU;
         
     
     public void cargarclientes(){
-        //INSTANCEO EL MANEJADOR DE USUARIO
-        ManejadorUsuario MU = ManejadorUsuario.getinstance();
+        
+        
         //AGREGO LAS FILAS NECESARIAS EN MI JTABLE
-        int cantidadusuarios=MU.CantClientes();
+        int cantidadusuarios=ICU.CantClientes();
         int a=0;
         while (a!=cantidadusuarios){
             DefaultTableModel modelo= (DefaultTableModel) listadeclientes.getModel();
@@ -49,7 +45,7 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
             a++;
         }
         //AREGO VALORES A  LAS FILAS
-        Map coleccion=MU.obtenercoleccion();
+        Map coleccion=ICU.obtenercoleccion();
         Iterator<Usuario> it = coleccion.values().iterator();
         Usuario usu=null;
         int fila=0;
@@ -67,9 +63,8 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
     public void cargarcategorias(){
         //AGREGO LOS ELEMENTOS DE LA COLECCION CATEGORIA A LA LISTA
         DefaultListModel<String> modelo=new DefaultListModel<>();
-        ManejadorCategoria mc=ManejadorCategoria.getinstance();
         int posision=0;
-        Map cole=mc.coleccion();
+        Map cole=ICU.coleccion();
         Iterator<Categoria> it = cole.values().iterator();
         Categoria cat=null;
         while (it.hasNext()) {
@@ -81,10 +76,11 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
     }
     public GenerarPedido() {
         initComponents();
-        cargarclientes();
-        cargarcategorias();
         Fabrica fabrica = Fabrica.getInstance();
         ICP = fabrica.getIControladorPedido();
+        ICU = fabrica.getIControladorUsuario();
+        cargarclientes();
+        cargarcategorias();
     }
 
     @SuppressWarnings("unchecked")
@@ -412,11 +408,11 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
             
             //AGREGO LOS ELEMENTOS DE LA COLECCION CATEGORIA A LA LISTA
             DefaultListModel<String> modelo=new DefaultListModel<>();
-            ManejadorUsuario MU=ManejadorUsuario.getinstance();
+            
 
             int posision=0;
 
-            Map coleccionrestaurantes=MU.getColeccionRestaurante();
+            Map coleccionrestaurantes=ICU.getColeccionRestaurante();
             Iterator<Restaurante> it = coleccionrestaurantes.values().iterator();
             Restaurante res=null;
             while (it.hasNext()) {
@@ -442,11 +438,9 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
         else{
             //AGREGO LOS PRODUCTOS DE MI RESTAURANTE
             DefaultListModel<String> modelo=new DefaultListModel<>();
-            ManejadorUsuario MU=ManejadorUsuario.getinstance();
-
             int posision=0;
 
-            Map cole=MU.getColeccionProductosRestaurantes(seleccion);
+            Map cole=ICU.getColeccionProductosRestaurantes(seleccion);
             Iterator<Producto> it = cole.values().iterator();
             Producto pro=null;
             while (it.hasNext()) {
@@ -505,12 +499,10 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
         else if(fila==0)
             JOptionPane.showMessageDialog(this,"No a agregado Productos al Pedido","GENERAR PEDIDO",JOptionPane.WARNING_MESSAGE);
         else{ 
-            String seleccion=(String) listadeclientes.getValueAt(filalistacliente, 0);
+            
             Map<String,Producto> coleccionproducto=new HashMap<String,Producto>();
             Map<String,DataProductosPedido> ColeccionDPP=new HashMap<String,DataProductosPedido>();
             //INSTANCEO MANEJADORES
-            ManejadorUsuario MU=ManejadorUsuario.getinstance();
-            ManejadorPedido MP=ManejadorPedido.getinstance();
             //ESCRIBO EN LAS LBL
             lblEstado.setText("Estado del Pedido: PREPARACION");
             lblRestaurante.setText("Restaurante: "+(String) listares.getSelectedValue());
@@ -546,15 +538,15 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
                 int cantidadPedido=(Integer) TablaProductos.getValueAt(cantidad,1);
                 TablaPedido.setValueAt(cantidadPedido, cantidad, 1);
                 //TIPO DE PRODUCTO
-                String tipoDeProducto=MU.findRestaurante((String) listares.getSelectedValue()).getProducto((String) TablaProductos.getValueAt(cantidad,0)).getClass().getSimpleName();
+                String tipoDeProducto=ICU.findRestaurante((String) listares.getSelectedValue()).getProducto((String) TablaProductos.getValueAt(cantidad,0)).getClass().getSimpleName();
                 TablaPedido.setValueAt(tipoDeProducto, cantidad, 2);
                 //PRECIO POR UNIDAD
-                double precioDeProducto=(Double)MU.findRestaurante((String) listares.getSelectedValue()).buscarprecio(nombreProducto);
+                double precioDeProducto=(Double)ICU.findRestaurante((String) listares.getSelectedValue()).buscarprecio(nombreProducto);
                 TablaPedido.setValueAt(precioDeProducto, cantidad, 3);
 
 
                 String PedidoNomProducto=(String) TablaPedido.getValueAt(cantidad,0 );
-                Producto producto=MU.findRestaurante((String)listares.getSelectedValue()).getProducto((String) TablaPedido.getValueAt(cantidad,0 ));
+                Producto producto=ICU.findRestaurante((String)listares.getSelectedValue()).getProducto((String) TablaPedido.getValueAt(cantidad,0 ));
 
                 preciototal=preciototal+((cantidadPedido)*(precioDeProducto));
                 coleccionproducto.put(PedidoNomProducto,producto);
@@ -568,7 +560,7 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
             }
             //SETEO EN LAS TXT FINALES
             txtPrecioTotal.setText(String.valueOf(Redondear(preciototal)));
-            Map col=MP.getColeccionPedido();
+            Map col=ICP.getColeccionPedido();
             Iterator<Pedido> it = col.values().iterator();
             Pedido ped=null;
             int id=0;
@@ -579,11 +571,11 @@ public class GenerarPedido extends javax.swing.JInternalFrame {
             txtCodigo.setText(Integer.toString(id+1));
 
             FechaHora fechahora=new FechaHora(dia,mes,año,hora,minutos);
-            Cliente cliente=MU.findCliente((String) TablaCliente.getValueAt(0, 0));
+            Cliente cliente=ICU.findCliente((String) TablaCliente.getValueAt(0, 0));
             
             TipoAsosiativoPedido tipoasosiativopedido=new TipoAsosiativoPedido(ColeccionDPP);
             
-            DataPedido datapedido=new DataPedido((id+1),fechahora,Redondear(preciototal),Estado.PREPARCION,cliente,coleccionproducto,(MU.findRestaurante((String)listares.getSelectedValue())),tipoasosiativopedido);
+            DataPedido datapedido=new DataPedido((id+1),fechahora,Redondear(preciototal),Estado.PREPARCION,cliente,coleccionproducto,(ICU.findRestaurante((String)listares.getSelectedValue())),tipoasosiativopedido);
             
             ICP.Caso_Generar_Pedido(datapedido);
             JOptionPane.showMessageDialog(null,"Pedido Registrado","REGISTRO",JOptionPane.INFORMATION_MESSAGE); 

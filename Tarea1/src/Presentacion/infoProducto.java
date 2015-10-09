@@ -5,11 +5,10 @@ import Logica.DataCantidad;
 import Logica.DataIndividual;
 import Logica.DataPromocion;
 import Logica.Fabrica;
+import Logica.IControladorPedido;
 import Logica.IControladorProducto;
+import Logica.IControladorUsuario;
 import Logica.Individual;
-import Logica.ManejadorPedido;
-import Logica.ManejadorProducto;
-import Logica.ManejadorUsuario;
 import Logica.Pedido;
 import Logica.Producto;
 import Logica.Promocion;
@@ -18,7 +17,6 @@ import java.awt.Image;
 import java.io.File;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -30,6 +28,8 @@ import javax.swing.table.DefaultTableModel;
 
 public class infoProducto extends javax.swing.JInternalFrame {
     private IControladorProducto ICP;
+    private IControladorPedido ICPE;
+    private IControladorUsuario ICU;
     
     
     String productopasado="productopasado";
@@ -52,14 +52,15 @@ public class infoProducto extends javax.swing.JInternalFrame {
         initComponents();
         Fabrica fabrica = Fabrica.getInstance();
         ICP = fabrica.getIControladorProducto();
+        ICPE = fabrica.getIControladorPedido();
+        ICU = fabrica.getIControladorUsuario();
         Ocultar();
         tablaProducto();
     }
     
     public void tablaProducto(){
-        ManejadorProducto MP = ManejadorProducto.getinstance();        
         //AGREGO LAS FILAS NECESARIAS EN MI JTABLE
-        int cantidadproductos=MP.cantidadProductos();
+        int cantidadproductos=ICP.cantidadProductos();
         int a=0;
         while (a!=cantidadproductos){
             DefaultTableModel modelo= (DefaultTableModel) listadeproductos.getModel();
@@ -69,7 +70,7 @@ public class infoProducto extends javax.swing.JInternalFrame {
             a++;
         }
         //AGREGO VALORES A  LAS FILAS
-        Map coleccion=MP.getColeccion();
+        Map coleccion=ICP.getColeccion();
         Iterator<Producto> it = coleccion.values().iterator();
         Producto prod=null;
         int fila=0;
@@ -83,12 +84,11 @@ public class infoProducto extends javax.swing.JInternalFrame {
     }
     
         public void tablaProductosPromo(){
-            ManejadorProducto MP = ManejadorProducto.getinstance();  
             int fila = this.listadeproductos.getSelectedRow();
             String nombre=(String)this.listadeproductos.getValueAt(fila, 0);
-            Promocion promo=MP.findPromocion(nombre);
+            Promocion promo=ICP.findPromocion(nombre);
             //AGREGO LAS FILAS NECESARIAS EN MI JTABLE
-            int cantidadproductos= MP.CantidadProductosPromo(nombre);
+            int cantidadproductos= ICP.CantidadProductosPromo(nombre);
             int a=0;
             while (a!=cantidadproductos){
                 DefaultTableModel modelo= (DefaultTableModel) Productos.getModel();
@@ -111,12 +111,12 @@ public class infoProducto extends javax.swing.JInternalFrame {
 
         }
         public void tablaPedidos(){
-            ManejadorPedido MP = ManejadorPedido.getinstance();  
+              
             int fila = this.listadeproductos.getSelectedRow();
             String nombre=(String)this.listadeproductos.getValueAt(fila, 0);
 
             //AGREGO LAS FILAS NECESARIAS EN MI JTABLE
-            int cantidadproductos=MP.getPedidos_Producto(nombre).size();
+            int cantidadproductos=ICPE.getPedidos_Producto(nombre).size();
             int a=0;
             while (a!=cantidadproductos){
                 DefaultTableModel modelo= (DefaultTableModel) infoPedidos.getModel();
@@ -126,7 +126,7 @@ public class infoProducto extends javax.swing.JInternalFrame {
                 a++;
             }
             //AGREGO VALORES A  LAS FILAS
-            Map coleccion=MP.getPedidos_Producto(nombre);
+            Map coleccion=ICPE.getPedidos_Producto(nombre);
             Iterator<Pedido> it = coleccion.values().iterator();
             Pedido ped=null;
             fila=0;
@@ -147,7 +147,7 @@ public class infoProducto extends javax.swing.JInternalFrame {
                     modelo.removeRow(0);
                 }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error al limpiar la tabla.");
+                JOptionPane.showMessageDialog(null, "Error al limpiar la tabla."+e);
             }
         }
         public void limpiarTablaProductosPromo(JTable Productos){
@@ -158,7 +158,7 @@ public class infoProducto extends javax.swing.JInternalFrame {
                     modelo.removeRow(0);
                 }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error al limpiar la tabla.");
+                JOptionPane.showMessageDialog(null, "Error al limpiar la tabla."+e);
             }
         }    
         
@@ -482,7 +482,7 @@ public class infoProducto extends javax.swing.JInternalFrame {
     private void verActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verActionPerformed
         //TOMO LA FILA DE LA QUE SELECCIONO EL VALOR
         
-        ManejadorProducto MP=ManejadorProducto.getinstance();
+        
         int fila = this.listadeproductos.getSelectedRow();
         String nombre=(String)this.listadeproductos.getValueAt(fila, 0);
 
@@ -491,7 +491,7 @@ public class infoProducto extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this,"Por favor, seleccione un Producto","INFORMACION PRODUCTO",JOptionPane.WARNING_MESSAGE );
         }
         else{
-            if (MP.findProducto(nombre).getClass().getSimpleName().equals("Individual")){
+            if (ICP.findProducto(nombre).getClass().getSimpleName().equals("Individual")){
                 Ocultar();
                 
                 this.TablaPedidos.setVisible(true);
@@ -577,11 +577,10 @@ File fichero;
     }//GEN-LAST:event_listoActionPerformed
 
     private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
-        ManejadorUsuario MU=ManejadorUsuario.getinstance();
         int fila = listadeproductos.getSelectedRow();
         String nombreproducto=(String)listadeproductos.getValueAt(fila, 0);
         String nombrerestaurante=(String) listadeproductos.getValueAt(fila, 1);
-        Producto producto= MU.getProductoRestaurante(nombrerestaurante, nombreproducto);
+        Producto producto= ICU.getProductoRestaurante(nombrerestaurante, nombreproducto);
         
         if(producto.getClass().getSimpleName().equals("Individual")){
             txtNombreProd.setEditable(true);
@@ -601,21 +600,20 @@ File fichero;
     }//GEN-LAST:event_EditarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ManejadorProducto MP=ManejadorProducto.getinstance();
-        ManejadorUsuario MU=ManejadorUsuario.getinstance();
+        
         int fila = listadeproductos.getSelectedRow();
         String nombreproducto=(String)listadeproductos.getValueAt(fila, 0);
         String nombrerestaurante=(String) listadeproductos.getValueAt(fila, 1);
-        Producto producto= MU.getProductoRestaurante(nombrerestaurante, nombreproducto);
-        Restaurante res=MU.findRestaurante(nombrerestaurante);
+        Producto producto= ICU.getProductoRestaurante(nombrerestaurante, nombreproducto);
+        Restaurante res=ICU.findRestaurante(nombrerestaurante);
         
-        Map col=MU.getColeccionProductosRestaurantes(nombrerestaurante);
+        Map col=ICU.getColeccionProductosRestaurantes(nombrerestaurante);
         col.remove(nombreproducto);
         
         if(producto.getClass().getSimpleName().equals("Individual")){
             Individual individual=(Individual) producto;
             if(!res.verificarproducto(txtNombreProd.getText())){
-                DataIndividual dataindividual=new DataIndividual(txtNombreProd.getText(),txtDescripcion.getText(), individual.getRestaurante(), Double.parseDouble(txtPrecio.getText()), fichero);    
+                DataIndividual dataindividual=new DataIndividual(txtNombreProd.getText(),txtDescripcion.getText(), individual.getRestaurante(), Double.parseDouble(txtPrecio.getText()), fichero,"");    
                 ICP.Caso_Actualizar_Individual(nombreproducto, dataindividual);
                 JOptionPane.showMessageDialog(null,"Producto actualizado con Exito","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
             }
@@ -632,7 +630,7 @@ File fichero;
                 else
                     act=false;
                 
-                    DataPromocion datapromo= new DataPromocion(promo.getRestaurante(), txtNombreProd.getText(), txtDescripcion.getText(), promo.getPrecioTotal(),act, Integer.parseInt(txtDescuento.getText()), promo.getColeccionProductos(), fichero);
+                    DataPromocion datapromo= new DataPromocion(promo.getRestaurante(), txtNombreProd.getText(), txtDescripcion.getText(), promo.getPrecioTotal(),act, Integer.parseInt(txtDescuento.getText()), promo.getColeccionProductos(), fichero,"");
                     ICP.Caso_Actualizar_Promocion(nombreproducto, datapromo);
                     JOptionPane.showMessageDialog(null,"Producto actualizado con Exito","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
             }

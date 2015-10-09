@@ -4,9 +4,8 @@ package Presentacion;
 import Logica.Categoria;
 import Logica.DataRestaurante;
 import Logica.Fabrica;
+import Logica.IControladorPedido;
 import Logica.IControladorUsuario;
-import Logica.ManejadorCategoria;
-import Logica.ManejadorUsuario;
 import Logica.Usuario;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -29,18 +28,18 @@ import javax.swing.tree.TreeSelectionModel;
 
 public class InfoRestaurante extends javax.swing.JInternalFrame {
     public IControladorUsuario ICU;
+    public IControladorPedido ICP;
     public JTree arbolModelo;
     public DataRestaurante datosRestaurante;
     
-    ManejadorCategoria MC = ManejadorCategoria.getinstance();
-    ManejadorUsuario MU = ManejadorUsuario.getinstance();
+    
     
     public void llenarArbol(){
         this.setLayout(new BorderLayout(5,10));
         
         JScrollPane Menu = new JScrollPane();
         
-        Map<String, Categoria> listaCat = MC.coleccion();
+        Map<String, Categoria> listaCat = ICU.coleccion();
         Iterator<Categoria> it = listaCat.values().iterator();
         DefaultMutableTreeNode dmtn = new DefaultMutableTreeNode("Categorías");
         DefaultTreeModel modelo = new DefaultTreeModel(dmtn);
@@ -55,7 +54,7 @@ public class InfoRestaurante extends javax.swing.JInternalFrame {
             DefaultMutableTreeNode n1 = new DefaultMutableTreeNode(nombreCat);
             dmtn.add(n1);
             
-            Map<String, Usuario> listaUsr = MU.obtenercoleccion();
+            Map<String, Usuario> listaUsr = ICU.obtenercoleccion();
             Iterator<Usuario> iter = listaUsr.values().iterator();
             
             Usuario usr = null;
@@ -63,7 +62,7 @@ public class InfoRestaurante extends javax.swing.JInternalFrame {
             while(iter.hasNext()){
                 usr = iter.next();
                 if(usr.getClass().getSimpleName().equals("Restaurante")){
-                    Map<String, Categoria> u = MU.getCategoriasRestaurantes(usr.getnickname());
+                    Map<String, Categoria> u = ICU.getCategoriasRestaurantes(usr.getnickname());
                     if(u.containsKey(nombreCat)){
                         String nombreRest = usr.getnickname();
                         DefaultMutableTreeNode n2 = new DefaultMutableTreeNode(nombreRest);
@@ -117,7 +116,6 @@ public class InfoRestaurante extends javax.swing.JInternalFrame {
                     Ventana.getjDesktopPane().add(ji);
                     validador.addJIframe(VerInfoRestaurante.class.getName(), ji);
                     
-                    Toolkit t = Toolkit.getDefaultToolkit();
                     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
                     int x=(int) ((screenSize.getWidth()/2)-ji.getWidth()/2);
                     int y=(int) ((screenSize.getHeight()/2)-ji.getHeight()/2);
@@ -134,6 +132,7 @@ public class InfoRestaurante extends javax.swing.JInternalFrame {
         initComponents();
         Fabrica fabrica = Fabrica.getInstance();
         ICU = fabrica.getIControladorUsuario();
+        ICP = fabrica.getIControladorPedido();
         llenarArbol();   
     }
 

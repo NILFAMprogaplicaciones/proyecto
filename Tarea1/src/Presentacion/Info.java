@@ -6,8 +6,6 @@ import Logica.Estado;
 import Logica.Fabrica;
 import Logica.IControladorPedido;
 import Logica.Individual;
-import Logica.ManejadorPedido;
-import Logica.Pedido;
 import Logica.Producto;
 import Logica.Promocion;
 import java.awt.Color;
@@ -28,7 +26,7 @@ public class Info extends javax.swing.JFrame {
                     modelo.removeRow(0);
                 }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error al limpiar la tabla.");
+                JOptionPane.showMessageDialog(null, "Error al limpiar la tabla."+e);
             }
     }
     private IControladorPedido ICP;
@@ -40,7 +38,6 @@ public class Info extends javax.swing.JFrame {
     
     public Info() {
         initComponents();
-        
         Fabrica fabrica = Fabrica.getInstance();
         ICP = fabrica.getIControladorPedido();  
     }

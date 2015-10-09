@@ -1,17 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Presentacion;
 
 import Logica.DataCliente;
 import Logica.Fabrica;
 import Logica.IControladorPedido;
-import Logica.IControladorProducto;
 import Logica.IControladorUsuario;
-import Logica.ManejadorPedido;
-import Logica.ManejadorUsuario;
 import Logica.Pedido;
 import Logica.Usuario;
 import java.awt.Dimension;
@@ -29,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class InfoCliente extends javax.swing.JInternalFrame {
     private IControladorUsuario ICU;
-    
+    private IControladorPedido ICP;
     public void limpiarTabla(JTable infoPedidos){
             try {
                 DefaultTableModel modelo=(DefaultTableModel) infoPedidos.getModel();
@@ -38,13 +31,13 @@ public class InfoCliente extends javax.swing.JInternalFrame {
                     modelo.removeRow(0);
                 }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error al limpiar la tabla.");
+                JOptionPane.showMessageDialog(null, "Error al limpiar la tabla."+e);
             }
         }
     public void tablacliente(){
-        ManejadorUsuario MU = ManejadorUsuario.getinstance();        
+                
         //AGREGO LAS FILAS NECESARIAS EN MI JTABLE
-        int cantidadusuarios=MU.CantClientes();
+        int cantidadusuarios=ICU.CantClientes();
         int a=0;
         while (a!=cantidadusuarios){
             DefaultTableModel modelo= (DefaultTableModel) listadeclientes.getModel();
@@ -54,7 +47,7 @@ public class InfoCliente extends javax.swing.JInternalFrame {
             a++;
         }
         //AGREGO VALORES A  LAS FILAS
-        Map coleccion=MU.obtenercoleccion();
+        Map coleccion=ICU.obtenercoleccion();
         final Iterator<Usuario> it = coleccion.values().iterator();
         Usuario usu=null;
         int fila=0;
@@ -71,9 +64,9 @@ public class InfoCliente extends javax.swing.JInternalFrame {
     }
     public void TablaPedidos(){
         limpiarTabla(Pedidos);
-        ManejadorPedido MP=ManejadorPedido.getinstance();
+        
         //AGREGO LAS FILAS NECESARIAS EN MI JTABLE
-        int cantidadpedidos=MP.getCantidadColeccionCliente(du.getnickname());
+        int cantidadpedidos=ICP.getCantidadColeccionCliente(du.getnickname());
         int a=0;
         while (a!=cantidadpedidos){
             DefaultTableModel modelo= (DefaultTableModel) Pedidos.getModel();
@@ -83,7 +76,7 @@ public class InfoCliente extends javax.swing.JInternalFrame {
             a++;
         }
         //AGREGO VALORES A  LAS FILAS
-        Map coleccion=MP.getColeccionPedido();
+        Map coleccion=ICP.getColeccionPedido();
         final Iterator<Pedido> it = coleccion.values().iterator();
         Pedido objeto=null;
         int fila=0;
@@ -104,6 +97,7 @@ public class InfoCliente extends javax.swing.JInternalFrame {
         initComponents();
         Fabrica fabrica = Fabrica.getInstance();
         ICU = fabrica.getIControladorUsuario();
+        ICP = fabrica.getIControladorPedido();
         tablacliente();
         
         
@@ -410,7 +404,7 @@ DataCliente du;
             JOptionPane.showMessageDialog(this,"Por favor, seleccione un Pedido","INFORMACION CLIENTE",JOptionPane.WARNING_MESSAGE );
         }
         else{
-            Toolkit t = Toolkit.getDefaultToolkit();
+            
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
             int pedido=(int)this.Pedidos.getValueAt(fila, 0);
             Info infopedido=new Info();

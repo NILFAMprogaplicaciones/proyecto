@@ -5,10 +5,6 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -24,9 +20,9 @@ public class PromocionTest {
     DataRestaurante DR= new DataRestaurante("contraseña","Restaurante","res1", "res@res", "direccion",  coleccioncategoria,  coleccionimagenes);
     Restaurante res= new Restaurante(DR);
     File fichero = new File("src/Imagenes/usuario.png");
-    DataPromocion DP= new DataPromocion(res,"Promo1", "Promocion",20, false, 10,CantidadProductos,fichero);
+    DataPromocion DP= new DataPromocion(res,"Promo1", "Promocion",20, false, 10,CantidadProductos,fichero,"");
     Promocion promo = new Promocion (DP);
-    Producto prod = new Producto("nombre","descripcion",res);
+    Producto prod = new Producto("nombre","descripcion",res,"");
     DataCantidad DC = new DataCantidad(1,prod);
     
     

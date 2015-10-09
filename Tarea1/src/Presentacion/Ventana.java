@@ -202,8 +202,8 @@ public class Ventana extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void RegRestauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegRestauranteActionPerformed
-       ManejadorCategoria mc=ManejadorCategoria.getinstance();
-        int cantidad=mc.cantidad();
+       
+        int cantidad=ICU.coleccion().size();
         if(cantidad==0){
             JOptionPane.showMessageDialog(this,"No hay Categorias en el sistema","REGISTRO",JOptionPane.WARNING_MESSAGE);
         }
@@ -238,8 +238,8 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_restauranteActionPerformed
 
     private void clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteActionPerformed
-        ManejadorUsuario MU = ManejadorUsuario.getinstance();
-        int cantidadusuarios=MU.CantClientes();
+        
+        int cantidadusuarios=ICU.CantClientes();
         if(cantidadusuarios==0){
             JOptionPane.showMessageDialog(this,"No hay clientes en el sistema","INFORMACION CLIENTE",JOptionPane.WARNING_MESSAGE );
         }
@@ -272,10 +272,9 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_RegCategoriaActionPerformed
 
     private void GenPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenPedidoActionPerformed
-        ManejadorUsuario MU = ManejadorUsuario.getinstance();
-        ManejadorCategoria mc=ManejadorCategoria.getinstance();
-        int cantidadusuarios=MU.CantClientes();
-        int cantidadcategoria=mc.cantidad(),posision=0;
+        
+        int cantidadusuarios=ICU.CantClientes();
+        int cantidadcategoria=ICU.coleccion().size();
         if(cantidadusuarios==0){
             JOptionPane.showMessageDialog(this,"No hay clientes en el sistema","INFORMACION CLIENTE",JOptionPane.ERROR_MESSAGE);
         }
@@ -302,8 +301,8 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_productoActionPerformed
 
     private void InfPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfPedidoActionPerformed
-        ManejadorPedido MP=ManejadorPedido.getinstance();
-        int cantidad=MP.getCantidadEnColeccion();
+        
+        int cantidad=ICPE.getCantidadEnColeccion();
         if(cantidad==0){
             JOptionPane.showMessageDialog(this,"No hay Pedidos en el sistema","INFORMACION PEDIDO",JOptionPane.ERROR_MESSAGE);
         }
@@ -318,8 +317,8 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_InfPedidoActionPerformed
 
     private void ActEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActEstadoActionPerformed
-        ManejadorPedido MP=ManejadorPedido.getinstance();
-        int cantidad=MP.getCantidadEnColeccion();
+        
+        int cantidad=ICPE.getCantidadEnColeccion();
         if(cantidad==0){
             JOptionPane.showMessageDialog(this,"No hay Pedidos en el sistema","ACTUALIZAR ESTADO PEDIDO",JOptionPane.ERROR_MESSAGE);
         }
@@ -338,6 +337,7 @@ int entro=0;
         if(entro==0){
             IDP.DatosPrecargado();
             entro=1;
+            JOptionPane.showMessageDialog(this,"Datos Precargados ingresados correctamente","DATOS PRECARGADOS",JOptionPane.INFORMATION_MESSAGE);
         }
         else{
             JOptionPane.showMessageDialog(this,"Ya realizo esta accion","DATOS PRECARGADOS",JOptionPane.ERROR_MESSAGE);

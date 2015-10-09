@@ -3,9 +3,9 @@ package Logica;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
-import javax.swing.Icon;
 
 public class DataRestaurante {
     private String contraseña;
@@ -49,5 +49,19 @@ public class DataRestaurante {
     }
     public File getFoto(int numero){
         return ColeccionImagenes.get(numero);
+    }
+    
+    public boolean ExisteCategoria(String nombrecategoria){
+        boolean resultado=false;
+        Iterator<Categoria> it = ColeccionCategoria.values().iterator();
+        Categoria objeto=null;
+        while(it.hasNext()){
+            objeto=it.next();
+            if(objeto.getnombre().equals(nombrecategoria)){
+                resultado=true;
+            }
+            
+        }
+        return resultado;   
     }
 }

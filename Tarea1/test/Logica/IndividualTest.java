@@ -5,10 +5,6 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -25,7 +21,7 @@ Restaurante res= new Restaurante(DR);
 File fichero = new File("src/Imagenes/usuario.png");
 File fichero1 = new File("src/Imagenes/co.jpeg");
 
-DataIndividual Individual = new DataIndividual("nombre","desc",res, 10,fichero);
+DataIndividual Individual = new DataIndividual("nombre","desc",res, 10,fichero,"");
 Individual Indi = new Individual(Individual);
    
 

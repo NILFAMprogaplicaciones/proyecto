@@ -10,7 +10,7 @@ public class Individual extends Producto{
     
     public Individual(DataIndividual dataindividual){
         //SUPER LLAMA AL CONSTRUCTOR DE PRODUCTO
-        super(dataindividual.getNombre(),dataindividual.getDescripcion(), dataindividual.getRestaurante());
+        super(dataindividual.getNombre(),dataindividual.getDescripcion(), dataindividual.getRestaurante(),dataindividual.getDireccionFoto());
         this.precio = dataindividual.getPrecio();
         this.imagen = dataindividual.getImagen();
     }  

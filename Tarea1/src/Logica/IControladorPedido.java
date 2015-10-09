@@ -1,6 +1,8 @@
 
 package Logica;
 
+import java.util.Map;
+
 
 public abstract interface IControladorPedido {
     
@@ -17,4 +19,17 @@ public abstract interface IControladorPedido {
     
     
     public abstract void Caso_Ingresar_Comentario(DataComentario datacomentario);
+    
+    
+    //FUNCIONES AUXILIARES
+    /////////////////////////////////////////////////////////
+    
+    public abstract int getCantidadEnColeccion();
+    public abstract Map getColeccionPedido();
+    public abstract Pedido getPedido(int ID);
+    public abstract int getCantidadColeccionCliente(String nickname);
+    public abstract void ExcepcionEliminacion(int id) throws ExcepcionesPersonalizadas;
+    public abstract Map getPedidos_Producto(String nombre);
+    
+    
 }

@@ -4,10 +4,6 @@ package Logica;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -19,7 +15,7 @@ public class ControladorPedidoTest {
     //CLIENTE
     Fecha fecha1=new Fecha(15,11,1983);
     File foto1 = new File("src/Imagenes/co.jpg");
-    DataCliente datacliente1=new DataCliente("contraseña","Gerardo", "costas", "gcostas@gmail.com", "Pdte. Berro 1548","Cotelo", fecha1, foto1); 
+    DataCliente datacliente1=new DataCliente("contraseña","Gerardo", "costas", "gcostas@gmail.com", "Pdte. Berro 1548","Cotelo", fecha1, foto1,""); 
     Cliente cliente1=new Cliente(datacliente1);
     //RESTAURANTE  
     Map<String,Categoria> colcat1=new HashMap<String,Categoria>();

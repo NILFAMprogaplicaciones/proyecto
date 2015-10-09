@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Presentacion;
 
 import Logica.DataCantidad;
@@ -442,7 +438,7 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
                     double descuento=(preciototal*Integer.parseInt(txtDescuento.getText()))/100;
                     preciototal=preciototal-descuento;
                     DataPromocion datapromocion=new DataPromocion(rest,txtNombre.getText(),txtDescripcion.getText(), preciototal, 
-                            Activa.isSelected(), Integer.parseInt(txtDescuento.getText()), coleccionProductosAgregar,fichero);
+                            Activa.isSelected(), Integer.parseInt(txtDescuento.getText()), coleccionProductosAgregar,fichero,"");
                     
                     ICP.AltaProductoPromocion(datapromocion);
                     JOptionPane.showMessageDialog(null,"Producto ingresado con Exito","REGISTRO",JOptionPane.INFORMATION_MESSAGE);
@@ -473,7 +469,7 @@ public class RegistrarProducto extends javax.swing.JInternalFrame {
                     
                     double precio = Double.parseDouble(txtPrecio.getText());
                     
-                    DataIndividual dataindividual=new DataIndividual(txtNombre.getText(),txtDescripcion.getText(),rest,precio,fichero);
+                    DataIndividual dataindividual=new DataIndividual(txtNombre.getText(),txtDescripcion.getText(),rest,precio,fichero,"");
                     
                     ICP.AltaProductoIndividual(dataindividual);
                     JOptionPane.showMessageDialog(null,"Producto ingresado con Exito","REGISTRO",JOptionPane.INFORMATION_MESSAGE);

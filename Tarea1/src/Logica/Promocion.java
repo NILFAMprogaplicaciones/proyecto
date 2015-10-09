@@ -14,7 +14,7 @@ public class Promocion extends Producto {
     private Map<String,DataCantidad>     ColeccionProducto=new HashMap<String,DataCantidad>();
     
     public Promocion(DataPromocion datapromocion){
-        super(datapromocion.getNombre(),datapromocion.getDescripcion(),datapromocion.getRestaurante());
+        super(datapromocion.getNombre(),datapromocion.getDescripcion(),datapromocion.getRestaurante(),datapromocion.getDireccionFoto());
         this.activa=datapromocion.getActiva();
         this.descuento=datapromocion.getDescuento();
         this.precioTotal=datapromocion.getPrecioTotal();

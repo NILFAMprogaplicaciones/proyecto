@@ -1,16 +1,10 @@
 
-
-
 package Logica;
 
-import Logica.Categoria;
-import Logica.Producto;
 import java.io.File;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 import java.util.TreeMap;
 
 public class Restaurante extends Usuario {

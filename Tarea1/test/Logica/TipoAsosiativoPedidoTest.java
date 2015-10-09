@@ -16,7 +16,7 @@ public class TipoAsosiativoPedidoTest {
     Map<String,DataProductosPedido> ColeccionProductosPedido=new HashMap<String,DataProductosPedido>();
     TipoAsosiativoPedido TAP=new TipoAsosiativoPedido(ColeccionProductosPedido);
     Restaurante res;
-    Producto prod=new Producto("producto","descripcion",res);
+    Producto prod=new Producto("producto","descripcion",res,"");
     DataProductosPedido dpp=new DataProductosPedido(prod, 1, 100);
     
     @Test

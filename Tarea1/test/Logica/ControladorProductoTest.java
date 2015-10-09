@@ -5,11 +5,6 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
-import static org.eclipse.persistence.sdo.helper.extension.Token.DI;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -26,10 +21,10 @@ public class ControladorProductoTest {
     DataRestaurante DR= new DataRestaurante("contraseña","Restaurante","res1", "res@res", "direccion",  coleccioncategoria,  coleccionimagenes);
     Restaurante res= new Restaurante(DR);
     File fichero = new File("src/Imagenes/usuario.png");
-    DataPromocion DP= new DataPromocion(res,"Promo1", "Promocion",20, true, 10,CantidadProductos,fichero);
-    DataPromocion DP2= new DataPromocion(res,"Promo1", "Promocion2",10, false, 5,CantidadProductos,fichero);
-    DataIndividual DI = new DataIndividual("Individual","descripcion individual", res, 10, fichero);
-    DataIndividual DI2 = new DataIndividual("Individual","descripcion2 individual2", res, 15, fichero);
+    DataPromocion DP= new DataPromocion(res,"Promo1", "Promocion",20, true, 10,CantidadProductos,fichero,"");
+    DataPromocion DP2= new DataPromocion(res,"Promo1", "Promocion2",10, false, 5,CantidadProductos,fichero,"");
+    DataIndividual DI = new DataIndividual("Individual","descripcion individual", res, 10, fichero,"");
+    DataIndividual DI2 = new DataIndividual("Individual","descripcion2 individual2", res, 15, fichero,"");
 
     Individual individual = new Individual(DI);
     

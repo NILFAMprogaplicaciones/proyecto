@@ -4,10 +4,6 @@ package Logica;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -20,7 +16,7 @@ public class DataProductosPedidoTest {
     DataRestaurante datarestaurante=new DataRestaurante("contraseña","Pizzeria Mera","mera","mera@hotmail.com","Av 8 de octubre 2704",colcat1,colfoto1);
     Restaurante res=new Restaurante(datarestaurante);
     
-    Producto prod=new Producto("nombre","descripcion",res);
+    Producto prod=new Producto("nombre","descripcion",res,"");
     DataProductosPedido datapp=new DataProductosPedido(prod, 1, 100);
     
     @Test

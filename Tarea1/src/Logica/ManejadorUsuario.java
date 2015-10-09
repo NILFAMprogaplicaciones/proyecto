@@ -2,12 +2,8 @@
 package Logica;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.SortedSet;
-import java.util.TreeSet;
-import javax.swing.JOptionPane;
 
 public class ManejadorUsuario {
     
@@ -29,18 +25,16 @@ public class ManejadorUsuario {
     public Cliente findCliente(String nickname){
         return ((Cliente)ColeccionUsuarios.get(nickname));
     }
-    
     public Restaurante findRestaurante(String nickname){
         return ((Restaurante)ColeccionUsuarios.get(nickname));
     }
- 
     public boolean verificarnickname(String nickname){
         return ColeccionUsuarios.containsKey(nickname);
     }
     public boolean verificarcorreo(String correo){
         boolean resultado=false;
         Iterator<Usuario> it = ColeccionUsuarios.values().iterator();
-        Usuario objeto=null;
+        Usuario objeto;
         while(it.hasNext()){
             objeto=it.next();
             if(objeto.getcorreo().equals(correo))
@@ -55,7 +49,7 @@ public class ManejadorUsuario {
     public int CantClientes(){
         int cantidad=0;
         Iterator<Usuario> it = ColeccionUsuarios.values().iterator();
-        Usuario objeto=null;
+        Usuario objeto;
         while(it.hasNext()){
             objeto=it.next();
             String tipo=objeto.getClass().getSimpleName();
@@ -70,24 +64,37 @@ public class ManejadorUsuario {
    }
    //ME RETORNA TODOS LOS RESTAURANTES
    public Map getColeccionRestaurante() {
-        new String("Restaurante"); 
-        Integer indice=0;
+        
         Map<String,Usuario> ColeccionRest = new HashMap<String,Usuario>();
         Iterator<Usuario> it = ColeccionUsuarios.values().iterator();
-        Usuario objeto=null;
+        Usuario objeto;
         while(it.hasNext()){
             objeto=it.next();
             if(objeto.getClass().getSimpleName().equals("Restaurante"))
                 ColeccionRest.put(objeto.getnickname(),objeto);
-            indice++;
+            
         }
         return ColeccionRest;
    }
+   
+   public Map getColeccionClientes() {
+        
+        Map<String,Usuario> ColeccionRest = new HashMap<String,Usuario>();
+        Iterator<Usuario> it = ColeccionUsuarios.values().iterator();
+        Usuario objeto;
+        while(it.hasNext()){
+            objeto=it.next();
+            if(objeto.getClass().getSimpleName().equals("Cliente"))
+                ColeccionRest.put(objeto.getnickname(),objeto);
+        }
+        return ColeccionRest;
+   }
+   
    public Map getColeccionProductosRestaurantes(String nickname){
         Map resultado=null;
         Iterator<Usuario> it = ColeccionUsuarios.values().iterator();
         Restaurante res;
-        Usuario objeto=null;
+        Usuario objeto;
         while(it.hasNext()){
             objeto=it.next();
             if(objeto.getClass().getSimpleName().equals("Restaurante")){
@@ -116,7 +123,7 @@ public class ManejadorUsuario {
         Producto pro=null;
         Restaurante res;
         Iterator<Usuario> it = ColeccionUsuarios.values().iterator();
-        Usuario objeto=null;
+        Usuario objeto;
         while(it.hasNext()){
             objeto=it.next();
             if(objeto.getClass().getSimpleName().equals("Restaurante")){
@@ -134,7 +141,7 @@ public class ManejadorUsuario {
         Map resultado=null;
         Iterator<Usuario> it = ColeccionUsuarios.values().iterator();
         Restaurante res;
-        Usuario objeto=null;
+        Usuario objeto;
         while(it.hasNext()){
             objeto=it.next();
             if(objeto.getClass().getSimpleName().equals("Restaurante")){
@@ -199,6 +206,14 @@ public class ManejadorUsuario {
         }
    }
    
+   public void ExcepcionDatosCliente(String Nickname,String CorreoElectronico) throws ExcepcionesPersonalizadas{
+       
+        if(verificarnickname(Nickname)==true)
+            throw new ExcepcionesPersonalizadas("Nickname ya tomado");
+        else if(verificarcorreo(CorreoElectronico)==true)
+            throw new ExcepcionesPersonalizadas("Correo Electronico ya tomado");           
+   }
+   
    public void ExcepcionDatosRestaurante(String Nickname,String CorreoElectronico, String Nombre, String Direccion, Map coleccion) throws ExcepcionesPersonalizadas{
         if(verificarnickname(Nickname)==true){
             throw new ExcepcionesPersonalizadas("Nickname ya tomado");
@@ -237,7 +252,14 @@ public class ManejadorUsuario {
             }
         }
    }
-}
+   
+    public void ExcepcionDatosRestaurante(String Nickname,String CorreoElectronico) throws ExcepcionesPersonalizadas{
+        if(verificarnickname(Nickname)==true)
+            throw new ExcepcionesPersonalizadas("Nickname ya tomado");
+        else if(verificarcorreo(CorreoElectronico)==true)
+            throw new ExcepcionesPersonalizadas("Correo Electronico ya tomado");
+    }
+  }
     
     
 

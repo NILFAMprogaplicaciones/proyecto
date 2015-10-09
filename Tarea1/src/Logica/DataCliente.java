@@ -2,7 +2,6 @@
 package Logica;
 
 import java.io.File;
-import javax.swing.Icon;
 
 public class DataCliente {
     private String contraseña;
@@ -13,9 +12,10 @@ public class DataCliente {
     private String apellido;
     private Fecha  fecha_nacimiento;
     private File   foto;
+    private String direccionFoto;
     
     
-    public DataCliente(String contraseña,String nombre, String nickname, String correo, String direccion,String apellido, Fecha fecha_nacimiento, File foto){
+    public DataCliente(String contraseña,String nombre, String nickname, String correo, String direccion,String apellido, Fecha fecha_nacimiento, File foto, String direccionfoto){
         this.contraseña=contraseña;
         this.nombre=nombre;
         this.nickname=nickname;
@@ -24,6 +24,7 @@ public class DataCliente {
         this.apellido=apellido;
         this.fecha_nacimiento=fecha_nacimiento;
         this.foto=foto;
+        this.direccionFoto=direccionfoto;
     }
     
     public String getContraseña(){
@@ -56,5 +57,8 @@ public class DataCliente {
     }
     public File getFoto(){
         return foto;
+    }
+    public String getDireccionFoto(){
+        return direccionFoto;
     }
 }

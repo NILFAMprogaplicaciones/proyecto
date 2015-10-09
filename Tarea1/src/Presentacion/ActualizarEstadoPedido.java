@@ -4,7 +4,6 @@ package Presentacion;
 import Logica.Estado;
 import Logica.Fabrica;
 import Logica.IControladorPedido;
-import Logica.IControladorUsuario;
 import Logica.ManejadorPedido;
 import Logica.Pedido;
 import java.util.Iterator;
@@ -16,9 +15,9 @@ import javax.swing.table.DefaultTableModel;
 public class ActualizarEstadoPedido extends javax.swing.JInternalFrame {
 
     public void cargarTablaPedidos(){
-        ManejadorPedido MP = ManejadorPedido.getinstance();        
+                
         //AGREGO LAS FILAS NECESARIAS EN MI JTABLE
-        int cantidadpedidos=MP.getCantidadEnColeccion(),a=0;
+        int cantidadpedidos=ICP.getCantidadEnColeccion(),a=0;
         while (a!=cantidadpedidos){
             DefaultTableModel modelo= (DefaultTableModel) TablaPedidos.getModel();
             int columna = modelo.getColumnCount();
@@ -27,7 +26,7 @@ public class ActualizarEstadoPedido extends javax.swing.JInternalFrame {
             a++;
         }
         //AGREGO VALORES A  LAS FILAS
-        Map coleccion=MP.getColeccionPedido();
+        Map coleccion=ICP.getColeccionPedido();
         Iterator<Pedido> it = coleccion.values().iterator();
         Pedido pedido=null;
         int fila=0;
@@ -42,9 +41,9 @@ public class ActualizarEstadoPedido extends javax.swing.JInternalFrame {
     private IControladorPedido ICP;
     public ActualizarEstadoPedido() {
         initComponents();
-        cargarTablaPedidos();
         Fabrica fabrica = Fabrica.getInstance();
         ICP = fabrica.getIControladorPedido();
+        cargarTablaPedidos();
     }
 
     
@@ -212,7 +211,7 @@ public class ActualizarEstadoPedido extends javax.swing.JInternalFrame {
 
             int ID=(int) TablaPedidos.getValueAt(fila, 0);
             //OBTENGO EL PEDIDO CON LA ID SELECCIONADA
-            pedido=MP.getPedido(ID);
+            pedido=ICP.getPedido(ID);
             //CARGO MI TXT
             if(pedido.getEstado().equals(Estado.PREPARCION))
                 txtEstado.setText("PREPARACION");
@@ -224,7 +223,7 @@ public class ActualizarEstadoPedido extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        ManejadorPedido MP=ManejadorPedido.getinstance();
+        
         if(txtEstado.getText().equals("RECIBIDO")){
             JOptionPane.showMessageDialog(this, "Imposible cambiar Estado del Pedido","ACTUALIZACION",JOptionPane.ERROR_MESSAGE);
         }

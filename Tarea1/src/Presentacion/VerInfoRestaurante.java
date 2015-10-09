@@ -4,19 +4,14 @@ package Presentacion;
 import Logica.DataRestaurante;
 import Logica.Fabrica;
 import Logica.IControladorUsuario;
-import Logica.ManejadorUsuario;
 import Logica.Producto;
-import Logica.Promocion;
-import java.awt.Dimension;
 import java.awt.Image;
-import java.awt.Toolkit;
 import java.io.File;
 import java.util.Iterator;
 import java.util.Map;
 import javax.swing.DefaultListModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 
 public class VerInfoRestaurante extends javax.swing.JInternalFrame {
@@ -52,11 +47,10 @@ public class VerInfoRestaurante extends javax.swing.JInternalFrame {
         
         //AGREGO LOS PRODUCTOS DE MI RESTAURANTE
         DefaultListModel<String> modelo=new DefaultListModel<>();
-        ManejadorUsuario MU=ManejadorUsuario.getinstance();
 
         int posision=0;
 
-        Map cole=MU.getColeccionProductosRestaurantes(txtNickRestaurante.getText());
+        Map cole=ICU.getColeccionProductosRestaurantes(txtNickRestaurante.getText());
         Iterator<Producto> it = cole.values().iterator();
         Producto pro=null;
         while (it.hasNext()) {
