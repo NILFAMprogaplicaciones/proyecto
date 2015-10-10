@@ -20,8 +20,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.JOptionPane;
-
 
 public class AgregarProductos extends HttpServlet {
     
@@ -29,6 +27,7 @@ public class AgregarProductos extends HttpServlet {
     private ManejadorUsuario            MU;
     private ManejadorProducto           MP;
     
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //JOptionPane.showMessageDialog(null, MU);
         String individual = request.getParameter("tipo_individual");
@@ -97,6 +96,7 @@ public class AgregarProductos extends HttpServlet {
     }
     
     
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         MP = ManejadorProducto.getinstance();

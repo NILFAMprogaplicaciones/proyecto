@@ -7,16 +7,11 @@ import Logica.DataIndividual;
 import Logica.DataPedido;
 import Logica.DataPromocion;
 import Logica.DataRestaurante;
-import Logica.Estado;
 import Logica.Fabrica;
 import Logica.Fecha;
 import Logica.IControladorPedido;
 import Logica.IControladorProducto;
 import Logica.IControladorUsuario;
-import Logica.ManejadorCategoria;
-import Logica.ManejadorPedido;
-import Logica.ManejadorProducto;
-import Logica.ManejadorUsuario;
 import Logica.Pedido;
 import Logica.Restaurante;
 import Logica.Usuario;
@@ -34,7 +29,6 @@ public class Auxiliar extends HttpServlet {
         IControladorUsuario ICU;
         Fabrica fabrica = Fabrica.getInstance();
         ICU = fabrica.getIControladorUsuario();
-        //ManejadorUsuario mu=ManejadorUsuario.getinstance();
         Iterator<Usuario> it = ICU.getColeccionClientes().values().iterator();
         Cliente c;
         Usuario u;
@@ -63,7 +57,6 @@ public class Auxiliar extends HttpServlet {
         IControladorUsuario ICU;
         Fabrica fabrica =Fabrica.getInstance();
         ICU = fabrica.getIControladorUsuario();
-        //ManejadorUsuario mu=ManejadorUsuario.getinstance();
         Iterator<Usuario> it = ICU.getColeccionRestaurante().values().iterator();
         Restaurante r;
         Usuario u;
@@ -100,19 +93,15 @@ public class Auxiliar extends HttpServlet {
         ICPRO = fabrica.getIControladorProducto();
         switch (col){
             case "usuarios":
-                //ManejadorUsuario mu=ManejadorUsuario.getinstance();
                 coleccionDevolucion=ICU.obtenercoleccion();
                 break;
             case "productos":
-                //ManejadorProducto mp=ManejadorProducto.getinstance();
                 coleccionDevolucion=ICPRO.getColeccion();
                 break;
             case "pedidos":
-                //ManejadorPedido mpp=ManejadorPedido.getinstance();
                 coleccionDevolucion=ICP.getColeccionPedido();
                 break;
             case "categorias":
-                //ManejadorCategoria mc=ManejadorCategoria.getinstance();
                 coleccionDevolucion=ICU.coleccion();
                 break;
         }
@@ -155,7 +144,6 @@ public class Auxiliar extends HttpServlet {
         IControladorPedido ICP;
         Fabrica fabrica = Fabrica.getInstance();
         ICP = fabrica.getIControladorPedido();
-        //ManejadorPedido MP=ManejadorPedido.getinstance();
         colDevo=ICP.getPedidos_Producto(nombre);
         return colDevo;
     }
@@ -165,7 +153,6 @@ public class Auxiliar extends HttpServlet {
         IControladorProducto ICP;
         Fabrica fabrica = Fabrica.getInstance();
         ICP = fabrica.getIControladorProducto();
-       // ManejadorProducto MP=ManejadorProducto.getinstance();
         colDevo=ICP.getColeccionProductos(nombre);
         return colDevo;
     }
@@ -186,5 +173,11 @@ public class Auxiliar extends HttpServlet {
         }
         return colDataPedido;
         
+    }
+    static public Pedido getPedido(int id){
+        IControladorPedido ICP;
+        Fabrica fabrica = Fabrica.getInstance();
+        ICP = fabrica.getIControladorPedido();
+        return ICP.getPedido(id);
     }
 }

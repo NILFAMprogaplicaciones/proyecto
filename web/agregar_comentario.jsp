@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-4">
-                <form enctype="multipart/form-data" method="POST" action=""class="form-horizontal" id="comentarioFRM" >
+                <form  method="POST" action="AgregarComentario" class="form-horizontal" id="comentarioFRM" >
                     <h5><i>Ingrese comentario sobre el pedido</i></h5><br>
                     <div class="form-group">
                         <label for="inputComentario" class="control-label col-xs-2">Comentario</label>
@@ -46,7 +46,7 @@
                     </div>
 
                     <div class="col-lg-8 col-lg-offset-4">
-                        <input type="button" class="btn" value="Guardar"/>
+                        <input type="submit" class="btn" value="Guardar"/>
                         
                          <a href="index.jsp"><input type="button" class="btn" value="Cancelar" /></a>
                     </div>

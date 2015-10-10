@@ -1,19 +1,20 @@
+<%@page import="javax.swing.JOptionPane"%>
 <%@page import="Auxiliar.Auxiliar"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="Logica.*"%>
 <jsp:include page='header.jsp'/>
 <link href="css/jquery.bootstrap-touchspin.css" rel="stylesheet"> 
 <%
-    DataRestaurante dc=Auxiliar.getRestaurante(request.getParameter("nicknamerestaurante"));
+    DataRestaurante dr=Auxiliar.getRestaurante(request.getParameter("nicknamerestaurante"));
    
-    Iterator<Producto> it = Auxiliar.getColeccionProductos(dc.getnickname()).values().iterator();
+    Iterator<Producto> it = Auxiliar.getColeccionProductos(dr.getnickname()).values().iterator();
     Producto p;
 %> 
 <div class="container">
     <div class="col-sm-4 col-lg-4 col-md-4">
         <div class="thumbnail">
             <img src="images/restaurante.png" alt="">
-            <span> <%=dc.getnombre()%> </span>
+            <span> <%=dr.getnombre()%> </span>
                 <div class="ratings">
                         <p>
                             <span class="glyphicon glyphicon-star"></span>
@@ -83,25 +84,25 @@
                             <div class="form-group">
                                 <label for="inputNombre" class="control-label col-xs-2">Nombre</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="inputEmail" value="<%=dc.getnombre()%>" readonly>
+                                    <input type="text" class="form-control" id="inputEmail" value="<%=dr.getnombre()%>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputNickname" class="control-label col-xs-2">Nickname</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="inputNickname" value="<%=dc.getnickname()%>" readonly>
+                                    <input type="text" class="form-control" id="inputNickname" value="<%=dr.getnickname()%>" readonly>
                                 </div>
                             </div>
                            <div class="form-group">
                                 <label for="inputDireccion" class="control-label col-xs-2">Direcci&oacute;n</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="inputDireccion" value="<%=dc.getdireccion()%>" readonly>
+                                    <input type="text" class="form-control" id="inputDireccion" value="<%=dr.getdireccion()%>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail" class="control-label col-xs-2">Email</label>
                                 <div class="col-xs-10">
-                                    <input type="email" class="form-control" id="inputEmail" value="<%=dc.getcorreo()%>" readonly>
+                                    <input type="email" class="form-control" id="inputEmail" value="<%=dr.getcorreo()%>" readonly>
                                 </div>
                             </div>
                         </form>
@@ -110,30 +111,33 @@
                     <div class="tab-pane" id="Comentarios">
                         <table class="table">
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                    </td>
-                                    <td>Muy rico todo</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                    </td>
-                                    <td>Llego en hora</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                    </td>
-                                    <td>No se que mas inventar</td>
-                                </tr>
+                                <%
+                                    Iterator<DataPedido> ite = Auxiliar.getColeccionPedido().values().iterator();
+                                    DataPedido dp;
+                                    while (ite.hasNext()) {
+                                        dp=ite.next();
+                                        if(dp.getRestaurante().getnickname().equals(dr.getnickname())){
+                                %>
+                                    <tr>
+                                        <td>
+                                            <%
+                                                Pedido pedido = Auxiliar.getPedido(dp.getId());
+                                                int puntaje = pedido.getComentario().getPuntaje(), indice=0;
+                                                while(indice<puntaje){
+                                            %>
+                                                    <span class="glyphicon glyphicon-star"></span>
+                                            <%
+                                                    indice++;
+                                                }
+                                            %>
+                                        </td>
+                                        
+                                        <td><%=pedido.getComentario().getTexto()%></td>
+                                    </tr>
+                                <%
+                                        }
+                                    }
+                                %>
                             </tbody>
                         </table>
                     </div>

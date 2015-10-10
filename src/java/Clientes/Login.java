@@ -21,9 +21,14 @@ public class Login extends HttpServlet {
         String password = request.getParameter("inputPassword");
         EstadoSesion nuevoEstado;
 
-	// chequea contraseña		
-	Cliente cli = ManejadorUsuario.getinstance().findCliente(login);
-            if (cli==null){
+	// chequea contraseña	
+        IControladorUsuario ICU;
+        Fabrica fabrica = Fabrica.getInstance();
+        ICU = fabrica.getIControladorUsuario();
+	
+        Cliente cli = ICU.findCliente(login);
+            
+        if (cli==null){
                RequestDispatcher dispatcher = request.getRequestDispatcher("inicioErroneo.jsp");
                dispatcher.forward(request, response); 
             }else{    
@@ -48,8 +53,10 @@ public class Login extends HttpServlet {
      * Devuelve el usuario logueado
      */
     static public Cliente getUsuarioLogueado(HttpServletRequest request) {
-
-        return ManejadorUsuario.getinstance().findCliente((String) request.getSession().getAttribute("usuario_logueado"));
+        IControladorUsuario ICU;
+        Fabrica fabrica = Fabrica.getInstance();
+        ICU = fabrica.getIControladorUsuario();
+        return ICU.findCliente((String) request.getSession().getAttribute("usuario_logueado"));
     }
 
     @Override
