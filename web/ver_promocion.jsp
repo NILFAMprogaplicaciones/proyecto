@@ -11,11 +11,12 @@
 <jsp:include page='header.jsp'/>   
     
     <%
+        String restaurante = (String)session.getAttribute("restaurante");
         DataPromocion DP=Auxiliar.getPromocion(request.getParameter("producto")); 
     %> 
     <div class="container">
         <div class="row">
-            <form class="form-horizontal" id="detallesproductosFRM">          
+            <form method="get"action="AgregarCarrito" class="form-horizontal" id="detallesproductosFRM">          
                 <div class="form-group">
                         <label for="inputNombre" class="control-label col-xs-2">Nombre</label>
                             <div class="col-xs-4">
@@ -43,7 +44,12 @@
                                 <input type="checkbox" id="inputPromocion"  >                                
                             <%}%>
                         </div><br>
-                </div>            
+                </div>  
+                <div class="col-lg-8 col-lg-offset-4">
+                        <button type="submit" class="btn glyphicon glyphicon-shopping-cart"></button>
+                        <!--<a href="ver_restaurante.jsp?producto=<%=restaurante%>"></a>-->
+                        <input type="button" class="btn" value="Volver" onclick="history.back()" />
+                </div>
             </form>              
         </div><!--cierro div row --> <br>
         

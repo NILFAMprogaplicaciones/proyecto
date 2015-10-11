@@ -9,6 +9,7 @@
    
     Iterator<Producto> it = Auxiliar.getColeccionProductos(dr.getnickname()).values().iterator();
     Producto p;
+    
 %> 
 <div class="container">
     <div class="col-sm-4 col-lg-4 col-md-4">
@@ -39,7 +40,7 @@
                          <thead>
                              <tr>
                                  <th class="col-md-8">Menu</th>
-                                 <th>Cantidad</th>
+                                 <th>Descripcion</th>
                                  <th class="col-md-0.5"></th>
                              </tr>
                          </thead>
@@ -63,13 +64,26 @@
                                       }
                                   %>
                                 </td>
-                                <td><input id="cantidad" type="text" value="" name="cantidad" ></td>
+                                <td>
+                                    <i><%=p.getdescripcion()%></i>                               
+                                </td>
                                 <td>
                                 <!--aca habria que programar cuando hace click
                                     en el carrito se levante un cartel que diga que
                                     se inserto el producto al pedido
-                                -->
-                                    <img src="images/Cart.png" alt="">
+                                -->                         
+                                  <%
+                                      if (p.getClass().getSimpleName().equals("Individual")){
+                                  %>
+                                  <a href="ver_individual.jsp?producto=<%=p.getnombre()%>" type="button" class="glyphicon glyphicon-search"/></a>                                        
+                                  <%
+                                      }else{
+                                  %>
+                                      <a href="ver_promocion.jsp?producto=<%=p.getnombre()%>" type="button" class="glyphicon glyphicon-search"/></a>
+
+                                  <%
+                                      }
+                                  %>
                                 </td>
                             </tr>
                                 <% 
@@ -145,6 +159,23 @@
  
         </div> 
     </div>
+</div>
+                            
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Cancelar"><span aria-hidden="true">&times;</span></button>     
+      </div>
+      <div class="modal-body">
+        <h4 class="modal-title" id="myModalLabel">Se agrego el producto a su carrito</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-primary" onclick="" data-dismiss="modal" >Aceptar</button>
+      </div>
+    </div>
+  </div>
 </div>
                                 
  <script src="http://code.jquery.com/jquery-latest.js"></script>

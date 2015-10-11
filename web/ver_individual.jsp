@@ -21,7 +21,7 @@
                 </div>    
             </div>
             <div class="col-sm-10 col-lg-10 col-md-10">
-                <form class="form-horizontal" method="GET" action="AgregarProductos" id="detallesproductosFRM">
+                <form class="form-horizontal" method="GET" action="AgregarCarrito" id="detallesproductosFRM">
 
                     <div class="form-group">
                         <label for="inputNombre" class="control-label col-xs-2">Nombre</label>
@@ -41,10 +41,16 @@
                                 <input type="text" class="form-control" id="inputPrecio"  value="<%=DI.getPrecio()%>" readonly >
                             </div>
                     </div>
-
+                    <div class="col-lg-8 col-lg-offset-4">
+                        <button type="submit" class="btn glyphicon glyphicon-shopping-cart"></button>
+                        <a href="info_restaurante.jsp"><input type="button" class="btn" value="Volver" /></a>
+                    </div>        
                 </form> 
             </div> 
-        </div>                    
+            <br>
+            <br>
+        </div>  
+         
         <div class="row">
             <table id="pedidos_producto" class="table table-striped table-bordered" cellspacing="0" width="100%">
                 <i><h4>Pedidos que incluyen este producto:</i></h4><br>

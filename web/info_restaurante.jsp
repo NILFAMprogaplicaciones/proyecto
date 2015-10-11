@@ -34,6 +34,7 @@
                         <tr>
                            <td>
                                 <a href="ver_restaurante.jsp?nicknamerestaurante=<%=dr.getnickname()%>"> <%=dr.getnombre()%></a>
+                                <!--<%session.setAttribute("restaurante", dr.getnickname());%>-->
                             </td>
                             <td><%=dr.getdireccion()%></td>
                         </tr>
@@ -46,6 +47,7 @@
                             <tr>
                                 <td>
                                     <a href="ver_restaurante.jsp?nicknamerestaurante=<%=dr.getnickname()%>"> <%=dr.getnombre()%></a>
+                                    <!--<%session.setAttribute("restaurante", dr.getnickname());%>-->
                                 </td>
                                 <td><%=dr.getdireccion()%></td>
                             </tr>

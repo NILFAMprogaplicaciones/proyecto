@@ -6,7 +6,7 @@
                     
             <div class="col-lg-8 col-lg-offset-4">
                 <input type="button" class="btn" value="Cargar" onclick="DatosAgregados();"/>
-                <a href="index.jsp"><input type="button" class="btn" value="Cancelar" /></a>
+                    <a href="index.jsp"><input type="button" class="btn" value="Cancelar" /></a>
             </div>
             
 <script type="text/javascript">

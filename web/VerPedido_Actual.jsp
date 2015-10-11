@@ -8,6 +8,7 @@
 
 <link href="css/jquery.bootstrap-touchspin.css" rel="stylesheet">  
 
+
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
@@ -74,9 +75,9 @@
                         <td>   </td>
                         <td>   </td>
                         <td>
-                        <button type="button" class="btn btn-default">
-                            <span class="glyphicon glyphicon-shopping-cart"></span> Seguir Agregando al Carrito
-                        </button>
+                            <button type="button" class="btn btn-default">
+                                <span class="glyphicon glyphicon-shopping-cart"></span> Seguir Agregando al Carrito
+                            </button>
                         </td>
                         <td>
                         <button type="button" class="btn btn-success">
