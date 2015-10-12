@@ -167,11 +167,11 @@ public class Auxiliar extends HttpServlet {
         Iterator<Pedido> it = ICP.getColeccionPedido().values().iterator();
         Pedido p;
         while (it.hasNext()){
-                    p=it.next();
-                    DataPedido dp=new DataPedido(p.getnum(), p.getfecha(), p.getPrecioTotal(), p.getEstado(), p.getCliente(), 
-                            p.getColeccionProductos(), p.getRestaurante(), p.getTipoAP());
-                    
-                    colDataPedido.put(dp.getId(), dp);
+            p=it.next();
+            DataPedido dp=new DataPedido(p.getnum(), p.getfecha(), p.getPrecioTotal(), p.getEstado(), p.getCliente(), 
+                    p.getColeccionProductos(), p.getRestaurante(), p.getTipoAP());
+
+            colDataPedido.put(dp.getId(), dp);
         }
         return colDataPedido;
         

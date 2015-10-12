@@ -86,17 +86,18 @@
                                     
                                     Iterator<DataPedido> it = Auxiliar.getColeccionPedido().values().iterator();
                                     DataPedido objeto;
-                                    DataComentario datacomentario;
+                                    
                                     while (it.hasNext()) {
                                         objeto=it.next();
                                         if(objeto.getCliente().getnickname().equals(dc.getnickname())){
-                                            datacomentario=Auxiliar.getComentario(objeto.getId());
+                                            Pedido pedido = Auxiliar.getPedido(objeto.getId());
+                                            
                                 %>
                                             <tr>
                                                 <td><a href="VerPedido_Actual.jsp?id_Pedido=<%=objeto.getId()%>"> <%=objeto.getId()%> </a></td>
                                                 <td><%=objeto.getEstado()%></td>
                                                 <%
-                                                    if((objeto.getEstado().equals(Estado.RECIBIDO))&& (datacomentario==null)){
+                                                    if((objeto.getEstado().equals(Estado.RECIBIDO))&& (pedido.getComentario()==null)){
                                                 %>
                                                         <td> <a href="agregar_comentario.jsp?id_Pedido=<%=objeto.getId()%>"> <img src="images/Bubble 1.png" alt=""> </a> </td>
                                                 <%
