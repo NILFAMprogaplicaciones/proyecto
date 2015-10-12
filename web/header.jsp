@@ -1,3 +1,7 @@
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.List"%>
+<%@page import="Logica.DataProductosPedido"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="Logica.Cliente"%>
 <%@page import="Clientes.Login"%>
 <%@page import="Logica.Usuario"%>
@@ -82,7 +86,8 @@
                     <%
                         Cliente cli;
                             cli = Login.getUsuarioLogueado(request);
-                        if(cli != null) {
+                            
+                        if(cli != null) {                          
                     %>                   
                         <li class="dropdown">
                             <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <img src="images/avatar-1-small.jpg" class="circle-img" alt=""/> <%=cli.getnombre()%> <span class="caret"></span></a>
@@ -100,66 +105,66 @@
                             <ul class="dropdown-menu">
                                 <div class="row col-sm-5">
                                     <div class="col-sm-9 col-md-9 col-md-offset-1">
-                                        <table class="table table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>Producto</th>
-                                                    <th>Cantidad</th>
-                                                    <th class="text-center">Precio</th>
-                                                    <th class="text-center">Total</th>
+                                        <%
+                                        List<DataProductosPedido> Carrito=(List<DataProductosPedido>)session.getAttribute("carrito");
+                                        if(Carrito==null){
+                                        %>
+                                            <h4>Carrito Vacio</h4>
+                                        <%}else{%>
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Producto</th>
+                                                        <th>Cantidad</th>
+                                                        <th class="text-center">Precio</th>
+                                                        <th class="text-center">Total</th>
 
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="col-sm-8 col-md-2">
-                                                    <div class="media">
-                                                        <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
-                                                        <div class="media-body">
-                                                            <h4 class="media-heading"><a href="#">Nombre</a></h4>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <%                                                    
+                                                        Iterator iterator = Carrito.iterator();
+                                                        Double Total=Double.parseDouble("0");
+                                                        while(iterator.hasNext()){ 
+                                                            Double Precio=Double.parseDouble("0");
+                                                            DataProductosPedido Producto=(DataProductosPedido)iterator.next();
+                                                            Precio = Producto.getSubTotal() / Producto.getCantidad();
+                                                            Total = Total + Producto.getSubTotal();
+                                                    %>
+                                                    <tr>
+                                                        <td class="col-sm-8 col-md-2">
+                                                        <div class="media">
+                                                            <a class="thumbnail pull-left" href="#"> <img class="media-object" src="<%=Producto.getProducto().getDireccionFoto()%>" style="width: 72px; height: 72px;"> </a>
+                                                            <div class="media-body">
+                                                                <h4 class="media-heading"><a href="#"><%=Producto.getProducto().getnombre()%></a></h4>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    </td>
-                                                    <td class="col-sm-8 col-md-6" style="text-align: center">
-                                                    <input class="form-control" id="exampleInputEmail1" value="3" type="email">
-                                                    </td>
-                                                    <td class="col-sm-1 col-md-1 text-center"><strong>$4.87</strong></td>
-                                                    <td class="col-sm-1 col-md-1 text-center"><strong>$14.61</strong></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="col-sm-8 col-md-6">
-                                                    <div class="media">
-                                                        <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
-                                                        <div class="media-body">
-                                                            <h4 class="media-heading"><a href="#">Nombre</a></h4>
-                                                        </div>
-                                                    </div>
-                                                    </td>
-                                                    <td class="col-sm-1 col-md-1" style="text-align: center">
-                                                    <input class="form-control" id="exampleInputEmail1" value="3" type="email">
-                                                    </td>
-                                                    <td class="col-sm-1 col-md-1 text-center"><strong>$4.87</strong></td>
-                                                    <td class="col-sm-1 col-md-1 text-center"><strong>$14.61</strong></td>
-                                                </tr>
-                                            </tbody>
-                                            <tfoot>
-                                                <tr>
-                                                    <td><h3>Total</h3></td>
-                                                    <td class="text-center"><h3>$31.53</h3></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-success">
-                                                            Confirmar <span class="glyphicon glyphicon-play"></span>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            </tfoot>
+                                                        </td>
+                                                        <td class="col-sm-8 col-md-6" style="text-align: center"><%=Producto.getCantidad()%></td>
+                                                        <td class="col-sm-1 col-md-1 text-center"><strong>$<%=Precio%></strong></td>
+                                                        <td class="col-sm-1 col-md-1 text-center"><strong>$<%=Producto.getSubTotal()%></strong></td>
+                                                    </tr>
+                                                    <%}%>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <td><h3>Total</h3></td>
+                                                        <td class="text-center"><h3>$<%=Total%></h3></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-success">
+                                                                Confirmar <span class="glyphicon glyphicon-play"></span>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                </tfoot>
+                                            <%}%>
                                         </table>
                                     </div>
                                 </div>

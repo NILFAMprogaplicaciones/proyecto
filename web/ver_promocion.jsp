@@ -16,7 +16,7 @@
     %> 
     <div class="container">
         <div class="row">
-            <form method="get"action="AgregarCarrito" class="form-horizontal" id="detallesproductosFRM">          
+            <form method="POST"action="Carrito" class="form-horizontal" id="detallesproductosFRM">          
                 <div class="form-group">
                         <label for="inputNombre" class="control-label col-xs-2">Nombre</label>
                             <div class="col-xs-4">
@@ -45,8 +45,9 @@
                             <%}%>
                         </div><br>
                 </div>  
-                <div class="col-lg-8 col-lg-offset-4">
-                        <button type="submit" class="btn glyphicon glyphicon-shopping-cart"></button>
+                <div class="col-lg-2 col-lg-offset-3">
+                        <input id="cantidad" type="text" value="" name="cantidad" >
+                        <button type="submit" class="btn glyphicon glyphicon-shopping-cart" data-toggle="modal" data-target="#myModal"></button>
                         <!--<a href="ver_restaurante.jsp?producto=<%=restaurante%>"></a>-->
                         <input type="button" class="btn" value="Volver" onclick="history.back()" />
                 </div>
@@ -113,9 +114,26 @@
                 <%}%>
             </table>  
         </div> <!--cierro div row -->
-    </div>        
+    </div> 
+            
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Cancelar"><span aria-hidden="true">&times;</span></button>     
+      </div>
+      <div class="modal-body">
+        <h4 class="modal-title" id="myModalLabel">Se agrego el producto a su carrito</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" onclick="" data-dismiss="modal" >Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-<script src="http://code.jquery.com/jquery-latest.js"></script>                                
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="js/jquery.bootstrap-touchspin.js"></script>
 <script type="text/javascript" class="init">
     $(document).ready(function() {
            $('#productos_promocion').DataTable({
@@ -131,5 +149,12 @@
             }  
             }); 
     } );
+</script>
+<script>
+    $("input[name='cantidad']").TouchSpin({
+      verticalbuttons: true,
+      verticalupclass: 'glyphicon glyphicon-plus',
+      verticaldownclass: 'glyphicon glyphicon-minus'
+    });
 </script>
 <jsp:include page='footer.jsp'/>

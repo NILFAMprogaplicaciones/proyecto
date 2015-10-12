@@ -44,6 +44,10 @@
         <servlet-name>AgregarComentario</servlet-name>
         <servlet-class>Pedidos.AgregarComentario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Carrito</servlet-name>
+        <servlet-class>Pedidos.Carrito</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AgregarCliente</servlet-name>
         <url-pattern>/AgregarCliente</url-pattern>
@@ -87,6 +91,10 @@
     <servlet-mapping>
         <servlet-name>AgregarComentario</servlet-name>
         <url-pattern>/AgregarComentario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Carrito</servlet-name>
+        <url-pattern>/Carrito</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -37,30 +37,6 @@
                         </td>
                         <td class="col-sm-1 col-md-1 text-center"><strong>$4.87</strong></td>
                         <td class="col-sm-1 col-md-1 text-center"><strong>$14.61</strong></td>
-                        <td class="col-sm-1 col-md-1">
-                        <button type="button" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove"></span> Eliminar
-                        </button></td>
-                    </tr>
-                    <tr>
-                        <td class="col-sm-8 col-md-6">
-                        <div class="media">
-                            <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
-                            <div class="media-body">
-                                <h4 class="media-heading"><a href="#">Nombre</a></h4>
-                                <h5 class="media-heading"> Restaurante <a href="#">Restaurante</a></h5>
-                            </div>
-                        </div></td>
-                        <td class="col-sm-1 col-md-1" style="text-align: center">
-                        <input type="email" class="form-control" id="exampleInputEmail1" value="3">
-                        </td>
-                        <td class="col-sm-1 col-md-1 text-center"><strong>$4.87</strong></td>
-                        <td class="col-sm-1 col-md-1 text-center"><strong>$14.61</strong></td>
-                        <td class="col-sm-1 col-md-1">
-                        <button type="button" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove"></span> Eliminar
-                        </button></td>
-                    </tr>
                 </tbody>
                 <tfoot>
                     <tr>
@@ -80,9 +56,10 @@
                             </button>
                         </td>
                         <td>
-                        <button type="button" class="btn btn-success">
-                            Confirmar Pedido <span class="glyphicon glyphicon-play"></span>
-                        </button></td>
+                            <button type="button" class="btn btn-success">Confirmar Pedido
+                                <span class="glyphicon glyphicon-play"></span>
+                            </button>
+                        </td>
                     </tr>
                 </tfoot>
             </table>

@@ -171,7 +171,6 @@
         <h4 class="modal-title" id="myModalLabel">Se agrego el producto a su carrito</h4>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
         <button type="submit" class="btn btn-primary" onclick="" data-dismiss="modal" >Aceptar</button>
       </div>
     </div>
@@ -179,7 +178,6 @@
 </div>
                                 
  <script src="http://code.jquery.com/jquery-latest.js"></script>
- <script src="js/jquery.bootstrap-touchspin.js"></script>
  <script type="text/javascript" class="init">
     $(document).ready(function() {
            $('#lista_menu').DataTable({
@@ -189,12 +187,5 @@
             }  
             });               
     } );
-</script>
-<script>
-    $("input[name='cantidad']").TouchSpin({
-      verticalbuttons: true,
-      verticalupclass: 'glyphicon glyphicon-plus',
-      verticaldownclass: 'glyphicon glyphicon-minus'
-    });
 </script>
 <jsp:include page='footer.jsp'/>
