@@ -121,7 +121,7 @@
                         <td>   </td>
                         <td>   </td>
                         <td>
-                            <button type="button" class="btn btn-success" onclick="history.back()"><span class="glyphicon glyphicon-arrow-left"></span>Atras
+                            <button type="button" class="btn btn-success" onclick="history.back()"><span class="glyphicon glyphicon-arrow-left" >  </span>Atras
                             </button>
                         </td>
                     </tr>

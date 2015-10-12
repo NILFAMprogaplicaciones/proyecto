@@ -50,7 +50,7 @@
                     </div>
 
                     <div class="col-lg-8 col-lg-offset-4">
-                        <input type="button" class="btn" value="Guardar" onclick="verificar()"/>
+                        <input type="submit" class="btn" value="Guardar" />
 
                          <a href="index.jsp"><input type="button" class="btn" value="Cancelar" /></a>
                     </div>
