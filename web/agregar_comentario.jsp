@@ -5,6 +5,9 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-4">
                 <form  method="POST" action="AgregarComentario" class="form-horizontal" id="comentarioFRM" >
+                    
+                    <input name="idpedido" type="hidden" class="form-control" id="inputDireccion" value="<%= request.getParameter("id_Pedido")%>" >
+                                    
                     <h5><i>Ingrese comentario sobre el pedido</i></h5><br>
                     <div class="form-group">
                         <label for="inputComentario" class="control-label col-xs-2">Comentario</label>

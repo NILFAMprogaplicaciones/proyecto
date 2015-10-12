@@ -14,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 
 
 public class AgregarComentario extends HttpServlet {
@@ -28,12 +29,11 @@ public class AgregarComentario extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         IControladorPedido ICP;
-        IControladorUsuario ICU;
+        
         Fabrica fabrica=Fabrica.getInstance();
         ICP = fabrica.getIControladorPedido();
-        ICU = fabrica.getIControladorUsuario();
         
-        String pedido = "3";
+        String pedido = request.getParameter("idpedido");
         Pedido ped = ICP.getPedido(Integer.parseInt(pedido));
         
         Calendar calendario = Calendar.getInstance();
@@ -53,9 +53,7 @@ public class AgregarComentario extends HttpServlet {
         
         DataComentario dc=new DataComentario(ped, fecha, infoPedido, comentario, puntajeInt, cliente);
         ICP.Caso_Ingresar_Comentario(dc);
-        
-        //JOptionPane.showMessageDialog(null,dc.getCliente().getnickname() );;
-        
+                
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
