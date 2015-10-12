@@ -29,6 +29,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -71,6 +72,7 @@ public class Carrito extends HttpServlet {
         }
         //Obtenemos los valores 
         String producto = request.getParameter("inputNombre");
+        
         double precio=Double.parseDouble(request.getParameter("inputPrecio"));
         int cantidad=Integer.parseInt(request.getParameter("cantidad"));
         double subTotal=cantidad * precio;

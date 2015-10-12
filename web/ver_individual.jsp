@@ -42,7 +42,7 @@
                     </div>
                     <div class="col-lg-2 col-lg-offset-3">
                         <input id="cantidad" type="text" value="" name="cantidad" >                        
-                        <button type="submit" class="btn glyphicon glyphicon-shopping-cart"></button>
+                        <button type="submit" class="btn glyphicon glyphicon-shopping-cart" onclick="DatosAgregados();"></button>
                         <a href="info_restaurante.jsp"><input type="button" class="btn" value="Volver" /></a>
                     </div>        
                 </form> 
@@ -107,6 +107,15 @@
             }  
             });               
     } );
+</script>
+<script type="text/javascript">
+    
+    function DatosAgregados(){
+        
+        window.alert("Producto agregado al carrito");
+        document.getElementById("detallesprodutosFRM").submit();//mando submit
+    }
+    
 </script>
 <script>
     $("input[name='cantidad']").TouchSpin({

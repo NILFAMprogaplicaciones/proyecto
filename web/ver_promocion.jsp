@@ -32,7 +32,7 @@
                 <div class="form-group">
                     <label for="inputPrecio" class="control-label col-xs-2">Precio</label>
                         <div class="col-xs-4">
-                            <input type="text" class="form-control" id="inputPrecio" value="<%=DP.getPrecioTotal()%>" readonly >
+                            <input type="text" class="form-control" id="inputPrecio" name="inputPrecio" value="<%=DP.getPrecioTotal()%>" readonly >
                         </div>
                 </div>
                 <div class="form-group" id="promocion">
@@ -47,7 +47,7 @@
                 </div>  
                 <div class="col-lg-2 col-lg-offset-3">
                         <input id="cantidad" type="text" value="" name="cantidad" >
-                        <button type="submit" class="btn glyphicon glyphicon-shopping-cart" data-toggle="modal" data-target="#myModal"></button>
+                        <button type="submit" class="btn glyphicon glyphicon-shopping-cart"onclick="DatosAgregados();"></button>
                         <!--<a href="ver_restaurante.jsp?producto=<%=restaurante%>"></a>-->
                         <input type="button" class="btn" value="Volver" onclick="history.back()" />
                 </div>
@@ -149,6 +149,15 @@
             }  
             }); 
     } );
+</script>
+<script type="text/javascript">
+    
+    function DatosAgregados(){
+        
+        window.alert("Producto agregado al carrito");
+        document.getElementById("detallesprodutosFRM").submit();//mando submit
+    }
+    
 </script>
 <script>
     $("input[name='cantidad']").TouchSpin({
