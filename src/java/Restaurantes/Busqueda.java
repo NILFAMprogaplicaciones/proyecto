@@ -2,25 +2,27 @@ package Restaurantes;
 
 
 import Logica.*;
-import com.google.gson.Gson;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
 public class Busqueda extends HttpServlet {
    
-    private IControladorUsuario     ICU;
+    
   
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        ManejadorUsuario MU=ManejadorUsuario.getinstance();
-        ArrayList<Restaurante> ListaRestaurante = new ArrayList<Restaurante>();
-        Iterator<Restaurante> it = MU.getColeccionRestaurante().values().iterator();
+        IControladorUsuario ICU;
+        Fabrica fabrica = Fabrica.getInstance();
+        ICU = fabrica.getIControladorUsuario();
+                
+        
+        ArrayList<Restaurante> ListaRestaurante = new ArrayList<>();
+        Iterator<Restaurante> it = ICU.getColeccionRestaurante().values().iterator();
         Restaurante res;
         
         String filtro = request.getParameter("filtro");
@@ -43,9 +45,12 @@ public class Busqueda extends HttpServlet {
     }  
     
     static public List Buscar(String filtro){
-            ManejadorUsuario MU=ManejadorUsuario.getinstance();
-            List<Restaurante> ListaRestaurante = new ArrayList<Restaurante>();
-            Iterator<Restaurante> it = MU.getColeccionRestaurante().values().iterator();
+            IControladorUsuario ICU;
+            Fabrica fabrica = Fabrica.getInstance();
+            ICU = fabrica.getIControladorUsuario();
+            
+            List<Restaurante> ListaRestaurante = new ArrayList<>();
+            Iterator<Restaurante> it = ICU.getColeccionRestaurante().values().iterator();
             Restaurante res;
             //String filtro = request.getParameter("filtro");
 

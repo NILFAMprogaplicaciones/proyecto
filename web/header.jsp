@@ -66,7 +66,7 @@
                 -->
                 <ul class="nav navbar-nav">           
                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cargar Datos <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >Cargar Datos <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="carga_datos.jsp">CARGA</a>  </li>
                               <!--<li><a href="ver_individual.jsp">ver ind</a></li>
@@ -74,7 +74,7 @@
                             </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Informacion Productos<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >Informacion Productos<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="info_producto.jsp">Info Productos</a>  </li>
                               <!--<li><a href="ver_individual.jsp">ver ind</a></li>
@@ -90,9 +90,9 @@
                         if(cli != null) {                          
                     %>                   
                         <li class="dropdown">
-                            <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <img src="images/avatar-1-small.jpg" class="circle-img" alt=""/> <%=cli.getnombre()%> <span class="caret"></span></a>
+                            <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" > <img src="images/avatar-1-small.jpg" class="circle-img" alt=""/> <%=cli.getnombre()%> <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <a id="logout"class="btn" type="submit" onclick="logout()">
+                                <a id="logout"class="btn"  type="submit" onclick="logout()">
 
                                       <span class="username">Cerrar Sesion</span>
                                       <i class="clip-chevron-down"></i>
@@ -101,7 +101,7 @@
                             </ul>
                         </li> 
                         <li class="dropdown">
-                            <a  href="#" class="dropdown-toggle glyphicon glyphicon-shopping-cart " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> </a>                          
+                            <a  href="#" class="dropdown-toggle glyphicon glyphicon-shopping-cart " data-toggle="dropdown" role="button" aria-haspopup="true" > </a>                          
                             <ul class="dropdown-menu">
                                 <div style="overflow:auto; height:600px;width:471px" class="row col-sm-5">
                                     <div  class="col-sm-9 col-md-9 col-md-offset-1">

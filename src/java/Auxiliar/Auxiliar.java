@@ -2,7 +2,9 @@
 package Auxiliar;
 
 import Logica.Cliente;
+import Logica.Comentario;
 import Logica.DataCliente;
+import Logica.DataComentario;
 import Logica.DataIndividual;
 import Logica.DataPedido;
 import Logica.DataPromocion;
@@ -180,4 +182,38 @@ public class Auxiliar extends HttpServlet {
         ICP = fabrica.getIControladorPedido();
         return ICP.getPedido(id);
     }
+    static public DataComentario getComentario(int id){
+        IControladorPedido ICP;
+        Fabrica fabrica = Fabrica.getInstance();
+        ICP = fabrica.getIControladorPedido();  
+        Pedido pedido=ICP.getPedido(id);
+        Comentario comentario=pedido.getComentario();
+        DataComentario dc=new DataComentario(comentario.getPedido(),comentario.getFecha(),comentario.getInfoPedido(),comentario.getTexto(),comentario.getPuntaje(),comentario.getCliente());
+        return dc;
+    }
+    static public int getPromedio(String nickname){
+        IControladorPedido ICP;
+        Fabrica fabrica = Fabrica.getInstance();
+        ICP = fabrica.getIControladorPedido();  
+        
+        Iterator<Pedido> ite = ICP.getColeccionPedido().values().iterator();
+        Pedido dp;
+        int puntaje=0,divisor=0;
+        
+        while (ite.hasNext()) {
+            dp=ite.next();
+
+            if(dp.getRestaurante().getnickname().equals(nickname)){
+                if(dp.getComentario()!=null){
+                    puntaje=puntaje+dp.getComentario().getPuntaje();
+                    divisor++;
+                }
+            }
+        }
+        if(divisor==0)
+            return 0;
+        else
+            return puntaje/divisor;
+    }
+    
 }

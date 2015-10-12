@@ -18,6 +18,7 @@
                 <thead>
                     <tr>
                         <th>Nombre</th>
+                        <th>Nickname</th>
                         <th>Direccion</th>
                     </tr>
                 </thead>
@@ -37,6 +38,7 @@
                                     <td>
                                         <a href="ver_restaurante.jsp?nicknamerestaurante=<%=res.getnickname()%>"> <%=res.getnombre()%></a>
                                     </td>
+                                    <td><%=res.getnickname()%></td>
                                     <td><%=res.getdireccion()%></td>
                                 </tr>
                         <%  }else{
@@ -46,6 +48,7 @@
                                         <td>
                                             <a href="ver_restaurante.jsp?nicknamerestaurante=<%=res.getnickname()%>"> <%=res.getnombre()%></a>
                                         </td>
+                                        <td><%=res.getnickname()%></td>
                                         <td><%=res.getdireccion()%></td>
                                     </tr>
                             <% 

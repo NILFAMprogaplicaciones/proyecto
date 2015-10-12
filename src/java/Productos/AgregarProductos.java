@@ -23,76 +23,12 @@ import javax.servlet.http.HttpServletResponse;
 
 public class AgregarProductos extends HttpServlet {
     
-    private IControladorProducto        ICP;
-    private ManejadorUsuario            MU;
+    
     private ManejadorProducto           MP;
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //JOptionPane.showMessageDialog(null, MU);
-        String individual = request.getParameter("tipo_individual");
         
-        if (individual!=null){
-            
-            String inputName=request.getParameter("inputNombre");
-            
-            String inputDescripcion=request.getParameter("inputDescripcion");
-            
-            String inputPrecio=request.getParameter("inputPrecio");
-            
-            String selectRestaurante=request.getParameter("selectRestaurante");
-            
-           
-            Fabrica fabrica = Fabrica.getInstance();
-            ICP = fabrica.getIControladorProducto();
-            MU = ManejadorUsuario.getinstance();
-
-            Restaurante restaurante = MU.findRestaurante(selectRestaurante);
-            
-            double precio = Double.parseDouble(inputPrecio);
-            
-            File imagen=new File("images/producto.jpg");
-            
-            DataIndividual DI = new DataIndividual(inputName,inputDescripcion,restaurante,precio,imagen,"images/Productos/"+inputName+".png");
-
-            ICP.AltaProductoIndividual(DI);
-
-            request.getRequestDispatcher("index.jsp").forward(request, response);
-        }
-        else{
-            
-            String rest=request.getParameter("selectRestaurante");
-            
-            MU = ManejadorUsuario.getinstance();
-            Restaurante restaurante = MU.findRestaurante(rest);
-            
-            String Name=request.getParameter("inputNombrePromo");
-            
-            String Descripcion=request.getParameter("inputDescripcionPromo");
-            
-            double precioTotal = 200;
-            
-            boolean activa=true;
-            String inputActiva=request.getParameter("inputActiva");
-            if((inputActiva)==(null))
-                activa=false;
-            
-            
-            String inputDescuento=request.getParameter("inputDescuento");
-            int descuento = Integer.parseInt(inputDescuento);
-                        
-            Map<String,Producto> ColProducto = new HashMap<String,Producto>();
-            
-            File foto=new File("images/producto.jpg");
-            
-            DataPromocion DP=new DataPromocion(restaurante,Name,Descripcion,precioTotal, activa,descuento,ColProducto,foto,"images/Productos/"+Name+".png");
-            
-            Fabrica fabrica = Fabrica.getInstance();
-            ICP = fabrica.getIControladorProducto();
-            ICP.AltaProductoPromocion(DP);
-
-            request.getRequestDispatcher("index.jsp").forward(request, response);
-        }
     }
     
     
@@ -100,7 +36,7 @@ public class AgregarProductos extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         MP = ManejadorProducto.getinstance();
-        Map<String, String> options = new LinkedHashMap<String, String>();
+        Map<String, String> options = new LinkedHashMap<>();
         options.put("Seleccione Producto", "Seleccione Producto");
         Iterator<Producto> it = MP.getColeccion().values().iterator();
         Producto prod;

@@ -99,15 +99,15 @@
             }
         %>
             if(nick==""){
-                    document.getElementById("comprobarnick").innerHTML = '<img src="images/Delete.png" class="circle-img" alt=""/> Nickname vacio';
+                    document.getElementById("comprobarnick").innerHTML = '<div class="alert alert-warning"> <span class="glyphicon glyphicon-info-sign"></span> Nickname vacio</div>';
             }else{   
                 while(pos <= arrayCli.length){
 
                     if(arrayCli[pos]==nick){
-                        document.getElementById("comprobarnick").innerHTML = '<img src="images/Delete.png" class="circle-img" alt=""/> Nickname ya tomado'; 
+                        document.getElementById("comprobarnick").innerHTML = '<div class="alert alert-danger"> <span class="glyphicon glyphicon-remove-sign"></span> Nickname ya tomado</div>'; 
                         pos = arrayCli.length + 1;
                     }else if(arrayCli[pos]==null){
-                        document.getElementById("comprobarnick").innerHTML = '<img src="images/Apply.png" class="circle-img" alt=""/> Nickname correcto'; 
+                        document.getElementById("comprobarnick").innerHTML = '<div class="alert alert-success"> <span class="glyphicon glyphicon-ok-sign"> </span> Nickname correcto</div> '; 
                         pos = arrayCli.length + 1;
                     }else{
                         ++pos;
@@ -133,15 +133,15 @@
             }
         %>
             if(correo==""){
-                document.getElementById("comprobarcorreo").innerHTML = '<img src="images/Delete.png" class="circle-img" alt=""/> Email vacio';
+                document.getElementById("comprobarcorreo").innerHTML = '<div class="alert alert-warning"> <span class="glyphicon glyphicon-info-sign"></span> Email vacio</div>';
             }else{
                 while(posicion <= arrayCorreo.length){
                     if(arrayCorreo[posicion]==correo){
-                        document.getElementById("comprobarcorreo").innerHTML = '<img src="images/Delete.png" class="circle-img" alt=""/> Email ya tomado'; 
+                        document.getElementById("comprobarcorreo").innerHTML = '<div class="alert alert-danger"> <span class="glyphicon glyphicon-remove-sign"></span> Email ya tomado</div>'; 
                         posicion = arrayCorreo.length + 1;
                     }
                     else if(arrayCorreo[posicion]==null){
-                        document.getElementById("comprobarcorreo").innerHTML = '<img src="images/Apply.png" class="circle-img" alt=""/> Email correcto'; 
+                        document.getElementById("comprobarcorreo").innerHTML = '<div class="alert alert-success"> <span class="glyphicon glyphicon-ok-sign"> </span> Email correcto</div>'; 
                         posicion = arrayCorreo.length + 1;
 
                     }else{
@@ -149,19 +149,18 @@
                     }
                 }
             }
-           
     }
      
     function validarcontraseña(){
         var contraseña=document.getElementById("inputContrasena").value;
         var conficontraseña=document.getElementById("inputConfirmContrasena").value;
         if(contraseña==""||conficontraseña==""){
-            document.getElementById("comprobarcontraseña").innerHTML = '<img src="images/Delete.png" class="circle-img" alt=""/> Debe ingresar una contraseña';
+            document.getElementById("comprobarcontraseña").innerHTML = '<div class="alert alert-warning"> <span class="glyphicon glyphicon-info-sign"></span> Debe ingresar una contraseña</div> ';
         }else{
             if(contraseña!=conficontraseña){
-                document.getElementById("comprobarcontraseña").innerHTML = '<img src="images/Delete.png" class="circle-img" alt=""/> Verifique la contraseña';
+                document.getElementById("comprobarcontraseña").innerHTML = '<div class="alert alert-danger"> <span class="glyphicon glyphicon-remove-sign"></span> Verifique la contraseña</div> ';
             }else{
-                document.getElementById("comprobarcontraseña").innerHTML = '<img src="images/Apply.png" class="circle-img" alt=""/> Contraseña correcta';
+                document.getElementById("comprobarcontraseña").innerHTML = '<div class="alert alert-success"> <span class="glyphicon glyphicon-ok-sign"> </span> Contraseña correcta</div> ';
             }
         }
     }

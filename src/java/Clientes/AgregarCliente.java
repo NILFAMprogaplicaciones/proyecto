@@ -8,7 +8,6 @@ import javax.servlet.http.*;
 import Logica.*;
 import java.util.StringTokenizer;
 import javax.servlet.annotation.MultipartConfig;
-import javax.swing.JOptionPane;
 
 @MultipartConfig
 public class AgregarCliente extends HttpServlet {

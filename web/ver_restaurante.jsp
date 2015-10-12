@@ -17,12 +17,7 @@
             <img src="images/restaurante.png" alt="">
             <span> <%=dr.getnombre()%> </span>
                 <div class="ratings">
-                        <p>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                        </p>
+                        <p>Promedio:   <%=Auxiliar.getPromedio(dr.getnickname()) %> </p>
                 </div>
         </div>
     </div>
@@ -75,11 +70,11 @@
                                   <%
                                       if (p.getClass().getSimpleName().equals("Individual")){
                                   %>
-                                  <a href="ver_individual.jsp?producto=<%=p.getnombre()%>" type="button" class="glyphicon glyphicon-search"/></a>                                        
+                                        <a href="ver_individual.jsp?producto=<%=p.getnombre()%>" class="glyphicon glyphicon-search"/></a>                                        
                                   <%
                                       }else{
                                   %>
-                                      <a href="ver_promocion.jsp?producto=<%=p.getnombre()%>" type="button" class="glyphicon glyphicon-search"/></a>
+                                        <a href="ver_promocion.jsp?producto=<%=p.getnombre()%>" class="glyphicon glyphicon-search"/></a>
 
                                   <%
                                       }
@@ -131,11 +126,12 @@
                                     while (ite.hasNext()) {
                                         dp=ite.next();
                                         if(dp.getRestaurante().getnickname().equals(dr.getnickname())){
+                                            Pedido pedido = Auxiliar.getPedido(dp.getId());
+                                                if(pedido.getComentario()!=null){
                                 %>
                                     <tr>
                                         <td>
                                             <%
-                                                Pedido pedido = Auxiliar.getPedido(dp.getId());
                                                 int puntaje = pedido.getComentario().getPuntaje(), indice=0;
                                                 while(indice<puntaje){
                                             %>
@@ -147,8 +143,12 @@
                                         </td>
                                         
                                         <td><%=pedido.getComentario().getTexto()%></td>
+                                        <td><%=pedido.getComentario().getFecha().getdia()%>/<%=pedido.getComentario().getFecha().getmes()%>/<%=pedido.getComentario().getFecha().getaño()%></td>
+                                        <td><%=pedido.getComentario().getInfoPedido()%></td>
+                                        <td><%=pedido.getComentario().getCliente().getnickname()%></td>
                                     </tr>
                                 <%
+                                             }
                                         }
                                     }
                                 %>

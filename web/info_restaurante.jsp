@@ -18,6 +18,7 @@
                 <thead>
                     <tr>
                         <th>Nombre</th>
+                        <th>Nickname</th>
                         <th>Direccion</th>
                     </tr>
                 </thead>
@@ -36,6 +37,7 @@
                                 <a href="ver_restaurante.jsp?nicknamerestaurante=<%=dr.getnickname()%>"> <%=dr.getnombre()%></a>
                                 <!--<%session.setAttribute("restaurante", dr.getnickname());%>-->
                             </td>
+                            <td><%=dr.getnickname()%></td>
                             <td><%=dr.getdireccion()%></td>
                         </tr>
                       <%    } 
@@ -49,6 +51,7 @@
                                     <a href="ver_restaurante.jsp?nicknamerestaurante=<%=dr.getnickname()%>"> <%=dr.getnombre()%></a>
                                     <!--<%session.setAttribute("restaurante", dr.getnickname());%>-->
                                 </td>
+                                <td><%=dr.getnickname()%></td>
                                 <td><%=dr.getdireccion()%></td>
                             </tr>
                     <% 

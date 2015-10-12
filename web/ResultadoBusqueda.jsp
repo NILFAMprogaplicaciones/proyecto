@@ -1,3 +1,4 @@
+<%@page import="Auxiliar.Auxiliar"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
 <%@page import="Restaurantes.Busqueda"%>
@@ -13,7 +14,7 @@
                 <thead>
                     <tr>
                         <th>Nombre</th>
-                        <th>Puntuacion</th>
+                        <th>Correo</th>
                     </tr>
                 </thead>
 
@@ -28,10 +29,12 @@
                     <tr>
                         <td>
                             <div class="col-sm-2 col-lg-2 col-md-2">
-                                <div class="thumbnail">
-                                    <div class="caption">
-                                        <h4><a href="ver_restaurante.jsp?nicknamerestaurante=<%=res.getnickname()%>"> <%=res.getnombre()%></a></h4>
+                                <div class="thumbnail" style="text-align: center">
+                                    
+                                    <div class="ratings">
+                                    <p>Promedio: <%=Auxiliar.getPromedio(res.getnickname()) %> </p>
                                     </div>
+                                        <h4><a href="ver_restaurante.jsp?nicknamerestaurante=<%=res.getnickname()%>"> <%=res.getnombre()%></a></h4>
                                     <img class="img-rounded" src="images/restaurante.png" alt="">                                    
                                 </div>
                              </div>                           

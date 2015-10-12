@@ -36,14 +36,13 @@
                         </div>
                 </div>
                 <div class="form-group" id="promocion">
-                    <label for="inputPromocion" class="control-label col-xs-4">Promocion activa</label>
-                        <div class="col-xs-8">
+                        
                             <%if(DP.getActiva()){%>
-                                <input type="checkbox" id="inputPromocion" checked >
+                                <label for="inputPromocion" class="control-label col-xs-4">Promocion Avtiva  <span class="glyphicon glyphicon-check"></span></label>
                             <%}else{%>
-                                <input type="checkbox" id="inputPromocion"  >                                
+                                <label for="inputPromocion" class="control-label col-xs-4">Promocion Inactiva  <span class="glyphicon glyphicon-unchecked"></span></label>                            
                             <%}%>
-                        </div><br>
+                        <br>
                 </div>  
                 <div class="col-lg-2 col-lg-offset-3">
                         <input id="cantidad" type="text" value="" name="cantidad" >

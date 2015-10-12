@@ -14,7 +14,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.JOptionPane;
 
 
 public class AgregarComentario extends HttpServlet {
@@ -43,11 +42,11 @@ public class AgregarComentario extends HttpServlet {
         int año = calendario.get(Calendar.YEAR);
         Fecha fecha=new Fecha(dia,mes,año);
         
-        String infoPedido = "Hay que discutirlo, el caso de uso no dice nada";
+        String infoPedido = "Informacion del pedido "+pedido;
         
         String comentario = request.getParameter("inputComentario");
         
-        Cliente cliente = ICU.findCliente(ped.getCliente().getnickname());
+        Cliente cliente = ped.getCliente();
         
         String puntaje = request.getParameter("inputPuntaje");
         int puntajeInt = Integer.parseInt(puntaje);
@@ -58,7 +57,6 @@ public class AgregarComentario extends HttpServlet {
         //JOptionPane.showMessageDialog(null,dc.getCliente().getnickname() );;
         
         request.getRequestDispatcher("index.jsp").forward(request, response);
-        //
     }
 
 

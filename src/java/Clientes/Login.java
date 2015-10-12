@@ -1,7 +1,6 @@
 package Clientes;
 
 import Logica.EstadoSesion;
-import Logica.ManejadorUsuario;
 import Logica.*;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -51,6 +50,8 @@ public class Login extends HttpServlet {
 	
     /**
      * Devuelve el usuario logueado
+     * @param request
+     * @return 
      */
     static public Cliente getUsuarioLogueado(HttpServletRequest request) {
         IControladorUsuario ICU;

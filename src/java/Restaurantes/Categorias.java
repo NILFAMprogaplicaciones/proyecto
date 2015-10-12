@@ -15,19 +15,13 @@ public class Categorias extends HttpServlet {
     
     private IControladorUsuario     ICU;
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        String inputName=request.getParameter("inputNombre");
-       
-        Fabrica fabrica = Fabrica.getInstance();
-        ICU = fabrica.getIControladorUsuario();
-        
-        ICU.AltaCategoria(inputName);
-        
-        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
     
     
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         ManejadorCategoria mc=ManejadorCategoria.getinstance();

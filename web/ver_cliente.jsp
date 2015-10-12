@@ -63,7 +63,7 @@
                             <div class="form-group">
                                 <label for="inputFecha_nacimiento" class="control-label col-xs-2">Fecha Nacimiento</label>
                                     <div class="col-xs-10">
-                                        <input type="date" class="form-control" id="inputFecha_nacimiento" value="<%= dc.getfechastring()%>" readonly>
+                                        <input type="text" class="form-control" id="inputFecha_nacimiento" value="<%= dc.getfechastring()%>" readonly>
                                     </div>
                             </div>
                                     
@@ -86,17 +86,19 @@
                                     
                                     Iterator<DataPedido> it = Auxiliar.getColeccionPedido().values().iterator();
                                     DataPedido objeto;
+                                    DataComentario datacomentario;
                                     while (it.hasNext()) {
                                         objeto=it.next();
                                         if(objeto.getCliente().getnickname().equals(dc.getnickname())){
+                                            datacomentario=Auxiliar.getComentario(objeto.getId());
                                 %>
                                             <tr>
-                                                <td><%=objeto.getId()%></td>
+                                                <td><a href="info_pedido.jsp?id_Pedido=<%=objeto.getId()%>"> <%=objeto.getId()%> </a></td>
                                                 <td><%=objeto.getEstado()%></td>
                                                 <%
-                                                    if(objeto.getEstado().equals(Estado.RECIBIDO)){
+                                                    if((objeto.getEstado().equals(Estado.RECIBIDO))&& (datacomentario==null)){
                                                 %>
-                                                        <td> <a href="agregar_comentario.jsp"> <img src="images/Bubble 1.png" alt=""> </a> </td>
+                                                        <td> <a href="agregar_comentario.jsp?id_Pedido=<%=objeto.getId()%>"> <img src="images/Bubble 1.png" alt=""> </a> </td>
                                                 <%
                                                     }else{
                                                 %>
