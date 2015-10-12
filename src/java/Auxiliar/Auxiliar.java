@@ -176,6 +176,13 @@ public class Auxiliar extends HttpServlet {
         return colDataPedido;
         
     }
+    static public DataPedido getDataPedido(String id){
+        
+        Pedido p=getPedido(Integer.parseInt(id));
+        DataPedido dp=new DataPedido(p.getnum(), p.getfecha(), p.getPrecioTotal(), p.getEstado(), p.getCliente(),
+                p.getColeccionProductos(), p.getRestaurante(), p.getTipoAP());
+        return dp;
+    }
     static public Pedido getPedido(int id){
         IControladorPedido ICP;
         Fabrica fabrica = Fabrica.getInstance();

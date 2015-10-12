@@ -93,7 +93,7 @@
                                             datacomentario=Auxiliar.getComentario(objeto.getId());
                                 %>
                                             <tr>
-                                                <td><a href="info_pedido.jsp?id_Pedido=<%=objeto.getId()%>"> <%=objeto.getId()%> </a></td>
+                                                <td><a href="VerPedido_Actual.jsp?id_Pedido=<%=objeto.getId()%>"> <%=objeto.getId()%> </a></td>
                                                 <td><%=objeto.getEstado()%></td>
                                                 <%
                                                     if((objeto.getEstado().equals(Estado.RECIBIDO))&& (datacomentario==null)){
