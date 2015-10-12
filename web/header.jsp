@@ -103,8 +103,8 @@
                         <li class="dropdown">
                             <a  href="#" class="dropdown-toggle glyphicon glyphicon-shopping-cart " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> </a>                          
                             <ul class="dropdown-menu">
-                                <div class="row col-sm-5">
-                                    <div class="col-sm-9 col-md-9 col-md-offset-1">
+                                <div style="overflow:auto; height:600px;width:471px" class="row col-sm-5">
+                                    <div  class="col-sm-9 col-md-9 col-md-offset-1">
                                         <%
                                         List<DataProductosPedido> Carrito=(List<DataProductosPedido>)session.getAttribute("carrito");
                                         if(Carrito==null){
@@ -166,6 +166,7 @@
                                                 </tfoot>
                                             <%}%>
                                         </table>
+                                    
                                     </div>
                                 </div>
                             </ul>
