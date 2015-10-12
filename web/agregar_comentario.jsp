@@ -3,12 +3,13 @@
 <!-- Page Content -->
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-4">
+
+            <div class="col-lg-7 col-lg-offset-4">
                 <form  method="POST" action="AgregarComentario" class="form-horizontal" id="comentarioFRM" >
-                    
+
                     <input name="idpedido" type="hidden" class="form-control" id="inputDireccion" value="<%= request.getParameter("id_Pedido")%>" >
-                                    
-                    <h5><i>Ingrese comentario sobre el pedido</i></h5><br>
+
+                    <h4><i>Ingrese comentario sobre el pedido</i></h4><br>
                     <div class="form-group">
                         <label for="inputComentario" class="control-label col-xs-2">Comentario</label>
                             <div class="col-xs-10">
@@ -21,36 +22,36 @@
                         <label for="inputPuntaje" class="control-label col-xs-2"></label>
                             <div class="col-xs-10">
                                 <label>
-                                 <input type="radio" name="inputPuntaje" value="1">
+                                    <input type="radio" id="input1" name="inputPuntaje" value="1">
                                 1<span class="glyphicon glyphicon-star-empty"></span>
                                 </label>&nbsp;&nbsp;&nbsp;
-                                
+
                                 <label>
-                                 <input type="radio" name="inputPuntaje" value="2">
+                                 <input type="radio" id="input2" name="inputPuntaje" value="2">
                                 2<span class="glyphicon glyphicon-star-empty"></span>
                                 </label>&nbsp;&nbsp;&nbsp;
-                                
+
                                 <label>
-                                 <input type="radio" name="inputPuntaje" value="3">
+                                 <input type="radio" id="input3" name="inputPuntaje" value="3">
                                 3 <span class="glyphicon glyphicon-star-empty"></span>
                                 </label>&nbsp;&nbsp;&nbsp;
-                                
+
                                 <label>
-                                 <input type="radio" name="inputPuntaje" value="4">
+                                 <input type="radio" id="input4" name="inputPuntaje" value="4">
                                 4<span class="glyphicon glyphicon-star-empty"></span>
                                 </label>&nbsp;&nbsp;&nbsp;
-                                
+
                                 <label>
-                                 <input type="radio" name="inputPuntaje" value="5">
+                                 <input type="radio" id="input5" name="inputPuntaje" value="5">
                                 5<span class="glyphicon glyphicon-star-empty"></span>
                                 </label>
-                               
+
                             </div>
                     </div>
 
                     <div class="col-lg-8 col-lg-offset-4">
-                        <input type="submit" class="btn" value="Guardar"/>
-                        
+                        <input type="button" class="btn" value="Guardar" onclick="verificar()"/>
+
                          <a href="index.jsp"><input type="button" class="btn" value="Cancelar" /></a>
                     </div>
                 </form>
