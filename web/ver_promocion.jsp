@@ -48,7 +48,6 @@
                         <input id="cantidad" type="text" value="" name="cantidad" >
                         <button type="submit" class="btn glyphicon glyphicon-shopping-cart"onclick="DatosAgregados();"></button>
                         <!--<a href="ver_restaurante.jsp?producto=<%=restaurante%>"></a>-->
-                        <input type="button" class="btn" value="Volver" onclick="history.back()" />
                 </div>
             </form>              
         </div><!--cierro div row --> <br>
@@ -161,6 +160,8 @@
 <script>
     $("input[name='cantidad']").TouchSpin({
       verticalbuttons: true,
+      min: 1,
+      initval: 1,
       verticalupclass: 'glyphicon glyphicon-plus',
       verticaldownclass: 'glyphicon glyphicon-minus'
     });

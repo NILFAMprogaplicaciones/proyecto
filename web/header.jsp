@@ -65,14 +65,14 @@
                 </form> 
                 -->
                 <ul class="nav navbar-nav">           
-                     <li class="dropdown">
+<!--                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >Cargar Datos <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="carga_datos.jsp">CARGA</a>  </li>
-                              <!--<li><a href="ver_individual.jsp">ver ind</a></li>
-                              <li><a href="ver_promocion.jsp">ver pro</a></li>-->
+                              <li><a href="ver_individual.jsp">ver ind</a></li>
+                              <li><a href="ver_promocion.jsp">ver pro</a></li>
                             </ul>
-                    </li>
+                    </li>-->
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >Informacion Productos<span class="caret"></span></a>
                             <ul class="dropdown-menu">

@@ -20,6 +20,8 @@
                         <th>Nombre</th>
                         <th>Nickname</th>
                         <th>Direccion</th>
+                        <th>Promedio</th>
+                        <th class="col-md-1" ></th>
                     </tr>
                 </thead>
 
@@ -35,21 +37,48 @@
                             if(request.getParameter("categoria")==null){
                     %>    
                                 <tr>
-                                    <td>
-                                        <a href="ver_restaurante.jsp?nicknamerestaurante=<%=res.getnickname()%>"> <%=res.getnombre()%></a>
-                                    </td>
+                                    <td><%=res.getnombre()%></td>
                                     <td><%=res.getnickname()%></td>
                                     <td><%=res.getdireccion()%></td>
+                                    <td>
+                                        <%
+                                           int promedio = Auxiliar.getPromedio(res.getnickname()), j=0;
+                                           while(j<promedio){
+                                       %>
+                                         <span class="glyphicon glyphicon-star"></span> 
+                                       <%
+                                           j++;
+                                           }
+                                       %>
+                                    </td>
+                                    <td>                                       
+                                        <a href="ver_restaurante.jsp?nicknamerestaurante=<%=res.getnickname()%>">
+                                           <img src="images/Zoom In.png">
+                                        </a>
+                                    </td>
                                 </tr>
                         <%  }else{
                                 if (res.ExisteCategoria(request.getParameter("categoria"))){
                             %>
                                     <tr>
-                                        <td>
-                                            <a href="ver_restaurante.jsp?nicknamerestaurante=<%=res.getnickname()%>"> <%=res.getnombre()%></a>
-                                        </td>
+                                        <td><%=res.getnombre()%></td>
                                         <td><%=res.getnickname()%></td>
                                         <td><%=res.getdireccion()%></td>
+                                        <td>
+                                                <%
+                                                   int promedio = Auxiliar.getPromedio(res.getnickname()), j=0;
+                                                   while(j<promedio){
+                                               %>
+                                                 <span class="glyphicon glyphicon-star"></span> 
+                                               <%
+                                                   j++;
+                                                   }
+                                               %>
+                                        </td>
+                                        <td>
+                                            <a href="ver_restaurante.jsp?nicknamerestaurante=<%=res.getnickname()%>"> <%=res.getnombre()%></a>
+                                             <img src="images/Zoom In.png">                                      
+                                        </td>
                                     </tr>
                             <% 
                                 }

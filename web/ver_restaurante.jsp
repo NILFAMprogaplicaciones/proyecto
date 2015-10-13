@@ -17,7 +17,16 @@
             <img src="images/restaurante.png" alt="">
             <span> <%=dr.getnombre()%> </span>
                 <div class="ratings">
-                        <p>Promedio:   <%=Auxiliar.getPromedio(dr.getnickname()) %> </p>
+                    <p>Promedio:</p>
+                     <%
+                        int promedio = Auxiliar.getPromedio(dr.getnickname()), j=0;
+                        while(j<promedio){
+                    %>
+                      <span class="glyphicon glyphicon-star"></span> 
+                    <%
+                        j++;
+                        }
+                    %>
                 </div>
         </div>
     </div>
@@ -49,11 +58,11 @@
                                   <%
                                       if (p.getClass().getSimpleName().equals("Individual")){
                                   %>
-                                          <a href="ver_individual.jsp?producto=<%=p.getnombre()%>"> <%=p.getnombre()%></a>                                        
+                                          <span><%=p.getnombre()%></span>                                        
                                   <%
                                       }else{
                                   %>
-                                      <a href="ver_promocion.jsp?producto=<%=p.getnombre()%>"> <%=p.getnombre()%></a>
+                                      <span><%=p.getnombre()%></span>
 
                                   <%
                                       }
@@ -70,11 +79,11 @@
                                   <%
                                       if (p.getClass().getSimpleName().equals("Individual")){
                                   %>
-                                        <a href="ver_individual.jsp?producto=<%=p.getnombre()%>" class="glyphicon glyphicon-search"/></a>                                        
+                                        <a href="ver_individual.jsp?producto=<%=p.getnombre()%>"/><img src="images/Zoom In.png"></a>                                        
                                   <%
                                       }else{
                                   %>
-                                        <a href="ver_promocion.jsp?producto=<%=p.getnombre()%>" class="glyphicon glyphicon-search"/></a>
+                                        <a href="ver_promocion.jsp?producto=<%=p.getnombre()%>"/><img src="images/Zoom In.png"></a>
 
                                   <%
                                       }

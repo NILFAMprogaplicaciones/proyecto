@@ -20,6 +20,8 @@
                         <th>Nombre</th>
                         <th>Nickname</th>
                         <th>Direccion</th>
+                        <th>Promedio</th>
+                        <th class="col-md-1"></th>
                     </tr>
                 </thead>
 
@@ -33,12 +35,26 @@
                                 dr=it.next();
                     %>   
                         <tr>
-                           <td>
-                                <a href="ver_restaurante.jsp?nicknamerestaurante=<%=dr.getnickname()%>"> <%=dr.getnombre()%></a>
-                                <!--<%session.setAttribute("restaurante", dr.getnickname());%>-->
-                            </td>
+                            <td><%=dr.getnombre()%></td>
                             <td><%=dr.getnickname()%></td>
                             <td><%=dr.getdireccion()%></td>
+                            <td>
+                                <%
+                                    int promedio = Auxiliar.getPromedio(dr.getnickname()), j=0;
+                                    while(j<promedio){
+                                %>
+                                    <span class="glyphicon glyphicon-star"></span> 
+                                <%
+                                    j++;
+                                    }
+                                %>
+                            </td>
+                            <td>
+                                <a href="ver_restaurante.jsp?nicknamerestaurante=<%=dr.getnickname()%>">
+                                  <img src="images/Zoom In.png">  
+                                </a>
+                                <!--<%session.setAttribute("restaurante", dr.getnickname());%>-->
+                            </td>
                         </tr>
                       <%    } 
                         }else {
@@ -47,12 +63,26 @@
                                 if (dr.ExisteCategoria(request.getParameter("categoria"))){
                       %>
                             <tr>
-                                <td>
-                                    <a href="ver_restaurante.jsp?nicknamerestaurante=<%=dr.getnickname()%>"> <%=dr.getnombre()%></a>
-                                    <!--<%session.setAttribute("restaurante", dr.getnickname());%>-->
-                                </td>
+                                <td><%=dr.getnombre()%></td>
                                 <td><%=dr.getnickname()%></td>
                                 <td><%=dr.getdireccion()%></td>
+                                <td>
+                                <%
+                                    int promedio = Auxiliar.getPromedio(dr.getnickname()), j=0;
+                                    while(j<promedio){
+                                %>
+                                    <span class="glyphicon glyphicon-star"></span> 
+                                <%
+                                    j++;
+                                    } 
+                                %>
+                            </td>
+                                <td>
+                                    <a href="ver_restaurante.jsp?nicknamerestaurante=<%=dr.getnickname()%>"> 
+                                        <img src="images/Zoom In.png">
+                                    </a>
+                                    <!--<%session.setAttribute("restaurante", dr.getnickname());%>-->
+                                </td>
                             </tr>
                     <% 
                             }

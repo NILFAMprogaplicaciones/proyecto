@@ -19,6 +19,7 @@
                     <tr>
                         <th>Nombre</th>
                         <th>Restaurante</th>
+                        <th class="col-md-1"></th>
                     </tr>
                 </thead>
 
@@ -32,17 +33,36 @@
                                 <%
                                     if (p.getClass().getSimpleName().equals("Individual")){
                                 %>
-                                        <a href="ver_individual.jsp?producto=<%=p.getnombre()%>"> <%=p.getnombre()%></a>                                        
+                                        <%=p.getnombre()%>
+                                                                                
                                 <%
                                     }else{
                                 %>
-                                    <a href="ver_promocion.jsp?producto=<%=p.getnombre()%>"> <%=p.getnombre()%></a>
+                                        <%=p.getnombre()%>                               
+                                <%
+                                    }
+                                %>  
+                                
+                                </td>
+                                <td><%=p.getRestaurante().getnickname()%></td>
+                                <td>
+                                    <%
+                                    if (p.getClass().getSimpleName().equals("Individual")){
+                                %>
+                                        <a href="ver_individual.jsp?producto=<%=p.getnombre()%>">
+                                            <img src="images/Zoom In.png">
+                                        </a>                                        
+                                <%
+                                    }else{
+                                %>
+                                    <a href="ver_promocion.jsp?producto=<%=p.getnombre()%>">
+                                        <img src="images/Zoom In.png">
+                                    </a>
                                 
                                 <%
                                     }
-                                %>
+                                %>    
                                 </td>
-                                <td><%=p.getRestaurante().getnickname()%></td>
                             </tr>
                     <% 
                         }

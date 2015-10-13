@@ -35,5 +35,12 @@
         </div>
     </div>
     <!-- /.container -->
-    
+<script src="http://code.jquery.com/jquery-latest.js"></script> 
+<script type="text/javascript" class="init">
+    $(document).ready(function() {
+        $.get('CargaDeDatos', function() {
+            // Write here some callback function if necessary.
+        });
+    });
+</script>    
 <jsp:include page='footer.jsp'/>
