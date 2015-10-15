@@ -47,7 +47,7 @@
                                 <%
                                     }
                                 %>  
-                                     </div>
+                                        </div>
                                     </div>
                                 </td>
                                 <td><%=p.getRestaurante().getnombre()%></td>

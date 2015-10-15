@@ -55,18 +55,25 @@
                             %>
                             <tr>
                                 <td>
-                                  <%
-                                      if (p.getClass().getSimpleName().equals("Individual")){
-                                  %>
-                                          <span><%=p.getnombre()%></span>                                        
-                                  <%
-                                      }else{
-                                  %>
-                                      <span><%=p.getnombre()%></span>
-
-                                  <%
-                                      }
-                                  %>
+                                   <div class="media">
+                                        <a class="pull-left"> <img class="media-object" src="<%= p.getDireccionFoto()%>" style="width: 72px; height: 72px;"> </a>
+                                        <div class="media-body">
+                                            
+                                            
+                                <%
+                                    if (p.getClass().getSimpleName().equals("Individual")){
+                                %>
+                                        <h4 class="media-heading"><a ><%=p.getnombre()%></a></h4>       
+                                                                                
+                                <%
+                                    }else{
+                                %>
+                                        <h4 class="media-heading"><a ><%=p.getnombre()%></a></h4>                               
+                                <%
+                                    }
+                                %>  
+                                        </div>
+                                    </div>
                                 </td>
                                 <td>
                                     <i><%=p.getdescripcion()%></i>                               
