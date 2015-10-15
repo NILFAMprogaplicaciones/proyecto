@@ -90,7 +90,7 @@
                         if(cli != null) {                          
                     %>                   
                         <li class="dropdown">
-                            <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" > <img src="images/avatar-1-small.jpg" class="circle-img" alt=""/> <%=cli.getnombre()%> <span class="caret"></span></a>
+                            <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" > <img src="<%=cli.getDireccionFoto()%>"style="width: 30px; height: 30px;" class="circle-img" alt=""/> <%=cli.getnombre()%> <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <a id="logout"class="btn"  type="submit" onclick="logout()">
 

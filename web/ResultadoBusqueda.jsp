@@ -14,7 +14,7 @@
                 <thead>
                     <tr>
                         <th>Nombre</th>
-                        <th>Correo</th>
+                        <th>Calificacion</th>
                     </tr>
                 </thead>
 
@@ -28,18 +28,25 @@
                     %>                   
                     <tr>
                         <td>
-                            <div class="col-sm-2 col-lg-2 col-md-2">
-                                <div class="thumbnail" style="text-align: center">
-                                    
-                                    <div class="ratings">
-                                    <p>Promedio: <%=Auxiliar.getPromedio(res.getnickname()) %> </p>
+                            <div class="media">
+                                    <a class="pull-left"> <img class="media-object" src="images/restaurante.png" style="width: 72px; height: 72px;"> </a>
+                                    <div class="media-body">
+                                        <h4 class="media-heading"><a href="ver_restaurante.jsp?nicknamerestaurante=<%=res.getnickname()%>"> <%=res.getnombre()%></a></h4>
+                                        <p>Promedio: <%=Auxiliar.getPromedio(res.getnickname()) %> </p>                                          
                                     </div>
-                                        <h4><a href="ver_restaurante.jsp?nicknamerestaurante=<%=res.getnickname()%>"> <%=res.getnombre()%></a></h4>
-                                    <img class="img-rounded" src="images/restaurante.png" alt="">                                    
-                                </div>
-                             </div>                           
+                            </div>                                                  
                         </td>
-                        <td><%=res.getcorreo()%></td>
+                        <td>
+                            <%
+                                    int promedio = Auxiliar.getPromedio(res.getnickname()), j=0;
+                                    while(j<promedio){
+                            %>
+                                    <span class="glyphicon glyphicon-star"></span> 
+                            <%
+                                    j++;
+                                    }
+                            %>
+                        </td>
                     </tr>                  
                     <%     
                         }
@@ -56,6 +63,7 @@
 <script type="text/javascript">
     $(document).ready(function() {                                   // Locate HTML DOM element with ID "somebutton" and assign the following function to its "click" event...
         $('#lista_resultados').DataTable({
+            "aaSorting": [[ 1, "desc" ]],
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
  
