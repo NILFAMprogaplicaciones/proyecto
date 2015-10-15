@@ -52,7 +52,7 @@ public class AgregarComentario extends HttpServlet {
         DataComentario dc=new DataComentario(ped, fecha, infoPedido, comentario, puntajeInt, cliente);
         ICP.Caso_Ingresar_Comentario(dc);
                 
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        request.getRequestDispatcher("info_restaurante.jsp").forward(request, response);
     }
 
 

@@ -13,7 +13,7 @@ import javax.servlet.http.*;
 public class Categorias extends HttpServlet {
 
     
-    private IControladorUsuario     ICU;
+    
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -24,11 +24,14 @@ public class Categorias extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        ManejadorCategoria mc=ManejadorCategoria.getinstance();
+        IControladorUsuario ICU;
+        Fabrica fabrica=Fabrica.getInstance();
+        ICU=fabrica.getIControladorUsuario();
+        //ManejadorCategoria mc=ManejadorCategoria.getinstance();
         Map<String, String> options = new LinkedHashMap<String, String>();
         options.put("Seleccione Categoria", "Seleccione Categoria");
         
-        Iterator<Categoria> it = mc.coleccion().values().iterator();
+        Iterator<Categoria> it = ICU.coleccion().values().iterator();
         Categoria cat;
         while (it.hasNext()) {
             cat=it.next();//en cat tenemos el valor

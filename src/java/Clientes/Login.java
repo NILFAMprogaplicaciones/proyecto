@@ -43,7 +43,7 @@ public class Login extends HttpServlet {
                 objSesion.setAttribute("estado_sesion", nuevoEstado);
 
                 // redirige a la página principal para que luego rediriga a la página que corresponde
-                RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("info_restaurante.jsp");
                 dispatcher.forward(request, response);
             }
     } 

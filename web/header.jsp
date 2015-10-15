@@ -43,7 +43,7 @@
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <a class="navbar-brand" href="index.jsp">Quick Order</a>
+                <a class="navbar-brand" href="info_restaurante.jsp">Quick Order</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -54,25 +54,7 @@
                         <button type="submit" class="btn glyphicon glyphicon-search"></button>
                     </div>
                 </form>
-                <!--
-                <form class="form-search navbar-form navbar-left" method="get" action="Busqueda">
-                    <div class="input-group">
-                      <input type="text" class="form-control" name="filtro" placeholder="Buscar restaurante o comida">
-                        <span class="input-group-btn">
-                        <button class="btn btn-default" type="submit">Buscar</button>
-                        </span>
-                    </div>
-                </form> 
-                -->
                 <ul class="nav navbar-nav">           
-<!--                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >Cargar Datos <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="carga_datos.jsp">CARGA</a>  </li>
-                              <li><a href="ver_individual.jsp">ver ind</a></li>
-                              <li><a href="ver_promocion.jsp">ver pro</a></li>
-                            </ul>
-                    </li>-->
                     <li class="dropdown">
                         <a href="info_producto.jsp" class="dropdown-toggle"  role="button" aria-haspopup="true" >Informacion Productos</a>
                             

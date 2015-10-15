@@ -16,7 +16,7 @@ public class CargaDeDatos extends HttpServlet {
         IDP=fabrica.getIDatosPrecargados();
         IDP.DatosPrecargado();
         
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        //request.getRequestDispatcher("info_restaurante.jsp").forward(request, response);
         
     }
 

@@ -76,7 +76,7 @@ public class AgregarCliente extends HttpServlet {
 
             ICU.Caso_Registro_Cliente(DC);
 
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            request.getRequestDispatcher("info_restaurante.jsp").forward(request, response);
         
         
     }

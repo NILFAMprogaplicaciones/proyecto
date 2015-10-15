@@ -103,7 +103,7 @@ public class Carrito extends HttpServlet {
         DataPedido pedido = new DataPedido((id+1),fecha,precioTotal,Estado.PREPARCION,cliente,coleccionProductos,res,TAP);
        
         ICPED.Caso_Generar_Pedido(pedido);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("info_restaurante.jsp");
         dispatcher.forward(request, response);
     }
 
