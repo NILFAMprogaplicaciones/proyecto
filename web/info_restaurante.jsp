@@ -24,7 +24,6 @@
                         <th class="col-md-1"></th>
                     </tr>
                 </thead>
-
                 <tbody>
                      <% 
                         Iterator<DataRestaurante> it = Auxiliar.getColeccionDataRestaurante().values().iterator();

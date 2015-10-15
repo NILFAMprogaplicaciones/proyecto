@@ -23,6 +23,8 @@ public class Logout extends HttpServlet {
         response.sendRedirect("index.jsp");
     }
 
+    
+            
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

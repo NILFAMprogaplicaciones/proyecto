@@ -6,7 +6,6 @@ import Logica.DataComentario;
 import Logica.Fabrica;
 import Logica.Fecha;
 import Logica.IControladorPedido;
-import Logica.IControladorUsuario;
 import Logica.Pedido;
 import java.io.IOException;
 import java.util.Calendar;
@@ -14,7 +13,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.JOptionPane;
 
 
 public class AgregarComentario extends HttpServlet {

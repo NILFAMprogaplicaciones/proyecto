@@ -74,12 +74,12 @@
                             </ul>
                     </li>-->
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >Informacion Productos<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="info_producto.jsp">Info Productos</a>  </li>
-                              <!--<li><a href="ver_individual.jsp">ver ind</a></li>
-                              <li><a href="ver_promocion.jsp">ver pro</a></li>-->
-                            </ul>
+                        <a href="info_producto.jsp" class="dropdown-toggle"  role="button" aria-haspopup="true" >Informacion Productos</a>
+                            
+                    </li>
+                    <li class="dropdown">
+                        <a href="info_restaurante.jsp" class="dropdown-toggle"  role="button" aria-haspopup="true" > Restaurantes</a>
+                            
                     </li>
                 </ul>    
                 <ul class="nav navbar-nav navbar-right">
@@ -158,9 +158,11 @@
                                                         <td></td>
                                                         <td></td>
                                                         <td>
-                                                            <button type="button" class="btn btn-success">
-                                                                Confirmar <span class="glyphicon glyphicon-play"></span>
-                                                            </button>
+                                                            <form method="get" action="Carrito" id="GenerarPedidoFRM">
+                                                                <button type="submit" class="btn btn-success">
+                                                                    Confirmar <span class="glyphicon glyphicon-play"></span>
+                                                                </button>
+                                                            </form>
                                                         </td>
                                                     </tr>
                                                 </tfoot>
