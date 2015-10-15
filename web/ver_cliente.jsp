@@ -72,7 +72,7 @@
                     </div>
                     
                     <div class="tab-pane" id="Pedidos">
-                        <table id="lista_pedidos_cliente" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                        <table id="lista_pedidos_cliente" class="table table-hover" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
                                     <th class="col-md-6">Pedido</th>

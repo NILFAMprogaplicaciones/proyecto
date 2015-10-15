@@ -40,7 +40,7 @@
             <br>
                 <div id="my-tab-content" class="tab-content">
                     <div class="tab-pane active" id="Menu">
-                        <table id="lista_menu" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                        <table id="lista_menu" class="table table-hover" cellspacing="0" width="100%">
                          <thead>
                              <tr>
                                  <th class="col-md-8">Menu</th>

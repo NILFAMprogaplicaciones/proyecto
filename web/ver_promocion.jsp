@@ -1,3 +1,5 @@
+<%@page import="Clientes.Login"%>
+<%@page import="Logica.Cliente"%>
 <%@page import="Auxiliar.Auxiliar"%>
 <%@page import="Logica.ManejadorPedido"%>
 <%@page import="Logica.Pedido"%>
@@ -44,16 +46,22 @@
                             <%}%>
                         <br>
                 </div>  
-                <div class="col-lg-2 col-lg-offset-3">
-                        <input id="cantidad" type="text" value="" name="cantidad" >
-                        <button type="submit" class="btn glyphicon glyphicon-shopping-cart"onclick="DatosAgregados();"></button>
-                        <!--<a href="ver_restaurante.jsp?producto=<%=restaurante%>"></a>-->
-                </div>
+                 <%
+                    Cliente cli;
+                        cli = Login.getUsuarioLogueado(request);
+
+                    if(cli != null) {                          
+                %>                   
+                    <div class="col-lg-2 col-lg-offset-3">
+                        <input id="cantidad" type="text" value="" name="cantidad" >                        
+                        <button type="submit" class="btn glyphicon glyphicon-shopping-cart" onclick="DatosAgregados();"></button>
+                    </div>  
+                <%}%>
             </form>              
         </div><!--cierro div row --> <br>
         
         <div class="row">
-            <table id="productos_promocion" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <table id="productos_promocion" class="table table-hover" cellspacing="0" width="100%">
                 <i><h4>Productos de la promocion:</i></h4><br>
                 <thead>
                     <tr>
@@ -73,7 +81,14 @@
                         %>
                 <tbody>
                     <tr>
-                        <td><%=dc.getProducto().getnombre()%></td>
+                        <td>
+                            <div class="media">
+                                <a class="pull-left"> <img class="media-object" src="<%=dc.getProducto().getDireccionFoto() %>" style="width: 72px; height: 72px;"> </a>
+                                <div class="media-body">
+                                    <h4 class="media-heading"><a ><%=dc.getProducto().getnombre()%></a></h4>
+                                </div>
+                            </div>                        
+                        </td>
                         <td><%=dc.getCantidad()%></td>                       
                     </tr>
                 </tbody>
@@ -84,7 +99,7 @@
         </div><br>
         
         <div class="row">        
-            <table id="pedidos_producto" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <table id="pedidos_producto" class="table table-hover" cellspacing="0" width="100%">
                 <i><h4>Pedidos que incluyen este producto:</i></h4><br>
                 <thead>
                     <tr>

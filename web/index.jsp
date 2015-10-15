@@ -14,7 +14,7 @@
             </div>
             <div class="col-md-9">
                     <br>
-             <table id="lista_restaurantes" class="table table-striped table-bordered" cellspacing="0" width="100%">
+             <table id="lista_restaurantes" class="table table-hover" cellspacing="0" width="100%">
                 <thead>
                     <tr>
                         <th>Nombre</th>
@@ -37,7 +37,16 @@
                             if(request.getParameter("categoria")==null){
                     %>    
                                 <tr>
-                                    <td><%=res.getnombre()%></td>
+                                    
+                                    <td>
+                                    <div class="media">
+                                        <a class="pull-left"> <img class="media-object" src="images/restaurante.png" style="width: 72px; height: 72px;"> </a>
+                                        <div class="media-body">
+                                            <h4 class="media-heading"><a ><%=res.getnombre()%></a></h4>
+                                            
+                                        </div>
+                                    </div>
+                                    </td>
                                     <td><%=res.getnickname()%></td>
                                     <td><%=res.getdireccion()%></td>
                                     <td>
@@ -105,11 +114,14 @@
                 });
             });
         $('#lista_restaurantes').DataTable({
-            "language": {
+        "aaSorting": [[ 3, "desc" ]],    
+        "language": {
                 "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
  
-            }  
-            });    
+            } 
+            
+            }); 
+
         });
 </script> 
 <jsp:include page='footer.jsp'/>

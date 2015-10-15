@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">               
-             <table id="lista_resultados" class="table table-striped table-bordered" cellspacing="0" width="100%">
+             <table id="lista_resultados" class="table table-hover" cellspacing="0" width="100%">
                 <thead>
                     <tr>
                         <th>Nombre</th>
@@ -55,7 +55,12 @@
 
 <script type="text/javascript">
     $(document).ready(function() {                                   // Locate HTML DOM element with ID "somebutton" and assign the following function to its "click" event...
-        $('#lista_resultados').DataTable();    
+        $('#lista_resultados').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+ 
+            }  
+            });    
     });
 
 </script>

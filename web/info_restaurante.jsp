@@ -14,7 +14,7 @@
             </div>
             <div class="col-md-9">
                 <br>
-             <table id="lista_restaurantes" class="table table-striped table-bordered" cellspacing="0" width="100%">
+             <table id="lista_restaurantes" class="table table-hover" cellspacing="0" width="100%">
                 <thead>
                     <tr>
                         <th>Nombre</th>
@@ -35,7 +35,15 @@
                                 dr=it.next();
                     %>   
                         <tr>
-                            <td><%=dr.getnombre()%></td>
+                            <td>  
+                                <div class="media">
+                                    <a class="pull-left"> <img class="media-object" src="images/restaurante.png" style="width: 72px; height: 72px;"> </a>
+                                    <div class="media-body">
+                                        <h4 class="media-heading"><a ><%=dr.getnombre()%></a></h4>
+                                        <p>Promedio: <%=Auxiliar.getPromedio(dr.getnickname()) %> </p>                                          
+                                    </div>
+                                </div>
+                            </td>
                             <td><%=dr.getnickname()%></td>
                             <td><%=dr.getdireccion()%></td>
                             <td>
@@ -63,7 +71,15 @@
                                 if (dr.ExisteCategoria(request.getParameter("categoria"))){
                       %>
                             <tr>
-                                <td><%=dr.getnombre()%></td>
+                                <td>
+                                <div class="media">
+                                    <a class="pull-left"> <img class="media-object" src="images/restaurante.png" style="width: 72px; height: 72px;"> </a>
+                                    <div class="media-body">
+                                        <h4 class="media-heading"><a ><%=dr.getnombre()%></a></h4>
+                                        <p>Promedio: <%=Auxiliar.getPromedio(dr.getnickname()) %> </p>                                          
+                                    </div>
+                                </div>                                
+                                </td>
                                 <td><%=dr.getnickname()%></td>
                                 <td><%=dr.getdireccion()%></td>
                                 <td>
@@ -107,7 +123,12 @@
 
                 });
             });
-        $('#lista_restaurantes').DataTable();    
+        $('#lista_restaurantes').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+ 
+            }  
+            });    
         });
 </script> 
 <jsp:include page='footer.jsp'/>

@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-md-12">
 
-            <table id="lista_productos" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <table id="lista_productos" class="table table-hover" cellspacing="0" width="100%">
                 <thead>
                     <tr>
                         <th>Nombre</th>
@@ -30,21 +30,27 @@
                     %>
                             <tr>
                                 <td>
+                                    <div class="media">
+                                        <a class="pull-left"> <img class="media-object" src="<%= p.getDireccionFoto()%>" style="width: 72px; height: 72px;"> </a>
+                                        <div class="media-body">
+                                            
+                                            
                                 <%
                                     if (p.getClass().getSimpleName().equals("Individual")){
                                 %>
-                                        <%=p.getnombre()%>
+                                        <h4 class="media-heading"><a ><%=p.getnombre()%></a></h4>       
                                                                                 
                                 <%
                                     }else{
                                 %>
-                                        <%=p.getnombre()%>                               
+                                        <h4 class="media-heading"><a ><%=p.getnombre()%></a></h4>                               
                                 <%
                                     }
                                 %>  
-                                
+                                     </div>
+                                    </div>
                                 </td>
-                                <td><%=p.getRestaurante().getnickname()%></td>
+                                <td><%=p.getRestaurante().getnombre()%></td>
                                 <td>
                                     <%
                                     if (p.getClass().getSimpleName().equals("Individual")){
@@ -79,7 +85,12 @@
  <script src="http://code.jquery.com/jquery-latest.js"></script> 
  <script type="text/javascript" class="init">
     $(document).ready(function() {
-           $('#lista_productos').DataTable();
+           $('#lista_productos').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+ 
+            }  
+            });
                 
     } );
 </script>

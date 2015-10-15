@@ -22,7 +22,7 @@
             </div> 
         </div>                    
         <div class="row">
-            <table id="productos_pedidos" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <table id="productos_pedidos" class="table table-hover" cellspacing="0" width="100%">
                 <i><h4>Productos en este pedido:</i></h4><br>
                 <thead>
                     <tr>
@@ -54,7 +54,12 @@
  <script src="http://code.jquery.com/jquery-latest.js"></script>                                
  <script type="text/javascript" class="init">
     $(document).ready(function() {
-           $('#productos_pedidos').DataTable();               
+           $('#productos_pedidos').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+ 
+            }  
+            });               
     } );
 </script>
 <jsp:include page='footer.jsp'/>    

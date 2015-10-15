@@ -1,3 +1,5 @@
+<%@page import="Clientes.Login"%>
+<%@page import="Logica.Cliente"%>
 <%@page import="Auxiliar.Auxiliar"%>
 <%@page import="Logica.Pedido"%>
 <%@page import="java.util.Iterator"%>
@@ -40,10 +42,17 @@
                                 <input type="text" class="form-control" id="inputPrecio" name="inputPrecio"  value="<%=DI.getPrecio()%>" readonly >
                             </div>
                     </div>
+                    <%
+                        Cliente cli;
+                            cli = Login.getUsuarioLogueado(request);
+                            
+                        if(cli != null) {                          
+                    %>                   
                     <div class="col-lg-2 col-lg-offset-3">
                         <input id="cantidad" type="text" value="" name="cantidad" >                        
                         <button type="submit" class="btn glyphicon glyphicon-shopping-cart" onclick="DatosAgregados();"></button>
-                    </div>        
+                    </div>  
+                    <%}%>
                 </form> 
             </div> 
             <br>
@@ -51,7 +60,7 @@
         </div>  
          
         <div class="row">
-            <table id="pedidos_producto" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <table id="pedidos_producto" class="table table-hover" cellspacing="0" width="100%">
                 <i><h4>Pedidos que incluyen este producto:</i></h4><br>
                 <thead>
                     <tr>
