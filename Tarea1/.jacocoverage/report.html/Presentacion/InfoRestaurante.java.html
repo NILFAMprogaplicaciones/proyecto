@@ -4,9 +4,8 @@ package Presentacion;
 import Logica.Categoria;
 import Logica.DataRestaurante;
 import Logica.Fabrica;
+import Logica.IControladorPedido;
 import Logica.IControladorUsuario;
-import Logica.ManejadorCategoria;
-import Logica.ManejadorUsuario;
 import Logica.Usuario;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -29,136 +28,136 @@ import javax.swing.tree.TreeSelectionModel;
 
 public class InfoRestaurante extends javax.swing.JInternalFrame {
     public IControladorUsuario ICU;
+    public IControladorPedido ICP;
     public JTree arbolModelo;
     public DataRestaurante datosRestaurante;
     
-<span class="nc" id="L35">    ManejadorCategoria MC = ManejadorCategoria.getinstance();</span>
-<span class="nc" id="L36">    ManejadorUsuario MU = ManejadorUsuario.getinstance();</span>
+    
     
     public void llenarArbol(){
-<span class="nc" id="L39">        this.setLayout(new BorderLayout(5,10));</span>
+<span class="nc" id="L38">        this.setLayout(new BorderLayout(5,10));</span>
         
-<span class="nc" id="L41">        JScrollPane Menu = new JScrollPane();</span>
+<span class="nc" id="L40">        JScrollPane Menu = new JScrollPane();</span>
         
-<span class="nc" id="L43">        Map&lt;String, Categoria&gt; listaCat = MC.coleccion();</span>
-<span class="nc" id="L44">        Iterator&lt;Categoria&gt; it = listaCat.values().iterator();</span>
-<span class="nc" id="L45">        DefaultMutableTreeNode dmtn = new DefaultMutableTreeNode(&quot;Categorías&quot;);</span>
-<span class="nc" id="L46">        DefaultTreeModel modelo = new DefaultTreeModel(dmtn);</span>
+<span class="nc" id="L42">        Map&lt;String, Categoria&gt; listaCat = ICU.coleccion();</span>
+<span class="nc" id="L43">        Iterator&lt;Categoria&gt; it = listaCat.values().iterator();</span>
+<span class="nc" id="L44">        DefaultMutableTreeNode dmtn = new DefaultMutableTreeNode(&quot;Categorías&quot;);</span>
+<span class="nc" id="L45">        DefaultTreeModel modelo = new DefaultTreeModel(dmtn);</span>
         
-<span class="nc" id="L48">        arbolModelo = new JTree(modelo);</span>
+<span class="nc" id="L47">        arbolModelo = new JTree(modelo);</span>
         
-<span class="nc" id="L50">        Categoria cat = null;</span>
-<span class="nc bnc" id="L51" title="All 2 branches missed.">        while(it.hasNext()){</span>
+<span class="nc" id="L49">        Categoria cat = null;</span>
+<span class="nc bnc" id="L50" title="All 2 branches missed.">        while(it.hasNext()){</span>
             
-<span class="nc" id="L53">            cat = it.next();</span>
-<span class="nc" id="L54">            String nombreCat = cat.getnombre();</span>
-<span class="nc" id="L55">            DefaultMutableTreeNode n1 = new DefaultMutableTreeNode(nombreCat);</span>
-<span class="nc" id="L56">            dmtn.add(n1);</span>
+<span class="nc" id="L52">            cat = it.next();</span>
+<span class="nc" id="L53">            String nombreCat = cat.getnombre();</span>
+<span class="nc" id="L54">            DefaultMutableTreeNode n1 = new DefaultMutableTreeNode(nombreCat);</span>
+<span class="nc" id="L55">            dmtn.add(n1);</span>
             
-<span class="nc" id="L58">            Map&lt;String, Usuario&gt; listaUsr = MU.obtenercoleccion();</span>
-<span class="nc" id="L59">            Iterator&lt;Usuario&gt; iter = listaUsr.values().iterator();</span>
+<span class="nc" id="L57">            Map&lt;String, Usuario&gt; listaUsr = ICU.obtenercoleccion();</span>
+<span class="nc" id="L58">            Iterator&lt;Usuario&gt; iter = listaUsr.values().iterator();</span>
             
-<span class="nc" id="L61">            Usuario usr = null;</span>
+<span class="nc" id="L60">            Usuario usr = null;</span>
             
-<span class="nc bnc" id="L63" title="All 2 branches missed.">            while(iter.hasNext()){</span>
-<span class="nc" id="L64">                usr = iter.next();</span>
-<span class="nc bnc" id="L65" title="All 2 branches missed.">                if(usr.getClass().getSimpleName().equals(&quot;Restaurante&quot;)){</span>
-<span class="nc" id="L66">                    Map&lt;String, Categoria&gt; u = MU.getCategoriasRestaurantes(usr.getnickname());</span>
-<span class="nc bnc" id="L67" title="All 2 branches missed.">                    if(u.containsKey(nombreCat)){</span>
-<span class="nc" id="L68">                        String nombreRest = usr.getnickname();</span>
-<span class="nc" id="L69">                        DefaultMutableTreeNode n2 = new DefaultMutableTreeNode(nombreRest);</span>
-<span class="nc" id="L70">                        n1.add(n2);</span>
+<span class="nc bnc" id="L62" title="All 2 branches missed.">            while(iter.hasNext()){</span>
+<span class="nc" id="L63">                usr = iter.next();</span>
+<span class="nc bnc" id="L64" title="All 2 branches missed.">                if(usr.getClass().getSimpleName().equals(&quot;Restaurante&quot;)){</span>
+<span class="nc" id="L65">                    Map&lt;String, Categoria&gt; u = ICU.getCategoriasRestaurantes(usr.getnickname());</span>
+<span class="nc bnc" id="L66" title="All 2 branches missed.">                    if(u.containsKey(nombreCat)){</span>
+<span class="nc" id="L67">                        String nombreRest = usr.getnickname();</span>
+<span class="nc" id="L68">                        DefaultMutableTreeNode n2 = new DefaultMutableTreeNode(nombreRest);</span>
+<span class="nc" id="L69">                        n1.add(n2);</span>
                     
                     }
-<span class="nc" id="L73">                }</span>
+<span class="nc" id="L72">                }</span>
             }
-<span class="nc" id="L75">         }</span>
+<span class="nc" id="L74">         }</span>
         
-<span class="nc" id="L77">        Menu.add(arbolModelo);</span>
-<span class="nc" id="L78">        Menu.setViewportView(arbolModelo);</span>
+<span class="nc" id="L76">        Menu.add(arbolModelo);</span>
+<span class="nc" id="L77">        Menu.setViewportView(arbolModelo);</span>
         
         
-<span class="nc" id="L81">        arbolModelo.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);</span>
+<span class="nc" id="L80">        arbolModelo.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);</span>
                
-<span class="nc" id="L83">        JLabel tit = new JLabel();</span>
-<span class="nc" id="L84">        tit.setText(&quot;Seleccione el restaurante&quot;);</span>
+<span class="nc" id="L82">        JLabel tit = new JLabel();</span>
+<span class="nc" id="L83">        tit.setText(&quot;Seleccione el restaurante&quot;);</span>
         
-<span class="nc" id="L86">        JButton ok = new JButton();</span>
-<span class="nc" id="L87">        ok.setText(&quot;OK&quot;);</span>
+<span class="nc" id="L85">        JButton ok = new JButton();</span>
+<span class="nc" id="L86">        ok.setText(&quot;OK&quot;);</span>
         
-<span class="nc" id="L89">        add(tit, BorderLayout.NORTH);</span>
-<span class="nc" id="L90">        add(ok, BorderLayout.SOUTH);</span>
-<span class="nc" id="L91">        add(Menu, BorderLayout.CENTER);</span>
-<span class="nc" id="L92">        setVisible(true);</span>
+<span class="nc" id="L88">        add(tit, BorderLayout.NORTH);</span>
+<span class="nc" id="L89">        add(ok, BorderLayout.SOUTH);</span>
+<span class="nc" id="L90">        add(Menu, BorderLayout.CENTER);</span>
+<span class="nc" id="L91">        setVisible(true);</span>
         
-<span class="nc" id="L94">        arbolModelo.addTreeSelectionListener(new TreeSelectionListener() {</span>
+<span class="nc" id="L93">        arbolModelo.addTreeSelectionListener(new TreeSelectionListener() {</span>
             @Override
             public void valueChanged(TreeSelectionEvent e) {
-<span class="nc" id="L97">                DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode)arbolModelo.getLastSelectedPathComponent();          </span>
-<span class="nc" id="L98">                TreePath[] paths = arbolModelo.getSelectionPaths();</span>
-<span class="nc bnc" id="L99" title="All 2 branches missed.">                if(!selectedNode.equals(null)){</span>
-<span class="nc" id="L100">                    nick = selectedNode.toString();</span>
+<span class="nc" id="L96">                DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode)arbolModelo.getLastSelectedPathComponent();          </span>
+<span class="nc" id="L97">                TreePath[] paths = arbolModelo.getSelectionPaths();</span>
+<span class="nc bnc" id="L98" title="All 2 branches missed.">                if(!selectedNode.equals(null)){</span>
+<span class="nc" id="L99">                    nick = selectedNode.toString();</span>
                        
                      
                 } 
-<span class="nc" id="L104">            }</span>
+<span class="nc" id="L103">            }</span>
             
         }); 
-<span class="nc" id="L107">        ok.addActionListener(getButtonActionListener());   </span>
-<span class="nc" id="L108">    }</span>
+<span class="nc" id="L106">        ok.addActionListener(getButtonActionListener());   </span>
+<span class="nc" id="L107">    }</span>
     String nick;
     private ActionListener getButtonActionListener(){
-<span class="nc" id="L111">        return new ActionListener(){</span>
+<span class="nc" id="L110">        return new ActionListener(){</span>
             public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L113">                JInternalFrame ji = validador.getJInternalFrame(VerInfoRestaurante.class.getName());</span>
-<span class="nc bnc" id="L114" title="All 4 branches missed.">                if(ji == null || ji.isClosed()){</span>
-<span class="nc" id="L115">                    datosRestaurante = ICU.Caso_Ver_Restaurante(nick); </span>
-<span class="nc" id="L116">                    ji = new VerInfoRestaurante(datosRestaurante);</span>
-<span class="nc" id="L117">                    Ventana.getjDesktopPane().add(ji);</span>
-<span class="nc" id="L118">                    validador.addJIframe(VerInfoRestaurante.class.getName(), ji);</span>
+<span class="nc" id="L112">                JInternalFrame ji = validador.getJInternalFrame(VerInfoRestaurante.class.getName());</span>
+<span class="nc bnc" id="L113" title="All 4 branches missed.">                if(ji == null || ji.isClosed()){</span>
+<span class="nc" id="L114">                    datosRestaurante = ICU.Caso_Ver_Restaurante(nick); </span>
+<span class="nc" id="L115">                    ji = new VerInfoRestaurante(datosRestaurante);</span>
+<span class="nc" id="L116">                    Ventana.getjDesktopPane().add(ji);</span>
+<span class="nc" id="L117">                    validador.addJIframe(VerInfoRestaurante.class.getName(), ji);</span>
                     
-<span class="nc" id="L120">                    Toolkit t = Toolkit.getDefaultToolkit();</span>
-<span class="nc" id="L121">                    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();</span>
-<span class="nc" id="L122">                    int x=(int) ((screenSize.getWidth()/2)-ji.getWidth()/2);</span>
-<span class="nc" id="L123">                    int y=(int) ((screenSize.getHeight()/2)-ji.getHeight()/2);</span>
-<span class="nc" id="L124">                    ji.setLocation(x, y);</span>
-<span class="nc" id="L125">                    ji.show();</span>
+<span class="nc" id="L119">                    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();</span>
+<span class="nc" id="L120">                    int x=(int) ((screenSize.getWidth()/2)-ji.getWidth()/2);</span>
+<span class="nc" id="L121">                    int y=(int) ((screenSize.getHeight()/2)-ji.getHeight()/2);</span>
+<span class="nc" id="L122">                    ji.setLocation(x, y);</span>
+<span class="nc" id="L123">                    ji.show();</span>
                 }
                 
-<span class="nc" id="L128">            }</span>
+<span class="nc" id="L126">            }</span>
         };
 
     }
     
-<span class="nc" id="L133">    public InfoRestaurante() {</span>
-<span class="nc" id="L134">        initComponents();</span>
-<span class="nc" id="L135">        Fabrica fabrica = Fabrica.getInstance();</span>
-<span class="nc" id="L136">        ICU = fabrica.getIControladorUsuario();</span>
-<span class="nc" id="L137">        llenarArbol();   </span>
-<span class="nc" id="L138">    }</span>
+<span class="nc" id="L131">    public InfoRestaurante() {</span>
+<span class="nc" id="L132">        initComponents();</span>
+<span class="nc" id="L133">        Fabrica fabrica = Fabrica.getInstance();</span>
+<span class="nc" id="L134">        ICU = fabrica.getIControladorUsuario();</span>
+<span class="nc" id="L135">        ICP = fabrica.getIControladorPedido();</span>
+<span class="nc" id="L136">        llenarArbol();   </span>
+<span class="nc" id="L137">    }</span>
 
     
     @SuppressWarnings(&quot;unchecked&quot;)
     // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
     private void initComponents() {
 
-<span class="nc" id="L145">        setClosable(true);</span>
-<span class="nc" id="L146">        setIconifiable(true);</span>
-<span class="nc" id="L147">        setTitle(&quot;Informacion Restaurante&quot;);</span>
+<span class="nc" id="L144">        setClosable(true);</span>
+<span class="nc" id="L145">        setIconifiable(true);</span>
+<span class="nc" id="L146">        setTitle(&quot;Informacion Restaurante&quot;);</span>
 
-<span class="nc" id="L149">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
-<span class="nc" id="L150">        getContentPane().setLayout(layout);</span>
-<span class="nc" id="L151">        layout.setHorizontalGroup(</span>
-<span class="nc" id="L152">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L153">            .addGap(0, 596, Short.MAX_VALUE)</span>
+<span class="nc" id="L148">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
+<span class="nc" id="L149">        getContentPane().setLayout(layout);</span>
+<span class="nc" id="L150">        layout.setHorizontalGroup(</span>
+<span class="nc" id="L151">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L152">            .addGap(0, 596, Short.MAX_VALUE)</span>
         );
-<span class="nc" id="L155">        layout.setVerticalGroup(</span>
-<span class="nc" id="L156">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L157">            .addGap(0, 481, Short.MAX_VALUE)</span>
+<span class="nc" id="L154">        layout.setVerticalGroup(</span>
+<span class="nc" id="L155">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L156">            .addGap(0, 481, Short.MAX_VALUE)</span>
         );
 
-<span class="nc" id="L160">        pack();</span>
-<span class="nc" id="L161">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+<span class="nc" id="L159">        pack();</span>
+<span class="nc" id="L160">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

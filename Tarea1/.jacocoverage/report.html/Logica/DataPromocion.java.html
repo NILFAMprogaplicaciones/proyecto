@@ -3,9 +3,7 @@ package Logica;
 
 import java.io.File;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 public class DataPromocion {
     private String nombre;
@@ -15,45 +13,49 @@ public class DataPromocion {
     private int  descuento;
     private double  precioTotal;
     private File    foto;
-<span class="fc" id="L18">    private Map&lt;String,DataCantidad&gt;     CantidadProductos=new HashMap&lt;String,DataCantidad&gt;();</span>
+    private String direccionFoto;
+<span class="fc" id="L17">    private Map&lt;String,DataCantidad&gt;     CantidadProductos=new HashMap&lt;String,DataCantidad&gt;();</span>
     
     
-<span class="fc" id="L21">    public DataPromocion(Restaurante res,String nombre, String descripcion, double precioTotal, boolean activa, int descuento, Map CantidadProductos,File foto){</span>
-<span class="fc" id="L22">        this.nombre=nombre;</span>
-<span class="fc" id="L23">        this.descripcion=descripcion;</span>
-<span class="fc" id="L24">        this.restaurante=res;</span>
-<span class="fc" id="L25">        this.activa=activa;</span>
-<span class="fc" id="L26">        this.descuento=descuento;</span>
-<span class="fc" id="L27">        this.precioTotal=precioTotal;</span>
-<span class="fc" id="L28">        this.foto=foto;</span>
+<span class="fc" id="L20">    public DataPromocion(Restaurante res,String nombre, String descripcion, double precioTotal, boolean activa, int descuento, Map CantidadProductos,File foto, String direccionFoto){</span>
+<span class="fc" id="L21">        this.nombre=nombre;</span>
+<span class="fc" id="L22">        this.descripcion=descripcion;</span>
+<span class="fc" id="L23">        this.restaurante=res;</span>
+<span class="fc" id="L24">        this.activa=activa;</span>
+<span class="fc" id="L25">        this.descuento=descuento;</span>
+<span class="fc" id="L26">        this.precioTotal=precioTotal;</span>
+<span class="fc" id="L27">        this.foto=foto;</span>
         //copia una coleccion entera de una a otra
-<span class="fc" id="L30">        this.CantidadProductos.putAll(CantidadProductos);</span>
-    
-<span class="fc" id="L32">    }</span>
+<span class="fc" id="L29">        this.CantidadProductos.putAll(CantidadProductos);</span>
+<span class="fc" id="L30">        this.direccionFoto=direccionFoto;</span>
+<span class="fc" id="L31">    }</span>
     
     public String getNombre(){
-<span class="fc" id="L35">        return nombre;</span>
+<span class="fc" id="L34">        return nombre;</span>
     }
     public String getDescripcion(){
-<span class="fc" id="L38">        return descripcion;</span>
+<span class="fc" id="L37">        return descripcion;</span>
     }
     public Restaurante getRestaurante(){
-<span class="fc" id="L41">        return this.restaurante;</span>
+<span class="fc" id="L40">        return this.restaurante;</span>
     }
     public boolean getActiva(){
-<span class="fc" id="L44">        return activa;</span>
+<span class="fc" id="L43">        return activa;</span>
     }
     public int getDescuento(){
-<span class="fc" id="L47">        return descuento;</span>
+<span class="fc" id="L46">        return descuento;</span>
     }
     public double getPrecioTotal(){
-<span class="fc" id="L50">        return precioTotal;</span>
+<span class="fc" id="L49">        return precioTotal;</span>
     }
     public Map getColeccionProducto(){
-<span class="fc" id="L53">        return CantidadProductos;</span>
+<span class="fc" id="L52">        return CantidadProductos;</span>
     }
     public File getImagen(){
-<span class="fc" id="L56">        return foto;</span>
+<span class="fc" id="L55">        return foto;</span>
+    }
+    public String getDireccionFoto(){
+<span class="fc" id="L58">        return direccionFoto;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

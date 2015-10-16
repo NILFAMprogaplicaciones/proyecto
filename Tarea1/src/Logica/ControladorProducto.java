@@ -78,6 +78,11 @@ public class ControladorProducto implements IControladorProducto {
         return mp.getColeccion();
     }
     @Override
+    public Map getColeccionProductos(String nickname){
+        ManejadorProducto   mp=ManejadorProducto.getinstance();
+        return mp.getColeccionProductos(nickname);             
+    }
+    @Override
     public Promocion findPromocion(String nombre){
         ManejadorProducto   mp=ManejadorProducto.getinstance();
         return mp.findPromocion(nombre);

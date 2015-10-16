@@ -28,6 +28,7 @@ public abstract interface IControladorProducto {
     ///////////////////////////////////////////////////////
     public abstract int cantidadProductos();
     public abstract Map getColeccion();
+    public abstract Map getColeccionProductos(String nickname);
     public abstract Promocion findPromocion(String nombre);
     public abstract int CantidadProductosPromo(String nombre);
     public abstract Producto findProducto(String nombre);

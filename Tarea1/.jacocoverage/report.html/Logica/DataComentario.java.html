@@ -7,35 +7,35 @@ public class DataComentario {
     private Fecha FechaRealizacion;
     private String InfoPedido;
     private String Texto;
-    private Cliente Nickname;
     private int Puntaje;
+    private Cliente cliente;
     
-<span class="nc" id="L13">    public DataComentario(Pedido idpedido,Fecha fecharealizacion, String infopedido, String texto, Cliente nickname,int puntaje){</span>
-<span class="nc" id="L14">        this.IdPedido=idpedido;</span>
-<span class="nc" id="L15">        this.FechaRealizacion=fecharealizacion;</span>
-<span class="nc" id="L16">        this.InfoPedido=infopedido;</span>
-<span class="nc" id="L17">        this.Texto=texto;</span>
-<span class="nc" id="L18">        this.Nickname=nickname;</span>
-<span class="nc" id="L19">        this.Puntaje=puntaje;</span>
-<span class="nc" id="L20">    }</span>
+<span class="fc" id="L13">    public DataComentario(Pedido idpedido,Fecha fecharealizacion, String infopedido, String texto, int puntaje, Cliente cliente){</span>
+<span class="fc" id="L14">        this.IdPedido=idpedido;</span>
+<span class="fc" id="L15">        this.FechaRealizacion=fecharealizacion;</span>
+<span class="fc" id="L16">        this.InfoPedido=infopedido;</span>
+<span class="fc" id="L17">        this.Texto=texto;</span>
+<span class="fc" id="L18">        this.Puntaje=puntaje;</span>
+<span class="fc" id="L19">        this.cliente=cliente;</span>
+<span class="fc" id="L20">    }</span>
     
     public Pedido getPedido(){
-<span class="nc" id="L23">        return IdPedido;</span>
+<span class="fc" id="L23">        return IdPedido;</span>
     }
     public Fecha getFecha(){
-<span class="nc" id="L26">        return FechaRealizacion;</span>
+<span class="fc" id="L26">        return FechaRealizacion;</span>
     }
     public String getInfoPedido(){
-<span class="nc" id="L29">        return InfoPedido;</span>
+<span class="fc" id="L29">        return InfoPedido;</span>
     }
     public String getTexto(){
-<span class="nc" id="L32">        return Texto;</span>
-    }
-    public Cliente getCliente(){
-<span class="nc" id="L35">        return Nickname;</span>
+<span class="fc" id="L32">        return Texto;</span>
     }
     public int getPuntaje(){
-<span class="nc" id="L38">        return Puntaje;</span>
+<span class="fc" id="L35">        return Puntaje;</span>
+    }
+    public Cliente getCliente(){
+<span class="fc" id="L38">        return cliente;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

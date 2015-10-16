@@ -5,33 +5,42 @@ public class Comentario {
     private Fecha FechaRealizacion;
     private String InfoPedido;
     private String Texto;
-    private Cliente Nickname;
     private int Puntaje;
+    private Cliente cliente;
     
-<span class="nc" id="L11">    public Comentario(DataComentario dc){</span>
-<span class="nc" id="L12">        IdPedido=dc.getPedido();</span>
-<span class="nc" id="L13">        FechaRealizacion=dc.getFecha();</span>
-<span class="nc" id="L14">        InfoPedido=dc.getInfoPedido();</span>
-<span class="nc" id="L15">        Texto=dc.getTexto();</span>
-<span class="nc" id="L16">        Nickname=dc.getCliente();</span>
-<span class="nc" id="L17">        Puntaje=dc.getPuntaje();</span>
-<span class="nc" id="L18">    }</span>
-    
+<span class="fc" id="L11">    public Comentario(DataComentario dc){</span>
+<span class="fc" id="L12">        IdPedido=dc.getPedido();</span>
+<span class="fc" id="L13">        FechaRealizacion=dc.getFecha();</span>
+<span class="fc" id="L14">        InfoPedido=dc.getInfoPedido();</span>
+<span class="fc" id="L15">        Texto=dc.getTexto();</span>
+<span class="fc" id="L16">        Puntaje=dc.getPuntaje();</span>
+<span class="fc" id="L17">        cliente=dc.getCliente();</span>
+<span class="fc" id="L18">    }</span>
+
+    public Pedido getPedido(){
+<span class="nc" id="L21">        return IdPedido;</span>
+    }
     public Fecha getFecha(){
-<span class="nc" id="L21">        return FechaRealizacion;</span>
+<span class="nc" id="L24">        return FechaRealizacion;</span>
     }
     public String getInfoPedido(){
-<span class="nc" id="L24">        return InfoPedido;</span>
+<span class="nc" id="L27">        return InfoPedido;</span>
     }
     public String getTexto(){
-<span class="nc" id="L27">        return Texto;</span>
-    }
-    public Cliente getCliente(){
-<span class="nc" id="L30">        return Nickname;</span>
+<span class="nc" id="L30">        return Texto;</span>
     }
     public int getPuntaje(){
 <span class="nc" id="L33">        return Puntaje;</span>
     }
-
+    public Cliente getCliente(){
+<span class="nc" id="L36">        return cliente;</span>
+    }
 }
+    
+    
+    
+   
+    
+    
+    
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

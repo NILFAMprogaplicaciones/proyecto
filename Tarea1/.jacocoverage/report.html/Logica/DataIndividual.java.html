@@ -10,29 +10,34 @@ public class DataIndividual {
     private Restaurante restaurante;
     private double precio;
     private File imagen;
+    private String direccionFoto;
     
-<span class="fc" id="L14">    public DataIndividual(String nombre, String descripcion, Restaurante restaurante, double precio, File imagen){</span>
-<span class="fc" id="L15">        this.nombre=nombre;</span>
-<span class="fc" id="L16">        this.descripcion=descripcion;</span>
-<span class="fc" id="L17">        this.restaurante=restaurante;</span>
-<span class="fc" id="L18">        this.precio=precio;</span>
-<span class="fc" id="L19">        this.imagen=imagen;</span>
-<span class="fc" id="L20">    }</span>
+<span class="fc" id="L15">    public DataIndividual(String nombre, String descripcion, Restaurante restaurante, double precio, File imagen, String direccionFoto){</span>
+<span class="fc" id="L16">        this.nombre=nombre;</span>
+<span class="fc" id="L17">        this.descripcion=descripcion;</span>
+<span class="fc" id="L18">        this.restaurante=restaurante;</span>
+<span class="fc" id="L19">        this.precio=precio;</span>
+<span class="fc" id="L20">        this.imagen=imagen;</span>
+<span class="fc" id="L21">        this.direccionFoto=direccionFoto;</span>
+<span class="fc" id="L22">    }</span>
     
     public String getNombre(){
-<span class="fc" id="L23">        return nombre;</span>
+<span class="fc" id="L25">        return nombre;</span>
     }
     public String getDescripcion(){
-<span class="fc" id="L26">        return descripcion;</span>
+<span class="fc" id="L28">        return descripcion;</span>
     }    
     public Restaurante getRestaurante(){
-<span class="fc" id="L29">        return restaurante;</span>
+<span class="fc" id="L31">        return restaurante;</span>
     }
     public double getPrecio(){
-<span class="fc" id="L32">        return precio;</span>
+<span class="fc" id="L34">        return precio;</span>
     }
     public File getImagen(){
-<span class="fc" id="L35">        return imagen;</span>
+<span class="fc" id="L37">        return imagen;</span>
+    }
+    public String getDireccionFoto(){
+<span class="fc" id="L40">        return direccionFoto;</span>
     }
 }
 

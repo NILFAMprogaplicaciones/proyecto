@@ -2,7 +2,6 @@
 package Logica;
 
 import java.io.File;
-import javax.swing.Icon;
 
 public class DataCliente {
     private String contraseña;
@@ -13,9 +12,10 @@ public class DataCliente {
     private String apellido;
     private Fecha  fecha_nacimiento;
     private File   foto;
+    private String direccionFoto;
     
     
-<span class="fc" id="L18">    public DataCliente(String contraseña,String nombre, String nickname, String correo, String direccion,String apellido, Fecha fecha_nacimiento, File foto){</span>
+<span class="fc" id="L18">    public DataCliente(String contraseña,String nombre, String nickname, String correo, String direccion,String apellido, Fecha fecha_nacimiento, File foto, String direccionfoto){</span>
 <span class="fc" id="L19">        this.contraseña=contraseña;</span>
 <span class="fc" id="L20">        this.nombre=nombre;</span>
 <span class="fc" id="L21">        this.nickname=nickname;</span>
@@ -24,38 +24,42 @@ public class DataCliente {
 <span class="fc" id="L24">        this.apellido=apellido;</span>
 <span class="fc" id="L25">        this.fecha_nacimiento=fecha_nacimiento;</span>
 <span class="fc" id="L26">        this.foto=foto;</span>
-<span class="fc" id="L27">    }</span>
+<span class="fc" id="L27">        this.direccionFoto=direccionfoto;</span>
+<span class="fc" id="L28">    }</span>
     
     public String getContraseña(){
-<span class="fc" id="L30">        return contraseña;</span>
+<span class="fc" id="L31">        return contraseña;</span>
     }
     public String getnombre(){
-<span class="fc" id="L33">        return nombre;</span>
+<span class="fc" id="L34">        return nombre;</span>
     }
     public String getnickname(){
-<span class="fc" id="L36">        return nickname;</span>
+<span class="fc" id="L37">        return nickname;</span>
     }
     public String getcorreo(){
-<span class="fc" id="L39">        return correo;</span>
+<span class="fc" id="L40">        return correo;</span>
     }
     public String getdireccion(){
-<span class="fc" id="L42">        return direccion;</span>
+<span class="fc" id="L43">        return direccion;</span>
     }
     public String getapellido(){
-<span class="fc" id="L45">        return apellido;</span>
+<span class="fc" id="L46">        return apellido;</span>
     }
     public Fecha getfecha(){
-<span class="fc" id="L48">        return fecha_nacimiento;</span>
+<span class="fc" id="L49">        return fecha_nacimiento;</span>
     }
     public String getfechastring(){
-<span class="fc" id="L51">        int dia=this.fecha_nacimiento.getdia();</span>
-<span class="fc" id="L52">        int mes=this.fecha_nacimiento.getmes();</span>
-<span class="fc" id="L53">        int año=this.fecha_nacimiento.getaño();</span>
-<span class="fc" id="L54">        String fecha=Integer.toString(dia)+&quot;/&quot;+Integer.toString(mes)+&quot;/&quot;+Integer.toString(año);</span>
-<span class="fc" id="L55">        return fecha;   </span>
+<span class="fc" id="L52">        int dia=this.fecha_nacimiento.getdia();</span>
+<span class="fc" id="L53">        int mes=this.fecha_nacimiento.getmes();</span>
+<span class="fc" id="L54">        int año=this.fecha_nacimiento.getaño();</span>
+<span class="fc" id="L55">        String fecha=Integer.toString(dia)+&quot;/&quot;+Integer.toString(mes)+&quot;/&quot;+Integer.toString(año);</span>
+<span class="fc" id="L56">        return fecha;   </span>
     }
     public File getFoto(){
-<span class="fc" id="L58">        return foto;</span>
+<span class="fc" id="L59">        return foto;</span>
+    }
+    public String getDireccionFoto(){
+<span class="fc" id="L62">        return direccionFoto;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

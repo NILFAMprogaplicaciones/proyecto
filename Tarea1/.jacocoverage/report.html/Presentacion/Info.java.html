@@ -6,8 +6,6 @@ import Logica.Estado;
 import Logica.Fabrica;
 import Logica.IControladorPedido;
 import Logica.Individual;
-import Logica.ManejadorPedido;
-import Logica.Pedido;
 import Logica.Producto;
 import Logica.Promocion;
 import java.awt.Color;
@@ -22,258 +20,257 @@ public class Info extends javax.swing.JFrame {
     
     public void limpiarTabla(JTable TablaPedidos){
             try {
-<span class="nc" id="L25">                DefaultTableModel modelo=(DefaultTableModel) TablaPedidos.getModel();</span>
-<span class="nc" id="L26">                int filas=TablaPedidos.getRowCount();</span>
-<span class="nc bnc" id="L27" title="All 2 branches missed.">                for (int i = 0;filas&gt;i; i++) {</span>
-<span class="nc" id="L28">                    modelo.removeRow(0);</span>
+<span class="nc" id="L23">                DefaultTableModel modelo=(DefaultTableModel) TablaPedidos.getModel();</span>
+<span class="nc" id="L24">                int filas=TablaPedidos.getRowCount();</span>
+<span class="nc bnc" id="L25" title="All 2 branches missed.">                for (int i = 0;filas&gt;i; i++) {</span>
+<span class="nc" id="L26">                    modelo.removeRow(0);</span>
                 }
-<span class="nc" id="L30">            } catch (Exception e) {</span>
-<span class="nc" id="L31">                JOptionPane.showMessageDialog(null, &quot;Error al limpiar la tabla.&quot;);</span>
-<span class="nc" id="L32">            }</span>
-<span class="nc" id="L33">    }</span>
+<span class="nc" id="L28">            } catch (Exception e) {</span>
+<span class="nc" id="L29">                JOptionPane.showMessageDialog(null, &quot;Error al limpiar la tabla.&quot;+e);</span>
+<span class="nc" id="L30">            }</span>
+<span class="nc" id="L31">    }</span>
     private IControladorPedido ICP;
     
     public void setidPasado(int id){
-<span class="nc" id="L37">        idpasado=id;</span>
-<span class="nc" id="L38">    }</span>
+<span class="nc" id="L35">        idpasado=id;</span>
+<span class="nc" id="L36">    }</span>
     int idpasado;
     
-<span class="nc" id="L41">    public Info() {</span>
-<span class="nc" id="L42">        initComponents();</span>
-        
-<span class="nc" id="L44">        Fabrica fabrica = Fabrica.getInstance();</span>
-<span class="nc" id="L45">        ICP = fabrica.getIControladorPedido();  </span>
-<span class="nc" id="L46">    }</span>
+<span class="nc" id="L39">    public Info() {</span>
+<span class="nc" id="L40">        initComponents();</span>
+<span class="nc" id="L41">        Fabrica fabrica = Fabrica.getInstance();</span>
+<span class="nc" id="L42">        ICP = fabrica.getIControladorPedido();  </span>
+<span class="nc" id="L43">    }</span>
 
     
     @SuppressWarnings(&quot;unchecked&quot;)
     // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
     private void initComponents() {
 
-<span class="nc" id="L53">        jLabel7 = new javax.swing.JLabel();</span>
-<span class="nc" id="L54">        jButton4 = new javax.swing.JButton();</span>
-<span class="nc" id="L55">        jScrollPane5 = new javax.swing.JScrollPane();</span>
-<span class="nc" id="L56">        TablaProductos = new javax.swing.JTable();</span>
-<span class="nc" id="L57">        jScrollPane6 = new javax.swing.JScrollPane();</span>
-<span class="nc" id="L58">        TablaUsuarios = new javax.swing.JTable();</span>
-<span class="nc" id="L59">        jLabel5 = new javax.swing.JLabel();</span>
-<span class="nc" id="L60">        lblEstado = new javax.swing.JLabel();</span>
-<span class="nc" id="L61">        jButton5 = new javax.swing.JButton();</span>
-<span class="nc" id="L62">        jLabel8 = new javax.swing.JLabel();</span>
-<span class="nc" id="L63">        txtTotal = new javax.swing.JTextField();</span>
+<span class="nc" id="L50">        jLabel7 = new javax.swing.JLabel();</span>
+<span class="nc" id="L51">        jButton4 = new javax.swing.JButton();</span>
+<span class="nc" id="L52">        jScrollPane5 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L53">        TablaProductos = new javax.swing.JTable();</span>
+<span class="nc" id="L54">        jScrollPane6 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L55">        TablaUsuarios = new javax.swing.JTable();</span>
+<span class="nc" id="L56">        jLabel5 = new javax.swing.JLabel();</span>
+<span class="nc" id="L57">        lblEstado = new javax.swing.JLabel();</span>
+<span class="nc" id="L58">        jButton5 = new javax.swing.JButton();</span>
+<span class="nc" id="L59">        jLabel8 = new javax.swing.JLabel();</span>
+<span class="nc" id="L60">        txtTotal = new javax.swing.JTextField();</span>
 
-<span class="nc" id="L65">        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);</span>
+<span class="nc" id="L62">        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);</span>
 
-<span class="nc" id="L67">        jLabel7.setFont(new java.awt.Font(&quot;Tahoma&quot;, 0, 14)); // NOI18N</span>
-<span class="nc" id="L68">        jLabel7.setText(&quot;Productos del Pedido seleccionado&quot;);</span>
+<span class="nc" id="L64">        jLabel7.setFont(new java.awt.Font(&quot;Tahoma&quot;, 0, 14)); // NOI18N</span>
+<span class="nc" id="L65">        jLabel7.setText(&quot;Productos del Pedido seleccionado&quot;);</span>
 
-<span class="nc" id="L70">        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagenes/down_alt.png&quot;))); // NOI18N</span>
-<span class="nc" id="L71">        jButton4.addActionListener(new java.awt.event.ActionListener() {</span>
+<span class="nc" id="L67">        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagenes/down_alt.png&quot;))); // NOI18N</span>
+<span class="nc" id="L68">        jButton4.addActionListener(new java.awt.event.ActionListener() {</span>
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<span class="nc" id="L73">                jButton4ActionPerformed(evt);</span>
-<span class="nc" id="L74">            }</span>
+<span class="nc" id="L70">                jButton4ActionPerformed(evt);</span>
+<span class="nc" id="L71">            }</span>
         });
 
-<span class="nc" id="L77">        TablaProductos.setModel(new javax.swing.table.DefaultTableModel(</span>
+<span class="nc" id="L74">        TablaProductos.setModel(new javax.swing.table.DefaultTableModel(</span>
             new Object [][] {
 
             },
             new String [] {
                 &quot;Nombre&quot;, &quot;Precio unitario&quot;, &quot;Tipo&quot;, &quot;Cantidad Producto&quot;, &quot;Sub Total&quot;
             }
-<span class="nc" id="L84">        ) {</span>
-<span class="nc" id="L85">            Class[] types = new Class [] {</span>
+<span class="nc" id="L81">        ) {</span>
+<span class="nc" id="L82">            Class[] types = new Class [] {</span>
                 java.lang.String.class, java.lang.Double.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class
             };
-<span class="nc" id="L88">            boolean[] canEdit = new boolean [] {</span>
+<span class="nc" id="L85">            boolean[] canEdit = new boolean [] {</span>
                 false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
-<span class="nc" id="L93">                return types [columnIndex];</span>
+<span class="nc" id="L90">                return types [columnIndex];</span>
             }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-<span class="nc" id="L97">                return canEdit [columnIndex];</span>
+<span class="nc" id="L94">                return canEdit [columnIndex];</span>
             }
         });
-<span class="nc" id="L100">        jScrollPane5.setViewportView(TablaProductos);</span>
+<span class="nc" id="L97">        jScrollPane5.setViewportView(TablaProductos);</span>
 
-<span class="nc" id="L102">        TablaUsuarios.setModel(new javax.swing.table.DefaultTableModel(</span>
+<span class="nc" id="L99">        TablaUsuarios.setModel(new javax.swing.table.DefaultTableModel(</span>
             new Object [][] {
                 {null, null}
             },
             new String [] {
                 &quot;Cliente&quot;, &quot;Restaurante&quot;
             }
-<span class="nc" id="L109">        ) {</span>
-<span class="nc" id="L110">            Class[] types = new Class [] {</span>
+<span class="nc" id="L106">        ) {</span>
+<span class="nc" id="L107">            Class[] types = new Class [] {</span>
                 java.lang.String.class, java.lang.String.class
             };
-<span class="nc" id="L113">            boolean[] canEdit = new boolean [] {</span>
+<span class="nc" id="L110">            boolean[] canEdit = new boolean [] {</span>
                 false, false
             };
 
             public Class getColumnClass(int columnIndex) {
-<span class="nc" id="L118">                return types [columnIndex];</span>
+<span class="nc" id="L115">                return types [columnIndex];</span>
             }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-<span class="nc" id="L122">                return canEdit [columnIndex];</span>
+<span class="nc" id="L119">                return canEdit [columnIndex];</span>
             }
         });
-<span class="nc" id="L125">        jScrollPane6.setViewportView(TablaUsuarios);</span>
+<span class="nc" id="L122">        jScrollPane6.setViewportView(TablaUsuarios);</span>
 
-<span class="nc" id="L127">        jLabel5.setFont(new java.awt.Font(&quot;Tahoma&quot;, 0, 14)); // NOI18N</span>
-<span class="nc" id="L128">        jLabel5.setText(&quot;Usuarios del Pedido&quot;);</span>
+<span class="nc" id="L124">        jLabel5.setFont(new java.awt.Font(&quot;Tahoma&quot;, 0, 14)); // NOI18N</span>
+<span class="nc" id="L125">        jLabel5.setText(&quot;Usuarios del Pedido&quot;);</span>
 
-<span class="nc" id="L130">        lblEstado.setBackground(new java.awt.Color(192, 182, 182));</span>
-<span class="nc" id="L131">        lblEstado.setFont(new java.awt.Font(&quot;Vani&quot;, 1, 18)); // NOI18N</span>
-<span class="nc" id="L132">        lblEstado.setText(&quot;Estado...&quot;);</span>
+<span class="nc" id="L127">        lblEstado.setBackground(new java.awt.Color(192, 182, 182));</span>
+<span class="nc" id="L128">        lblEstado.setFont(new java.awt.Font(&quot;Vani&quot;, 1, 18)); // NOI18N</span>
+<span class="nc" id="L129">        lblEstado.setText(&quot;Estado...&quot;);</span>
 
-<span class="nc" id="L134">        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagenes/back_alt.png&quot;))); // NOI18N</span>
-<span class="nc" id="L135">        jButton5.addActionListener(new java.awt.event.ActionListener() {</span>
+<span class="nc" id="L131">        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagenes/back_alt.png&quot;))); // NOI18N</span>
+<span class="nc" id="L132">        jButton5.addActionListener(new java.awt.event.ActionListener() {</span>
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<span class="nc" id="L137">                jButton5ActionPerformed(evt);</span>
-<span class="nc" id="L138">            }</span>
+<span class="nc" id="L134">                jButton5ActionPerformed(evt);</span>
+<span class="nc" id="L135">            }</span>
         });
 
-<span class="nc" id="L141">        jLabel8.setFont(new java.awt.Font(&quot;Tahoma&quot;, 0, 18)); // NOI18N</span>
-<span class="nc" id="L142">        jLabel8.setText(&quot;Total general del Pedido&quot;);</span>
+<span class="nc" id="L138">        jLabel8.setFont(new java.awt.Font(&quot;Tahoma&quot;, 0, 18)); // NOI18N</span>
+<span class="nc" id="L139">        jLabel8.setText(&quot;Total general del Pedido&quot;);</span>
 
-<span class="nc" id="L144">        txtTotal.setFont(new java.awt.Font(&quot;Tahoma&quot;, 0, 18)); // NOI18N</span>
-<span class="nc" id="L145">        txtTotal.setForeground(new java.awt.Color(255, 0, 0));</span>
+<span class="nc" id="L141">        txtTotal.setFont(new java.awt.Font(&quot;Tahoma&quot;, 0, 18)); // NOI18N</span>
+<span class="nc" id="L142">        txtTotal.setForeground(new java.awt.Color(255, 0, 0));</span>
 
-<span class="nc" id="L147">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
-<span class="nc" id="L148">        getContentPane().setLayout(layout);</span>
-<span class="nc" id="L149">        layout.setHorizontalGroup(</span>
-<span class="nc" id="L150">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L151">            .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L152">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L153">                    .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L154">                        .addGap(79, 79, 79)</span>
-<span class="nc" id="L155">                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L156">                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L157">                            .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L158">                                .addGap(161, 161, 161)</span>
-<span class="nc" id="L159">                                .addComponent(jLabel5))))</span>
-<span class="nc" id="L160">                    .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L161">                        .addContainerGap()</span>
-<span class="nc" id="L162">                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)</span>
-<span class="nc" id="L163">                            .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L164">                                .addComponent(jLabel7)</span>
-<span class="nc" id="L165">                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
-<span class="nc" id="L166">                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
-<span class="nc" id="L167">                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L168">                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()</span>
-<span class="nc" id="L169">                                .addComponent(jLabel8)</span>
-<span class="nc" id="L170">                                .addGap(15, 15, 15)))))</span>
-<span class="nc" id="L171">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))</span>
-<span class="nc" id="L172">            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()</span>
-<span class="nc" id="L173">                .addContainerGap()</span>
-<span class="nc" id="L174">                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L175">                .addGap(40, 40, 40)</span>
-<span class="nc" id="L176">                .addComponent(lblEstado)</span>
-<span class="nc" id="L177">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
-<span class="nc" id="L178">                .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L179">                .addGap(47, 47, 47))</span>
+<span class="nc" id="L144">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
+<span class="nc" id="L145">        getContentPane().setLayout(layout);</span>
+<span class="nc" id="L146">        layout.setHorizontalGroup(</span>
+<span class="nc" id="L147">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L148">            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L149">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L150">                    .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L151">                        .addGap(79, 79, 79)</span>
+<span class="nc" id="L152">                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L153">                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L154">                            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L155">                                .addGap(161, 161, 161)</span>
+<span class="nc" id="L156">                                .addComponent(jLabel5))))</span>
+<span class="nc" id="L157">                    .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L158">                        .addContainerGap()</span>
+<span class="nc" id="L159">                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)</span>
+<span class="nc" id="L160">                            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L161">                                .addComponent(jLabel7)</span>
+<span class="nc" id="L162">                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L163">                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L164">                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L165">                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()</span>
+<span class="nc" id="L166">                                .addComponent(jLabel8)</span>
+<span class="nc" id="L167">                                .addGap(15, 15, 15)))))</span>
+<span class="nc" id="L168">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))</span>
+<span class="nc" id="L169">            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()</span>
+<span class="nc" id="L170">                .addContainerGap()</span>
+<span class="nc" id="L171">                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L172">                .addGap(40, 40, 40)</span>
+<span class="nc" id="L173">                .addComponent(lblEstado)</span>
+<span class="nc" id="L174">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L175">                .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L176">                .addGap(47, 47, 47))</span>
         );
-<span class="nc" id="L181">        layout.setVerticalGroup(</span>
-<span class="nc" id="L182">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L183">            .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L184">                .addGap(13, 13, 13)</span>
-<span class="nc" id="L185">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L186">                    .addComponent(jLabel7)</span>
-<span class="nc" id="L187">                    .addComponent(jButton4))</span>
-<span class="nc" id="L188">                .addGap(18, 18, 18)</span>
-<span class="nc" id="L189">                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L190">                .addGap(18, 18, 18)</span>
-<span class="nc" id="L191">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L192">                    .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L193">                        .addComponent(jLabel5)</span>
-<span class="nc" id="L194">                        .addGap(18, 18, 18)</span>
-<span class="nc" id="L195">                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L196">                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)</span>
-<span class="nc" id="L197">                        .addComponent(jLabel8)</span>
-<span class="nc" id="L198">                        .addGap(18, 18, 18)</span>
-<span class="nc" id="L199">                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
-<span class="nc" id="L200">                            .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L201">                            .addComponent(lblEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))</span>
-<span class="nc" id="L202">                    .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L203">                        .addGap(0, 0, Short.MAX_VALUE)</span>
-<span class="nc" id="L204">                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))</span>
-<span class="nc" id="L205">                .addContainerGap())</span>
+<span class="nc" id="L178">        layout.setVerticalGroup(</span>
+<span class="nc" id="L179">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L180">            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L181">                .addGap(13, 13, 13)</span>
+<span class="nc" id="L182">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L183">                    .addComponent(jLabel7)</span>
+<span class="nc" id="L184">                    .addComponent(jButton4))</span>
+<span class="nc" id="L185">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L186">                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L187">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L188">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L189">                    .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L190">                        .addComponent(jLabel5)</span>
+<span class="nc" id="L191">                        .addGap(18, 18, 18)</span>
+<span class="nc" id="L192">                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L193">                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)</span>
+<span class="nc" id="L194">                        .addComponent(jLabel8)</span>
+<span class="nc" id="L195">                        .addGap(18, 18, 18)</span>
+<span class="nc" id="L196">                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L197">                            .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L198">                            .addComponent(lblEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))</span>
+<span class="nc" id="L199">                    .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L200">                        .addGap(0, 0, Short.MAX_VALUE)</span>
+<span class="nc" id="L201">                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))</span>
+<span class="nc" id="L202">                .addContainerGap())</span>
         );
 
-<span class="nc" id="L208">        pack();</span>
-<span class="nc" id="L209">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+<span class="nc" id="L205">        pack();</span>
+<span class="nc" id="L206">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
-<span class="nc" id="L213">        limpiarTabla(TablaProductos);</span>
-<span class="nc" id="L214">        DataPedido datapedido=ICP.Caso_Ver_Pedido(idpasado);</span>
+<span class="nc" id="L210">        limpiarTabla(TablaProductos);</span>
+<span class="nc" id="L211">        DataPedido datapedido=ICP.Caso_Ver_Pedido(idpasado);</span>
         //OBTENGO LA COLECCION DE PRODUCTOS
-<span class="nc" id="L216">        Map coleccionproductos=datapedido.getColeccionProductos();</span>
-<span class="nc" id="L217">        int cantidadproductos=coleccionproductos.size();</span>
+<span class="nc" id="L213">        Map coleccionproductos=datapedido.getColeccionProductos();</span>
+<span class="nc" id="L214">        int cantidadproductos=coleccionproductos.size();</span>
         //AGREGO FILA A LA TABLA
-<span class="nc" id="L219">        int a=0;</span>
-<span class="nc bnc" id="L220" title="All 2 branches missed.">        while (a!=cantidadproductos){</span>
-<span class="nc" id="L221">            DefaultTableModel modelo= (DefaultTableModel) TablaProductos.getModel();</span>
-<span class="nc" id="L222">            int columna = modelo.getColumnCount();</span>
-<span class="nc" id="L223">            modelo.addRow(new Object[columna]);</span>
-<span class="nc" id="L224">            TablaProductos.setModel(modelo);</span>
-<span class="nc" id="L225">            a++;</span>
-<span class="nc" id="L226">        }</span>
+<span class="nc" id="L216">        int a=0;</span>
+<span class="nc bnc" id="L217" title="All 2 branches missed.">        while (a!=cantidadproductos){</span>
+<span class="nc" id="L218">            DefaultTableModel modelo= (DefaultTableModel) TablaProductos.getModel();</span>
+<span class="nc" id="L219">            int columna = modelo.getColumnCount();</span>
+<span class="nc" id="L220">            modelo.addRow(new Object[columna]);</span>
+<span class="nc" id="L221">            TablaProductos.setModel(modelo);</span>
+<span class="nc" id="L222">            a++;</span>
+<span class="nc" id="L223">        }</span>
         //AGREGO VALORES A  LAS FILAS
-<span class="nc" id="L228">        Iterator&lt;Producto&gt; it = coleccionproductos.values().iterator();</span>
-<span class="nc" id="L229">        Producto objeto=null;</span>
-<span class="nc" id="L230">        int filapedido=0;</span>
-<span class="nc bnc" id="L231" title="All 2 branches missed.">        while (it.hasNext()){</span>
-<span class="nc" id="L232">            objeto=it.next();</span>
-<span class="nc bnc" id="L233" title="All 2 branches missed.">            if(objeto.getClass().getSimpleName().equals(&quot;Individual&quot;)){</span>
-<span class="nc" id="L234">                Individual ind=(Individual) objeto;</span>
-<span class="nc" id="L235">                this.TablaProductos.setValueAt(ind.getnombre(), filapedido, 0);</span>
-<span class="nc" id="L236">                this.TablaProductos.setValueAt(ind.getPrecio(), filapedido, 1);</span>
-<span class="nc" id="L237">                this.TablaProductos.setValueAt(&quot;Individual&quot;, filapedido, 2);</span>
-<span class="nc" id="L238">                this.TablaProductos.setValueAt(datapedido.getTipoAP().getDataProductoPedido(objeto.getnombre()).getCantidad(), filapedido, 3);</span>
-<span class="nc" id="L239">                this.TablaProductos.setValueAt(datapedido.getTipoAP().getDataProductoPedido(objeto.getnombre()).getSubTotal(), filapedido, 4);</span>
-<span class="nc" id="L240">            }</span>
+<span class="nc" id="L225">        Iterator&lt;Producto&gt; it = coleccionproductos.values().iterator();</span>
+<span class="nc" id="L226">        Producto objeto=null;</span>
+<span class="nc" id="L227">        int filapedido=0;</span>
+<span class="nc bnc" id="L228" title="All 2 branches missed.">        while (it.hasNext()){</span>
+<span class="nc" id="L229">            objeto=it.next();</span>
+<span class="nc bnc" id="L230" title="All 2 branches missed.">            if(objeto.getClass().getSimpleName().equals(&quot;Individual&quot;)){</span>
+<span class="nc" id="L231">                Individual ind=(Individual) objeto;</span>
+<span class="nc" id="L232">                this.TablaProductos.setValueAt(ind.getnombre(), filapedido, 0);</span>
+<span class="nc" id="L233">                this.TablaProductos.setValueAt(ind.getPrecio(), filapedido, 1);</span>
+<span class="nc" id="L234">                this.TablaProductos.setValueAt(&quot;Individual&quot;, filapedido, 2);</span>
+<span class="nc" id="L235">                this.TablaProductos.setValueAt(datapedido.getTipoAP().getDataProductoPedido(objeto.getnombre()).getCantidad(), filapedido, 3);</span>
+<span class="nc" id="L236">                this.TablaProductos.setValueAt(datapedido.getTipoAP().getDataProductoPedido(objeto.getnombre()).getSubTotal(), filapedido, 4);</span>
+<span class="nc" id="L237">            }</span>
             else{
-<span class="nc" id="L242">                Promocion pro=(Promocion) objeto;</span>
-<span class="nc" id="L243">                this.TablaProductos.setValueAt(pro.getnombre(), filapedido, 0);</span>
-<span class="nc" id="L244">                this.TablaProductos.setValueAt(pro.getPrecioTotal(), filapedido, 1);</span>
-<span class="nc" id="L245">                this.TablaProductos.setValueAt(&quot;Promocion&quot;, filapedido, 2);</span>
-<span class="nc" id="L246">                this.TablaProductos.setValueAt(datapedido.getTipoAP().getDataProductoPedido(objeto.getnombre()).getCantidad(), filapedido, 3);</span>
-<span class="nc" id="L247">                this.TablaProductos.setValueAt(datapedido.getTipoAP().getDataProductoPedido(objeto.getnombre()).getSubTotal(), filapedido, 4);</span>
+<span class="nc" id="L239">                Promocion pro=(Promocion) objeto;</span>
+<span class="nc" id="L240">                this.TablaProductos.setValueAt(pro.getnombre(), filapedido, 0);</span>
+<span class="nc" id="L241">                this.TablaProductos.setValueAt(pro.getPrecioTotal(), filapedido, 1);</span>
+<span class="nc" id="L242">                this.TablaProductos.setValueAt(&quot;Promocion&quot;, filapedido, 2);</span>
+<span class="nc" id="L243">                this.TablaProductos.setValueAt(datapedido.getTipoAP().getDataProductoPedido(objeto.getnombre()).getCantidad(), filapedido, 3);</span>
+<span class="nc" id="L244">                this.TablaProductos.setValueAt(datapedido.getTipoAP().getDataProductoPedido(objeto.getnombre()).getSubTotal(), filapedido, 4);</span>
             }
 
-<span class="nc" id="L250">            filapedido++;</span>
+<span class="nc" id="L247">            filapedido++;</span>
 
         }
-<span class="nc" id="L253">        TablaUsuarios.setValueAt(datapedido.getCliente().getnickname(), 0, 0);</span>
-<span class="nc" id="L254">        TablaUsuarios.setValueAt(datapedido.getRestaurante().getnickname(), 0, 1);</span>
+<span class="nc" id="L250">        TablaUsuarios.setValueAt(datapedido.getCliente().getnickname(), 0, 0);</span>
+<span class="nc" id="L251">        TablaUsuarios.setValueAt(datapedido.getRestaurante().getnickname(), 0, 1);</span>
 
-<span class="nc bnc" id="L256" title="All 2 branches missed.">        if (datapedido.getEstado().equals(Estado.PREPARCION)){</span>
-<span class="nc" id="L257">            lblEstado.setForeground(Color.RED);</span>
-<span class="nc" id="L258">            lblEstado.setText(&quot;Estado: PREPARACION&quot;);</span>
+<span class="nc bnc" id="L253" title="All 2 branches missed.">        if (datapedido.getEstado().equals(Estado.PREPARCION)){</span>
+<span class="nc" id="L254">            lblEstado.setForeground(Color.RED);</span>
+<span class="nc" id="L255">            lblEstado.setText(&quot;Estado: PREPARACION&quot;);</span>
         }
-<span class="nc bnc" id="L260" title="All 2 branches missed.">        if (datapedido.getEstado().equals(Estado.ENVIADO)){</span>
-<span class="nc" id="L261">            lblEstado.setForeground(Color.YELLOW);</span>
-<span class="nc" id="L262">            lblEstado.setText(&quot;Estado: ENVIADO&quot;);</span>
+<span class="nc bnc" id="L257" title="All 2 branches missed.">        if (datapedido.getEstado().equals(Estado.ENVIADO)){</span>
+<span class="nc" id="L258">            lblEstado.setForeground(Color.YELLOW);</span>
+<span class="nc" id="L259">            lblEstado.setText(&quot;Estado: ENVIADO&quot;);</span>
         }
-<span class="nc bnc" id="L264" title="All 2 branches missed.">        if (datapedido.getEstado().equals(Estado.RECIBIDO)){</span>
-<span class="nc" id="L265">            lblEstado.setForeground(Color.GREEN);</span>
-<span class="nc" id="L266">            lblEstado.setText(&quot;Estado: RECIBIDO&quot;);</span>
+<span class="nc bnc" id="L261" title="All 2 branches missed.">        if (datapedido.getEstado().equals(Estado.RECIBIDO)){</span>
+<span class="nc" id="L262">            lblEstado.setForeground(Color.GREEN);</span>
+<span class="nc" id="L263">            lblEstado.setText(&quot;Estado: RECIBIDO&quot;);</span>
         }
 
-<span class="nc" id="L269">        double precioTotal=datapedido.getPrecioTotal();</span>
-<span class="nc" id="L270">        txtTotal.setText(&quot;$U &quot;+(Double.toString(precioTotal)));</span>
+<span class="nc" id="L266">        double precioTotal=datapedido.getPrecioTotal();</span>
+<span class="nc" id="L267">        txtTotal.setText(&quot;$U &quot;+(Double.toString(precioTotal)));</span>
         
-<span class="nc" id="L272">    }//GEN-LAST:event_jButton4ActionPerformed</span>
+<span class="nc" id="L269">    }//GEN-LAST:event_jButton4ActionPerformed</span>
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-<span class="nc" id="L275">        dispose();</span>
-<span class="nc" id="L276">    }//GEN-LAST:event_jButton5ActionPerformed</span>
+<span class="nc" id="L272">        dispose();</span>
+<span class="nc" id="L273">    }//GEN-LAST:event_jButton5ActionPerformed</span>
 
     /**
      * @param args the command line arguments
@@ -285,31 +282,31 @@ public class Info extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-<span class="nc bnc" id="L288" title="All 2 branches missed.">            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {</span>
-<span class="nc bnc" id="L289" title="All 2 branches missed.">                if (&quot;Nimbus&quot;.equals(info.getName())) {</span>
-<span class="nc" id="L290">                    javax.swing.UIManager.setLookAndFeel(info.getClassName());</span>
-<span class="nc" id="L291">                    break;</span>
+<span class="nc bnc" id="L285" title="All 2 branches missed.">            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {</span>
+<span class="nc bnc" id="L286" title="All 2 branches missed.">                if (&quot;Nimbus&quot;.equals(info.getName())) {</span>
+<span class="nc" id="L287">                    javax.swing.UIManager.setLookAndFeel(info.getClassName());</span>
+<span class="nc" id="L288">                    break;</span>
                 }
             }
-<span class="nc" id="L294">        } catch (ClassNotFoundException ex) {</span>
-<span class="nc" id="L295">            java.util.logging.Logger.getLogger(Info.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
-<span class="nc" id="L296">        } catch (InstantiationException ex) {</span>
-<span class="nc" id="L297">            java.util.logging.Logger.getLogger(Info.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
-<span class="nc" id="L298">        } catch (IllegalAccessException ex) {</span>
-<span class="nc" id="L299">            java.util.logging.Logger.getLogger(Info.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
-<span class="nc" id="L300">        } catch (javax.swing.UnsupportedLookAndFeelException ex) {</span>
-<span class="nc" id="L301">            java.util.logging.Logger.getLogger(Info.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
-<span class="nc" id="L302">        }</span>
+<span class="nc" id="L291">        } catch (ClassNotFoundException ex) {</span>
+<span class="nc" id="L292">            java.util.logging.Logger.getLogger(Info.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L293">        } catch (InstantiationException ex) {</span>
+<span class="nc" id="L294">            java.util.logging.Logger.getLogger(Info.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L295">        } catch (IllegalAccessException ex) {</span>
+<span class="nc" id="L296">            java.util.logging.Logger.getLogger(Info.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L297">        } catch (javax.swing.UnsupportedLookAndFeelException ex) {</span>
+<span class="nc" id="L298">            java.util.logging.Logger.getLogger(Info.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L299">        }</span>
         //&lt;/editor-fold&gt;
 
         /* Create and display the form */
-<span class="nc" id="L306">        java.awt.EventQueue.invokeLater(new Runnable() {</span>
+<span class="nc" id="L303">        java.awt.EventQueue.invokeLater(new Runnable() {</span>
             public void run() {
                 
-<span class="nc" id="L309">                new Info().setVisible(true);</span>
-<span class="nc" id="L310">            }</span>
+<span class="nc" id="L306">                new Info().setVisible(true);</span>
+<span class="nc" id="L307">            }</span>
         });
-<span class="nc" id="L312">    }</span>
+<span class="nc" id="L309">    }</span>
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TablaProductos;

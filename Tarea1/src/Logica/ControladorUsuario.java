@@ -69,6 +69,11 @@ public class ControladorUsuario implements IControladorUsuario  {
         return MU.getColeccionRestaurante();
     }
     @Override
+    public Map getColeccionClientes(){
+        ManejadorUsuario MU = ManejadorUsuario.getinstance();
+        return MU.getColeccionClientes();        
+    }
+    @Override
     public Map getColeccionProductosRestaurantes(String nickname){
         ManejadorUsuario MU = ManejadorUsuario.getinstance();
         return MU.getColeccionProductosRestaurantes(nickname);

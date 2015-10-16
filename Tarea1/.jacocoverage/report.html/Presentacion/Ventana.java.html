@@ -202,8 +202,8 @@ public class Ventana extends javax.swing.JFrame {
 <span class="nc" id="L202">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
 
     private void RegRestauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegRestauranteActionPerformed
-<span class="nc" id="L205">       ManejadorCategoria mc=ManejadorCategoria.getinstance();</span>
-<span class="nc" id="L206">        int cantidad=mc.cantidad();</span>
+       
+<span class="nc" id="L206">        int cantidad=ICU.coleccion().size();</span>
 <span class="nc bnc" id="L207" title="All 2 branches missed.">        if(cantidad==0){</span>
 <span class="nc" id="L208">            JOptionPane.showMessageDialog(this,&quot;No hay Categorias en el sistema&quot;,&quot;REGISTRO&quot;,JOptionPane.WARNING_MESSAGE);</span>
         }
@@ -238,8 +238,8 @@ public class Ventana extends javax.swing.JFrame {
 <span class="nc" id="L238">    }//GEN-LAST:event_restauranteActionPerformed</span>
 
     private void clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteActionPerformed
-<span class="nc" id="L241">        ManejadorUsuario MU = ManejadorUsuario.getinstance();</span>
-<span class="nc" id="L242">        int cantidadusuarios=MU.CantClientes();</span>
+        
+<span class="nc" id="L242">        int cantidadusuarios=ICU.CantClientes();</span>
 <span class="nc bnc" id="L243" title="All 2 branches missed.">        if(cantidadusuarios==0){</span>
 <span class="nc" id="L244">            JOptionPane.showMessageDialog(this,&quot;No hay clientes en el sistema&quot;,&quot;INFORMACION CLIENTE&quot;,JOptionPane.WARNING_MESSAGE );</span>
         }
@@ -272,72 +272,72 @@ public class Ventana extends javax.swing.JFrame {
 <span class="nc" id="L272">    }//GEN-LAST:event_RegCategoriaActionPerformed</span>
 
     private void GenPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenPedidoActionPerformed
-<span class="nc" id="L275">        ManejadorUsuario MU = ManejadorUsuario.getinstance();</span>
-<span class="nc" id="L276">        ManejadorCategoria mc=ManejadorCategoria.getinstance();</span>
-<span class="nc" id="L277">        int cantidadusuarios=MU.CantClientes();</span>
-<span class="nc" id="L278">        int cantidadcategoria=mc.cantidad(),posision=0;</span>
-<span class="nc bnc" id="L279" title="All 2 branches missed.">        if(cantidadusuarios==0){</span>
-<span class="nc" id="L280">            JOptionPane.showMessageDialog(this,&quot;No hay clientes en el sistema&quot;,&quot;INFORMACION CLIENTE&quot;,JOptionPane.ERROR_MESSAGE);</span>
+        
+<span class="nc" id="L276">        int cantidadusuarios=ICU.CantClientes();</span>
+<span class="nc" id="L277">        int cantidadcategoria=ICU.coleccion().size();</span>
+<span class="nc bnc" id="L278" title="All 2 branches missed.">        if(cantidadusuarios==0){</span>
+<span class="nc" id="L279">            JOptionPane.showMessageDialog(this,&quot;No hay clientes en el sistema&quot;,&quot;INFORMACION CLIENTE&quot;,JOptionPane.ERROR_MESSAGE);</span>
         }
-<span class="nc bnc" id="L282" title="All 2 branches missed.">        else if(cantidadcategoria==0){</span>
-<span class="nc" id="L283">            JOptionPane.showMessageDialog(this,&quot;No hay Categorias en el sistema&quot;,&quot;GENERAR PEDIDO&quot;,JOptionPane.WARNING_MESSAGE);</span>
+<span class="nc bnc" id="L281" title="All 2 branches missed.">        else if(cantidadcategoria==0){</span>
+<span class="nc" id="L282">            JOptionPane.showMessageDialog(this,&quot;No hay Categorias en el sistema&quot;,&quot;GENERAR PEDIDO&quot;,JOptionPane.WARNING_MESSAGE);</span>
         }
         else{
-<span class="nc" id="L286">            GenerarPedido generarpedido = new GenerarPedido();</span>
-<span class="nc" id="L287">            int x=(PanelEscritorio.getWidth()/2)-generarpedido.getWidth()/2;</span>
-<span class="nc" id="L288">            int y=(PanelEscritorio.getHeight()/2)-generarpedido.getHeight()/2;</span>
-<span class="nc" id="L289">            this.PanelEscritorio.add(generarpedido);</span>
-<span class="nc" id="L290">            generarpedido.setLocation(x, y);</span>
-<span class="nc" id="L291">            generarpedido.show();</span>
+<span class="nc" id="L285">            GenerarPedido generarpedido = new GenerarPedido();</span>
+<span class="nc" id="L286">            int x=(PanelEscritorio.getWidth()/2)-generarpedido.getWidth()/2;</span>
+<span class="nc" id="L287">            int y=(PanelEscritorio.getHeight()/2)-generarpedido.getHeight()/2;</span>
+<span class="nc" id="L288">            this.PanelEscritorio.add(generarpedido);</span>
+<span class="nc" id="L289">            generarpedido.setLocation(x, y);</span>
+<span class="nc" id="L290">            generarpedido.show();</span>
         }
-<span class="nc" id="L293">    }//GEN-LAST:event_GenPedidoActionPerformed</span>
+<span class="nc" id="L292">    }//GEN-LAST:event_GenPedidoActionPerformed</span>
 
     private void productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productoActionPerformed
-<span class="nc" id="L296">        infoProducto verProducto = new infoProducto();          </span>
-<span class="nc" id="L297">        int x=(PanelEscritorio.getWidth()/2)-verProducto.getWidth()/2;</span>
-<span class="nc" id="L298">        int y=(PanelEscritorio.getHeight()/2)-verProducto.getHeight()/2;</span>
-<span class="nc" id="L299">        this.PanelEscritorio.add(verProducto);</span>
-<span class="nc" id="L300">        verProducto.setLocation(x, y);</span>
-<span class="nc" id="L301">        verProducto.show();      </span>
-<span class="nc" id="L302">    }//GEN-LAST:event_productoActionPerformed</span>
+<span class="nc" id="L295">        infoProducto verProducto = new infoProducto();          </span>
+<span class="nc" id="L296">        int x=(PanelEscritorio.getWidth()/2)-verProducto.getWidth()/2;</span>
+<span class="nc" id="L297">        int y=(PanelEscritorio.getHeight()/2)-verProducto.getHeight()/2;</span>
+<span class="nc" id="L298">        this.PanelEscritorio.add(verProducto);</span>
+<span class="nc" id="L299">        verProducto.setLocation(x, y);</span>
+<span class="nc" id="L300">        verProducto.show();      </span>
+<span class="nc" id="L301">    }//GEN-LAST:event_productoActionPerformed</span>
 
     private void InfPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfPedidoActionPerformed
-<span class="nc" id="L305">        ManejadorPedido MP=ManejadorPedido.getinstance();</span>
-<span class="nc" id="L306">        int cantidad=MP.getCantidadEnColeccion();</span>
-<span class="nc bnc" id="L307" title="All 2 branches missed.">        if(cantidad==0){</span>
-<span class="nc" id="L308">            JOptionPane.showMessageDialog(this,&quot;No hay Pedidos en el sistema&quot;,&quot;INFORMACION PEDIDO&quot;,JOptionPane.ERROR_MESSAGE);</span>
+        
+<span class="nc" id="L305">        int cantidad=ICPE.getCantidadEnColeccion();</span>
+<span class="nc bnc" id="L306" title="All 2 branches missed.">        if(cantidad==0){</span>
+<span class="nc" id="L307">            JOptionPane.showMessageDialog(this,&quot;No hay Pedidos en el sistema&quot;,&quot;INFORMACION PEDIDO&quot;,JOptionPane.ERROR_MESSAGE);</span>
         }
         else{
-<span class="nc" id="L311">            InfoPedido infopedido=new InfoPedido();</span>
-<span class="nc" id="L312">            int x=(PanelEscritorio.getWidth()/2)-infopedido.getWidth()/2;</span>
-<span class="nc" id="L313">            int y=(PanelEscritorio.getHeight()/2)-infopedido.getHeight()/2;</span>
-<span class="nc" id="L314">            this.PanelEscritorio.add(infopedido);</span>
-<span class="nc" id="L315">            infopedido.setLocation(x, y);</span>
-<span class="nc" id="L316">            infopedido.show();   </span>
+<span class="nc" id="L310">            InfoPedido infopedido=new InfoPedido();</span>
+<span class="nc" id="L311">            int x=(PanelEscritorio.getWidth()/2)-infopedido.getWidth()/2;</span>
+<span class="nc" id="L312">            int y=(PanelEscritorio.getHeight()/2)-infopedido.getHeight()/2;</span>
+<span class="nc" id="L313">            this.PanelEscritorio.add(infopedido);</span>
+<span class="nc" id="L314">            infopedido.setLocation(x, y);</span>
+<span class="nc" id="L315">            infopedido.show();   </span>
         }
-<span class="nc" id="L318">    }//GEN-LAST:event_InfPedidoActionPerformed</span>
+<span class="nc" id="L317">    }//GEN-LAST:event_InfPedidoActionPerformed</span>
 
     private void ActEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActEstadoActionPerformed
-<span class="nc" id="L321">        ManejadorPedido MP=ManejadorPedido.getinstance();</span>
-<span class="nc" id="L322">        int cantidad=MP.getCantidadEnColeccion();</span>
-<span class="nc bnc" id="L323" title="All 2 branches missed.">        if(cantidad==0){</span>
-<span class="nc" id="L324">            JOptionPane.showMessageDialog(this,&quot;No hay Pedidos en el sistema&quot;,&quot;ACTUALIZAR ESTADO PEDIDO&quot;,JOptionPane.ERROR_MESSAGE);</span>
+        
+<span class="nc" id="L321">        int cantidad=ICPE.getCantidadEnColeccion();</span>
+<span class="nc bnc" id="L322" title="All 2 branches missed.">        if(cantidad==0){</span>
+<span class="nc" id="L323">            JOptionPane.showMessageDialog(this,&quot;No hay Pedidos en el sistema&quot;,&quot;ACTUALIZAR ESTADO PEDIDO&quot;,JOptionPane.ERROR_MESSAGE);</span>
         }
         else{
-<span class="nc" id="L327">            ActualizarEstadoPedido actualizarEP=new ActualizarEstadoPedido();</span>
-<span class="nc" id="L328">            int x=(PanelEscritorio.getWidth()/2)-actualizarEP.getWidth()/2;</span>
-<span class="nc" id="L329">            int y=(PanelEscritorio.getHeight()/2)-actualizarEP.getHeight()/2;</span>
-<span class="nc" id="L330">            this.PanelEscritorio.add(actualizarEP);</span>
-<span class="nc" id="L331">            actualizarEP.setLocation(x, y);</span>
-<span class="nc" id="L332">            actualizarEP.show();   </span>
+<span class="nc" id="L326">            ActualizarEstadoPedido actualizarEP=new ActualizarEstadoPedido();</span>
+<span class="nc" id="L327">            int x=(PanelEscritorio.getWidth()/2)-actualizarEP.getWidth()/2;</span>
+<span class="nc" id="L328">            int y=(PanelEscritorio.getHeight()/2)-actualizarEP.getHeight()/2;</span>
+<span class="nc" id="L329">            this.PanelEscritorio.add(actualizarEP);</span>
+<span class="nc" id="L330">            actualizarEP.setLocation(x, y);</span>
+<span class="nc" id="L331">            actualizarEP.show();   </span>
         }
-<span class="nc" id="L334">    }//GEN-LAST:event_ActEstadoActionPerformed</span>
-<span class="nc" id="L335">int entro=0;</span>
+<span class="nc" id="L333">    }//GEN-LAST:event_ActEstadoActionPerformed</span>
+<span class="nc" id="L334">int entro=0;</span>
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         
-<span class="nc bnc" id="L338" title="All 2 branches missed.">        if(entro==0){</span>
-<span class="nc" id="L339">            IDP.DatosPrecargado();</span>
-<span class="nc" id="L340">            entro=1;</span>
+<span class="nc bnc" id="L337" title="All 2 branches missed.">        if(entro==0){</span>
+<span class="nc" id="L338">            IDP.DatosPrecargado();</span>
+<span class="nc" id="L339">            entro=1;</span>
+<span class="nc" id="L340">            JOptionPane.showMessageDialog(this,&quot;Datos Precargados ingresados correctamente&quot;,&quot;DATOS PRECARGADOS&quot;,JOptionPane.INFORMATION_MESSAGE);</span>
         }
         else{
 <span class="nc" id="L343">            JOptionPane.showMessageDialog(this,&quot;Ya realizo esta accion&quot;,&quot;DATOS PRECARGADOS&quot;,JOptionPane.ERROR_MESSAGE);</span>

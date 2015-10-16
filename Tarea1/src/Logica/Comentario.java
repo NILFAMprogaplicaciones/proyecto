@@ -5,18 +5,21 @@ public class Comentario {
     private Fecha FechaRealizacion;
     private String InfoPedido;
     private String Texto;
-    private Cliente Nickname;
     private int Puntaje;
+    private Cliente cliente;
     
     public Comentario(DataComentario dc){
         IdPedido=dc.getPedido();
         FechaRealizacion=dc.getFecha();
         InfoPedido=dc.getInfoPedido();
         Texto=dc.getTexto();
-        Nickname=dc.getCliente();
         Puntaje=dc.getPuntaje();
+        cliente=dc.getCliente();
     }
-    
+
+    public Pedido getPedido(){
+        return IdPedido;
+    }
     public Fecha getFecha(){
         return FechaRealizacion;
     }
@@ -26,11 +29,17 @@ public class Comentario {
     public String getTexto(){
         return Texto;
     }
-    public Cliente getCliente(){
-        return Nickname;
-    }
     public int getPuntaje(){
         return Puntaje;
     }
-
+    public Cliente getCliente(){
+        return cliente;
+    }
 }
+    
+    
+    
+   
+    
+    
+    

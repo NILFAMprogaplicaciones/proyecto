@@ -2,50 +2,49 @@
 package Logica;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 
-<span class="fc" id="L9">public class ManejadorCategoria {</span>
-<span class="fc" id="L10">    private Map&lt;String, Categoria&gt; ColeccionCategoria = new HashMap&lt;String, Categoria&gt;();</span>
+<span class="fc" id="L8">public class ManejadorCategoria {</span>
+<span class="fc" id="L9">    private Map&lt;String, Categoria&gt; ColeccionCategoria = new HashMap&lt;String, Categoria&gt;();</span>
 //SINGLENTON
-<span class="fc" id="L12">    private static ManejadorCategoria instancia = null;</span>
+<span class="fc" id="L11">    private static ManejadorCategoria instancia = null;</span>
     
     public static ManejadorCategoria getinstance() {
-<span class="pc bpc" id="L15" title="1 of 2 branches missed.">        if (instancia == null) {</span>
-<span class="fc" id="L16">            instancia = new ManejadorCategoria();</span>
+<span class="pc bpc" id="L14" title="1 of 2 branches missed.">        if (instancia == null) {</span>
+<span class="fc" id="L15">            instancia = new ManejadorCategoria();</span>
         }
-<span class="fc" id="L18">        return instancia;</span>
+<span class="fc" id="L17">        return instancia;</span>
     }    
     
 //FUNCIONES DE COLECCION CATEGORIAS
     public void addCategoria(String nombre, Categoria cat) {
-<span class="fc" id="L23">        ColeccionCategoria.put(nombre, cat);</span>
-<span class="fc" id="L24">    }</span>
+<span class="fc" id="L22">        ColeccionCategoria.put(nombre, cat);</span>
+<span class="fc" id="L23">    }</span>
 
     public boolean verificoCat(String nombre) {
-<span class="fc" id="L27">        return ColeccionCategoria.containsKey(nombre);</span>
+<span class="fc" id="L26">        return ColeccionCategoria.containsKey(nombre);</span>
     }
     public Map coleccion(){
-<span class="fc" id="L30">        return ColeccionCategoria;</span>
+<span class="fc" id="L29">        return ColeccionCategoria;</span>
     }
     public int cantidad(){
-<span class="fc" id="L33">        return ColeccionCategoria.size();</span>
+<span class="fc" id="L32">        return ColeccionCategoria.size();</span>
     }
     public Categoria getCategoria(String nombrecategoria){
-<span class="fc" id="L36">        return ColeccionCategoria.get(nombrecategoria);</span>
+<span class="fc" id="L35">        return ColeccionCategoria.get(nombrecategoria);</span>
     }
     
 //EXCEPCIONES
     public void ExcepcionCategoria(String Categoria)throws ExcepcionesPersonalizadas{
-<span class="nc bnc" id="L41" title="All 2 branches missed.">        if(verificoCat(Categoria)==true){</span>
-<span class="nc" id="L42">            throw new ExcepcionesPersonalizadas(&quot;Categoria ya Ingresada&quot;);</span>
+<span class="nc bnc" id="L40" title="All 2 branches missed.">        if(verificoCat(Categoria)==true){</span>
+<span class="nc" id="L41">            throw new ExcepcionesPersonalizadas(&quot;Categoria ya Ingresada&quot;);</span>
         } 
         else {
-<span class="nc bnc" id="L45" title="All 2 branches missed.">            if (Categoria.equals(&quot;&quot;)){</span>
-<span class="nc" id="L46">                throw new ExcepcionesPersonalizadas(&quot;Ingrese Categoria&quot;);</span>
+<span class="nc bnc" id="L44" title="All 2 branches missed.">            if (Categoria.equals(&quot;&quot;)){</span>
+<span class="nc" id="L45">                throw new ExcepcionesPersonalizadas(&quot;Ingrese Categoria&quot;);</span>
             }
         }
-<span class="nc" id="L49">    }</span>
+<span class="nc" id="L48">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

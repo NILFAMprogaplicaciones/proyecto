@@ -2,11 +2,11 @@
 package Logica;
 
 import java.util.Map;
-import javax.swing.JOptionPane;
 
 
-<span class="fc" id="L8">public class ControladorProducto implements IControladorProducto {   </span>
+<span class="fc" id="L7">public class ControladorProducto implements IControladorProducto {   </span>
           
+    @Override
     public void AltaProductoIndividual(DataIndividual dataindividual) {
 <span class="fc" id="L11">        ManejadorProducto MP=ManejadorProducto.getinstance();</span>
 <span class="fc" id="L12">        ManejadorUsuario MU=ManejadorUsuario.getinstance();</span>
@@ -16,47 +16,86 @@ import javax.swing.JOptionPane;
         
 <span class="fc" id="L17">    }</span>
     
+    @Override
     public void AltaProductoPromocion(DataPromocion datapromocion) {
-<span class="fc" id="L20">        ManejadorProducto MP=ManejadorProducto.getinstance();</span>
-<span class="fc" id="L21">        ManejadorUsuario MU=ManejadorUsuario.getinstance();</span>
-<span class="fc" id="L22">        Promocion prod = new Promocion(datapromocion);</span>
-<span class="fc" id="L23">        MU.addProductoPromocion(datapromocion.getRestaurante().getnickname(),prod);</span>
-<span class="fc" id="L24">        MP.addProductoPromocion( prod);</span>
+<span class="fc" id="L21">        ManejadorProducto MP=ManejadorProducto.getinstance();</span>
+<span class="fc" id="L22">        ManejadorUsuario MU=ManejadorUsuario.getinstance();</span>
+<span class="fc" id="L23">        Promocion prod = new Promocion(datapromocion);</span>
+<span class="fc" id="L24">        MU.addProductoPromocion(datapromocion.getRestaurante().getnickname(),prod);</span>
+<span class="fc" id="L25">        MP.addProductoPromocion( prod);</span>
         
-<span class="fc" id="L26">    }</span>
+<span class="fc" id="L27">    }</span>
     
+    @Override
     public DataIndividual Caso_Ver_Individual(String nombre){
-<span class="fc" id="L29">        ManejadorProducto mp = ManejadorProducto.getinstance();</span>
-<span class="fc" id="L30">        Individual i= mp.findIndividual(nombre);</span>
-<span class="fc" id="L31">        DataIndividual di = new DataIndividual(i.getnombre(),i.getdescripcion(),i.getRestaurante(),i.getPrecio(),i.getImagen());</span>
-<span class="fc" id="L32">        return di;</span>
+<span class="fc" id="L31">        ManejadorProducto mp = ManejadorProducto.getinstance();</span>
+<span class="fc" id="L32">        Individual i= mp.findIndividual(nombre);</span>
+<span class="fc" id="L33">        DataIndividual di = new DataIndividual(i.getnombre(),i.getdescripcion(),i.getRestaurante(),i.getPrecio(),i.getImagen(),i.getDireccionFoto());</span>
+<span class="fc" id="L34">        return di;</span>
     }
     
+    @Override
     public DataPromocion Caso_Ver_Promocion(String nombre){
-<span class="fc" id="L36">        ManejadorProducto mp = ManejadorProducto.getinstance();</span>
-<span class="fc" id="L37">        Promocion p= mp.findPromocion(nombre);</span>
-<span class="fc" id="L38">        DataPromocion dp = new DataPromocion(p.getRestaurante(),p.getnombre(),p.getdescripcion(),p.getPrecioTotal(),p.getactiva(),p.getdescuento(),p.getColeccionProductos(),p.getImagen());</span>
-<span class="fc" id="L39">        return dp;</span>
+<span class="fc" id="L39">        ManejadorProducto mp = ManejadorProducto.getinstance();</span>
+<span class="fc" id="L40">        Promocion p= mp.findPromocion(nombre);</span>
+<span class="fc" id="L41">        DataPromocion dp = new DataPromocion(p.getRestaurante(),p.getnombre(),p.getdescripcion(),p.getPrecioTotal(),p.getactiva(),p.getdescuento(),p.getColeccionProductos(),p.getImagen(),p.getDireccionFoto());</span>
+<span class="fc" id="L42">        return dp;</span>
     }
     
+    @Override
     public void Caso_Actualizar_Individual(String nombreproducto,DataIndividual dataindividual){
-<span class="fc" id="L43">        ManejadorProducto   mp=ManejadorProducto.getinstance();</span>
-<span class="fc" id="L44">        ManejadorUsuario    mu=ManejadorUsuario.getinstance();</span>
-<span class="fc" id="L45">        mp.remove(nombreproducto);</span>
-<span class="fc" id="L46">        Individual individual=new Individual(dataindividual);</span>
-<span class="fc" id="L47">        mu.addProductoIndividual(dataindividual.getRestaurante().getnickname(),individual);</span>
-<span class="fc" id="L48">        mp.addProductoIndividual(individual);</span>
+<span class="fc" id="L47">        ManejadorProducto   mp=ManejadorProducto.getinstance();</span>
+<span class="fc" id="L48">        ManejadorUsuario    mu=ManejadorUsuario.getinstance();</span>
+<span class="fc" id="L49">        mp.remove(nombreproducto);</span>
+<span class="fc" id="L50">        Individual individual=new Individual(dataindividual);</span>
+<span class="fc" id="L51">        mu.addProductoIndividual(dataindividual.getRestaurante().getnickname(),individual);</span>
+<span class="fc" id="L52">        mp.addProductoIndividual(individual);</span>
         
-<span class="fc" id="L50">    }</span>
+<span class="fc" id="L54">    }</span>
      
+    @Override
     public void Caso_Actualizar_Promocion(String nombreproducto,DataPromocion datapromocion){
-<span class="fc" id="L53">        ManejadorProducto   mp=ManejadorProducto.getinstance();</span>
-<span class="fc" id="L54">        ManejadorUsuario    mu=ManejadorUsuario.getinstance();</span>
-<span class="fc" id="L55">        mp.remove(nombreproducto);</span>
-<span class="fc" id="L56">        Promocion promocion=new Promocion(datapromocion);</span>
-<span class="fc" id="L57">        mu.addProductoPromocion(datapromocion.getRestaurante().getnickname(),promocion);</span>
-<span class="fc" id="L58">        mp.addProductoPromocion(promocion);</span>
+<span class="fc" id="L58">        ManejadorProducto   mp=ManejadorProducto.getinstance();</span>
+<span class="fc" id="L59">        ManejadorUsuario    mu=ManejadorUsuario.getinstance();</span>
+<span class="fc" id="L60">        mp.remove(nombreproducto);</span>
+<span class="fc" id="L61">        Promocion promocion=new Promocion(datapromocion);</span>
+<span class="fc" id="L62">        mu.addProductoPromocion(datapromocion.getRestaurante().getnickname(),promocion);</span>
+<span class="fc" id="L63">        mp.addProductoPromocion(promocion);</span>
         
-<span class="fc" id="L60">    }</span>
+<span class="fc" id="L65">    }</span>
+    
+    //FUNCIONES AUXILIARES
+    ////////////////////////////////////////////////////////
+    
+    @Override
+    public int cantidadProductos(){
+<span class="nc" id="L72">        ManejadorProducto   mp=ManejadorProducto.getinstance();</span>
+<span class="nc" id="L73">        return mp.cantidadProductos();</span>
+    }
+    @Override
+    public Map getColeccion(){
+<span class="nc" id="L77">        ManejadorProducto   mp=ManejadorProducto.getinstance();</span>
+<span class="nc" id="L78">        return mp.getColeccion();</span>
+    }
+    @Override
+    public Map getColeccionProductos(String nickname){
+<span class="nc" id="L82">        ManejadorProducto   mp=ManejadorProducto.getinstance();</span>
+<span class="nc" id="L83">        return mp.getColeccionProductos(nickname);             </span>
+    }
+    @Override
+    public Promocion findPromocion(String nombre){
+<span class="nc" id="L87">        ManejadorProducto   mp=ManejadorProducto.getinstance();</span>
+<span class="nc" id="L88">        return mp.findPromocion(nombre);</span>
+    }
+    @Override
+    public int CantidadProductosPromo(String nombre){
+<span class="nc" id="L92">        ManejadorProducto   mp=ManejadorProducto.getinstance();</span>
+<span class="nc" id="L93">        return mp.CantidadProductosPromo(nombre);</span>
+    }
+    @Override
+    public Producto findProducto(String nombre){
+<span class="nc" id="L97">        ManejadorProducto   mp=ManejadorProducto.getinstance();</span>
+<span class="nc" id="L98">        return mp.findProducto(nombre);</span>
+    }
 } 
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

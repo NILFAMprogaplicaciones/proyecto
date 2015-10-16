@@ -13,7 +13,7 @@ public class DataPedido {
 <span class="fc" id="L13">    private Map&lt;String,Producto&gt; ColeccionProductos=new HashMap&lt;String,Producto&gt;();</span>
     private Restaurante restaurante;
     private TipoAsosiativoPedido tipoAP;
-    
+        
     
     public DataPedido(int id, FechaHora fechahora, double preciototal, Estado estado, Cliente cliente, 
 <span class="fc" id="L19">            Map coleccionproductos, Restaurante restaurante, TipoAsosiativoPedido tipoAP){</span>
@@ -27,31 +27,33 @@ public class DataPedido {
 <span class="fc" id="L27">        this.restaurante=restaurante;</span>
 <span class="fc" id="L28">        this.tipoAP=tipoAP;</span>
         
-<span class="fc" id="L30">    }</span>
+        
+<span class="fc" id="L31">    }</span>
     public int getId(){
-<span class="fc" id="L32">        return id;</span>
+<span class="fc" id="L33">        return id;</span>
     }
     public FechaHora getFechaHora(){
-<span class="fc" id="L35">        return fechahora;</span>
+<span class="fc" id="L36">        return fechahora;</span>
     }
     public double getPrecioTotal(){
-<span class="fc" id="L38">        return preciototal;</span>
+<span class="fc" id="L39">        return preciototal;</span>
     }
     public Estado getEstado(){
-<span class="fc" id="L41">        return estado;</span>
+<span class="fc" id="L42">        return estado;</span>
     }
     public Cliente getCliente(){
-<span class="fc" id="L44">        return cliente;</span>
+<span class="fc" id="L45">        return cliente;</span>
     }
     public Map getColeccionProductos(){
-<span class="fc" id="L47">        return ColeccionProductos;</span>
+<span class="fc" id="L48">        return ColeccionProductos;</span>
     }
     public Restaurante getRestaurante(){
-<span class="fc" id="L50">        return restaurante;</span>
+<span class="fc" id="L51">        return restaurante;</span>
     }
     public TipoAsosiativoPedido getTipoAP(){
-<span class="fc" id="L53">        return tipoAP;</span>
+<span class="fc" id="L54">        return tipoAP;</span>
     }
+    
 }
 
 

@@ -29,10 +29,11 @@ public abstract interface IControladorUsuario {
     public abstract Map obtenercoleccion();
     public abstract Map coleccion();
     public abstract Map getColeccionRestaurante();
+    public abstract Map getColeccionClientes();
     public abstract Map getColeccionProductosRestaurantes(String nickname);
     public abstract Restaurante findRestaurante(String nickname);
     public abstract Cliente findCliente(String nickname);
-    public abstract Map getCategoriasRestaurantes(String nickname); 
+    public abstract Map getCategoriasRestaurantes(String nickname);
     public abstract void ExcepcionCategoria(String Categoria)throws ExcepcionesPersonalizadas;
     public abstract void ExcepcionDatosCliente(String Nickname,String CorreoElectronico, String Nombre, String Apellido, String Direccion, 
            String dia, String mes, String anio) throws ExcepcionesPersonalizadas;

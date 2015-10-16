@@ -242,7 +242,7 @@ public class DatosPrecargados implements IDatosPrecargados {
         DataCantidad datacan2=new DataCantidad(1, producto2);
         col1.put(datacan1.getProducto().getnombre(), datacan1);
         col1.put(datacan2.getProducto().getnombre(), datacan2);
-        DataPromocion datapromo1=new DataPromocion(pm,"ChiviPizza", "Chivito y Pizza" , 348,  true, 20 , col1,foto,"images/Productos/ChiviPizza.png");
+        DataPromocion datapromo1=new DataPromocion(pm,"ChiviPizza", "Chivito y Pizza" , 348,  true, 20 , col1,foto,"images/producto.jpg");
         Promocion promo1=new Promocion(datapromo1);
         MP.addProductoPromocion(promo1);
         MU.addProductoPromocion(promo1.getRestaurante().getnickname(),promo1);
@@ -254,7 +254,7 @@ public class DatosPrecargados implements IDatosPrecargados {
         DataCantidad datacan4=new DataCantidad(1, producto4);
         col2.put(datacan3.getProducto().getnombre(), datacan3);
         col2.put(datacan4.getProducto().getnombre(), datacan4);
-        DataPromocion datapromo2=new DataPromocion(pm,"MilaAsado", "3 Milanesas + 1 Asado para compartir" , 535.5,  true, 30 , col2,foto,"images/Productos/MilaAsado.png");
+        DataPromocion datapromo2=new DataPromocion(pm,"MilaAsado", "3 Milanesas + 1 Asado para compartir" , 535.5,  true, 30 , col2,foto,"images/producto.jpg");
         Promocion promo2=new Promocion(datapromo2);
         MP.addProductoPromocion(promo2);
         MU.addProductoPromocion(promo2.getRestaurante().getnickname(),promo2);
@@ -266,17 +266,18 @@ public class DatosPrecargados implements IDatosPrecargados {
         DataCantidad datacan6=new DataCantidad(1, producto6);
         col3.put(datacan5.getProducto().getnombre(), datacan5);
         col3.put(datacan6.getProducto().getnombre(), datacan6);
-        DataPromocion datapromo3=new DataPromocion(br,"MilaPizza", "2 Milanesas a caballo + 1 Pizzas 2 gustos" , 578.7,  true, 10 , col3,foto,"images/Productos/MilaPizza.png");
+        DataPromocion datapromo3=new DataPromocion(br,"MilaPizza", "2 Milanesas a caballo + 1 Pizzas 2 gustos" , 578.7,  true, 10 , col3,foto,"images/producto.jpg");
         Promocion promo3=new Promocion(datapromo3);
         MP.addProductoPromocion(promo3);
         MU.addProductoPromocion(promo3.getRestaurante().getnickname(),promo3);
     }
     public void Pedidos(){
         FechaHora fecha1=new FechaHora(12,8,2015,0,0),fecha2=new FechaHora(19,8,2015,0,0),fecha3=new FechaHora(19,8,2015,0,0),
-                fecha4=new FechaHora(22,8,2015,0,0),fecha5=new FechaHora(25,8,2015,0,0);
+                fecha4=new FechaHora(22,8,2015,0,0),fecha5=new FechaHora(25,8,2015,0,0), fecha6=new FechaHora(20,9,2015,0,0),fecha7=new FechaHora(2,10,2015,0,0);
         Cliente co=MU.findCliente("costas"),ro=MU.findCliente("roro"),ch=MU.findCliente("chechi"),an=MU.findCliente("andy"),we=MU.findCliente("weiss");
         Producto ecb=MP.findProducto("Empanada de Carne"), eab=MP.findProducto("Empanada Americana"), eqb=MP.findProducto("Empanada QyC"),
-                asm=MP.findProducto("Asado"), tww=MP.findProducto("Thai wok"), cww=MP.findProducto("China wok"), ccm=MP.findProducto("Chivito canadiense"), par=MP.findProducto("Agnolotis");
+                asm=MP.findProducto("Asado"), tww=MP.findProducto("Thai wok"), cww=MP.findProducto("China wok"), ccm=MP.findProducto("Chivito canadiense"), 
+                par=MP.findProducto("Agnolotis"),mcm=MP.findProducto("Milanesa de Carne"),cpr=MP.findProducto("Chivito al plato"),mcr=MP.findProducto("Milanesa a caballo"),mam=MP.findProducto("MilaAsado");
         Restaurante eb=MU.findRestaurante("bocatti"),pm=MU.findRestaurante("mera"),wb=MU.findRestaurante("winb"),br=MU.findRestaurante("rossell");
         
         
@@ -336,8 +337,53 @@ public class DatosPrecargados implements IDatosPrecargados {
         Pedido pedido5=new Pedido(datapedido5);
         MPP.addPedido(pedido5.getnum(), pedido5);
         
+        Map<String,Producto> col6=new HashMap<String,Producto>();
+        col6.put(mcm.getnombre(), mcm);
+        col6.put(ccm.getnombre(), ccm);
+        col6.put(mam.getnombre(), mam);
+        Map<String,DataProductosPedido> colpp6=new HashMap<String,DataProductosPedido>();
+        DataProductosPedido dpp9=new DataProductosPedido(mcm, 1,180),dpp10=new DataProductosPedido(ccm, 1,305),dpp11=new DataProductosPedido(mam, 2,1530);
+        colpp6.put(dpp9.getProducto().getnombre(), dpp9);
+        colpp6.put(dpp10.getProducto().getnombre(), dpp10);
+        colpp6.put(dpp11.getProducto().getnombre(), dpp11);
+        TipoAsosiativoPedido tap6=new TipoAsosiativoPedido(colpp6);
+        DataPedido datapedido6=new DataPedido(6, fecha6, 2015, Estado.RECIBIDO, ro, col6,  pm, tap6);
+        Pedido pedido6=new Pedido(datapedido6);
+        MPP.addPedido(pedido6.getnum(), pedido6);
+        
+        Map<String,Producto> col7=new HashMap<String,Producto>();
+        col7.put(cpr.getnombre(), cpr);
+        col7.put(mcr.getnombre(), mcr);
+        Map<String,DataProductosPedido> colpp7=new HashMap<String,DataProductosPedido>();
+        DataProductosPedido dpp12=new DataProductosPedido(cpr, 2,648),dpp13=new DataProductosPedido(mcr, 1,270);
+        colpp7.put(dpp12.getProducto().getnombre(), dpp12);
+        colpp7.put(dpp13.getProducto().getnombre(), dpp13);
+        TipoAsosiativoPedido tap7=new TipoAsosiativoPedido(colpp7);
+        DataPedido datapedido7=new DataPedido(7, fecha7, 918, Estado.RECIBIDO, an, col7,  br, tap7);
+        Pedido pedido7=new Pedido(datapedido7);
+        MPP.addPedido(pedido7.getnum(), pedido7);
+        
     }
-    
+    public void Comentarios(){
+        Fecha fecha1=new Fecha(20,8,2015),fecha2=new Fecha(26,8,2015),fecha3=new Fecha(21,9,2015),fecha4=new Fecha(3,10,2015);
+        Pedido p3=MPP.getPedido(3),p5=MPP.getPedido(5),p6=MPP.getPedido(6),p7=MPP.getPedido(7);
+        
+        DataComentario dc1=new DataComentario(p3, fecha1, "Informacion del pedido 3", "Si bien el thai wok y el china wok están ricos, me cobraron 60$ de envío y eso no estaba aclarado y no pueden hacerlo. Me dejó muy molesto.", 2,p3.getCliente());
+        Comentario comentario1=new Comentario(dc1);
+        MPP.getPedido(3).setComentario(comentario1);
+        
+        DataComentario dc2=new DataComentario(p5, fecha2, "Informacion del pedido 5", "Los Agnolotis llegaron un poco fríos y demoraron más de la cuenta. Espero mejoren. De todas formas, muy ricos. ", 3,p5.getCliente());
+        Comentario comentario2=new Comentario(dc2);
+        MPP.getPedido(5).setComentario(comentario2);
+        
+        DataComentario dc3=new DataComentario(p6, fecha3, "Informacion del pedido 6", "Tanto la milanesa como el chivito llegaron 3 horas tarde!, obviamente helados!!, un desastre, nunca más pido ahí.", 1,p6.getCliente());
+        Comentario comentario3=new Comentario(dc3);
+        MPP.getPedido(6).setComentario(comentario3);
+        
+        DataComentario dc4=new DataComentario(p7, fecha4, "Informacion del pedido 7", "Todo llegó en hora. El chivito y la milanesa a caballo estaban un poco aceitosos, pero más allá de eso se comió rico y en abundancia.", 4,p7.getCliente());
+        Comentario comentario4=new Comentario(dc4);
+        MPP.getPedido(7).setComentario(comentario4);
+    }
     @Override
     public void DatosPrecargado(){
         Clientes();
@@ -346,7 +392,7 @@ public class DatosPrecargados implements IDatosPrecargados {
         ProductosIndividuales();
         ProductosPromociones();
         Pedidos();
-        
+        Comentarios();
         
     } 
 }

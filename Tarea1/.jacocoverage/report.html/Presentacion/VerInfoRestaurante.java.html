@@ -4,256 +4,250 @@ package Presentacion;
 import Logica.DataRestaurante;
 import Logica.Fabrica;
 import Logica.IControladorUsuario;
-import Logica.ManejadorUsuario;
 import Logica.Producto;
-import Logica.Promocion;
-import java.awt.Dimension;
 import java.awt.Image;
-import java.awt.Toolkit;
 import java.io.File;
 import java.util.Iterator;
 import java.util.Map;
 import javax.swing.DefaultListModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 
 public class VerInfoRestaurante extends javax.swing.JInternalFrame {
     private IControladorUsuario ICU;
     
     public void datosRestaurante(){
-<span class="nc" id="L26">        txtNickRestaurante.setEditable(false);</span>
-<span class="nc" id="L27">        txtNomRestaurante.setEditable(false);</span>
-<span class="nc" id="L28">        txtCorreoRestaurante.setEditable(false);</span>
-<span class="nc" id="L29">        txtDirRestaurante.setEditable(false);</span>
+<span class="nc" id="L21">        txtNickRestaurante.setEditable(false);</span>
+<span class="nc" id="L22">        txtNomRestaurante.setEditable(false);</span>
+<span class="nc" id="L23">        txtCorreoRestaurante.setEditable(false);</span>
+<span class="nc" id="L24">        txtDirRestaurante.setEditable(false);</span>
         
         
-<span class="nc" id="L32">    }</span>
+<span class="nc" id="L27">    }</span>
     
-<span class="nc" id="L34">    int idFoto=1;</span>
+<span class="nc" id="L29">    int idFoto=1;</span>
     DataRestaurante datarestaurante;
     
     public void CargaDeDatos(DataRestaurante dres){
-<span class="nc" id="L38">        txtNickRestaurante.setText(dres.getnickname());</span>
-<span class="nc" id="L39">        txtNomRestaurante.setText(dres.getnombre());</span>
-<span class="nc" id="L40">        txtDirRestaurante.setText(dres.getdireccion());</span>
-<span class="nc" id="L41">        txtCorreoRestaurante.setText(dres.getcorreo());</span>
+<span class="nc" id="L33">        txtNickRestaurante.setText(dres.getnickname());</span>
+<span class="nc" id="L34">        txtNomRestaurante.setText(dres.getnombre());</span>
+<span class="nc" id="L35">        txtDirRestaurante.setText(dres.getdireccion());</span>
+<span class="nc" id="L36">        txtCorreoRestaurante.setText(dres.getcorreo());</span>
         
                 
-<span class="nc" id="L44">        File foto=dres.getFoto(idFoto);</span>
-<span class="nc" id="L45">        int largo=237, ancho=127;</span>
+<span class="nc" id="L39">        File foto=dres.getFoto(idFoto);</span>
+<span class="nc" id="L40">        int largo=237, ancho=127;</span>
         ImageIcon icon;
         Icon icono;
-<span class="nc" id="L48">        icon = new ImageIcon(foto.toString());</span>
-<span class="nc" id="L49">        icono = new ImageIcon(icon.getImage().getScaledInstance(largo, ancho, Image.SCALE_DEFAULT));</span>
-<span class="nc" id="L50">        imagenRestaurante.setText(null);</span>
-<span class="nc" id="L51">        imagenRestaurante.setIcon( icono );</span>
+<span class="nc" id="L43">        icon = new ImageIcon(foto.toString());</span>
+<span class="nc" id="L44">        icono = new ImageIcon(icon.getImage().getScaledInstance(largo, ancho, Image.SCALE_DEFAULT));</span>
+<span class="nc" id="L45">        imagenRestaurante.setText(null);</span>
+<span class="nc" id="L46">        imagenRestaurante.setIcon( icono );</span>
         
         //AGREGO LOS PRODUCTOS DE MI RESTAURANTE
-<span class="nc" id="L54">        DefaultListModel&lt;String&gt; modelo=new DefaultListModel&lt;&gt;();</span>
-<span class="nc" id="L55">        ManejadorUsuario MU=ManejadorUsuario.getinstance();</span>
+<span class="nc" id="L49">        DefaultListModel&lt;String&gt; modelo=new DefaultListModel&lt;&gt;();</span>
 
-<span class="nc" id="L57">        int posision=0;</span>
+<span class="nc" id="L51">        int posision=0;</span>
 
-<span class="nc" id="L59">        Map cole=MU.getColeccionProductosRestaurantes(txtNickRestaurante.getText());</span>
-<span class="nc" id="L60">        Iterator&lt;Producto&gt; it = cole.values().iterator();</span>
-<span class="nc" id="L61">        Producto pro=null;</span>
-<span class="nc bnc" id="L62" title="All 2 branches missed.">        while (it.hasNext()) {</span>
-<span class="nc" id="L63">            pro=it.next();</span>
-<span class="nc" id="L64">            modelo.add(posision,pro.getnombre());</span>
-<span class="nc" id="L65">            this.listadeproductos.setModel(modelo);</span>
-<span class="nc" id="L66">            posision++; </span>
+<span class="nc" id="L53">        Map cole=ICU.getColeccionProductosRestaurantes(txtNickRestaurante.getText());</span>
+<span class="nc" id="L54">        Iterator&lt;Producto&gt; it = cole.values().iterator();</span>
+<span class="nc" id="L55">        Producto pro=null;</span>
+<span class="nc bnc" id="L56" title="All 2 branches missed.">        while (it.hasNext()) {</span>
+<span class="nc" id="L57">            pro=it.next();</span>
+<span class="nc" id="L58">            modelo.add(posision,pro.getnombre());</span>
+<span class="nc" id="L59">            this.listadeproductos.setModel(modelo);</span>
+<span class="nc" id="L60">            posision++; </span>
         }
-<span class="nc" id="L68">    }</span>
+<span class="nc" id="L62">    }</span>
     
-<span class="nc" id="L70">    public VerInfoRestaurante(DataRestaurante dr) {</span>
-<span class="nc" id="L71">        initComponents();</span>
-<span class="nc" id="L72">        Fabrica fabrica = Fabrica.getInstance();</span>
-<span class="nc" id="L73">        ICU = fabrica.getIControladorUsuario();</span>
-<span class="nc" id="L74">        CargaDeDatos(dr);</span>
-<span class="nc" id="L75">        datosRestaurante();</span>
-<span class="nc" id="L76">        datarestaurante=dr;</span>
+<span class="nc" id="L64">    public VerInfoRestaurante(DataRestaurante dr) {</span>
+<span class="nc" id="L65">        initComponents();</span>
+<span class="nc" id="L66">        Fabrica fabrica = Fabrica.getInstance();</span>
+<span class="nc" id="L67">        ICU = fabrica.getIControladorUsuario();</span>
+<span class="nc" id="L68">        CargaDeDatos(dr);</span>
+<span class="nc" id="L69">        datosRestaurante();</span>
+<span class="nc" id="L70">        datarestaurante=dr;</span>
         
           
-<span class="nc" id="L79">    }</span>
+<span class="nc" id="L73">    }</span>
     @SuppressWarnings(&quot;unchecked&quot;)
     // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
     private void initComponents() {
 
-<span class="nc" id="L84">        PanelDatos = new javax.swing.JPanel();</span>
-<span class="nc" id="L85">        iNickRestaurante = new javax.swing.JLabel();</span>
-<span class="nc" id="L86">        iNomRestaurante = new javax.swing.JLabel();</span>
-<span class="nc" id="L87">        iCorreoRestaurante = new javax.swing.JLabel();</span>
-<span class="nc" id="L88">        iDirRestaurante = new javax.swing.JLabel();</span>
-<span class="nc" id="L89">        txtNickRestaurante = new javax.swing.JTextField();</span>
-<span class="nc" id="L90">        txtNomRestaurante = new javax.swing.JTextField();</span>
-<span class="nc" id="L91">        txtCorreoRestaurante = new javax.swing.JTextField();</span>
-<span class="nc" id="L92">        txtDirRestaurante = new javax.swing.JTextField();</span>
-<span class="nc" id="L93">        btnSiguiente = new javax.swing.JButton();</span>
-<span class="nc" id="L94">        btnAnterior = new javax.swing.JButton();</span>
-<span class="nc" id="L95">        jScrollPane2 = new javax.swing.JScrollPane();</span>
-<span class="nc" id="L96">        listadeproductos = new javax.swing.JList();</span>
-<span class="nc" id="L97">        jLabel1 = new javax.swing.JLabel();</span>
-<span class="nc" id="L98">        imagenRestaurante = new javax.swing.JLabel();</span>
+<span class="nc" id="L78">        PanelDatos = new javax.swing.JPanel();</span>
+<span class="nc" id="L79">        iNickRestaurante = new javax.swing.JLabel();</span>
+<span class="nc" id="L80">        iNomRestaurante = new javax.swing.JLabel();</span>
+<span class="nc" id="L81">        iCorreoRestaurante = new javax.swing.JLabel();</span>
+<span class="nc" id="L82">        iDirRestaurante = new javax.swing.JLabel();</span>
+<span class="nc" id="L83">        txtNickRestaurante = new javax.swing.JTextField();</span>
+<span class="nc" id="L84">        txtNomRestaurante = new javax.swing.JTextField();</span>
+<span class="nc" id="L85">        txtCorreoRestaurante = new javax.swing.JTextField();</span>
+<span class="nc" id="L86">        txtDirRestaurante = new javax.swing.JTextField();</span>
+<span class="nc" id="L87">        btnSiguiente = new javax.swing.JButton();</span>
+<span class="nc" id="L88">        btnAnterior = new javax.swing.JButton();</span>
+<span class="nc" id="L89">        jScrollPane2 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L90">        listadeproductos = new javax.swing.JList();</span>
+<span class="nc" id="L91">        jLabel1 = new javax.swing.JLabel();</span>
+<span class="nc" id="L92">        imagenRestaurante = new javax.swing.JLabel();</span>
 
-<span class="nc" id="L100">        setClosable(true);</span>
-<span class="nc" id="L101">        setIconifiable(true);</span>
-<span class="nc" id="L102">        setTitle(&quot;Informacion Restaurante&quot;);</span>
+<span class="nc" id="L94">        setClosable(true);</span>
+<span class="nc" id="L95">        setIconifiable(true);</span>
+<span class="nc" id="L96">        setTitle(&quot;Informacion Restaurante&quot;);</span>
 
-<span class="nc" id="L104">        iNickRestaurante.setText(&quot;Nickname :&quot;);</span>
+<span class="nc" id="L98">        iNickRestaurante.setText(&quot;Nickname :&quot;);</span>
 
-<span class="nc" id="L106">        iNomRestaurante.setText(&quot;Nombrre :&quot;);</span>
+<span class="nc" id="L100">        iNomRestaurante.setText(&quot;Nombrre :&quot;);</span>
 
-<span class="nc" id="L108">        iCorreoRestaurante.setText(&quot;Correo :&quot;);</span>
+<span class="nc" id="L102">        iCorreoRestaurante.setText(&quot;Correo :&quot;);</span>
 
-<span class="nc" id="L110">        iDirRestaurante.setText(&quot;Dirección:&quot;);</span>
+<span class="nc" id="L104">        iDirRestaurante.setText(&quot;Dirección:&quot;);</span>
 
-<span class="nc" id="L112">        txtNickRestaurante.addActionListener(new java.awt.event.ActionListener() {</span>
+<span class="nc" id="L106">        txtNickRestaurante.addActionListener(new java.awt.event.ActionListener() {</span>
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<span class="nc" id="L114">                txtNickRestauranteActionPerformed(evt);</span>
-<span class="nc" id="L115">            }</span>
+<span class="nc" id="L108">                txtNickRestauranteActionPerformed(evt);</span>
+<span class="nc" id="L109">            }</span>
         });
 
-<span class="nc" id="L118">        javax.swing.GroupLayout PanelDatosLayout = new javax.swing.GroupLayout(PanelDatos);</span>
-<span class="nc" id="L119">        PanelDatos.setLayout(PanelDatosLayout);</span>
-<span class="nc" id="L120">        PanelDatosLayout.setHorizontalGroup(</span>
-<span class="nc" id="L121">            PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L122">            .addGroup(PanelDatosLayout.createSequentialGroup()</span>
-<span class="nc" id="L123">                .addGap(23, 23, 23)</span>
-<span class="nc" id="L124">                .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L125">                    .addComponent(iNickRestaurante)</span>
-<span class="nc" id="L126">                    .addComponent(iNomRestaurante)</span>
-<span class="nc" id="L127">                    .addComponent(iCorreoRestaurante)</span>
-<span class="nc" id="L128">                    .addComponent(iDirRestaurante))</span>
-<span class="nc" id="L129">                .addGap(18, 18, 18)</span>
-<span class="nc" id="L130">                .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)</span>
-<span class="nc" id="L131">                    .addComponent(txtCorreoRestaurante)</span>
-<span class="nc" id="L132">                    .addComponent(txtNomRestaurante)</span>
-<span class="nc" id="L133">                    .addComponent(txtNickRestaurante)</span>
-<span class="nc" id="L134">                    .addComponent(txtDirRestaurante, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))</span>
-<span class="nc" id="L135">                .addContainerGap(22, Short.MAX_VALUE))</span>
+<span class="nc" id="L112">        javax.swing.GroupLayout PanelDatosLayout = new javax.swing.GroupLayout(PanelDatos);</span>
+<span class="nc" id="L113">        PanelDatos.setLayout(PanelDatosLayout);</span>
+<span class="nc" id="L114">        PanelDatosLayout.setHorizontalGroup(</span>
+<span class="nc" id="L115">            PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L116">            .addGroup(PanelDatosLayout.createSequentialGroup()</span>
+<span class="nc" id="L117">                .addGap(23, 23, 23)</span>
+<span class="nc" id="L118">                .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L119">                    .addComponent(iNickRestaurante)</span>
+<span class="nc" id="L120">                    .addComponent(iNomRestaurante)</span>
+<span class="nc" id="L121">                    .addComponent(iCorreoRestaurante)</span>
+<span class="nc" id="L122">                    .addComponent(iDirRestaurante))</span>
+<span class="nc" id="L123">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L124">                .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)</span>
+<span class="nc" id="L125">                    .addComponent(txtCorreoRestaurante)</span>
+<span class="nc" id="L126">                    .addComponent(txtNomRestaurante)</span>
+<span class="nc" id="L127">                    .addComponent(txtNickRestaurante)</span>
+<span class="nc" id="L128">                    .addComponent(txtDirRestaurante, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))</span>
+<span class="nc" id="L129">                .addContainerGap(22, Short.MAX_VALUE))</span>
         );
-<span class="nc" id="L137">        PanelDatosLayout.setVerticalGroup(</span>
-<span class="nc" id="L138">            PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L139">            .addGroup(PanelDatosLayout.createSequentialGroup()</span>
-<span class="nc" id="L140">                .addContainerGap()</span>
-<span class="nc" id="L141">                .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
-<span class="nc" id="L142">                    .addComponent(iNickRestaurante)</span>
-<span class="nc" id="L143">                    .addComponent(txtNickRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
-<span class="nc" id="L144">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
-<span class="nc" id="L145">                .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
-<span class="nc" id="L146">                    .addComponent(iNomRestaurante)</span>
-<span class="nc" id="L147">                    .addComponent(txtNomRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
-<span class="nc" id="L148">                .addGap(13, 13, 13)</span>
-<span class="nc" id="L149">                .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
-<span class="nc" id="L150">                    .addComponent(iCorreoRestaurante)</span>
-<span class="nc" id="L151">                    .addComponent(txtCorreoRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
-<span class="nc" id="L152">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
-<span class="nc" id="L153">                .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
-<span class="nc" id="L154">                    .addComponent(iDirRestaurante)</span>
-<span class="nc" id="L155">                    .addComponent(txtDirRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
-<span class="nc" id="L156">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))</span>
+<span class="nc" id="L131">        PanelDatosLayout.setVerticalGroup(</span>
+<span class="nc" id="L132">            PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L133">            .addGroup(PanelDatosLayout.createSequentialGroup()</span>
+<span class="nc" id="L134">                .addContainerGap()</span>
+<span class="nc" id="L135">                .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L136">                    .addComponent(iNickRestaurante)</span>
+<span class="nc" id="L137">                    .addComponent(txtNickRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L138">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L139">                .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L140">                    .addComponent(iNomRestaurante)</span>
+<span class="nc" id="L141">                    .addComponent(txtNomRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L142">                .addGap(13, 13, 13)</span>
+<span class="nc" id="L143">                .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L144">                    .addComponent(iCorreoRestaurante)</span>
+<span class="nc" id="L145">                    .addComponent(txtCorreoRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L146">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L147">                .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L148">                    .addComponent(iDirRestaurante)</span>
+<span class="nc" id="L149">                    .addComponent(txtDirRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L150">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))</span>
         );
 
-<span class="nc" id="L159">        btnSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagenes/forward_alt.png&quot;))); // NOI18N</span>
-<span class="nc" id="L160">        btnSiguiente.addActionListener(new java.awt.event.ActionListener() {</span>
+<span class="nc" id="L153">        btnSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagenes/forward_alt.png&quot;))); // NOI18N</span>
+<span class="nc" id="L154">        btnSiguiente.addActionListener(new java.awt.event.ActionListener() {</span>
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<span class="nc" id="L162">                btnSiguienteActionPerformed(evt);</span>
-<span class="nc" id="L163">            }</span>
+<span class="nc" id="L156">                btnSiguienteActionPerformed(evt);</span>
+<span class="nc" id="L157">            }</span>
         });
 
-<span class="nc" id="L166">        btnAnterior.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagenes/back_alt.png&quot;))); // NOI18N</span>
-<span class="nc" id="L167">        btnAnterior.addActionListener(new java.awt.event.ActionListener() {</span>
+<span class="nc" id="L160">        btnAnterior.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagenes/back_alt.png&quot;))); // NOI18N</span>
+<span class="nc" id="L161">        btnAnterior.addActionListener(new java.awt.event.ActionListener() {</span>
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<span class="nc" id="L169">                btnAnteriorActionPerformed(evt);</span>
-<span class="nc" id="L170">            }</span>
+<span class="nc" id="L163">                btnAnteriorActionPerformed(evt);</span>
+<span class="nc" id="L164">            }</span>
         });
 
-<span class="nc" id="L173">        jScrollPane2.setViewportView(listadeproductos);</span>
+<span class="nc" id="L167">        jScrollPane2.setViewportView(listadeproductos);</span>
 
-<span class="nc" id="L175">        jLabel1.setText(&quot;Productos del Restaurante&quot;);</span>
+<span class="nc" id="L169">        jLabel1.setText(&quot;Productos del Restaurante&quot;);</span>
 
-<span class="nc" id="L177">        imagenRestaurante.setText(&quot;ImagenRestaurante&quot;);</span>
-<span class="nc" id="L178">        imagenRestaurante.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));</span>
+<span class="nc" id="L171">        imagenRestaurante.setText(&quot;ImagenRestaurante&quot;);</span>
+<span class="nc" id="L172">        imagenRestaurante.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));</span>
 
-<span class="nc" id="L180">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
-<span class="nc" id="L181">        getContentPane().setLayout(layout);</span>
-<span class="nc" id="L182">        layout.setHorizontalGroup(</span>
-<span class="nc" id="L183">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L184">            .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L185">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L186">                    .addComponent(PanelDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L187">                    .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L188">                        .addGap(39, 39, 39)</span>
-<span class="nc" id="L189">                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)</span>
-<span class="nc" id="L190">                            .addComponent(imagenRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L191">                            .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L192">                                .addComponent(btnAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L193">                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
-<span class="nc" id="L194">                                .addComponent(btnSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))))</span>
-<span class="nc" id="L195">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)</span>
-<span class="nc" id="L196">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L197">                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L198">                    .addComponent(jLabel1))</span>
-<span class="nc" id="L199">                .addGap(93, 93, 93))</span>
+<span class="nc" id="L174">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
+<span class="nc" id="L175">        getContentPane().setLayout(layout);</span>
+<span class="nc" id="L176">        layout.setHorizontalGroup(</span>
+<span class="nc" id="L177">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L178">            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L179">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L180">                    .addComponent(PanelDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L181">                    .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L182">                        .addGap(39, 39, 39)</span>
+<span class="nc" id="L183">                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)</span>
+<span class="nc" id="L184">                            .addComponent(imagenRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L185">                            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L186">                                .addComponent(btnAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L187">                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L188">                                .addComponent(btnSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))))</span>
+<span class="nc" id="L189">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)</span>
+<span class="nc" id="L190">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L191">                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L192">                    .addComponent(jLabel1))</span>
+<span class="nc" id="L193">                .addGap(93, 93, 93))</span>
         );
-<span class="nc" id="L201">        layout.setVerticalGroup(</span>
-<span class="nc" id="L202">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L203">            .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L204">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L205">                    .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L206">                        .addComponent(PanelDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L207">                        .addGap(18, 18, 18)</span>
-<span class="nc" id="L208">                        .addComponent(imagenRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L209">                        .addGap(18, 18, 18)</span>
-<span class="nc" id="L210">                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L211">                            .addComponent(btnAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L212">                            .addComponent(btnSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))</span>
-<span class="nc" id="L213">                    .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L214">                        .addGap(35, 35, 35)</span>
-<span class="nc" id="L215">                        .addComponent(jLabel1)</span>
-<span class="nc" id="L216">                        .addGap(18, 18, 18)</span>
-<span class="nc" id="L217">                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))</span>
-<span class="nc" id="L218">                .addContainerGap(23, Short.MAX_VALUE))</span>
+<span class="nc" id="L195">        layout.setVerticalGroup(</span>
+<span class="nc" id="L196">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L197">            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L198">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L199">                    .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L200">                        .addComponent(PanelDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L201">                        .addGap(18, 18, 18)</span>
+<span class="nc" id="L202">                        .addComponent(imagenRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L203">                        .addGap(18, 18, 18)</span>
+<span class="nc" id="L204">                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L205">                            .addComponent(btnAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L206">                            .addComponent(btnSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))</span>
+<span class="nc" id="L207">                    .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L208">                        .addGap(35, 35, 35)</span>
+<span class="nc" id="L209">                        .addComponent(jLabel1)</span>
+<span class="nc" id="L210">                        .addGap(18, 18, 18)</span>
+<span class="nc" id="L211">                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))</span>
+<span class="nc" id="L212">                .addContainerGap(23, Short.MAX_VALUE))</span>
         );
 
-<span class="nc" id="L221">        pack();</span>
-<span class="nc" id="L222">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+<span class="nc" id="L215">        pack();</span>
+<span class="nc" id="L216">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
 
     private void txtNickRestauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNickRestauranteActionPerformed
         // TODO add your handling code here:
         
-<span class="nc" id="L227">    }//GEN-LAST:event_txtNickRestauranteActionPerformed</span>
+<span class="nc" id="L221">    }//GEN-LAST:event_txtNickRestauranteActionPerformed</span>
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
-<span class="nc" id="L230">        int cantidad=datarestaurante.getColeccionImagenes().size();</span>
-<span class="nc" id="L231">        File foto=datarestaurante.getFoto(idFoto+1);</span>
-<span class="nc bnc" id="L232" title="All 2 branches missed.">        if(idFoto&lt;cantidad){</span>
-<span class="nc" id="L233">            idFoto++;</span>
-<span class="nc" id="L234">            int largo=237, ancho=127;</span>
+<span class="nc" id="L224">        int cantidad=datarestaurante.getColeccionImagenes().size();</span>
+<span class="nc" id="L225">        File foto=datarestaurante.getFoto(idFoto+1);</span>
+<span class="nc bnc" id="L226" title="All 2 branches missed.">        if(idFoto&lt;cantidad){</span>
+<span class="nc" id="L227">            idFoto++;</span>
+<span class="nc" id="L228">            int largo=237, ancho=127;</span>
             ImageIcon icon;
             Icon icono;
-<span class="nc" id="L237">            icon = new ImageIcon(foto.toString());</span>
-<span class="nc" id="L238">            icono = new ImageIcon(icon.getImage().getScaledInstance(largo, ancho, Image.SCALE_DEFAULT));</span>
-<span class="nc" id="L239">            imagenRestaurante.setText(null);</span>
-<span class="nc" id="L240">            imagenRestaurante.setIcon( icono );</span>
+<span class="nc" id="L231">            icon = new ImageIcon(foto.toString());</span>
+<span class="nc" id="L232">            icono = new ImageIcon(icon.getImage().getScaledInstance(largo, ancho, Image.SCALE_DEFAULT));</span>
+<span class="nc" id="L233">            imagenRestaurante.setText(null);</span>
+<span class="nc" id="L234">            imagenRestaurante.setIcon( icono );</span>
         }
-<span class="nc" id="L242">    }//GEN-LAST:event_btnSiguienteActionPerformed</span>
+<span class="nc" id="L236">    }//GEN-LAST:event_btnSiguienteActionPerformed</span>
 
     private void btnAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorActionPerformed
-<span class="nc" id="L245">        File foto=datarestaurante.getFoto(idFoto-1);</span>
-<span class="nc bnc" id="L246" title="All 2 branches missed.">        if(idFoto&gt;1){</span>
-<span class="nc" id="L247">            idFoto--;</span>
-<span class="nc" id="L248">            int largo=237, ancho=127;</span>
+<span class="nc" id="L239">        File foto=datarestaurante.getFoto(idFoto-1);</span>
+<span class="nc bnc" id="L240" title="All 2 branches missed.">        if(idFoto&gt;1){</span>
+<span class="nc" id="L241">            idFoto--;</span>
+<span class="nc" id="L242">            int largo=237, ancho=127;</span>
             ImageIcon icon;
             Icon icono;
-<span class="nc" id="L251">            icon = new ImageIcon(foto.toString());</span>
-<span class="nc" id="L252">            icono = new ImageIcon(icon.getImage().getScaledInstance(largo, ancho, Image.SCALE_DEFAULT));</span>
-<span class="nc" id="L253">            imagenRestaurante.setText(null);</span>
-<span class="nc" id="L254">            imagenRestaurante.setIcon( icono );</span>
+<span class="nc" id="L245">            icon = new ImageIcon(foto.toString());</span>
+<span class="nc" id="L246">            icono = new ImageIcon(icon.getImage().getScaledInstance(largo, ancho, Image.SCALE_DEFAULT));</span>
+<span class="nc" id="L247">            imagenRestaurante.setText(null);</span>
+<span class="nc" id="L248">            imagenRestaurante.setIcon( icono );</span>
         }
-<span class="nc" id="L256">    }//GEN-LAST:event_btnAnteriorActionPerformed</span>
+<span class="nc" id="L250">    }//GEN-LAST:event_btnAnteriorActionPerformed</span>
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

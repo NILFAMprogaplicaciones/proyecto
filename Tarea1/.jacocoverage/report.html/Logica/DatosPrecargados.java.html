@@ -4,46 +4,46 @@ package Logica;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
-import javax.swing.JOptionPane;
 
 
-<span class="fc" id="L10">public class DatosPrecargados implements IDatosPrecargados {</span>
-<span class="fc" id="L11">    ManejadorUsuario    MU=     ManejadorUsuario.getinstance(); </span>
-<span class="fc" id="L12">    ManejadorCategoria  MC=     ManejadorCategoria.getinstance();</span>
-<span class="fc" id="L13">    ManejadorProducto   MP=     ManejadorProducto.getinstance();</span>
-<span class="fc" id="L14">    ManejadorPedido     MPP=    ManejadorPedido.getinstance();</span>
+<span class="fc" id="L9">public class DatosPrecargados implements IDatosPrecargados {</span>
+<span class="fc" id="L10">    ManejadorUsuario    MU=     ManejadorUsuario.getinstance(); </span>
+<span class="fc" id="L11">    ManejadorCategoria  MC=     ManejadorCategoria.getinstance();</span>
+<span class="fc" id="L12">    ManejadorProducto   MP=     ManejadorProducto.getinstance();</span>
+<span class="fc" id="L13">    ManejadorPedido     MPP=    ManejadorPedido.getinstance();</span>
     
-<span class="fc" id="L16">    private static DatosPrecargados instancia = null;</span>
+<span class="fc" id="L15">    private static DatosPrecargados instancia = null;</span>
     
     public static DatosPrecargados getinstance() {
-<span class="nc bnc" id="L19" title="All 2 branches missed.">        if (instancia == null) {</span>
-<span class="nc" id="L20">            instancia = new DatosPrecargados();</span>
+<span class="nc bnc" id="L18" title="All 2 branches missed.">        if (instancia == null) {</span>
+<span class="nc" id="L19">            instancia = new DatosPrecargados();</span>
         }
-<span class="nc" id="L22">        return instancia;</span>
+<span class="nc" id="L21">        return instancia;</span>
     }
    
     public void Clientes(){
         //CLIENTES
-<span class="fc" id="L27">        Fecha fecha1=new Fecha(15,11,1983),fecha2=new Fecha(2,8,1975),fecha3=new Fecha(12,9,1987),fecha4=new Fecha(28,07,1951),fecha5=new Fecha(23,12,1978);</span>
-<span class="fc" id="L28">        File foto1 = new File(&quot;src/Imagenes/co.jpg&quot;),foto2 = new File(&quot;src/Imagenes/ro.jpg&quot;),foto3 = new File(&quot;src/Imagenes/usuario.png&quot;),foto4 = new File(&quot;src/Imagenes/an.jpg&quot;),foto5 = new File(&quot;src/Imagenes/we.jpg&quot;);</span>
+<span class="fc" id="L26">        Fecha fecha1=new Fecha(15,11,1983),fecha2=new Fecha(2,8,1975),fecha3=new Fecha(12,9,1987),fecha4=new Fecha(28,07,1951),fecha5=new Fecha(23,12,1978);</span>
+<span class="fc" id="L27">        File foto1 = new File(&quot;src/Imagenes/co.jpg&quot;),foto2 = new File(&quot;src/Imagenes/ro.jpg&quot;),foto3 = new File(&quot;src/Imagenes/usuario.png&quot;),foto4 = new File(&quot;src/Imagenes/an.jpg&quot;),foto5 = new File(&quot;src/Imagenes/we.jpg&quot;);</span>
         
-<span class="fc" id="L30">        DataCliente datacliente1=new DataCliente(&quot;contraseña&quot;,&quot;Gerardo&quot;, &quot;costas&quot;, &quot;gcostas@gmail.com&quot;, &quot;Pdte. Berro 1548&quot;,&quot;Cotelo&quot;, fecha1, foto1); </span>
+        
+<span class="fc" id="L30">        DataCliente datacliente1=new DataCliente(&quot;costas123&quot;,&quot;Gerardo&quot;, &quot;costas&quot;, &quot;gcostas@gmail.com&quot;, &quot;Pdte. Berro 1548&quot;,&quot;Cotelo&quot;, fecha1, foto1,&quot;images/Usuarios/costas.png&quot;); </span>
 <span class="fc" id="L31">        Cliente cliente1=new Cliente(datacliente1);</span>
 <span class="fc" id="L32">        MU.addUsuario(cliente1.getnickname(), cliente1);</span>
         
-<span class="fc" id="L34">        DataCliente datacliente2=new DataCliente(&quot;contraseña&quot;,&quot;Rodrigo&quot;, &quot;roro&quot;, &quot;rcotelo@yahoo.com&quot;, &quot;Av. Italia 2078&quot;,&quot;Costas&quot;, fecha2, foto2); </span>
+<span class="fc" id="L34">        DataCliente datacliente2=new DataCliente(&quot;12elroro&quot;,&quot;Rodrigo&quot;, &quot;roro&quot;, &quot;rcotelo@yahoo.com&quot;, &quot;Av. Italia 2078&quot;,&quot;Costas&quot;, fecha2, foto2,&quot;images/Usuarios/roro.png&quot;); </span>
 <span class="fc" id="L35">        Cliente cliente2=new Cliente(datacliente2);</span>
 <span class="fc" id="L36">        MU.addUsuario(cliente2.getnickname(), cliente2);</span>
         
-<span class="fc" id="L38">        DataCliente datacliente3=new DataCliente(&quot;contraseña&quot;,&quot;Cecilia&quot;, &quot;chechi&quot;, &quot;cgarrido@hotmail.com&quot;, &quot;Gral. Urquiza 1548&quot;,&quot;Garrido&quot;, fecha3, foto3); </span>
+<span class="fc" id="L38">        DataCliente datacliente3=new DataCliente(&quot;ch4321&quot;,&quot;Cecilia&quot;, &quot;chechi&quot;, &quot;cgarrido@hotmail.com&quot;, &quot;Gral. Urquiza 1548&quot;,&quot;Garrido&quot;, fecha3, foto3,&quot;images/usuario.png&quot;); </span>
 <span class="fc" id="L39">        Cliente cliente3=new Cliente(datacliente3);</span>
 <span class="fc" id="L40">        MU.addUsuario(cliente3.getnickname(), cliente3);</span>
         
-<span class="fc" id="L42">        DataCliente datacliente4=new DataCliente(&quot;contraseña&quot;,&quot;Andrea&quot;, &quot;andy&quot;, &quot;agarcia@gmail.com&quot;, &quot;Dr. Manuel Albo 4512&quot;,&quot;García&quot;, fecha4, foto4); </span>
+<span class="fc" id="L42">        DataCliente datacliente4=new DataCliente(&quot;andy_la1&quot;,&quot;Andrea&quot;, &quot;andy&quot;, &quot;agarcia@gmail.com&quot;, &quot;Dr. Manuel Albo 4512&quot;,&quot;García&quot;, fecha4, foto4,&quot;images/Usuarios/andy.png&quot;); </span>
 <span class="fc" id="L43">        Cliente cliente4=new Cliente(datacliente4);</span>
 <span class="fc" id="L44">        MU.addUsuario(cliente4.getnickname(), cliente4);</span>
         
-<span class="fc" id="L46">        DataCliente datacliente5=new DataCliente(&quot;contraseña&quot;,&quot;Adrian&quot;, &quot;weiss&quot;, &quot;aweiss@hotmail.com&quot;, &quot;Monte Caseros 5615&quot;,&quot;Weiss&quot;, fecha5, foto5); </span>
+<span class="fc" id="L46">        DataCliente datacliente5=new DataCliente(&quot;223_aweis&quot;,&quot;Adrian&quot;, &quot;weiss&quot;, &quot;aweiss@hotmail.com&quot;, &quot;Monte Caseros 5615&quot;,&quot;Weiss&quot;, fecha5, foto5,&quot;images/Usuarios/weiss.png&quot;); </span>
 <span class="fc" id="L47">        Cliente cliente5=new Cliente(datacliente5);</span>
 <span class="fc" id="L48">        MU.addUsuario(cliente5.getnickname(), cliente5);</span>
         
@@ -151,82 +151,82 @@ import javax.swing.JOptionPane;
 <span class="fc" id="L151">                mcr=new File(&quot;src/Imagenes/mcr.jpg&quot;),ecb=new File(&quot;src/Imagenes/ecb.jpg&quot;),eqb=new File(&quot;src/Imagenes/eqb.jpg&quot;),</span>
 <span class="fc" id="L152">                eca=new File(&quot;src/Imagenes/eca.jpg&quot;),tww=new File(&quot;src/Imagenes/tww.jpg&quot;),cpw=new File(&quot;src/Imagenes/cpw.jpg&quot;);</span>
         
-<span class="fc" id="L154">        DataIndividual di1=new DataIndividual( &quot;Asado&quot;, &quot;Asado a la parrilla&quot;, pm, 225, foto1);</span>
+<span class="fc" id="L154">        DataIndividual di1=new DataIndividual( &quot;Asado&quot;, &quot;Asado a la parrilla&quot;, pm, 225, foto1,&quot;images/Productos/Asado.png&quot;);</span>
 <span class="fc" id="L155">        Individual i1=new Individual(di1);</span>
 <span class="fc" id="L156">        MP.addProductoIndividual(i1);</span>
 <span class="fc" id="L157">        MU.addProductoIndividual(di1.getRestaurante().getnickname(),i1);</span>
         
-<span class="fc" id="L159">        DataIndividual di2=new DataIndividual( &quot;Milanesa de Carne&quot;, &quot;Con lechuga, tomate, mayonesa y fritas&quot;, pm, 180, mcm);</span>
+<span class="fc" id="L159">        DataIndividual di2=new DataIndividual( &quot;Milanesa de Carne&quot;, &quot;Con lechuga, tomate, mayonesa y fritas&quot;, pm, 180, mcm,&quot;images/Productos/Milanesa de Carne.png&quot;);</span>
 <span class="fc" id="L160">        Individual i2=new Individual(di2);</span>
 <span class="fc" id="L161">        MP.addProductoIndividual(i2);</span>
 <span class="fc" id="L162">        MU.addProductoIndividual(di2.getRestaurante().getnickname(),i2);</span>
         
-<span class="fc" id="L164">        DataIndividual di3=new DataIndividual( &quot;Chivito canadiense&quot;, &quot;Lomito, jamón, muzza, tomate, aceitunas, panceta, huevo, morrón y fritas&quot;, pm, 305, ccm);</span>
+<span class="fc" id="L164">        DataIndividual di3=new DataIndividual( &quot;Chivito canadiense&quot;, &quot;Lomito, jamón, muzza, tomate, aceitunas, panceta, huevo, morrón y fritas&quot;, pm, 305, ccm,&quot;images/Productos/Chivito canadiense.png&quot;);</span>
 <span class="fc" id="L165">        Individual i3=new Individual(di3);</span>
 <span class="fc" id="L166">        MP.addProductoIndividual(i3);</span>
 <span class="fc" id="L167">        MU.addProductoIndividual(di3.getRestaurante().getnickname(),i3);</span>
         
-<span class="fc" id="L169">        DataIndividual di4=new DataIndividual( &quot;Pizza 2 gustos&quot;, &quot;Pizza con dos gustos a elección&quot;, pm, 130, foto1);</span>
+<span class="fc" id="L169">        DataIndividual di4=new DataIndividual( &quot;Pizza 2 gustos&quot;, &quot;Pizza con dos gustos a elección&quot;, pm, 130, foto1,&quot;images/Productos/Pizza 2 gustos.png&quot;);</span>
 <span class="fc" id="L170">        Individual i4=new Individual(di4);</span>
 <span class="fc" id="L171">        MP.addProductoIndividual(i4);</span>
 <span class="fc" id="L172">        MU.addProductoIndividual(di4.getRestaurante().getnickname(),i4);</span>
         
-<span class="fc" id="L174">        DataIndividual di5=new DataIndividual( &quot;Chivito al plato&quot;, &quot;Ensalada rusa, mixta, huevo, jamón, muzza, panceta, aceitunas y fritas&quot;, br, 324, foto1);</span>
+<span class="fc" id="L174">        DataIndividual di5=new DataIndividual( &quot;Chivito al plato&quot;, &quot;Ensalada rusa, mixta, huevo, jamón, muzza, panceta, aceitunas y fritas&quot;, br, 324, foto1,&quot;images/Productos/Chivito al plato.png&quot;);</span>
 <span class="fc" id="L175">        Individual i5=new Individual(di5);</span>
 <span class="fc" id="L176">        MP.addProductoIndividual(i5);</span>
 <span class="fc" id="L177">        MU.addProductoIndividual(di5.getRestaurante().getnickname(),i5);</span>
         
-<span class="fc" id="L179">        DataIndividual di6=new DataIndividual( &quot;Milanesa a caballo&quot;, &quot;Milanesa con dos huevos fritos acompañado de fritas&quot;, br, 270, mcr);</span>
+<span class="fc" id="L179">        DataIndividual di6=new DataIndividual( &quot;Milanesa a caballo&quot;, &quot;Milanesa con dos huevos fritos acompañado de fritas&quot;, br, 270, mcr,&quot;images/Productos/Milanesa a caballo.png&quot;);</span>
 <span class="fc" id="L180">        Individual i6=new Individual(di6);</span>
 <span class="fc" id="L181">        MP.addProductoIndividual(i6);</span>
 <span class="fc" id="L182">        MU.addProductoIndividual(di6.getRestaurante().getnickname(),i6);</span>
         
-<span class="fc" id="L184">        DataIndividual di7=new DataIndividual( &quot;Pizza con 2 gustos&quot;, &quot;Pizza con dos gustos a elección&quot;, br, 103, foto1);</span>
+<span class="fc" id="L184">        DataIndividual di7=new DataIndividual( &quot;Pizza con 2 gustos&quot;, &quot;Pizza con dos gustos a elección&quot;, br, 103, foto1,&quot;images/Productos/Pizza con 2 gustos.png&quot;);</span>
 <span class="fc" id="L185">        Individual i7=new Individual(di7);</span>
 <span class="fc" id="L186">        MP.addProductoIndividual(i7);</span>
 <span class="fc" id="L187">        MU.addProductoIndividual(di7.getRestaurante().getnickname(),i7);</span>
         
-<span class="fc" id="L189">        DataIndividual di8=new DataIndividual( &quot;Agnolotis&quot;, &quot;Agnolotis de jamón y queso&quot;, br, 225, foto1);</span>
+<span class="fc" id="L189">        DataIndividual di8=new DataIndividual( &quot;Agnolotis&quot;, &quot;Agnolotis de jamón y queso&quot;, br, 225, foto1,&quot;images/Productos/Agnolotis.png&quot;);</span>
 <span class="fc" id="L190">        Individual i8=new Individual(di8);</span>
 <span class="fc" id="L191">        MP.addProductoIndividual(i8);</span>
 <span class="fc" id="L192">        MU.addProductoIndividual(di8.getRestaurante().getnickname(),i8);</span>
         
-<span class="fc" id="L194">        DataIndividual di9=new DataIndividual( &quot;Empanada de Carne&quot;, &quot;Carne, aceitunas, huevo duro, condimentos&quot;, eb, 44, ecb);</span>
+<span class="fc" id="L194">        DataIndividual di9=new DataIndividual( &quot;Empanada de Carne&quot;, &quot;Carne, aceitunas, huevo duro, condimentos&quot;, eb, 44, ecb,&quot;images/Productos/Empanada de Carne.png&quot;);</span>
 <span class="fc" id="L195">        Individual i9=new Individual(di9);</span>
 <span class="fc" id="L196">        MP.addProductoIndividual(i9);</span>
 <span class="fc" id="L197">        MU.addProductoIndividual(di9.getRestaurante().getnickname(),i9);</span>
         
-<span class="fc" id="L199">        DataIndividual di10=new DataIndividual( &quot;Empanada Americana&quot;, &quot;Carne, panceta y huevo duro&quot;, eb, 44, foto1);</span>
+<span class="fc" id="L199">        DataIndividual di10=new DataIndividual( &quot;Empanada Americana&quot;, &quot;Carne, panceta y huevo duro&quot;, eb, 44, foto1,&quot;images/Productos/Empanada Americana.png&quot;);</span>
 <span class="fc" id="L200">        Individual i10=new Individual(di10);</span>
 <span class="fc" id="L201">        MP.addProductoIndividual(i10);</span>
 <span class="fc" id="L202">        MU.addProductoIndividual(di10.getRestaurante().getnickname(),i10);</span>
         
-<span class="fc" id="L204">        DataIndividual di11=new DataIndividual( &quot;Empanada QyC&quot;, &quot;Empanada de Queso y Cebolla&quot;, eb, 44, eqb);</span>
+<span class="fc" id="L204">        DataIndividual di11=new DataIndividual( &quot;Empanada QyC&quot;, &quot;Empanada de Queso y Cebolla&quot;, eb, 44, eqb,&quot;images/Productos/Empanada QyC.png&quot;);</span>
 <span class="fc" id="L205">        Individual i11=new Individual(di11);</span>
 <span class="fc" id="L206">        MP.addProductoIndividual(i11);</span>
 <span class="fc" id="L207">        MU.addProductoIndividual(di11.getRestaurante().getnickname(),i11);</span>
         
-<span class="fc" id="L209">        DataIndividual di12=new DataIndividual( &quot;Empanada Capresse&quot;, &quot;Queso, tomate y albahaca&quot;, eb, 44, eca);</span>
+<span class="fc" id="L209">        DataIndividual di12=new DataIndividual( &quot;Empanada Capresse&quot;, &quot;Queso, tomate y albahaca&quot;, eb, 44, eca,&quot;images/Productos/Empanada Capresse.png&quot;);</span>
 <span class="fc" id="L210">        Individual i12=new Individual(di12);</span>
 <span class="fc" id="L211">        MP.addProductoIndividual(i12);</span>
 <span class="fc" id="L212">        MU.addProductoIndividual(di12.getRestaurante().getnickname(),i12);</span>
         
-<span class="fc" id="L214">        DataIndividual di13=new DataIndividual( &quot;Thai wok&quot;, &quot;Cerdo, calamares, sweet chili, salsa de ostras, maní y jugo de lima, acompañado de tallarines o arroz.&quot;, wb, 240, tww);</span>
+<span class="fc" id="L214">        DataIndividual di13=new DataIndividual( &quot;Thai wok&quot;, &quot;Cerdo, calamares, sweet chili, salsa de ostras, maní y jugo de lima, acompañado de tallarines o arroz.&quot;, wb, 240, tww,&quot;images/Productos/Thai wok.png&quot;);</span>
 <span class="fc" id="L215">        Individual i13=new Individual(di13);</span>
 <span class="fc" id="L216">        MP.addProductoIndividual(i13);</span>
 <span class="fc" id="L217">        MU.addProductoIndividual(di13.getRestaurante().getnickname(),i13);</span>
         
-<span class="fc" id="L219">        DataIndividual di14=new DataIndividual( &quot;China wok&quot;, &quot;Tempura de cerdo, vegetales mixtos, almendras, salsa de soja y naranja, acompañado de tallarines o arroz.&quot;, wb, 240, foto1);</span>
+<span class="fc" id="L219">        DataIndividual di14=new DataIndividual( &quot;China wok&quot;, &quot;Tempura de cerdo, vegetales mixtos, almendras, salsa de soja y naranja, acompañado de tallarines o arroz.&quot;, wb, 240, foto1,&quot;images/Productos/China wok.png&quot;);</span>
 <span class="fc" id="L220">        Individual i14=new Individual(di14);</span>
 <span class="fc" id="L221">        MP.addProductoIndividual(i14);</span>
 <span class="fc" id="L222">        MU.addProductoIndividual(di14.getRestaurante().getnickname(),i14);</span>
         
-<span class="fc" id="L224">        DataIndividual di15=new DataIndividual( &quot;Classic wok de pollo&quot;, &quot;Pollo, vegetales mixtos, salsa agridulce, salsa de soja y cebollita de verdeo, acompañado de tallarines o arroz.&quot;, wb, 230, cpw);</span>
+<span class="fc" id="L224">        DataIndividual di15=new DataIndividual( &quot;Classic wok de pollo&quot;, &quot;Pollo, vegetales mixtos, salsa agridulce, salsa de soja y cebollita de verdeo, acompañado de tallarines o arroz.&quot;, wb, 230, cpw,&quot;images/Productos/Classic wok de pollo.png&quot;);</span>
 <span class="fc" id="L225">        Individual i15=new Individual(di15);</span>
 <span class="fc" id="L226">        MP.addProductoIndividual(i15);</span>
 <span class="fc" id="L227">        MU.addProductoIndividual(di15.getRestaurante().getnickname(),i15);</span>
         
-<span class="fc" id="L229">        DataIndividual di16=new DataIndividual( &quot;Classic wok de cerdo&quot;, &quot;Cerdo, vegetales mixtos, jengibre, salsa de ostras y ralladura de lima, acompañado de tallarines o arroz.&quot;, wb, 230, foto1);</span>
+<span class="fc" id="L229">        DataIndividual di16=new DataIndividual( &quot;Classic wok de cerdo&quot;, &quot;Cerdo, vegetales mixtos, jengibre, salsa de ostras y ralladura de lima, acompañado de tallarines o arroz.&quot;, wb, 230, foto1,&quot;images/Productos/Classic wok de cerdo.png&quot;);</span>
 <span class="fc" id="L230">        Individual i16=new Individual(di16);</span>
 <span class="fc" id="L231">        MP.addProductoIndividual(i16);</span>
 <span class="fc" id="L232">        MU.addProductoIndividual(di16.getRestaurante().getnickname(),i16);</span>
@@ -242,7 +242,7 @@ import javax.swing.JOptionPane;
 <span class="fc" id="L242">        DataCantidad datacan2=new DataCantidad(1, producto2);</span>
 <span class="fc" id="L243">        col1.put(datacan1.getProducto().getnombre(), datacan1);</span>
 <span class="fc" id="L244">        col1.put(datacan2.getProducto().getnombre(), datacan2);</span>
-<span class="fc" id="L245">        DataPromocion datapromo1=new DataPromocion(pm,&quot;ChiviPizza&quot;, &quot;Chivito y Pizza&quot; , 348,  true, 20 , col1,foto);</span>
+<span class="fc" id="L245">        DataPromocion datapromo1=new DataPromocion(pm,&quot;ChiviPizza&quot;, &quot;Chivito y Pizza&quot; , 348,  true, 20 , col1,foto,&quot;images/producto.jpg&quot;);</span>
 <span class="fc" id="L246">        Promocion promo1=new Promocion(datapromo1);</span>
 <span class="fc" id="L247">        MP.addProductoPromocion(promo1);</span>
 <span class="fc" id="L248">        MU.addProductoPromocion(promo1.getRestaurante().getnickname(),promo1);</span>
@@ -254,7 +254,7 @@ import javax.swing.JOptionPane;
 <span class="fc" id="L254">        DataCantidad datacan4=new DataCantidad(1, producto4);</span>
 <span class="fc" id="L255">        col2.put(datacan3.getProducto().getnombre(), datacan3);</span>
 <span class="fc" id="L256">        col2.put(datacan4.getProducto().getnombre(), datacan4);</span>
-<span class="fc" id="L257">        DataPromocion datapromo2=new DataPromocion(pm,&quot;MilaAsado&quot;, &quot;3 Milanesas + 1 Asado para compartir&quot; , 535.5,  true, 30 , col2,foto);</span>
+<span class="fc" id="L257">        DataPromocion datapromo2=new DataPromocion(pm,&quot;MilaAsado&quot;, &quot;3 Milanesas + 1 Asado para compartir&quot; , 535.5,  true, 30 , col2,foto,&quot;images/producto.jpg&quot;);</span>
 <span class="fc" id="L258">        Promocion promo2=new Promocion(datapromo2);</span>
 <span class="fc" id="L259">        MP.addProductoPromocion(promo2);</span>
 <span class="fc" id="L260">        MU.addProductoPromocion(promo2.getRestaurante().getnickname(),promo2);</span>
@@ -266,87 +266,134 @@ import javax.swing.JOptionPane;
 <span class="fc" id="L266">        DataCantidad datacan6=new DataCantidad(1, producto6);</span>
 <span class="fc" id="L267">        col3.put(datacan5.getProducto().getnombre(), datacan5);</span>
 <span class="fc" id="L268">        col3.put(datacan6.getProducto().getnombre(), datacan6);</span>
-<span class="fc" id="L269">        DataPromocion datapromo3=new DataPromocion(br,&quot;MilaPizza&quot;, &quot;2 Milanesas a caballo + 1 Pizzas 2 gustos&quot; , 578.7,  true, 10 , col3,foto);</span>
+<span class="fc" id="L269">        DataPromocion datapromo3=new DataPromocion(br,&quot;MilaPizza&quot;, &quot;2 Milanesas a caballo + 1 Pizzas 2 gustos&quot; , 578.7,  true, 10 , col3,foto,&quot;images/producto.jpg&quot;);</span>
 <span class="fc" id="L270">        Promocion promo3=new Promocion(datapromo3);</span>
 <span class="fc" id="L271">        MP.addProductoPromocion(promo3);</span>
 <span class="fc" id="L272">        MU.addProductoPromocion(promo3.getRestaurante().getnickname(),promo3);</span>
 <span class="fc" id="L273">    }</span>
     public void Pedidos(){
 <span class="fc" id="L275">        FechaHora fecha1=new FechaHora(12,8,2015,0,0),fecha2=new FechaHora(19,8,2015,0,0),fecha3=new FechaHora(19,8,2015,0,0),</span>
-<span class="fc" id="L276">                fecha4=new FechaHora(22,8,2015,0,0),fecha5=new FechaHora(25,8,2015,0,0);</span>
+<span class="fc" id="L276">                fecha4=new FechaHora(22,8,2015,0,0),fecha5=new FechaHora(25,8,2015,0,0), fecha6=new FechaHora(20,9,2015,0,0),fecha7=new FechaHora(2,10,2015,0,0);</span>
 <span class="fc" id="L277">        Cliente co=MU.findCliente(&quot;costas&quot;),ro=MU.findCliente(&quot;roro&quot;),ch=MU.findCliente(&quot;chechi&quot;),an=MU.findCliente(&quot;andy&quot;),we=MU.findCliente(&quot;weiss&quot;);</span>
 <span class="fc" id="L278">        Producto ecb=MP.findProducto(&quot;Empanada de Carne&quot;), eab=MP.findProducto(&quot;Empanada Americana&quot;), eqb=MP.findProducto(&quot;Empanada QyC&quot;),</span>
-<span class="fc" id="L279">                asm=MP.findProducto(&quot;Asado&quot;), tww=MP.findProducto(&quot;Thai wok&quot;), cww=MP.findProducto(&quot;China wok&quot;), ccm=MP.findProducto(&quot;Chivito canadiense&quot;), par=MP.findProducto(&quot;Agnolotis&quot;);</span>
-<span class="fc" id="L280">        Restaurante eb=MU.findRestaurante(&quot;bocatti&quot;),pm=MU.findRestaurante(&quot;mera&quot;),wb=MU.findRestaurante(&quot;winb&quot;),br=MU.findRestaurante(&quot;rossell&quot;);</span>
+<span class="fc" id="L279">                asm=MP.findProducto(&quot;Asado&quot;), tww=MP.findProducto(&quot;Thai wok&quot;), cww=MP.findProducto(&quot;China wok&quot;), ccm=MP.findProducto(&quot;Chivito canadiense&quot;), </span>
+<span class="fc" id="L280">                par=MP.findProducto(&quot;Agnolotis&quot;),mcm=MP.findProducto(&quot;Milanesa de Carne&quot;),cpr=MP.findProducto(&quot;Chivito al plato&quot;),mcr=MP.findProducto(&quot;Milanesa a caballo&quot;),mam=MP.findProducto(&quot;MilaAsado&quot;);</span>
+<span class="fc" id="L281">        Restaurante eb=MU.findRestaurante(&quot;bocatti&quot;),pm=MU.findRestaurante(&quot;mera&quot;),wb=MU.findRestaurante(&quot;winb&quot;),br=MU.findRestaurante(&quot;rossell&quot;);</span>
         
         
-<span class="fc" id="L283">        Map&lt;String,Producto&gt; col1=new HashMap&lt;String,Producto&gt;();</span>
-<span class="fc" id="L284">        col1.put(ecb.getnombre(),ecb);</span>
-<span class="fc" id="L285">        col1.put(eab.getnombre(), eab);</span>
-<span class="fc" id="L286">        col1.put(eqb.getnombre(), eqb);</span>
-<span class="fc" id="L287">        Map&lt;String,DataProductosPedido&gt; colpp1=new HashMap&lt;String,DataProductosPedido&gt;();</span>
-<span class="fc" id="L288">        DataProductosPedido dpp1=new DataProductosPedido(ecb, 1,44),dpp2=new DataProductosPedido(eab, 2,88),dpp3=new DataProductosPedido(eqb, 2,88);</span>
-<span class="fc" id="L289">        colpp1.put(dpp1.getProducto().getnombre(), dpp1);</span>
-<span class="fc" id="L290">        colpp1.put(dpp2.getProducto().getnombre(), dpp2);</span>
-<span class="fc" id="L291">        colpp1.put(dpp3.getProducto().getnombre(), dpp3);</span>
-<span class="fc" id="L292">        TipoAsosiativoPedido tap1=new TipoAsosiativoPedido(colpp1);</span>
-<span class="fc" id="L293">        DataPedido datapedido1=new DataPedido(1, fecha1, 220, Estado.PREPARCION, co, col1,  eb, tap1);</span>
-<span class="fc" id="L294">        Pedido pedido1=new Pedido(datapedido1);</span>
-<span class="fc" id="L295">        MPP.addPedido(pedido1.getnum(), pedido1);</span>
+<span class="fc" id="L284">        Map&lt;String,Producto&gt; col1=new HashMap&lt;String,Producto&gt;();</span>
+<span class="fc" id="L285">        col1.put(ecb.getnombre(),ecb);</span>
+<span class="fc" id="L286">        col1.put(eab.getnombre(), eab);</span>
+<span class="fc" id="L287">        col1.put(eqb.getnombre(), eqb);</span>
+<span class="fc" id="L288">        Map&lt;String,DataProductosPedido&gt; colpp1=new HashMap&lt;String,DataProductosPedido&gt;();</span>
+<span class="fc" id="L289">        DataProductosPedido dpp1=new DataProductosPedido(ecb, 1,44),dpp2=new DataProductosPedido(eab, 2,88),dpp3=new DataProductosPedido(eqb, 2,88);</span>
+<span class="fc" id="L290">        colpp1.put(dpp1.getProducto().getnombre(), dpp1);</span>
+<span class="fc" id="L291">        colpp1.put(dpp2.getProducto().getnombre(), dpp2);</span>
+<span class="fc" id="L292">        colpp1.put(dpp3.getProducto().getnombre(), dpp3);</span>
+<span class="fc" id="L293">        TipoAsosiativoPedido tap1=new TipoAsosiativoPedido(colpp1);</span>
+<span class="fc" id="L294">        DataPedido datapedido1=new DataPedido(1, fecha1, 220, Estado.PREPARCION, co, col1,  eb, tap1);</span>
+<span class="fc" id="L295">        Pedido pedido1=new Pedido(datapedido1);</span>
+<span class="fc" id="L296">        MPP.addPedido(pedido1.getnum(), pedido1);</span>
         
-<span class="fc" id="L297">        Map&lt;String,Producto&gt; col2=new HashMap&lt;String,Producto&gt;();</span>
-<span class="fc" id="L298">        col2.put(asm.getnombre(),asm);</span>
-<span class="fc" id="L299">        Map&lt;String,DataProductosPedido&gt; colpp2=new HashMap&lt;String,DataProductosPedido&gt;();</span>
-<span class="fc" id="L300">        DataProductosPedido dpp4=new DataProductosPedido(asm, 3,675);</span>
-<span class="fc" id="L301">        colpp2.put(dpp4.getProducto().getnombre(), dpp4);</span>
-<span class="fc" id="L302">        TipoAsosiativoPedido tap2=new TipoAsosiativoPedido(colpp2);</span>
-<span class="fc" id="L303">        DataPedido datapedido2=new DataPedido(2, fecha2, 675, Estado.ENVIADO, ro, col2,  pm, tap2);</span>
-<span class="fc" id="L304">        Pedido pedido2=new Pedido(datapedido2);</span>
-<span class="fc" id="L305">        MPP.addPedido(pedido2.getnum(), pedido2);</span>
+<span class="fc" id="L298">        Map&lt;String,Producto&gt; col2=new HashMap&lt;String,Producto&gt;();</span>
+<span class="fc" id="L299">        col2.put(asm.getnombre(),asm);</span>
+<span class="fc" id="L300">        Map&lt;String,DataProductosPedido&gt; colpp2=new HashMap&lt;String,DataProductosPedido&gt;();</span>
+<span class="fc" id="L301">        DataProductosPedido dpp4=new DataProductosPedido(asm, 3,675);</span>
+<span class="fc" id="L302">        colpp2.put(dpp4.getProducto().getnombre(), dpp4);</span>
+<span class="fc" id="L303">        TipoAsosiativoPedido tap2=new TipoAsosiativoPedido(colpp2);</span>
+<span class="fc" id="L304">        DataPedido datapedido2=new DataPedido(2, fecha2, 675, Estado.ENVIADO, ro, col2,  pm, tap2);</span>
+<span class="fc" id="L305">        Pedido pedido2=new Pedido(datapedido2);</span>
+<span class="fc" id="L306">        MPP.addPedido(pedido2.getnum(), pedido2);</span>
         
-<span class="fc" id="L307">        Map&lt;String,Producto&gt; col3=new HashMap&lt;String,Producto&gt;();</span>
-<span class="fc" id="L308">        col3.put(tww.getnombre(),tww);</span>
-<span class="fc" id="L309">        col3.put(cww.getnombre(),cww);</span>
-<span class="fc" id="L310">        Map&lt;String,DataProductosPedido&gt; colpp3=new HashMap&lt;String,DataProductosPedido&gt;();</span>
-<span class="fc" id="L311">        DataProductosPedido dpp5=new DataProductosPedido(tww, 2,480),dpp6=new DataProductosPedido(cww, 3,720);</span>
-<span class="fc" id="L312">        colpp3.put(dpp5.getProducto().getnombre(), dpp5);</span>
-<span class="fc" id="L313">        colpp3.put(dpp6.getProducto().getnombre(), dpp6);</span>
-<span class="fc" id="L314">        TipoAsosiativoPedido tap3=new TipoAsosiativoPedido(colpp3);</span>
-<span class="fc" id="L315">        DataPedido datapedido3=new DataPedido(3, fecha3, 1200, Estado.RECIBIDO, ch, col3,  wb, tap3);</span>
-<span class="fc" id="L316">        Pedido pedido3=new Pedido(datapedido3);</span>
-<span class="fc" id="L317">        MPP.addPedido(pedido3.getnum(), pedido3);</span>
+<span class="fc" id="L308">        Map&lt;String,Producto&gt; col3=new HashMap&lt;String,Producto&gt;();</span>
+<span class="fc" id="L309">        col3.put(tww.getnombre(),tww);</span>
+<span class="fc" id="L310">        col3.put(cww.getnombre(),cww);</span>
+<span class="fc" id="L311">        Map&lt;String,DataProductosPedido&gt; colpp3=new HashMap&lt;String,DataProductosPedido&gt;();</span>
+<span class="fc" id="L312">        DataProductosPedido dpp5=new DataProductosPedido(tww, 2,480),dpp6=new DataProductosPedido(cww, 3,720);</span>
+<span class="fc" id="L313">        colpp3.put(dpp5.getProducto().getnombre(), dpp5);</span>
+<span class="fc" id="L314">        colpp3.put(dpp6.getProducto().getnombre(), dpp6);</span>
+<span class="fc" id="L315">        TipoAsosiativoPedido tap3=new TipoAsosiativoPedido(colpp3);</span>
+<span class="fc" id="L316">        DataPedido datapedido3=new DataPedido(3, fecha3, 1200, Estado.RECIBIDO, ch, col3,  wb, tap3);</span>
+<span class="fc" id="L317">        Pedido pedido3=new Pedido(datapedido3);</span>
+<span class="fc" id="L318">        MPP.addPedido(pedido3.getnum(), pedido3);</span>
         
-<span class="fc" id="L319">        Map&lt;String,Producto&gt; col4=new HashMap&lt;String,Producto&gt;();</span>
-<span class="fc" id="L320">        col4.put(ccm.getnombre(),ccm);</span>
-<span class="fc" id="L321">        Map&lt;String,DataProductosPedido&gt; colpp4=new HashMap&lt;String,DataProductosPedido&gt;();</span>
-<span class="fc" id="L322">        DataProductosPedido dpp7=new DataProductosPedido(ccm, 4,1220);</span>
-<span class="fc" id="L323">        colpp4.put(dpp7.getProducto().getnombre(), dpp7);</span>
-<span class="fc" id="L324">        TipoAsosiativoPedido tap4=new TipoAsosiativoPedido(colpp4);</span>
-<span class="fc" id="L325">        DataPedido datapedido4=new DataPedido(4, fecha4, 1220, Estado.RECIBIDO, an, col4,  pm, tap4);</span>
-<span class="fc" id="L326">        Pedido pedido4=new Pedido(datapedido4);</span>
-<span class="fc" id="L327">        MPP.addPedido(pedido4.getnum(), pedido4);</span>
+<span class="fc" id="L320">        Map&lt;String,Producto&gt; col4=new HashMap&lt;String,Producto&gt;();</span>
+<span class="fc" id="L321">        col4.put(ccm.getnombre(),ccm);</span>
+<span class="fc" id="L322">        Map&lt;String,DataProductosPedido&gt; colpp4=new HashMap&lt;String,DataProductosPedido&gt;();</span>
+<span class="fc" id="L323">        DataProductosPedido dpp7=new DataProductosPedido(ccm, 4,1220);</span>
+<span class="fc" id="L324">        colpp4.put(dpp7.getProducto().getnombre(), dpp7);</span>
+<span class="fc" id="L325">        TipoAsosiativoPedido tap4=new TipoAsosiativoPedido(colpp4);</span>
+<span class="fc" id="L326">        DataPedido datapedido4=new DataPedido(4, fecha4, 1220, Estado.RECIBIDO, an, col4,  pm, tap4);</span>
+<span class="fc" id="L327">        Pedido pedido4=new Pedido(datapedido4);</span>
+<span class="fc" id="L328">        MPP.addPedido(pedido4.getnum(), pedido4);</span>
         
-<span class="fc" id="L329">        Map&lt;String,Producto&gt; col5=new HashMap&lt;String,Producto&gt;();</span>
-<span class="fc" id="L330">        col5.put(par.getnombre(),par);</span>
-<span class="fc" id="L331">        Map&lt;String,DataProductosPedido&gt; colpp5=new HashMap&lt;String,DataProductosPedido&gt;();</span>
-<span class="fc" id="L332">        DataProductosPedido dpp8=new DataProductosPedido(par, 1,225);</span>
-<span class="fc" id="L333">        colpp5.put(dpp8.getProducto().getnombre(), dpp8);</span>
-<span class="fc" id="L334">        TipoAsosiativoPedido tap5=new TipoAsosiativoPedido(colpp5);</span>
-<span class="fc" id="L335">        DataPedido datapedido5=new DataPedido(5, fecha5, 225, Estado.RECIBIDO, we, col5,  br, tap5);</span>
-<span class="fc" id="L336">        Pedido pedido5=new Pedido(datapedido5);</span>
-<span class="fc" id="L337">        MPP.addPedido(pedido5.getnum(), pedido5);</span>
+<span class="fc" id="L330">        Map&lt;String,Producto&gt; col5=new HashMap&lt;String,Producto&gt;();</span>
+<span class="fc" id="L331">        col5.put(par.getnombre(),par);</span>
+<span class="fc" id="L332">        Map&lt;String,DataProductosPedido&gt; colpp5=new HashMap&lt;String,DataProductosPedido&gt;();</span>
+<span class="fc" id="L333">        DataProductosPedido dpp8=new DataProductosPedido(par, 1,225);</span>
+<span class="fc" id="L334">        colpp5.put(dpp8.getProducto().getnombre(), dpp8);</span>
+<span class="fc" id="L335">        TipoAsosiativoPedido tap5=new TipoAsosiativoPedido(colpp5);</span>
+<span class="fc" id="L336">        DataPedido datapedido5=new DataPedido(5, fecha5, 225, Estado.RECIBIDO, we, col5,  br, tap5);</span>
+<span class="fc" id="L337">        Pedido pedido5=new Pedido(datapedido5);</span>
+<span class="fc" id="L338">        MPP.addPedido(pedido5.getnum(), pedido5);</span>
         
-<span class="fc" id="L339">    }</span>
-    
+<span class="fc" id="L340">        Map&lt;String,Producto&gt; col6=new HashMap&lt;String,Producto&gt;();</span>
+<span class="fc" id="L341">        col6.put(mcm.getnombre(), mcm);</span>
+<span class="fc" id="L342">        col6.put(ccm.getnombre(), ccm);</span>
+<span class="fc" id="L343">        col6.put(mam.getnombre(), mam);</span>
+<span class="fc" id="L344">        Map&lt;String,DataProductosPedido&gt; colpp6=new HashMap&lt;String,DataProductosPedido&gt;();</span>
+<span class="fc" id="L345">        DataProductosPedido dpp9=new DataProductosPedido(mcm, 1,180),dpp10=new DataProductosPedido(ccm, 1,305),dpp11=new DataProductosPedido(mam, 2,1530);</span>
+<span class="fc" id="L346">        colpp6.put(dpp9.getProducto().getnombre(), dpp9);</span>
+<span class="fc" id="L347">        colpp6.put(dpp10.getProducto().getnombre(), dpp10);</span>
+<span class="fc" id="L348">        colpp6.put(dpp11.getProducto().getnombre(), dpp11);</span>
+<span class="fc" id="L349">        TipoAsosiativoPedido tap6=new TipoAsosiativoPedido(colpp6);</span>
+<span class="fc" id="L350">        DataPedido datapedido6=new DataPedido(6, fecha6, 2015, Estado.RECIBIDO, ro, col6,  pm, tap6);</span>
+<span class="fc" id="L351">        Pedido pedido6=new Pedido(datapedido6);</span>
+<span class="fc" id="L352">        MPP.addPedido(pedido6.getnum(), pedido6);</span>
+        
+<span class="fc" id="L354">        Map&lt;String,Producto&gt; col7=new HashMap&lt;String,Producto&gt;();</span>
+<span class="fc" id="L355">        col7.put(cpr.getnombre(), cpr);</span>
+<span class="fc" id="L356">        col7.put(mcr.getnombre(), mcr);</span>
+<span class="fc" id="L357">        Map&lt;String,DataProductosPedido&gt; colpp7=new HashMap&lt;String,DataProductosPedido&gt;();</span>
+<span class="fc" id="L358">        DataProductosPedido dpp12=new DataProductosPedido(cpr, 2,648),dpp13=new DataProductosPedido(mcr, 1,270);</span>
+<span class="fc" id="L359">        colpp7.put(dpp12.getProducto().getnombre(), dpp12);</span>
+<span class="fc" id="L360">        colpp7.put(dpp13.getProducto().getnombre(), dpp13);</span>
+<span class="fc" id="L361">        TipoAsosiativoPedido tap7=new TipoAsosiativoPedido(colpp7);</span>
+<span class="fc" id="L362">        DataPedido datapedido7=new DataPedido(7, fecha7, 918, Estado.RECIBIDO, an, col7,  br, tap7);</span>
+<span class="fc" id="L363">        Pedido pedido7=new Pedido(datapedido7);</span>
+<span class="fc" id="L364">        MPP.addPedido(pedido7.getnum(), pedido7);</span>
+        
+<span class="fc" id="L366">    }</span>
+    public void Comentarios(){
+<span class="fc" id="L368">        Fecha fecha1=new Fecha(20,8,2015),fecha2=new Fecha(26,8,2015),fecha3=new Fecha(21,9,2015),fecha4=new Fecha(3,10,2015);</span>
+<span class="fc" id="L369">        Pedido p3=MPP.getPedido(3),p5=MPP.getPedido(5),p6=MPP.getPedido(6),p7=MPP.getPedido(7);</span>
+        
+<span class="fc" id="L371">        DataComentario dc1=new DataComentario(p3, fecha1, &quot;Informacion del pedido 3&quot;, &quot;Si bien el thai wok y el china wok están ricos, me cobraron 60$ de envío y eso no estaba aclarado y no pueden hacerlo. Me dejó muy molesto.&quot;, 2,p3.getCliente());</span>
+<span class="fc" id="L372">        Comentario comentario1=new Comentario(dc1);</span>
+<span class="fc" id="L373">        MPP.getPedido(3).setComentario(comentario1);</span>
+        
+<span class="fc" id="L375">        DataComentario dc2=new DataComentario(p5, fecha2, &quot;Informacion del pedido 5&quot;, &quot;Los Agnolotis llegaron un poco fríos y demoraron más de la cuenta. Espero mejoren. De todas formas, muy ricos. &quot;, 3,p5.getCliente());</span>
+<span class="fc" id="L376">        Comentario comentario2=new Comentario(dc2);</span>
+<span class="fc" id="L377">        MPP.getPedido(5).setComentario(comentario2);</span>
+        
+<span class="fc" id="L379">        DataComentario dc3=new DataComentario(p6, fecha3, &quot;Informacion del pedido 6&quot;, &quot;Tanto la milanesa como el chivito llegaron 3 horas tarde!, obviamente helados!!, un desastre, nunca más pido ahí.&quot;, 1,p6.getCliente());</span>
+<span class="fc" id="L380">        Comentario comentario3=new Comentario(dc3);</span>
+<span class="fc" id="L381">        MPP.getPedido(6).setComentario(comentario3);</span>
+        
+<span class="fc" id="L383">        DataComentario dc4=new DataComentario(p7, fecha4, &quot;Informacion del pedido 7&quot;, &quot;Todo llegó en hora. El chivito y la milanesa a caballo estaban un poco aceitosos, pero más allá de eso se comió rico y en abundancia.&quot;, 4,p7.getCliente());</span>
+<span class="fc" id="L384">        Comentario comentario4=new Comentario(dc4);</span>
+<span class="fc" id="L385">        MPP.getPedido(7).setComentario(comentario4);</span>
+<span class="fc" id="L386">    }</span>
+    @Override
     public void DatosPrecargado(){
-<span class="fc" id="L342">        Clientes();</span>
-<span class="fc" id="L343">        Categorias();</span>
-<span class="fc" id="L344">        Restaurantes();</span>
-<span class="fc" id="L345">        ProductosIndividuales();</span>
-<span class="fc" id="L346">        ProductosPromociones();</span>
-<span class="fc" id="L347">        Pedidos();</span>
-<span class="fc" id="L348">        JOptionPane.showMessageDialog(null,&quot;Datos Cargados&quot;,&quot;DATOS PRECARGADOS&quot;,JOptionPane.INFORMATION_MESSAGE);</span>
+<span class="fc" id="L389">        Clientes();</span>
+<span class="fc" id="L390">        Categorias();</span>
+<span class="fc" id="L391">        Restaurantes();</span>
+<span class="fc" id="L392">        ProductosIndividuales();</span>
+<span class="fc" id="L393">        ProductosPromociones();</span>
+<span class="fc" id="L394">        Pedidos();</span>
+<span class="fc" id="L395">        Comentarios();</span>
         
-<span class="fc" id="L350">    } </span>
+<span class="fc" id="L397">    } </span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

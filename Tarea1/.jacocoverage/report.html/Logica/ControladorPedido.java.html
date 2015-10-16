@@ -2,41 +2,79 @@
 package Logica;
 
 import java.util.Map;
-import javax.swing.JOptionPane;
-import Logica.FechaHora;
 
 
-<span class="fc" id="L9">public class ControladorPedido implements IControladorPedido {</span>
+<span class="fc" id="L7">public class ControladorPedido implements IControladorPedido {</span>
     
+    @Override
     public void Caso_Generar_Pedido(DataPedido datapedido){
-<span class="fc" id="L12">        ManejadorPedido MP=ManejadorPedido.getinstance();</span>
-<span class="fc" id="L13">        Pedido pedido=new Pedido(datapedido);</span>
-<span class="fc" id="L14">        MP.addPedido(datapedido.getId(), pedido);</span>
-<span class="fc" id="L15">    }</span>
+<span class="fc" id="L11">        ManejadorPedido MP=ManejadorPedido.getinstance();</span>
+<span class="fc" id="L12">        Pedido pedido=new Pedido(datapedido);</span>
+<span class="fc" id="L13">        MP.addPedido(datapedido.getId(), pedido);</span>
+<span class="fc" id="L14">    }</span>
     
+    
+    @Override
     public DataPedido Caso_Ver_Pedido(int id){
-<span class="fc" id="L18">        ManejadorPedido MP=ManejadorPedido.getinstance();</span>
-<span class="fc" id="L19">        Pedido p=MP.getPedido(id);</span>
-<span class="fc" id="L20">        DataPedido datapedido=new DataPedido(p.getnum(),p.getfecha(),p.getPrecioTotal(),p.getEstado(),p.getCliente(),p.getColeccionProductos(),p.getRestaurante(),p.getTipoAP());</span>
-<span class="fc" id="L21">        return datapedido;</span>
+<span class="fc" id="L19">        ManejadorPedido MP=ManejadorPedido.getinstance();</span>
+<span class="fc" id="L20">        Pedido p=MP.getPedido(id);</span>
+<span class="fc" id="L21">        DataPedido datapedido=new DataPedido(p.getnum(),p.getfecha(),p.getPrecioTotal(),p.getEstado(),p.getCliente(),p.getColeccionProductos(),p.getRestaurante(),p.getTipoAP());</span>
+<span class="fc" id="L22">        return datapedido;</span>
     } 
     
+    @Override
     public void Caso_Cancelar_Pedido(int id){
-<span class="fc" id="L25">        ManejadorPedido MP=ManejadorPedido.getinstance();</span>
-<span class="fc" id="L26">        MP.getColeccionPedido().remove(id);</span>
-<span class="fc" id="L27">    }</span>
+<span class="fc" id="L27">        ManejadorPedido MP=ManejadorPedido.getinstance();</span>
+<span class="fc" id="L28">        MP.getColeccionPedido().remove(id);</span>
+<span class="fc" id="L29">    }</span>
     
+    @Override
     public void Caso_Actualizar_Estado_Pedido(int id, Estado estado){
-<span class="fc" id="L30">        ManejadorPedido MP=ManejadorPedido.getinstance();</span>
-<span class="fc" id="L31">        MP.getPedido(id).setEstado(estado);</span>
+<span class="fc" id="L33">        ManejadorPedido MP=ManejadorPedido.getinstance();</span>
+<span class="fc" id="L34">        MP.getPedido(id).setEstado(estado);</span>
         
 
-<span class="fc" id="L34">    }</span>
+<span class="fc" id="L37">    }</span>
 
+    @Override
     public void Caso_Ingresar_Comentario(DataComentario dc){
-<span class="nc" id="L37">        ManejadorPedido MP=ManejadorPedido.getinstance();</span>
-<span class="nc" id="L38">        Comentario com=new Comentario(dc);</span>
-<span class="nc" id="L39">        MP.getPedido(dc.getPedido().getnum()).setComentario(com);</span>
-<span class="nc" id="L40">    }</span>
+<span class="nc" id="L41">        ManejadorPedido MP=ManejadorPedido.getinstance();</span>
+<span class="nc" id="L42">        Comentario com=new Comentario(dc);</span>
+<span class="nc" id="L43">        MP.getPedido(dc.getPedido().getnum()).setComentario(com);</span>
+<span class="nc" id="L44">    }</span>
+    
+    //FUNCIONES AUXILIARES
+    ////////////////////////////////////////////////////////
+    
+    @Override
+    public int getCantidadEnColeccion(){
+<span class="nc" id="L51">        ManejadorPedido MP = ManejadorPedido.getinstance();</span>
+<span class="nc" id="L52">        return MP.getCantidadEnColeccion();</span>
+    }
+    @Override
+    public Map getColeccionPedido(){
+<span class="nc" id="L56">        ManejadorPedido MP = ManejadorPedido.getinstance();</span>
+<span class="nc" id="L57">        return MP.getColeccionPedido();</span>
+    }
+    @Override
+    public Pedido getPedido(int ID){
+<span class="nc" id="L61">        ManejadorPedido MP = ManejadorPedido.getinstance();</span>
+<span class="nc" id="L62">        return MP.getPedido(ID);</span>
+    }
+    @Override
+    public int getCantidadColeccionCliente(String nickname){
+<span class="nc" id="L66">        ManejadorPedido MP = ManejadorPedido.getinstance();</span>
+<span class="nc" id="L67">        return MP.getCantidadColeccionCliente(nickname);</span>
+    }
+    @Override
+     public void ExcepcionEliminacion(int id) throws ExcepcionesPersonalizadas{
+<span class="nc" id="L71">        ManejadorPedido MP = ManejadorPedido.getinstance();</span>
+<span class="nc" id="L72">        MP.ExcepcionEliminacion(id);</span>
+<span class="nc" id="L73">    }</span>
+    @Override
+    public Map getPedidos_Producto(String nombre) {
+<span class="nc" id="L76">        ManejadorPedido MP = ManejadorPedido.getinstance();</span>
+<span class="nc" id="L77">        return MP.getPedidos_Producto(nombre);</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

@@ -13,7 +13,7 @@ public class DataPedido {
     private Map<String,Producto> ColeccionProductos=new HashMap<String,Producto>();
     private Restaurante restaurante;
     private TipoAsosiativoPedido tipoAP;
-    
+        
     
     public DataPedido(int id, FechaHora fechahora, double preciototal, Estado estado, Cliente cliente, 
             Map coleccionproductos, Restaurante restaurante, TipoAsosiativoPedido tipoAP){
@@ -26,6 +26,7 @@ public class DataPedido {
         this.ColeccionProductos.putAll(coleccionproductos);
         this.restaurante=restaurante;
         this.tipoAP=tipoAP;
+        
         
     }
     public int getId(){
@@ -52,6 +53,7 @@ public class DataPedido {
     public TipoAsosiativoPedido getTipoAP(){
         return tipoAP;
     }
+    
 }
 
 
