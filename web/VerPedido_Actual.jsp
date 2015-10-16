@@ -65,7 +65,7 @@
                                     <div class="media">
                                         <a class="thumbnail pull-left"> <img class="media-object" src="<%=di.getDireccionFoto()%>" style="width: 72px; height: 72px;"> </a>
                                         <div class="media-body">
-                                            <h4 class="media-heading"><a ><%=di.getNombre()%></a></h4>
+                                            <h4 class="media-heading"><a href="ver_individual.jsp?producto=<%=di.getNombre()%>"><%=di.getNombre()%></a></h4>
                                             
                                         </div>
                                     </div>
@@ -87,7 +87,7 @@
                                     <div class="media">
                                         <a class="thumbnail pull-left"> <img class="media-object" src="<%=dpro.getDireccionFoto()%>" alt="<%=dpro.getDireccionFoto()%>" style="width: 72px; height: 72px;"> </a>
                                         <div class="media-body">
-                                            <h4 class="media-heading"><a><%=dpro.getNombre()%></a></h4>
+                                            <h4 class="media-heading"><a href="ver_promocion.jsp?producto=<%=dpro.getNombre()%>"><%=dpro.getNombre()%></a></h4>
                                             
                                         </div>
                                     </div>

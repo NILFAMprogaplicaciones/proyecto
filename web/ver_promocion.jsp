@@ -18,7 +18,7 @@
     %> 
     <div class="container">
         <div class="row">
-            <form method="POST"action="Carrito" class="form-horizontal" id="detallesproductosFRM">          
+            <form method="POST" action="Carrito" class="form-horizontal" id="detallesproductosFRM">          
                 <div class="form-group">
                         <label for="inputNombre" class="control-label col-xs-2">Nombre</label>
                             <div class="col-xs-4">
@@ -85,7 +85,23 @@
                             <div class="media">
                                 <a class="pull-left"> <img class="media-object" src="<%=dc.getProducto().getDireccionFoto() %>" style="width: 72px; height: 72px;"> </a>
                                 <div class="media-body">
-                                    <h4 class="media-heading"><a ><%=dc.getProducto().getnombre()%></a></h4>
+                                    <%
+                                        if (dc.getProducto().getClass().getSimpleName().equals("Individual")){
+                                    %>
+                                           <h4 class="media-heading"> <a href="ver_individual.jsp?producto=<%=dc.getProducto().getnombre()%>">
+                                                <%=dc.getProducto().getnombre() %>
+                                            </a></h4>                                   
+                                    <%
+                                        }else{
+                                    %>
+                                        <h4 class="media-heading"><a href="ver_promocion.jsp?producto=<%=dc.getProducto().getnombre()%>">
+                                            <%=dc.getProducto().getnombre() %>
+                                        </a></h4>
+
+                                    <%
+                                        }
+                                    %>  
+                                    
                                 </div>
                             </div>                        
                         </td>
@@ -120,7 +136,14 @@
                 <tbody>
                     <tr>
                         <td><%=pe.verfechastring()%></td>
-                        <td><%=pe.getCliente().getnickname()%></td>  
+                        <td>
+                            <div class="media">
+                                <a class="media-middle"> <img class="media-middle" src="<%=pe.getCliente().getDireccionFoto()%>" style="width: 72px; height: 72px;"> </a>
+                                    <div class="media-left">
+                                        <h4 class="media-left"><%=pe.getCliente().getnickname()%></h4>       
+                                    </div>
+                            </div>
+                        </td>  
                         <td><%=pe.getPrecioTotal()%></td>
                     </tr>
                 </tbody>

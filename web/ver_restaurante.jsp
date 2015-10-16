@@ -57,32 +57,15 @@
                                 <td>
                                    <div class="media">
                                         <a class="pull-left"> <img class="media-object" src="<%= p.getDireccionFoto()%>" style="width: 72px; height: 72px;"> </a>
-                                        <div class="media-body">
-                                            
-                                            
-                                <%
-                                    if (p.getClass().getSimpleName().equals("Individual")){
-                                %>
-                                        <h4 class="media-heading"><a ><%=p.getnombre()%></a></h4>       
-                                                                                
-                                <%
-                                    }else{
-                                %>
-                                        <h4 class="media-heading"><a ><%=p.getnombre()%></a></h4>                               
-                                <%
-                                    }
-                                %>  
-                                        </div>
-                                    </div>
+                                            <div class="media-body">
+                                                <h4 class="media-heading"><%=p.getnombre()%></h4>       
+                                            </div>
                                 </td>
                                 <td>
                                     <i><%=p.getdescripcion()%></i>                               
                                 </td>
                                 <td>
-                                <!--aca habria que programar cuando hace click
-                                    en el carrito se levante un cartel que diga que
-                                    se inserto el producto al pedido
-                                -->                         
+                                                       
                                   <%
                                       if (p.getClass().getSimpleName().equals("Individual")){
                                   %>
@@ -161,7 +144,14 @@
                                         <td><%=pedido.getComentario().getTexto()%></td>
                                         <td><%=pedido.getComentario().getFecha().getdia()%>/<%=pedido.getComentario().getFecha().getmes()%>/<%=pedido.getComentario().getFecha().getaño()%></td>
                                         <td><%=pedido.getComentario().getInfoPedido()%></td>
-                                        <td><%=pedido.getComentario().getCliente().getnickname()%></td>
+                                        <td>
+                                            <div class="media-middle">
+                                                <a class="media-middle"> <img class="media-middle" src="<%=pedido.getComentario().getCliente().getDireccionFoto()%>" style="width: 72px; height: 72px;"> </a>
+                                                    <div class="media-left">
+                                                        <h4 class="media-left"><%=pedido.getComentario().getCliente().getnickname()%></h4>
+                                                    </div>
+                                            </div>
+                                        </td>
                                     </tr>
                                 <%
                                              }

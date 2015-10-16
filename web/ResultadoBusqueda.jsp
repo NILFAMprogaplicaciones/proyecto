@@ -32,7 +32,6 @@
                                     <a class="pull-left"> <img class="media-object" src="images/restaurante.png" style="width: 72px; height: 72px;"> </a>
                                     <div class="media-body">
                                         <h4 class="media-heading"><a href="ver_restaurante.jsp?nicknamerestaurante=<%=res.getnickname()%>"> <%=res.getnombre()%></a></h4>
-                                        <p>Promedio: <%=Auxiliar.getPromedio(res.getnickname()) %> </p>                                          
                                     </div>
                             </div>                                                  
                         </td>

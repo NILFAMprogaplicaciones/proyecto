@@ -74,12 +74,13 @@
                         <li class="dropdown">
                             <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" > <img src="<%=cli.getDireccionFoto()%>"style="width: 30px; height: 30px;" class="circle-img" alt=""/> <%=cli.getnombre()%> <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <a id="logout"class="btn"  type="submit" onclick="logout()">
+                                
+                                <li class="username"> <a  href="ver_cliente.jsp?nickname=<%=cli.getnickname()%>">Ver Perfil</a> </li>
+                                <a id="logout" class="btn"  type="submit" onclick="logout()">
 
-                                      <span class="username">Cerrar Sesion</span>
-                                      <i class="clip-chevron-down"></i>
+                                    <span class="username">Cerrar Sesion</span>
+                                    
                                 </a>  
-                                <li> <a  href="ver_cliente.jsp?nickname=<%=cli.getnickname()%>">Ver Perfil</a> </li>
                             </ul>
                         </li> 
                         <li class="dropdown">
@@ -116,9 +117,9 @@
                                                     <tr>
                                                         <td class="col-sm-8 col-md-2">
                                                         <div class="media">
-                                                            <a class="thumbnail pull-left" href="#"> <img class="media-object" src="<%=Producto.getProducto().getDireccionFoto()%>" style="width: 72px; height: 72px;"> </a>
+                                                             <img class="thumbnail pull-left media-object" src="<%=Producto.getProducto().getDireccionFoto()%>" style="width: 72px; height: 72px;">
                                                             <div class="media-body">
-                                                                <h4 class="media-heading"><a href="#"><%=Producto.getProducto().getnombre()%></a></h4>
+                                                                <h4 class="media-heading"><%=Producto.getProducto().getnombre()%></h4>
                                                             </div>
                                                         </div>
                                                         </td>

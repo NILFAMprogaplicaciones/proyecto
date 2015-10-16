@@ -80,7 +80,14 @@
                     <tbody>
                         <tr>
                             <td><%=pe.verfechastring()%></td>
-                            <td><%=pe.getCliente().getnickname()%></td>  
+                            <td>
+                                <div class="media-middle">
+                                    <a class="media-middle"> <img class="media-middle" src="<%=pe.getCliente().getDireccionFoto()%>" style="width: 72px; height: 72px;"> </a>
+                                        <div class="media-left">
+                                            <h4 class="media-left"><%=pe.getCliente().getnickname()%></h4>
+                                        </div>
+                                </div>
+                            </td>  
                             <td><%=pe.getPrecioTotal()%></td>
                         </tr>
                     </tbody>

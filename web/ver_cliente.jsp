@@ -10,7 +10,7 @@
 <div class="container">
     <div class="col-sm-4 col-lg-4 col-md-4">
         <div class="thumbnail">
-            <img src="<%= dc.getDireccionFoto()%>" alt="<%= dc.getnombre()%>">
+            <img class="media-object" src="<%= dc.getDireccionFoto()%>" alt="<%= dc.getnombre()%>" style="width: 350px; height: 350px;">
         </div>
     </div>
     <div class="col-sm-6 col-lg-6 col-md-6">

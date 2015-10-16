@@ -32,27 +32,14 @@
                                 <td>
                                     <div class="media">
                                         <a class="pull-left"> <img class="media-object" src="<%= p.getDireccionFoto()%>" style="width: 72px; height: 72px;"> </a>
-                                        <div class="media-body">
-                                            
-                                            
-                                <%
-                                    if (p.getClass().getSimpleName().equals("Individual")){
-                                %>
-                                        <h4 class="media-heading"><a ><%=p.getnombre()%></a></h4>       
-                                                                                
-                                <%
-                                    }else{
-                                %>
-                                        <h4 class="media-heading"><a ><%=p.getnombre()%></a></h4>                               
-                                <%
-                                    }
-                                %>  
-                                        </div>
+                                            <div class="media-body">
+                                                <h4 class="media-heading"><%=p.getnombre()%></h4>       
+                                            </div>
                                     </div>
                                 </td>
                                 <td><%=p.getRestaurante().getnombre()%></td>
                                 <td>
-                                    <%
+                                <%
                                     if (p.getClass().getSimpleName().equals("Individual")){
                                 %>
                                         <a href="ver_individual.jsp?producto=<%=p.getnombre()%>">

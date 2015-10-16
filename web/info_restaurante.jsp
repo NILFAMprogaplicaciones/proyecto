@@ -25,7 +25,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                     <% 
+                    <% 
                         Iterator<DataRestaurante> it = Auxiliar.getColeccionDataRestaurante().values().iterator();
                         DataRestaurante dr;
                    
@@ -37,10 +37,9 @@
                             <td>  
                                 <div class="media">
                                     <a class="pull-left"> <img class="media-object" src="images/restaurante.png" style="width: 72px; height: 72px;"> </a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading"><a ><%=dr.getnombre()%></a></h4>
-                                        <p>Promedio: <%=Auxiliar.getPromedio(dr.getnickname()) %> </p>                                          
-                                    </div>
+                                        <div class="media-body">
+                                            <h4 class="media-heading"><%=dr.getnombre()%></h4>
+                                        </div>
                                 </div>
                             </td>
                             <td><%=dr.getnickname()%></td>
