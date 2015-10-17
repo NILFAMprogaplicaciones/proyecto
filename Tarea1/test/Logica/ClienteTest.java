@@ -26,6 +26,7 @@ public class ClienteTest {
         assertEquals(cliente.getfecha().getdia(), 1);
         assertEquals(cliente.getfecha().getmes(), 2);
         assertEquals(cliente.getfecha().getaño(), 3);
+        assertEquals(cliente.getcontraseña(), "contraseña");
     }
     
 }

@@ -4,8 +4,12 @@ package Logica;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.BeforeClass;
 
 
 public class ManejadorUsuarioTest {
@@ -29,6 +33,8 @@ public class ManejadorUsuarioTest {
     DataPromocion DP= new DataPromocion(res,"Promo1", "Promocion",20, true, 10,CantidadProductos,foto1,"");
     Promocion pro=new Promocion(DP);
     ManejadorUsuario MU=new ManejadorUsuario();
+
+    
     
     public void agregar(){
         MU.addUsuario(cli.getnickname(), cli);
@@ -107,6 +113,42 @@ public class ManejadorUsuarioTest {
        
         agregar();
         assertEquals(MU.getCategoriasRestaurantes("mera"), colcat1);
+    }
+
+    
+    
+    @Test
+    public void testExcepcionDatosCliente_String_String() throws Exception {
+        agregar();
+        try{
+            MU.ExcepcionDatosCliente("costas", "L");
+        }catch(ExcepcionesPersonalizadas ep){}
+        
+        try{
+            MU.ExcepcionDatosCliente("L", "gcostas@gmail.com");
+        }catch(ExcepcionesPersonalizadas ep){}
+        
+        try{
+            MU.ExcepcionDatosCliente("L", "L@");
+        }catch(ExcepcionesPersonalizadas ep){}
+    }
+
+    
+    
+    @Test
+    public void testExcepcionDatosRestaurante_String_String() throws Exception {
+        agregar();
+        try{
+            MU.ExcepcionDatosRestaurante("mera", "L");
+        }catch(ExcepcionesPersonalizadas ep){}
+        
+        try{
+            MU.ExcepcionDatosRestaurante("L", "mera@hotmail.com");
+        }catch(ExcepcionesPersonalizadas ep){}
+        
+        try{
+            MU.ExcepcionDatosRestaurante("L", "L@");
+        }catch(ExcepcionesPersonalizadas ep){}
     }
     
 }

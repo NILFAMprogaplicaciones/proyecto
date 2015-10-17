@@ -34,18 +34,18 @@ import java.util.Map;
     }
         
     public Map getColeccionIndividual(){
-<span class="nc" id="L37">        Map&lt;String,Individual&gt; ColeccionProd = new HashMap&lt;String,Individual&gt;();</span>
-<span class="nc" id="L38">        Iterator&lt;Producto&gt; it = ColProducto.values().iterator();</span>
+<span class="fc" id="L37">        Map&lt;String,Individual&gt; ColeccionProd = new HashMap&lt;String,Individual&gt;();</span>
+<span class="fc" id="L38">        Iterator&lt;Producto&gt; it = ColProducto.values().iterator();</span>
         Producto objeto;
         Individual individual;
-<span class="nc bnc" id="L41" title="All 2 branches missed.">        while(it.hasNext()){</span>
-<span class="nc" id="L42">            objeto=it.next();</span>
-<span class="nc bnc" id="L43" title="All 2 branches missed.">            if(objeto.getClass().getSimpleName().equals(&quot;Individual&quot;)){</span>
-<span class="nc" id="L44">                individual=(Individual) objeto;</span>
-<span class="nc" id="L45">                ColeccionProd.put(individual.getnombre(),individual);</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">        while(it.hasNext()){</span>
+<span class="fc" id="L42">            objeto=it.next();</span>
+<span class="pc bpc" id="L43" title="1 of 2 branches missed.">            if(objeto.getClass().getSimpleName().equals(&quot;Individual&quot;)){</span>
+<span class="fc" id="L44">                individual=(Individual) objeto;</span>
+<span class="fc" id="L45">                ColeccionProd.put(individual.getnombre(),individual);</span>
             }
         }
-<span class="nc" id="L48">        return ColeccionProd;</span>
+<span class="fc" id="L48">        return ColeccionProd;</span>
     }
     public void addProductoIndividual(Individual prod) {
 <span class="fc" id="L51">        ColProducto.put(prod.getnombre(),prod);</span>

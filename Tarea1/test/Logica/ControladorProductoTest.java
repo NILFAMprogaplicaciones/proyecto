@@ -34,13 +34,11 @@ public class ControladorProductoTest {
     ManejadorCategoria MJ = new ManejadorCategoria();
     ManejadorProducto MP = new ManejadorProducto();
 
-
-    
 //  **** Aca empiezan los test de los métodos de la clase ControladorProducto ****
     
     @Test
     public void testAltaProductoIndividual() {
-        System.out.println("AltaProductoIndividual");
+        
         MJ.coleccion().put(cate.getnombre(), cate);                         //Para dar de alta un restaurante, preciso una categoria.
         ICU.Caso_Registro_Restaurante(DR);
         ICP.AltaProductoIndividual(DI);
@@ -48,7 +46,7 @@ public class ControladorProductoTest {
     
     @Test
     public void testAltaProductoPromocion() {
-        System.out.println("AltaProductoPromocion");
+       
         MJ.coleccion().put(cate.getnombre(), cate);                         //Para dar de alta un restaurante, preciso una categoria.
         ICU.Caso_Registro_Restaurante(DR);                                  //Para dar de alta un producto, preciso un restaurante.
         ICP.AltaProductoPromocion(DP);
@@ -57,7 +55,7 @@ public class ControladorProductoTest {
 
     @Test
     public void testCaso_Ver_Individual() {
-        System.out.println("Caso_Ver_Individual");
+       
        
         testAltaProductoIndividual();                                       //esto llama al caso de uso AltaProductoIndividual.
         
@@ -88,8 +86,6 @@ public class ControladorProductoTest {
     
     @Test
     public void testCaso_Ver_Promocion() {              // ****IDEM testCaso_Ver_Individual() ****
-        System.out.println("Caso_Ver_Promocion");             
-                                  
         testAltaProductoPromocion();                                      
         
         DataPromocion expResult = DP;                                     
@@ -108,12 +104,10 @@ public class ControladorProductoTest {
         assertTrue(expResult.getActiva()==result.getActiva());
     }
 
-    /**
-     * Test of Caso_Actualizar_Individual method, of class ControladorProducto.
-     */
+    
     @Test
     public void testCaso_Actualizar_Individual() {
-        System.out.println("Caso_Actualizar_Individual");
+        
 
         testAltaProductoIndividual();
         
@@ -130,7 +124,7 @@ public class ControladorProductoTest {
     
     @Test
     public void testCaso_Actualizar_Promocion() {
-        System.out.println("Caso_Actualizar_Promocion");
+        
         testAltaProductoPromocion();
         
         //DataIndividual expResult = DI2;
@@ -142,6 +136,54 @@ public class ControladorProductoTest {
         assertFalse(ExpResult.getActiva());
         assertEquals(ExpResult.getPrecioTotal(), Result.getPrecioTotal(), 0);
         
+    }
+
+    
+    @Test
+    public void testCantidadProductos() {
+        testAltaProductoIndividual();
+        ManejadorProducto mp=ManejadorProducto.getinstance();
+        assertEquals(ICP.cantidadProductos(), mp.cantidadProductos());
+    }
+
+    
+    @Test
+    public void testGetColeccion() {
+        testAltaProductoIndividual();
+        ManejadorProducto mp=ManejadorProducto.getinstance();
+        assertEquals(ICP.getColeccion(), mp.getColeccion());
+    }
+
+    
+    @Test
+    public void testGetColeccionProductos() {
+        testAltaProductoIndividual();
+        ManejadorProducto mp=ManejadorProducto.getinstance();
+        assertEquals(ICP.getColeccionProductos("res1"), mp.getColeccionProductos("res1"));
+    }
+
+    
+    @Test
+    public void testFindPromocion() {
+        testAltaProductoPromocion();
+        ManejadorProducto mp=ManejadorProducto.getinstance();
+        assertEquals(ICP.findPromocion("Promo1"), mp.findPromocion("Promo1"));
+    }
+
+    
+    @Test
+    public void testCantidadProductosPromo() {
+        testAltaProductoPromocion();
+        ManejadorProducto mp=ManejadorProducto.getinstance();
+        assertEquals(ICP.CantidadProductosPromo("Promo1"), mp.CantidadProductosPromo("Promo1"));
+    }
+
+    
+    @Test
+    public void testFindProducto() {
+        testAltaProductoPromocion();
+        ManejadorProducto mp=ManejadorProducto.getinstance();
+        assertEquals(ICP.findProducto("Promo1"), mp.findProducto("Promo1"));
     }
     
 }

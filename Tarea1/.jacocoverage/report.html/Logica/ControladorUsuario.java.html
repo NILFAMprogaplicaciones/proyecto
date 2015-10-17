@@ -50,77 +50,77 @@ import java.util.Map;
     ////////////////////////////////////////////////////////
     @Override
     public int CantClientes(){
-<span class="nc" id="L53">        ManejadorUsuario MU = ManejadorUsuario.getinstance();</span>
-<span class="nc" id="L54">        return MU.CantClientes();</span>
+<span class="fc" id="L53">        ManejadorUsuario MU = ManejadorUsuario.getinstance();</span>
+<span class="fc" id="L54">        return MU.CantClientes();</span>
     }
     @Override
     public Map obtenercoleccion(){
-<span class="nc" id="L58">        ManejadorUsuario MU = ManejadorUsuario.getinstance();</span>
-<span class="nc" id="L59">        return MU.obtenercoleccion();</span>
+<span class="fc" id="L58">        ManejadorUsuario MU = ManejadorUsuario.getinstance();</span>
+<span class="fc" id="L59">        return MU.obtenercoleccion();</span>
     }
     @Override
     public Map coleccion(){
-<span class="nc" id="L63">        ManejadorCategoria MC =ManejadorCategoria.getinstance();</span>
-<span class="nc" id="L64">        return MC.coleccion();</span>
+<span class="fc" id="L63">        ManejadorCategoria MC =ManejadorCategoria.getinstance();</span>
+<span class="fc" id="L64">        return MC.coleccion();</span>
     }
     @Override
     public Map getColeccionRestaurante(){
-<span class="nc" id="L68">        ManejadorUsuario MU = ManejadorUsuario.getinstance();</span>
-<span class="nc" id="L69">        return MU.getColeccionRestaurante();</span>
+<span class="fc" id="L68">        ManejadorUsuario MU = ManejadorUsuario.getinstance();</span>
+<span class="fc" id="L69">        return MU.getColeccionRestaurante();</span>
     }
     @Override
     public Map getColeccionClientes(){
-<span class="nc" id="L73">        ManejadorUsuario MU = ManejadorUsuario.getinstance();</span>
-<span class="nc" id="L74">        return MU.getColeccionClientes();        </span>
+<span class="fc" id="L73">        ManejadorUsuario MU = ManejadorUsuario.getinstance();</span>
+<span class="fc" id="L74">        return MU.getColeccionClientes();        </span>
     }
     @Override
     public Map getColeccionProductosRestaurantes(String nickname){
-<span class="nc" id="L78">        ManejadorUsuario MU = ManejadorUsuario.getinstance();</span>
-<span class="nc" id="L79">        return MU.getColeccionProductosRestaurantes(nickname);</span>
+<span class="fc" id="L78">        ManejadorUsuario MU = ManejadorUsuario.getinstance();</span>
+<span class="fc" id="L79">        return MU.getColeccionProductosRestaurantes(nickname);</span>
     }
     @Override
     public Restaurante findRestaurante(String nickname){
-<span class="nc" id="L83">        ManejadorUsuario MU = ManejadorUsuario.getinstance();</span>
-<span class="nc" id="L84">        return MU.findRestaurante(nickname);</span>
+<span class="fc" id="L83">        ManejadorUsuario MU = ManejadorUsuario.getinstance();</span>
+<span class="fc" id="L84">        return MU.findRestaurante(nickname);</span>
     }
     @Override
     public Cliente findCliente(String nickname){
-<span class="nc" id="L88">        ManejadorUsuario MU = ManejadorUsuario.getinstance();</span>
-<span class="nc" id="L89">        return MU.findCliente(nickname);</span>
+<span class="fc" id="L88">        ManejadorUsuario MU = ManejadorUsuario.getinstance();</span>
+<span class="fc" id="L89">        return MU.findCliente(nickname);</span>
     }
     @Override
     public Map getCategoriasRestaurantes(String nickame){
-<span class="nc" id="L93">        ManejadorUsuario MU = ManejadorUsuario.getinstance();</span>
-<span class="nc" id="L94">        return MU.getCategoriasRestaurantes(nickame);</span>
+<span class="fc" id="L93">        ManejadorUsuario MU = ManejadorUsuario.getinstance();</span>
+<span class="fc" id="L94">        return MU.getCategoriasRestaurantes(nickame);</span>
     }
     @Override
     public void ExcepcionCategoria(String Categoria)throws ExcepcionesPersonalizadas{
-<span class="nc" id="L98">        ManejadorCategoria MC =ManejadorCategoria.getinstance();</span>
-<span class="nc" id="L99">        MC.ExcepcionCategoria(Categoria);</span>
-<span class="nc" id="L100">    }</span>
+<span class="fc" id="L98">        ManejadorCategoria MC =ManejadorCategoria.getinstance();</span>
+<span class="fc" id="L99">        MC.ExcepcionCategoria(Categoria);</span>
+<span class="fc" id="L100">    }</span>
     @Override
     public void ExcepcionDatosCliente(String Nickname,String CorreoElectronico, String Nombre, String Apellido, String Direccion, 
            String dia, String mes, String anio) throws ExcepcionesPersonalizadas{
         
-<span class="nc" id="L105">        ManejadorUsuario MU = ManejadorUsuario.getinstance();</span>
-<span class="nc" id="L106">        MU.ExcepcionDatosCliente(Nickname, CorreoElectronico, Nombre, Apellido, Direccion, dia, mes, anio);</span>
-<span class="nc" id="L107">    }</span>
+<span class="fc" id="L105">        ManejadorUsuario MU = ManejadorUsuario.getinstance();</span>
+<span class="fc" id="L106">        MU.ExcepcionDatosCliente(Nickname, CorreoElectronico, Nombre, Apellido, Direccion, dia, mes, anio);</span>
+<span class="fc" id="L107">    }</span>
     @Override
     public void ExcepcionDatosRestaurante(String Nickname,String CorreoElectronico, String Nombre, String Direccion, Map coleccion) 
             throws ExcepcionesPersonalizadas{
         
-<span class="nc" id="L112">        ManejadorUsuario MU = ManejadorUsuario.getinstance();</span>
-<span class="nc" id="L113">        MU.ExcepcionDatosRestaurante(Nickname, CorreoElectronico, Nombre, Direccion, coleccion);</span>
-<span class="nc" id="L114">    }</span>
+<span class="fc" id="L112">        ManejadorUsuario MU = ManejadorUsuario.getinstance();</span>
+<span class="fc" id="L113">        MU.ExcepcionDatosRestaurante(Nickname, CorreoElectronico, Nombre, Direccion, coleccion);</span>
+<span class="fc" id="L114">    }</span>
     @Override
     public Categoria getCategoria(String cate){
-<span class="nc" id="L117">        ManejadorCategoria MC =ManejadorCategoria.getinstance();</span>
-<span class="nc" id="L118">        return MC.getCategoria(cate);</span>
+<span class="fc" id="L117">        ManejadorCategoria MC =ManejadorCategoria.getinstance();</span>
+<span class="fc" id="L118">        return MC.getCategoria(cate);</span>
     }
     @Override
     public Producto getProductoRestaurante(String nombrerestaurante, String nombreproducto){
-<span class="nc" id="L122">        ManejadorUsuario MU = ManejadorUsuario.getinstance();</span>
-<span class="nc" id="L123">        return MU.getProductoRestaurante(nombrerestaurante, nombreproducto);</span>
+<span class="fc" id="L122">        ManejadorUsuario MU = ManejadorUsuario.getinstance();</span>
+<span class="fc" id="L123">        return MU.getProductoRestaurante(nombrerestaurante, nombreproducto);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

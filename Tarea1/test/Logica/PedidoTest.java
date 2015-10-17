@@ -61,6 +61,16 @@ public class PedidoTest {
         assertEquals(pedido.getCliente().getnickname(), "cli");
         assertEquals(pedido.getRestaurante().getnickname(), "res");
         
+        
     }
 
+    @Test
+    public void testGetComentario() {
+        
+        DataComentario dc=new DataComentario(pedido, fecha1, "info", "comentario", 4, cliente1);
+        Comentario c=new Comentario(dc);
+        pedido.setComentario(c);
+        assertEquals(pedido.getComentario(), c);
+        
+    }
 }

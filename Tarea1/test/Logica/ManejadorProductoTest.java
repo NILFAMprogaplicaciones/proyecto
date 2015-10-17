@@ -5,8 +5,12 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
+import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.BeforeClass;
 
 
 public class ManejadorProductoTest {
@@ -31,7 +35,8 @@ public class ManejadorProductoTest {
     File fichero = new File("src/Imagenes/usuario.png");
     DataPromocion DP= new DataPromocion(res2,"Promo1", "Promocion",20, true, 10,CantidadProductos,fichero,"");
     Promocion pro=new Promocion(DP);
-    
+
+        
     @Test
     public void testGetColeccionProductos() {
         MP.addProductoIndividual(ind);
@@ -55,9 +60,9 @@ public class ManejadorProductoTest {
     public void testCantidadProductosPromo() {
         
         //RESTAURANTE
-        Map<Integer,File> coleccionimagenes = new TreeMap<Integer, File>();
-        Map<String,DataCantidad> CantidadProductos = new HashMap<String, DataCantidad>();
-        Map<String,Categoria> coleccioncategoria = new HashMap<String,Categoria>();
+        Map<Integer,File> coleccionimagenes = new TreeMap<>();
+        Map<String,DataCantidad> CantidadProductos = new HashMap<>();
+        Map<String,Categoria> coleccioncategoria = new HashMap<>();
         Categoria cate = new Categoria("Categoria");
         DataRestaurante DR= new DataRestaurante("contraseña","Restaurante","res1", "res@res", "direccion",  coleccioncategoria,  coleccionimagenes);
         Restaurante res2= new Restaurante(DR);
@@ -75,5 +80,10 @@ public class ManejadorProductoTest {
     }
 
     
-      
+    @Test
+    public void testGetColeccionIndividual() {
+        MP.addProductoIndividual(ind);
+        assertEquals(MP.getColeccionIndividual().size(), 1);
+    }
+
 }

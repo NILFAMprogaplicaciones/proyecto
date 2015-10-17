@@ -52,17 +52,17 @@ public class DataRestaurante {
     }
     
     public boolean ExisteCategoria(String nombrecategoria){
-<span class="nc" id="L55">        boolean resultado=false;</span>
-<span class="nc" id="L56">        Iterator&lt;Categoria&gt; it = ColeccionCategoria.values().iterator();</span>
-<span class="nc" id="L57">        Categoria objeto=null;</span>
-<span class="nc bnc" id="L58" title="All 2 branches missed.">        while(it.hasNext()){</span>
-<span class="nc" id="L59">            objeto=it.next();</span>
-<span class="nc bnc" id="L60" title="All 2 branches missed.">            if(objeto.getnombre().equals(nombrecategoria)){</span>
-<span class="nc" id="L61">                resultado=true;</span>
+<span class="fc" id="L55">        boolean resultado=false;</span>
+<span class="fc" id="L56">        Iterator&lt;Categoria&gt; it = ColeccionCategoria.values().iterator();</span>
+<span class="fc" id="L57">        Categoria objeto=null;</span>
+<span class="fc bfc" id="L58" title="All 2 branches covered.">        while(it.hasNext()){</span>
+<span class="fc" id="L59">            objeto=it.next();</span>
+<span class="pc bpc" id="L60" title="1 of 2 branches missed.">            if(objeto.getnombre().equals(nombrecategoria)){</span>
+<span class="fc" id="L61">                resultado=true;</span>
             }
             
         }
-<span class="nc" id="L65">        return resultado;   </span>
+<span class="fc" id="L65">        return resultado;   </span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>
