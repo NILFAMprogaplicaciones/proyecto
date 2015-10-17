@@ -24,8 +24,6 @@ public class DataCantidadTest {
     
     @Test
     public void testGetCantidad() {
-        System.out.println("getCantidad");
-        
         int resultado = DC.getCantidad();
         int esperado = 1;
         assertEquals(esperado, resultado);
@@ -34,8 +32,6 @@ public class DataCantidadTest {
     
     @Test
     public void testGetProducto() {
-        System.out.println("getProducto");
-       
         Producto esperado = prod;
         Producto resultado = DC.getProducto();
         assertEquals(esperado.getnombre(), resultado.getnombre());

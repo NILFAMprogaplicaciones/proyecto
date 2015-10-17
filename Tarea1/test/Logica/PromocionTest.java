@@ -28,10 +28,7 @@ public class PromocionTest {
     
     @Test
     public void testAddProducto() {
-        System.out.println("addProducto");
-        
         promo.addProducto(prod.getnombre(),DC);
-                
     }
     
     @Test

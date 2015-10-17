@@ -72,7 +72,7 @@ public class Restaurante extends Usuario {
     public boolean ExisteCategoria(String nombrecategoria){
 <span class="fc" id="L73">        boolean resultado=false;</span>
 <span class="fc" id="L74">        Iterator&lt;Categoria&gt; it = ColeccionCategoria.values().iterator();</span>
-<span class="fc" id="L75">        Categoria objeto=null;</span>
+        Categoria objeto;
 <span class="fc bfc" id="L76" title="All 2 branches covered.">        while(it.hasNext()){</span>
 <span class="fc" id="L77">            objeto=it.next();</span>
 <span class="fc bfc" id="L78" title="All 2 branches covered.">            if(objeto.getnombre().equals(nombrecategoria)){</span>

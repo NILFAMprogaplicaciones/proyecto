@@ -72,7 +72,7 @@ public class Restaurante extends Usuario {
     public boolean ExisteCategoria(String nombrecategoria){
         boolean resultado=false;
         Iterator<Categoria> it = ColeccionCategoria.values().iterator();
-        Categoria objeto=null;
+        Categoria objeto;
         while(it.hasNext()){
             objeto=it.next();
             if(objeto.getnombre().equals(nombrecategoria)){

@@ -27,7 +27,6 @@ Individual Indi = new Individual(Individual);
 
 @Test
     public void testSetPrecio() {
-        System.out.println("setPrecio");
         double precio = 0.0;
         Indi.setPrecio(precio);
         assertEquals(precio,Indi.getPrecio(),0);
@@ -36,8 +35,6 @@ Individual Indi = new Individual(Individual);
 
     @Test
     public void testSetImagen() {
-        System.out.println("setImagen");
-       
         Indi.setImagen(fichero1);
         File esperado = new File("src/Imagenes/co.jpeg");
 // TODO review the generated test code and remove the default call to fail.

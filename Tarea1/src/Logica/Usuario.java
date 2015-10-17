@@ -5,7 +5,6 @@ package Logica;
 
 public class Usuario {
     
-    //
     private String nombre;
     private String nickname;
     private String contraseña;

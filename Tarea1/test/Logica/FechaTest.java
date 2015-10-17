@@ -10,7 +10,6 @@ public class FechaTest {
  
     @Test
     public void testSetdia() {
-        System.out.println("setdia");
         int dia = 0;
         
         fecha.setdia(dia);
@@ -20,7 +19,6 @@ public class FechaTest {
     
     @Test
     public void testSetmes() {
-        System.out.println("setmes");
         int mes = 0;
         
         fecha.setmes(mes);
@@ -30,7 +28,6 @@ public class FechaTest {
     
     @Test
     public void testSetaño() {
-        System.out.println("seta\u00f1o");
         int anio = 0;
         
         fecha.setaño(anio);
