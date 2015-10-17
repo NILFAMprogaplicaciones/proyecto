@@ -35,7 +35,7 @@ public class DatosPrecargados implements IDatosPrecargados {
         Cliente cliente2=new Cliente(datacliente2);
         MU.addUsuario(cliente2.getnickname(), cliente2);
         
-        DataCliente datacliente3=new DataCliente("ch4321","Cecilia", "chechi", "cgarrido@hotmail.com", "Gral. Urquiza 1548","Garrido", fecha3, foto3,"images/chechi.png"); 
+        DataCliente datacliente3=new DataCliente("ch4321","Cecilia", "chechi", "cgarrido@hotmail.com", "Gral. Urquiza 1548","Garrido", fecha3, foto3,"images/Usuarios/chechi.png"); 
         Cliente cliente3=new Cliente(datacliente3);
         MU.addUsuario(cliente3.getnickname(), cliente3);
         
