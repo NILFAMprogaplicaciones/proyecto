@@ -16,17 +16,17 @@ public class ManejadorPedidoTest {
     DataCliente datacliente1=new DataCliente("contraseña","Gerardo", "costas", "gcostas@gmail.com", "Pdte. Berro 1548","Cotelo", fecha1, foto1,""); 
     Cliente cliente1=new Cliente(datacliente1);
     //RESTAURANTE  
-    Map<String,Categoria> colcat1=new HashMap<String,Categoria>();
-    Map<Integer,File> colfoto1=new HashMap<Integer,File>();
+    Map<String,Categoria> colcat1=new HashMap<>();
+    Map<Integer,File> colfoto1=new HashMap<>();
     DataRestaurante datarestaurante=new DataRestaurante("contraseña","Pizzeria Mera","mera","mera@hotmail.com","Av 8 de octubre 2704",colcat1,colfoto1);
     Restaurante res1=new Restaurante(datarestaurante);
     //PEDIDO
     FechaHora fecha=new FechaHora(12,8,2015,0,0);
     Producto prod=new Producto("producto","descripcion",res1,"");
-    Map<String,Producto> col1=new HashMap<String,Producto>();
+    Map<String,Producto> col1=new HashMap<>();
         
         //TIPO ASOSIATIVO
-    Map<String,DataProductosPedido> colpp1=new HashMap<String,DataProductosPedido>();
+    Map<String,DataProductosPedido> colpp1=new HashMap<>();
     TipoAsosiativoPedido tap1=new TipoAsosiativoPedido(colpp1);
     DataPedido datapedido=new DataPedido(1, fecha, 220, Estado.ENVIADO, cliente1, col1,  res1, tap1);
     Pedido pedido1=new Pedido(datapedido);

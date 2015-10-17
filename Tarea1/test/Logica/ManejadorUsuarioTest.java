@@ -4,26 +4,22 @@ package Logica;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.junit.Before;
-import org.junit.BeforeClass;
 
 
 public class ManejadorUsuarioTest {
     
-    Map<String,Usuario> ColeccionUsuarios = new HashMap<String,Usuario>();
-    Map<String,DataCantidad> CantidadProductos = new HashMap<String, DataCantidad>();
+    Map<String,Usuario> ColeccionUsuarios = new HashMap<>();
+    Map<String,DataCantidad> CantidadProductos = new HashMap<>();
     //CLIENTE
     Fecha fecha1;
     File foto1;
     DataCliente datacliente1=new DataCliente("contraseña","Gerardo", "costas", "gcostas@gmail.com", "Pdte. Berro 1548","Cotelo", fecha1, foto1,""); 
     Cliente cli=new Cliente(datacliente1);
     //RESTAURANTE
-    Map<String,Categoria> colcat1=new HashMap<String,Categoria>();
-    Map<Integer,File> colfoto1=new HashMap<Integer,File>();
+    Map<String,Categoria> colcat1=new HashMap<>();
+    Map<Integer,File> colfoto1=new HashMap<>();
     DataRestaurante datarestaurante=new DataRestaurante("contraseña","Pizzeria Mera","mera","mera@hotmail.com","Av 8 de octubre 2704",colcat1,colfoto1);
     Restaurante res=new Restaurante(datarestaurante);
     //INDIVIDUAL
@@ -91,7 +87,7 @@ public class ManejadorUsuarioTest {
         
         agregar();
         MU.addProductoIndividual("mera", ind);
-        Map<String,Producto> ColProducto = new HashMap<String,Producto>();
+        Map<String,Producto> ColProducto = new HashMap<>();
         ColProducto.put(ind.getnombre(), ind);
         assertEquals(MU.getColeccionProductosRestaurantes("mera"), ColProducto);
         
@@ -115,7 +111,6 @@ public class ManejadorUsuarioTest {
         assertEquals(MU.getCategoriasRestaurantes("mera"), colcat1);
     }
 
-    
     
     @Test
     public void testExcepcionDatosCliente_String_String() throws Exception {

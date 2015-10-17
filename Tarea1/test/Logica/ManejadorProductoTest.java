@@ -5,19 +5,15 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.junit.Before;
-import org.junit.BeforeClass;
 
 
 public class ManejadorProductoTest {
     
-    Map<String,Producto> ColProducto = new HashMap<String,Producto>();
-    Map<String,Categoria> colcat1=new HashMap<String,Categoria>();
-    Map<Integer,File> colfoto1=new HashMap<Integer,File>();
+    Map<String,Producto> ColProducto = new HashMap<>();
+    Map<String,Categoria> colcat1=new HashMap<>();
+    Map<Integer,File> colfoto1=new HashMap<>();
     File foto1;
     DataRestaurante datarestaurante=new DataRestaurante("contraseña","Pizzeria Mera","mera","mera@hotmail.com","Av 8 de octubre 2704",colcat1,colfoto1);
     Restaurante res=new Restaurante(datarestaurante);
@@ -25,9 +21,9 @@ public class ManejadorProductoTest {
     Individual ind=new Individual(di);
     ManejadorProducto MP=new ManejadorProducto();
     
-    Map<Integer,File> coleccionimagenes = new TreeMap<Integer, File>();
-    Map<String,DataCantidad> CantidadProductos = new HashMap<String, DataCantidad>();
-    Map<String,Categoria> coleccioncategoria = new HashMap<String,Categoria>();
+    Map<Integer,File> coleccionimagenes = new TreeMap<>();
+    Map<String,DataCantidad> CantidadProductos = new HashMap<>();
+    Map<String,Categoria> coleccioncategoria = new HashMap<>();
    
     Categoria cate = new Categoria("Categoria");
     DataRestaurante DR= new DataRestaurante("contraseña","Restaurante","res1", "res@res", "direccion",  coleccioncategoria,  coleccionimagenes);

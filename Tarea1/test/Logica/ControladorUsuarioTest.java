@@ -277,7 +277,6 @@ public class ControladorUsuarioTest {
     @Test
     public void testGetProductoRestaurante() {
         testCaso_Registro_Restaurante();
-        Map<String,Producto> coleccion=new HashMap<>();
         DataIndividual di=new DataIndividual("prod", "desc", ICU.findRestaurante("mera") , 100, foto1, "");
         
         Fabrica fabrica=Fabrica.getInstance();

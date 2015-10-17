@@ -3,17 +3,13 @@ package Logica;
 
 import java.util.HashMap;
 import java.util.Map;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 
 public class TipoAsosiativoPedidoTest {
     
-    Map<String,DataProductosPedido> ColeccionProductosPedido=new HashMap<String,DataProductosPedido>();
+    Map<String,DataProductosPedido> ColeccionProductosPedido=new HashMap<>();
     TipoAsosiativoPedido TAP=new TipoAsosiativoPedido(ColeccionProductosPedido);
     Restaurante res;
     Producto prod=new Producto("producto","descripcion",res,"");
@@ -25,7 +21,7 @@ public class TipoAsosiativoPedidoTest {
         ColeccionProductosPedido.put(dpp.getProducto().getnombre(), dpp);
         TAP.addColeccion(ColeccionProductosPedido);
         
-        Map<String,DataProductosPedido> col=new HashMap<String,DataProductosPedido>();
+        Map<String,DataProductosPedido> col=new HashMap<>();
         col.put(dpp.getProducto().getnombre(), dpp);
         
         assertEquals(TAP.getColeccionProductosPedido(), col);

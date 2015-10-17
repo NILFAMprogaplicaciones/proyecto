@@ -12,9 +12,9 @@ import static org.junit.Assert.*;
 
 public class IndividualTest {
     
-Map<Integer,File> coleccionimagenes = new TreeMap<Integer, File>();
-Map<String,DataCantidad> CantidadProductos = new HashMap<String, DataCantidad>();
-Map<String,Categoria> coleccioncategoria = new HashMap<String,Categoria>();
+Map<Integer,File> coleccionimagenes = new TreeMap<>();
+Map<String,DataCantidad> CantidadProductos = new HashMap<>();
+Map<String,Categoria> coleccioncategoria = new HashMap<>();
 
 DataRestaurante DR= new DataRestaurante("contraseña","Restaurante","res1", "res@res", "direccion",  coleccioncategoria,  coleccionimagenes);
 Restaurante res= new Restaurante(DR);

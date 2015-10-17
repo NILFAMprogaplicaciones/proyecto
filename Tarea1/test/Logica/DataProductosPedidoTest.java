@@ -11,8 +11,8 @@ import static org.junit.Assert.*;
 public class DataProductosPedidoTest {
     
     //RESTAURANTE
-    Map<String,Categoria> colcat1=new HashMap<String,Categoria>();
-    Map<Integer,File> colfoto1=new HashMap<Integer,File>();
+    Map<String,Categoria> colcat1=new HashMap<>();
+    Map<Integer,File> colfoto1=new HashMap<>();
     DataRestaurante datarestaurante=new DataRestaurante("contraseña","Pizzeria Mera","mera","mera@hotmail.com","Av 8 de octubre 2704",colcat1,colfoto1);
     Restaurante res=new Restaurante(datarestaurante);
     

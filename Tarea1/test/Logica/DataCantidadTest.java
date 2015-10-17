@@ -10,9 +10,9 @@ import static org.junit.Assert.*;
 
 public class DataCantidadTest {
     
-    Map<Integer,File> coleccionimagenes = new TreeMap<Integer, File>();
-    Map<String,DataCantidad> CantidadProductos = new HashMap<String, DataCantidad>();
-    Map<String,Categoria> coleccioncategoria = new HashMap<String,Categoria>();
+    Map<Integer,File> coleccionimagenes = new TreeMap<>();
+    Map<String,DataCantidad> CantidadProductos = new HashMap<>();
+    Map<String,Categoria> coleccioncategoria = new HashMap<>();
    
     Categoria cate = new Categoria("Categoria");
     DataRestaurante DR= new DataRestaurante("contraseña","Restaurante","res1", "res@res", "direccion",  coleccioncategoria,  coleccionimagenes);
@@ -29,11 +29,9 @@ public class DataCantidadTest {
         int resultado = DC.getCantidad();
         int esperado = 1;
         assertEquals(esperado, resultado);
-   }
+    }
 
-    /**
-     * Test of getProducto method, of class DataCantidad.
-     */
+    
     @Test
     public void testGetProducto() {
         System.out.println("getProducto");
