@@ -142,7 +142,7 @@
                                                         <td></td>
                                                         <td>
                                                             <form method="get" action="Carrito" id="GenerarPedidoFRM">
-                                                                <button type="submit" class="btn btn-success">
+                                                                <button type="submit" class="btn btn-success" onclick="AgregadoOK();">
                                                                     Confirmar <span class="glyphicon glyphicon-play"></span>
                                                                 </button>
                                                             </form>
@@ -171,7 +171,15 @@
         </div>
         <!-- /.container -->
     </nav>
-
+<script type="text/javascript">
+    
+    function AgregadoOK(){
+        
+        window.alert("Su pedido fue confirmado");
+        document.getElementById("GenerarPedidoFRM").submit();//mando submit
+    }
+    
+</script>
 <script type="text/javascript">               
 
     function logout() 
