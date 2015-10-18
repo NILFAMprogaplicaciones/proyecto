@@ -54,6 +54,7 @@ public class Restaurante extends Usuario {
     public boolean verificarproducto(String nombreproducto){
         return ColeccionProducto.containsKey(nombreproducto);
     }
+    
     public  Map getProductos(){
         return this.ColeccionProducto;
     }
@@ -82,5 +83,37 @@ public class Restaurante extends Usuario {
         }
         return resultado;   
     }
+    public boolean BusquedaCategoria(String filtro){
+        boolean existe=false;
+        Iterator<Categoria> it = ColeccionCategoria.values().iterator();
+        Categoria CATE;
+        while(it.hasNext()){
+            CATE=it.next();
+            if((CATE.getnombre().toLowerCase().indexOf(filtro.toLowerCase()))!=-1){
+                existe=true;
+            }         
+        }
+        return existe;   
+    }
+    public boolean BusquedaProducto(String filtro){
+        Iterator<Producto> it = ColeccionProducto.values().iterator();
+        Producto PROD;
+        boolean existe=false;
+        while(it.hasNext() && existe==false){
+            PROD=it.next();
+            if((PROD.getnombre().toLowerCase().indexOf(filtro.toLowerCase()))!= -1){
+               existe=true;         
+            }
+        }
+        return existe;
+    }
+    public boolean BusquedaRestaurante(String filtro){
+        boolean existe=false;
+            if((this.getnombre().toLowerCase().indexOf(filtro.toLowerCase()))!= -1){ 
+                existe=true;
+            }
+        return existe;
+    }
+    
     
 }
