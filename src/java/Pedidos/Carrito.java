@@ -1,14 +1,12 @@
 
 package Pedidos;
 
-import Auxiliar.Auxiliar;
 import Clientes.Login;
 import Logica.Cliente;
 import Logica.DataPedido;
 import Logica.DataProductosPedido;
 import Logica.Estado;
 import Logica.Fabrica;
-import Logica.Fecha;
 import Logica.FechaHora;
 import Logica.IControladorPedido;
 import Logica.IControladorProducto;
@@ -46,10 +44,8 @@ public class Carrito extends HttpServlet {
         List<DataProductosPedido> carritoCompra=null;
         
         IControladorPedido ICPED;
-        IControladorProducto ICP;
         Fabrica fabrica = Fabrica.getInstance();
         ICPED=fabrica.getIControladorPedido();
-        ICP=fabrica.getIControladorProducto();
         
         if(sesion.getAttribute("carrito")!=null){
          //Si existe una sesion con ese atributo, se obtiene los datos de esa sesion

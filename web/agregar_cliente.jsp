@@ -27,7 +27,13 @@
                     <div class="form-group">
                         <label for="inputNombre" class="control-label col-xs-2">Nombre</label>
                             <div class="col-xs-10">
-                                <input name="inputNombre"type="text" class="form-control" id="inputNombre" placeholder="Nombre" required>
+                                <input name="inputNombre" type="text" class="form-control" id="inputNombre" placeholder="Nombre" required>
+                            </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputApellido" class="control-label col-xs-2">Apellido</label>
+                            <div class="col-xs-10">
+                                <input name="inputApellido" type="text" class="form-control" id="inputApellido" placeholder="Apellido" required>
                             </div>
                     </div>
                     <div class="form-group">
@@ -48,12 +54,7 @@
                                 <input onblur="validarcontraseña()" name="inputConfirmContrasena" type="password" class="form-control" id="inputConfirmContrasena" placeholder="Confirmar Contrase&ntilde;a" required>
                                 <h4  id="comprobarcontraseña"> </h4></div>
                     </div>
-                    <div class="form-group">
-                        <label for="inputApellido" class="control-label col-xs-2">Apellido</label>
-                            <div class="col-xs-10">
-                                <input name="inputApellido" type="text" class="form-control" id="inputApellido" placeholder="Apellido" required>
-                            </div>
-                    </div>
+                    
                     <div class="form-group">
                         <label for="inputFecha_nacimiento" class="control-label col-xs-2">Fecha Nacimiento</label>
                             <div class="col-xs-10">
