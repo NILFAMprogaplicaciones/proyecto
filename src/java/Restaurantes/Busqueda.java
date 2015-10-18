@@ -21,7 +21,7 @@ public class Busqueda extends HttpServlet {
         ICU = fabrica.getIControladorUsuario();
                 
         
-        ArrayList<Restaurante> ListaRestaurante = new ArrayList<>();
+        List<Restaurante> ListaRestaurante = new ArrayList<>();
         Iterator<Restaurante> it = ICU.getColeccionRestaurante().values().iterator();
         Restaurante res;
         
@@ -34,7 +34,7 @@ public class Busqueda extends HttpServlet {
         }else{
             while (it.hasNext()) {
                 res=it.next();//en cat tenemos el valor
-                if(res.ExisteCategoria(filtro) | res.verificarproducto(filtro) | res.getnombre().equals(filtro)){
+                if(res.BusquedaCategoria(filtro) | res.BusquedaProducto(filtro) | res.BusquedaRestaurante(filtro)){
                     ListaRestaurante.add(res);   
                 }
             }
@@ -56,7 +56,7 @@ public class Busqueda extends HttpServlet {
 
             while (it.hasNext()) {
                 res=it.next();//en cat tenemos el valor
-                if(res.ExisteCategoria(filtro) | res.verificarproducto(filtro) | res.getnombre().equals(filtro)){
+                if(res.BusquedaCategoria(filtro) | res.BusquedaProducto(filtro) | res.BusquedaRestaurante(filtro)){
                     ListaRestaurante.add(res);   
                 }
             }
