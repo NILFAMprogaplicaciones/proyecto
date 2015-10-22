@@ -2,8 +2,8 @@
        <hr>
         <!-- Footer -->
         <footer>
-            <div class="row">
-                <div class="col-lg-12">
+            <div class="footer">
+                <div class="col-md-12">
                     <span>2015 &copy; Programacion Avanzada </span> <a href="index.jsp">Home</a>  |  <a href="Company.jsp"> Company</a>  |  <a href="Blog.jsp">Blog</a>  
                 </div>
             </div>
