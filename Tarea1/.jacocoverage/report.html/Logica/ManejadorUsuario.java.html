@@ -4,261 +4,278 @@ package Logica;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import javax.swing.JOptionPane;
 
-<span class="fc" id="L8">public class ManejadorUsuario {</span>
+<span class="fc" id="L9">public class ManejadorUsuario {</span>
     
-<span class="fc" id="L10">    private Map&lt;String,Usuario&gt; ColeccionUsuarios = new HashMap&lt;String,Usuario&gt;();</span>
+<span class="fc" id="L11">    private Map&lt;String,Usuario&gt; ColeccionUsuarios = new HashMap&lt;String,Usuario&gt;();</span>
     //SINGLENTON
-<span class="fc" id="L12">    private static ManejadorUsuario instancia = null;</span>
+<span class="fc" id="L13">    private static ManejadorUsuario instancia = null;</span>
     
     public static ManejadorUsuario getinstance() {
-<span class="fc bfc" id="L15" title="All 2 branches covered.">        if (instancia == null) {</span>
-<span class="fc" id="L16">            instancia = new ManejadorUsuario();</span>
+<span class="fc bfc" id="L16" title="All 2 branches covered.">        if (instancia == null) {</span>
+<span class="fc" id="L17">            instancia = new ManejadorUsuario();</span>
         }
-<span class="fc" id="L18">        return instancia;</span>
+<span class="fc" id="L19">        return instancia;</span>
     }
     
     //FUNCIONES DE COLECCION USUARIOS
     public void addUsuario(String nickname, Usuario usuario){
-<span class="fc" id="L23">        ColeccionUsuarios.put(nickname, usuario);</span>
-<span class="fc" id="L24">    }</span>
+<span class="fc" id="L24">        ColeccionUsuarios.put(nickname, usuario);</span>
+<span class="fc" id="L25">    }</span>
     public Cliente findCliente(String nickname){
-<span class="fc" id="L26">        return ((Cliente)ColeccionUsuarios.get(nickname));</span>
+<span class="fc" id="L27">        return ((Cliente)ColeccionUsuarios.get(nickname));</span>
     }
     public Restaurante findRestaurante(String nickname){
-<span class="fc" id="L29">        return ((Restaurante)ColeccionUsuarios.get(nickname));</span>
+<span class="fc" id="L30">        return ((Restaurante)ColeccionUsuarios.get(nickname));</span>
     }
     public boolean verificarnickname(String nickname){
-<span class="fc" id="L32">        return ColeccionUsuarios.containsKey(nickname);</span>
+<span class="fc" id="L33">        return ColeccionUsuarios.containsKey(nickname);</span>
     }
     public boolean verificarcorreo(String correo){
-<span class="fc" id="L35">        boolean resultado=false;</span>
-<span class="fc" id="L36">        Iterator&lt;Usuario&gt; it = ColeccionUsuarios.values().iterator();</span>
+<span class="fc" id="L36">        boolean resultado=false;</span>
+<span class="fc" id="L37">        Iterator&lt;Usuario&gt; it = ColeccionUsuarios.values().iterator();</span>
         Usuario objeto;
-<span class="fc bfc" id="L38" title="All 2 branches covered.">        while(it.hasNext()){</span>
-<span class="fc" id="L39">            objeto=it.next();</span>
-<span class="fc bfc" id="L40" title="All 2 branches covered.">            if(objeto.getcorreo().equals(correo))</span>
-<span class="fc" id="L41">                resultado= true;</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">        while(it.hasNext()){</span>
+<span class="fc" id="L40">            objeto=it.next();</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">            if(objeto.getcorreo().equals(correo))</span>
+<span class="fc" id="L42">                resultado= true;</span>
         }
-<span class="fc" id="L43">        return resultado;</span>
+<span class="fc" id="L44">        return resultado;</span>
     }
     public int CantUsuarios(){
         
-<span class="fc" id="L47">        return ColeccionUsuarios.size();</span>
+<span class="fc" id="L48">        return ColeccionUsuarios.size();</span>
     }
     public int CantClientes(){
-<span class="fc" id="L50">        int cantidad=0;</span>
-<span class="fc" id="L51">        Iterator&lt;Usuario&gt; it = ColeccionUsuarios.values().iterator();</span>
+<span class="fc" id="L51">        int cantidad=0;</span>
+<span class="fc" id="L52">        Iterator&lt;Usuario&gt; it = ColeccionUsuarios.values().iterator();</span>
         Usuario objeto;
-<span class="fc bfc" id="L53" title="All 2 branches covered.">        while(it.hasNext()){</span>
-<span class="fc" id="L54">            objeto=it.next();</span>
-<span class="fc" id="L55">            String tipo=objeto.getClass().getSimpleName();</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">        while(it.hasNext()){</span>
+<span class="fc" id="L55">            objeto=it.next();</span>
+<span class="fc" id="L56">            String tipo=objeto.getClass().getSimpleName();</span>
             
-<span class="fc bfc" id="L57" title="All 2 branches covered.">            if(tipo.equals(&quot;Cliente&quot;))</span>
-<span class="fc" id="L58">                cantidad=cantidad+1;</span>
-<span class="fc" id="L59">        }</span>
-<span class="fc" id="L60">        return cantidad;</span>
+<span class="fc bfc" id="L58" title="All 2 branches covered.">            if(tipo.equals(&quot;Cliente&quot;))</span>
+<span class="fc" id="L59">                cantidad=cantidad+1;</span>
+<span class="fc" id="L60">        }</span>
+<span class="fc" id="L61">        return cantidad;</span>
     }
     public Map obtenercoleccion(){
-<span class="fc" id="L63">       return this.ColeccionUsuarios;   </span>
+<span class="fc" id="L64">       return this.ColeccionUsuarios;   </span>
    }
    //ME RETORNA TODOS LOS RESTAURANTES
    public Map getColeccionRestaurante() {
         
-<span class="fc" id="L68">        Map&lt;String,Usuario&gt; ColeccionRest = new HashMap&lt;String,Usuario&gt;();</span>
-<span class="fc" id="L69">        Iterator&lt;Usuario&gt; it = ColeccionUsuarios.values().iterator();</span>
+<span class="fc" id="L69">        Map&lt;String,Usuario&gt; ColeccionRest = new HashMap&lt;String,Usuario&gt;();</span>
+<span class="fc" id="L70">        Iterator&lt;Usuario&gt; it = ColeccionUsuarios.values().iterator();</span>
         Usuario objeto;
-<span class="fc bfc" id="L71" title="All 2 branches covered.">        while(it.hasNext()){</span>
-<span class="fc" id="L72">            objeto=it.next();</span>
-<span class="fc bfc" id="L73" title="All 2 branches covered.">            if(objeto.getClass().getSimpleName().equals(&quot;Restaurante&quot;))</span>
-<span class="fc" id="L74">                ColeccionRest.put(objeto.getnickname(),objeto);</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">        while(it.hasNext()){</span>
+<span class="fc" id="L73">            objeto=it.next();</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">            if(objeto.getClass().getSimpleName().equals(&quot;Restaurante&quot;))</span>
+<span class="fc" id="L75">                ColeccionRest.put(objeto.getnickname(),objeto);</span>
             
         }
-<span class="fc" id="L77">        return ColeccionRest;</span>
+<span class="fc" id="L78">        return ColeccionRest;</span>
    }
    
    public Map getColeccionClientes() {
         
-<span class="fc" id="L82">        Map&lt;String,Usuario&gt; ColeccionRest = new HashMap&lt;String,Usuario&gt;();</span>
-<span class="fc" id="L83">        Iterator&lt;Usuario&gt; it = ColeccionUsuarios.values().iterator();</span>
+<span class="fc" id="L83">        Map&lt;String,Usuario&gt; ColeccionRest = new HashMap&lt;String,Usuario&gt;();</span>
+<span class="fc" id="L84">        Iterator&lt;Usuario&gt; it = ColeccionUsuarios.values().iterator();</span>
         Usuario objeto;
-<span class="fc bfc" id="L85" title="All 2 branches covered.">        while(it.hasNext()){</span>
-<span class="fc" id="L86">            objeto=it.next();</span>
-<span class="fc bfc" id="L87" title="All 2 branches covered.">            if(objeto.getClass().getSimpleName().equals(&quot;Cliente&quot;))</span>
-<span class="fc" id="L88">                ColeccionRest.put(objeto.getnickname(),objeto);</span>
+<span class="fc bfc" id="L86" title="All 2 branches covered.">        while(it.hasNext()){</span>
+<span class="fc" id="L87">            objeto=it.next();</span>
+<span class="fc bfc" id="L88" title="All 2 branches covered.">            if(objeto.getClass().getSimpleName().equals(&quot;Cliente&quot;))</span>
+<span class="fc" id="L89">                ColeccionRest.put(objeto.getnickname(),objeto);</span>
         }
-<span class="fc" id="L90">        return ColeccionRest;</span>
+<span class="fc" id="L91">        return ColeccionRest;</span>
    }
    
    public Map getColeccionProductosRestaurantes(String nickname){
-<span class="fc" id="L94">        Map resultado=null;</span>
-<span class="fc" id="L95">        Iterator&lt;Usuario&gt; it = ColeccionUsuarios.values().iterator();</span>
+<span class="fc" id="L95">        Map resultado=null;</span>
+<span class="fc" id="L96">        Iterator&lt;Usuario&gt; it = ColeccionUsuarios.values().iterator();</span>
         Restaurante res;
         Usuario objeto;
-<span class="fc bfc" id="L98" title="All 2 branches covered.">        while(it.hasNext()){</span>
-<span class="fc" id="L99">            objeto=it.next();</span>
-<span class="fc bfc" id="L100" title="All 2 branches covered.">            if(objeto.getClass().getSimpleName().equals(&quot;Restaurante&quot;)){</span>
-<span class="pc bpc" id="L101" title="1 of 2 branches missed.">                if(objeto.getnickname().equals(nickname)){</span>
-<span class="fc" id="L102">                    res=(Restaurante) objeto;</span>
-<span class="fc" id="L103">                    resultado=res.getProductos();</span>
+<span class="fc bfc" id="L99" title="All 2 branches covered.">        while(it.hasNext()){</span>
+<span class="fc" id="L100">            objeto=it.next();</span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">            if(objeto.getClass().getSimpleName().equals(&quot;Restaurante&quot;)){</span>
+<span class="pc bpc" id="L102" title="1 of 2 branches missed.">                if(objeto.getnickname().equals(nickname)){</span>
+<span class="fc" id="L103">                    res=(Restaurante) objeto;</span>
+<span class="fc" id="L104">                    resultado=res.getProductos();</span>
                 }
             }
                 
                
         }
-<span class="fc" id="L109">        return resultado;</span>
+<span class="fc" id="L110">        return resultado;</span>
    }
    
    public void addProductoIndividual(String Restaurante,Individual prod){
-<span class="fc" id="L113">       this.findRestaurante(Restaurante).addProducto(prod);</span>
-<span class="fc" id="L114">   }</span>
+<span class="fc" id="L114">       this.findRestaurante(Restaurante).addProducto(prod);</span>
+<span class="fc" id="L115">   }</span>
    public void addProductoPromocion(String Restaurante,Promocion prod){
-<span class="fc" id="L116">       this.findRestaurante(Restaurante).addProducto(prod);</span>
-<span class="fc" id="L117">   }</span>
+<span class="fc" id="L117">       this.findRestaurante(Restaurante).addProducto(prod);</span>
+<span class="fc" id="L118">   }</span>
    public double buscarprecioproducto(String nickrestaurante, String nombreproducto){
        
-<span class="fc" id="L120">       return this.findRestaurante(nickrestaurante).buscarprecio(nombreproducto);</span>
+<span class="fc" id="L121">       return this.findRestaurante(nickrestaurante).buscarprecio(nombreproducto);</span>
    }
    public Producto getProductoRestaurante(String nickname,String nombreproducto){
-<span class="fc" id="L123">        Producto pro=null;</span>
+<span class="fc" id="L124">        Producto pro=null;</span>
         Restaurante res;
-<span class="fc" id="L125">        Iterator&lt;Usuario&gt; it = ColeccionUsuarios.values().iterator();</span>
+<span class="fc" id="L126">        Iterator&lt;Usuario&gt; it = ColeccionUsuarios.values().iterator();</span>
         Usuario objeto;
-<span class="fc bfc" id="L127" title="All 2 branches covered.">        while(it.hasNext()){</span>
-<span class="fc" id="L128">            objeto=it.next();</span>
-<span class="fc bfc" id="L129" title="All 2 branches covered.">            if(objeto.getClass().getSimpleName().equals(&quot;Restaurante&quot;)){</span>
-<span class="fc bfc" id="L130" title="All 2 branches covered.">                if(objeto.getnickname().equals(nickname)){</span>
-<span class="fc" id="L131">                    res=(Restaurante) objeto;</span>
-<span class="fc" id="L132">                    pro=res.getProducto(nombreproducto);</span>
+<span class="fc bfc" id="L128" title="All 2 branches covered.">        while(it.hasNext()){</span>
+<span class="fc" id="L129">            objeto=it.next();</span>
+<span class="fc bfc" id="L130" title="All 2 branches covered.">            if(objeto.getClass().getSimpleName().equals(&quot;Restaurante&quot;)){</span>
+<span class="fc bfc" id="L131" title="All 2 branches covered.">                if(objeto.getnickname().equals(nickname)){</span>
+<span class="fc" id="L132">                    res=(Restaurante) objeto;</span>
+<span class="fc" id="L133">                    pro=res.getProducto(nombreproducto);</span>
                 }
             }
                 
                
         }
-<span class="fc" id="L138">        return pro;</span>
+<span class="fc" id="L139">        return pro;</span>
    }
    public Map getCategoriasRestaurantes(String nickname){
-<span class="fc" id="L141">        Map resultado=null;</span>
-<span class="fc" id="L142">        Iterator&lt;Usuario&gt; it = ColeccionUsuarios.values().iterator();</span>
+<span class="fc" id="L142">        Map resultado=null;</span>
+<span class="fc" id="L143">        Iterator&lt;Usuario&gt; it = ColeccionUsuarios.values().iterator();</span>
         Restaurante res;
         Usuario objeto;
-<span class="fc bfc" id="L145" title="All 2 branches covered.">        while(it.hasNext()){</span>
-<span class="fc" id="L146">            objeto=it.next();</span>
-<span class="fc bfc" id="L147" title="All 2 branches covered.">            if(objeto.getClass().getSimpleName().equals(&quot;Restaurante&quot;)){</span>
-<span class="pc bpc" id="L148" title="1 of 2 branches missed.">                if(objeto.getnickname().equals(nickname)){</span>
-<span class="fc" id="L149">                    res=(Restaurante) objeto;</span>
-<span class="fc" id="L150">                    resultado=res.getCategorias();</span>
+<span class="fc bfc" id="L146" title="All 2 branches covered.">        while(it.hasNext()){</span>
+<span class="fc" id="L147">            objeto=it.next();</span>
+<span class="fc bfc" id="L148" title="All 2 branches covered.">            if(objeto.getClass().getSimpleName().equals(&quot;Restaurante&quot;)){</span>
+<span class="pc bpc" id="L149" title="1 of 2 branches missed.">                if(objeto.getnickname().equals(nickname)){</span>
+<span class="fc" id="L150">                    res=(Restaurante) objeto;</span>
+<span class="fc" id="L151">                    resultado=res.getCategorias();</span>
                 }
             }
                 
         }
-<span class="fc" id="L155">        return resultado;</span>
+<span class="fc" id="L156">        return resultado;</span>
    }
    
    //EXCEPCIONES
    public void ExcepcionDatosCliente(String Nickname,String CorreoElectronico, String Nombre, String Apellido, String Direccion, 
-           String dia, String mes, String anio) throws ExcepcionesPersonalizadas{
+           String dia, String mes, String anio, String Contraseña, String ConfirmarCont) throws ExcepcionesPersonalizadas{
        
-<span class="fc bfc" id="L162" title="All 2 branches covered.">        if(verificarnickname(Nickname)==true){</span>
-<span class="fc" id="L163">            throw new ExcepcionesPersonalizadas(&quot;Nickname ya tomado&quot;);</span>
+<span class="fc bfc" id="L163" title="All 2 branches covered.">        if(verificarnickname(Nickname)==true){</span>
+<span class="fc" id="L164">            throw new ExcepcionesPersonalizadas(&quot;Nickname ya tomado&quot;);</span>
         }
-<span class="fc bfc" id="L165" title="All 2 branches covered.">        else if(verificarcorreo(CorreoElectronico)==true){</span>
-<span class="fc" id="L166">            throw new ExcepcionesPersonalizadas(&quot;Correo Electronico ya tomado&quot;);</span>
+<span class="fc bfc" id="L166" title="All 2 branches covered.">        else if(verificarcorreo(CorreoElectronico)==true){</span>
+<span class="fc" id="L167">            throw new ExcepcionesPersonalizadas(&quot;Correo Electronico ya tomado&quot;);</span>
         }
         else{
-<span class="fc bfc" id="L169" title="All 2 branches covered.">            if(Nickname.equals(&quot;&quot;)){</span>
-<span class="fc" id="L170">                throw new ExcepcionesPersonalizadas(&quot;Ingrese un Nickname&quot;);</span>
+<span class="fc bfc" id="L170" title="All 2 branches covered.">            if(Contraseña.equals(&quot;&quot;)){</span>
+<span class="fc" id="L171">                JOptionPane.showMessageDialog(null,Contraseña);</span>
+<span class="fc" id="L172">                throw new ExcepcionesPersonalizadas(&quot;Ingrese una contraseña NO vacia&quot;);</span>
             }
-<span class="fc bfc" id="L172" title="All 2 branches covered.">            else if(CorreoElectronico.equals(&quot;&quot;)){</span>
-<span class="fc" id="L173">                throw new ExcepcionesPersonalizadas(&quot;Ingrese su Correo Electronico&quot;);</span>
+<span class="pc bpc" id="L174" title="1 of 2 branches missed.">            if(!Contraseña.equals(&quot;&quot;)){</span>
+<span class="fc bfc" id="L175" title="All 2 branches covered.">                if(!Contraseña.equals(ConfirmarCont)){</span>
+<span class="fc" id="L176">                    throw new ExcepcionesPersonalizadas(&quot;No coinciden las contraseñas&quot;);</span>
+                    }
             }
-<span class="fc bfc" id="L175" title="All 2 branches covered.">            else if(Nombre.equals(&quot;&quot;)){</span>
-<span class="fc" id="L176">                throw new ExcepcionesPersonalizadas(&quot;Ingrese su Nombre&quot;);</span>
+<span class="fc bfc" id="L179" title="All 2 branches covered.">            if(Nickname.equals(&quot;&quot;)){</span>
+<span class="fc" id="L180">                throw new ExcepcionesPersonalizadas(&quot;Ingrese un Nickname&quot;);</span>
             }
-<span class="fc bfc" id="L178" title="All 2 branches covered.">            else if(Apellido.equals(&quot;&quot;)){</span>
-<span class="fc" id="L179">                throw new ExcepcionesPersonalizadas(&quot;Ingrese su Apellido&quot;);</span>
+<span class="fc bfc" id="L182" title="All 2 branches covered.">            if(CorreoElectronico.equals(&quot;&quot;)){</span>
+<span class="fc" id="L183">                throw new ExcepcionesPersonalizadas(&quot;Ingrese su Correo Electronico&quot;);</span>
             }
-<span class="fc bfc" id="L181" title="All 2 branches covered.">            else if(Direccion.equals(&quot;&quot;)){</span>
-<span class="fc" id="L182">                throw new ExcepcionesPersonalizadas(&quot;Ingrese su Direccion&quot;);</span>
+<span class="fc bfc" id="L185" title="All 2 branches covered.">            if(Nombre.equals(&quot;&quot;)){</span>
+<span class="fc" id="L186">                throw new ExcepcionesPersonalizadas(&quot;Ingrese su Nombre&quot;);</span>
             }
-<span class="fc bfc" id="L184" title="All 2 branches covered.">            else if(dia.equals(&quot;DIA&quot;)){</span>
-<span class="fc" id="L185">                throw new ExcepcionesPersonalizadas(&quot;Ingrese su DIA de nacimiento&quot;);</span>
+<span class="fc bfc" id="L188" title="All 2 branches covered.">            if(Apellido.equals(&quot;&quot;)){</span>
+<span class="fc" id="L189">                throw new ExcepcionesPersonalizadas(&quot;Ingrese su Apellido&quot;);</span>
             }
-<span class="fc bfc" id="L187" title="All 2 branches covered.">            else if(mes.equals(&quot;MES&quot;)){</span>
-<span class="fc" id="L188">                throw new ExcepcionesPersonalizadas(&quot;Ingrese su MES de nacimiento&quot;);</span>
+<span class="fc bfc" id="L191" title="All 2 branches covered.">            if(Direccion.equals(&quot;&quot;)){</span>
+<span class="fc" id="L192">                throw new ExcepcionesPersonalizadas(&quot;Ingrese su Direccion&quot;);</span>
             }
-<span class="fc bfc" id="L190" title="All 2 branches covered.">            else if(anio.equals(&quot;AÑO&quot;)){</span>
-<span class="fc" id="L191">                throw new ExcepcionesPersonalizadas(&quot;Ingrese su AÑO de nacimiento&quot;);</span>
+            
+<span class="fc bfc" id="L195" title="All 2 branches covered.">            if(dia.equals(&quot;DIA&quot;)){</span>
+<span class="fc" id="L196">                throw new ExcepcionesPersonalizadas(&quot;Ingrese su DIA de nacimiento&quot;);</span>
             }
-<span class="pc bpc" id="L193" title="1 of 2 branches missed.">            else if(!CorreoElectronico.equals(&quot;&quot;)){</span>
-                
-<span class="fc" id="L195">                boolean arroba=false;    </span>
-<span class="fc bfc" id="L196" title="All 2 branches covered.">                for (int x=0;x&lt;CorreoElectronico.length();x++){</span>
-<span class="fc" id="L197">                    char caracter=CorreoElectronico.charAt(x);</span>
-<span class="fc bfc" id="L198" title="All 2 branches covered.">                    if(caracter=='@')</span>
-<span class="fc" id="L199">                        arroba=true;</span>
+<span class="fc bfc" id="L198" title="All 2 branches covered.">            if(mes.equals(&quot;MES&quot;)){</span>
+<span class="fc" id="L199">                throw new ExcepcionesPersonalizadas(&quot;Ingrese su MES de nacimiento&quot;);</span>
+            }
+<span class="fc bfc" id="L201" title="All 2 branches covered.">            if(anio.equals(&quot;AÑO&quot;)){</span>
+<span class="fc" id="L202">                throw new ExcepcionesPersonalizadas(&quot;Ingrese su AÑO de nacimiento&quot;);</span>
+            }
+<span class="pc bpc" id="L204" title="1 of 2 branches missed.">            if(!CorreoElectronico.equals(&quot;&quot;)){</span>
+<span class="fc" id="L205">                boolean arroba=false;    </span>
+<span class="fc bfc" id="L206" title="All 2 branches covered.">                for (int x=0;x&lt;CorreoElectronico.length();x++){</span>
+<span class="fc" id="L207">                    char caracter=CorreoElectronico.charAt(x);</span>
+<span class="fc bfc" id="L208" title="All 2 branches covered.">                    if(caracter=='@')</span>
+<span class="fc" id="L209">                        arroba=true;</span>
                 }
-<span class="fc bfc" id="L201" title="All 2 branches covered.">                if(arroba==false){        </span>
-<span class="fc" id="L202">                    throw new ExcepcionesPersonalizadas(&quot;Verifique el dominio de su correo&quot;);</span>
-                    
+<span class="fc bfc" id="L211" title="All 2 branches covered.">                if(arroba==false){        </span>
+<span class="fc" id="L212">                    throw new ExcepcionesPersonalizadas(&quot;Verifique el dominio de su correo&quot;);</span>
                 }
             }
+            
         }
-<span class="fc" id="L207">   }</span>
+<span class="fc" id="L217">   }</span>
    
    public void ExcepcionDatosCliente(String Nickname,String CorreoElectronico) throws ExcepcionesPersonalizadas{
        
-<span class="fc bfc" id="L211" title="All 2 branches covered.">        if(verificarnickname(Nickname)==true)</span>
-<span class="fc" id="L212">            throw new ExcepcionesPersonalizadas(&quot;Nickname ya tomado&quot;);</span>
-<span class="fc bfc" id="L213" title="All 2 branches covered.">        else if(verificarcorreo(CorreoElectronico)==true)</span>
-<span class="fc" id="L214">            throw new ExcepcionesPersonalizadas(&quot;Correo Electronico ya tomado&quot;);           </span>
-<span class="fc" id="L215">   }</span>
+<span class="fc bfc" id="L221" title="All 2 branches covered.">        if(verificarnickname(Nickname)==true)</span>
+<span class="fc" id="L222">            throw new ExcepcionesPersonalizadas(&quot;Nickname ya tomado&quot;);</span>
+<span class="fc bfc" id="L223" title="All 2 branches covered.">        else if(verificarcorreo(CorreoElectronico)==true)</span>
+<span class="fc" id="L224">            throw new ExcepcionesPersonalizadas(&quot;Correo Electronico ya tomado&quot;);           </span>
+<span class="fc" id="L225">   }</span>
    
-   public void ExcepcionDatosRestaurante(String Nickname,String CorreoElectronico, String Nombre, String Direccion, Map coleccion) throws ExcepcionesPersonalizadas{
-<span class="fc bfc" id="L218" title="All 2 branches covered.">        if(verificarnickname(Nickname)==true){</span>
-<span class="fc" id="L219">            throw new ExcepcionesPersonalizadas(&quot;Nickname ya tomado&quot;);</span>
+   public void ExcepcionDatosRestaurante(String Nickname,String CorreoElectronico, String Nombre, String Direccion, Map coleccion,String Contraseña, String ConfirmarCont) throws ExcepcionesPersonalizadas{
+<span class="fc bfc" id="L228" title="All 2 branches covered.">        if(verificarnickname(Nickname)==true){</span>
+<span class="fc" id="L229">            throw new ExcepcionesPersonalizadas(&quot;Nickname ya tomado&quot;);</span>
         }
-<span class="fc bfc" id="L221" title="All 2 branches covered.">        else if(verificarcorreo(CorreoElectronico)==true){</span>
-<span class="fc" id="L222">            throw new ExcepcionesPersonalizadas(&quot;Correo Electronico ya tomado&quot;);</span>
+<span class="fc bfc" id="L231" title="All 2 branches covered.">        else if(verificarcorreo(CorreoElectronico)==true){</span>
+<span class="fc" id="L232">            throw new ExcepcionesPersonalizadas(&quot;Correo Electronico ya tomado&quot;);</span>
         }
         else{
-<span class="fc bfc" id="L225" title="All 2 branches covered.">            if(Nickname.equals(&quot;&quot;)){</span>
-<span class="fc" id="L226">                throw new ExcepcionesPersonalizadas(&quot;Ingrese un Nickname&quot;);</span>
+<span class="fc bfc" id="L235" title="All 2 branches covered.">            if(Nickname.equals(&quot;&quot;)){</span>
+<span class="fc" id="L236">                throw new ExcepcionesPersonalizadas(&quot;Ingrese un Nickname&quot;);</span>
             }
-<span class="fc bfc" id="L228" title="All 2 branches covered.">            else if(CorreoElectronico.equals(&quot;&quot;)){</span>
-<span class="fc" id="L229">                throw new ExcepcionesPersonalizadas(&quot;Ingrese su Correo Electronico&quot;);</span>
+<span class="fc bfc" id="L238" title="All 2 branches covered.">            else if(CorreoElectronico.equals(&quot;&quot;)){</span>
+<span class="fc" id="L239">                throw new ExcepcionesPersonalizadas(&quot;Ingrese su Correo Electronico&quot;);</span>
             }
-<span class="fc bfc" id="L231" title="All 2 branches covered.">            else if(Nombre.equals(&quot;&quot;)){</span>
-<span class="fc" id="L232">                throw new ExcepcionesPersonalizadas(&quot;Ingrese su Nombre&quot;);</span>
+<span class="fc bfc" id="L241" title="All 2 branches covered.">            if(Nombre.equals(&quot;&quot;)){</span>
+<span class="fc" id="L242">                throw new ExcepcionesPersonalizadas(&quot;Ingrese su Nombre&quot;);</span>
             }
-<span class="fc bfc" id="L234" title="All 2 branches covered.">            else if(Direccion.equals(&quot;&quot;)){</span>
-<span class="fc" id="L235">                throw new ExcepcionesPersonalizadas(&quot;Ingrese su Direccion&quot;);</span>
+<span class="fc bfc" id="L244" title="All 2 branches covered.">            if(Direccion.equals(&quot;&quot;)){</span>
+<span class="fc" id="L245">                throw new ExcepcionesPersonalizadas(&quot;Ingrese su Direccion&quot;);</span>
             }
-<span class="fc bfc" id="L237" title="All 2 branches covered.">            else if(coleccion.isEmpty()){</span>
-<span class="fc" id="L238">                throw new ExcepcionesPersonalizadas(&quot;Ingrese al menos 1 Categoria&quot;);</span>
+<span class="fc bfc" id="L247" title="All 2 branches covered.">            if(coleccion.isEmpty()){</span>
+<span class="fc" id="L248">                throw new ExcepcionesPersonalizadas(&quot;Ingrese al menos 1 Categoria&quot;);</span>
             }
-<span class="pc bpc" id="L240" title="1 of 2 branches missed.">            else if(!CorreoElectronico.equals(&quot;&quot;)){</span>
+<span class="pc bpc" id="L250" title="1 of 2 branches missed.">            if(!CorreoElectronico.equals(&quot;&quot;)){</span>
                 
-<span class="fc" id="L242">                boolean arroba=false;    </span>
-<span class="fc bfc" id="L243" title="All 2 branches covered.">                for (int x=0;x&lt;CorreoElectronico.length();x++){</span>
-<span class="fc" id="L244">                    char caracter=CorreoElectronico.charAt(x);</span>
-<span class="fc bfc" id="L245" title="All 2 branches covered.">                    if(caracter=='@')</span>
-<span class="fc" id="L246">                        arroba=true;</span>
+<span class="fc" id="L252">                boolean arroba=false;    </span>
+<span class="fc bfc" id="L253" title="All 2 branches covered.">                for (int x=0;x&lt;CorreoElectronico.length();x++){</span>
+<span class="fc" id="L254">                    char caracter=CorreoElectronico.charAt(x);</span>
+<span class="fc bfc" id="L255" title="All 2 branches covered.">                    if(caracter=='@')</span>
+<span class="fc" id="L256">                        arroba=true;</span>
                 }
-<span class="fc bfc" id="L248" title="All 2 branches covered.">                if(arroba==false){        </span>
-<span class="fc" id="L249">                    throw new ExcepcionesPersonalizadas(&quot;Verifique el dominio de su correo&quot;);</span>
+<span class="fc bfc" id="L258" title="All 2 branches covered.">                if(arroba==false){        </span>
+<span class="fc" id="L259">                    throw new ExcepcionesPersonalizadas(&quot;Verifique el dominio de su correo&quot;);</span>
                     
                 }
             }
+<span class="fc bfc" id="L263" title="All 2 branches covered.">            if(Contraseña.equals(&quot;&quot;)){</span>
+<span class="fc" id="L264">                throw new ExcepcionesPersonalizadas(&quot;Ingrese una contraseña NO vacia&quot;);</span>
+            }
+<span class="pc bpc" id="L266" title="1 of 2 branches missed.">            if(!Contraseña.equals(&quot;&quot;)){</span>
+<span class="fc bfc" id="L267" title="All 2 branches covered.">                if(!Contraseña.equals(ConfirmarCont))</span>
+<span class="fc" id="L268">                    throw new ExcepcionesPersonalizadas(&quot;No coinciden las contraseñas&quot;);</span>
+            }
         }
-<span class="fc" id="L254">   }</span>
+<span class="fc" id="L271">   }</span>
    
     public void ExcepcionDatosRestaurante(String Nickname,String CorreoElectronico) throws ExcepcionesPersonalizadas{
-<span class="fc bfc" id="L257" title="All 2 branches covered.">        if(verificarnickname(Nickname)==true)</span>
-<span class="fc" id="L258">            throw new ExcepcionesPersonalizadas(&quot;Nickname ya tomado&quot;);</span>
-<span class="fc bfc" id="L259" title="All 2 branches covered.">        else if(verificarcorreo(CorreoElectronico)==true)</span>
-<span class="fc" id="L260">            throw new ExcepcionesPersonalizadas(&quot;Correo Electronico ya tomado&quot;);</span>
-<span class="fc" id="L261">    }</span>
+<span class="fc bfc" id="L274" title="All 2 branches covered.">        if(verificarnickname(Nickname)==true)</span>
+<span class="fc" id="L275">            throw new ExcepcionesPersonalizadas(&quot;Nickname ya tomado&quot;);</span>
+<span class="fc bfc" id="L276" title="All 2 branches covered.">        else if(verificarcorreo(CorreoElectronico)==true)</span>
+<span class="fc" id="L277">            throw new ExcepcionesPersonalizadas(&quot;Correo Electronico ya tomado&quot;);</span>
+<span class="fc" id="L278">    }</span>
   }
     
     

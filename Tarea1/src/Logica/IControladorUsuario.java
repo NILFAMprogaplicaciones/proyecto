@@ -36,8 +36,8 @@ public abstract interface IControladorUsuario {
     public abstract Map getCategoriasRestaurantes(String nickname);
     public abstract void ExcepcionCategoria(String Categoria)throws ExcepcionesPersonalizadas;
     public abstract void ExcepcionDatosCliente(String Nickname,String CorreoElectronico, String Nombre, String Apellido, String Direccion, 
-           String dia, String mes, String anio) throws ExcepcionesPersonalizadas;
-    public abstract void ExcepcionDatosRestaurante(String Nickname,String CorreoElectronico, String Nombre, String Direccion, Map coleccion) 
+           String dia, String mes, String anio, String Contraseña, String ConfirmarCont) throws ExcepcionesPersonalizadas;
+    public abstract void ExcepcionDatosRestaurante(String Nickname,String CorreoElectronico, String Nombre, String Direccion, Map coleccion, String Contraseña, String ConfirmarCont) 
             throws ExcepcionesPersonalizadas;
     public abstract Categoria getCategoria(String cate);
     public abstract Producto getProductoRestaurante(String nombrerestaurante, String nombreproducto);

@@ -100,17 +100,17 @@ public class ControladorUsuario implements IControladorUsuario  {
     }
     @Override
     public void ExcepcionDatosCliente(String Nickname,String CorreoElectronico, String Nombre, String Apellido, String Direccion, 
-           String dia, String mes, String anio) throws ExcepcionesPersonalizadas{
+           String dia, String mes, String anio, String Contraseña, String ConfirmarCont) throws ExcepcionesPersonalizadas{
         
         ManejadorUsuario MU = ManejadorUsuario.getinstance();
-        MU.ExcepcionDatosCliente(Nickname, CorreoElectronico, Nombre, Apellido, Direccion, dia, mes, anio);
+        MU.ExcepcionDatosCliente(Nickname, CorreoElectronico, Nombre, Apellido, Direccion, dia, mes, anio, Contraseña, ConfirmarCont);
     }
     @Override
-    public void ExcepcionDatosRestaurante(String Nickname,String CorreoElectronico, String Nombre, String Direccion, Map coleccion) 
+    public void ExcepcionDatosRestaurante(String Nickname,String CorreoElectronico, String Nombre, String Direccion, Map coleccion, String Contraseña, String ConfirmarCont) 
             throws ExcepcionesPersonalizadas{
         
         ManejadorUsuario MU = ManejadorUsuario.getinstance();
-        MU.ExcepcionDatosRestaurante(Nickname, CorreoElectronico, Nombre, Direccion, coleccion);
+        MU.ExcepcionDatosRestaurante(Nickname, CorreoElectronico, Nombre, Direccion, coleccion, Contraseña,ConfirmarCont);
     }
     @Override
     public Categoria getCategoria(String cate){

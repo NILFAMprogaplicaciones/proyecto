@@ -167,52 +167,62 @@ public class ControladorUsuarioTest {
     public void testExcepcionDatosCliente() throws Exception {
         testCaso_Registro_Cliente();
         try{
-            ICU.ExcepcionDatosCliente("costas", "L", "L", "L", "L", "L", "L", "L");
+            ICU.ExcepcionDatosCliente("costas", "L", "L", "L", "L", "L", "L", "L", "L", "L");
         }catch(ExcepcionesPersonalizadas ep){}
         
         try{
-            ICU.ExcepcionDatosCliente("L", "gcostas@gmail.com", "L", "L", "L", "L", "L", "L");
+            ICU.ExcepcionDatosCliente("L", "gcostas@gmail.com", "L", "L", "L", "L", "L", "L", "L", "L");
         }catch(ExcepcionesPersonalizadas ep){}
         
         try{
-            ICU.ExcepcionDatosCliente("", "L@", "L", "L", "L", "L", "L", "L");
+            ICU.ExcepcionDatosCliente("", "L@", "L", "L", "L", "L", "L", "L", "L", "L");
         }catch(ExcepcionesPersonalizadas ep){}
         
         try{
-            ICU.ExcepcionDatosCliente("L", "", "L", "L", "L", "L", "L", "L");
+            ICU.ExcepcionDatosCliente("L", "", "L", "L", "L", "L", "L", "L", "L", "L");
         }catch(ExcepcionesPersonalizadas ep){}
         
         try{
-            ICU.ExcepcionDatosCliente("L", "L@", "", "L", "L", "L", "L", "L");
+            ICU.ExcepcionDatosCliente("L", "L@", "", "L", "L", "L", "L", "L", "L", "L");
         }catch(ExcepcionesPersonalizadas ep){}
         
         try{
-            ICU.ExcepcionDatosCliente("L", "L@", "L", "", "L", "L", "L", "L");
+            ICU.ExcepcionDatosCliente("L", "L@", "L", "", "L", "L", "L", "L", "L", "L");
         }catch(ExcepcionesPersonalizadas ep){}
         
         try{
-            ICU.ExcepcionDatosCliente("L", "L@", "L", "L", "", "L", "L", "L");
+            ICU.ExcepcionDatosCliente("L", "L@", "L", "L", "", "L", "L", "L", "L", "L");
         }catch(ExcepcionesPersonalizadas ep){}
         
         try{
-            ICU.ExcepcionDatosCliente("L", "L@", "L", "L", "L", "DIA", "L", "L");
+            ICU.ExcepcionDatosCliente("L", "L@", "L", "L", "L", "DIA", "L", "L", "L", "L");
         }catch(ExcepcionesPersonalizadas ep){}
         
         try{
-            ICU.ExcepcionDatosCliente("L", "L@", "L", "L", "L", "L", "MES", "L");
+            ICU.ExcepcionDatosCliente("L", "L@", "L", "L", "L", "L", "MES", "L", "L", "L");
         }catch(ExcepcionesPersonalizadas ep){}
         
         try{
-            ICU.ExcepcionDatosCliente("L", "L@", "L", "L", "L", "L", "L", "AÑO");
+            ICU.ExcepcionDatosCliente("L", "L@", "L", "L", "L", "L", "L", "AÑO", "L", "L");
         }catch(ExcepcionesPersonalizadas ep){}
         
         try{
-            ICU.ExcepcionDatosCliente("L", "L", "L", "L", "L", "L", "L", "L");
+            ICU.ExcepcionDatosCliente("L", "L", "L", "L", "L", "L", "L", "L", "L", "L");
         }catch(ExcepcionesPersonalizadas ep){}
         
         try{
-            ICU.ExcepcionDatosCliente("L", "L@", "L", "L", "L", "L", "L", "L");
+            ICU.ExcepcionDatosCliente("L", "L@", "L", "L", "L", "L", "L", "L", "", "L");
         }catch(ExcepcionesPersonalizadas ep){}
+        
+        try{
+            ICU.ExcepcionDatosCliente("L", "L@", "L", "L", "L", "L", "L", "L", "L", "");
+        }catch(ExcepcionesPersonalizadas ep){} 
+        
+        try{
+            ICU.ExcepcionDatosCliente("L", "L@", "L", "L", "L", "L", "L", "L", "L", "L");
+        }catch(ExcepcionesPersonalizadas ep){}
+        
+        
         
     }
 
@@ -223,44 +233,58 @@ public class ControladorUsuarioTest {
         Map<String,Categoria> coleccion=new HashMap<>(); 
         
         try{
-            ICU.ExcepcionDatosRestaurante("mera", "L", "L", "L", coleccion);
+            ICU.ExcepcionDatosRestaurante("mera", "L", "L", "L", coleccion, "L", "L");
         }catch(ExcepcionesPersonalizadas ep){}
         
         try{
-            ICU.ExcepcionDatosRestaurante("L", "mera@hotmail.com", "L", "L", coleccion);
+            ICU.ExcepcionDatosRestaurante("L", "mera@hotmail.com", "L", "L", coleccion, "L", "L");
         }catch(ExcepcionesPersonalizadas ep){}
         
         try{
-            ICU.ExcepcionDatosRestaurante("", "L@", "L", "L", coleccion);
+            ICU.ExcepcionDatosRestaurante("", "L@", "L", "L", coleccion, "L", "L");
         }catch(ExcepcionesPersonalizadas ep){}
         
         try{
-            ICU.ExcepcionDatosRestaurante("L", "", "L", "L", coleccion);
+            ICU.ExcepcionDatosRestaurante("L", "", "L", "L", coleccion, "L", "L");
         }catch(ExcepcionesPersonalizadas ep){}
         
         try{
-            ICU.ExcepcionDatosRestaurante("L", "L@", "", "L", coleccion);
+            ICU.ExcepcionDatosRestaurante("L", "L@", "", "L", coleccion, "L", "L");
         }catch(ExcepcionesPersonalizadas ep){}
         
         try{
-            ICU.ExcepcionDatosRestaurante("L", "L@", "L", "", coleccion);
+            ICU.ExcepcionDatosRestaurante("L", "L@", "L", "", coleccion, "L", "L");
         }catch(ExcepcionesPersonalizadas ep){}
         
         try{
-            ICU.ExcepcionDatosRestaurante("L", "L@", "L", "L", coleccion);
-        }catch(ExcepcionesPersonalizadas ep){}
-        
-        try{
-            Categoria c=new Categoria("cate");
-            coleccion.put(c.getnombre(), c);
-            ICU.ExcepcionDatosRestaurante("L", "L", "L", "L", coleccion);
+            ICU.ExcepcionDatosRestaurante("L", "L@", "L", "L", coleccion, "L", "L");
         }catch(ExcepcionesPersonalizadas ep){}
         
         try{
             Categoria c=new Categoria("cate");
             coleccion.put(c.getnombre(), c);
-            ICU.ExcepcionDatosRestaurante("L", "L@", "L", "L", coleccion);
+            ICU.ExcepcionDatosRestaurante("L", "L", "L", "L", coleccion, "L", "L");
         }catch(ExcepcionesPersonalizadas ep){}
+        
+        try{
+            Categoria c=new Categoria("cate");
+            coleccion.put(c.getnombre(), c);
+            ICU.ExcepcionDatosRestaurante("L", "L@", "L", "L", coleccion, "", "L");
+        }catch(ExcepcionesPersonalizadas ep){}
+        
+        try{
+            Categoria c=new Categoria("cate");
+            coleccion.put(c.getnombre(), c);
+            ICU.ExcepcionDatosRestaurante("L", "L@", "L", "L", coleccion, "L", "");
+        }catch(ExcepcionesPersonalizadas ep){}
+        
+        try{
+            Categoria c=new Categoria("cate");
+            coleccion.put(c.getnombre(), c);
+            ICU.ExcepcionDatosRestaurante("L", "L@", "L", "L", coleccion, "L", "L");
+        }catch(ExcepcionesPersonalizadas ep){}
+        
+        
     }
 
     

@@ -72,233 +72,269 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
 <span class="nc" id="L72">        Cancelar = new javax.swing.JButton();</span>
 <span class="nc" id="L73">        SeleccionarImagen = new javax.swing.JButton();</span>
 <span class="nc" id="L74">        Registrar = new javax.swing.JButton();</span>
+<span class="nc" id="L75">        Apellido1 = new javax.swing.JLabel();</span>
+<span class="nc" id="L76">        txtCotraseña = new javax.swing.JTextField();</span>
+<span class="nc" id="L77">        Apellido2 = new javax.swing.JLabel();</span>
+<span class="nc" id="L78">        txtConfirmarCont = new javax.swing.JTextField();</span>
 
-<span class="nc" id="L76">        setClosable(true);</span>
-<span class="nc" id="L77">        setIconifiable(true);</span>
-<span class="nc" id="L78">        setTitle(&quot;Registrar Cliente&quot;);</span>
+<span class="nc" id="L80">        setClosable(true);</span>
+<span class="nc" id="L81">        setIconifiable(true);</span>
+<span class="nc" id="L82">        setTitle(&quot;Registrar Cliente&quot;);</span>
 
-<span class="nc" id="L80">        Nickname.setText(&quot;Nickname&quot;);</span>
+<span class="nc" id="L84">        Nickname.setText(&quot;Nickname&quot;);</span>
 
-<span class="nc" id="L82">        IngreseDatosCliente.setText(&quot;Ingrese los siguientes datos:&quot;);</span>
+<span class="nc" id="L86">        IngreseDatosCliente.setText(&quot;Ingrese los siguientes datos:&quot;);</span>
 
-<span class="nc" id="L84">        FechaNacimiento.setText(&quot;Fecha Nacimiento&quot;);</span>
+<span class="nc" id="L88">        FechaNacimiento.setText(&quot;Fecha Nacimiento&quot;);</span>
 
-<span class="nc" id="L86">        Direccion.setText(&quot;Direccion&quot;);</span>
+<span class="nc" id="L90">        Direccion.setText(&quot;Direccion&quot;);</span>
 
-<span class="nc" id="L88">        Apellido.setText(&quot;Apellido&quot;);</span>
+<span class="nc" id="L92">        Apellido.setText(&quot;Apellido&quot;);</span>
 
-<span class="nc" id="L90">        CorreoElectronico.setText(&quot;Correo Electronico&quot;);</span>
+<span class="nc" id="L94">        CorreoElectronico.setText(&quot;Correo Electronico&quot;);</span>
 
-<span class="nc" id="L92">        Nombre.setText(&quot;Nombre&quot;);</span>
+<span class="nc" id="L96">        Nombre.setText(&quot;Nombre&quot;);</span>
 
-<span class="nc" id="L94">        txtNickname.addActionListener(new java.awt.event.ActionListener() {</span>
+<span class="nc" id="L98">        txtNickname.addActionListener(new java.awt.event.ActionListener() {</span>
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<span class="nc" id="L96">                txtNicknameActionPerformed(evt);</span>
-<span class="nc" id="L97">            }</span>
+<span class="nc" id="L100">                txtNicknameActionPerformed(evt);</span>
+<span class="nc" id="L101">            }</span>
         });
 
-<span class="nc" id="L100">        txtCorreoElectronico.addActionListener(new java.awt.event.ActionListener() {</span>
+<span class="nc" id="L104">        txtCorreoElectronico.addActionListener(new java.awt.event.ActionListener() {</span>
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<span class="nc" id="L102">                txtCorreoElectronicoActionPerformed(evt);</span>
-<span class="nc" id="L103">            }</span>
+<span class="nc" id="L106">                txtCorreoElectronicoActionPerformed(evt);</span>
+<span class="nc" id="L107">            }</span>
         });
 
-<span class="nc" id="L106">        txtNombre.addActionListener(new java.awt.event.ActionListener() {</span>
+<span class="nc" id="L110">        txtNombre.addActionListener(new java.awt.event.ActionListener() {</span>
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<span class="nc" id="L108">                txtNombreActionPerformed(evt);</span>
-<span class="nc" id="L109">            }</span>
+<span class="nc" id="L112">                txtNombreActionPerformed(evt);</span>
+<span class="nc" id="L113">            }</span>
         });
 
-<span class="nc" id="L112">        txtApellido.addActionListener(new java.awt.event.ActionListener() {</span>
+<span class="nc" id="L116">        txtApellido.addActionListener(new java.awt.event.ActionListener() {</span>
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<span class="nc" id="L114">                txtApellidoActionPerformed(evt);</span>
-<span class="nc" id="L115">            }</span>
+<span class="nc" id="L118">                txtApellidoActionPerformed(evt);</span>
+<span class="nc" id="L119">            }</span>
         });
 
-<span class="nc" id="L118">        txtDireccion.addActionListener(new java.awt.event.ActionListener() {</span>
+<span class="nc" id="L122">        txtDireccion.addActionListener(new java.awt.event.ActionListener() {</span>
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<span class="nc" id="L120">                txtDireccionActionPerformed(evt);</span>
-<span class="nc" id="L121">            }</span>
+<span class="nc" id="L124">                txtDireccionActionPerformed(evt);</span>
+<span class="nc" id="L125">            }</span>
         });
 
-<span class="nc" id="L124">        anio.setModel(new javax.swing.DefaultComboBoxModel(new String[] { &quot;AÑO&quot; }));</span>
-<span class="nc" id="L125">        anio.addActionListener(new java.awt.event.ActionListener() {</span>
+<span class="nc" id="L128">        anio.setModel(new javax.swing.DefaultComboBoxModel(new String[] { &quot;AÑO&quot; }));</span>
+<span class="nc" id="L129">        anio.addActionListener(new java.awt.event.ActionListener() {</span>
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<span class="nc" id="L127">                anioActionPerformed(evt);</span>
-<span class="nc" id="L128">            }</span>
+<span class="nc" id="L131">                anioActionPerformed(evt);</span>
+<span class="nc" id="L132">            }</span>
         });
 
-<span class="nc" id="L131">        mes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { &quot;MES&quot;, &quot;01&quot;, &quot;02&quot;, &quot;03&quot;, &quot;04&quot;, &quot;05&quot;, &quot;06&quot;, &quot;07&quot;, &quot;08&quot;, &quot;09&quot;, &quot;10&quot;, &quot;11&quot;, &quot;12&quot; }));</span>
-<span class="nc" id="L132">        mes.addActionListener(new java.awt.event.ActionListener() {</span>
+<span class="nc" id="L135">        mes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { &quot;MES&quot;, &quot;01&quot;, &quot;02&quot;, &quot;03&quot;, &quot;04&quot;, &quot;05&quot;, &quot;06&quot;, &quot;07&quot;, &quot;08&quot;, &quot;09&quot;, &quot;10&quot;, &quot;11&quot;, &quot;12&quot; }));</span>
+<span class="nc" id="L136">        mes.addActionListener(new java.awt.event.ActionListener() {</span>
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<span class="nc" id="L134">                mesActionPerformed(evt);</span>
-<span class="nc" id="L135">            }</span>
+<span class="nc" id="L138">                mesActionPerformed(evt);</span>
+<span class="nc" id="L139">            }</span>
         });
 
-<span class="nc" id="L138">        dia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { &quot;DIA&quot;, &quot;01&quot;, &quot;02&quot;, &quot;03&quot;, &quot;04&quot;, &quot;05&quot;, &quot;06&quot;, &quot;07&quot;, &quot;08&quot;, &quot;09&quot;, &quot;10&quot;, &quot;11&quot;, &quot;12&quot;, &quot;13&quot;, &quot;14&quot;, &quot;15&quot;, &quot;16&quot;, &quot;17&quot;, &quot;18&quot;, &quot;19&quot;, &quot;20&quot;, &quot;21&quot;, &quot;22&quot;, &quot;23&quot;, &quot;24&quot;, &quot;25&quot;, &quot;26&quot;, &quot;27&quot;, &quot;28&quot;, &quot;29&quot;, &quot;30&quot;, &quot;31&quot; }));</span>
-<span class="nc" id="L139">        dia.addActionListener(new java.awt.event.ActionListener() {</span>
+<span class="nc" id="L142">        dia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { &quot;DIA&quot;, &quot;01&quot;, &quot;02&quot;, &quot;03&quot;, &quot;04&quot;, &quot;05&quot;, &quot;06&quot;, &quot;07&quot;, &quot;08&quot;, &quot;09&quot;, &quot;10&quot;, &quot;11&quot;, &quot;12&quot;, &quot;13&quot;, &quot;14&quot;, &quot;15&quot;, &quot;16&quot;, &quot;17&quot;, &quot;18&quot;, &quot;19&quot;, &quot;20&quot;, &quot;21&quot;, &quot;22&quot;, &quot;23&quot;, &quot;24&quot;, &quot;25&quot;, &quot;26&quot;, &quot;27&quot;, &quot;28&quot;, &quot;29&quot;, &quot;30&quot;, &quot;31&quot; }));</span>
+<span class="nc" id="L143">        dia.addActionListener(new java.awt.event.ActionListener() {</span>
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<span class="nc" id="L141">                diaActionPerformed(evt);</span>
-<span class="nc" id="L142">            }</span>
+<span class="nc" id="L145">                diaActionPerformed(evt);</span>
+<span class="nc" id="L146">            }</span>
         });
 
-<span class="nc" id="L145">        LabelImagen.setText(&quot;IMAGEN&quot;);</span>
-<span class="nc" id="L146">        LabelImagen.setBorder(javax.swing.BorderFactory.createEtchedBorder());</span>
+<span class="nc" id="L149">        LabelImagen.setText(&quot;IMAGEN&quot;);</span>
+<span class="nc" id="L150">        LabelImagen.setBorder(javax.swing.BorderFactory.createEtchedBorder());</span>
 
-<span class="nc" id="L148">        Cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagenes/back_alt.png&quot;))); // NOI18N</span>
-<span class="nc" id="L149">        Cancelar.addActionListener(new java.awt.event.ActionListener() {</span>
+<span class="nc" id="L152">        Cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagenes/back_alt.png&quot;))); // NOI18N</span>
+<span class="nc" id="L153">        Cancelar.addActionListener(new java.awt.event.ActionListener() {</span>
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<span class="nc" id="L151">                CancelarActionPerformed(evt);</span>
-<span class="nc" id="L152">            }</span>
+<span class="nc" id="L155">                CancelarActionPerformed(evt);</span>
+<span class="nc" id="L156">            }</span>
         });
 
-<span class="nc" id="L155">        SeleccionarImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagenes/forward.png&quot;))); // NOI18N</span>
-<span class="nc" id="L156">        SeleccionarImagen.addActionListener(new java.awt.event.ActionListener() {</span>
+<span class="nc" id="L159">        SeleccionarImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagenes/forward.png&quot;))); // NOI18N</span>
+<span class="nc" id="L160">        SeleccionarImagen.addActionListener(new java.awt.event.ActionListener() {</span>
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<span class="nc" id="L158">                SeleccionarImagenActionPerformed(evt);</span>
-<span class="nc" id="L159">            }</span>
+<span class="nc" id="L162">                SeleccionarImagenActionPerformed(evt);</span>
+<span class="nc" id="L163">            }</span>
         });
 
-<span class="nc" id="L162">        Registrar.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagenes/plus.png&quot;))); // NOI18N</span>
-<span class="nc" id="L163">        Registrar.addActionListener(new java.awt.event.ActionListener() {</span>
+<span class="nc" id="L166">        Registrar.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagenes/plus.png&quot;))); // NOI18N</span>
+<span class="nc" id="L167">        Registrar.addActionListener(new java.awt.event.ActionListener() {</span>
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<span class="nc" id="L165">                RegistrarActionPerformed(evt);</span>
-<span class="nc" id="L166">            }</span>
+<span class="nc" id="L169">                RegistrarActionPerformed(evt);</span>
+<span class="nc" id="L170">            }</span>
         });
 
-<span class="nc" id="L169">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
-<span class="nc" id="L170">        getContentPane().setLayout(layout);</span>
-<span class="nc" id="L171">        layout.setHorizontalGroup(</span>
-<span class="nc" id="L172">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L173">            .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L174">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L175">                    .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L176">                        .addGap(137, 137, 137)</span>
-<span class="nc" id="L177">                        .addComponent(IngreseDatosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
-<span class="nc" id="L178">                    .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L179">                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L180">                            .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L181">                                .addGap(21, 21, 21)</span>
-<span class="nc" id="L182">                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L183">                                    .addComponent(CorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L184">                                    .addComponent(Nickname, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L185">                                    .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L186">                                    .addComponent(Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L187">                                    .addComponent(Direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L188">                                    .addComponent(FechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L189">                                    .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L190">                                        .addGap(22, 22, 22)</span>
-<span class="nc" id="L191">                                        .addComponent(SeleccionarImagen)))</span>
-<span class="nc" id="L192">                                .addGap(2, 2, 2))</span>
-<span class="nc" id="L193">                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()</span>
-<span class="nc" id="L194">                                .addContainerGap()</span>
-<span class="nc" id="L195">                                .addComponent(Cancelar)</span>
-<span class="nc" id="L196">                                .addGap(91, 91, 91)))</span>
-<span class="nc" id="L197">                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)</span>
-<span class="nc" id="L198">                            .addComponent(txtCorreoElectronico, javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L199">                            .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L200">                            .addComponent(txtApellido, javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L201">                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()</span>
-<span class="nc" id="L202">                                .addComponent(dia, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L203">                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
-<span class="nc" id="L204">                                .addComponent(mes, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L205">                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
-<span class="nc" id="L206">                                .addComponent(anio, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
-<span class="nc" id="L207">                            .addComponent(txtDireccion)</span>
-<span class="nc" id="L208">                            .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L209">                            .addComponent(LabelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)</span>
-<span class="nc" id="L210">                            .addComponent(txtNickname))))</span>
-<span class="nc" id="L211">                .addContainerGap(28, Short.MAX_VALUE))</span>
+<span class="nc" id="L173">        Apellido1.setText(&quot;Contraseña&quot;);</span>
+
+<span class="nc" id="L175">        txtCotraseña.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L177">                txtCotraseñaActionPerformed(evt);</span>
+<span class="nc" id="L178">            }</span>
+        });
+
+<span class="nc" id="L181">        Apellido2.setText(&quot;Confirmar Cont.&quot;);</span>
+
+<span class="nc" id="L183">        txtConfirmarCont.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L185">                txtConfirmarContActionPerformed(evt);</span>
+<span class="nc" id="L186">            }</span>
+        });
+
+<span class="nc" id="L189">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
+<span class="nc" id="L190">        getContentPane().setLayout(layout);</span>
+<span class="nc" id="L191">        layout.setHorizontalGroup(</span>
+<span class="nc" id="L192">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L193">            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L194">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L195">                    .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L196">                        .addGap(137, 137, 137)</span>
+<span class="nc" id="L197">                        .addComponent(IngreseDatosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L198">                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)</span>
+<span class="nc" id="L199">                        .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L200">                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L201">                                .addComponent(FechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L202">                                .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L203">                                    .addGap(22, 22, 22)</span>
+<span class="nc" id="L204">                                    .addComponent(SeleccionarImagen)))</span>
+<span class="nc" id="L205">                            .addGap(2, 2, 2)</span>
+<span class="nc" id="L206">                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)</span>
+<span class="nc" id="L207">                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()</span>
+<span class="nc" id="L208">                                    .addComponent(dia, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L209">                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
+<span class="nc" id="L210">                                    .addComponent(mes, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L211">                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
+<span class="nc" id="L212">                                    .addComponent(anio, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L213">                                .addComponent(LabelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)))</span>
+<span class="nc" id="L214">                        .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L215">                            .addGap(21, 21, 21)</span>
+<span class="nc" id="L216">                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)</span>
+<span class="nc" id="L217">                                .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L218">                                    .addComponent(Cancelar)</span>
+<span class="nc" id="L219">                                    .addGap(89, 89, 89)</span>
+<span class="nc" id="L220">                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)</span>
+<span class="nc" id="L221">                                        .addComponent(txtCorreoElectronico, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)</span>
+<span class="nc" id="L222">                                        .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L223">                                        .addComponent(txtApellido, javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L224">                                        .addComponent(Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L225">                                        .addComponent(txtNickname)</span>
+<span class="nc" id="L226">                                        .addComponent(txtCotraseña)</span>
+<span class="nc" id="L227">                                        .addComponent(txtConfirmarCont)))</span>
+<span class="nc" id="L228">                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L229">                                    .addComponent(CorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L230">                                    .addComponent(Nickname, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L231">                                    .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L232">                                    .addComponent(Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L233">                                    .addComponent(Apellido1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L234">                                    .addComponent(Apellido2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L235">                                    .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L236">                                        .addComponent(Direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L237">                                        .addGap(15, 15, 15)</span>
+<span class="nc" id="L238">                                        .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)))))))</span>
+<span class="nc" id="L239">                .addGap(15, 15, 15))</span>
         );
-<span class="nc" id="L213">        layout.setVerticalGroup(</span>
-<span class="nc" id="L214">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L215">            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()</span>
-<span class="nc" id="L216">                .addGap(16, 16, 16)</span>
-<span class="nc" id="L217">                .addComponent(IngreseDatosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L218">                .addGap(18, 18, 18)</span>
-<span class="nc" id="L219">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
-<span class="nc" id="L220">                    .addComponent(txtNickname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L221">                    .addComponent(Nickname))</span>
-<span class="nc" id="L222">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
-<span class="nc" id="L223">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
-<span class="nc" id="L224">                    .addComponent(txtCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L225">                    .addComponent(CorreoElectronico))</span>
-<span class="nc" id="L226">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
-<span class="nc" id="L227">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
-<span class="nc" id="L228">                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L229">                    .addComponent(Nombre))</span>
-<span class="nc" id="L230">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
-<span class="nc" id="L231">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
-<span class="nc" id="L232">                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L233">                    .addComponent(Apellido))</span>
-<span class="nc" id="L234">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
-<span class="nc" id="L235">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
-<span class="nc" id="L236">                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L237">                    .addComponent(Direccion))</span>
-<span class="nc" id="L238">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
-<span class="nc" id="L239">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
-<span class="nc" id="L240">                    .addComponent(anio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L241">                    .addComponent(mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L242">                    .addComponent(dia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L243">                    .addComponent(FechaNacimiento))</span>
-<span class="nc" id="L244">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L245">                    .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L246">                        .addGap(61, 61, 61)</span>
-<span class="nc" id="L247">                        .addComponent(SeleccionarImagen))</span>
-<span class="nc" id="L248">                    .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L249">                        .addGap(18, 18, 18)</span>
-<span class="nc" id="L250">                        .addComponent(LabelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))</span>
-<span class="nc" id="L251">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)</span>
-<span class="nc" id="L252">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)</span>
-<span class="nc" id="L253">                    .addComponent(Registrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
-<span class="nc" id="L254">                    .addComponent(Cancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))</span>
-<span class="nc" id="L255">                .addContainerGap())</span>
+<span class="nc" id="L241">        layout.setVerticalGroup(</span>
+<span class="nc" id="L242">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L243">            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()</span>
+<span class="nc" id="L244">                .addGap(16, 16, 16)</span>
+<span class="nc" id="L245">                .addComponent(IngreseDatosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L246">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L247">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L248">                    .addComponent(txtNickname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L249">                    .addComponent(Nickname))</span>
+<span class="nc" id="L250">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L251">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L252">                    .addComponent(txtCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L253">                    .addComponent(CorreoElectronico))</span>
+<span class="nc" id="L254">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L255">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L256">                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L257">                    .addComponent(Nombre))</span>
+<span class="nc" id="L258">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L259">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L260">                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L261">                    .addComponent(Apellido))</span>
+<span class="nc" id="L262">                .addGap(10, 10, 10)</span>
+<span class="nc" id="L263">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L264">                    .addComponent(Apellido1)</span>
+<span class="nc" id="L265">                    .addComponent(txtCotraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L266">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L267">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L268">                    .addComponent(Apellido2)</span>
+<span class="nc" id="L269">                    .addComponent(txtConfirmarCont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L270">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L271">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L272">                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L273">                    .addComponent(Direccion))</span>
+<span class="nc" id="L274">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)</span>
+<span class="nc" id="L275">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L276">                    .addComponent(anio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L277">                    .addComponent(mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L278">                    .addComponent(dia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L279">                    .addComponent(FechaNacimiento))</span>
+<span class="nc" id="L280">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L281">                    .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L282">                        .addGap(61, 61, 61)</span>
+<span class="nc" id="L283">                        .addComponent(SeleccionarImagen))</span>
+<span class="nc" id="L284">                    .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L285">                        .addGap(18, 18, 18)</span>
+<span class="nc" id="L286">                        .addComponent(LabelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))</span>
+<span class="nc" id="L287">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L288">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)</span>
+<span class="nc" id="L289">                    .addComponent(Registrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L290">                    .addComponent(Cancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))</span>
+<span class="nc" id="L291">                .addContainerGap())</span>
         );
 
-<span class="nc" id="L258">        pack();</span>
-<span class="nc" id="L259">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+<span class="nc" id="L294">        pack();</span>
+<span class="nc" id="L295">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
 
     private void txtNicknameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNicknameActionPerformed
         // TODO add your handling code here:
-<span class="nc" id="L263">    }//GEN-LAST:event_txtNicknameActionPerformed</span>
+<span class="nc" id="L299">    }//GEN-LAST:event_txtNicknameActionPerformed</span>
 
     private void txtCorreoElectronicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoElectronicoActionPerformed
         // TODO add your handling code here:false
-<span class="nc" id="L267">    }//GEN-LAST:event_txtCorreoElectronicoActionPerformed</span>
+<span class="nc" id="L303">    }//GEN-LAST:event_txtCorreoElectronicoActionPerformed</span>
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
-<span class="nc" id="L271">    }//GEN-LAST:event_txtNombreActionPerformed</span>
+<span class="nc" id="L307">    }//GEN-LAST:event_txtNombreActionPerformed</span>
 
     private void txtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoActionPerformed
         // TODO add your handling code here:
-<span class="nc" id="L275">    }//GEN-LAST:event_txtApellidoActionPerformed</span>
+<span class="nc" id="L311">    }//GEN-LAST:event_txtApellidoActionPerformed</span>
 
     private void txtDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionActionPerformed
         // TODO add your handling code here:
-<span class="nc" id="L279">    }//GEN-LAST:event_txtDireccionActionPerformed</span>
+<span class="nc" id="L315">    }//GEN-LAST:event_txtDireccionActionPerformed</span>
 
     private void anioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anioActionPerformed
         
-<span class="nc" id="L283">        a=(String) anio.getSelectedItem();</span>
-<span class="nc" id="L284">    }//GEN-LAST:event_anioActionPerformed</span>
+<span class="nc" id="L319">        a=(String) anio.getSelectedItem();</span>
+<span class="nc" id="L320">    }//GEN-LAST:event_anioActionPerformed</span>
 
     private void mesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mesActionPerformed
         
-<span class="nc" id="L288">        m=(String)mes.getSelectedItem();</span>
-<span class="nc" id="L289">    }//GEN-LAST:event_mesActionPerformed</span>
+<span class="nc" id="L324">        m=(String)mes.getSelectedItem();</span>
+<span class="nc" id="L325">    }//GEN-LAST:event_mesActionPerformed</span>
 
     private void diaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_diaActionPerformed
-<span class="nc" id="L292">        d=(String)dia.getSelectedItem();</span>
-<span class="nc" id="L293">    }//GEN-LAST:event_diaActionPerformed</span>
+<span class="nc" id="L328">        d=(String)dia.getSelectedItem();</span>
+<span class="nc" id="L329">    }//GEN-LAST:event_diaActionPerformed</span>
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
         //NO LIMPIO NADA YA QUE CADA VES QUE LLAMO EL INTERNAL REALIZO UN NEW
-<span class="nc" id="L297">        this.dispose();</span>
+<span class="nc" id="L333">        this.dispose();</span>
         
-<span class="nc" id="L299">    }//GEN-LAST:event_CancelarActionPerformed</span>
+<span class="nc" id="L335">    }//GEN-LAST:event_CancelarActionPerformed</span>
 
-<span class="nc" id="L301">    File fichero=null;</span>
+<span class="nc" id="L337">    File fichero=null;</span>
     ImageIcon icon;
     Icon icono;
     private void SeleccionarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarImagenActionPerformed
@@ -306,56 +342,68 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
         
         int resultado;
 
-<span class="nc" id="L309">        CargarFoto ventana = new CargarFoto();</span>
-<span class="nc" id="L310">        FileNameExtensionFilter filtro = new FileNameExtensionFilter(&quot;JPG y PNG&quot;,&quot;jpg&quot;,&quot;png&quot;);</span>
-<span class="nc" id="L311">        ventana.FileChooser.setFileFilter(filtro);</span>
-<span class="nc" id="L312">        resultado= ventana.FileChooser.showOpenDialog(null);</span>
+<span class="nc" id="L345">        CargarFoto ventana = new CargarFoto();</span>
+<span class="nc" id="L346">        FileNameExtensionFilter filtro = new FileNameExtensionFilter(&quot;JPG y PNG&quot;,&quot;jpg&quot;,&quot;png&quot;);</span>
+<span class="nc" id="L347">        ventana.FileChooser.setFileFilter(filtro);</span>
+<span class="nc" id="L348">        resultado= ventana.FileChooser.showOpenDialog(null);</span>
 
-<span class="nc bnc" id="L314" title="All 2 branches missed.">        if (JFileChooser.APPROVE_OPTION == resultado){</span>
-<span class="nc" id="L315">            fichero = ventana.FileChooser.getSelectedFile();</span>
+<span class="nc bnc" id="L350" title="All 2 branches missed.">        if (JFileChooser.APPROVE_OPTION == resultado){</span>
+<span class="nc" id="L351">            fichero = ventana.FileChooser.getSelectedFile();</span>
             try{
-<span class="nc" id="L317">                icon = new ImageIcon(fichero.toString());</span>
-<span class="nc" id="L318">                icono = new ImageIcon(icon.getImage().getScaledInstance(LabelImagen.getWidth(), LabelImagen.getHeight(), Image.SCALE_DEFAULT));</span>
-<span class="nc" id="L319">                LabelImagen.setText(null);</span>
-<span class="nc" id="L320">                LabelImagen.setIcon( icono );</span>
-<span class="nc" id="L321">            }catch(Exception ex){</span>
-<span class="nc" id="L322">                JOptionPane.showMessageDialog(null, &quot;Error abriendo la imagen &quot;+ ex);</span>
-<span class="nc" id="L323">            }</span>
+<span class="nc" id="L353">                icon = new ImageIcon(fichero.toString());</span>
+<span class="nc" id="L354">                icono = new ImageIcon(icon.getImage().getScaledInstance(LabelImagen.getWidth(), LabelImagen.getHeight(), Image.SCALE_DEFAULT));</span>
+<span class="nc" id="L355">                LabelImagen.setText(null);</span>
+<span class="nc" id="L356">                LabelImagen.setIcon( icono );</span>
+<span class="nc" id="L357">            }catch(Exception ex){</span>
+<span class="nc" id="L358">                JOptionPane.showMessageDialog(null, &quot;Error abriendo la imagen &quot;+ ex);</span>
+<span class="nc" id="L359">            }</span>
         }
-<span class="nc" id="L325">    }//GEN-LAST:event_SeleccionarImagenActionPerformed</span>
+<span class="nc" id="L361">    }//GEN-LAST:event_SeleccionarImagenActionPerformed</span>
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
         
        
         try{
-<span class="nc" id="L331">            ICU.ExcepcionDatosCliente(txtNickname.getText(),txtCorreoElectronico.getText(),txtNombre.getText(),txtApellido.getText(),</span>
-<span class="nc" id="L332">                    txtDireccion.getText(),dia.getSelectedItem().toString(),mes.getSelectedItem().toString(),anio.getSelectedItem().toString());</span>
+<span class="nc" id="L367">            ICU.ExcepcionDatosCliente(txtNickname.getText(),txtCorreoElectronico.getText(),txtNombre.getText(),txtApellido.getText(),</span>
+<span class="nc" id="L368">                    txtDireccion.getText(),dia.getSelectedItem().toString(),mes.getSelectedItem().toString(),</span>
+<span class="nc" id="L369">                    anio.getSelectedItem().toString(),txtCotraseña.getText(),txtConfirmarCont.getText());</span>
             //D,M,A estan parseados
             int D,M,A;
-<span class="nc" id="L335">            D = Integer.parseInt(d);</span>
-<span class="nc" id="L336">            M = Integer.parseInt(m);</span>
-<span class="nc" id="L337">            A = Integer.parseInt(a);</span>
-<span class="nc" id="L338">            Fecha fecha=new Fecha(D,M,A);</span>
+<span class="nc" id="L372">            D = Integer.parseInt(d);</span>
+<span class="nc" id="L373">            M = Integer.parseInt(m);</span>
+<span class="nc" id="L374">            A = Integer.parseInt(a);</span>
+<span class="nc" id="L375">            Fecha fecha=new Fecha(D,M,A);</span>
             //ESTA CONTRASEÑA NO LA INGRESO EN EL SWING, DEBERIA
-<span class="nc" id="L340">            String con=&quot;hola&quot;;</span>
-<span class="nc" id="L341">            DataCliente datacliente=new DataCliente(con,this.txtNombre.getText(), this.txtNickname.getText(),</span>
-<span class="nc" id="L342">                this.txtCorreoElectronico.getText(), this.txtDireccion.getText(),</span>
-<span class="nc" id="L343">                this.txtApellido.getText(), fecha,fichero,&quot;&quot;);</span>
-<span class="nc" id="L344">            ICU.Caso_Registro_Cliente(datacliente);</span>
-<span class="nc" id="L345">            JOptionPane.showMessageDialog(null,&quot;Cliente Registrado&quot;,&quot;REGISTRO&quot;,JOptionPane.INFORMATION_MESSAGE);</span>
+            
+<span class="nc" id="L378">            DataCliente datacliente=new DataCliente(txtConfirmarCont.getText(),this.txtNombre.getText(), this.txtNickname.getText(),</span>
+<span class="nc" id="L379">                this.txtCorreoElectronico.getText(), this.txtDireccion.getText(),</span>
+<span class="nc" id="L380">                this.txtApellido.getText(), fecha,fichero,&quot;&quot;);</span>
+<span class="nc" id="L381">            ICU.Caso_Registro_Cliente(datacliente);</span>
+            
+<span class="nc" id="L383">            JOptionPane.showMessageDialog(null,&quot;Cliente Registrado&quot;,&quot;REGISTRO&quot;,JOptionPane.INFORMATION_MESSAGE);</span>
             //NO LIMPIO NADA YA QUE CADA VES QUE LLAMO EL INTERNAL REALIZO UN NEW    
-<span class="nc" id="L347">            this.dispose();</span>
+<span class="nc" id="L385">            this.dispose();</span>
             
-<span class="nc" id="L349">        }catch(ExcepcionesPersonalizadas ep){</span>
+<span class="nc" id="L387">        }catch(ExcepcionesPersonalizadas ep){</span>
             
-<span class="nc" id="L351">            JOptionPane.showMessageDialog(this,ep.getMessage(),&quot;REGISTRO&quot;,JOptionPane.ERROR_MESSAGE);</span>
-<span class="nc" id="L352">        }</span>
+<span class="nc" id="L389">            JOptionPane.showMessageDialog(this,ep.getMessage(),&quot;REGISTRO&quot;,JOptionPane.ERROR_MESSAGE);</span>
+<span class="nc" id="L390">        }</span>
         
-<span class="nc" id="L354">    }//GEN-LAST:event_RegistrarActionPerformed</span>
+<span class="nc" id="L392">    }//GEN-LAST:event_RegistrarActionPerformed</span>
+
+    private void txtCotraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCotraseñaActionPerformed
+        // TODO add your handling code here:
+<span class="nc" id="L396">    }//GEN-LAST:event_txtCotraseñaActionPerformed</span>
+
+    private void txtConfirmarContActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConfirmarContActionPerformed
+        // TODO add your handling code here:
+<span class="nc" id="L400">    }//GEN-LAST:event_txtConfirmarContActionPerformed</span>
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel Apellido;
+    public javax.swing.JLabel Apellido1;
+    public javax.swing.JLabel Apellido2;
     private javax.swing.JButton Cancelar;
     private javax.swing.JLabel CorreoElectronico;
     public javax.swing.JLabel Direccion;
@@ -370,7 +418,9 @@ public class RegistrarCliente extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox dia;
     private javax.swing.JComboBox mes;
     private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtConfirmarCont;
     private javax.swing.JTextField txtCorreoElectronico;
+    private javax.swing.JTextField txtCotraseña;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtNickname;
     private javax.swing.JTextField txtNombre;

@@ -4,6 +4,7 @@ package Logica;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import javax.swing.JOptionPane;
 
 public class ManejadorUsuario {
     
@@ -157,7 +158,7 @@ public class ManejadorUsuario {
    
    //EXCEPCIONES
    public void ExcepcionDatosCliente(String Nickname,String CorreoElectronico, String Nombre, String Apellido, String Direccion, 
-           String dia, String mes, String anio) throws ExcepcionesPersonalizadas{
+           String dia, String mes, String anio, String Contraseña, String ConfirmarCont) throws ExcepcionesPersonalizadas{
        
         if(verificarnickname(Nickname)==true){
             throw new ExcepcionesPersonalizadas("Nickname ya tomado");
@@ -166,32 +167,40 @@ public class ManejadorUsuario {
             throw new ExcepcionesPersonalizadas("Correo Electronico ya tomado");
         }
         else{
+            if(Contraseña.equals("")){
+                throw new ExcepcionesPersonalizadas("Ingrese una contraseña NO vacia");
+            }
+            if(!Contraseña.equals("")){
+                if(!Contraseña.equals(ConfirmarCont)){
+                    throw new ExcepcionesPersonalizadas("No coinciden las contraseñas");
+                    }
+            }
             if(Nickname.equals("")){
                 throw new ExcepcionesPersonalizadas("Ingrese un Nickname");
             }
-            else if(CorreoElectronico.equals("")){
+            if(CorreoElectronico.equals("")){
                 throw new ExcepcionesPersonalizadas("Ingrese su Correo Electronico");
             }
-            else if(Nombre.equals("")){
+            if(Nombre.equals("")){
                 throw new ExcepcionesPersonalizadas("Ingrese su Nombre");
             }
-            else if(Apellido.equals("")){
+            if(Apellido.equals("")){
                 throw new ExcepcionesPersonalizadas("Ingrese su Apellido");
             }
-            else if(Direccion.equals("")){
+            if(Direccion.equals("")){
                 throw new ExcepcionesPersonalizadas("Ingrese su Direccion");
             }
-            else if(dia.equals("DIA")){
+            
+            if(dia.equals("DIA")){
                 throw new ExcepcionesPersonalizadas("Ingrese su DIA de nacimiento");
             }
-            else if(mes.equals("MES")){
+            if(mes.equals("MES")){
                 throw new ExcepcionesPersonalizadas("Ingrese su MES de nacimiento");
             }
-            else if(anio.equals("AÑO")){
+            if(anio.equals("AÑO")){
                 throw new ExcepcionesPersonalizadas("Ingrese su AÑO de nacimiento");
             }
-            else if(!CorreoElectronico.equals("")){
-                
+            if(!CorreoElectronico.equals("")){
                 boolean arroba=false;    
                 for (int x=0;x<CorreoElectronico.length();x++){
                     char caracter=CorreoElectronico.charAt(x);
@@ -200,9 +209,9 @@ public class ManejadorUsuario {
                 }
                 if(arroba==false){        
                     throw new ExcepcionesPersonalizadas("Verifique el dominio de su correo");
-                    
                 }
             }
+            
         }
    }
    
@@ -214,7 +223,7 @@ public class ManejadorUsuario {
             throw new ExcepcionesPersonalizadas("Correo Electronico ya tomado");           
    }
    
-   public void ExcepcionDatosRestaurante(String Nickname,String CorreoElectronico, String Nombre, String Direccion, Map coleccion) throws ExcepcionesPersonalizadas{
+   public void ExcepcionDatosRestaurante(String Nickname,String CorreoElectronico, String Nombre, String Direccion, Map coleccion,String Contraseña, String ConfirmarCont) throws ExcepcionesPersonalizadas{
         if(verificarnickname(Nickname)==true){
             throw new ExcepcionesPersonalizadas("Nickname ya tomado");
         }
@@ -228,16 +237,16 @@ public class ManejadorUsuario {
             else if(CorreoElectronico.equals("")){
                 throw new ExcepcionesPersonalizadas("Ingrese su Correo Electronico");
             }
-            else if(Nombre.equals("")){
+            if(Nombre.equals("")){
                 throw new ExcepcionesPersonalizadas("Ingrese su Nombre");
             }
-            else if(Direccion.equals("")){
+            if(Direccion.equals("")){
                 throw new ExcepcionesPersonalizadas("Ingrese su Direccion");
             }
-            else if(coleccion.isEmpty()){
+            if(coleccion.isEmpty()){
                 throw new ExcepcionesPersonalizadas("Ingrese al menos 1 Categoria");
             }
-            else if(!CorreoElectronico.equals("")){
+            if(!CorreoElectronico.equals("")){
                 
                 boolean arroba=false;    
                 for (int x=0;x<CorreoElectronico.length();x++){
@@ -249,6 +258,13 @@ public class ManejadorUsuario {
                     throw new ExcepcionesPersonalizadas("Verifique el dominio de su correo");
                     
                 }
+            }
+            if(Contraseña.equals("")){
+                throw new ExcepcionesPersonalizadas("Ingrese una contraseña NO vacia");
+            }
+            if(!Contraseña.equals("")){
+                if(!Contraseña.equals(ConfirmarCont))
+                    throw new ExcepcionesPersonalizadas("No coinciden las contraseñas");
             }
         }
    }

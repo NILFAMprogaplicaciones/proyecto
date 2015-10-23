@@ -100,17 +100,17 @@ import java.util.Map;
 <span class="fc" id="L100">    }</span>
     @Override
     public void ExcepcionDatosCliente(String Nickname,String CorreoElectronico, String Nombre, String Apellido, String Direccion, 
-           String dia, String mes, String anio) throws ExcepcionesPersonalizadas{
+           String dia, String mes, String anio, String Contraseña, String ConfirmarCont) throws ExcepcionesPersonalizadas{
         
 <span class="fc" id="L105">        ManejadorUsuario MU = ManejadorUsuario.getinstance();</span>
-<span class="fc" id="L106">        MU.ExcepcionDatosCliente(Nickname, CorreoElectronico, Nombre, Apellido, Direccion, dia, mes, anio);</span>
+<span class="fc" id="L106">        MU.ExcepcionDatosCliente(Nickname, CorreoElectronico, Nombre, Apellido, Direccion, dia, mes, anio, Contraseña, ConfirmarCont);</span>
 <span class="fc" id="L107">    }</span>
     @Override
-    public void ExcepcionDatosRestaurante(String Nickname,String CorreoElectronico, String Nombre, String Direccion, Map coleccion) 
+    public void ExcepcionDatosRestaurante(String Nickname,String CorreoElectronico, String Nombre, String Direccion, Map coleccion, String Contraseña, String ConfirmarCont) 
             throws ExcepcionesPersonalizadas{
         
 <span class="fc" id="L112">        ManejadorUsuario MU = ManejadorUsuario.getinstance();</span>
-<span class="fc" id="L113">        MU.ExcepcionDatosRestaurante(Nickname, CorreoElectronico, Nombre, Direccion, coleccion);</span>
+<span class="fc" id="L113">        MU.ExcepcionDatosRestaurante(Nickname, CorreoElectronico, Nombre, Direccion, coleccion, Contraseña,ConfirmarCont);</span>
 <span class="fc" id="L114">    }</span>
     @Override
     public Categoria getCategoria(String cate){

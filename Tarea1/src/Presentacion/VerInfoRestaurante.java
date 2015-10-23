@@ -26,25 +26,35 @@ public class VerInfoRestaurante extends javax.swing.JInternalFrame {
         
     }
     
-    int idFoto=1;
-    DataRestaurante datarestaurante;
     
+    DataRestaurante datarestaurante;
+    int idFoto=1;
     public void CargaDeDatos(DataRestaurante dres){
         txtNickRestaurante.setText(dres.getnickname());
         txtNomRestaurante.setText(dres.getnombre());
         txtDirRestaurante.setText(dres.getdireccion());
         txtCorreoRestaurante.setText(dres.getcorreo());
         
-                
-        File foto=dres.getFoto(idFoto);
-        int largo=237, ancho=127;
-        ImageIcon icon;
-        Icon icono;
-        icon = new ImageIcon(foto.toString());
-        icono = new ImageIcon(icon.getImage().getScaledInstance(largo, ancho, Image.SCALE_DEFAULT));
-        imagenRestaurante.setText(null);
-        imagenRestaurante.setIcon( icono );
-        
+        if(dres.getFoto(idFoto)!=null){        
+            File foto=dres.getFoto(idFoto);
+            int largo=237, ancho=127;
+            ImageIcon icon;
+            Icon icono;
+            icon = new ImageIcon(foto.toString());
+            icono = new ImageIcon(icon.getImage().getScaledInstance(largo, ancho, Image.SCALE_DEFAULT));
+            imagenRestaurante.setText(null);
+            imagenRestaurante.setIcon( icono );
+        }
+        else{
+            File foto=new File("src/Imagenes/usuario.png");
+            int largo=237, ancho=127;
+            ImageIcon icon;
+            Icon icono;
+            icon = new ImageIcon(foto.toString());
+            icono = new ImageIcon(icon.getImage().getScaledInstance(largo, ancho, Image.SCALE_DEFAULT));
+            imagenRestaurante.setText(null);
+            imagenRestaurante.setIcon( icono ); 
+        }
         //AGREGO LOS PRODUCTOS DE MI RESTAURANTE
         DefaultListModel<String> modelo=new DefaultListModel<>();
 
