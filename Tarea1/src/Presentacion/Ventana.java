@@ -1,6 +1,7 @@
 package Presentacion;
 
 import Logica.*;
+import Servidor.Publicador;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
@@ -21,7 +22,8 @@ public class Ventana extends javax.swing.JFrame {
         ICP     = fabrica.getIControladorProducto();
         ICPE    = fabrica.getIControladorPedido();
         IDP     = fabrica.getIDatosPrecargados();
-               
+        Publicador p=new Publicador();
+        p.publicar();
     }
     @Override
     public Image getIconImage() {
