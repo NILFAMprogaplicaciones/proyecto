@@ -4,11 +4,10 @@ package Logica;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import javax.swing.JOptionPane;
 
 public class ManejadorUsuario {
     
-    private Map<String,Usuario> ColeccionUsuarios = new HashMap<String,Usuario>();
+    private Map<String,Usuario> ColeccionUsuarios = new HashMap<>();
     //SINGLENTON
     private static ManejadorUsuario instancia = null;
     
