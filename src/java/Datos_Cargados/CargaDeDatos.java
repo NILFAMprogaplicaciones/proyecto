@@ -1,22 +1,19 @@
 package Datos_Cargados;
 
-import Logica.Fabrica;
-import Logica.IDatosPrecargados;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+import servidor.PublicadorService;
 
 public class CargaDeDatos extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        IDatosPrecargados IDP;
-        Fabrica fabrica=Fabrica.getInstance();
-        IDP=fabrica.getIDatosPrecargados();
-        IDP.DatosPrecargado();
+        servidor.PublicadorService service = new PublicadorService();
+        servidor.Publicador port = service.getPublicadorPort();
         
-        //request.getRequestDispatcher("info_restaurante.jsp").forward(request, response);
+        port.datosCargados();
         
     }
 

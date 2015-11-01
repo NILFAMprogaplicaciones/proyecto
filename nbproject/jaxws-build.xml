@@ -28,7 +28,7 @@
     </target>
     <target name="wsimport-client-ICU_1" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/ICU_1"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/ICU_1" destdir="${build.generated.dir}/jax-wsCache/ICU_1" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/ICU_1/wsdl/localhost_9128/ICU.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:9128/ICU?wsdl" xnocompile="true" xendorsed="true" target="2.1">
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/ICU_1" destdir="${build.generated.dir}/jax-wsCache/ICU_1" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/ICU_1/wsdl/localhost_9128/ICU.wsdl" catalog="catalog.xml" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:9128/ICU?wsdl" xnocompile="true" xendorsed="true" target="2.1">
             <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/ICU_1/wsdl/localhost_9128/ICU.wsdl"/>
             <produces dir="${build.generated.dir}/jax-wsCache/ICU_1"/>
         </wsimport>
