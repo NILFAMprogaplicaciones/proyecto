@@ -8,6 +8,8 @@ import javax.servlet.http.*;
 import Logica.*;
 import java.util.StringTokenizer;
 import javax.servlet.annotation.MultipartConfig;
+import servidor.Publicador;
+import servidor.PublicadorService;
 
 @MultipartConfig
 public class AgregarCliente extends HttpServlet {
@@ -69,8 +71,12 @@ public class AgregarCliente extends HttpServlet {
             
             
 
-           DataCliente DC = new DataCliente(contraseña,nombre,nickname,email,direccion,apellido,fecha,foto,"images/Usuarios"+"/"+nickname+".png");
-
+            DataCliente DC = new DataCliente(contraseña,nombre,nickname,email,direccion,apellido,fecha,foto,"images/Usuarios"+"/"+nickname+".png");
+            
+            PublicadorService service = new PublicadorService();
+            Publicador port = service.getPublicadorPort();
+            port.altaCategoria("categoria_leo");
+            
             Fabrica fabrica = Fabrica.getInstance();
             ICU = fabrica .getIControladorUsuario();
 
